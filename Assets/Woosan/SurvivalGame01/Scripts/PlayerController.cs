@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
 
         //ThirdPersonCharacter 에서 회전을 담당 하기에 NavMeshAgent 의 회전은 막음
         navMeshAgent.updateRotation = false;
-
     }
 
     private void Update()
@@ -68,6 +67,7 @@ public class PlayerController : MonoBehaviour
         //이동을 담당
         navMeshAgent.destination = transform.position + desiredVelocity;
         //애니메이션 움직임 담당 [회전 포함]
+        //실제 이동 없이 회전 만 시키기 위해서 MoveSpeedMultiplier 값을 0으로 바꿈
         thirdPersonCharacter.Move(desiredVelocity, false, false);
     }
 }

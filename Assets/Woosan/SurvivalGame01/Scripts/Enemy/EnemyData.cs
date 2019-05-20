@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Woosan.SurvivalGame01
 {
-    public class EnemyModel : MonoBehaviour
+    public class EnemyData : MonoBehaviour
     {
         /// <summary>
         /// 적의 종류 => 모델을 결정

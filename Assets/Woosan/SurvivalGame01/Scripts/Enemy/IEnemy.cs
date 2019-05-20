@@ -7,7 +7,7 @@ public interface IEnemy
     void Dead();
     void Respawn();
 
-    AttackEvent AttackEvent { get; }
+    AttackEvent GetAttackEvent { get; }
 }
 
 public class AttackEvent : UnityEvent<float> {}

@@ -17,7 +17,7 @@ namespace Woosan.SurvivalGame01
 
         void Awake()
         {
-            Debug.Log("Enemy Awake");
+            //Debug.Log("Enemy Awake");
 
             attackEvent = new AttackEvent();
             enemyData = GetComponent<EnemyData>();

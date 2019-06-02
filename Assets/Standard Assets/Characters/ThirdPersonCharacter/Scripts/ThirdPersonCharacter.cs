@@ -45,6 +45,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		public void Move(Vector3 move, bool crouch, bool jump)
 		{
+            //예외처리 추가
+            if (m_Rigidbody == null || m_Animator == null) return;
 
 			// convert the world relative moveInput vector into a local-relative
 			// turn amount and forward amount required to head in the desired
@@ -193,9 +195,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		{
 			// apply extra gravity from multiplier:
 			Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
-			m_Rigidbody.AddForce(extraGravityForce);
-
-			m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
+            //예외처리 추가
+            if(m_Rigidbody != null)
+			    m_Rigidbody.AddForce(extraGravityForce);
+            if (m_Rigidbody != null)
+                m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
 		}
 
 
@@ -254,7 +258,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			{
 				m_IsGrounded = false;
 				m_GroundNormal = Vector3.up;
-				m_Animator.applyRootMotion = false;
+                //에러나서 추가 NULL이 아닐때만 실행
+                if(m_Animator != null)
+				    m_Animator.applyRootMotion = false;
 			}
 		}
 	}

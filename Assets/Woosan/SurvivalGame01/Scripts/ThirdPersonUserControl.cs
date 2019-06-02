@@ -45,10 +45,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private void FixedUpdate()
         {
             // read inputs
-            //float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            //float v = CrossPlatformInputManager.GetAxis("Vertical");
-            float h = 0;
-            float v = 0;
+            float h = UltimateJoystick.GetHorizontalAxis("Move");
+            float v = UltimateJoystick.GetVerticalAxis("Move");
 
             bool crouch = Input.GetKey(KeyCode.C);
 

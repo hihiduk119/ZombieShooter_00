@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-using UnityStandardAssets.Characters.ThirdPerson;
+//using UnityStandardAssets.Characters.ThirdPerson;
 
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
     //네비메쉬 [실제 이동 담당]
-    NavMeshAgent navMeshAgent;
+    //NavMeshAgent navMeshAgent;
     //서드퍼슨 컨트롤 [ 애니메이션만 담당 , 회전도 담 당]
-    ThirdPersonCharacter thirdPersonCharacter;
+    //ThirdPersonCharacter thirdPersonCharacter;
     //조이스틱값 캐슁
     private float horizon;
     private float vertical;
@@ -34,13 +34,13 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         //캐슁용 [최적화]
-        thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        //thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
+        //navMeshAgent = GetComponent<NavMeshAgent>();
         myRenderer = transform.GetComponentInChildren<SkinnedMeshRenderer>();
 
         //ThirdPersonCharacter 에서 회전을 담당 하기에 NavMeshAgent 의 회전은 막음
-        navMeshAgent.updateRotation = false;
-        navMeshAgent.updatePosition = false;
+        //navMeshAgent.updateRotation = false;
+        //navMeshAgent.updatePosition = false;
     }
 
     /*private void Update()
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         if (myRenderer.isVisible)
         {
             //움직임 관련
-            Move();
+            //Move();
         }
     }
 
@@ -92,6 +92,6 @@ public class PlayerController : MonoBehaviour
         //navMeshAgent.destination = transform.position + desiredVelocity;
         //애니메이션 움직임 담당 [회전 포함]
         //실제 이동 없이 회전 만 시키기 위해서 MoveSpeedMultiplier 값을 0으로 바꿈
-        thirdPersonCharacter.Move(desiredVelocity, false, false);
+        //thirdPersonCharacter.Move(desiredVelocity, false, false);
     }
 }

@@ -39,7 +39,7 @@ namespace Woosan.SurvivalGame01
             skinnedMeshRenderer = player.GetComponentInChildren<SkinnedMeshRenderer>();
         }
 
-        void Update()
+        void FixedUpdate()
         {
             //해당 오브젝트가 비활성화 상태라면 움직이지 않음 [비용절약용 코드]
             if (!skinnedMeshRenderer.isVisible) return;

@@ -7,6 +7,9 @@ using UnityEngine.AI;
 using UnityStandardAssets.Characters.ThirdPerson;
 using cakeslice;
 
+//아웃라인 테스트용
+using Knife.PostProcessing;
+
 namespace Woosan.SurvivalGame01
 {
     /// <summary>
@@ -129,10 +132,14 @@ namespace Woosan.SurvivalGame01
             model.transform.localPosition = Vector3.zero;
             enemyList.Add(clone);
 
-            //아웃 라인 넣기
+            //아웃 라인 넣기 [old outline]
+            //GameObject outline = model.transform.GetComponentInChildren<SkinnedMeshRenderer>().gameObject;
+            //outline.AddComponent<Outline>();
+            //outline.GetComponent<Outline>().color = 1;
+
+            //아웃 라인 넣기 [new outline]
             GameObject outline = model.transform.GetComponentInChildren<SkinnedMeshRenderer>().gameObject;
-            outline.AddComponent<Outline>();
-            outline.GetComponent<Outline>().color = 1;
+            outline.AddComponent<OutlineRegister>();
 
             clone.name = "Enemy (" + makeCnt + ")";
             //에니메이션 데이타 가져오기

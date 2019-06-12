@@ -13,6 +13,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 
+
+        float hModifyed, vModifyed;
+        float interval = 0.15f;
+        float h, v;
+
         private void Start()
         {
             // get the transform of the main camera
@@ -45,8 +50,34 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private void FixedUpdate()
         {
             // read inputs
-            float h = UltimateJoystick.GetHorizontalAxis("Move");
-            float v = UltimateJoystick.GetVerticalAxis("Move");
+            hModifyed = UltimateJoystick.GetHorizontalAxis("Move");
+            vModifyed = UltimateJoystick.GetVerticalAxis("Move");
+
+            //-0.3보다 크거나 0.3보다 작으면 0으로 
+            if( -interval < hModifyed && hModifyed < interval) {
+                hModifyed = 0;
+            } else if( -interval >= hModifyed ) {
+                hModifyed *= 2;
+            } else if (hModifyed >= interval) {
+                hModifyed *= 2;
+            }
+
+            //-0.3보다 크거나 0.3보다 작으면 0으로 
+            if (-interval < vModifyed && vModifyed < interval)
+            {
+                vModifyed = 0;
+            }
+            else if (-interval >= vModifyed)
+            {
+                vModifyed *= 2;
+            }
+            else if (vModifyed >= interval)
+            {
+                vModifyed *= 2;
+            }
+
+            h = hModifyed;
+            v = vModifyed;
 
             bool crouch = Input.GetKey(KeyCode.C);
 

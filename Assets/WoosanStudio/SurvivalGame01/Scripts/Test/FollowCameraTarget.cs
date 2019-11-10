@@ -72,7 +72,7 @@ namespace Woosan.SurvivalGame01
             //실제 러프를 거는 followedCam.    
             aheadTarget.transform.localPosition = Vector3.Lerp(aheadTarget.transform.localPosition, joystickTarget.transform.localPosition, Time.deltaTime * recoverStrong);
 
-            Debug.Log(Mathf.Abs(distanceLockCenterTarget.transform.position.z - player.transform.position.z));
+            //Debug.Log(Mathf.Abs(distanceLockCenterTarget.transform.position.z - player.transform.position.z));
             //플레이어가 기준 좌표 보다 멀어지면 더미 타겟에 플레이어 현재 좌표를 집어넣고 followTarget 을 바꾼다
             if (Mathf.Abs(distanceLockCenterTarget.transform.position.z - player.transform.position.z)  > 3) {
                 //Debug.Log(Vector3.Distance(distanceLockCenterTarget.transform.position, player.transform.position) + "커");

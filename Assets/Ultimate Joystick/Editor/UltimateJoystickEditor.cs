@@ -119,7 +119,7 @@ public class UltimateJoystickEditor : Editor
 		}
 		if( parent == null && PrefabUtility.GetPrefabType( Selection.activeGameObject ) != PrefabType.Prefab )
 			UltimateJoystickCreator.RequestCanvas( Selection.activeGameObject );
-
+            
 		return null;
 	}
 

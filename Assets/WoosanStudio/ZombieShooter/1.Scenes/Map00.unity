@@ -892,6 +892,7 @@ GameObject:
   - component: {fileID: 173049902}
   - component: {fileID: 173049903}
   - component: {fileID: 173049905}
+  - component: {fileID: 173049906}
   m_Layer: 12
   m_Name: Player
   m_TagString: Untagged
@@ -924,7 +925,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173049896}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
   m_Name: 
@@ -984,7 +985,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!114 &173049902
 MonoBehaviour:
@@ -1005,7 +1006,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173049896}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a42504b925a3346fcb0e7ec012444503, type: 3}
   m_Name: 
@@ -1028,7 +1029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504bbd62509d0456b94c364d3266485e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 49848575}
+  cam: {fileID: 173049897}
 --- !u!114 &173049905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1055,6 +1056,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &173049906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173049896}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f0af317aeb4047499ecacabb2362d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1001 &195876738
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -3,10 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Enemy
-  - ActivateTrigger
-  - FX
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -16,13 +13,13 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
-  - Background
-  - Cam
-  - Passable
-  - Player
-  - Zombie
-  - Vehicles
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

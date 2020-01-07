@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45500ea4ab7e4a9abefd58d830c3be4, type: 3}
+  m_Name: ShotgunSetting
+  m_EditorClassIdentifier: 
+  _type: 3
+  _maxAmmo: 6
+  _level: 1
+  _reloadTime: 4
+  _model: {fileID: 8047491481286476270, guid: 8271d1dc954334c9794312d202944831, type: 3}
+  _projectileSettings: {fileID: 11400000, guid: 9143eda5fb42f4ea89b533287d6762b1,
+    type: 2}

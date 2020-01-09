@@ -4,31 +4,14 @@ using UnityEngine;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class AssaultRifle : IGunStat , IWeapon
+    public class Shotgun : MonoBehaviour , IGunStat, IWeapon, IProjectileLauncher
     {
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGunStat Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         public int MaxAmmo { get; private set; }
         public int CurrentAmmo { get; private set; }
         public int GetCurrentAmmo { get; private set; }
         public int Level { get; private set; }
         public int Type { get; private set; }
-
-        private ProjectileLauncher _projectileLauncher;
-
-
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeapon Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-        public void Attack()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Stop()
-        {
-            throw new System.NotImplementedException();
-        }
-
-
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGunStat Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         private int _damage;
         public int Damage
@@ -73,6 +56,27 @@ namespace WoosanStudio.ZombieShooter
                 value = FireSpeedCalculator.GetFireSpeed(Type, Level);
             }
         }
+
         public FireSpeedCalculator FireSpeedCalculator { get; private set; }
+
+
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeapon Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        public void Attack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Stop()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IProjectileLauncher Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+        private ProjectileLauncher projectileLauncher;
+        public ProjectileLauncher ProjectileLauncher { get => projectileLauncher; set => projectileLauncher = value; }
+
+        private GunSettings gunSettings;
+        public GunSettings GunSettings { get => gunSettings; set => gunSettings = value; }
     }
 }

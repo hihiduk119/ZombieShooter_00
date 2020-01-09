@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45500ea4ab7e4a9abefd58d830c3be4, type: 3}
   m_Name: AssaultRifleSetting
   m_EditorClassIdentifier: 
-  _type: 2
+  _index: 1
+  _name: AssaultRifle
   _maxAmmo: 30
   _level: 1
   _reloadTime: 2
   _prefab: {fileID: 863729631154490029, guid: 3897f9a3fadf048f387389ae71bf527c, type: 3}
+  _prefabInstance: {fileID: 0}
   _projectileSettings: {fileID: 11400000, guid: 22615d03967a8462c9c2c40f82d7d9ad,
     type: 2}

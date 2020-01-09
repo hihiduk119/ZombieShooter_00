@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine.UI;
+
+using System.Linq;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -46,10 +47,24 @@ namespace WoosanStudio.ZombieShooter
 
         void Start()
         {
-            //if (swarmMissileLauncher)
-            //{
-            //    projectileSimFire = 5;
-            //}
+            //모델 총기위치에 맞게 총구,총구화염,탄피배출 위치 세팅
+            Initilized();
+        }
+
+        /// <summary>
+        /// 모델 총기위치에 맞게 총구,총구화염,탄피배출 위치 세팅
+        /// </summary>
+        void Initilized()
+        {
+            //총구 위치, 총구 화염 위치, 탄배출구 위치 세팅
+            spawnLocator = transform.Find("Locator");
+            spawnLocatorMuzzleFlare = transform.Find("MuzzleLocator");
+            shellLocator = transform.Find("ShellLocator");
+
+            //샷건 총구
+            if(spawnLocator.childCount > 0)
+                shotgunLocator = spawnLocator.GetComponentsInChildren<Transform>();
+
         }
 
         void Update()

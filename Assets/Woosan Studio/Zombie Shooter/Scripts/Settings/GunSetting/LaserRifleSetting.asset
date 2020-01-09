@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45500ea4ab7e4a9abefd58d830c3be4, type: 3}
   m_Name: LaserRifleSetting
   m_EditorClassIdentifier: 
-  _type: 4
+  _index: 3
+  _name: LaserRifle
   _maxAmmo: 20
   _level: 1
   _reloadTime: 2
   _prefab: {fileID: 5304141356055359961, guid: 2008640c6b32e4ba38ecb924bda09aaa, type: 3}
+  _prefabInstance: {fileID: 0}
   _projectileSettings: {fileID: 11400000, guid: cfaeda0e543714d5e8dbaafc126213be,
     type: 2}

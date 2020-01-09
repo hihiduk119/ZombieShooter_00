@@ -3,7 +3,7 @@
 namespace WoosanStudio.ZombieShooter
 {
     [CreateAssetMenu(menuName = "ZombieShooter/GunSettings/Make Setting", fileName = "GunData")]
-    internal class GunSettings : ScriptableObject
+    public class GunSettings : ScriptableObject
     {
         /// <summary>
         /// 무기 타입 - 추가 될 경우를 대비해 int로 만듬
@@ -23,7 +23,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 총기 모델 프리팹
         /// </summary>
-        [SerializeField] private GameObject _model;
+        [SerializeField] private GameObject _prefab;
 
         /// <summary>
         /// projectileActor.cs 에서 가져온 클래
@@ -34,12 +34,12 @@ namespace WoosanStudio.ZombieShooter
         public int MaxAmmo { get => _maxAmmo; }
         public int Level { get => _level; }
         public float ReloadTime { get => _reloadTime; }
-        public GameObject Model
+        public GameObject Prefab
         {
             get
             {
-                if (_model == null) { _model = Instantiate(_model) as GameObject; }
-                return _model;
+                if (_prefab == null) { _prefab = Instantiate(_prefab) as GameObject; }
+                return _prefab;
             }
         }
     }

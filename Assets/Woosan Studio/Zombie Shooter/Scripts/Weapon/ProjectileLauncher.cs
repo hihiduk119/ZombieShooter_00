@@ -16,7 +16,7 @@ namespace WoosanStudio.ZombieShooter
 
         public Transform[] shotgunLocator;
 
-        public WoosanStudio.ZombieShooter.ProjectileSettings[] bombList;
+        public WoosanStudio.ZombieShooter.ProjectileSettings bombList;
 
         public bool CameraShake = true;
         public float rapidFireDelay;
@@ -25,10 +25,6 @@ namespace WoosanStudio.ZombieShooter
         float firingTimer;
         public bool firing;
         public int bombType = 0;
-
-
-        //public bool swarmMissileLauncher = false;
-        //int projectileSimFire = 1;
 
         public bool Torque = false;
         public float Tor_min, Tor_max;
@@ -72,14 +68,14 @@ namespace WoosanStudio.ZombieShooter
             }
 
             //BULLETS
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                Switch(-1);
-            }
-            if (Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.E))
-            {
-                Switch(1);
-            }
+            //if (Input.GetKeyDown(KeyCode.Q))
+            //{
+            //    Switch(-1);
+            //}
+            //if (Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.E))
+            //{
+            //    Switch(1);
+            //}
 
             if (Input.GetButtonDown("Fire1"))
             {
@@ -92,9 +88,9 @@ namespace WoosanStudio.ZombieShooter
                 firingTimer = 0;
             }
 
-            if (bombList[bombType].rapidFire && firing)
+            if (bombList.rapidFire && firing)
             {
-                if (firingTimer > bombList[bombType].rapidFireCooldown + rapidFireDelay)
+                if (firingTimer > bombList.rapidFireCooldown + rapidFireDelay)
                 {
                     Fire();
                     firingTimer = 0;
@@ -107,19 +103,19 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
-        public void Switch(int value)
-        {
-            bombType += value;
-            if (bombType < 0)
-            {
-                bombType = bombList.Length;
-                bombType--;
-            }
-            else if (bombType >= bombList.Length)
-            {
-                bombType = 0;
-            }
-        }
+        //public void Switch(int value)
+        //{
+        //    bombType += value;
+        //    if (bombType < 0)
+        //    {
+        //        bombType = bombList.Length;
+        //        bombType--;
+        //    }
+        //    else if (bombType >= bombList.Length)
+        //    {
+        //        bombType = 0;
+        //    }
+        //}
 
         public void Fire()
         {
@@ -127,29 +123,29 @@ namespace WoosanStudio.ZombieShooter
             {
                 Shaker.Shake();
             }
-            Instantiate(bombList[bombType].muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation);
+            Instantiate(bombList.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation);
             //   bombList[bombType].muzzleflare.Play();
 
-            if (bombList[bombType].hasShells)
+            if (bombList.hasShells)
             {
-                Instantiate(bombList[bombType].shellPrefab, shellLocator.position, shellLocator.rotation);
+                Instantiate(bombList.shellPrefab, shellLocator.position, shellLocator.rotation);
             }
             //총구 들림
             //if (MuzzleFlip) { recoilAnimator.SetTrigger("recoil_trigger"); }
 
             Rigidbody rocketInstance;
-            rocketInstance = Instantiate(bombList[bombType].bombPrefab, spawnLocator.position, spawnLocator.rotation) as Rigidbody;
+            rocketInstance = Instantiate(bombList.bombPrefab, spawnLocator.position, spawnLocator.rotation) as Rigidbody;
             // Quaternion.Euler(0,90,0)
-            rocketInstance.AddForce(spawnLocator.forward * Random.Range(bombList[bombType].min, bombList[bombType].max));
+            rocketInstance.AddForce(spawnLocator.forward * Random.Range(bombList.min, bombList.max));
 
-            if (bombList[bombType].shotgunBehavior)
+            if (bombList.shotgunBehavior)
             {
-                for (int i = 0; i < bombList[bombType].shotgunPellets; i++)
+                for (int i = 0; i < bombList.shotgunPellets; i++)
                 {
                     Rigidbody rocketInstanceShotgun;
-                    rocketInstanceShotgun = Instantiate(bombList[bombType].bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation) as Rigidbody;
+                    rocketInstanceShotgun = Instantiate(bombList.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation) as Rigidbody;
                     // Quaternion.Euler(0,90,0)
-                    rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(bombList[bombType].min, bombList[bombType].max));
+                    rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(bombList.min, bombList.max));
                 }
             }
 

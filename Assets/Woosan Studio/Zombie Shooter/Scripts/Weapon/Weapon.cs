@@ -4,20 +4,20 @@ using UnityEngine;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class Pistol :  IWeapon
+    public class Weapon : MonoBehaviour, IWeapon
     {
-        private ProjectileLauncher _projectileLauncher;
+        WeaponFactory _weaponFactory;
+
+        
 
         public void Attack()
         {
-            _projectileLauncher.Fire();
+            
         }
 
         public void Stop()
         {
-
+            
         }
     }
 }
-
-

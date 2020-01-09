@@ -16,6 +16,6 @@ MonoBehaviour:
   _maxAmmo: 20
   _level: 1
   _reloadTime: 2
-  _model: {fileID: 9015556794893200329, guid: 2008640c6b32e4ba38ecb924bda09aaa, type: 3}
+  _prefab: {fileID: 5304141356055359961, guid: 2008640c6b32e4ba38ecb924bda09aaa, type: 3}
   _projectileSettings: {fileID: 11400000, guid: cfaeda0e543714d5e8dbaafc126213be,
     type: 2}

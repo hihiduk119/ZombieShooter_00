@@ -14885,7 +14885,6 @@ GameObject:
   - component: {fileID: 1461325909}
   - component: {fileID: 1461325908}
   - component: {fileID: 1461325907}
-  - component: {fileID: 1461325912}
   m_Layer: 0
   m_Name: Player_2017
   m_TagString: Untagged
@@ -14919,7 +14918,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1461325906}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24ae8ab904635734bab03b361009b30d, type: 3}
   m_Name: 
@@ -15672,45 +15671,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
---- !u!114 &1461325912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461325906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dc9af1323abc4f4dba2616b4758fb3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnLocator: {fileID: 63465054}
-  spawnLocatorMuzzleFlare: {fileID: 1000720324}
-  shellLocator: {fileID: 716559700}
-  shotgunLocator:
-  - {fileID: 1987535388}
-  - {fileID: 1426959114}
-  - {fileID: 154342993}
-  - {fileID: 1172516770}
-  - {fileID: 1707659818}
-  - {fileID: 1658312354}
-  - {fileID: 1374924257}
-  - {fileID: 1293787852}
-  bombList:
-  - {fileID: 11400000, guid: 22615d03967a8462c9c2c40f82d7d9ad, type: 2}
-  - {fileID: 11400000, guid: b2557b1e8575646058ace4a3dd7b6509, type: 2}
-  - {fileID: 11400000, guid: 9143eda5fb42f4ea89b533287d6762b1, type: 2}
-  - {fileID: 11400000, guid: cfaeda0e543714d5e8dbaafc126213be, type: 2}
-  CameraShake: 1
-  rapidFireDelay: 0
-  firing: 0
-  bombType: 0
-  Torque: 0
-  Tor_min: 0
-  Tor_max: 0
-  MinorRotate: 1
-  MajorRotate: 0
-  BulletSpreadPower: 0.25
 --- !u!1001 &1464146175
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,6 +14,12 @@ namespace WoosanStudio.ZombieShooter
         IProjectileLauncher _projectileLauncher;
         IWeapon _iWeapon;
 
+        /// <summary>
+        /// 무기를 생성
+        /// </summary>
+        /// <param name="parant">생성될 오브젝트의 부모</param>
+        /// <param name="type">생성할 무기의 인덱스</param>
+        /// <returns></returns>
         public IWeapon MakeWeapon(Transform parant,int type)
         {
             //어떤 무기는 모델을 가지고 있으면 IHaveModel인터페이스를 상속 받기에 해당 인터페이스 호출.
@@ -49,8 +55,10 @@ namespace WoosanStudio.ZombieShooter
             if (_projectileLauncher != null)
             {
                 _projectileLauncher.ProjectileLauncher = _weapon.AddComponent<ProjectileLauncher>();
-                _projectileLauncher.GunSettings = _gunSettings[type];
-                _projectileLauncher.ProjectileLauncher.projectileSetting = _projectileLauncher.GunSettings.ProjectileSettings;
+                _iWeapon.GunSettings = _gunSettings[type];
+                //_projectileLauncher.GunSettings = _gunSettings[type];
+                //_projectileLauncher.ProjectileLauncher.projectileSetting = _projectileLauncher.GunSettings.ProjectileSettings;
+                _projectileLauncher.ProjectileLauncher.projectileSetting = _iWeapon.GunSettings.ProjectileSettings;
             }
 
             return _iWeapon;

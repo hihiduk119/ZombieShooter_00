@@ -22,6 +22,7 @@ namespace WoosanStudio.ZombieShooter
         public bool CameraShake = true;
         public float rapidFireDelay;
         public ICameraShaker Shaker;
+        public IKeyInput keyInput;
 
         float firingTimer;
         public bool firing;
@@ -37,63 +38,138 @@ namespace WoosanStudio.ZombieShooter
         public bool MajorRotate = false;
         int seq = 0;
 
+        private Coroutine _updateFrame;
+
         //탄퍼짐시 해당 파워
         public float BulletSpreadPower = 0.25f;
 
-        private void Awake()
-        {
-            Shaker = FindObjectOfType<CameraShaker>();
-        }
-
         void Start()
         {
-            //모델 총기위치에 맞게 총구,총구화염,탄피배출 위치 세팅
+            //초기화 루틴
             Initilized();
+        }
+
+        /// <summary>
+        /// 초기화 루틴
+        /// </summary>
+        void Initilized()
+        {
+            SetCameraShaker();
+            SetModelLocator();
+            SetInputActionHandler();
         }
 
         /// <summary>
         /// 모델 총기위치에 맞게 총구,총구화염,탄피배출 위치 세팅
         /// </summary>
-        void Initilized()
+        void SetModelLocator()
         {
-            //총구 위치, 총구 화염 위치, 탄배출구 위치 세팅
+            //총구 위치
             spawnLocator = transform.Find("Locator");
+            //총구 화염 위치
             spawnLocatorMuzzleFlare = transform.Find("MuzzleLocator");
+            //탄배출구 위치
             shellLocator = transform.Find("ShellLocator");
-
             //샷건 총구
-            if(spawnLocator.childCount > 0)
+            if (spawnLocator.childCount > 0)
                 shotgunLocator = spawnLocator.GetComponentsInChildren<Transform>();
-
         }
 
-        void Update()
+        /// <summary>
+        /// 유저 Key Input을 제어하는 부분의 액션 이벤트를 등록
+        /// </summary>
+        void SetInputActionHandler()
         {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                firing = true;
-                Fire();
-            }
-            if (Input.GetButtonUp("Fire1"))
-            {
-                firing = false;
-                firingTimer = 0;
-            }
+            keyInput = FindObjectOfType<KeyInput>();
+            keyInput.FireActionHandler += StartFiring;
+            keyInput.StopActionHandler += StopFiring;
+        }
 
-            if (projectileSetting.rapidFire && firing)
+        /// <summary>
+        /// 카메라 연출용
+        /// </summary>
+        void SetCameraShaker()
+        {
+            Shaker = FindObjectOfType<CameraShaker>();
+        }
+
+        IEnumerator UpdateFrame()
+        {
+            WaitForEndOfFrame WFEF = new WaitForEndOfFrame();
+
+            Fire();
+            firingTimer = 0;
+
+            while (true)
             {
-                if (firingTimer > projectileSetting.rapidFireCooldown + rapidFireDelay)
+                if (projectileSetting.rapidFire && firing)
                 {
-                    Fire();
-                    firingTimer = 0;
+                    if (firingTimer > projectileSetting.rapidFireCooldown + rapidFireDelay)
+                    {
+                        Fire();
+                        firingTimer = 0;
+                    }
                 }
-            }
 
-            if (firing)
-            {
-                firingTimer += Time.deltaTime;
+                if (firing)
+                {
+                    firingTimer += Time.deltaTime;
+                }
+
+                yield return WFEF;
             }
         }
+
+        public void StartFiring()
+        {
+            firing = true;
+            //Fire();
+
+            if (_updateFrame != null) StopCoroutine(_updateFrame);
+            _updateFrame = StartCoroutine(UpdateFrame());
+        }
+
+        public void StopFiring()
+        {
+            firing = false;
+            firingTimer = 0;
+
+            if (_updateFrame != null) StopCoroutine(_updateFrame);
+        }
+
+        //void Update()
+        //{
+        //    if (Input.GetButtonDown("Fire1"))
+        //    {
+        //        StartFiring();
+        //        //firing = true;
+        //        //Fire();
+        //    }
+        //    if (Input.GetButtonDown("Fire2"))
+        //    {
+        //        StopFiring();
+        //    }
+
+        //    /*if (Input.GetButtonUp("Fire1"))
+        //    {
+        //        firing = false;
+        //        firingTimer = 0;
+        //    }*/
+
+        //    /*if (projectileSetting.rapidFire && firing)
+        //    {
+        //        if (firingTimer > projectileSetting.rapidFireCooldown + rapidFireDelay)
+        //        {
+        //            Fire();
+        //            firingTimer = 0;
+        //        }
+        //    }*/
+
+        //    /*if (firing)
+        //    {
+        //        firingTimer += Time.deltaTime;
+        //    }*/
+        //}
 
         public void Fire()
         {

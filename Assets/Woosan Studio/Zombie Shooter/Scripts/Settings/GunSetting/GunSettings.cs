@@ -27,7 +27,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 탄을 모두 소비하면 호출할 액션.
         /// </summary>
-        [SerializeField] public UnityAction EmptyAmmoActionHandler { get; set; }
+        [SerializeField] public UnityAction AmmoOutActionHandler { get; set; }
 
         /// <summary>
         /// 총기 모델 프리팹
@@ -88,7 +88,7 @@ namespace WoosanStudio.ZombieShooter
         {
             _currentAmmo--;
 
-            if (_currentAmmo == 0) { EmptyAmmoActionHandler.Invoke(); }
+            if (_currentAmmo == 0) { AmmoOutActionHandler.Invoke(); }
         }
     }
 }

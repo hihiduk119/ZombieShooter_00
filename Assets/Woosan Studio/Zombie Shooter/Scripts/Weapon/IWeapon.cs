@@ -3,6 +3,7 @@
     public interface IWeapon
     {
         void Attack();
-        void Stop();
+        GunSettings GunSettings { get; set; }
+        //void Stop();
     }
 }

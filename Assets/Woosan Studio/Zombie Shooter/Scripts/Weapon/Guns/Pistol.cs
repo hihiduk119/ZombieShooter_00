@@ -12,9 +12,10 @@ namespace WoosanStudio.ZombieShooter
         private GunSettings _gunSettings;
         public GunSettings GunSettings { get => _gunSettings; set => _gunSettings = value; }
 
-        void Awake()
+        void Start()
         {
-            _gunSettings.EmptyAmmoActionHandler += Reload;
+            //탄이 비었을때 해당 액션 호출.
+            _gunSettings.AmmoOutActionHandler += Reload;
         }
 
         public void Attack()
@@ -23,11 +24,9 @@ namespace WoosanStudio.ZombieShooter
             _gunSettings.UseAmmo();
         }
 
-        public void Stop()
-        {
-
-        }
-
+        /// <summary>
+        /// 재장전 액션
+        /// </summary>
         public void Reload()
         {
 

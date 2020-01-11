@@ -8,7 +8,7 @@ namespace WoosanStudio.ZombieShooter
     [System.Serializable]
     public class ProjectileSettings : ScriptableObject
     {
-        public string name;
+        public new string name;
         public Rigidbody bombPrefab;
         public GameObject muzzleflare;
         public float min, max;

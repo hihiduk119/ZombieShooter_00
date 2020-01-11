@@ -13,9 +13,6 @@ namespace WoosanStudio.ZombieShooter
         private void Start()
         {
             weapon = weaponFactory.MakeWeapon(this.transform, 0);
-            weaponFactory.MakeWeapon(this.transform, 1);
-            weaponFactory.MakeWeapon(this.transform, 2);
-            weaponFactory.MakeWeapon(this.transform, 3);
         }
     }
 }

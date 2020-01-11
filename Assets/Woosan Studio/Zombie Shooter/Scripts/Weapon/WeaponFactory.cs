@@ -6,9 +6,13 @@ namespace WoosanStudio.ZombieShooter
 {
     public class WeaponFactory : MonoBehaviour
     {
+        //Gun 세팅값 
         public List<GunSettings> _gunSettings;
+
+        //캐슁 데이타
         GameObject _weapon;
         IProjectileLauncher _projectileLauncher;
+        IWeapon _iWeapon;
 
         public IWeapon MakeWeapon(Transform parant,int type)
         {
@@ -20,20 +24,24 @@ namespace WoosanStudio.ZombieShooter
             //인스턴스 부모 설정
             _weapon.transform.parent = parant;
 
-
+            //인덱스 역
             switch (type)
             {
                 case 0:
                     _projectileLauncher = _weapon.AddComponent<Pistol>();
+                    _iWeapon = _weapon.GetComponent<Pistol>();
                     break;
                 case 1:
                     _projectileLauncher = _weapon.AddComponent<AssaultRifle>();
+                    _iWeapon = _weapon.GetComponent<AssaultRifle>();
                     break;
                 case 2:
                     _projectileLauncher = _weapon.AddComponent<Shotgun>();
+                    _iWeapon = _weapon.GetComponent<Shotgun>();
                     break;
                 case 3:
                     _projectileLauncher = _weapon.AddComponent<LaserRifle>();
+                    _iWeapon = _weapon.GetComponent<LaserRifle>();
                     break;
             }
 
@@ -42,10 +50,10 @@ namespace WoosanStudio.ZombieShooter
             {
                 _projectileLauncher.ProjectileLauncher = _weapon.AddComponent<ProjectileLauncher>();
                 _projectileLauncher.GunSettings = _gunSettings[type];
-                _projectileLauncher.ProjectileLauncher.bombList = _projectileLauncher.GunSettings.ProjectileSettings;
+                _projectileLauncher.ProjectileLauncher.projectileSetting = _projectileLauncher.GunSettings.ProjectileSettings;
             }
 
-            return (IWeapon)_weapon.GetComponent<Pistol>();
+            return _iWeapon;
         }
     }
 }

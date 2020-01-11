@@ -6,18 +6,29 @@ namespace WoosanStudio.ZombieShooter
 {
     public class Pistol : MonoBehaviour , IWeapon , IProjectileLauncher
     {
-        private ProjectileLauncher projectileLauncher;
-        public ProjectileLauncher ProjectileLauncher { get => projectileLauncher; set => projectileLauncher = value; }
+        private ProjectileLauncher _projectileLauncher;
+        public ProjectileLauncher ProjectileLauncher { get => _projectileLauncher; set => _projectileLauncher = value; }
 
-        private GunSettings gunSettings;
-        public GunSettings GunSettings { get => gunSettings; set => gunSettings = value; }
+        private GunSettings _gunSettings;
+        public GunSettings GunSettings { get => _gunSettings; set => _gunSettings = value; }
+
+        void Awake()
+        {
+            _gunSettings.EmptyAmmoActionHandler += Reload;
+        }
 
         public void Attack()
         {
-            projectileLauncher.Fire();
+            _projectileLauncher.Fire();
+            _gunSettings.UseAmmo();
         }
 
         public void Stop()
+        {
+
+        }
+
+        public void Reload()
         {
 
         }

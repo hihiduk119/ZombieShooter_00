@@ -12,7 +12,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 발사시 호출할 이벤트.
         /// </summary>
-        //FireEvent FireEventHandler { get; set; }
+        //UnityEvent FireEventHandler { get; set; }
     }
 
     public class FireEvent : UnityEvent<IGunStat> { }

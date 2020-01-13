@@ -22,6 +22,11 @@ namespace WoosanStudio.ZombieShooter
 
         public void Attack()
         {
+            Fire();
+        }
+
+        void Fire()
+        {
             _projectileLauncher.Fire();
             UseAmmo();
         }

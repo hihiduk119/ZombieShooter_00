@@ -2514,6 +2514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 209739461}
   - component: {fileID: 209739460}
+  - component: {fileID: 209739462}
   m_Layer: 0
   m_Name: WeaponFactory
   m_TagString: Untagged
@@ -2552,6 +2553,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &209739462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209739459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee04039907ea4043b53386bbcb4ed86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &213824106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15745,7 +15758,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   projectileSetting: {fileID: 0}
-  CameraShake: 1
   rapidFireDelay: 0
   firing: 0
   bombType: 0
@@ -19467,7 +19479,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1817994405}
   - component: {fileID: 1817994404}
-  - component: {fileID: 1817994406}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -19487,7 +19498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4285aa7a4fe22459e89de662b0517946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponFactory: {fileID: 209739460}
+  _weaponFactory: {fileID: 209739460}
 --- !u!4 &1817994405
 Transform:
   m_ObjectHideFlags: 0
@@ -19502,18 +19513,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1817994406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1817994403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cee04039907ea4043b53386bbcb4ed86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1829257672
 GameObject:
   m_ObjectHideFlags: 0

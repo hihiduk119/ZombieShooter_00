@@ -35,7 +35,7 @@ namespace WoosanStudio.ZombieShooter
             {
                 case 0:
                     _projectileLauncher = _weapon.AddComponent<Pistol>();
-                    _iWeapon = _weapon.GetComponent<Pistol>();
+                    _iWeapon = _weapon.GetComponent<Pistol>();                    
                     break;
                 case 1:
                     //_projectileLauncher = _weapon.AddComponent<AssaultRifle>();
@@ -56,9 +56,15 @@ namespace WoosanStudio.ZombieShooter
             {
                 _projectileLauncher.ProjectileLauncher = _weapon.AddComponent<ProjectileLauncher>();
                 _projectileLauncher.GunSettings = _gunSettings[type];
-                //_projectileLauncher.GunSettings = _gunSettings[type];
-                //_projectileLauncher.ProjectileLauncher.projectileSetting = _projectileLauncher.GunSettings.ProjectileSettings;
                 _projectileLauncher.ProjectileLauncher.projectileSetting = _projectileLauncher.GunSettings.ProjectileSettings;
+
+                //해당 런처에서 최초 생성시 재장전 시켜서 탄 초기화
+                _projectileLauncher.ReloadAmmo();
+                //해당 런처에서 어떤 인풋을 사용할지 설정 => 유저 Key 입력 처
+                _projectileLauncher.ProjectileLauncher.SetInputActionHandler(FindObjectOfType<KeyInput>());
+                //해당 런처에서 발사시    화면 흔들림 액션 등록
+                _projectileLauncher.ProjectileLauncher.FireActionHandler += FindObjectOfType<CameraShaker>().shakeAction;
+                //_projectileLauncher.ProjectileLauncher.FireEventHandler.AddListener(FindObjectOfType<CameraShaker>().shakeAction);
             }
 
             return _iWeapon;

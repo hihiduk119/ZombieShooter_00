@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class CameraShake : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class CameraShake : MonoBehaviour
     {
         if (shakeDuration > 0)
         {
-            camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+            camTransform.localPosition = originalPos + UnityEngine.Random.insideUnitSphere * shakeAmount;
 
             shakeDuration -= Time.deltaTime * decreaseFactor;
             

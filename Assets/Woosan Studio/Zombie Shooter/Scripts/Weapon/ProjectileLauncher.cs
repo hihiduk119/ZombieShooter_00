@@ -16,12 +16,12 @@ namespace WoosanStudio.ZombieShooter
 
         public Transform[] shotgunLocator;
 
+        //발사체 세팅값
         public WoosanStudio.ZombieShooter.ProjectileSettings projectileSetting;
 
-        public bool CameraShake = true;
         public float rapidFireDelay;
-        public ICameraShaker Shaker;
-        public IKeyInput keyInput;
+        //public bool CameraShake = true;
+        //public ICameraShaker Shaker;
 
         float firingTimer;
         public bool firing;
@@ -45,7 +45,7 @@ namespace WoosanStudio.ZombieShooter
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IProjectileLauncherActions Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         public UnityAction FireActionHandler { get; set; }
-        //public FireEvent FireEventHandler { get; set; }
+        //public UnityEvent FireEventHandler { get; set; }
 
         void Start()
         {
@@ -58,9 +58,8 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void Initilized()
         {
-            SetCameraShaker();
+            //SetCameraShaker();
             SetModelLocator();
-            SetInputActionHandler();
         }
 
         /// <summary>
@@ -82,9 +81,8 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 유저 Key Input을 제어하는 부분의 액션 이벤트를 등록
         /// </summary>
-        void SetInputActionHandler()
+        public void SetInputActionHandler(IInput keyInput)
         {
-            keyInput = FindObjectOfType<KeyInput>();
             keyInput.FireActionHandler += StartFiring;
             keyInput.StopActionHandler += StopFiring;
         }
@@ -92,10 +90,10 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 카메라 연출용
         /// </summary>
-        void SetCameraShaker()
+        /*void SetCameraShaker()
         {
             Shaker = FindObjectOfType<CameraShaker>();
-        }
+        }*/
 
         IEnumerator UpdateFrame()
         {
@@ -146,11 +144,13 @@ namespace WoosanStudio.ZombieShooter
         public void Fire()
         {
             FireActionHandler.Invoke();
+            //FireEventHandler.Invoke();
 
-            if (CameraShake)
+            /*if (CameraShake)
             {
                 Shaker.Shake();
-            }
+            }*/
+
             Instantiate(projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation);
             //   bombList[bombType].muzzleflare.Play();
 

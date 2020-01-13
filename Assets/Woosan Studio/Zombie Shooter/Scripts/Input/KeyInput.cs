@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class KeyInput : MonoBehaviour, IKeyInput
+    public class KeyInput : MonoBehaviour, IInput
     {
         private UnityAction _fireActionHandler;
         public UnityAction FireActionHandler { get; set; }

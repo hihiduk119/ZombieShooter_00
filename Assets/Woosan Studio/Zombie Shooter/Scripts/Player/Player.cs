@@ -7,13 +7,20 @@ namespace WoosanStudio.ZombieShooter
     public class Player : MonoBehaviour
     {
         //무기를 만들어주는 팩토리 패턴 적용.
-        public WeaponFactory weaponFactory;
+        public WeaponFactory _weaponFactory;
 
-        IWeapon weapon;
+        IWeapon _weapon;
+        ICameraShaker _cameraShaker;
 
-        private void Start()
+        public void Start()
         {
-            weapon = weaponFactory.MakeWeapon(this.transform, 0);        
+            _weaponFactory = FindObjectOfType<WeaponFactory>();
+            _weapon = _weaponFactory.MakeWeapon(this.transform, 0);        
+        }
+
+        public void Attack(IWeapon weapon)
+        {
+            weapon.Attack();
         }
     }
 }

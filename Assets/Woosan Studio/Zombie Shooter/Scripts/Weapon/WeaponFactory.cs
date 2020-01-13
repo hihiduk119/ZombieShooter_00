@@ -38,16 +38,16 @@ namespace WoosanStudio.ZombieShooter
                     _iWeapon = _weapon.GetComponent<Pistol>();
                     break;
                 case 1:
-                    _projectileLauncher = _weapon.AddComponent<AssaultRifle>();
-                    _iWeapon = _weapon.GetComponent<AssaultRifle>();
+                    //_projectileLauncher = _weapon.AddComponent<AssaultRifle>();
+                    //_iWeapon = _weapon.GetComponent<AssaultRifle>();
                     break;
                 case 2:
-                    _projectileLauncher = _weapon.AddComponent<Shotgun>();
-                    _iWeapon = _weapon.GetComponent<Shotgun>();
+                    //_projectileLauncher = _weapon.AddComponent<Shotgun>();
+                    //_iWeapon = _weapon.GetComponent<Shotgun>();
                     break;
                 case 3:
-                    _projectileLauncher = _weapon.AddComponent<LaserRifle>();
-                    _iWeapon = _weapon.GetComponent<LaserRifle>();
+                    //_projectileLauncher = _weapon.AddComponent<LaserRifle>();
+                    //_iWeapon = _weapon.GetComponent<LaserRifle>();
                     break;
             }
 
@@ -55,10 +55,10 @@ namespace WoosanStudio.ZombieShooter
             if (_projectileLauncher != null)
             {
                 _projectileLauncher.ProjectileLauncher = _weapon.AddComponent<ProjectileLauncher>();
-                _iWeapon.GunSettings = _gunSettings[type];
+                _projectileLauncher.GunSettings = _gunSettings[type];
                 //_projectileLauncher.GunSettings = _gunSettings[type];
                 //_projectileLauncher.ProjectileLauncher.projectileSetting = _projectileLauncher.GunSettings.ProjectileSettings;
-                _projectileLauncher.ProjectileLauncher.projectileSetting = _iWeapon.GunSettings.ProjectileSettings;
+                _projectileLauncher.ProjectileLauncher.projectileSetting = _projectileLauncher.GunSettings.ProjectileSettings;
             }
 
             return _iWeapon;

@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-using System.Linq;
+using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class ProjectileLauncher : MonoBehaviour
+    public class ProjectileLauncher : MonoBehaviour , IProjectileLauncherActions
     {
         public Transform spawnLocator;
         public Transform spawnLocatorMuzzleFlare;
@@ -42,6 +41,11 @@ namespace WoosanStudio.ZombieShooter
 
         //탄퍼짐시 해당 파워
         public float BulletSpreadPower = 0.25f;
+
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IProjectileLauncherActions Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+        public UnityAction FireActionHandler { get; set; }
+        //public FireEvent FireEventHandler { get; set; }
 
         void Start()
         {
@@ -98,7 +102,7 @@ namespace WoosanStudio.ZombieShooter
             WaitForEndOfFrame WFEF = new WaitForEndOfFrame();
 
             Fire();
-            firingTimer = 0;
+            firingTimer = 0;            
 
             while (true)
             {
@@ -108,6 +112,8 @@ namespace WoosanStudio.ZombieShooter
                     {
                         Fire();
                         firingTimer = 0;
+
+                        
                     }
                 }
 
@@ -137,42 +143,10 @@ namespace WoosanStudio.ZombieShooter
             if (_updateFrame != null) StopCoroutine(_updateFrame);
         }
 
-        //void Update()
-        //{
-        //    if (Input.GetButtonDown("Fire1"))
-        //    {
-        //        StartFiring();
-        //        //firing = true;
-        //        //Fire();
-        //    }
-        //    if (Input.GetButtonDown("Fire2"))
-        //    {
-        //        StopFiring();
-        //    }
-
-        //    /*if (Input.GetButtonUp("Fire1"))
-        //    {
-        //        firing = false;
-        //        firingTimer = 0;
-        //    }*/
-
-        //    /*if (projectileSetting.rapidFire && firing)
-        //    {
-        //        if (firingTimer > projectileSetting.rapidFireCooldown + rapidFireDelay)
-        //        {
-        //            Fire();
-        //            firingTimer = 0;
-        //        }
-        //    }*/
-
-        //    /*if (firing)
-        //    {
-        //        firingTimer += Time.deltaTime;
-        //    }*/
-        //}
-
         public void Fire()
         {
+            FireActionHandler.Invoke();
+
             if (CameraShake)
             {
                 Shaker.Shake();

@@ -2,81 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events;
+
 namespace WoosanStudio.ZombieShooter
 {
-    public class Shotgun : MonoBehaviour , IGunStat, IWeapon, IProjectileLauncher
+    public class Shotgun : MonoBehaviour//, IWeapon, IProjectileLauncher
     {
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGunStat Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        public int MaxAmmo { get; private set; }
-        public int CurrentAmmo { get; private set; }
-        public int GetCurrentAmmo { get; private set; }
-        public int Level { get; private set; }
-        public int Type { get; private set; }
+        private ProjectileLauncher _projectileLauncher;
+        public ProjectileLauncher ProjectileLauncher { get => _projectileLauncher; set => _projectileLauncher = value; }
 
-        private int _damage;
-        public int Damage
-        {
-            get => _damage;
-            private set
-            {
-                if (DamageCalculator != null)
-                {
-                    DamageCalculator = new DamageCalculator();
-                }
-                value = DamageCalculator.GetDamage(Type, Level);
-            }
-        }
-        public DamageCalculator DamageCalculator { get; private set; }
+        private GunSettings _gunSettings;
+        public GunSettings GunSettings { get => _gunSettings; set => _gunSettings = value; }
 
-        private int _reloadTime;
-        public float ReloadTime
-        {
-            get => _reloadTime;
-            private set
-            {
-                if (ReloadTimeCalculator != null)
-                {
-                    ReloadTimeCalculator = new ReloadTimeCalculator();
-                }
-                value = ReloadTimeCalculator.GetReloadTime(Type, Level);
-            }
-        }
-        public ReloadTimeCalculator ReloadTimeCalculator { get; private set; }
+        public UnityAction AmmoOutActionHandler { get; set; }
 
-        private int _fireSpeed;
-        public float FireSpeed
+        void Start()
         {
-            get => _fireSpeed;
-            private set
-            {
-                if (FireSpeedCalculator != null)
-                {
-                    FireSpeedCalculator = new FireSpeedCalculator();
-                }
-                value = FireSpeedCalculator.GetFireSpeed(Type, Level);
-            }
+            //탄이 비었을때 해당 액션 호출.
+            //_gunSettings.AmmoOutActionHandler += Reload;
+            AmmoOutActionHandler += Reload;
         }
 
-        public FireSpeedCalculator FireSpeedCalculator { get; private set; }
-
-
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeapon Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         public void Attack()
         {
-            throw new System.NotImplementedException();
+            _projectileLauncher.Fire();
+            UseAmmo(GunSettings);
         }
 
-        public void Stop()
+        /// <summary>
+        /// 재장전 액션
+        /// </summary>
+        public void Reload()
         {
-            throw new System.NotImplementedException();
+
         }
 
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IProjectileLauncher Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        /// <summary>
+        /// 재장전
+        /// </summary>
+        public void ReloadAmmo(IGunStat gunStat)
+        {
+            gunStat.CurrentAmmo = gunStat.MaxAmmo;
+        }
 
-        private ProjectileLauncher projectileLauncher;
-        public ProjectileLauncher ProjectileLauncher { get => projectileLauncher; set => projectileLauncher = value; }
+        /// <summary>
+        /// 탄 사용
+        /// </summary>
+        public void UseAmmo(IGunStat gunStat)
+        {
+            gunStat.CurrentAmmo--;
 
-        private GunSettings gunSettings;
-        public GunSettings GunSettings { get => gunSettings; set => gunSettings = value; }
+            if (gunStat.CurrentAmmo == 0) { AmmoOutActionHandler.Invoke(); }
+        }
     }
 }

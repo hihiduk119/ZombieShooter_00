@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events;
+
 namespace WoosanStudio.ZombieShooter
 {
     public class Pistol : MonoBehaviour , IWeapon , IProjectileLauncher
@@ -14,14 +16,14 @@ namespace WoosanStudio.ZombieShooter
 
         void Start()
         {
-            //탄이 비었을때 해당 액션 호출.
-            _gunSettings.AmmoOutActionHandler += Reload;
+            //런쳐에서 탄 발사시 호출 등록.
+            ((IProjectileLauncherActions)_projectileLauncher).FireActionHandler += UseAmmo;
         }
 
         public void Attack()
         {
             _projectileLauncher.Fire();
-            _gunSettings.UseAmmo();
+            UseAmmo();
         }
 
         /// <summary>
@@ -30,6 +32,27 @@ namespace WoosanStudio.ZombieShooter
         public void Reload()
         {
 
+        }
+
+        /// <summary>
+        /// 재장전
+        /// </summary>
+        public void ReloadAmmo()
+        {
+            IGunStat gunStat = (IGunStat)GunSettings;
+            gunStat.CurrentAmmo = gunStat.MaxAmmo;
+        }
+
+        /// <summary>
+        /// 탄 사용
+        /// </summary>
+        public void UseAmmo()
+        {
+            IGunStat gunStat = (IGunStat)GunSettings;
+            gunStat.CurrentAmmo--;
+
+            Debug.Log("남은 탄약 = " + gunStat.CurrentAmmo);
+            if (gunStat.CurrentAmmo == 0) { Reload(); }
         }
     }
 }

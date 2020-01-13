@@ -4,33 +4,17 @@ using UnityEngine;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public interface IGunStat
+    public interface IGunStat : IWeaponStat
     {
         /// <summary>
         /// 최대 탄약
         /// </summary>
         int MaxAmmo { get; }
+
         /// <summary>
         /// 현재 잔탄수
         /// </summary>
-        int CurrentAmmo { get; }
-        /// <summary>
-        /// 무기 레벨
-        /// </summary>
-        int Level { get; }
-        /// <summary>
-        /// 무기 종류
-        /// </summary>
-        int Type { get; }
-
-        /// <summary>
-        /// 무기 데이지
-        /// </summary>
-        int Damage { get; }
-        /// <summary>
-        /// 데미지 계산기
-        /// </summary>
-        DamageCalculator DamageCalculator { get; }
+        int CurrentAmmo { get; set; }
 
         /// <summary>
         /// 재장전 시간

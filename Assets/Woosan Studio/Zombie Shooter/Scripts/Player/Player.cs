@@ -22,12 +22,16 @@ namespace WoosanStudio.ZombieShooter
             _weapon = _weaponFactory.MakeWeapon(_inputActions, this.transform, 0,true);
 
             yield return new WaitForSeconds(0.1f);
-
         }
 
-        public void Attack(IWeapon weapon)
+        public void AttackStart()
         {
-            weapon.Attack();
+            _weapon.Attack();
+        }
+
+        public void AttackStop()
+        {
+            _weapon.Stop();
         }
     }
 }

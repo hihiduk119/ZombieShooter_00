@@ -144,12 +144,6 @@ namespace WoosanStudio.ZombieShooter
         public void Fire()
         {
             FireActionHandler.Invoke();
-            //FireEventHandler.Invoke();
-
-            /*if (CameraShake)
-            {
-                Shaker.Shake();
-            }*/
 
             Instantiate(projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation);
             //   bombList[bombType].muzzleflare.Play();

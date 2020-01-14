@@ -44,8 +44,9 @@ namespace WoosanStudio.ZombieShooter
             {
                 case 0:
                     //_projectileLauncher = _weapon.AddComponent<Pistol>();
-                    _iWeapon = _weapon.AddComponent<Pistol>();
+                    _weapon.AddComponent<Pistol>();
                     _iGun = (IGun)_weapon.GetComponent<Pistol>();
+                    _iWeapon = (IWeapon)_weapon.GetComponent<Pistol>();
                     break;
                 case 1:
                     //_projectileLauncher = _weapon.AddComponent<AssaultRifle>();
@@ -87,6 +88,8 @@ namespace WoosanStudio.ZombieShooter
                 //탄 초기화
                 _iGun.Initialize();
             }
+
+            //Test code
 
             return _iWeapon;
         }

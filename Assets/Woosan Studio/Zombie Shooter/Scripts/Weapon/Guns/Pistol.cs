@@ -27,24 +27,35 @@ namespace WoosanStudio.ZombieShooter
             _projectileLauncher = gameObject.AddComponent<ProjectileLauncher>();
             
             //액션 등록
-            FireAction += Fire;
-            ReloadAction += Reload;
+            FireAction += Test;
+            FireAction += FireControl;
+
+            //ReloadAction += Reload;
         }
 
-        void Fire()
+        void Test()
         {
-            Debug.Log("Fire");
+            Debug.Log("Test hi");
+        }
+
+        //IEnumerator Start()
+        //{
+        //    yield return new WaitForSeconds(1f);
+        //    Fire();
+        //}
+
+        void FireControl()
+        {
             if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
+            Debug.Log("Pistol.Fire() ammo => " + _gunStat.CurrentAmmo);
 
             if (_gunStat.CurrentAmmo > 0)
             {
-                Debug.Log("ammo 10");
-                _projectileLauncher.Fire();
+                //_projectileLauncher.Fire();
                 UseAmmo();
             } else
             {
-                FullAmmo();
-                Debug.Log("ammo 0");
+                Reload();
             }
         }
 
@@ -78,9 +89,6 @@ namespace WoosanStudio.ZombieShooter
         {
             if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
             _gunStat.CurrentAmmo--;
-
-            Debug.Log("남은 탄약 = " + _gunStat.CurrentAmmo);
-            if (_gunStat.CurrentAmmo == 0) { StopFire(); }
         }
 
         /// <summary>
@@ -101,7 +109,7 @@ namespace WoosanStudio.ZombieShooter
 
         public void Attack()
         {
-            Fire();
+            throw new System.NotImplementedException();
         }
 
         public IWeaponStat GetWeaponStat()
@@ -112,6 +120,11 @@ namespace WoosanStudio.ZombieShooter
         public void Initialize()
         {
             //FullAmmo();
+        }
+
+        public void Stop()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

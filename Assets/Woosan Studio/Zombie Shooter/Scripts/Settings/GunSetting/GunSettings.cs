@@ -65,7 +65,7 @@ namespace WoosanStudio.ZombieShooter
         public FireSpeedCalculator FireSpeedCalculator { get; }
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGunSettings Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        GunSettings IGunSettings.GunSettings { get { return this; } set { } }
+        GunSettings IGunSettings.GunSettings { get { return this; } set { value = this; } }
 
 
 

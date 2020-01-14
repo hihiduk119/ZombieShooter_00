@@ -265,7 +265,7 @@ namespace WoosanStudio.ZombieShooter
         }
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IProjectileLauncher Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        public GunSettings GunSettings { get; set; }
+        //public GunSettings GunSettings { get; set; }
         ProjectileLauncher IProjectileLauncher.ProjectileLauncher { get { return this; } set { value = this; } }
 
         public IProjectileLauncherActions GetProjectileLauncherActions()

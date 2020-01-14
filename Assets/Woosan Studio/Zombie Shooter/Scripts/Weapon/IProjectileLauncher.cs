@@ -10,7 +10,7 @@
         /// <summary>
         /// 어떤 총인지에 대한 세팅값
         /// </summary>
-        GunSettings GunSettings { get; set; }
+        //GunSettings GunSettings { get; set; }
 
         /// <summary>
         /// 발사 런처의 액션을 가져옴

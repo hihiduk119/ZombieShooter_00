@@ -1,6 +1,6 @@
 ﻿namespace WoosanStudio.ZombieShooter
 {
-    public interface IProjectileLauncher
+    public interface IProjectileLauncher : IProjectileLauncherActions
     {
         /// <summary>
         /// 발사 시스템 세팅

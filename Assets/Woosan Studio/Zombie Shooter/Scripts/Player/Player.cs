@@ -19,7 +19,7 @@ namespace WoosanStudio.ZombieShooter
 
             yield return new WaitForSeconds(0.2f);
 
-            _weapon = _weaponFactory.MakeWeapon(this.transform, 0,true);
+            _weapon = _weaponFactory.MakeWeapon(_inputActions, this.transform, 0,true);
 
             yield return new WaitForSeconds(0.1f);
 

@@ -1,7 +1,10 @@
 ﻿using UnityEngine.Events;
 
-public interface IInputActions
+namespace WoosanStudio.ZombieShooter
 {
-    UnityAction FireActionHandler { get; set; }
-    UnityAction StopActionHandler { get; set; }
+    public interface IInputActions
+    {
+        UnityAction LeftMouseButtonDownHandler { get; set; }
+        UnityAction RightMouseButtonDownHandler { get; set; }
+    }
 }

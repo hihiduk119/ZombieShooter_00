@@ -7,23 +7,20 @@ using UnityEngine.Events;
 namespace WoosanStudio.ZombieShooter
 {
     public class KeyInput : MonoBehaviour, IInputActions
-    {
-        private UnityAction _fireActionHandler;
-        public UnityAction FireActionHandler { get; set; }
-
-        private UnityAction _stopActionHandler;
-        public UnityAction StopActionHandler { get; set; }
+    {        
+        public UnityAction LeftMouseButtonDownHandler { get; set; }
+        public UnityAction RightMouseButtonDownHandler { get; set; }
 
         void Update()
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                FireActionHandler.Invoke();
+                LeftMouseButtonDownHandler.Invoke();
             }
 
             if (Input.GetButtonDown("Fire2"))
             {
-                StopActionHandler.Invoke();
+                RightMouseButtonDownHandler.Invoke();
             }
         }
     }

@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events;
+
 namespace WoosanStudio.ZombieShooter
 {
+    /// <summary>
+    /// 해당 오브젝트를 만들어 주고 연결할 Action이 있으면 연결까지 다 해줌.
+    /// </summary>
     public class WeaponFactory : MonoBehaviour
     {
         //Gun 세팅값 
@@ -11,8 +16,11 @@ namespace WoosanStudio.ZombieShooter
 
         //캐슁 데이타
         GameObject _weapon;
-        IProjectileLauncher _projectileLauncher;
+        //IProjectileLauncher _projectileLauncher;
+
+
         IWeapon _iWeapon;
+        IGun _iGun;
 
         /// <summary>
         /// 무기를 생성
@@ -21,7 +29,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="type">생성할 무기의 인덱스</param>
         /// <param name="isUser">사용자가 유저인지 AI 인지 구분용</param>
         /// <returns></returns>
-        public IWeapon MakeWeapon(Transform parant,int type,bool isUser)
+        public IWeapon MakeWeapon(IInputActions inputActions,Transform parant,int type,bool isUser)
         {
             //어떤 무기는 모델을 가지고 있으면 IHaveModel인터페이스를 상속 받기에 해당 인터페이스 호출.
             IHaveModel haveModel = _gunSettings[type];
@@ -37,7 +45,7 @@ namespace WoosanStudio.ZombieShooter
                 case 0:
                     //_projectileLauncher = _weapon.AddComponent<Pistol>();
                     _iWeapon = _weapon.AddComponent<Pistol>();
-                    _projectileLauncher = _iWeapon.GetProjectileLauncher();
+                    _iGun = (IGun)_weapon.GetComponent<Pistol>();
                     break;
                 case 1:
                     //_projectileLauncher = _weapon.AddComponent<AssaultRifle>();
@@ -54,29 +62,30 @@ namespace WoosanStudio.ZombieShooter
             }
 
             //발사체 무기는 IProjectileLauncher 를 상속 받기 때문에 인터페이스 호출
-            if (_projectileLauncher != null)
+            if (_iGun != null)
             {
-                //발사 런처 생성
-                _projectileLauncher.ProjectileLauncher = _weapon.AddComponent<ProjectileLauncher>();
-                //총 세팅 생성
-                _projectileLauncher.GunSettings = _gunSettings[type];
-                //총의 발사 탄환 생성
-                _projectileLauncher.ProjectileLauncher.projectileSetting = _projectileLauncher.GunSettings.ProjectileSettings;
+                //총 세팅값 설정
+                _iGun.GunSettings = _gunSettings[type];
 
-                //해당 런처에서 최초 생성시 재장전 시켜서 탄 초기화
-                _projectileLauncher.ReloadAmmo();
+                //발사체 런처에서 발사 핸들러와 iGun.IGunAction의 액션 연결
+                _iGun.ProjectileLauncher.FireActionHandler += _iGun.FireAction;
+
+                //총의 발사 탄환 생성
+                _iGun.ProjectileLauncher.projectileSetting = _iGun.GunSettings.ProjectileSettings;
 
                 //사용자가 유저일 경우
                 if(isUser)
                 {
                     //해당 런처에서 어떤 인풋을 사용할지 설정 => 유저 인지 몬스터인기 구분하여 처리 되어야 함.
-                    //IInputActions inputActions = FindObjectOfType<KeyInput>();
-                    _projectileLauncher.ProjectileLauncher.SetInputActionHandler(FindObjectOfType<KeyInput>());
+                    //유저 인풋 핸들러 연결부분.
+                    _iGun.ProjectileLauncher.SetInputActionHandler(FindObjectOfType<KeyInput>());
                 }
-                
+
                 //해당 런처에서 발사시    화면 흔들림 액션 등록
-                _projectileLauncher.ProjectileLauncher.FireActionHandler += FindObjectOfType<CameraShaker>().shakeAction;
-                //_projectileLauncher.ProjectileLauncher.FireEventHandler.AddListener(FindObjectOfType<CameraShaker>().shakeAction);
+                _iGun.ProjectileLauncher.FireActionHandler += FindObjectOfType<CameraShaker>().shakeAction;
+
+                //탄 초기화
+                _iGun.Initialize();
             }
 
             return _iWeapon;

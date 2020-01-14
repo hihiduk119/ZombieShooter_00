@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class ProjectileLauncher : MonoBehaviour , IProjectileLauncherActions
+    public class ProjectileLauncher : MonoBehaviour , IProjectileLauncher
     {
         public Transform spawnLocator;
         public Transform spawnLocatorMuzzleFlare;
@@ -83,8 +83,8 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void SetInputActionHandler(IInputActions keyInput)
         {
-            keyInput.FireActionHandler += StartFiring;
-            keyInput.StopActionHandler += StopFiring;
+            keyInput.LeftMouseButtonDownHandler += StartFiring;
+            keyInput.RightMouseButtonDownHandler += StopFiring;
         }
 
         /// <summary>
@@ -262,6 +262,25 @@ namespace WoosanStudio.ZombieShooter
                 seq = 0;
                 transform.Rotate(-5 * BulletSpreadPower, -5* BulletSpreadPower, -5 * BulletSpreadPower);
             }
+        }
+
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IProjectileLauncher Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        public GunSettings GunSettings { get; set; }
+        ProjectileLauncher IProjectileLauncher.ProjectileLauncher { get { return this; } set { value = this; } }
+
+        public IProjectileLauncherActions GetProjectileLauncherActions()
+        {
+            return (IProjectileLauncherActions)this;
+        }
+
+        public void ReloadAmmo()
+        {
+            Debug.Log("ProjectileLauncher.ReloadAmmo()");
+        }
+
+        public void UseAmmo()
+        {
+            Debug.Log("ProjectileLauncher.UseAmmo()");
         }
     }
 }

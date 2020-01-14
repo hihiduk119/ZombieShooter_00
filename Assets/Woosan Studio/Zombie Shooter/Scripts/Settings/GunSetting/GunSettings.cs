@@ -4,7 +4,7 @@ using UnityEngine.Events;
 namespace WoosanStudio.ZombieShooter
 {
     [CreateAssetMenu(menuName = "ZombieShooter/GunSettings/Make Setting", fileName = "GunData")]
-    public class GunSettings : ScriptableObject , IHaveModel , IGunStat , IWeaponStat
+    public class GunSettings : ScriptableObject , IHaveModel , IGunStat , IWeaponStat , IGunSettings
     {
         /// <summary>
         /// 무기 타입 - 추가 될 경우를 대비해 int로 만듬
@@ -64,7 +64,10 @@ namespace WoosanStudio.ZombieShooter
         public float FireSpeed { get => _fireSpeed = FireSpeedCalculator.GetFireSpeed(this);}
         public FireSpeedCalculator FireSpeedCalculator { get; }
 
-        
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGunSettings Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        GunSettings IGunSettings.GunSettings { get { return this; } set { } }
+
+
 
 
         /// <summary>
@@ -85,5 +88,11 @@ namespace WoosanStudio.ZombieShooter
 
             return _prefabInstance;
         }
+
+
+        public GunSettings GetGunSettings()
+		{
+			return this;
+		}
     }
 }

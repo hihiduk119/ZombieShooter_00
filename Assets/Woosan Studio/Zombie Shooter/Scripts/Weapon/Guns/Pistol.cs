@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class Pistol : MonoBehaviour , IWeapon , IProjectileLauncher
+    public class Pistol : MonoBehaviour , IWeapon ,  IGun
     {
         private ProjectileLauncher _projectileLauncher;
         public ProjectileLauncher ProjectileLauncher { get => _projectileLauncher; set => _projectileLauncher = value; }
@@ -14,51 +14,58 @@ namespace WoosanStudio.ZombieShooter
         private GunSettings _gunSettings;
         public GunSettings GunSettings { get => _gunSettings; set => _gunSettings = value; }
 
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGunActions Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        public UnityAction FireAction { get; set; }
+        public UnityAction ReloadAction { get; set; }
+
         //캐쉬용
         IGunStat _gunStat;
 
-        void Start()
+        void Awake()
         {
-            //런쳐에서 탄 발사시 호출 등록.
-            GetProjectileLauncherActions().FireActionHandler += UseAmmo;
-            _gunStat = (IGunStat)GunSettings;
+            //생성시 런쳐 자동으로 생성
+            _projectileLauncher = gameObject.AddComponent<ProjectileLauncher>();
+            
+            //액션 등록
+            FireAction += Fire;
+            ReloadAction += Reload;
         }
 
         void Fire()
         {
-            Debug.Log("= Fire = ");
-            if(_gunStat.CurrentAmmo > 0)
+            Debug.Log("Fire");
+            if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
+
+            if (_gunStat.CurrentAmmo > 0)
             {
-                Debug.Log("= 0 = ");
+                Debug.Log("ammo 10");
                 _projectileLauncher.Fire();
                 UseAmmo();
             } else
             {
-                Debug.Log("= 1 = ");
-                Reload();
+                FullAmmo();
+                Debug.Log("ammo 0");
             }
         }
 
         /// <summary>
         /// 발사 중지
         /// </summary>
-        public void Stop()
+        public void StopFire()
         {
             ProjectileLauncher.StopFiring();
         }
 
-
-        void Reload()
-        {
-            ReloadAmmo();
-        }
-
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IProjectileLauncher Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
         /// <summary>
         /// 재장전
         /// </summary>
-        public void ReloadAmmo()
+        void Reload()
+        {
+            FullAmmo();
+        }
+
+        
+        public void FullAmmo()
         {
             if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
             _gunStat.CurrentAmmo = _gunStat.MaxAmmo;
@@ -69,10 +76,11 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void UseAmmo()
         {
+            if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
             _gunStat.CurrentAmmo--;
 
             Debug.Log("남은 탄약 = " + _gunStat.CurrentAmmo);
-            if (_gunStat.CurrentAmmo == 0) { Stop(); }
+            if (_gunStat.CurrentAmmo == 0) { StopFire(); }
         }
 
         /// <summary>
@@ -96,22 +104,15 @@ namespace WoosanStudio.ZombieShooter
             Fire();
         }
 
-        public IGunStat GetStatLauncher()
-        {
-            return (IGunStat)GunSettings;
-        }
-
         public IWeaponStat GetWeaponStat()
         {
             return (IWeaponStat)GunSettings;
         }
 
-        public IProjectileLauncher GetProjectileLauncher()
+        public void Initialize()
         {
-            return (IProjectileLauncher)this;
+            //FullAmmo();
         }
-
-        
     }
 }
 

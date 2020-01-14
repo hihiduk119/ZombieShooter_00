@@ -17,7 +17,7 @@ namespace WoosanStudio.ZombieShooter
         public Transform[] shotgunLocator;
 
         //발사체 세팅값
-        public WoosanStudio.ZombieShooter.ProjectileSettings projectileSetting;
+        public ProjectileSettings projectileSetting;
 
         public float rapidFireDelay;
         //public bool CameraShake = true;
@@ -81,7 +81,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 유저 Key Input을 제어하는 부분의 액션 이벤트를 등록
         /// </summary>
-        public void SetInputActionHandler(IInput keyInput)
+        public void SetInputActionHandler(IInputActions keyInput)
         {
             keyInput.FireActionHandler += StartFiring;
             keyInput.StopActionHandler += StopFiring;

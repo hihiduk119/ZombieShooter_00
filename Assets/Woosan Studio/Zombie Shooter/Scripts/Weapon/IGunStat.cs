@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public interface IGunStat : IWeaponStat
+    public interface IGunStat
     {
         /// <summary>
         /// 최대 탄약

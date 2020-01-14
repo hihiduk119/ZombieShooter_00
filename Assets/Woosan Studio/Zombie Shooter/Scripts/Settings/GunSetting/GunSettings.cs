@@ -4,7 +4,7 @@ using UnityEngine.Events;
 namespace WoosanStudio.ZombieShooter
 {
     [CreateAssetMenu(menuName = "ZombieShooter/GunSettings/Make Setting", fileName = "GunData")]
-    public class GunSettings : ScriptableObject , IHaveModel , IGunStat
+    public class GunSettings : ScriptableObject , IHaveModel , IGunStat , IWeaponStat
     {
         /// <summary>
         /// 무기 타입 - 추가 될 경우를 대비해 int로 만듬
@@ -22,7 +22,6 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField] private ProjectileSettings _projectileSettings;
         public int Index { get => _index; }
         public string Name { get => _name; }
-
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IHaveModel Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         /// <summary>
@@ -86,25 +85,5 @@ namespace WoosanStudio.ZombieShooter
 
             return _prefabInstance;
         }
-
-        /*
-        /// <summary>
-        /// 재장전
-        /// </summary>
-        public void ReloadAmmo()
-        {
-            _currentAmmo = _maxAmmo;
-        }
-
-        /// <summary>
-        /// 탄 사용
-        /// </summary>
-        public void UseAmmo()
-        {
-            _currentAmmo--;
-
-            if (_currentAmmo == 0) { AmmoOutActionHandler.Invoke(); }
-        }
-        */
     }
 }

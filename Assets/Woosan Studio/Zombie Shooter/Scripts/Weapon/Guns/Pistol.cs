@@ -14,38 +14,54 @@ namespace WoosanStudio.ZombieShooter
         private GunSettings _gunSettings;
         public GunSettings GunSettings { get => _gunSettings; set => _gunSettings = value; }
 
+        //캐쉬용
+        IGunStat _gunStat;
+
         void Start()
         {
             //런쳐에서 탄 발사시 호출 등록.
-            ((IProjectileLauncherActions)_projectileLauncher).FireActionHandler += UseAmmo;
-        }
-
-        public void Attack()
-        {
-            Fire();
+            GetProjectileLauncherActions().FireActionHandler += UseAmmo;
+            _gunStat = (IGunStat)GunSettings;
         }
 
         void Fire()
         {
-            _projectileLauncher.Fire();
-            UseAmmo();
+            Debug.Log("= Fire = ");
+            if(_gunStat.CurrentAmmo > 0)
+            {
+                Debug.Log("= 0 = ");
+                _projectileLauncher.Fire();
+                UseAmmo();
+            } else
+            {
+                Debug.Log("= 1 = ");
+                Reload();
+            }
         }
 
         /// <summary>
-        /// 재장전 액션
+        /// 발사 중지
         /// </summary>
-        public void Reload()
+        public void Stop()
         {
-
+            ProjectileLauncher.StopFiring();
         }
+
+
+        void Reload()
+        {
+            ReloadAmmo();
+        }
+
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IProjectileLauncher Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         /// <summary>
         /// 재장전
         /// </summary>
         public void ReloadAmmo()
         {
-            IGunStat gunStat = (IGunStat)GunSettings;
-            gunStat.CurrentAmmo = gunStat.MaxAmmo;
+            if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
+            _gunStat.CurrentAmmo = _gunStat.MaxAmmo;
         }
 
         /// <summary>
@@ -53,12 +69,49 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void UseAmmo()
         {
-            IGunStat gunStat = (IGunStat)GunSettings;
-            gunStat.CurrentAmmo--;
+            _gunStat.CurrentAmmo--;
 
-            Debug.Log("남은 탄약 = " + gunStat.CurrentAmmo);
-            if (gunStat.CurrentAmmo == 0) { Reload(); }
+            Debug.Log("남은 탄약 = " + _gunStat.CurrentAmmo);
+            if (_gunStat.CurrentAmmo == 0) { Stop(); }
         }
+
+        /// <summary>
+        /// 발사 런처의 액션들을 가져오기.
+        /// </summary>
+        /// <returns></returns>
+        public IProjectileLauncherActions GetProjectileLauncherActions()
+        {
+            return (IProjectileLauncherActions)_projectileLauncher;
+        }
+
+        public IInputActions GetInput()
+        {
+            return null;
+        }
+
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeapon Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+        public void Attack()
+        {
+            Fire();
+        }
+
+        public IGunStat GetStatLauncher()
+        {
+            return (IGunStat)GunSettings;
+        }
+
+        public IWeaponStat GetWeaponStat()
+        {
+            return (IWeaponStat)GunSettings;
+        }
+
+        public IProjectileLauncher GetProjectileLauncher()
+        {
+            return (IProjectileLauncher)this;
+        }
+
+        
     }
 }
 

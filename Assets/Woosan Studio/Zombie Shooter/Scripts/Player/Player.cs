@@ -9,13 +9,20 @@ namespace WoosanStudio.ZombieShooter
         //무기를 만들어주는 팩토리 패턴 적용.
         public WeaponFactory _weaponFactory;
 
+        //캐슁용
         IWeapon _weapon;
-        ICameraShaker _cameraShaker;
+        IInputActions _inputActions;
 
-        public void Start()
+        IEnumerator Start()
         {
             _weaponFactory = FindObjectOfType<WeaponFactory>();
-            _weapon = _weaponFactory.MakeWeapon(this.transform, 0);        
+
+            yield return new WaitForSeconds(0.2f);
+
+            _weapon = _weaponFactory.MakeWeapon(this.transform, 0,true);
+
+            yield return new WaitForSeconds(0.1f);
+
         }
 
         public void Attack(IWeapon weapon)

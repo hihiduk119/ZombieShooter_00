@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Events;
 
-public interface IInput
+public interface IInputActions
 {
     UnityAction FireActionHandler { get; set; }
     UnityAction StopActionHandler { get; set; }

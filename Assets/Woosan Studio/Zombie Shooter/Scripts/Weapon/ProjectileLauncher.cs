@@ -45,7 +45,7 @@ namespace WoosanStudio.ZombieShooter
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IProjectileLauncherActions Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         public UnityAction FireActionHandler { get; set; }
-        //public UnityEvent FireEventHandler { get; set; }
+        
 
         void Start()
         {
@@ -81,10 +81,10 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 유저 Key Input을 제어하는 부분의 액션 이벤트를 등록
         /// </summary>
-        public void SetInputActionHandler(IInputActions keyInput)
+        public void SetInputActionHandler(IInputActions inputActions)
         {
-            keyInput.StartHandler += StartFiring;
-            keyInput.EndHandler += StopFiring;
+            inputActions.StartHandler += StartFiring;
+            inputActions.EndHandler += StopFiring;
         }
 
         /// <summary>

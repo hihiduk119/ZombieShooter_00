@@ -9,12 +9,12 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class DamageCalculator
     {
-        public int GetDamage(int weaponType, int weaponLevel)
+        static public int GetDamage(int weaponType, int weaponLevel)
         {
             return -1;
         }
 
-        public int GetDamage(IGunStat gunStat)
+        static public int GetDamage(IGunStat gunStat)
         {
             return -1;
         }

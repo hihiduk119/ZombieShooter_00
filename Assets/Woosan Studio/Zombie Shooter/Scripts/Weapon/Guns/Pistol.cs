@@ -15,9 +15,8 @@ namespace WoosanStudio.ZombieShooter
         public GunSettings GunSettings { get => _gunSettings; set => _gunSettings = value; }
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGunActions Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        //public UnityAction FireAction { get; set; }
-        public UnityAction TriggerAction { get; set; }
-        public UnityAction ReloadAction { get; set; }
+        [SerializeField] ReloadEvent _reloadEvent = new ReloadEvent();
+        public ReloadEvent ReloadEvent { get => _reloadEvent; set => _reloadEvent = value; }
 
         //캐쉬용
         IGunStat _gunStat;
@@ -26,9 +25,11 @@ namespace WoosanStudio.ZombieShooter
         {
             //생성시 런쳐 자동으로 생성
             _projectileLauncher = gameObject.AddComponent<ProjectileLauncher>();
-            
+
             //액션 등록
-            TriggerAction += FireControl;
+            //TriggerAction += FireControl;
+            //발사 런처에 발사할때 마다 FireControl 호출하게 등록
+            ProjectileLauncher.FireActionHandler += FireControl;
         }
 
 
@@ -46,6 +47,8 @@ namespace WoosanStudio.ZombieShooter
             {
                 StopFire();
                 Reload();
+
+                ReloadEvent.Invoke(GunSettings.ReloadTime);
             }
 
             Debug.Log("Pistol.Fire() ammo => " + _gunStat.CurrentAmmo);
@@ -120,6 +123,19 @@ namespace WoosanStudio.ZombieShooter
         public void Stop()
         {
             throw new System.NotImplementedException();
+        }
+
+        public void SetInputActionHandler(IInputActions inputActions)
+        {
+            ProjectileLauncher.SetInputActionHandler(inputActions);
+        }
+
+
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IReloadAction Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+        public void ConnectReloadEvent(IReloadEventSocket reloadEventSocket)
+        {
+            reloadEventSocket.SetReloadEvent((IReloadEvent)this);
         }
     }
 }

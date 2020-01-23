@@ -9,12 +9,12 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class FireSpeedCalculator
     {
-        public float GetFireSpeed(int weaponType, int weaponLevel)
+        static public float GetFireSpeed(int weaponType, int weaponLevel)
         {
             return -1f;
         }
 
-        public float GetFireSpeed(IGunStat gunStat)
+        static public float GetFireSpeed(IGunStat gunStat)
         {
             return -1f;
         }

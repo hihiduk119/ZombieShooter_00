@@ -10,6 +10,8 @@ namespace WoosanStudio.ZombieShooter
         public WeaponFactory _weaponFactory;
         //인풋 액션
         IInputActions _inputActions;
+        //리로드 액션이 있을때 연결되는 부분
+        IReloadEventSocket _reloadEventSocket;
 
         //ICameraShaker를 가져오기 위한 용도
         public GameObject cameras;
@@ -24,6 +26,7 @@ namespace WoosanStudio.ZombieShooter
         {
             _cameraShaker = cameras.GetComponent<ICameraShaker>();
             _inputActions = GetComponent<IInputActions>();
+            _reloadEventSocket = GetComponent<IReloadEventSocket>();
         }
 
         IEnumerator Start()
@@ -33,9 +36,14 @@ namespace WoosanStudio.ZombieShooter
             yield return new WaitForSeconds(0.2f);
 
             //키인풋으로 사격 컨트롤
-            _weapon = _weaponFactory.MakeWeapon(_inputActions,_cameraShaker, this.transform, 0,true);
+            _weapon = _weaponFactory.MakeWeapon(_inputActions,_cameraShaker, _reloadEventSocket, this.transform, 0);
 
             yield return new WaitForSeconds(0.1f);
+        }
+
+        public void PlayAnimation(int number)
+        {
+
         }
 
         public void AttackStart()

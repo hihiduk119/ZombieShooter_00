@@ -11,4 +11,6 @@ namespace WoosanStudio.ZombieShooter
         //IGunStat GetGunStat();
         //IProjectileLauncher GetProjectileLauncher();
     }
+
+    public class PlayAnimationEvent : UnityEvent<int> { }
 }

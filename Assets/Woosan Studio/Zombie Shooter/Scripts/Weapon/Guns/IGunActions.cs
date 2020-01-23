@@ -2,10 +2,11 @@
 
 namespace WoosanStudio.ZombieShooter
 {
-    public interface IGunActions
+    public interface IReloadEvent
     {
-        //UnityAction FireAction { get; set; }
-        UnityAction TriggerAction { get; set; }
-        UnityAction ReloadAction { get; set; }
+        ReloadEvent ReloadEvent { get; set; }
+        void ConnectReloadEvent(IReloadEventSocket reloadEventSocket);
     }
+
+    public class ReloadEvent : UnityEvent<float> { }
 }

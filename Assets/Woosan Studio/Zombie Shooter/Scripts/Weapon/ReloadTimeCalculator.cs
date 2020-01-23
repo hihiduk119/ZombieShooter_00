@@ -9,14 +9,14 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class ReloadTimeCalculator
     {
-        public float GetReloadTime(int weaponType, int weaponLevel , float defaultValue)
+        static public float GetReloadTime(int weaponType, int weaponLevel , float defaultValue)
         {
-            return -1f;
+            return 2f;
         }
 
-        public float GetReloadTime(IGunStat gunStat)
+        static public float GetReloadTime(IGunStat gunStat)
         {
-            return -1f;
+            return 2f;
         }
 
     }

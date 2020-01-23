@@ -8,19 +8,19 @@ namespace WoosanStudio.ZombieShooter
 {
     public class KeyInput : MonoBehaviour, IInputActions
     {        
-        public UnityAction LeftMouseButtonDownHandler { get; set; }
-        public UnityAction RightMouseButtonDownHandler { get; set; }
+        public UnityAction StartHandler { get; set; }
+        public UnityAction EndHandler { get; set; }
 
         void Update()
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                LeftMouseButtonDownHandler.Invoke();
+                StartHandler.Invoke();
             }
 
             if (Input.GetButtonDown("Fire2"))
             {
-                RightMouseButtonDownHandler.Invoke();
+                EndHandler.Invoke();
             }
         }
     }

@@ -83,8 +83,8 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void SetInputActionHandler(IInputActions keyInput)
         {
-            keyInput.LeftMouseButtonDownHandler += StartFiring;
-            keyInput.RightMouseButtonDownHandler += StopFiring;
+            keyInput.StartHandler += StartFiring;
+            keyInput.EndHandler += StopFiring;
         }
 
         /// <summary>

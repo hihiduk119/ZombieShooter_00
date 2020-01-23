@@ -25,11 +25,12 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 무기를 생성
         /// </summary>
+        /// <param name="inputActions">사용할 인풋 인터페이스 세팅</param>
         /// <param name="parant">생성될 오브젝트의 부모</param>
         /// <param name="type">생성할 무기의 인덱스</param>
         /// <param name="isUser">사용자가 유저인지 AI 인지 구분용</param>
         /// <returns></returns>
-        public IWeapon MakeWeapon(IInputActions inputActions,Transform parant,int type,bool isUser)
+        public IWeapon MakeWeapon(IInputActions inputActions,ICameraShaker cameraShaker, Transform parant,int type,bool isUser)
         {
             //어떤 무기는 모델을 가지고 있으면 IHaveModel인터페이스를 상속 받기에 해당 인터페이스 호출.
             IHaveModel haveModel = _gunSettings[type];
@@ -69,7 +70,7 @@ namespace WoosanStudio.ZombieShooter
                 _iGun.GunSettings = _gunSettings[type];
 
                 //발사체 런처에서 발사 핸들러와 iGun.IGunAction의 액션 연결
-                _iGun.ProjectileLauncher.FireActionHandler += _iGun.FireAction;
+                _iGun.ProjectileLauncher.FireActionHandler += _iGun.TriggerAction;
 
                 //총의 발사 탄환 생성
                 _iGun.ProjectileLauncher.projectileSetting = _iGun.GunSettings.ProjectileSettings;
@@ -79,11 +80,12 @@ namespace WoosanStudio.ZombieShooter
                 {
                     //해당 런처에서 어떤 인풋을 사용할지 설정 => 유저 인지 몬스터인기 구분하여 처리 되어야 함.
                     //유저 인풋 핸들러 연결부분.
-                    _iGun.ProjectileLauncher.SetInputActionHandler(FindObjectOfType<KeyInput>());
+                    _iGun.ProjectileLauncher.SetInputActionHandler(inputActions);
                 }
 
-                //해당 런처에서 발사시    화면 흔들림 액션 등록
-                _iGun.ProjectileLauncher.FireActionHandler += FindObjectOfType<CameraShaker>().shakeAction;
+                //해당 런처에서 발사시 화면 흔들림 액션 등록
+                if(cameraShaker != null) 
+                    _iGun.ProjectileLauncher.FireActionHandler += cameraShaker.Shake;
 
                 //탄 초기화
                 _iGun.Initialize();

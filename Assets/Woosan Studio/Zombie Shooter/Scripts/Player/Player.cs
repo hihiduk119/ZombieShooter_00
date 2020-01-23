@@ -8,10 +8,23 @@ namespace WoosanStudio.ZombieShooter
     {
         //무기를 만들어주는 팩토리 패턴 적용.
         public WeaponFactory _weaponFactory;
+        //인풋 액션
+        IInputActions _inputActions;
+
+        //ICameraShaker를 가져오기 위한 용도
+        public GameObject cameras;
+        //카메라 쉐이커
+        ICameraShaker _cameraShaker;
 
         //캐슁용
         IWeapon _weapon;
-        IInputActions _inputActions;
+        
+
+        private void Awake()
+        {
+            _cameraShaker = cameras.GetComponent<ICameraShaker>();
+            _inputActions = GetComponent<IInputActions>();
+        }
 
         IEnumerator Start()
         {
@@ -19,7 +32,8 @@ namespace WoosanStudio.ZombieShooter
 
             yield return new WaitForSeconds(0.2f);
 
-            _weapon = _weaponFactory.MakeWeapon(_inputActions, this.transform, 0,true);
+            //키인풋으로 사격 컨트롤
+            _weapon = _weaponFactory.MakeWeapon(_inputActions,_cameraShaker, this.transform, 0,true);
 
             yield return new WaitForSeconds(0.1f);
         }

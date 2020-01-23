@@ -15,7 +15,8 @@ namespace WoosanStudio.ZombieShooter
         public GunSettings GunSettings { get => _gunSettings; set => _gunSettings = value; }
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGunActions Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        public UnityAction FireAction { get; set; }
+        //public UnityAction FireAction { get; set; }
+        public UnityAction TriggerAction { get; set; }
         public UnityAction ReloadAction { get; set; }
 
         //캐쉬용
@@ -27,36 +28,27 @@ namespace WoosanStudio.ZombieShooter
             _projectileLauncher = gameObject.AddComponent<ProjectileLauncher>();
             
             //액션 등록
-            FireAction += Test;
-            FireAction += FireControl;
-
-            //ReloadAction += Reload;
+            TriggerAction += FireControl;
         }
 
-        void Test()
-        {
-            Debug.Log("Test hi");
-        }
 
-        //IEnumerator Start()
-        //{
-        //    yield return new WaitForSeconds(1f);
-        //    Fire();
-        //}
-
+        /// <summary>
+        /// 사격을 통제함.
+        /// </summary>
         void FireControl()
         {
             if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
-            Debug.Log("Pistol.Fire() ammo => " + _gunStat.CurrentAmmo);
 
             if (_gunStat.CurrentAmmo > 0)
             {
-                //_projectileLauncher.Fire();
                 UseAmmo();
-            } else
+            } else 
             {
+                StopFire();
                 Reload();
             }
+
+            Debug.Log("Pistol.Fire() ammo => " + _gunStat.CurrentAmmo);
         }
 
         /// <summary>
@@ -72,23 +64,26 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void Reload()
         {
-            FullAmmo();
+            FullOfAmmo();
         }
 
-        
-        public void FullAmmo()
+        /// <summary>
+        /// 탄약 가득 채움
+        /// </summary>
+        public void FullOfAmmo()
         {
             if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
             _gunStat.CurrentAmmo = _gunStat.MaxAmmo;
         }
 
         /// <summary>
-        /// 탄 사용
+        /// 탄 사용 (기본 값은 1)
         /// </summary>
-        public void UseAmmo()
+        /// <param name="value">해당 값에 의해 탄소모 값 증가</param>
+        public void UseAmmo(int value = 1)
         {
             if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
-            _gunStat.CurrentAmmo--;
+            _gunStat.CurrentAmmo -= value;
         }
 
         /// <summary>

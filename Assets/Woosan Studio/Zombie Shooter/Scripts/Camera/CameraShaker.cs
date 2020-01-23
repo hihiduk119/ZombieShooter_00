@@ -11,13 +11,6 @@ namespace WoosanStudio.ZombieShooter
     {
         public Animator CamerShakeAnimator;
 
-        public UnityAction shakeAction;
-
-        void Awake()
-        {
-            shakeAction += Shake;
-        }
-
         public void Shake()
         {
             CamerShakeAnimator.SetTrigger("CameraShakeTrigger");

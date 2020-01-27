@@ -44,7 +44,8 @@ namespace WoosanStudio.ZombieShooter
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IProjectileLauncherActions Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-        public UnityAction FireActionHandler { get; set; }
+        private UnityEvent _triggerEvent = new UnityEvent();
+        public UnityEvent TriggerEvent { get { return _triggerEvent; } set { _triggerEvent = value; } }
         
 
         void Start()
@@ -143,7 +144,7 @@ namespace WoosanStudio.ZombieShooter
 
         public void Fire()
         {
-            FireActionHandler.Invoke();
+            TriggerEvent.Invoke();
 
             Instantiate(projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation);
             //   bombList[bombType].muzzleflare.Play();
@@ -262,9 +263,9 @@ namespace WoosanStudio.ZombieShooter
         //public GunSettings GunSettings { get; set; }
         ProjectileLauncher IProjectileLauncher.ProjectileLauncher { get { return this; } set { value = this; } }
 
-        public IProjectileLauncherActions GetProjectileLauncherActions()
+        public IProjectileLauncherEvents GetProjectileLauncherEvents()
         {
-            return (IProjectileLauncherActions)this;
+            return (IProjectileLauncherEvents)this;
         }
 
         public void ReloadAmmo()

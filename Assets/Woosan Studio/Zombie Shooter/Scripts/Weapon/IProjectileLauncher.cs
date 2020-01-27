@@ -1,6 +1,6 @@
 ﻿namespace WoosanStudio.ZombieShooter
 {
-    public interface IProjectileLauncher : IProjectileLauncherActions
+    public interface IProjectileLauncher : IProjectileLauncherEvents
     {
         /// <summary>
         /// 발사 시스템 세팅
@@ -16,7 +16,7 @@
         /// 발사 런처의 액션을 가져옴
         /// </summary>
         /// <returns></returns>
-        IProjectileLauncherActions GetProjectileLauncherActions();
+        IProjectileLauncherEvents GetProjectileLauncherEvents();
 
         /// <summary>
         /// 재장전

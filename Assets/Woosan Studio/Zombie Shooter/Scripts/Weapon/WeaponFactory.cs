@@ -80,7 +80,7 @@ namespace WoosanStudio.ZombieShooter
 
                 //해당 런처에서 발사시 화면 흔들림 액션 등록
                 if(cameraShaker != null) 
-                    _iGun.ProjectileLauncher.FireActionHandler += cameraShaker.Shake;
+                    _iGun.ProjectileLauncher.TriggerEvent.AddListener(cameraShaker.Shake);
 
                 //탄 초기화
                 _iGun.Initialize();

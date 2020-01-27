@@ -34,7 +34,7 @@ namespace WoosanStudio.ZombieShooter
 
             //발사 런처에 발사할때 마다 FireControl 호출하게 등록
             //ProjectileLauncher.FireActionHandler += FireControl;
-            ProjectileLauncher.FireActionHandler += AttackAction;
+            ProjectileLauncher.TriggerEvent.AddListener(AttackAction);
         }
 
 
@@ -98,9 +98,9 @@ namespace WoosanStudio.ZombieShooter
         /// 발사 런처의 액션들을 가져오기.
         /// </summary>
         /// <returns></returns>
-        public IProjectileLauncherActions GetProjectileLauncherActions()
+        public IProjectileLauncherEvents GetProjectileLauncherEvents()
         {
-            return (IProjectileLauncherActions)_projectileLauncher;
+            return (IProjectileLauncherEvents)_projectileLauncher;
         }
 
         public IInputActions GetInput()

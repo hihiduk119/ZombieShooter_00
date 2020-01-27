@@ -17,30 +17,30 @@ namespace WoosanStudio.ZombieShooter
 
         Coroutine refireChecker;
 
-        //IReloadAction _reloadActions;
-
-
         IEnumerator Start()
         {
             yield return new WaitForSeconds(1f);
 
-            FirstTrigger();
+            StartHandler.Invoke();
+            
         }
+
 
         /// <summary>
-        /// 해당 메서드 호출시 사격이 사작됨
+        /// 재장전
         /// </summary>
-        public void FirstTrigger() 
-        {
-            StartHandler.Invoke();
-        }
-
+        /// <param name="_reloadTime"></param>
         void Reloading(float _reloadTime)
         {
             if (refireChecker != null) StopCoroutine(refireChecker);
             refireChecker = StartCoroutine(RefireChecker(_reloadTime));
         }
 
+        /// <summary>
+        /// 자동사격.
+        /// </summary>
+        /// <param name="reloadDelay"></param>
+        /// <returns></returns>
         IEnumerator RefireChecker(float reloadDelay)
         {
             WaitForEndOfFrame WFF = new WaitForEndOfFrame();
@@ -61,15 +61,14 @@ namespace WoosanStudio.ZombieShooter
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IReloadActionSocket Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+
+
         /// <summary>
-        /// 리로드 인터페이스를 가져와서 내부 변수로 저장
+        /// 재장전 이벤트 등록
         /// </summary>
         /// <param name="reloadEvent"></param>
         public void SetReloadEvent(IReloadEvent reloadEvent)
         {
-            //_reloadActions = reloadActions;
-            //_reloadActions.ReloadAction += Reloading;
-
             //리로드 액션 호출할때 리로딩 시퀀스 실행
             reloadEvent.ReloadEvent.AddListener(Reloading);
         }

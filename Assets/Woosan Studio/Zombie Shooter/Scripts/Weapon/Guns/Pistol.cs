@@ -18,6 +18,9 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField] ReloadEvent _reloadEvent = new ReloadEvent();
         public ReloadEvent ReloadEvent { get => _reloadEvent; set => _reloadEvent = value; }
 
+        private UnityAction _attackAction;
+        public UnityAction AttackAction { get { return _attackAction; } set { _attackAction = value; } }
+
         //캐쉬용
         IGunStat _gunStat;
 
@@ -27,9 +30,11 @@ namespace WoosanStudio.ZombieShooter
             _projectileLauncher = gameObject.AddComponent<ProjectileLauncher>();
 
             //액션 등록
-            //TriggerAction += FireControl;
+            AttackAction += FireControl;
+
             //발사 런처에 발사할때 마다 FireControl 호출하게 등록
-            ProjectileLauncher.FireActionHandler += FireControl;
+            //ProjectileLauncher.FireActionHandler += FireControl;
+            ProjectileLauncher.FireActionHandler += AttackAction;
         }
 
 

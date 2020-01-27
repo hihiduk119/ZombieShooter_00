@@ -2,15 +2,13 @@
 
 namespace WoosanStudio.ZombieShooter
 {
-    public interface IWeapon
+    public interface IWeapon : IAttackAction
     {
         void Attack();
         void Stop();
 
         IWeaponStat GetWeaponStat();
-        //IGunStat GetGunStat();
-        //IProjectileLauncher GetProjectileLauncher();
     }
 
-    public class PlayAnimationEvent : UnityEvent<int> { }
+    //public class PlayAnimationEvent : UnityEvent<int> { }
 }

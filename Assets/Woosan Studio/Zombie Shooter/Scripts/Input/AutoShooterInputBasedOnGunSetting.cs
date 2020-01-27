@@ -25,10 +25,14 @@ namespace WoosanStudio.ZombieShooter
 
         void Awake()
         {
-            //콜백 등록
+            //재장전 콜백 등록
             ReloadAction += Reloading;
         }
 
+        /// <summary>
+        /// 임시 코드로 1초후 자동으로 시작 이벤트 발생
+        /// </summary>
+        /// <returns></returns>
         IEnumerator Start()
         {
             yield return new WaitForSeconds(1f);
@@ -65,9 +69,8 @@ namespace WoosanStudio.ZombieShooter
                 yield return WFF;
             }
 
+            //인풋 시작 이벤트 빌생
             StartEvent.Invoke();
-
-            //ReloadEvent.Invoke(reloadDelay);
         }
     }
 }

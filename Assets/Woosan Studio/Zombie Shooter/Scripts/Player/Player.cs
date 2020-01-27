@@ -23,10 +23,8 @@ namespace WoosanStudio.ZombieShooter
         List<IReloadAction> _reloadActionList = new List<IReloadAction>();
 
         //캐슁용
-        IWeapon _weapon;
-
-        
-
+        IWeapon _iWeapon;
+        IGun _iGun;
 
         private void Awake()
         {
@@ -42,8 +40,8 @@ namespace WoosanStudio.ZombieShooter
             yield return new WaitForSeconds(0.2f);
 
             //키인풋으로 사격 컨트롤
-            _weapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker , _reloadActionList, this.transform, 0);
-
+            _iWeapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker , _reloadActionList,ref _iGun, this.transform, 0);
+            
             yield return new WaitForSeconds(0.1f);
         }
 
@@ -54,12 +52,12 @@ namespace WoosanStudio.ZombieShooter
 
         public void AttackStart()
         {
-            _weapon.Attack();
+            _iWeapon.Attack();
         }
 
         public void AttackStop()
         {
-            _weapon.Stop();
+            _iWeapon.Stop();
         }
     }
 }

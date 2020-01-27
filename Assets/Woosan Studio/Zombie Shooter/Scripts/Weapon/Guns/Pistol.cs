@@ -21,12 +21,10 @@ namespace WoosanStudio.ZombieShooter
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IAttackAction Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         public UnityAction AttackAction { get; set; }
 
-        public ReloadEvent _testEvent = new ReloadEvent();
 
         //캐쉬용
         IGunStat _gunStat;
 
-        //public UnityEvent aEvent = new UnityEvent();
 
         void Awake()
         {
@@ -35,9 +33,7 @@ namespace WoosanStudio.ZombieShooter
 
             //액션 등록
             AttackAction += FireControl;
-
-            //발사 런처에 발사할때 마다 FireControl 호출하게 등록
-            //ProjectileLauncher.FireActionHandler += FireControl;
+            //발사 런처에 발사할때 마다 AttackAction 호출하게 등록
             ProjectileLauncher.TriggerEvent.AddListener(AttackAction);
         }
 
@@ -56,14 +52,16 @@ namespace WoosanStudio.ZombieShooter
                 
             } else 
             {
-                StopFire();
-                //Reload();
+                //사격 중지
+                ProjectileLauncher.StopFiring();
+
                 Debug.Log("ReloadEvent!! reloadTime = [" + GunSettings.ReloadTime + "]");
 
-                //_testEvent.AddListener(Test);
-                //_testEvent.Invoke(4f);
+                //재장전 호출 
+                ReloadEvent.Invoke(GunSettings.ReloadTime);
 
-                ReloadEvent.Invoke(GunSettings.ReloadTime); 
+                //탄약 재장전
+                FullOfAmmo();
             }
             //Debug.Log("Pistol.Fire() ammo => " + _gunStat.CurrentAmmo);
         }
@@ -75,19 +73,19 @@ namespace WoosanStudio.ZombieShooter
 
         /// <summary>
         /// 발사 중지
-        /// </summary>
-        public void StopFire()
-        {
-            ProjectileLauncher.StopFiring();
-        }
+        /// </지mmary>
+        //public void StopFire()
+        //{
+            
+        //}
 
         /// <summary>
         /// 재장전
         /// </summary>
-        void Reload()
-        {
-            FullOfAmmo();
-        }
+        //void Reload()
+        //{
+        //    FullOfAmmo();
+        //}
 
         /// <summary>
         /// 탄약 가득 채움

@@ -103,7 +103,7 @@ namespace WoosanStudio.ZombieShooter
             return (IProjectileLauncherEvents)_projectileLauncher;
         }
 
-        public IInputActions GetInput()
+        public IInputEvents GetInput()
         {
             return null;
         }
@@ -130,9 +130,9 @@ namespace WoosanStudio.ZombieShooter
             throw new System.NotImplementedException();
         }
 
-        public void SetInputActionHandler(IInputActions inputActions)
+        public void SetInputEventHandler(IInputEvents inputEvents)
         {
-            ProjectileLauncher.SetInputActionHandler(inputActions);
+            ProjectileLauncher.SetInputEventHandler(inputEvents);
         }
 
 

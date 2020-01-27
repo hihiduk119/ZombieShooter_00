@@ -2,9 +2,9 @@
 
 namespace WoosanStudio.ZombieShooter
 {
-    public interface IInputActions
+    public interface IInputEvents
     {
-        UnityAction StartHandler { get; set; }
-        UnityAction EndHandler { get; set; }
+        UnityEvent StartEvent { get; set; }
+        UnityEvent EndEvent { get; set; }
     }
 }

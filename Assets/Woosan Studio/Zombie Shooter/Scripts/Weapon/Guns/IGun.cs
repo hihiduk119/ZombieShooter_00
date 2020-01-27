@@ -5,7 +5,7 @@
         //IGunStat GetGunStat();
         ProjectileLauncher ProjectileLauncher { get; set; }
 
-        void SetInputActionHandler(IInputActions inputActions);
+        void SetInputEventHandler(IInputEvents inputEvents);
 
         void Initialize();
     }

@@ -82,10 +82,10 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 유저 Key Input을 제어하는 부분의 액션 이벤트를 등록
         /// </summary>
-        public void SetInputActionHandler(IInputActions inputActions)
+        public void SetInputEventHandler(IInputEvents inputEvents)
         {
-            inputActions.StartHandler += StartFiring;
-            inputActions.EndHandler += StopFiring;
+            inputEvents.StartEvent.AddListener(StartFiring);
+            inputEvents.EndEvent.AddListener(StopFiring);
         }
 
         /// <summary>

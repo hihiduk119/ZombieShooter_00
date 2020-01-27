@@ -10,10 +10,12 @@ namespace WoosanStudio.ZombieShooter
     /// [행위]
     /// 1. 리로드 완료 시간 안려줌.
     /// </summary>
-    public class AutoShooterInputBasedOnGunSetting : MonoBehaviour, IInputActions , IReloadEventSocket 
+    public class AutoShooterInputBasedOnGunSetting : MonoBehaviour, IInputEvents, IReloadEventSocket 
     {
-        public UnityAction StartHandler { get; set; }
-        public UnityAction EndHandler { get; set; }
+        private UnityEvent _startEvent = new UnityEvent();
+        private UnityEvent _endEvent = new UnityEvent();
+        public UnityEvent StartEvent { get { return _startEvent; } set { _startEvent = value; } }
+        public UnityEvent EndEvent { get { return _endEvent; } set { _endEvent = value; } }
 
         Coroutine refireChecker;
 
@@ -21,7 +23,7 @@ namespace WoosanStudio.ZombieShooter
         {
             yield return new WaitForSeconds(1f);
 
-            StartHandler.Invoke();
+            StartEvent.Invoke();
             
         }
 
@@ -54,7 +56,7 @@ namespace WoosanStudio.ZombieShooter
                 yield return WFF;
             }
 
-            StartHandler.Invoke();
+            StartEvent.Invoke();
         }
 
 

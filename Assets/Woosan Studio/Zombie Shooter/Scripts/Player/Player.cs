@@ -9,7 +9,7 @@ namespace WoosanStudio.ZombieShooter
         //무기를 만들어주는 팩토리 패턴 적용.
         public WeaponFactory _weaponFactory;
         //인풋 액션
-        IInputActions _inputActions;
+        IInputEvents _inputEvents;
         //리로드 액션이 있을때 연결되는 부분
         IReloadEventSocket _reloadEventSocket;
 
@@ -25,7 +25,7 @@ namespace WoosanStudio.ZombieShooter
         private void Awake()
         {
             _cameraShaker = cameras.GetComponent<ICameraShaker>();
-            _inputActions = GetComponent<IInputActions>();
+            _inputEvents = GetComponent<IInputEvents>();
             _reloadEventSocket = GetComponent<IReloadEventSocket>();
         }
 
@@ -36,7 +36,7 @@ namespace WoosanStudio.ZombieShooter
             yield return new WaitForSeconds(0.2f);
 
             //키인풋으로 사격 컨트롤
-            _weapon = _weaponFactory.MakeWeapon(_inputActions,_cameraShaker, _reloadEventSocket, this.transform, 0);
+            _weapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker, _reloadEventSocket, this.transform, 0);
 
             yield return new WaitForSeconds(0.1f);
         }

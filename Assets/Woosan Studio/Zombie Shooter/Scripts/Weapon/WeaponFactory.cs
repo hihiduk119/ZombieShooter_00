@@ -29,7 +29,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="parant">생성될 오브젝트의 부모</param>
         /// <param name="type">생성할 무기의 인덱스</param>
         /// <returns></returns>
-        public IWeapon MakeWeapon(IInputEvents inputEvents,ICameraShaker cameraShaker, IReloadEventSocket reloadEventSocket, Transform parant,int type)
+        public IWeapon MakeWeapon(IInputEvents inputEvents,ICameraShaker cameraShaker,List<IReloadAction> reloadActionList, Transform parant,int type)
         {
             //어떤 무기는 모델을 가지고 있으면 IHaveModel인터페이스를 상속 받기에 해당 인터페이스 호출.
             IHaveModel haveModel = _gunSettings[type];
@@ -45,6 +45,7 @@ namespace WoosanStudio.ZombieShooter
                 case 0:
                     //_projectileLauncher = _weapon.AddComponent<Pistol>();
                     _weapon.AddComponent<Pistol>();
+                    Debug.Log("Make pistol.cs and ProjectileLauncher.cs");
                     _iGun = (IGun)_weapon.GetComponent<Pistol>();
                     _iWeapon = (IWeapon)_weapon.GetComponent<Pistol>();
                     break;
@@ -76,10 +77,17 @@ namespace WoosanStudio.ZombieShooter
                 _iGun.SetInputEventHandler(inputEvents);
 
                 //리로드시 액션 연결부분
-                _iGun.ConnectReloadEvent(reloadEventSocket); 
+                //_iGun.ConnectReloadEvent(reloadEventSocket);
+                reloadActionList.ForEach(value => _iGun.ReloadEvent.AddListener(value.ReloadAction));
+
+                //_iGun.ReloadEvent.AddListener(reloadAction);
+                /*for (int index = 0; index < reloadActionList.Count; index++)
+                {
+                    _iGun.ReloadEvent.AddListener(reloadActionList[index].ReloadAction);
+                }*/
 
                 //해당 런처에서 발사시 화면 흔들림 액션 등록
-                if(cameraShaker != null) 
+                if (cameraShaker != null) 
                     _iGun.ProjectileLauncher.TriggerEvent.AddListener(cameraShaker.Shake);
 
                 //탄 초기화

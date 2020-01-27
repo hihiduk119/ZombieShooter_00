@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events;
+
 namespace WoosanStudio.ZombieShooter
 {
     public class Player : MonoBehaviour
@@ -11,22 +13,26 @@ namespace WoosanStudio.ZombieShooter
         //인풋 액션
         IInputEvents _inputEvents;
         //리로드 액션이 있을때 연결되는 부분
-        IReloadEventSocket _reloadEventSocket;
+        //IReloadEventSocket _reloadEventSocket;
 
         //ICameraShaker를 가져오기 위한 용도
         public GameObject cameras;
         //카메라 쉐이커
         ICameraShaker _cameraShaker;
+        //리로딩시 콜벡 액션 리스트
+        List<IReloadAction> _reloadActionList = new List<IReloadAction>();
 
         //캐슁용
         IWeapon _weapon;
+
         
+
 
         private void Awake()
         {
             _cameraShaker = cameras.GetComponent<ICameraShaker>();
             _inputEvents = GetComponent<IInputEvents>();
-            _reloadEventSocket = GetComponent<IReloadEventSocket>();
+            _reloadActionList.Add(GetComponent<IReloadAction>());
         }
 
         IEnumerator Start()
@@ -36,12 +42,12 @@ namespace WoosanStudio.ZombieShooter
             yield return new WaitForSeconds(0.2f);
 
             //키인풋으로 사격 컨트롤
-            _weapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker, _reloadEventSocket, this.transform, 0);
+            _weapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker , _reloadActionList, this.transform, 0);
 
             yield return new WaitForSeconds(0.1f);
         }
 
-        public void PlayAnimation(int number)
+        public void PlayAnimation(float number)
         {
 
         }

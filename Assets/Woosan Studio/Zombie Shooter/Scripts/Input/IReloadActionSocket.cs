@@ -1,7 +1,9 @@
-﻿namespace WoosanStudio.ZombieShooter
+﻿using UnityEngine.Events;
+
+namespace WoosanStudio.ZombieShooter
 {
-    public interface IReloadEventSocket
+    public interface IReloadAction
     {
-        void SetReloadEvent(IReloadEvent reloadEvent);
+        UnityAction<float> ReloadAction { get; set; }
     }
 }

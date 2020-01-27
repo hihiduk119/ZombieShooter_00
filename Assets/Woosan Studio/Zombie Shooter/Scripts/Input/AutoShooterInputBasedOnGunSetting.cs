@@ -10,21 +10,30 @@ namespace WoosanStudio.ZombieShooter
     /// [행위]
     /// 1. 리로드 완료 시간 안려줌.
     /// </summary>
-    public class AutoShooterInputBasedOnGunSetting : MonoBehaviour, IInputEvents, IReloadEventSocket 
+    public class AutoShooterInputBasedOnGunSetting : MonoBehaviour, IInputEvents, IReloadAction
     {
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IInputEvents Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         private UnityEvent _startEvent = new UnityEvent();
         private UnityEvent _endEvent = new UnityEvent();
         public UnityEvent StartEvent { get { return _startEvent; } set { _startEvent = value; } }
         public UnityEvent EndEvent { get { return _endEvent; } set { _endEvent = value; } }
 
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IReloadAction Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        public UnityAction<float> ReloadAction { get; set; }
+
         Coroutine refireChecker;
+
+        void Awake()
+        {
+            //콜백 등록
+            ReloadAction += Reloading;
+        }
 
         IEnumerator Start()
         {
             yield return new WaitForSeconds(1f);
 
             StartEvent.Invoke();
-            
         }
 
 
@@ -57,22 +66,8 @@ namespace WoosanStudio.ZombieShooter
             }
 
             StartEvent.Invoke();
-        }
 
-
-
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IReloadActionSocket Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
-
-        /// <summary>
-        /// 재장전 이벤트 등록
-        /// </summary>
-        /// <param name="reloadEvent"></param>
-        public void SetReloadEvent(IReloadEvent reloadEvent)
-        {
-            //리로드 액션 호출할때 리로딩 시퀀스 실행
-            reloadEvent.ReloadEvent.AddListener(Reloading);
+            //ReloadEvent.Invoke(reloadDelay);
         }
     }
 }

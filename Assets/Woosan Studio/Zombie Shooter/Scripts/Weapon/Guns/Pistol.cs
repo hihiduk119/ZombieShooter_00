@@ -18,11 +18,15 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField] ReloadEvent _reloadEvent = new ReloadEvent();
         public ReloadEvent ReloadEvent { get => _reloadEvent; set => _reloadEvent = value; }
 
-        private UnityAction _attackAction;
-        public UnityAction AttackAction { get { return _attackAction; } set { _attackAction = value; } }
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IAttackAction Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        public UnityAction AttackAction { get; set; }
+
+        public ReloadEvent _testEvent = new ReloadEvent();
 
         //캐쉬용
         IGunStat _gunStat;
+
+        //public UnityEvent aEvent = new UnityEvent();
 
         void Awake()
         {
@@ -37,7 +41,6 @@ namespace WoosanStudio.ZombieShooter
             ProjectileLauncher.TriggerEvent.AddListener(AttackAction);
         }
 
-
         /// <summary>
         /// 사격을 통제함.
         /// </summary>
@@ -45,19 +48,30 @@ namespace WoosanStudio.ZombieShooter
         {
             if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
 
+            Debug.Log("CurrentAmmo [" + _gunStat.CurrentAmmo + "]");
+
             if (_gunStat.CurrentAmmo > 0)
             {
                 UseAmmo();
+                
             } else 
             {
                 StopFire();
-                Reload();
+                //Reload();
+                Debug.Log("ReloadEvent!! reloadTime = [" + GunSettings.ReloadTime + "]");
 
-                ReloadEvent.Invoke(GunSettings.ReloadTime);
+                //_testEvent.AddListener(Test);
+                //_testEvent.Invoke(4f);
+
+                ReloadEvent.Invoke(GunSettings.ReloadTime); 
             }
-
-            Debug.Log("Pistol.Fire() ammo => " + _gunStat.CurrentAmmo);
+            //Debug.Log("Pistol.Fire() ammo => " + _gunStat.CurrentAmmo);
         }
+
+        //void Test(float gaga)
+        //{
+        //    Debug.Log("Test gaga = " + gaga);
+        //}
 
         /// <summary>
         /// 발사 중지
@@ -122,7 +136,8 @@ namespace WoosanStudio.ZombieShooter
 
         public void Initialize()
         {
-            //FullAmmo();
+            Debug.Log("Gun Initialize");
+            FullOfAmmo();
         }
 
         public void Stop()
@@ -138,10 +153,10 @@ namespace WoosanStudio.ZombieShooter
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IReloadAction Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-        public void ConnectReloadEvent(IReloadEventSocket reloadEventSocket)
-        {
-            reloadEventSocket.SetReloadEvent((IReloadEvent)this);
-        }
+        //public void ConnectReloadEvent(IReloadEventSocket reloadEventSocket)
+        //{
+        //    reloadEventSocket.SetReloadEvent((IReloadEvent)this);
+        //}
     }
 }
 

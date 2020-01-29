@@ -13,5 +13,6 @@ namespace WoosanStudio.ZombieShooter
     {
         void Spawn();
         void DespawnOldest();
+        void Despawn(GameObject clone, float t = 0.0f);
     }
 }

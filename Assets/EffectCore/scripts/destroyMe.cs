@@ -6,20 +6,33 @@ public class destroyMe : MonoBehaviour{
     float timer;
     public float deathtimer = 10;
 
+    private ParticleSystem _particleSystem;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    private void Awake()
+    {
+        _particleSystem = this.GetComponent<ParticleSystem>();
+    }
+
+    private void Reset()
+    {
+        timer = 0;
+    }
+
+    void Update ()
     {
         timer += Time.deltaTime;
 
-        if(timer >= deathtimer)
+        if (timer >= deathtimer)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
+
+            if (_particleSystem != null)
+            {
+                _particleSystem.Stop();
+            }
+
+            Reset();
         }
 	
 	}

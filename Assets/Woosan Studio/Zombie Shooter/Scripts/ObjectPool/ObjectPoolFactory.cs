@@ -26,6 +26,8 @@ namespace WoosanStudio.ZombieShooter
             leanGameObjectPool.Recycle = true;
             leanGameObjectPool.Warnings = true;
 
+            leanGameObjectPool.PreloadAll();
+
             return (IObjectPool)leanGameObjectPool;
         }
     }

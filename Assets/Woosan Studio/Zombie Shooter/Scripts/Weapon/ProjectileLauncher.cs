@@ -51,6 +51,9 @@ namespace WoosanStudio.ZombieShooter
         IObjectPool _shellPool;
         IObjectPool _muzzlePool;
         IObjectPool _bombPool;
+        IObjectPool _impactPool;
+
+
         void Start()
         {
             //초기화 루틴
@@ -62,9 +65,12 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void Initilized()
         {
-            //SetCameraShaker();
             SetModelLocator();
+
+            //[Object Pool]
+            SetForce();
             SetObjectPool();
+            
         }
 
         /// <summary>
@@ -81,6 +87,14 @@ namespace WoosanStudio.ZombieShooter
             //샷건 총구
             if (spawnLocator.childCount > 0)
                 shotgunLocator = spawnLocator.GetComponentsInChildren<Transform>();
+        }
+
+        /// <summary>
+        /// 오브젝트 풀이 생성시 바로 통제 불가능 하기때문에 프리팹에 미리 세팅 값을 세팅해야함.
+        /// </summary>
+        void SetForce()
+        {
+            projectileSetting.bombPrefab.GetComponent<WoosanStudio.ZombieShooter.Projectile>().Force = spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max);
         }
 
         void SetObjectPool()
@@ -104,8 +118,11 @@ namespace WoosanStudio.ZombieShooter
                 }    
             } else
             {
+                //오브젝트 풀 생성전 세팅
                 _bombPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.gameObject, spawnLocator.position, spawnLocator.rotation , 10, 10);
             }
+
+            _impactPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.GetComponent<ExplodingProjectile>().impactPrefab, Vector3.zero, Quaternion.identity, 10, 10);
         }
 
         /// <summary>
@@ -181,33 +198,34 @@ namespace WoosanStudio.ZombieShooter
 
             if (projectileSetting.hasShells)
             {
+                //Debug.Log("spawn shell");
                 //Instantiate(projectileSetting.shellPrefab, shellLocator.position, shellLocator.rotation);
                 _shellPool.Spawn();
             }
             //총구 들림
             //if (MuzzleFlip) { recoilAnimator.SetTrigger("recoil_trigger"); }
 
-            Rigidbody rocketInstance;
-            rocketInstance = Instantiate(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation) as Rigidbody;
-
+            //Rigidbody rocketInstance;
+            //rocketInstance = Instantiate(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation) as Rigidbody;
+            _bombPool.Spawn();
             // Quaternion.Euler(0,90,0)
-            rocketInstance.AddForce(spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max));
+            //rocketInstance.AddForce(spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max));
 
-            if (projectileSetting.shotgunBehavior)
-            {
-                for (int i = 0; i < projectileSetting.shotgunPellets; i++)
-                {
-                    Rigidbody rocketInstanceShotgun;
-                    rocketInstanceShotgun = Instantiate(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation) as Rigidbody;
-                    // Quaternion.Euler(0,90,0)
-                    rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max));
-                }
-            }
+            //if (projectileSetting.shotgunBehavior)
+            //{
+            //    for (int i = 0; i < projectileSetting.shotgunPellets; i++)
+            //    {
+            //        Rigidbody rocketInstanceShotgun;
+            //        rocketInstanceShotgun = Instantiate(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation) as Rigidbody;
+            //        // Quaternion.Euler(0,90,0)
+            //        rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max));
+            //    }
+            //}
 
-            if (Torque)
-            {
-                rocketInstance.AddTorque(spawnLocator.up * Random.Range(Tor_min, Tor_max));
-            }
+            //if (Torque)
+            //{
+            //    rocketInstance.AddTorque(spawnLocator.up * Random.Range(Tor_min, Tor_max));
+            //}
             //탄퍼짐 작음
             if (MinorRotate)
             {

@@ -28,7 +28,9 @@ public class ExplodingProjectile : MonoBehaviour
 
     private Vector3 previousPosition;
 
-    // Use this for initialization
+    //오브젝트 풀
+    public  WoosanStudio.ZombieShooter.IObjectPool ImpactPool;
+
     void Start()
     {
         thisRigidbody = GetComponent<Rigidbody>();
@@ -38,6 +40,19 @@ public class ExplodingProjectile : MonoBehaviour
         }
         thisCollider = GetComponent<Collider>();
         previousPosition = transform.position;
+    }
+
+    //[Object Pool] 사용시 초기화용
+    private void Reset()
+    {
+        LookRotation = true;
+        Missile = false;
+
+        ignorePrevRotation = false;
+
+        explodeOnTimer = false;
+        explosionTimer = 0f;
+        timer = 0f;   
     }
 
     // Update is called once per frame
@@ -88,10 +103,15 @@ public class ExplodingProjectile : MonoBehaviour
             transform.position = hit.point;
             Quaternion rot = Quaternion.FromToRotation(Vector3.forward, hit.normal);
             Vector3 pos = hit.point;
-            Instantiate(impactPrefab, pos, rot);
+            //Instantiate(impactPrefab, pos, rot);
+            Lean.Pool.LeanPool.Spawn(impactPrefab, pos, rot);
+
             if (!explodeOnTimer && Missile == false)
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                //[Object Pool]
+                gameObject.SetActive(false);
+                Reset();
             }
             else if (Missile == true)
             {
@@ -115,6 +135,7 @@ public class ExplodingProjectile : MonoBehaviour
                 rot = Quaternion.Euler(0, 0, 0);
             }
             Vector3 pos = contact.point;
+            //[Object Pool]
             Instantiate(impactPrefab, pos, rot);
             if (!explodeOnTimer && Missile == false)
             {
@@ -128,7 +149,6 @@ public class ExplodingProjectile : MonoBehaviour
                 thisRigidbody.velocity = Vector3.zero;
 
                 Destroy(gameObject, 5);
-
             }
         }
     }
@@ -138,5 +158,4 @@ public class ExplodingProjectile : MonoBehaviour
         Instantiate(explosionPrefab, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
         Destroy(gameObject);
     }
-
 }

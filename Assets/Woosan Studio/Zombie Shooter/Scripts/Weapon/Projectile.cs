@@ -4,19 +4,19 @@ using UnityEngine;
 
 namespace WoosanStudio.ZombieShooter
 {
-    /*[System.Serializable]
-    public class Projectile
+    public class Projectile : MonoBehaviour
     {
-        public string name;
-        public Rigidbody bombPrefab;
-        public GameObject muzzleflare;
-        public float min, max;
-        public bool rapidFire;
-        public float rapidFireCooldown;
+        private Rigidbody _rigidbody;
+        public Vector3 Force;
 
-        public bool shotgunBehavior;
-        public int shotgunPellets;
-        public GameObject shellPrefab;
-        public bool hasShells;
-    }*/
+        void Awake()
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+        }
+
+        void OnEnable()
+        {
+            _rigidbody.AddForce(Force);
+        }
+    }
 }

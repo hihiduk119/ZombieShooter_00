@@ -44,7 +44,7 @@ namespace WoosanStudio.ZombieShooter
         {
             if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
 
-            Debug.Log("CurrentAmmo [" + _gunStat.CurrentAmmo + "]");
+            //Debug.Log("CurrentAmmo [" + _gunStat.CurrentAmmo + "]");
 
             if (_gunStat.CurrentAmmo > 0)
             {
@@ -55,7 +55,7 @@ namespace WoosanStudio.ZombieShooter
                 //사격 중지
                 ProjectileLauncher.StopFiring();
 
-                Debug.Log("ReloadEvent!! reloadTime = [" + GunSettings.ReloadTime + "]");
+                //Debug.Log("ReloadEvent!! reloadTime = [" + GunSettings.ReloadTime + "]");
 
                 //재장전 호출 
                 ReloadEvent.Invoke(GunSettings.ReloadTime);

@@ -46,8 +46,11 @@ namespace WoosanStudio.ZombieShooter
 
         private UnityEvent _triggerEvent = new UnityEvent();
         public UnityEvent TriggerEvent { get { return _triggerEvent; } set { _triggerEvent = value; } }
-        
 
+        //오브젝트 풀 관련 캐슁
+        IObjectPool _shellPool;
+        IObjectPool _muzzlePool;
+        IObjectPool _bombPool;
         void Start()
         {
             //초기화 루틴
@@ -61,6 +64,7 @@ namespace WoosanStudio.ZombieShooter
         {
             //SetCameraShaker();
             SetModelLocator();
+            SetObjectPool();
         }
 
         /// <summary>
@@ -77,6 +81,31 @@ namespace WoosanStudio.ZombieShooter
             //샷건 총구
             if (spawnLocator.childCount > 0)
                 shotgunLocator = spawnLocator.GetComponentsInChildren<Transform>();
+        }
+
+        void SetObjectPool()
+        {
+            IObjectPoolFactory iObjectPoolFactory = FindObjectOfType<ObjectPoolFactory>();
+
+            if (projectileSetting.hasShells)
+            {
+                _shellPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.shellPrefab, shellLocator.position, shellLocator.rotation, 10, 10);
+            }
+                
+            _muzzlePool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation, 10, 10);
+
+            //샷건 사용시 탄 생성은 샷 갯수 만큼 생성
+            if(projectileSetting.shotgunBehavior)
+            {
+                for (int i = 0; i < projectileSetting.shotgunPellets; i++)
+                {
+                    _bombPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.gameObject, shotgunLocator[i].position, shotgunLocator[i].rotation,
+                        10 * projectileSetting.shotgunPellets, 10 * projectileSetting.shotgunPellets);
+                }    
+            } else
+            {
+                _bombPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.gameObject, spawnLocator.position, spawnLocator.rotation , 10, 10);
+            }
         }
 
         /// <summary>
@@ -146,18 +175,21 @@ namespace WoosanStudio.ZombieShooter
         {
             TriggerEvent.Invoke();
 
-            Instantiate(projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation);
+            //Instantiate(projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation);
+            _muzzlePool.Spawn();
             //   bombList[bombType].muzzleflare.Play();
 
             if (projectileSetting.hasShells)
             {
-                Instantiate(projectileSetting.shellPrefab, shellLocator.position, shellLocator.rotation);
+                //Instantiate(projectileSetting.shellPrefab, shellLocator.position, shellLocator.rotation);
+                _shellPool.Spawn();
             }
             //총구 들림
             //if (MuzzleFlip) { recoilAnimator.SetTrigger("recoil_trigger"); }
 
             Rigidbody rocketInstance;
             rocketInstance = Instantiate(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation) as Rigidbody;
+
             // Quaternion.Euler(0,90,0)
             rocketInstance.AddForce(spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max));
 

@@ -51,24 +51,24 @@ MonoBehaviour:
     style=\"font-size: 75px; color: #FFF; text-align: center; vertical-align: middle;
     line-height: 100px;\">Lean Pool</h1>\r\n</div>\r\n<div style=\"position: absolute;
     left: 350px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding:
-    20px;\">\r\n<a name=\"-71670\"></a><h2>Thank you for using Lean Pool &#x2764;&#xFE0F</h2>\r\n<p>If
+    20px;\">\r\n<a name=\"-420164\"></a><h2>Thank you for using Lean Pool &#x2764;&#xFE0F</h2>\r\n<p>If
     you haven't already, please consider writing a <a href=\"http://CarlosWilkes.com/Get/LeanPool\"
     target=\"_blank\">review</a>. They really help me out!</p><p>If you have any questions,
     then feel free to send me an <a href=\"mailto:carlos.wilkes@gmail.com\">E-Mail</a>,
     or <a href=\"http://forum.unity.com/members/41960\" target=\"_blank\">Private
     Message</a>.</p><p>You can also ask in the <a href=\"http://carloswilkes.com/Forum/LeanPool\"
     target=\"_blank\">Forum Thread</a>.</p><p>I'm also available for freelance work
-    if you need help with your projects.</p>\r\n<br><br>\r\n<a name=\"-71676\"></a><h2>How
+    if you need help with your projects.</p>\r\n<br><br>\r\n<a name=\"-420170\"></a><h2>How
     do I upgrade?</h2>\r\n<p>First, make sure you <b>back up</b> your project files.</p><p>Next,
     install the latest version.</p><p>If for some reason the latest updates breaks
     your project (e.g. errors in the console), then try deleting the root folder for
     this asset, and reinstalling it.</p><p>If it still doesn't work then go back to
     your previous version, and let me know what the errors are, so I can fix it.</p>\r\n<br><br>\r\n<div
-    style=\"\">\r\n<a name=\"15880\"></a><h2>What is Lean Pool?</h2>\r\n<p>Lean Pool
+    style=\"\">\r\n<a name=\"36608\"></a><h2>What is Lean Pool?</h2>\r\n<p>Lean Pool
     is a lightweight pooling asset, allowing you to easily cache and recycle prefab
     instances.</p><p>Pooling improves spawning performance, despawning performance,
     and reduces gc alloc.</p><p>Lean Pool also works with normal C# classes too.</p>\r\n<br><br></div>\r\n<div
-    style=\"\">\r\n<a name=\"15896\"></a><h2>How do I use it?</h2>\r\n<p>Find your
+    style=\"\">\r\n<a name=\"36630\"></a><h2>How do I use it?</h2>\r\n<p>Find your
     code that heavily relies on:</p>\r\n<div class=\"code\"><pre>Instantiate( ...
     );</pre></div>\r\n<p>And replace it with:</p>\r\n<div class=\"code\"><pre>Lean.Pool.LeanPool.Spawn(
     ... );</pre></div>\r\n<p>Next, find your code that heavily relies on:</p>\r\n<div
@@ -76,12 +76,12 @@ MonoBehaviour:
     class=\"code\"><pre>Lean.Pool.LeanPool.Despawn( ... );</pre></div>\r\n<p>For example:</p>\r\n<div
     class=\"code\"><pre>var enemy = Lean.Pool.LeanPool.Spawn(enemyPrefab);</br></br>...</br></br>Lean.Pool.LeanPool.Despawn(enemy);</pre></div>\r\n<p>That's
     it, you've now implemented Lean Pool!</p>\r\n<br><br></div>\r\n<div style=\"\">\r\n<a
-    name=\"16478\"></a><h2>Why do I have to type Lean.Pool. before everything?</h2>\r\n<p>To
+    name=\"37116\"></a><h2>Why do I have to type Lean.Pool. before everything?</h2>\r\n<p>To
     improve organization, all Lean Pool classes are inside the Lean.Pool namespace.</p><p>If
     you don't like typing Lean.Pool. each time, then you can add the following code
     to the top of your script:</p>\r\n<div class=\"code\"><pre>using Lean.Pool;</pre></div>\r\n<p>You
     can now just call LeanPool.Spawn(...) etc.</p>\r\n<br><br></div>\r\n<div style=\"\">\r\n<a
-    name=\"15066\"></a><h2>How do I alter the settings?</h2>\r\n<p>If you use the
+    name=\"35830\"></a><h2>How do I alter the settings?</h2>\r\n<p>If you use the
     steps above then Lean Pool will automatically create pools when you first call
     LeanPool.Spawn, so to adjust the settings ahead of time you need to manually create
     the pool.</p><p>To do this, right click in your <b>Hierarchy</b> window, and select
@@ -89,7 +89,7 @@ MonoBehaviour:
     and it should be automatically selected.</p><p>Next, drag and drop your prefab
     into the <b>Prefab</b> slot, and this will associate this pool with this prefab.
     You can now adjust the pool settings like the Preload, Capacity, etc.</p>\r\n<br><br></div>\r\n<div
-    style=\"\">\r\n<a name=\"15370\"></a><h2>My Rigidbody velocity isn't being reset!?</h2>\r\n<p>By
+    style=\"\">\r\n<a name=\"36134\"></a><h2>My Rigidbody velocity isn't being reset!?</h2>\r\n<p>By
     default, Lean Pool doesn't modify any components when spawning or despawning.</p><p>This
     works fine for most components, but some components maintain their state even
     when deactivated, which requires you to manually reset their state.</p><p>The
@@ -99,7 +99,7 @@ MonoBehaviour:
     velocity.</p><p>To fix this, the velocity must reset when despawned. This can
     be done by adding the <b>LeanPooledRigidbody</b> or <b>LeanPooledRigidbody2D</b>
     component that comes with Lean Pool.</p>\r\n<br><br></div>\r\n<div style=\"\">\r\n<a
-    name=\"14874\"></a><h2>How do I write custom spawning/despawning code?</h2>\r\n<p>There
+    name=\"35602\"></a><h2>How do I write custom spawning/despawning code?</h2>\r\n<p>There
     are several ways to do this, each with their pros and cons.</p>\r\n<br><br></div>\r\n<div
     style=\"padding-left: 75px;\">\r\n<h2>OnEnable and OnDisable messages</h2>\r\n<p>LeanPool
     will activate and deactivate your prefab clones when pooled.</p><p>When a component
@@ -132,7 +132,7 @@ MonoBehaviour:
     of a child GameObjct, then you can use the <b>LeanGameObjectPool.Notification
     = Broadcast IPoolable</b> setting instead.</p><div class=\"tip\"><strong>NOTE:</strong>&emsp;Broadcasting
     may be inefficient if your prefab is complex.</div>\r\n<br><br></div>\r\n<div
-    style=\"\">\r\n<a name=\"16392\"></a><h2>How do I increase the performance even
+    style=\"\">\r\n<a name=\"37060\"></a><h2>How do I increase the performance even
     more?</h2>\r\n<p>You may notice that the <b>Lean.Pool.LeanPool.Spawn</b> and <b>Lean.Pool.LeanPool.Despawn</b>
     methods work like magic.</p><p>This is because they're static methods that search
     a dictionary to find the pool associated with the prefab clone before performing
@@ -140,7 +140,7 @@ MonoBehaviour:
     need to super optimize your game then you may want to access the <b>Lean.Pool.LeanGameObjectPool</b>
     component itself. If you store a reference to it, then you can call the <b>Spawn</b>
     and <b>Despawn</b> methods directly.</p>\r\n<br><br></div>\r\n<div style=\"\">\r\n<a
-    name=\"14468\"></a><h2>Why do I get warnings in the console?</h2>\r\n<p>This is
+    name=\"35160\"></a><h2>Why do I get warnings in the console?</h2>\r\n<p>This is
     probably because you did something wrong.</p><p>For example, you may have replaced
     all your Instantiate calls with Spawn calls, but maybe you forgot to replace all
     your Destroy calls with Despawn.</p><p>There are many scenarios like this where
@@ -223,13 +223,15 @@ MonoBehaviour:
     great for explosions and footsteps, but quite often you need something more advanced.
     Volumetric Audio is an easy to use package that allows you to define boxes, spheres,
     capsules, paths, or meshes that sounds can emanate from.</p><br><br><br><br>\r\n<br><br>\r\n<h1>Versions</h1>\r\n<a
-    name=\"-54650\"></a><h2>1.2.2</h2>\r\n<p>Fixed spawn transform being incorrect
+    name=\"-410542\"></a><h2>1.2.3</h2>\r\n<p>Initial prefab spawns now begin with
+    their final positions in Awake/OnEnable.<br>Updated common library code.<br></p>\r\n<br><br>\r\n<a
+    name=\"35068\"></a><h2>1.2.2</h2>\r\n<p>Fixed spawn transform being incorrect
     in some scenarios.<br>Fixed inspector expand buttons in UI Elements.<br></p>\r\n<br><br>\r\n<a
-    name=\"14568\"></a><h2>1.2.1</h2>\r\n<p>Fixed bug in LeanHelper.cs that prevents
-    making builds.<br></p>\r\n<br><br>\r\n<a name=\"14984\"></a><h2>1.2.0</h2>\r\n<p>Fixed
-    error when using Unity 2018.3+.<br></p>\r\n<br><br>\r\n<a name=\"16354\"></a><h2>1.1.9</h2>\r\n<p>Fixed
+    name=\"35260\"></a><h2>1.2.1</h2>\r\n<p>Fixed bug in LeanHelper.cs that prevents
+    making builds.<br></p>\r\n<br><br>\r\n<a name=\"35730\"></a><h2>1.2.0</h2>\r\n<p>Fixed
+    error when using Unity 2018.3+.<br></p>\r\n<br><br>\r\n<a name=\"37040\"></a><h2>1.1.9</h2>\r\n<p>Fixed
     error when setting initial pool prefab in the inspector.<br></p>\r\n<br><br>\r\n<a
-    name=\"16220\"></a><h2>1.1.8</h2>\r\n<p>Fixed bug with one <b>LeanPool.Spawn</b>
+    name=\"36882\"></a><h2>1.1.8</h2>\r\n<p>Fixed bug with one <b>LeanPool.Spawn</b>
     overload.<br></p>\r\n<br><br>\r\n<br><br>\r\n<h1>Components</h1>\r\n<a name=\"IPoolable\"></a><h2>IPoolable</h2>\r\n<p>If
     you implement this interface in a component on your pooled prefab, then the OnSpawn
     and OnDespawn methods will be automatically called when the associated LeanGameObjectPool.Notification
@@ -300,21 +302,21 @@ MonoBehaviour:
     allows you to despawn a clone via GameObject, with optional delay.</p>\n</div><br>\r\n<br><br>\r\n</div>\r\n<div
     style=\"position: absolute; width: 310px; left: 0px; right: 0px; top: 200px; bottom:
     20px; overflow-y: scroll; padding: 20px;\">\r\n<h2 style=\"padding-bottom: 20px;\">Index</h2>\r\n<p
-    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#-71670\">Thank
+    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#-420164\">Thank
     you for using Lean Pool &#x2764;&#xFE0F</a></p>\r\n<p style=\"margin: 2px; padding-left:
-    10px; text-indent: -10px;\"><a href=\"#-71676\">How do I upgrade?</a></p>\r\n<p
-    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#15880\">What
+    10px; text-indent: -10px;\"><a href=\"#-420170\">How do I upgrade?</a></p>\r\n<p
+    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#36608\">What
     is Lean Pool?</a></p>\r\n<p style=\"margin: 2px; padding-left: 10px; text-indent:
-    -10px;\"><a href=\"#15896\">How do I use it?</a></p>\r\n<p style=\"margin: 2px;
-    padding-left: 10px; text-indent: -10px;\"><a href=\"#16478\">Why do I have to
+    -10px;\"><a href=\"#36630\">How do I use it?</a></p>\r\n<p style=\"margin: 2px;
+    padding-left: 10px; text-indent: -10px;\"><a href=\"#37116\">Why do I have to
     type Lean.Pool. before everything?</a></p>\r\n<p style=\"margin: 2px; padding-left:
-    10px; text-indent: -10px;\"><a href=\"#15066\">How do I alter the settings?</a></p>\r\n<p
-    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#15370\">My
+    10px; text-indent: -10px;\"><a href=\"#35830\">How do I alter the settings?</a></p>\r\n<p
+    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#36134\">My
     Rigidbody velocity isn't being reset!?</a></p>\r\n<p style=\"margin: 2px; padding-left:
-    10px; text-indent: -10px;\"><a href=\"#14874\">How do I write custom spawning/despawning
+    10px; text-indent: -10px;\"><a href=\"#35602\">How do I write custom spawning/despawning
     code?</a></p>\r\n<p style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a
-    href=\"#16392\">How do I increase the performance even more?</a></p>\r\n<p style=\"margin:
-    2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#14468\">Why do I get
+    href=\"#37060\">How do I increase the performance even more?</a></p>\r\n<p style=\"margin:
+    2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#35160\">Why do I get
     warnings in the console?</a></p>\r\n<br><br>\r\n<h2 style=\"padding-bottom: 20px;\">Assets</h2>\r\n<p
     style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#1\">Lean
     Touch</a></p>\r\n<p style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a
@@ -332,11 +334,12 @@ MonoBehaviour:
     10px; text-indent: -10px;\"><a href=\"#11\">Planet Pack - Space Graphics Toolkit</a></p>\r\n<p
     style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#12\">Volumetric
     Audio</a></p>\r\n<br><br>\r\n<h2 style=\"padding-bottom: 20px;\">Versions</h2>\r\n<p
-    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#-54650\">1.2.2</a></p>\r\n<p
-    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#14568\">1.2.1</a></p>\r\n<p
-    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#14984\">1.2.0</a></p>\r\n<p
-    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#16354\">1.1.9</a></p>\r\n<p
-    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#16220\">1.1.8</a></p>\r\n<br><br>\r\n<h2
+    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#-410542\">1.2.3</a></p>\r\n<p
+    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#35068\">1.2.2</a></p>\r\n<p
+    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#35260\">1.2.1</a></p>\r\n<p
+    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#35730\">1.2.0</a></p>\r\n<p
+    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#37040\">1.1.9</a></p>\r\n<p
+    style=\"margin: 2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#36882\">1.1.8</a></p>\r\n<br><br>\r\n<h2
     style=\"padding-bottom: 20px;\">Components</h2>\r\n<p style=\"margin: 2px; padding-left:
     10px; text-indent: -10px;\"><a href=\"#IPoolable\">IPoolable</a></p>\r\n<p style=\"margin:
     2px; padding-left: 10px; text-indent: -10px;\"><a href=\"#LeanClassPool\">LeanClassPool&lt;T&gt;</a></p>\r\n<p

@@ -3,51 +3,6 @@ using System.Collections.Generic;
 using Lean.Common;
 #if UNITY_EDITOR
 using UnityEditor;
-
-namespace Lean.Pool
-{
-	[CanEditMultipleObjects]
-	[CustomEditor(typeof(LeanGameObjectPool))]
-	public class LeanGameObjectPool_Inspector : LeanInspector<LeanGameObjectPool>
-	{
-		protected override void DrawInspector()
-		{
-			BeginError(Any(t => t.Prefab == null));
-				if (Draw("prefab", "The prefab this pool controls.") == true)
-				{
-					Each(t => { t.Prefab = (GameObject)serializedObject.FindProperty("prefab").objectReferenceValue; }, true);
-				}
-			EndError();
-			Draw("Notification", "If you need to peform a special action when a prefab is spawned or despawned, then this allows you to control how that action is performed. None = If you use this then you must rely on the OnEnable and OnDisable messages. SendMessage = The prefab clone is sent the OnSpawn and OnDespawn messages. BroadcastMessage = The prefab clone and all its children are sent the OnSpawn and OnDespawn messages. IPoolable = The prefab clone's components implementing IPoolable are called. Broadcast IPoolable = The prefab clone and all its child components implementing IPoolable are called.");
-			Draw("Preload", "Should this pool preload some clones?");
-			Draw("Capacity", "Should this pool have a maximum amount of spawnable clones?");
-			Draw("Recycle", "If the pool reaches capacity, should new spawns force older ones to despawn?");
-			Draw("Persist", "Should this pool be marked as DontDestroyOnLoad?");
-			Draw("Stamp", "Should the spawned clones have their clone index appended to their name?");
-			Draw("Warnings", "Should detected issues be output to the console?");
-
-			EditorGUILayout.Separator();
-
-			EditorGUI.BeginDisabledGroup(true);
-				EditorGUILayout.IntField("Spawned", Target.Spawned);
-				EditorGUILayout.IntField("Despawned", Target.Despawned);
-				EditorGUILayout.IntField("Total", Target.Total);
-			EditorGUI.EndDisabledGroup();
-		}
-
-		[MenuItem("GameObject/Lean/Pool", false, 1)]
-		private static void CreateLocalization()
-		{
-			var gameObject = new GameObject(typeof(LeanGameObjectPool).Name);
-
-			Undo.RegisterCreatedObjectUndo(gameObject, "Create LeanGameObjectPool");
-
-			gameObject.AddComponent<LeanGameObjectPool>();
-
-			Selection.activeGameObject = gameObject;
-		}
-	}
-}
 #endif
 
 namespace Lean.Pool
@@ -56,8 +11,8 @@ namespace Lean.Pool
 	/// Pools also have settings to preload, recycle, and set the spawn capacity, giving you lots of control over your spawning.</summary>
 	[HelpURL(LeanPool.HelpUrlPrefix + "LeanGameObjectPool")]
 	[AddComponentMenu(LeanPool.ComponentPathPrefix + "GameObject Pool")]
-	public class LeanGameObjectPool : MonoBehaviour, ISerializationCallbackReceiver
-	{
+	public class LeanGameObjectPool : MonoBehaviour, ISerializationCallbackReceiver , WoosanStudio.ZombieShooter.IObjectPool
+    {
 		[System.Serializable]
 		public class Delay
 		{
@@ -562,7 +517,13 @@ namespace Lean.Pool
 
 		private GameObject CreateClone(Vector3 position, Quaternion rotation, Transform parent, bool worldPositionStays)
 		{
-			var clone = Instantiate(prefab);
+			if (worldPositionStays == false && parent != null)
+			{
+				position = parent.InverseTransformPoint(position);
+				rotation = Quaternion.Inverse(parent.rotation) * rotation;
+			}
+
+			var clone = Instantiate(prefab, position, rotation, parent);
 
 			if (Stamp == true)
 			{
@@ -571,22 +532,6 @@ namespace Lean.Pool
 			else
 			{
 				clone.name = prefab.name;
-			}
-
-			// Update transform
-			var cloneTransform = clone.transform;
-
-			cloneTransform.SetParent(parent, worldPositionStays);
-
-			if (worldPositionStays == true)
-			{
-				cloneTransform.position = position;
-				cloneTransform.rotation = rotation;
-			}
-			else
-			{
-				cloneTransform.localPosition = position;
-				cloneTransform.localRotation = rotation;
 			}
 
 			return clone;
@@ -680,3 +625,50 @@ namespace Lean.Pool
 		}
 	}
 }
+
+#if UNITY_EDITOR
+namespace Lean.Pool
+{
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(LeanGameObjectPool))]
+	public class LeanGameObjectPool_Inspector : LeanInspector<LeanGameObjectPool>
+	{
+		protected override void DrawInspector()
+		{
+			BeginError(Any(t => t.Prefab == null));
+				if (Draw("prefab", "The prefab this pool controls.") == true)
+				{
+					Each(t => { t.Prefab = (GameObject)serializedObject.FindProperty("prefab").objectReferenceValue; }, true);
+				}
+			EndError();
+			Draw("Notification", "If you need to peform a special action when a prefab is spawned or despawned, then this allows you to control how that action is performed. None = If you use this then you must rely on the OnEnable and OnDisable messages. SendMessage = The prefab clone is sent the OnSpawn and OnDespawn messages. BroadcastMessage = The prefab clone and all its children are sent the OnSpawn and OnDespawn messages. IPoolable = The prefab clone's components implementing IPoolable are called. Broadcast IPoolable = The prefab clone and all its child components implementing IPoolable are called.");
+			Draw("Preload", "Should this pool preload some clones?");
+			Draw("Capacity", "Should this pool have a maximum amount of spawnable clones?");
+			Draw("Recycle", "If the pool reaches capacity, should new spawns force older ones to despawn?");
+			Draw("Persist", "Should this pool be marked as DontDestroyOnLoad?");
+			Draw("Stamp", "Should the spawned clones have their clone index appended to their name?");
+			Draw("Warnings", "Should detected issues be output to the console?");
+
+			EditorGUILayout.Separator();
+
+			EditorGUI.BeginDisabledGroup(true);
+				EditorGUILayout.IntField("Spawned", Target.Spawned);
+				EditorGUILayout.IntField("Despawned", Target.Despawned);
+				EditorGUILayout.IntField("Total", Target.Total);
+			EditorGUI.EndDisabledGroup();
+		}
+
+		[MenuItem("GameObject/Lean/Pool", false, 1)]
+		private static void CreateLocalization()
+		{
+			var gameObject = new GameObject(typeof(LeanGameObjectPool).Name);
+
+			Undo.RegisterCreatedObjectUndo(gameObject, "Create LeanGameObjectPool");
+
+			gameObject.AddComponent<LeanGameObjectPool>();
+
+			Selection.activeGameObject = gameObject;
+		}
+	}
+}
+#endif

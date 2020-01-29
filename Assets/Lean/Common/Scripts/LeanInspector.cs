@@ -130,14 +130,8 @@ namespace Lean.Common
 			return true;
 		}
 
-		protected bool DrawExpand(ref bool expand, string propertyPath, string overrideTooltip = null, string overrideText = null)
+		public static void DrawExpand(ref bool expand, Rect rect)
 		{
-			var rect     = Reserve();
-			var property = serializedObject.FindProperty(propertyPath);
-
-			customContent.text    = string.IsNullOrEmpty(overrideText   ) == false ? overrideText    : property.displayName;
-			customContent.tooltip = string.IsNullOrEmpty(overrideTooltip) == false ? overrideTooltip : property.tooltip;
-
 			if (expandStyle == null)
 			{
 				expandStyle = new GUIStyle(EditorStyles.miniLabel); expandStyle.alignment = TextAnchor.MiddleRight;
@@ -147,6 +141,17 @@ namespace Lean.Common
 			{
 				expand = !expand;
 			}
+		}
+
+		protected bool DrawExpand(ref bool expand, string propertyPath, string overrideTooltip = null, string overrideText = null)
+		{
+			var rect     = Reserve();
+			var property = serializedObject.FindProperty(propertyPath);
+
+			customContent.text    = string.IsNullOrEmpty(overrideText   ) == false ? overrideText    : property.displayName;
+			customContent.tooltip = string.IsNullOrEmpty(overrideTooltip) == false ? overrideTooltip : property.tooltip;
+
+			DrawExpand(ref expand, rect);
 
 			EditorGUI.BeginChangeCheck();
 

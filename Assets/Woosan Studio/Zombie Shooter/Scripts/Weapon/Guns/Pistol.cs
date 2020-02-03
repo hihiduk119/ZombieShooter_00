@@ -8,17 +8,19 @@ namespace WoosanStudio.ZombieShooter
 {
     public class Pistol : MonoBehaviour , IWeapon ,  IGun
     {
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         private ProjectileLauncher _projectileLauncher;
         public ProjectileLauncher ProjectileLauncher { get => _projectileLauncher; set => _projectileLauncher = value; }
 
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun.IGunSettings Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         private GunSettings _gunSettings;
         public GunSettings GunSettings { get => _gunSettings; set => _gunSettings = value; }
 
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGunActions Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun.IReloadEvent Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         [SerializeField] ReloadEvent _reloadEvent = new ReloadEvent();
         public ReloadEvent ReloadEvent { get => _reloadEvent; set => _reloadEvent = value; }
 
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IAttackAction Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeapon.IAttackAction Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         public UnityAction AttackAction { get; set; }
 
 
@@ -66,27 +68,6 @@ namespace WoosanStudio.ZombieShooter
             //Debug.Log("Pistol.Fire() ammo => " + _gunStat.CurrentAmmo);
         }
 
-        //void Test(float gaga)
-        //{
-        //    Debug.Log("Test gaga = " + gaga);
-        //}
-
-        /// <summary>
-        /// 발사 중지
-        /// </지mmary>
-        //public void StopFire()
-        //{
-            
-        //}
-
-        /// <summary>
-        /// 재장전
-        /// </summary>
-        //void Reload()
-        //{
-        //    FullOfAmmo();
-        //}
-
         /// <summary>
         /// 탄약 가득 채움
         /// </summary>
@@ -124,7 +105,12 @@ namespace WoosanStudio.ZombieShooter
 
         public void Attack()
         {
-            throw new System.NotImplementedException();
+            
+        }
+
+        public void Stop()
+        {
+
         }
 
         public IWeaponStat GetWeaponStat()
@@ -132,29 +118,20 @@ namespace WoosanStudio.ZombieShooter
             return (IWeaponStat)GunSettings;
         }
 
-        public void Initialize()
-        {
-            Debug.Log("Gun Initialize");
-            FullOfAmmo();
-        }
 
-        public void Stop()
-        {
-            throw new System.NotImplementedException();
-        }
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 
         public void SetInputEventHandler(IInputEvents inputEvents)
         {
             ProjectileLauncher.SetInputEventHandler(inputEvents);
         }
 
-
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IReloadAction Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-        //public void ConnectReloadEvent(IReloadEventSocket reloadEventSocket)
-        //{
-        //    reloadEventSocket.SetReloadEvent((IReloadEvent)this);
-        //}
+        public void Initialize()
+        {
+            Debug.Log("Gun Initialize");
+            FullOfAmmo();
+        }
     }
 }
 

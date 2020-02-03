@@ -6,53 +6,132 @@ using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class Shotgun : MonoBehaviour//, IWeapon, IProjectileLauncher
+    public class Shotgun : MonoBehaviour, IWeapon, IGun
     {
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         private ProjectileLauncher _projectileLauncher;
         public ProjectileLauncher ProjectileLauncher { get => _projectileLauncher; set => _projectileLauncher = value; }
 
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun.IGunSettings Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         private GunSettings _gunSettings;
         public GunSettings GunSettings { get => _gunSettings; set => _gunSettings = value; }
 
-        public UnityAction AmmoOutActionHandler { get; set; }
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun.IReloadEvent Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        [SerializeField] ReloadEvent _reloadEvent = new ReloadEvent();
+        public ReloadEvent ReloadEvent { get => _reloadEvent; set => _reloadEvent = value; }
 
-        void Start()
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeapon.IAttackAction Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        public UnityAction AttackAction { get; set; }
+
+
+        //캐쉬용
+        IGunStat _gunStat;
+
+
+        void Awake()
         {
-            //탄이 비었을때 해당 액션 호출.
-            //_gunSettings.AmmoOutActionHandler += Reload;
-            AmmoOutActionHandler += Reload;
+            //생성시 런쳐 자동으로 생성
+            _projectileLauncher = gameObject.AddComponent<ProjectileLauncher>();
+
+            //액션 등록
+            AttackAction += FireControl;
+            //발사 런처에 발사할때 마다 AttackAction 호출하게 등록
+            ProjectileLauncher.TriggerEvent.AddListener(AttackAction);
         }
+
+        /// <summary>
+        /// 사격을 통제함.
+        /// </summary>
+        void FireControl()
+        {
+            if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
+
+            //Debug.Log("CurrentAmmo [" + _gunStat.CurrentAmmo + "]");
+
+            if (_gunStat.CurrentAmmo > 0)
+            {
+                UseAmmo();
+
+            }
+            else
+            {
+                //사격 중지
+                ProjectileLauncher.StopFiring();
+
+                //Debug.Log("ReloadEvent!! reloadTime = [" + GunSettings.ReloadTime + "]");
+
+                //재장전 호출 
+                ReloadEvent.Invoke(GunSettings.ReloadTime);
+
+                //탄약 재장전
+                FullOfAmmo();
+            }
+            //Debug.Log("Pistol.Fire() ammo => " + _gunStat.CurrentAmmo);
+        }
+
+        /// <summary>
+        /// 탄약 가득 채움
+        /// </summary>
+        public void FullOfAmmo()
+        {
+            if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
+            _gunStat.CurrentAmmo = _gunStat.MaxAmmo;
+        }
+
+        /// <summary>
+        /// 탄 사용 (기본 값은 1)
+        /// </summary>
+        /// <param name="value">해당 값에 의해 탄소모 값 증가</param>
+        public void UseAmmo(int value = 1)
+        {
+            if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
+            _gunStat.CurrentAmmo -= value;
+        }
+
+        /// <summary>
+        /// 발사 런처의 액션들을 가져오기.
+        /// </summary>
+        /// <returns></returns>
+        public IProjectileLauncherEvents GetProjectileLauncherEvents()
+        {
+            return (IProjectileLauncherEvents)_projectileLauncher;
+        }
+
+        public IInputEvents GetInput()
+        {
+            return null;
+        }
+
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeapon Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         public void Attack()
         {
-            _projectileLauncher.Fire();
-            UseAmmo(GunSettings);
+
         }
 
-        /// <summary>
-        /// 재장전 액션
-        /// </summary>
-        public void Reload()
+        public void Stop()
         {
 
         }
 
-        /// <summary>
-        /// 재장전
-        /// </summary>
-        public void ReloadAmmo(IGunStat gunStat)
+        public IWeaponStat GetWeaponStat()
         {
-            gunStat.CurrentAmmo = gunStat.MaxAmmo;
+            return (IWeaponStat)GunSettings;
         }
 
-        /// <summary>
-        /// 탄 사용
-        /// </summary>
-        public void UseAmmo(IGunStat gunStat)
-        {
-            gunStat.CurrentAmmo--;
 
-            if (gunStat.CurrentAmmo == 0) { AmmoOutActionHandler.Invoke(); }
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+        public void SetInputEventHandler(IInputEvents inputEvents)
+        {
+            ProjectileLauncher.SetInputEventHandler(inputEvents);
+        }
+
+        public void Initialize()
+        {
+            Debug.Log("Gun Initialize");
+            FullOfAmmo();
         }
     }
 }

@@ -22,7 +22,29 @@ namespace WoosanStudio.ZombieShooter
             leanGameObjectPool.Prefab = prefab;
             leanGameObjectPool.Preload = preload;
             leanGameObjectPool.Capacity = capacity;
-            leanGameObjectPool.Notification = LeanGameObjectPool.NotificationType.IPoolable;
+            //leanGameObjectPool.Notification = LeanGameObjectPool.NotificationType.IPoolable;
+            leanGameObjectPool.Recycle = true;
+            leanGameObjectPool.Warnings = true;
+
+            leanGameObjectPool.PreloadAll();
+
+            return (IObjectPool)leanGameObjectPool;
+        }
+
+        public IObjectPool MakePool(Transform parent, GameObject prefab,string name, Vector3 position, Quaternion rotation, int preload, int capacity)
+        {
+            GameObject objectPool = new GameObject("[ObjectPool] " + prefab.name +"_"+ name);
+            objectPool.transform.parent = parent;
+            objectPool.transform.position = position;
+            objectPool.transform.rotation = rotation;
+
+            LeanGameObjectPool leanGameObjectPool = objectPool.AddComponent<LeanGameObjectPool>();
+
+            //세부 세팅
+            leanGameObjectPool.Prefab = prefab;
+            leanGameObjectPool.Preload = preload;
+            leanGameObjectPool.Capacity = capacity;
+            //leanGameObjectPool.Notification = LeanGameObjectPool.NotificationType.IPoolable;
             leanGameObjectPool.Recycle = true;
             leanGameObjectPool.Warnings = true;
 

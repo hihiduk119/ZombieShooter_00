@@ -43,19 +43,17 @@ namespace WoosanStudio.ZombieShooter
             switch (type)
             {
                 case 0:
-                    //_projectileLauncher = _weapon.AddComponent<Pistol>();
                     _weapon.AddComponent<Pistol>();
-                    Debug.Log("Make pistol.cs and ProjectileLauncher.cs");
                     iGun = _iGun = (IGun)_weapon.GetComponent<Pistol>();
                     _iWeapon = (IWeapon)_weapon.GetComponent<Pistol>();
                     break;
                 case 1:
-                    //_projectileLauncher = _weapon.AddComponent<AssaultRifle>();
-                    //_iWeapon = _weapon.GetComponent<AssaultRifle>();
+                    
                     break;
                 case 2:
-                    //_projectileLauncher = _weapon.AddComponent<Shotgun>();
-                    //_iWeapon = _weapon.GetComponent<Shotgun>();
+                    _weapon.AddComponent<Shotgun>();
+                    iGun = _iGun = (IGun)_weapon.GetComponent<Shotgun>();
+                    _iWeapon = (IWeapon)_weapon.GetComponent<Shotgun>();
                     break;
                 case 3:
                     //_projectileLauncher = _weapon.AddComponent<LaserRifle>();

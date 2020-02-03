@@ -24,6 +24,7 @@ public class destroyMe : MonoBehaviour{
 
         if (timer >= deathtimer)
         {
+            //[Object Pool]
             //Destroy(gameObject);
             gameObject.SetActive(false);
 

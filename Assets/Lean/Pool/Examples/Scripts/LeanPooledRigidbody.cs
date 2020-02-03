@@ -10,11 +10,14 @@ namespace Lean.Pool.Examples
 	{
 		public void OnSpawn()
 		{
+            Debug.Log("Hi OnSpawn");
 		}
 
 		public void OnDespawn()
 		{
-			var rigidbody = GetComponent<Rigidbody>();
+            Debug.Log("Hi OnDespawn");
+
+            var rigidbody = GetComponent<Rigidbody>();
 
 			rigidbody.velocity        = Vector3.zero;
 			rigidbody.angularVelocity = Vector3.zero;

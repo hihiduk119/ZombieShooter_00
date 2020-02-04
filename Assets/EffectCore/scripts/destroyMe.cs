@@ -13,6 +13,11 @@ public class destroyMe : MonoBehaviour{
         _particleSystem = this.GetComponent<ParticleSystem>();
     }
 
+    private void OnEnable()
+    {
+        Reset();
+    }
+
     private void Reset()
     {
         timer = 0;

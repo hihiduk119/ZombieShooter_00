@@ -82,10 +82,10 @@ public class ExplodingProjectile : MonoBehaviour
             thisRigidbody.AddForce(transform.forward * projectileSpeed);
         }
 
-        if (LookRotation && timer >= 0.05f)
-        {
-            transform.rotation = Quaternion.LookRotation(thisRigidbody.velocity);
-        }
+        //if (LookRotation && timer >= 0.05f)
+        //{
+        //    transform.rotation = Quaternion.LookRotation(thisRigidbody.velocity);
+        //}
 
         CheckCollision(previousPosition);
 

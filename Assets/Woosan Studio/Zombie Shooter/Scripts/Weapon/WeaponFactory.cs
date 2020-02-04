@@ -17,7 +17,6 @@ namespace WoosanStudio.ZombieShooter
         //캐슁 데이타
         GameObject _weapon;
 
-
         IWeapon _iWeapon;
         IGun _iGun;
 
@@ -48,7 +47,9 @@ namespace WoosanStudio.ZombieShooter
                     _iWeapon = (IWeapon)_weapon.GetComponent<Pistol>();
                     break;
                 case 1:
-                    
+                    _weapon.AddComponent<AssaultRifle>();
+                    iGun = _iGun = (IGun)_weapon.GetComponent<AssaultRifle>();
+                    _iWeapon = (IWeapon)_weapon.GetComponent<AssaultRifle>();
                     break;
                 case 2:
                     _weapon.AddComponent<Shotgun>();
@@ -56,8 +57,9 @@ namespace WoosanStudio.ZombieShooter
                     _iWeapon = (IWeapon)_weapon.GetComponent<Shotgun>();
                     break;
                 case 3:
-                    //_projectileLauncher = _weapon.AddComponent<LaserRifle>();
-                    //_iWeapon = _weapon.GetComponent<LaserRifle>();
+                    _weapon.AddComponent<LaserRifle>();
+                    iGun = _iGun = (IGun)_weapon.GetComponent<LaserRifle>();
+                    _iWeapon = (IWeapon)_weapon.GetComponent<LaserRifle>();
                     break;
             }
 

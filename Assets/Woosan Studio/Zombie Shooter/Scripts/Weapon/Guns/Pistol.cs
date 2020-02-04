@@ -44,15 +44,14 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void FireControl()
         {
+            //호출시 이미 탄이 발사 되었기 때문에 탄사용 먼저 호출.
+            UseAmmo();
+
             if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
 
-            //Debug.Log("CurrentAmmo [" + _gunStat.CurrentAmmo + "]");
+            Debug.Log("Max [" + _gunStat.MaxAmmo + "]   CurrentAmmo [" + _gunStat.CurrentAmmo + "]");
 
-            if (_gunStat.CurrentAmmo > 0)
-            {
-                UseAmmo();
-                
-            } else 
+            if (_gunStat.CurrentAmmo == 0)
             {
                 //사격 중지
                 ProjectileLauncher.StopFiring();
@@ -64,6 +63,8 @@ namespace WoosanStudio.ZombieShooter
 
                 //탄약 재장전
                 FullOfAmmo();
+
+                Debug.Log("Reload!!");
             }
             //Debug.Log("Pistol.Fire() ammo => " + _gunStat.CurrentAmmo);
         }
@@ -101,8 +102,8 @@ namespace WoosanStudio.ZombieShooter
             return null;
         }
 
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeapon Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeapon Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         public void Attack()
         {
             
@@ -120,8 +121,6 @@ namespace WoosanStudio.ZombieShooter
 
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
         public void SetInputEventHandler(IInputEvents inputEvents)
         {
             ProjectileLauncher.SetInputEventHandler(inputEvents);

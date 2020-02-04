@@ -52,7 +52,6 @@ namespace WoosanStudio.ZombieShooter
         IObjectPool _shellPool;
         IObjectPool _muzzlePool;
         IObjectPool _bombPool;
-        //List<IObjectPool> _bombPoolList = new List<IObjectPool>();
         IObjectPool _impactPool;
 
 
@@ -117,17 +116,11 @@ namespace WoosanStudio.ZombieShooter
                 
             _muzzlePool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation, 10, 10);
 
-            
-
             //샷건 사용시 탄 생성은 샷 갯수 만큼 생성
             if (projectileSetting.shotgunBehavior)
             {
 
                 _bombPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.gameObject, shotgunLocator[0].position, shotgunLocator[0].rotation, 10 * projectileSetting.shotgunPellets, 10 * projectileSetting.shotgunPellets);
-                //for (int i = 0; i < projectileSetting.shotgunPellets; i++)
-                //{
-                //    _bombPoolList.Add(_bombPool);
-                //} 
             }
             else {
                 //오브젝트 풀 생성전 세팅
@@ -230,11 +223,13 @@ namespace WoosanStudio.ZombieShooter
                 for (int i = 0; i < projectileSetting.shotgunPellets; i++)
                 {
                     Rigidbody rocketInstanceShotgun;
-                    rocketInstanceShotgun = Instantiate(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation) as Rigidbody;
-                    rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max));
+                    //rocketInstanceShotgun = Instantiate(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation) as Rigidbody;
+                    //rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max));
                     //[Object Pool]
-                    //Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation);
-                    //Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation);
+                    rocketInstanceShotgun = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation);
+                    //rocketInstanceShotgun = ObjectPoolManager.Instance.Spawn<Rigidbody>(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation);
+                    rocketInstanceShotgun.velocity = Vector3.zero;
+                    rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max));
                     //_bombPoolList[i].Spawn();
                 }
             } else

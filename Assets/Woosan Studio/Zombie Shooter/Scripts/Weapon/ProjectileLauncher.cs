@@ -119,7 +119,6 @@ namespace WoosanStudio.ZombieShooter
             //샷건 사용시 탄 생성은 샷 갯수 만큼 생성
             if (projectileSetting.shotgunBehavior)
             {
-
                 _bombPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.gameObject, shotgunLocator[0].position, shotgunLocator[0].rotation, 10 * projectileSetting.shotgunPellets, 10 * projectileSetting.shotgunPellets);
             }
             else {
@@ -162,8 +161,6 @@ namespace WoosanStudio.ZombieShooter
                     {
                         Fire();
                         firingTimer = 0;
-
-                        
                     }
                 }
 
@@ -212,7 +209,7 @@ namespace WoosanStudio.ZombieShooter
             //총구 들림
             //if (MuzzleFlip) { recoilAnimator.SetTrigger("recoil_trigger"); }
 
-            //Rigidbody rocketInstance;
+            Rigidbody rocketInstance;
             //rocketInstance = Instantiate(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation) as Rigidbody;
             
             // Quaternion.Euler(0,90,0)
@@ -225,17 +222,20 @@ namespace WoosanStudio.ZombieShooter
                     Rigidbody rocketInstanceShotgun;
                     //rocketInstanceShotgun = Instantiate(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation) as Rigidbody;
                     //rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max));
-                    //[Object Pool]
+                    //[Object Pool] * 제대로 할려면 인터페이스로 간접 접근해야 하지만 복잡해서 일단 직접 접근
                     rocketInstanceShotgun = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation);
-                    //rocketInstanceShotgun = ObjectPoolManager.Instance.Spawn<Rigidbody>(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation);
-                    rocketInstanceShotgun.velocity = Vector3.zero;
+                    rocketInstanceShotgun.velocity = Vector3.zero;//가속도 초기화
                     rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max));
                     //_bombPoolList[i].Spawn();
                 }
             } else
             {
                 //[Object Pool]
-                _bombPool.Spawn();
+
+                rocketInstance = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation);
+                rocketInstance.velocity = Vector3.zero;//가속도 초기화
+                rocketInstance.AddForce(spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max));
+                //_bombPool.Spawn();
             }
 
             //if (Torque)

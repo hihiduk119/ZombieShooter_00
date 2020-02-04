@@ -44,14 +44,16 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void FireControl()
         {
+            //호출시 이미 탄이 발사 되었기 때문에 탄사용 먼저 호출.
+            UseAmmo();
+
             if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
 
-            //Debug.Log("CurrentAmmo [" + _gunStat.CurrentAmmo + "]");
+            Debug.Log("Max ["+ _gunStat .MaxAmmo+ "]   CurrentAmmo [" + _gunStat.CurrentAmmo + "]");
 
             if (_gunStat.CurrentAmmo > 0)
             {
-                UseAmmo();
-
+                
             }
             else
             {

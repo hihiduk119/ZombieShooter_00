@@ -10,7 +10,6 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField] private float stoppingDistance =3f;
         [SerializeField] private bool useAi = false;
 
-
         public bool UseAi { get => useAi; }
         public float TurnSpeed { get => turnSpeed; }
         public float MoveSpeed { get => moveSpeed; }

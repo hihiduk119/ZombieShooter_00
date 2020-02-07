@@ -18,25 +18,35 @@ namespace WoosanStudio.ZombieShooter
         private ICharacterInput characterInput;
         //캐릭터를 해당 입력에 의해 움직이는 부분.
         private ICharacterDrivingModule characterDrivingModule;
+        //캐릭터의 에니메이션을 조작하는 부분
+        private ICharacterAnimatorModule characterAnimatorModule;
 
         private void Awake()
         {
+            //입력부분 세팅
             characterInput = characterSettings.UseAi ?
                 new AiInput() as ICharacterInput :
                 new ControllerInput() as ICharacterInput;
+                
+                
 
+            //움직임부분 세팅 
             UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-
             characterDrivingModule = characterSettings.UseAi ?
-                new PlayerDrivingModule(characterInput, transform, characterSettings) as ICharacterDrivingModule :
-                new AiDrivingModule(agent,transform, target, characterSettings) as ICharacterDrivingModule;
+                new AiDrivingModule(agent, transform, target, characterSettings) as ICharacterDrivingModule :
+                new PlayerDrivingModule(characterInput, transform, characterSettings) as ICharacterDrivingModule;
+                
 
+            //에니메이션부분 세팅
+            Animator animator = GetComponentInChildren<Animator>();
+            characterAnimatorModule = new ZombieAnimatorModule(animator) as ICharacterAnimatorModule;
         }
 
         private void Update()
         {
             characterInput.ReadInput();
             characterDrivingModule.Tick();
+            characterAnimatorModule.Move(characterDrivingModule.Speed);
         }
     }
 }

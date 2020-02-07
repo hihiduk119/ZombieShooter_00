@@ -12,6 +12,8 @@ namespace WoosanStudio.ZombieShooter
         private CharacterSettings _characterSettings;
         private NavMeshAgent _agent;
 
+        public float Speed { get => _agent.speed; }
+
         public AiDrivingModule(NavMeshAgent agent,Transform transform,Transform destination, CharacterSettings characterSettings)
         {
             _agent = agent;

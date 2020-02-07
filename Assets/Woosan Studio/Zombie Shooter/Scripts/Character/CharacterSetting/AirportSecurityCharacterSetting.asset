@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cf2335f88e5e436082cf0831d205a21, type: 3}
-  m_Name: AirportSecurity
+  m_Name: AirportSecurityCharacterSetting
   m_EditorClassIdentifier: 
   turnSpeed: 130
   moveSpeed: 10
+  stoppingDistance: 3
   useAi: 0

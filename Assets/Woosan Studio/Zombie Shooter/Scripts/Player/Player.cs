@@ -13,7 +13,10 @@ namespace WoosanStudio.ZombieShooter
         //인풋 액션
         IInputEvents _inputEvents;
         //ICameraShaker를 가져오기 위한 용도
-        public GameObject cameras;
+        public GameObject Shaker;
+        //무기 연결 부분
+        public Transform Joint;
+
         //카메라 쉐이커
         ICameraShaker _cameraShaker;
         //리로딩시 콜벡 액션 리스트
@@ -25,7 +28,7 @@ namespace WoosanStudio.ZombieShooter
 
         private void Awake()
         {
-            _cameraShaker = cameras.GetComponent<ICameraShaker>();
+            _cameraShaker = Shaker.GetComponent<ICameraShaker>();
             _inputEvents = GetComponent<IInputEvents>();
             _reloadActionList.Add(GetComponent<IReloadAction>());
         }
@@ -37,7 +40,7 @@ namespace WoosanStudio.ZombieShooter
             yield return new WaitForSeconds(0.2f);
 
             //키인풋으로 사격 컨트롤
-            _iWeapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker, _reloadActionList, ref _iGun, this.transform, 3);
+            _iWeapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker, _reloadActionList, ref _iGun, Joint, 1);
 
             yield return new WaitForSeconds(0.1f);
         }

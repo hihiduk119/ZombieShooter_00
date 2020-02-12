@@ -54,6 +54,8 @@ namespace WoosanStudio.ZombieShooter
         IObjectPool _bombPool;
         IObjectPool _impactPool;
 
+        private int poolMax = 30;
+
 
         void Start()
         {
@@ -97,7 +99,7 @@ namespace WoosanStudio.ZombieShooter
 
             if (projectileSetting.hasShells)
             {
-                _shellPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.shellPrefab, shellLocator.position, shellLocator.rotation, 20, 20);
+                _shellPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.shellPrefab, shellLocator.position, shellLocator.rotation, poolMax, poolMax);
             }
                 
             _muzzlePool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation, 4, 4);
@@ -105,14 +107,17 @@ namespace WoosanStudio.ZombieShooter
             //샷건 사용시 탄 생성은 샷 갯수 만큼 생성
             if (projectileSetting.shotgunBehavior)
             {
-                _bombPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.gameObject, shotgunLocator[0].position, shotgunLocator[0].rotation, 3 * projectileSetting.shotgunPellets, 3 * projectileSetting.shotgunPellets);
+                _bombPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.gameObject, shotgunLocator[0].position, shotgunLocator[0].rotation, poolMax * projectileSetting.shotgunPellets, poolMax * projectileSetting.shotgunPellets);
             }
             else {
                 //오브젝트 풀 생성전 세팅
-                _bombPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.gameObject, spawnLocator.position, spawnLocator.rotation, 10, 10);
+                _bombPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.gameObject, spawnLocator.position, spawnLocator.rotation, poolMax, poolMax);
+
             }
 
-            _impactPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.GetComponent<ExplodingProjectile>().impactPrefab, Vector3.zero, Quaternion.identity, 20, 20);
+            _impactPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.GetComponent<ExplodingProjectile>().impactPrefab, Vector3.zero, Quaternion.identity, poolMax, poolMax);
+
+            //rocketInstance = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation);
         }
 
         /// <summary>
@@ -176,6 +181,11 @@ namespace WoosanStudio.ZombieShooter
             if (_updateFrame != null) StopCoroutine(_updateFrame);
         }
 
+        void Update()
+        {
+            Debug.DrawRay(spawnLocator.position, spawnLocator.forward * 1000, Color.red);
+        }
+
         public void Fire()
         {
             TriggerEvent.Invoke();
@@ -220,6 +230,7 @@ namespace WoosanStudio.ZombieShooter
                 rocketInstance = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation);
                 rocketInstance.velocity = Vector3.zero;//가속도 초기화
                 rocketInstance.AddForce(spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max));
+
                 //_bombPool.Spawn();
             }
 

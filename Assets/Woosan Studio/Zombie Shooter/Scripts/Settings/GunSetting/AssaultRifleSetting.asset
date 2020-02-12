@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 1
   _name: AssaultRifle
-  _maxAmmo: 30
-  _level: 1
-  _reloadTime: 2
-  _prefab: {fileID: 863729631154490029, guid: 3897f9a3fadf048f387389ae71bf527c, type: 3}
-  _prefabInstance: {fileID: 0}
   _projectileSettings: {fileID: 11400000, guid: 22615d03967a8462c9c2c40f82d7d9ad,
     type: 2}
+  _prefab: {fileID: 863729631154490029, guid: 3897f9a3fadf048f387389ae71bf527c, type: 3}
+  _prefabInstance: {fileID: 0}
+  _level: 1
+  _damage: 0
+  _maxAmmo: 30
+  _currentAmmo: 15
+  _reloadTime: 2
+  _fireSpeed: 0

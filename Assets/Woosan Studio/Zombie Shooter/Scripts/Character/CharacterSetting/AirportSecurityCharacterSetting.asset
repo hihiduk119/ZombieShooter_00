@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSpeed: 130
   moveSpeed: 10
-  stoppingDistance: 3
-  useAi: 0
+  stoppingDistance: 8
+  useAi: 1

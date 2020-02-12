@@ -6,6 +6,7 @@ using System.Collections;
 public class ExplodingProjectile : MonoBehaviour
 {
     public GameObject impactPrefab;
+    //null임 사용 안함.
     public GameObject explosionPrefab;
     public float thrust;
 
@@ -15,6 +16,7 @@ public class ExplodingProjectile : MonoBehaviour
     private Collider thisCollider;
 
     public bool LookRotation = true;
+    //유도 미사일 모드임
     public bool Missile = false;
     public Transform missileTarget;
     public float projectileSpeed;
@@ -31,6 +33,8 @@ public class ExplodingProjectile : MonoBehaviour
     //오브젝트 풀
     public  WoosanStudio.ZombieShooter.IObjectPool ImpactPool;
 
+    //[쓸모 없는거 정리하자 존나 했갈린다.]
+    //
     void Start()
     {
         thisRigidbody = GetComponent<Rigidbody>();
@@ -45,14 +49,23 @@ public class ExplodingProjectile : MonoBehaviour
     //[Object Pool] 사용시 초기화용
     private void Reset()
     {
-        LookRotation = true;
-        Missile = false;
+        //LookRotation = true;
+        //Missile = false;
 
-        ignorePrevRotation = false;
+        //ignorePrevRotation = false;
 
-        explodeOnTimer = false;
-        explosionTimer = 0f;
-        timer = 0f;   
+        //explodeOnTimer = false;
+        ////explosionTimer = 0f;
+        //timer = 0f;
+
+        thisRigidbody.velocity = Vector3.zero;
+
+        transform.position = Vector3.zero;
+        transform.rotation = Quaternion.identity;
+
+        gameObject.SetActive(false);
+
+        Lean.Pool.LeanPool.Despawn(gameObject);
     }
 
     // Update is called once per frame
@@ -100,17 +113,19 @@ public class ExplodingProjectile : MonoBehaviour
         float dist = Vector3.Distance(transform.position, prevPos);
         if (Physics.Raycast(ray, out hit, dist))
         {
+
+            //Debug.Log("충돌 속도 = " + thisRigidbody.velocity);
             transform.position = hit.point;
             Quaternion rot = Quaternion.FromToRotation(Vector3.forward, hit.normal);
             Vector3 pos = hit.point;
             //Instantiate(impactPrefab, pos, rot);
             Lean.Pool.LeanPool.Spawn(impactPrefab, pos, rot);
 
+            //explodeOnTimer 는 시한 폭탁이고 Missile은 유도이기 때문에 둘다 사용 안함.
             if (!explodeOnTimer && Missile == false)
             {
                 //Destroy(gameObject);
                 //[Object Pool]
-                gameObject.SetActive(false);
                 Reset();
             }
             else if (Missile == true)
@@ -118,12 +133,18 @@ public class ExplodingProjectile : MonoBehaviour
                 thisCollider.enabled = false;
                 particleKillGroup.SetActive(false);
                 thisRigidbody.velocity = Vector3.zero;
-                Destroy(gameObject, 5);
+                //Destroy(gameObject, 5);
+                //[Object Pool]
+                Reset();
             }
 
         }
     }
 
+    /// <summary>
+    /// 사용 안하는데 만약 사용한다면 문제 있는거임
+    /// </summary>
+    /// <param name="collision"></param>
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag != "FX")
@@ -153,9 +174,16 @@ public class ExplodingProjectile : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// explosionPrefab 이 null이라 사용할 일이 없음
+    /// </summary>
     void Explode()
     {
-        Instantiate(explosionPrefab, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
-        Destroy(gameObject);
+        //[Object Pool]
+        //Instantiate(explosionPrefab, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+        //Destroy(gameObject);
+
+        Lean.Pool.LeanPool.Spawn(explosionPrefab, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+        Reset();
     }
 }

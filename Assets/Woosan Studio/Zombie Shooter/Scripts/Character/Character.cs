@@ -23,6 +23,14 @@ namespace WoosanStudio.ZombieShooter
 
         private void Awake()
         {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+
+            if (target == null)
+            {
+                Debug.Log("[error] Player Tag is null!! ");
+                return;
+            }
+
             //입력부분 세팅
             characterInput = characterSettings.UseAi ?
                 new AiInput() as ICharacterInput :
@@ -40,10 +48,19 @@ namespace WoosanStudio.ZombieShooter
             //에니메이션부분 세팅
             Animator animator = GetComponentInChildren<Animator>();
             characterAnimatorModule = new ZombieAnimatorModule(animator) as ICharacterAnimatorModule;
+
+            
+
+            Debug.Log("name = " + target.ToString());
         }
 
         private void Update()
         {
+            if (target == null) {
+                Debug.Log("[Player Tag is null] ");
+                return;
+            }
+
             characterInput.ReadInput();
             characterDrivingModule.Tick();
             characterAnimatorModule.Move(characterDrivingModule.Speed);

@@ -28,7 +28,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="parant">생성될 오브젝트의 부모</param>
         /// <param name="type">생성할 무기의 인덱스</param>
         /// <returns></returns>
-        public IWeapon MakeWeapon(IInputEvents inputEvents,ICameraShaker cameraShaker,List<IReloadAction> reloadActionList,ref IGun iGun , Transform parant,int type)
+        public IWeapon MakeWeapon(IInputEvents inputEvents,ICameraShaker cameraShaker,List<IReloadAction> reloadActionList,ref IGun iGun , Transform joint,int type)
         {
             //어떤 무기는 모델을 가지고 있으면 IHaveModel인터페이스를 상속 받기에 해당 인터페이스 호출.
             IHaveModel haveModel = _gunSettings[type];
@@ -36,7 +36,13 @@ namespace WoosanStudio.ZombieShooter
             //모델 인스턴스 생성 및 가져오기
             _weapon = haveModel.MakeModel();
             //인스턴스 부모 설정
-            _weapon.transform.parent = parant;
+            _weapon.transform.parent = joint;
+
+            //초기 위치 설정
+            _weapon.transform.localPosition = Vector3.zero;
+            _weapon.transform.localRotation = Quaternion.identity;
+
+            //Debug.Log("_weapon parent = " + _weapon.transform.parent.ToString());
 
             //인덱스 역
             switch (type)

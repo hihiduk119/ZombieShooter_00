@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//Lean pool 사용
+using Lean.Pool;
+
 public class destroyMe : MonoBehaviour{
 
     float timer;
-    public float deathtimer = 10;
+    public float deathtimer = 2;
+
+    //LeanGameObjectPool leanGameObjectPool;
 
     private ParticleSystem _particleSystem;
 
@@ -15,12 +20,32 @@ public class destroyMe : MonoBehaviour{
 
     private void OnEnable()
     {
-        Reset();
+        //Reset();
     }
 
+    /// <summary>
+    /// 파티클 재사용하기 위한 리/
+    /// </summary>
     private void Reset()
     {
         timer = 0;
+
+        //if(leanGameObjectPool != null)
+        //{
+        //    leanGameObjectPool.Despawn(gameObject, 0);
+        //}
+
+        transform.position = Vector3.zero;
+        transform.rotation = Quaternion.identity;
+
+        if (_particleSystem != null)
+        {
+            _particleSystem.Clear();
+            _particleSystem.Simulate(0.0f, true, true);
+            _particleSystem.Play();
+        }
+
+        gameObject.SetActive(false);
     }
 
     void Update ()
@@ -31,13 +56,6 @@ public class destroyMe : MonoBehaviour{
         {
             //[Object Pool]
             //Destroy(gameObject);
-            gameObject.SetActive(false);
-
-            if (_particleSystem != null)
-            {
-                _particleSystem.Stop();
-            }
-
             Reset();
         }
 	

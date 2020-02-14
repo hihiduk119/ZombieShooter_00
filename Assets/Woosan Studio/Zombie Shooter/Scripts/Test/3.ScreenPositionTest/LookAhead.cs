@@ -9,9 +9,9 @@ public class LookAhead : MonoBehaviour
 
     public void Look(Vector3 target)
     {
-        //transform.LookAt(target);
+        transform.LookAt(target);
 
-        Vector2 temp;
+        /*Vector2 temp;
 
         temp.x = UltimateJoystick.GetHorizontalAxis("LookAhead");
         temp.y = UltimateJoystick.GetVerticalAxis("LookAhead");
@@ -20,7 +20,7 @@ public class LookAhead : MonoBehaviour
 
         //180 - 360
         Vector3 rot = new Vector3(0, Vector2.Angle(new Vector2(-1f, 0f), temp) +180f, 0);
-        transform.rotation = Quaternion.Euler(rot);
+        transform.rotation = Quaternion.Euler(rot);*/
     }
 
     private void Update()

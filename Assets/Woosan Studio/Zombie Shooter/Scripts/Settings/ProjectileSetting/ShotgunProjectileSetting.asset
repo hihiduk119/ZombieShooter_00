@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: ShotgunProjectileSetting
   m_EditorClassIdentifier: 
   name: Goldfire Bullet Small Shotgun
-  bombPrefab: {fileID: 54453457801900860, guid: edc555170136714468e06ae43a7e0c86,
+  bombPrefab: {fileID: 54212628334827884, guid: d414b898c12e9b241917fe056bed92c7,
     type: 3}
-  muzzleflare: {fileID: 1584403288528622, guid: c0f719210fc9a4e4aa5ac190a6eb184e,
+  muzzleflare: {fileID: 1584403288528622, guid: a7f7e53efb9c16141af1c5631e25cbb8,
     type: 3}
-  min: 3000
-  max: 3500
+  min: 8000
+  max: 9500
   rapidFire: 1
   rapidFireCooldown: 0.4
   shotgunBehavior: 1

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Woosan Studio/Zombie Shooter/Scenes/3.ScreenPositionTest.unity
+    guid: d1feb4e21a24e4e3a908c42bb9d986f0
   m_configObjects: {}

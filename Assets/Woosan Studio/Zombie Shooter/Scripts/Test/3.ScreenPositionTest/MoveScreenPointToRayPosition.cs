@@ -50,7 +50,7 @@ public class MoveScreenPointToRayPosition : MonoBehaviour
     {
         if (!Activate) return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
 
             _ray = Camera.ScreenPointToRay(Input.mousePosition);

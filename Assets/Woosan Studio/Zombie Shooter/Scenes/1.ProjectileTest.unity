@@ -19530,7 +19530,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponFactory: {fileID: 209739460}
-  cameras: {fileID: 136485492}
+  Shaker: {fileID: 136485492}
+  Joint: {fileID: 1817994405}
 --- !u!4 &1817994405
 Transform:
   m_ObjectHideFlags: 0

@@ -20,7 +20,22 @@ public class destroyMe : MonoBehaviour{
 
     private void OnEnable()
     {
-        //Reset();
+        //timer = 0;
+
+        //transform.position = Vector3.zero;
+        //transform.rotation = Quaternion.identity;
+
+        //if (_particleSystem != null)
+        //{
+        //    _particleSystem.Clear();
+        //    _particleSystem.Simulate(0.0f, true, true);
+        //    _particleSystem.Play();
+        //}
+    }
+
+    private void OnDisable()
+    {
+        Reset();
     }
 
     /// <summary>
@@ -29,11 +44,6 @@ public class destroyMe : MonoBehaviour{
     private void Reset()
     {
         timer = 0;
-
-        //if(leanGameObjectPool != null)
-        //{
-        //    leanGameObjectPool.Despawn(gameObject, 0);
-        //}
 
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;

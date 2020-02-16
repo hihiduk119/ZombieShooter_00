@@ -15,11 +15,15 @@ namespace WoosanStudio.ZombieShooter
 
         public void Attack()
         {
+            if (_animator == null) return;
+
             _animator.SetTrigger("Attack");
         }
 
         public void Move(float speed)
         {
+            if (_animator == null) return;
+
             _animator.SetFloat("Speed", speed);
         }
     }

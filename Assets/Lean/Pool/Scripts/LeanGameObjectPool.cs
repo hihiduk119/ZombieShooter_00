@@ -13,6 +13,12 @@ namespace Lean.Pool
 	[AddComponentMenu(LeanPool.ComponentPathPrefix + "GameObject Pool")]
 	public class LeanGameObjectPool : MonoBehaviour, ISerializationCallbackReceiver , WoosanStudio.ZombieShooter.IObjectPool
     {
+		//[Object Pool]
+        public GameObject ThisGameObject { get => this.gameObject; set => throw new System.NotImplementedException(); }
+
+		private List<GameObject> _objectPool = new List<GameObject>();
+		public List<GameObject> ObjectPool { get => _objectPool; set => _objectPool = value; }
+
 		[System.Serializable]
 		public class Delay
 		{
@@ -165,8 +171,8 @@ namespace Lean.Pool
 			}
 		}
 
-		/// <summary>This will either spawn a previously despanwed/preloaded clone, recycle one, create a new one, or return null.</summary>
-		public void Spawn()
+        /// <summary>This will either spawn a previously despanwed/preloaded clone, recycle one, create a new one, or return null.</summary>
+        public void Spawn()
 		{
 			Spawn(transform.position, transform.rotation);
 		}

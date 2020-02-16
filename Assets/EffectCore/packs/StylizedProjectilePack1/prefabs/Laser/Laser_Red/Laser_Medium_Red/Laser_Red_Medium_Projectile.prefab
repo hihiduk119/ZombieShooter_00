@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4239690878856004}
   - component: {fileID: 198321677743315072}
   - component: {fileID: 199645086247226762}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: glow
   m_TagString: FX
   m_Icon: {fileID: 0}
@@ -4753,8 +4753,7 @@ GameObject:
   - component: {fileID: 54929995699331496}
   - component: {fileID: 114756686390696780}
   - component: {fileID: 114880781407873270}
-  - component: {fileID: -2700775739942405090}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Laser_Red_Medium_Projectile
   m_TagString: FX
   m_Icon: {fileID: 0}
@@ -9529,18 +9528,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactPrefab: {fileID: 1879272669879180, guid: 3241dfa7b63f0d04caca6fa14e4d6a64,
     type: 3}
-  explosionPrefab: {fileID: 0}
-  thrust: 0
   thisRigidbody: {fileID: 54929995699331496}
-  particleKillGroup: {fileID: 0}
-  LookRotation: 1
-  Missile: 0
-  missileTarget: {fileID: 0}
-  projectileSpeed: 0
-  projectileSpeedMultiplier: 0
-  ignorePrevRotation: 0
-  explodeOnTimer: 0
-  explosionTimer: 0
+  Force: {x: 0, y: 0, z: 0}
 --- !u!114 &114880781407873270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9621,18 +9610,6 @@ MonoBehaviour:
       m_NumAlphaKeys: 5
   applyChanges: 0
   Keep_applyChanges: 0
---- !u!114 &-2700775739942405090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523153560657062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a1fce775f0f5431aa35f9eef42d306a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1598420234293714
 GameObject:
   m_ObjectHideFlags: 0
@@ -9644,7 +9621,7 @@ GameObject:
   - component: {fileID: 4828562848980038}
   - component: {fileID: 33598952677386752}
   - component: {fileID: 23036372007100886}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: laserInner
   m_TagString: FX
   m_Icon: {fileID: 0}
@@ -9722,7 +9699,7 @@ GameObject:
   - component: {fileID: 4427731023424274}
   - component: {fileID: 198065747785229132}
   - component: {fileID: 199465885671886516}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: laserOuter
   m_TagString: FX
   m_Icon: {fileID: 0}

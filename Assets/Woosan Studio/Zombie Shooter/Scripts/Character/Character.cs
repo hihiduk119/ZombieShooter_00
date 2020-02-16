@@ -51,7 +51,7 @@ namespace WoosanStudio.ZombieShooter
 
             
 
-            Debug.Log("name = " + target.ToString());
+            //Debug.Log("name = " + target.ToString());
         }
 
         private void Update()

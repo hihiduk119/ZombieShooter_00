@@ -9,37 +9,23 @@ public class destroyMe : MonoBehaviour{
     float timer;
     public float deathtimer = 2;
 
-    //LeanGameObjectPool leanGameObjectPool;
-
+    //[Object Pool]
     private ParticleSystem _particleSystem;
 
+    //[Object Pool]
     private void Awake()
     {
         _particleSystem = this.GetComponent<ParticleSystem>();
     }
 
-    private void OnEnable()
-    {
-        //timer = 0;
-
-        //transform.position = Vector3.zero;
-        //transform.rotation = Quaternion.identity;
-
-        //if (_particleSystem != null)
-        //{
-        //    _particleSystem.Clear();
-        //    _particleSystem.Simulate(0.0f, true, true);
-        //    _particleSystem.Play();
-        //}
-    }
-
-    private void OnDisable()
-    {
-        Reset();
-    }
+    //[Object Pool]
+    //private void OnDisable()
+    //{
+    //    Reset();
+    //}
 
     /// <summary>
-    /// 파티클 재사용하기 위한 리/
+    /// 파티클 재사용하기 위한 리//[Object Pool]
     /// </summary>
     private void Reset()
     {
@@ -56,6 +42,8 @@ public class destroyMe : MonoBehaviour{
         }
 
         gameObject.SetActive(false);
+
+        Lean.Pool.LeanPool.Despawn(gameObject);
     }
 
     void Update ()
@@ -65,9 +53,9 @@ public class destroyMe : MonoBehaviour{
         if (timer >= deathtimer)
         {
             //[Object Pool]
-            //Destroy(gameObject);
             Reset();
+            //Destroy(gameObject);
+            //Debug.Log("Die");
         }
-	
 	}
 }

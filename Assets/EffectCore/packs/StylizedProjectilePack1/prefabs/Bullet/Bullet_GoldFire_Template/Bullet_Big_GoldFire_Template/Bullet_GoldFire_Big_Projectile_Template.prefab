@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4231332468481010}
   - component: {fileID: 198474663198814734}
   - component: {fileID: 199454646651633794}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4804,7 +4804,7 @@ GameObject:
   - component: {fileID: 4109576336253410}
   - component: {fileID: 198782294973209882}
   - component: {fileID: 199460809115817730}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: flarespikes_thin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9546,7 +9546,7 @@ GameObject:
   - component: {fileID: 114409874962607200}
   - component: {fileID: 199358154026892044}
   - component: {fileID: 198114610253404294}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bullet_GoldFire_Big_Projectile_Template
   m_TagString: FX
   m_Icon: {fileID: 0}
@@ -9712,18 +9712,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactPrefab: {fileID: 1879272669879180, guid: 52baafc6c69151e418a228e14e1bd356,
     type: 3}
-  explosionPrefab: {fileID: 0}
-  thrust: 0
   thisRigidbody: {fileID: 54212628334827884}
-  particleKillGroup: {fileID: 0}
-  LookRotation: 1
-  Missile: 0
-  missileTarget: {fileID: 0}
-  projectileSpeed: 0
-  projectileSpeedMultiplier: 0
-  ignorePrevRotation: 0
-  explodeOnTimer: 0
-  explosionTimer: 0
+  Force: {x: 0, y: 0, z: 0}
 --- !u!199 &199358154026892044
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -14456,7 +14446,7 @@ GameObject:
   - component: {fileID: 4463432083314552}
   - component: {fileID: 198248423902307404}
   - component: {fileID: 199560987669873558}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

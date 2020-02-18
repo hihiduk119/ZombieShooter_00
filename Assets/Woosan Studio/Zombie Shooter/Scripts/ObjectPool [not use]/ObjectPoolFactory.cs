@@ -27,7 +27,7 @@ namespace WoosanStudio.ZombieShooter
 
             leanGameObjectPool.PreloadAll();
 
-            Debug.Log("count = " + leanGameObjectPool.ObjectPool.Count);
+            //Debug.Log("count = " + leanGameObjectPool.ObjectPool.Count);
 
             return (IObjectPool)leanGameObjectPool;
         }

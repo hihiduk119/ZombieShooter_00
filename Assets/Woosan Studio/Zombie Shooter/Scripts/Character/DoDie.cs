@@ -12,8 +12,13 @@ namespace WoosanStudio.ZombieShooter
         public Regdoll Regdoll;
         public NavMeshController NavMeshController;
         public GameObject NavMeshModel;
+        public CopyComponets CopyComponets;
 
         public Transform Accident;
+
+        //Test Code
+        public GameObject Prefab;
+        public Boom Boom;
 
         private void Awake()
         {
@@ -24,16 +29,36 @@ namespace WoosanStudio.ZombieShooter
         public void Die()
         {
             NavMeshController.Stop();
-            Regdoll.ExplosionForce(Accident.position);
+            CopyComponets.Copy();
             NavMeshModel.SetActive(false);
+
+            Regdoll.SetActive(true);
+            Boom.Pow();
+
+            //Test Code
+            MakeObject(Accident.position);
+        }
+
+        //Test Code
+        void MakeObject(Vector3 position)
+        {   
+            Transform tf = (Instantiate(Prefab) as GameObject).transform;
+            tf.position = position;
         }
 
         void Update()
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                Debug.Log("hi~");
+                Debug.Log("Click left");
                 Die();
+            }
+
+            if (Input.GetButtonDown("Fire2"))
+            {
+                Debug.Log("Click right");
+                Regdoll.SetActive(true);
+                Boom.Pow();
             }
         }
     }

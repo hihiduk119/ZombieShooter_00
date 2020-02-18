@@ -22,15 +22,24 @@ namespace WoosanStudio.ZombieShooter
         //리로딩시 콜벡 액션 리스트
         List<IReloadAction> _reloadActionList = new List<IReloadAction>();
 
+
         //캐슁용
         IWeapon _iWeapon;
         IGun _iGun;
+
+        //프로퍼티 형태의 클래스
+        private DoRoll _doRoll;
+        public Animator _animator;
 
         private void Awake()
         {
             _cameraShaker = Shaker.GetComponent<ICameraShaker>();
             _inputEvents = GetComponent<IInputEvents>();
             _reloadActionList.Add(GetComponent<IReloadAction>());
+
+            //Roll 에니메이션 세팅
+            _doRoll = FindObjectOfType<DoRoll>();
+            _doRoll.SetAnimator(_animator);
         }
 
         IEnumerator Start()

@@ -49,9 +49,6 @@ namespace WoosanStudio.ZombieShooter
             Animator animator = GetComponentInChildren<Animator>();
             characterAnimatorModule = new ZombieAnimatorModule(animator) as ICharacterAnimatorModule;
 
-            
-
-            //Debug.Log("name = " + target.ToString());
         }
 
         private void Update()

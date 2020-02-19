@@ -13,6 +13,8 @@ public class EnemyHealth : MonoBehaviour {
     }
 
 	void Update () {
+        if (anim == null) return;
+
         if (Health <= 0)
         {
             anim.Play("Death");

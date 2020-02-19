@@ -58,9 +58,9 @@ namespace WoosanStudio.ZombieShooter
                 return;
             }
 
-            //characterInput.ReadInput();
-            //characterDrivingModule.Tick();
-            //characterAnimatorModule.Move(characterDrivingModule.Speed);
+            characterInput.ReadInput();
+            characterDrivingModule.Tick();
+            characterAnimatorModule.Move(characterDrivingModule.Speed);
         }
     }
 }

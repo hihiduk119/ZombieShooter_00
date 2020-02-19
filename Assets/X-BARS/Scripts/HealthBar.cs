@@ -28,6 +28,8 @@ public class HealthBar : MonoBehaviour {
 	private Camera cam;
     private GameObject healthbarRoot;
 	[HideInInspector]public Canvas canvas;
+	//Ma Add
+	public Gradient gradient;
 	
 	void Awake()
 	{
@@ -37,10 +39,10 @@ public class HealthBar : MonoBehaviour {
 		
 		for (int i = 0; i < canvases.Length; i++)
 		{
-			if(canvases[i].enabled && canvases[i].gameObject.activeSelf && canvases[i].renderMode == RenderMode.ScreenSpaceOverlay)
-				canvas = canvases[i];
-			else
-				Debug.LogError("There is no Canvas with RenderMode: ScreenSpace - Overlay in the scene or it's disabled, please create one - GameObject->UI->Canvas or enable existing");
+            if (canvases[i].enabled && canvases[i].gameObject.activeSelf && canvases[i].renderMode == RenderMode.ScreenSpaceOverlay)
+                canvas = canvases[i];
+			//else
+				//Debug.LogError("There is no Canvas with RenderMode: ScreenSpace - Overlay in the scene or it's disabled, please create one - GameObject->UI->Canvas or enable existing");
 		}
 
         defaultHealth = healthLink.Value;
@@ -81,24 +83,34 @@ public class HealthBar : MonoBehaviour {
 		canvasGroup.blocksRaycasts = false;
 		cam = Camera.main;
 	}
-	
+
 	// Update is called once per frame
-	void FixedUpdate () {
-		if(!HealthbarPrefab)
+	void FixedUpdate() {
+		if (!HealthbarPrefab)
 			return;
-		
+
 		HealthbarPrefab.transform.position = cam.WorldToScreenPoint(new Vector3(thisT.position.x, thisT.position.y + yOffset, thisT.position.z));
-		healthVolume.fillAmount =  healthLink.Value/defaultHealth;
+		healthVolume.fillAmount = healthLink.Value / defaultHealth;
+
+		//Debug.Log("healthVolume = " + healthVolume.fillAmount);
 
 		float maxDifference = 0.1F;
 
-
-		if(backGround.fillAmount > healthVolume.fillAmount + maxDifference)
-			backGround.fillAmount = healthVolume.fillAmount + maxDifference;
-        if (backGround.fillAmount > healthVolume.fillAmount)
-            backGround.fillAmount -= (1 / (defaultHealth / 100)) * Time.deltaTime;
-        else
-            backGround.fillAmount = healthVolume.fillAmount;
+		if (backGround.fillAmount > healthVolume.fillAmount + maxDifference)
+		{
+			//backGround.fillAmount = healthVolume.fillAmount + maxDifference;
+			//Debug.Log("[0] backGround.fillAmount = " + backGround.fillAmount);
+		}
+		if (backGround.fillAmount > healthVolume.fillAmount)
+		{
+			backGround.fillAmount -= (defaultHealth / 100) * Time.deltaTime * 0.33f;
+			//Debug.Log("[1] backGround.fillAmount = " + backGround.fillAmount);
+		}
+		else
+		{
+			backGround.fillAmount = healthVolume.fillAmount;
+			//Debug.Log("[2] backGround.fillAmount = " + backGround.fillAmount);
+		}
 	}
 	
 	

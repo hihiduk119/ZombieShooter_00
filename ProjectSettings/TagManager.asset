@@ -8,6 +8,7 @@ TagManager:
   - World
   - Target
   - Barrier
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - AI
   - Barrier
   - Player Projectile
-  - 
+  - UI Health
   - 
   - 
   - 

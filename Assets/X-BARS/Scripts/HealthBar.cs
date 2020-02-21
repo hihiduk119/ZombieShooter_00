@@ -28,27 +28,49 @@ public class HealthBar : MonoBehaviour {
 	private Camera cam;
     private GameObject healthbarRoot;
 	[HideInInspector]public Canvas canvas;
-	//Ma Add
-	public Gradient gradient;
-	
+	//add ma start [캔버스 강제로 넣는 코드 추가]
+	private bool ableKeyTag = false;
+	public string keyTag;
+	//add ma end
+
 	void Awake()
 	{
 		Canvas[] canvases = (Canvas[])FindObjectsOfType(typeof(Canvas));
 		if (canvases.Length == 0)
 			Debug.LogError("There is no Canvas in the scene or Canvas GameObject isn't active, please create one - GameObject->UI->Canvas or activate existing");
-		
+
+
+		//add ma start [캔버스 강제로 넣는 코드 추가]
 		for (int i = 0; i < canvases.Length; i++)
 		{
-            if (canvases[i].enabled && canvases[i].gameObject.activeSelf && canvases[i].renderMode == RenderMode.ScreenSpaceOverlay)
-                canvas = canvases[i];
-			//else
-				//Debug.LogError("There is no Canvas with RenderMode: ScreenSpace - Overlay in the scene or it's disabled, please create one - GameObject->UI->Canvas or enable existing");
+			if (keyTag.Length > 0)
+			{
+				if (canvases[i].CompareTag(keyTag))
+				{
+					canvas = canvases[i];
+					ableKeyTag = true;
+					break;
+				}
+			}
+		}
+		//add ma end
+
+		for (int i = 0; i < canvases.Length; i++)
+		{
+			//add ma start [캔버스 강제로 넣는 코드 추가]
+			if (ableKeyTag) break;
+			//add ma end
+
+			if (canvases[i].enabled && canvases[i].gameObject.activeSelf && canvases[i].renderMode == RenderMode.ScreenSpaceOverlay)
+				canvas = canvases[i];
+			else
+				Debug.LogError("There is no Canvas with RenderMode: ScreenSpace - Overlay in the scene or it's disabled, please create one - GameObject->UI->Canvas or enable existing");
 		}
 
-        defaultHealth = healthLink.Value;
-        lastHealth = defaultHealth;
+		defaultHealth = healthLink.Value;
+		lastHealth = defaultHealth;
 	}
-	
+
 	// Use this for initialization
 	void Start () {
 		if(!HealthbarPrefab)

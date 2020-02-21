@@ -9,6 +9,7 @@ TagManager:
   - Target
   - Barrier
   - Enemy
+  - Health Bar Canvas
   layers:
   - Default
   - TransparentFX

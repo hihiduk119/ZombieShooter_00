@@ -36,7 +36,10 @@ public class _levelSelectionLogic : Editor
 			EditorGUILayout.EndHorizontal ();
 			}
 			myTarget.HealthbarPrefab = (RectTransform)EditorGUILayout.ObjectField ("HealthbarPrefab",myTarget.HealthbarPrefab, typeof(RectTransform), false);
-			myTarget.yOffset = EditorGUILayout.FloatField ("Y Offset", myTarget.yOffset);
+		    //add ma start
+		    myTarget.keyTag = EditorGUILayout.TagField("Key Tag", myTarget.keyTag);
+		    //add ma end
+		    myTarget.yOffset = EditorGUILayout.FloatField ("Y Offset", myTarget.yOffset);
 
 			EditorGUILayout.BeginHorizontal ();
 				GUILayout.Space (10);

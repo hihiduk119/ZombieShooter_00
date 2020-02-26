@@ -59,7 +59,7 @@ namespace Woosan.SurvivalGame01
             h = UltimateJoystick.GetHorizontalAxis("LookAhead");
             v = UltimateJoystick.GetVerticalAxis("LookAhead");
 
-            Debug.Log("h = " + h + "  | v = " + v);
+            //Debug.Log("h = " + h + "  | v = " + v);
 
             //카메라와 조이스틱 포지션간의 왜곡을 보정하기 위해 방향 다시 계산.
             camForward = Vector3.Scale(cam.forward, new Vector3(1, 0, 1)).normalized;

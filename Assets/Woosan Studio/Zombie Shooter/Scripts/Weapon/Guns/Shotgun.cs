@@ -49,7 +49,7 @@ namespace WoosanStudio.ZombieShooter
 
             if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
 
-            Debug.Log("Max ["+ _gunStat .MaxAmmo+ "]   CurrentAmmo [" + _gunStat.CurrentAmmo + "]");
+            //Debug.Log("Max ["+ _gunStat .MaxAmmo+ "]   CurrentAmmo [" + _gunStat.CurrentAmmo + "]");
 
             if (_gunStat.CurrentAmmo == 0)
             {
@@ -64,7 +64,7 @@ namespace WoosanStudio.ZombieShooter
                 //탄약 재장전
                 FullOfAmmo();
 
-                Debug.Log("Reload!!");
+                //Debug.Log("Reload!!");
             }
             //Debug.Log("Pistol.Fire() ammo => " + _gunStat.CurrentAmmo);
         }

@@ -196,6 +196,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &333913421 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1657206378}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5196d1eb0db9b314cbecde430274b018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &430493798
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14920d51cb663a94d82717ba1d8ace78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textManager: {fileID: 727579642474393807}
+  textManager: {fileID: 333913421}
   overrideTransform: {fileID: 2033022752}
   autoclicker: 1
   clickRate: 1
@@ -491,35 +503,7 @@ MonoBehaviour:
       onHitAlpha: 1
       duration: 1.5
   canvas: {fileID: 1074735493}
-  gradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 0.9243816, b: 0, a: 1}
-    key2: {r: 0, g: 0.9433962, b: 0.0676949, a: 0}
-    key3: {r: 0, g: 0.9433962, b: 0.0676949, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 21627
-    ctime1: 43253
-    ctime2: 65535
-    ctime3: 65535
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 1
-    m_NumColorKeys: 3
-    m_NumAlphaKeys: 2
+  keyTag: Health Bar Canvas
 --- !u!114 &659439156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,9 +776,9 @@ GameObject:
   - component: {fileID: 1074735493}
   - component: {fileID: 1074735492}
   - component: {fileID: 1074735495}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: HealthBar Canvas
-  m_TagString: Untagged
+  m_TagString: Health Bar Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1010,6 +994,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Minimalist Joystick 00
       objectReference: {fileID: 0}
+    - target: {fileID: 11423792, guid: b5097e1562b946e40985ba884db7d189, type: 3}
+      propertyPath: joystickName
+      value: Move
+      objectReference: {fileID: 0}
     - target: {fileID: 22461286, guid: b5097e1562b946e40985ba884db7d189, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1056,19 +1044,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22461286, guid: b5097e1562b946e40985ba884db7d189, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 24.299988
+      value: 27.599976
       objectReference: {fileID: 0}
     - target: {fileID: 22461286, guid: b5097e1562b946e40985ba884db7d189, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 321.3
+      value: 285.59998
       objectReference: {fileID: 0}
     - target: {fileID: 22461286, guid: b5097e1562b946e40985ba884db7d189, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 545.4
+      value: 484.8
       objectReference: {fileID: 0}
     - target: {fileID: 22461286, guid: b5097e1562b946e40985ba884db7d189, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 545.4
+      value: 484.8
       objectReference: {fileID: 0}
     - target: {fileID: 22461286, guid: b5097e1562b946e40985ba884db7d189, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1094,25 +1082,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11423792, guid: b5097e1562b946e40985ba884db7d189, type: 3}
-      propertyPath: joystickName
-      value: Move
-      objectReference: {fileID: 0}
     - target: {fileID: 22480134, guid: b5097e1562b946e40985ba884db7d189, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2.7000122
+      value: 2.4000244
       objectReference: {fileID: 0}
     - target: {fileID: 22480134, guid: b5097e1562b946e40985ba884db7d189, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.7000122
+      value: 2.4000244
       objectReference: {fileID: 0}
     - target: {fileID: 22480134, guid: b5097e1562b946e40985ba884db7d189, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 540
+      value: 480
       objectReference: {fileID: 0}
     - target: {fileID: 22480134, guid: b5097e1562b946e40985ba884db7d189, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 540
+      value: 480
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5097e1562b946e40985ba884db7d189, type: 3}
@@ -1439,6 +1423,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextDamageManager_SCREENSPACE
       objectReference: {fileID: 0}
+    - target: {fileID: 1669513309056702, guid: 73ade234de8d92445a7756cd400e2fd3, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 224741906549615740, guid: 73ade234de8d92445a7756cd400e2fd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1546,9 +1534,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
         type: 3}
+      propertyPath: textTypes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
+        type: 3}
       propertyPath: theCamera
       value: 
       objectReference: {fileID: 877164517}
+    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
+        type: 3}
+      propertyPath: textTypes.Array.data[1].keyType
+      value: critical
+      objectReference: {fileID: 0}
+    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
+        type: 3}
+      propertyPath: textTypes.Array.data[1].poolCount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
+        type: 3}
+      propertyPath: textTypes.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 114865973802963578, guid: 29e222daeff3b9a40986ac968c956ebf,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73ade234de8d92445a7756cd400e2fd3, type: 3}
 --- !u!224 &1657206379 stripped
@@ -1622,6 +1631,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1889697141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1889697143}
+  - component: {fileID: 1889697142}
+  m_Layer: 0
+  m_Name: AllTextDamageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1889697142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889697141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d898f1a624cc45219a5949935023950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerList: []
+--- !u!4 &1889697143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889697141}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1898552703
 GameObject:
@@ -1927,6 +1980,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1111073170}
     m_Modifications:
+    - target: {fileID: 191886, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 196320, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
       propertyPath: m_Name
       value: SA_Zombie_AirportSecurity
@@ -1977,10 +2034,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 434538, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 191886, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9515254, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}

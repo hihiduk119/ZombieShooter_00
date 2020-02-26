@@ -38,8 +38,7 @@ namespace WoosanStudio.ZombieShooter
             managerQueue.Clear();
             managerList.ForEach(value =>
             {
-                Debug.Log(value.gameObject.ToString());
-
+                //Debug.Log(value.gameObject.ToString());
                 if (!value.gameObject.activeSelf)
                 {
                     managerQueue.Enqueue(value);

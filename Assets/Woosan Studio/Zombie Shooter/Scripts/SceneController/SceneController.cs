@@ -211,22 +211,22 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// [테스트용 코드]
         /// </summary>
-        /*private void Update()
-        {
-            if(Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                Load("1.TestScene");
-            }
+        //private void Update()
+        //{
+        //    if(Input.GetKeyDown(KeyCode.Alpha1))
+        //    {
+        //        Load("1.TestScene");
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                Load("2.TestScene");
-            }
+        //    if (Input.GetKeyDown(KeyCode.Alpha2))
+        //    {
+        //        Load("2.TestScene");
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                Load("3.TestScene");   
-            }
-        }*/
+        //    if (Input.GetKeyDown(KeyCode.Alpha3))
+        //    {
+        //        Load("3.TestScene");   
+        //    }
+        //}
     }
 }

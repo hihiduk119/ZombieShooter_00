@@ -18,6 +18,8 @@ public class MoveScreenPointToRayPosition : MonoBehaviour
 
     public UpdatePositionEvent UpdatePositionEvent = new UpdatePositionEvent();
 
+    //Layer
+
     //캐쉬
     Ray _ray;
     RaycastHit _hit;
@@ -52,7 +54,6 @@ public class MoveScreenPointToRayPosition : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-
             _ray = Camera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(_ray, out _hit))

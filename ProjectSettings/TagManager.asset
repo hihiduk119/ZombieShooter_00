@@ -10,6 +10,7 @@ TagManager:
   - Barrier
   - Enemy
   - Health Bar Canvas
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Barrier
   - Player Projectile
   - UI Health
-  - 
+  - Level Design Ground
   - 
   - 
   - 

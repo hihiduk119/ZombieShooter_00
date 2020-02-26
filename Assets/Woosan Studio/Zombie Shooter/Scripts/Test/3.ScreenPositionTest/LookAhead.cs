@@ -4,23 +4,16 @@ using UnityEngine;
 
 public class LookAhead : MonoBehaviour
 {
-    public Transform Target;
-    public float Speed = 100f;
+    //[HideInInspector] public Transform target;
+
+    //private void Start()
+    //{
+    //    target = FindObjectOfType<MoveScreenPointToRayPosition>().transform;
+    //}
 
     public void Look(Vector3 target)
     {
         transform.LookAt(target);
-
-        /*Vector2 temp;
-
-        temp.x = UltimateJoystick.GetHorizontalAxis("LookAhead");
-        temp.y = UltimateJoystick.GetVerticalAxis("LookAhead");
-
-        Debug.Log(temp.x + "," + temp.y + " = " + Vector2.Angle(new Vector2(-1f, 0f), temp));
-
-        //180 - 360
-        Vector3 rot = new Vector3(0, Vector2.Angle(new Vector2(-1f, 0f), temp) +180f, 0);
-        transform.rotation = Quaternion.Euler(rot);*/
     }
 
     private void Update()

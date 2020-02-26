@@ -503,7 +503,7 @@ MonoBehaviour:
       onHitAlpha: 1
       duration: 1.5
   canvas: {fileID: 1074735493}
-  keyTag: Health Bar Canvas
+  keyTag: HealthBarCanvas
 --- !u!114 &659439156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -778,7 +778,7 @@ GameObject:
   - component: {fileID: 1074735495}
   m_Layer: 0
   m_Name: HealthBar Canvas
-  m_TagString: Health Bar Canvas
+  m_TagString: HealthBarCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1980,10 +1980,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1111073170}
     m_Modifications:
-    - target: {fileID: 191886, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 196320, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
       propertyPath: m_Name
       value: SA_Zombie_AirportSecurity
@@ -2034,6 +2030,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 434538, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 191886, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9515254, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}

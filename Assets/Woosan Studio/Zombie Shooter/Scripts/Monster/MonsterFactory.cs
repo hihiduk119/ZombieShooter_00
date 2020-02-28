@@ -14,9 +14,14 @@ namespace WoosanStudio.ZombieShooter
         [Tooltip("스폰 위치")]
         public SpawnPoints SpawnPoints;
 
-        private void Start()
+        IEnumerator Start()
         {
-            MakeMonster(0, SpawnPoints.GetSpawnPosition());
+            while(true)
+            {
+                MakeMonster(0, SpawnPoints.GetSpawnPosition());
+
+                yield return new WaitForSeconds(1f);
+            }
         }
 
         /// <summary>

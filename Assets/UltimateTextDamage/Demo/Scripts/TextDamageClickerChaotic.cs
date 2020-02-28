@@ -6,6 +6,9 @@ using WoosanStudio.ZombieShooter;
 
 namespace Guirao.UltimateTextDamage
 {
+    /// <summary>
+    /// 이거 테스트용이다. 참고만 하고 다시만들어야 한다.
+    /// </summary>
     public class TextDamageClickerChaotic : MonoBehaviour
     {
         public UltimateTextDamageManager textManager;
@@ -24,9 +27,16 @@ namespace Guirao.UltimateTextDamage
             if (textManager == null) return;
 
             if( Random.value < 0.3f )
-                textManager.Add( ( Random.Range( 100800f , 2008000f ) ).ToStringScientific( ) , overrideTransform != null ? overrideTransform : transform , "critical" );
+                textManager.Add( ( Random.Range( 50f , 200f ) ).ToStringScientific( ) , overrideTransform != null ? overrideTransform : transform , "critical" );
+            else if(Random.value >= 0.3f && Random.value < 0.6f )
+            {
+                textManager.Add("status", overrideTransform != null ? overrideTransform : transform, "status");
+            }
             else
-                textManager.Add( Random.Range( 900000f , 1100000f ).ToStringScientific( ) , overrideTransform != null ? overrideTransform : transform );
+            {
+                textManager.Add(Random.Range(1f, 50f).ToStringScientific(), overrideTransform != null ? overrideTransform : transform);
+            }
+                
         }
 
         public bool autoclicker = true;

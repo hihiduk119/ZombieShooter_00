@@ -2,9 +2,10 @@
 using System.Collections;
 
 using WoosanStudio.Extension;
+using WoosanStudio.ZombieShooter;
 /* THIS CODE IS JUST FOR PREVIEW AND TESTING */
 // Feel free to use any code and picking on it, I cannot guaratnee it will fit into your project
-public class ExplodingProjectile : MonoBehaviour
+public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
 {
     public GameObject impactPrefab;
     public Rigidbody thisRigidbody;
@@ -28,6 +29,11 @@ public class ExplodingProjectile : MonoBehaviour
     Vector3 direction;
     Ray ray;
     Coroutine dieTimer;
+
+    //=====================>   IHaveHitDamage 시작    <=====================
+    private int _damage = 1;
+    public int Damage { get => _damage; set => _damage = value; }
+    //=====================>   IHaveHitDamage 끝    <=====================
 
     void Start()
     {
@@ -104,6 +110,10 @@ public class ExplodingProjectile : MonoBehaviour
             transform.position = hit.point;
             Quaternion rot = Quaternion.FromToRotation(Vector3.forward, hit.normal);
             Vector3 pos = hit.point;
+
+            //부딫힌 오브젝트에 IHaveHealth를 가지고 있으면 데미지를 준다
+            IHaveHealth haveHealth = hit.transform.GetComponent(typeof(IHaveHealth)) as IHaveHealth;
+            //haveHealth.AddDamage(Damage);
 
             //Instantiate(impactPrefab, pos, rot);
             //Destroy(gameObject);

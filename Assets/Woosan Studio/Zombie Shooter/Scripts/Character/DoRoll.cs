@@ -14,14 +14,6 @@ namespace WoosanStudio.ZombieShooter
 
         public void SetAnimator(Animator animator) { _animator = animator; }
 
-        public enum Direction
-        {
-            Left,
-            Right,
-            Up,
-            Down,
-        }
-
         float distance = 5f;
         float duration = 0.8f/2;
         float delay = 0.5f/2;

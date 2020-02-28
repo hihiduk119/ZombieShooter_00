@@ -53,14 +53,17 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField] private int _maxAmmo = 10;
         public int MaxAmmo { get => _maxAmmo; }
 
-        [SerializeField] private int _currentAmmo = 0;
-        [HideInInspector] public int CurrentAmmo { get => _currentAmmo; set => _currentAmmo = value; }
-        
-        [SerializeField] private float _reloadTime = 2f;
+        //현재 탄약은 외부에 노출하지 않음
+        private int _currentAmmo = 0;
+        public int CurrentAmmo { get => _currentAmmo; set => _currentAmmo = value; }
+
+        //ProjectileSetting 에 구현되어 있어서 일단 외부 노출하지 않음
+        private float _reloadTime = 2f;
         public float ReloadTime { get => _reloadTime = ReloadTimeCalculator.GetReloadTime(this); }
         public ReloadTimeCalculator ReloadTimeCalculator { get; }
 
-        [SerializeField] private float _fireSpeed;
+        //ProjectileSetting 에 구현되어 있어서 일단 외부 노출하지 않음
+        private float _fireSpeed;
         public float FireSpeed { get => _fireSpeed = FireSpeedCalculator.GetFireSpeed(this);}
         public FireSpeedCalculator FireSpeedCalculator { get; }
 

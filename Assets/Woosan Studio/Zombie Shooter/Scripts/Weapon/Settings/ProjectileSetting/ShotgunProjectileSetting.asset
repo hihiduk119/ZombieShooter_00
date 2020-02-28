@@ -17,10 +17,10 @@ MonoBehaviour:
     type: 3}
   muzzleflare: {fileID: 1584403288528622, guid: a7f7e53efb9c16141af1c5631e25cbb8,
     type: 3}
-  min: 8000
-  max: 9500
+  min: 800
+  max: 950
   rapidFire: 1
-  rapidFireCooldown: 0.4
+  rapidFireCooldown: 0.2
   shotgunBehavior: 1
   shotgunPellets: 8
   shellPrefab: {fileID: 1467181274829480, guid: 41e86fd3ee46b76448791422f9949474,

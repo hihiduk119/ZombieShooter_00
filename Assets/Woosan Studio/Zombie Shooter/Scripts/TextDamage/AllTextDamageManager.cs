@@ -4,6 +4,7 @@ using UnityEngine;
 
 using Guirao.UltimateTextDamage;
 using WoosanStudio.Extension;
+using UnityEngine.UI;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -48,7 +49,7 @@ namespace WoosanStudio.ZombieShooter
         {
             GameObject clone = Instantiate(prefab) as GameObject;
             namingCount++;
-            clone.transform.parent = parent;
+            clone.transform.SetParent(parent);            
             clone.name = name + " " + namingCount.ToString();
             clone.transform.Reset();
 
@@ -80,7 +81,7 @@ namespace WoosanStudio.ZombieShooter
             }
             catch
             {
-                Debug.Log("UltimateTextDamageManager  가 NULL 이다. 몬스터 데이미 UI 확인해라!! ");
+                //Debug.Log("UltimateTextDamageManager  가 NULL 이다. 몬스터 데이미 UI 확인해라!! ");
                 //manager = null;
                 manager = Make(transform, prefab, "TextDamageUI").GetComponent<UltimateTextDamageManager>();
                 managerList.Add(manager);

@@ -31,7 +31,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     Coroutine dieTimer;
 
     //=====================>   IHaveHitDamage 시작    <=====================
-    private int _damage = 1;
+    private int _damage = 50;
     public int Damage { get => _damage; set => _damage = value; }
     //=====================>   IHaveHitDamage 끝    <=====================
 
@@ -113,7 +113,10 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
 
             //부딫힌 오브젝트에 IHaveHealth를 가지고 있으면 데미지를 준다
             IHaveHealth haveHealth = hit.transform.GetComponent(typeof(IHaveHealth)) as IHaveHealth;
-            //haveHealth.AddDamage(Damage);
+            if(haveHealth != null)
+            {
+                haveHealth.DamagedEvent.Invoke(Damage);
+            }
 
             //Instantiate(impactPrefab, pos, rot);
             //Destroy(gameObject);

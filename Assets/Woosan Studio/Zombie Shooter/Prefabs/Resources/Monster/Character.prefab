@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 4506753231631945541}
   - component: {fileID: 7521864535046417827}
   - component: {fileID: 4506753231236512764}
+  - component: {fileID: 5364187134072130980}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -83,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934835eeaeb904512a696a3bc41a3e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 20000000
+  health: 200
 --- !u!114 &1745224648899196830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthLink:
     targetScript: {fileID: 4506753231631945542}
-    fieldName: Health
+    fieldName: health
   HealthbarPrefab: {fileID: 22400004, guid: f3cbc3b42afbd42bd9685a5feda5da2f, type: 3}
   yOffset: 3.5
   keepSize: 1
@@ -207,7 +208,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745224648899196828}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14920d51cb663a94d82717ba1d8ace78, type: 3}
   m_Name: 
@@ -216,6 +217,20 @@ MonoBehaviour:
   overrideTransform: {fileID: 2315376458625675056}
   autoclicker: 1
   clickRate: 2
+--- !u!114 &5364187134072130980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745224648899196828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f40e0dc8291b41f8a580c6084aa005b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textManager: {fileID: 0}
+  overrideTransform: {fileID: 2315376458625675056}
 --- !u!1 &5169794668699354224
 GameObject:
   m_ObjectHideFlags: 0

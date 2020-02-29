@@ -9,12 +9,22 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class HaveHealth : MonoBehaviour , IHaveHealth
     {
-        private int _health = 200;
-        public int Health { get => _health; set => _health = value; }
+        public int health = 200;
+        public int Health { get => health; set => health = value; }
 
-        public void AddDamage(int damage)
+        private DamagedEvent _damagedEvent = new DamagedEvent();
+        public DamagedEvent DamagedEvent { get => _damagedEvent; set => throw new System.NotImplementedException(); }
+
+        void Awake()
+        {
+            _damagedEvent.AddListener(Damaged);
+        }
+
+        public void Damaged(int damage)
         {
             Health -= damage;
+
+            Debug.Log("Health = " + Health);
         }
     }
 }

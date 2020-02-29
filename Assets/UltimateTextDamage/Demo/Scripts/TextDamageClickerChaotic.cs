@@ -26,9 +26,11 @@ namespace Guirao.UltimateTextDamage
         {
             if (textManager == null) return;
 
-            if( Random.value < 0.3f )
-                textManager.Add( ( Random.Range( 50f , 200f ) ).ToStringScientific( ) , overrideTransform != null ? overrideTransform : transform , "critical" );
-            else if(Random.value >= 0.3f && Random.value < 0.6f )
+            if (Random.value < 0.3f)
+            {
+                textManager.Add((Random.Range(50f, 200f)).ToStringScientific(), overrideTransform != null ? overrideTransform : transform, "critical");
+            }
+            else if (Random.value >= 0.3f && Random.value < 0.6f)
             {
                 textManager.Add("status", overrideTransform != null ? overrideTransform : transform, "status");
             }

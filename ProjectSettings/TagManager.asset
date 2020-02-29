@@ -9,7 +9,6 @@ TagManager:
   - Target
   - Barrier
   - Enemy
-  - Health Bar Canvas
   - Fire
   - HealthBarCanvas
   layers:

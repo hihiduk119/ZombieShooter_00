@@ -1425,8 +1425,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1669513309056702, guid: 73ade234de8d92445a7756cd400e2fd3, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: HealthBarCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
+        type: 3}
+      propertyPath: textTypes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
+        type: 3}
+      propertyPath: theCamera
+      value: 
+      objectReference: {fileID: 877164517}
+    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
+        type: 3}
+      propertyPath: textTypes.Array.data[1].keyType
+      value: critical
+      objectReference: {fileID: 0}
+    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
+        type: 3}
+      propertyPath: textTypes.Array.data[1].poolCount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
+        type: 3}
+      propertyPath: textTypes.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 114865973802963578, guid: 29e222daeff3b9a40986ac968c956ebf,
+        type: 3}
+    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
+        type: 3}
+      propertyPath: textTypes.Array.data[2].keyType
+      value: status
+      objectReference: {fileID: 0}
+    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
+        type: 3}
+      propertyPath: textTypes.Array.data[2].poolCount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
+        type: 3}
+      propertyPath: textTypes.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 114685088414384168, guid: 74837713fa6c9ca40beb9f0df4fb1830,
+        type: 3}
     - target: {fileID: 224741906549615740, guid: 73ade234de8d92445a7756cd400e2fd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1532,32 +1574,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
-        type: 3}
-      propertyPath: textTypes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
-        type: 3}
-      propertyPath: theCamera
-      value: 
-      objectReference: {fileID: 877164517}
-    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
-        type: 3}
-      propertyPath: textTypes.Array.data[1].keyType
-      value: critical
-      objectReference: {fileID: 0}
-    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
-        type: 3}
-      propertyPath: textTypes.Array.data[1].poolCount
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114600978523305578, guid: 73ade234de8d92445a7756cd400e2fd3,
-        type: 3}
-      propertyPath: textTypes.Array.data[1].prefab
-      value: 
-      objectReference: {fileID: 114865973802963578, guid: 29e222daeff3b9a40986ac968c956ebf,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73ade234de8d92445a7756cd400e2fd3, type: 3}
 --- !u!224 &1657206379 stripped
@@ -1661,6 +1677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d898f1a624cc45219a5949935023950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
   managerList: []
 --- !u!4 &1889697143
 Transform:
@@ -8910,7 +8927,7 @@ GameObject:
   - component: {fileID: 727579642474393807}
   m_Layer: 5
   m_Name: TextDamageManager_CAM
-  m_TagString: Untagged
+  m_TagString: HealthBarCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

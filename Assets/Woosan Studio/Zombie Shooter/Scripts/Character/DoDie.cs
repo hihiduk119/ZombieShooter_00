@@ -12,7 +12,7 @@ namespace WoosanStudio.ZombieShooter
         
         public GameObject NavMeshModel;
         public CopyComponets CopyComponets;
-        public Transform Accident;
+        //public Transform Accident;
 
         //cashe
         private RegdollController regdollController;
@@ -21,13 +21,18 @@ namespace WoosanStudio.ZombieShooter
 
         //Test Code
         public GameObject Prefab;
-        public Boom Boom;
+        Boom boom;
 
         private void Awake()
         {
             regdollController = GetComponent<RegdollController>();
             navMeshController = GetComponent<NavMeshController>();
             character = GetComponent<Character>();
+        }
+
+        public void CheckHealth()
+        {
+
         }
 
         public void Die()
@@ -39,33 +44,34 @@ namespace WoosanStudio.ZombieShooter
             NavMeshModel.SetActive(false);
 
             regdollController.SetActive(true);
-            Boom.Pow();
+            boom = new Boom(transform.position);
 
             //Test Code
-            MakeObject(Accident.position);
+            //MakeObject(Accident.position);
         }
 
         //Test Code
-        void MakeObject(Vector3 position)
-        {   
-            Transform tf = (Instantiate(Prefab) as GameObject).transform;
-            tf.position = position;
-        }
+        //void MakeObject(Vector3 position)
+        //{   
+        //    Transform tf = (Instantiate(Prefab) as GameObject).transform;
+        //    tf.position = position;
+        //}
 
-        void Update()
-        {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                Debug.Log("Click left");
-                Die();
-            }
+        //Test Code
+        //void Update()
+        //{
+        //    if (Input.GetButtonDown("Fire1"))
+        //    {
+        //        Debug.Log("Click left");
+        //        Die();
+        //    }
 
-            if (Input.GetButtonDown("Fire2"))
-            {
-                Debug.Log("Click right");
-                regdollController.SetActive(true);
-                Boom.Pow();
-            }
-        }
+        //    if (Input.GetButtonDown("Fire2"))
+        //    {
+        //        Debug.Log("Click right");
+        //        regdollController.SetActive(true);
+        //        boom = new Boom(transform.position);
+        //    }
+        //}
     }
 }

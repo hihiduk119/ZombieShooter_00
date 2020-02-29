@@ -8,7 +8,7 @@ namespace WoosanStudio.ZombieShooter
 {
     public class TextDamageBridge : MonoBehaviour
     {
-        public UltimateTextDamageManager textManager;
+        [HideInInspector] public UltimateTextDamageManager textManager;
         public Transform overrideTransform;
 
         private Dictionary<int, string> keyValues = new Dictionary<int, string>()

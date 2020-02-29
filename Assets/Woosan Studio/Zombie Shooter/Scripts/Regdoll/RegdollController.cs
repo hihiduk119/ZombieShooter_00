@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class Regdoll : MonoBehaviour
+    public class RegdollController : MonoBehaviour
     {
         public GameObject Model;
 

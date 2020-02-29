@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 114600978523305578}
   - component: {fileID: -8905789912047137822}
   m_Layer: 5
-  m_Name: TextScreenSpace
+  m_Name: TextDamageUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   textTypes:
   - keyType: default
     poolCount: 10
-    prefab: {fileID: 114685088414384168, guid: 5e2ce031cab7c49b2a5622c25e258dfc, type: 3}
+    prefab: {fileID: 114685088414384168, guid: 771699829c19b4374b662dfa523eff78, type: 3}
   - keyType: critical
     poolCount: 10
     prefab: {fileID: 114685088414384168, guid: b88fd4f14462c4a7da076ddd439c8733, type: 3}

@@ -353,7 +353,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterSettings: {fileID: 11400000, guid: 7140744bafe3c4a0ca74df02a6797740, type: 2}
-  target: {fileID: 0}
+  target: {fileID: 1934079120}
+  isDead: 0
 --- !u!195 &659439148
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -442,13 +443,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659439145}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b936e8105bb80489ab2efc20d33fee9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Regdoll: {fileID: 659439152}
-  NavMeshController: {fileID: 659439154}
   NavMeshModel: {fileID: 907768220}
   CopyComponets: {fileID: 1111073171}
   Accident: {fileID: 623449780}

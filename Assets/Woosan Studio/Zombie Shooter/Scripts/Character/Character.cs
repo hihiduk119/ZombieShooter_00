@@ -20,6 +20,8 @@ namespace WoosanStudio.ZombieShooter
         private ICharacterDrivingModule characterDrivingModule;
         //캐릭터의 에니메이션을 조작하는 부분
         private ICharacterAnimatorModule characterAnimatorModule;
+        //죽었는지 살았는지 확인용
+        public bool isDead = false;
 
         private void Awake()
         {
@@ -53,14 +55,17 @@ namespace WoosanStudio.ZombieShooter
 
         private void Update()
         {
-            if (target == null) {
+            if (isDead) return;
+
+            if (target == null)
+            {
                 Debug.Log("[Player Tag is null] ");
                 return;
             }
 
-            characterInput.ReadInput();
-            characterDrivingModule.Tick();
-            characterAnimatorModule.Move(characterDrivingModule.Speed);
+            if (characterInput != null) { characterInput.ReadInput(); }
+            if (characterDrivingModule != null) { characterDrivingModule.Tick(); }
+            if (characterAnimatorModule != null) { characterAnimatorModule.Move(characterDrivingModule.Speed); }
         }
     }
 }

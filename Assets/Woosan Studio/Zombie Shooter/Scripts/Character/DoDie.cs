@@ -5,16 +5,19 @@ using UnityEngine;
 
 namespace WoosanStudio.ZombieShooter
 {
-    [RequireComponent(typeof(Regdoll))]
+    [RequireComponent(typeof(RegdollController))]
     [RequireComponent(typeof(NavMeshController))]
     public class DoDie : MonoBehaviour
     {
-        public Regdoll Regdoll;
-        public NavMeshController NavMeshController;
+        
         public GameObject NavMeshModel;
         public CopyComponets CopyComponets;
-
         public Transform Accident;
+
+        //cashe
+        private RegdollController regdollController;
+        private NavMeshController navMeshController;
+        private Character character;
 
         //Test Code
         public GameObject Prefab;
@@ -22,17 +25,20 @@ namespace WoosanStudio.ZombieShooter
 
         private void Awake()
         {
-            Regdoll = GetComponent<Regdoll>();
-            NavMeshController = GetComponent<NavMeshController>();
+            regdollController = GetComponent<RegdollController>();
+            navMeshController = GetComponent<NavMeshController>();
+            character = GetComponent<Character>();
         }
 
         public void Die()
         {
-            NavMeshController.Stop();
+            character.isDead = true;
+
+            navMeshController.Stop();
             CopyComponets.Copy();
             NavMeshModel.SetActive(false);
 
-            Regdoll.SetActive(true);
+            regdollController.SetActive(true);
             Boom.Pow();
 
             //Test Code
@@ -57,7 +63,7 @@ namespace WoosanStudio.ZombieShooter
             if (Input.GetButtonDown("Fire2"))
             {
                 Debug.Log("Click right");
-                Regdoll.SetActive(true);
+                regdollController.SetActive(true);
                 Boom.Pow();
             }
         }

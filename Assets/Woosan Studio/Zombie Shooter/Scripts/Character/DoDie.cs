@@ -14,13 +14,15 @@ namespace WoosanStudio.ZombieShooter
         public CopyComponets CopyComponets;
         //public Transform Accident;
 
-        //cashe
+        //cache
         private RegdollController regdollController;
         private NavMeshController navMeshController;
         private Character character;
+        private IHaveHealth haveHealth;
+        private DoZeroGravity doZeroGravity;
 
         //Test Code
-        public GameObject Prefab;
+        //public GameObject testDummy;
         Boom boom;
 
         private void Awake()
@@ -28,14 +30,24 @@ namespace WoosanStudio.ZombieShooter
             regdollController = GetComponent<RegdollController>();
             navMeshController = GetComponent<NavMeshController>();
             character = GetComponent<Character>();
+            haveHealth = GetComponent<IHaveHealth>();
+            doZeroGravity = GetComponent<DoZeroGravity>();
+
+            //IHaveHealth 에 체력 체크 등록.
+            haveHealth.DamagedEvent.AddListener(CheckHealth);
+
+            //Test Code
+            //testDummy = GameObject.FindGameObjectWithTag("TestDummy");
         }
 
-        public void CheckHealth()
+        //체력 체크용 콜백 함수
+        //
+        public void CheckHealth(int damage,Vector3 hit)
         {
-
+            if(haveHealth.Health < 0) { Die(hit); }
         }
 
-        public void Die()
+        public void Die(Vector3 hit)
         {
             character.isDead = true;
 
@@ -44,10 +56,24 @@ namespace WoosanStudio.ZombieShooter
             NavMeshModel.SetActive(false);
 
             regdollController.SetActive(true);
-            boom = new Boom(transform.position);
+
+            //Add Force
+            boom = new Boom(hit);
+            //testDummy.transform.position = hit;
 
             //Test Code
             //MakeObject(Accident.position);
+
+            Invoke("GoToHeaven", 3f);
+            Debug.Log("=================>    GoToHeaven");
+        }
+
+        void GoToHeaven()
+        {
+            //X 값은 연출용 값으로 값이 클수록 화면 쪽으로 시체가 앞으록 움직임.
+            //Y 값은 떠오르는 속도이며 값이 크면 빠르게 떠오름.
+            doZeroGravity.ZeroGravity(new Vector3(10, 10, 0));
+            Debug.Log("=================>    Go       ToHeaven");
         }
 
         //Test Code

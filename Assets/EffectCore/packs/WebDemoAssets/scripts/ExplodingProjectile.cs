@@ -107,16 +107,20 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             //충돌 예외처리
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Barrier")) return;
 
+            //Test Code
+            //GameObject testDummy = GameObject.FindGameObjectWithTag("TestDummy");
+            //testDummy.transform.position = hit.point;
+
             transform.position = hit.point;
             Quaternion rot = Quaternion.FromToRotation(Vector3.forward, hit.normal);
             Vector3 pos = hit.point;
 
             //부딫힌 오브젝트에 IHaveHealth를 가지고 있으면 데미지를 준다
             IHaveHealth haveHealth = hit.transform.GetComponent(typeof(IHaveHealth)) as IHaveHealth;
-            if(haveHealth != null)
-            {
-                haveHealth.DamagedEvent.Invoke(Damage);
-            }
+            if (haveHealth != null) { haveHealth.DamagedEvent.Invoke(Damage, hit.point); }
+            //부딫힌 오브젝트가 IProp를 가지고 있다. Pong에니메이션 실행을 위해.
+            IProp prop = hit.transform.GetComponent<IProp>();
+            if (prop != null) { prop.Hit(); }
 
             //Instantiate(impactPrefab, pos, rot);
             //Destroy(gameObject);

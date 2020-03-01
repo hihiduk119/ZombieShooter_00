@@ -57,15 +57,15 @@ namespace WoosanStudio.ZombieShooter
             {
                 case TouchPosition.Left:
                     AddNewEventType(left, EventTriggerType.PointerDown, action);
-                    Debug.Log("Left Touch!");
+                    //Debug.Log("Left Touch!");
                     break;
                 case TouchPosition.Center:
                     AddNewEventType(center, EventTriggerType.PointerDown, action);
-                    Debug.Log("Center Touch!");
+                    //Debug.Log("Center Touch!");
                     break;
                 case TouchPosition.Right:
                     AddNewEventType(right, EventTriggerType.PointerDown, action);
-                    Debug.Log("Right Touch!");
+                    //Debug.Log("Right Touch!");
                     break;
             }
         }

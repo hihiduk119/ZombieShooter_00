@@ -36,7 +36,7 @@ namespace WoosanStudio.ZombieShooter
         }
 
         //이벤트 등록 부분
-        public void DamagedEventHandler(int damage)
+        public void DamagedEventHandler(int damage,Vector3 hit)
         {
             PopText(damage.ToString(), keyValues[0]);
         }

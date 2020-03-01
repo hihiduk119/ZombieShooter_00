@@ -20,11 +20,11 @@ namespace WoosanStudio.ZombieShooter
             _damagedEvent.AddListener(Damaged);
         }
 
-        public void Damaged(int damage)
+        public void Damaged(int damage,Vector3 hit)
         {
             Health -= damage;
 
-            Debug.Log("Health = " + Health);
+            //Debug.Log("Health = " + Health);
         }
     }
 }

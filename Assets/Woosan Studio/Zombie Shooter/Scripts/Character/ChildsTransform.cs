@@ -9,6 +9,13 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class ChildsTransform : MonoBehaviour
     {
+        public List<Transform> GetTransforms()
+        {
+            List<Transform> transforms = new List<Transform>(GetComponentsInChildren<Transform>());
+
+            return transforms;
+        }
+
         public Queue<Vector3> GetAllPosition()
         {
             Transform[] allChildren = GetComponentsInChildren<Transform>();
@@ -46,7 +53,6 @@ namespace WoosanStudio.ZombieShooter
             return rotations;
         }
 
-        
 
         public void SetAllRotation(Queue<Quaternion> rotations)
         {

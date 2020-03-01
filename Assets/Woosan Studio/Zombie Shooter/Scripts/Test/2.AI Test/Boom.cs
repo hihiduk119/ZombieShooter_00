@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Boom
 {
-    private float _radius = 2.0F;
-    private float _power = 50.0F;
+    private float _radius = 1.0F;
+    private float _power = 20.0F;
 
     public Boom(Vector3 position)
     {
@@ -19,7 +19,7 @@ public class Boom
 
     public void Pow(Vector3 position,float radius, float power)
     {
-        Debug.Log("Pow");
+        //Debug.Log("Pow");
         Vector3 explosionPos = position;
         Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
 
@@ -29,7 +29,7 @@ public class Boom
 
             if (rb != null)
             {
-                rb.AddExplosionForce(power, explosionPos, radius, 1.0F,ForceMode.VelocityChange);
+                rb.AddExplosionForce(power, explosionPos, radius, 0.5F,ForceMode.VelocityChange);
             }
         }
     }

@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - Fire
   - HealthBarCanvas
+  - Health Bar Canvas
+  - TestDummy
   layers:
   - Default
   - TransparentFX

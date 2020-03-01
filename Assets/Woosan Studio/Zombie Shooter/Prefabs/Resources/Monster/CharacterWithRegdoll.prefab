@@ -42,6 +42,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac7c9db41a9c4e5b89380b8d04e4e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transforms: []
 --- !u!1 &246062895001225752
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +109,7 @@ GameObject:
   - component: {fileID: 246062895614678456}
   - component: {fileID: 246062895614678458}
   - component: {fileID: 6627010519585101974}
+  - component: {fileID: 4213669199024862083}
   m_Layer: 0
   m_Name: CharacterWithRegdoll
   m_TagString: Enemy
@@ -250,9 +252,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NavMeshModel: {fileID: 246062894280750577}
   CopyComponets: {fileID: 246062895001225754}
-  Accident: {fileID: 0}
-  Prefab: {fileID: 9172489385459243377, guid: 4f0c330e24fb446ab97a01bbd43170b1, type: 3}
-  Boom: {fileID: 0}
 --- !u!114 &246062895614678458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +304,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textManager: {fileID: 0}
   overrideTransform: {fileID: 246062894111202473}
+--- !u!114 &4213669199024862083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246062895614678432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a33ba5b25967c45bf85fe4ec8da5d7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childsTransform: {fileID: 604080447609855462}
 --- !u!1 &604080447609636561
 GameObject:
   m_ObjectHideFlags: 0
@@ -4214,6 +4226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac7c9db41a9c4e5b89380b8d04e4e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transforms: []
 --- !u!1 &604080447609856431
 GameObject:
   m_ObjectHideFlags: 0
@@ -7098,16 +7111,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 191886, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9515254, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 66d99ee3d2ea44a6fa8f4acdadd237e3, type: 2}
     - target: {fileID: 9515254, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
       propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 191886, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

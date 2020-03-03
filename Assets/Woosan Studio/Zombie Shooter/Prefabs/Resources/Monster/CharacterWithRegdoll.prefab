@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246062894111202454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.78, z: 0}
+  m_LocalPosition: {x: 0, y: 4.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 246062895614678435}
@@ -54,6 +54,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be058660747ec47839b50c59f314c0ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 0}
+  damagedMaterial: {fileID: 0}
 --- !u!1 &246062895001225752
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,9 +298,9 @@ MonoBehaviour:
     nullAlpha: 0
     nullFadeSpeed: 0.05
     onHit:
-      fadeSpeed: 0.1
+      fadeSpeed: 0.2
       onHitAlpha: 1
-      duration: 1.5
+      duration: 2
   canvas: {fileID: 0}
   keyTag: HealthBarCanvas
 --- !u!114 &6627010519585101974

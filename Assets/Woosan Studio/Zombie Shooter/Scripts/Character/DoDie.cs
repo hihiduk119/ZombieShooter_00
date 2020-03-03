@@ -12,7 +12,6 @@ namespace WoosanStudio.ZombieShooter
         
         public GameObject NavMeshModel;
         public CopyComponets CopyComponets;
-        //public Transform Accident;
 
         //cache
         private RegdollController regdollController;
@@ -24,7 +23,7 @@ namespace WoosanStudio.ZombieShooter
         //죽었을때 무중력으로 떠오르게 하기 위해
         private DoZeroGravity doZeroGravity;
         //데미지입었을때 빨간 블링크 용
-        private BlinkMaterial blinkMaterial;
+        private IBlink blink;
 
         //Test Code
         //public GameObject testDummy;
@@ -37,7 +36,7 @@ namespace WoosanStudio.ZombieShooter
             character = GetComponent<Character>();
             haveHealth = GetComponent<IHaveHealth>();
             doZeroGravity = GetComponent<DoZeroGravity>();
-            blinkMaterial = transform.GetComponentInChildren<BlinkMaterial>();
+            blink = transform.GetComponentInChildren<IBlink>();
 
             //IHaveHealth 에 체력 체크 등록.
             haveHealth.DamagedEvent.AddListener(CheckHealth);
@@ -55,7 +54,7 @@ namespace WoosanStudio.ZombieShooter
 
         public void Die(Vector3 hit)
         {
-            blinkMaterial.Initialize();
+            blink.Initialize();
 
             character.isDead = true;
 
@@ -70,9 +69,6 @@ namespace WoosanStudio.ZombieShooter
             //Add Force
             boom = new Boom(hit);
             //testDummy.transform.position = hit;
-
-            //Test Code
-            //MakeObject(Accident.position);
 
             Invoke("GoToHeaven", 3f);
             //Debug.Log("=================>    GoToHeaven");

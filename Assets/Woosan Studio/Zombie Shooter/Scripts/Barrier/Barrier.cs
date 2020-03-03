@@ -12,13 +12,13 @@ namespace WoosanStudio.ZombieShooter
         //cashe
         private Animator animator;
 
-        private BlinkMaterialForBarrier blinkMaterial;
+        private IBlink blink;
 
         private void Awake()
         {
             animator = GetComponent<Animator>();
 
-            blinkMaterial = transform.GetComponentInChildren<BlinkMaterialForBarrier>();
+            blink = transform.GetComponentInChildren<IBlink>();
         }
 
         //강제 에니메이션 재시작[Gun Trigger 방식]
@@ -27,7 +27,7 @@ namespace WoosanStudio.ZombieShooter
             animator.Play("Empty");
             animator.SetTrigger("Pong");
             //맞았을때 깜빡임.
-            blinkMaterial.Blink();
+            blink.Blink();
         }
 
         void Update()

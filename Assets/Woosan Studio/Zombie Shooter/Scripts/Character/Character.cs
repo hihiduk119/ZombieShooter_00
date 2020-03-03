@@ -14,17 +14,21 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField] public CharacterSettings characterSettings;
         public Transform target;
 
+        //캐릭터 조증을 위한 유한상태기게
+        private IFiniteStateMachine FSM;
         //캐릭터의 입력 부분.
         private ICharacterInput characterInput;
         //캐릭터를 해당 입력에 의해 움직이는 부분.
         private ICharacterDrivingModule characterDrivingModule;
         //캐릭터의 에니메이션을 조작하는 부분
         private ICharacterAnimatorModule characterAnimatorModule;
+
         //죽었는지 살았는지 확인용
         public bool isDead = false;
+        
 
         //데이지 연출용
-        BlinkMaterial blinkMaterial;
+        IBlink blink;
 
         private void Awake()
         {
@@ -36,11 +40,15 @@ namespace WoosanStudio.ZombieShooter
                 return;
             }
 
+            //FSM 세팅
+            FSM = characterSettings.UseAi ?
+                new MonsterFSM() as IFiniteStateMachine :
+                new PlayerFSM() as IFiniteStateMachine;
+
             //입력부분 세팅
             characterInput = characterSettings.UseAi ?
                 new AiInput() as ICharacterInput :
                 new ControllerInput() as ICharacterInput;
-                
                 
 
             //움직임부분 세팅 
@@ -54,8 +62,11 @@ namespace WoosanStudio.ZombieShooter
             Animator animator = GetComponentInChildren<Animator>();
             characterAnimatorModule = new ZombieAnimatorModule(animator) as ICharacterAnimatorModule;
 
+            //유한상태기계 세팅
+            FSM.SetFSM(characterInput,characterDrivingModule, characterAnimatorModule);
+
             //데미지 연출용 블링크
-            blinkMaterial = transform.GetComponentInChildren<BlinkMaterial>();
+            blink = transform.GetComponentInChildren<IBlink>();
         }
 
         private void Update()
@@ -68,9 +79,7 @@ namespace WoosanStudio.ZombieShooter
                 return;
             }
 
-            if (characterInput != null) { characterInput.ReadInput(); }
-            if (characterDrivingModule != null) { characterDrivingModule.Tick(); }
-            if (characterAnimatorModule != null) { characterAnimatorModule.Move(characterDrivingModule.Speed); }
+            FSM.Tick();
         }
 
         /// <summary>
@@ -80,7 +89,7 @@ namespace WoosanStudio.ZombieShooter
         {
             Debug.Log("hi");
             //빨갛게 깜빡임.
-            if (blinkMaterial != null && blinkMaterial.gameObject.activeSelf) { blinkMaterial.Blink(); }
+            if (blink != null && blink.myGameObject.activeSelf) { blink.Blink(); }
         }
     }
 }

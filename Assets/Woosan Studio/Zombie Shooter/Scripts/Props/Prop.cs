@@ -21,12 +21,12 @@ namespace WoosanStudio.ZombieShooter
             animator.SetTrigger("Pong");
         }
 
-        void Update()
-        {
-            if(Input.GetKeyDown(KeyCode.A))
-            {
-                Hit();
-            }
-        }
+        //void Update()
+        //{
+        //    if(Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        Hit();
+        //    }
+        //}
     }
 }

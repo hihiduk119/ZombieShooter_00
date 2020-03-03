@@ -10,8 +10,8 @@ namespace WoosanStudio.ZombieShooter
     {
         Renderer _renderer;
 
-        Material _defaultMaterial;
-        Material _damagedMaterial;
+        public Material defaultMaterial;
+        public Material damagedMaterial;
 
         Coroutine swapMaterial;
 
@@ -19,8 +19,10 @@ namespace WoosanStudio.ZombieShooter
         {
             _renderer = transform.GetComponentInChildren<Renderer>();
 
-            _defaultMaterial = _renderer.sharedMaterials[0];
-            _damagedMaterial = _renderer.sharedMaterials[1];
+            //defaultMaterial이 비어 있을때만 세팅
+            if (defaultMaterial == null) { defaultMaterial = _renderer.sharedMaterials[0]; }
+            //damagedMaterial이 비어 있을때만 세팅
+            if (damagedMaterial == null) { damagedMaterial = _renderer.sharedMaterials[1]; }
 
             Debug.Log("render = " + _renderer.name);
         }
@@ -35,17 +37,17 @@ namespace WoosanStudio.ZombieShooter
 
         IEnumerator SwapMaterial()
         {
-            _renderer.sharedMaterial = _damagedMaterial;
+            _renderer.sharedMaterial = damagedMaterial;
             yield return new WaitForSeconds(0.15f);
-            _renderer.sharedMaterial = _defaultMaterial;
+            _renderer.sharedMaterial = defaultMaterial;
         }
 
         public void Initialize()
         {
             if (swapMaterial != null) { StopCoroutine(swapMaterial); }
             
-            _renderer.sharedMaterial = _defaultMaterial;
-            _renderer.sharedMaterials = new Material[] { _defaultMaterial, _damagedMaterial };
+            _renderer.sharedMaterial = defaultMaterial;
+            _renderer.sharedMaterials = new Material[] { defaultMaterial, damagedMaterial };
         }
     }
 }

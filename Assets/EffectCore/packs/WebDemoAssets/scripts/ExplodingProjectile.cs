@@ -118,9 +118,12 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             //부딫힌 오브젝트에 IHaveHealth를 가지고 있으면 데미지를 준다
             IHaveHealth haveHealth = hit.transform.GetComponent(typeof(IHaveHealth)) as IHaveHealth;
             if (haveHealth != null) { haveHealth.DamagedEvent.Invoke(Damage, hit.point); }
-            //부딫힌 오브젝트가 IProp를 가지고 있다. Pong에니메이션 실행을 위해.
-            IProp prop = hit.transform.GetComponent<IProp>();
-            if (prop != null) { prop.Hit(); }
+            //부딫힌 오브젝트가 IHaveHit 가지고 있다.
+            // - Pong에니메이션 실행을 위해.
+            // - 맞았을때 빨강 블링크 생행
+            IHaveHit haveHit = hit.transform.GetComponent<IHaveHit>();
+            if (haveHit != null) { haveHit.Hit(); }
+
 
             //Instantiate(impactPrefab, pos, rot);
             //Destroy(gameObject);

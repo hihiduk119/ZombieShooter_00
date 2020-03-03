@@ -25,15 +25,35 @@ namespace WoosanStudio.ZombieShooter
         }
 
         //리지드 바디를 그라비티 제로 상태로 변경.
-        public void ZeroGravity(Vector3 velocity)
+        public void UpForce(Vector3 velocity)
         {
+            Collider coll = null;
+            
             rigidbodies.ForEach(value => {
+                coll = value.GetComponent<Collider>();
+                if (coll != null) { coll.enabled = false; }
+
                 value.useGravity = false;
                 value.velocity = new Vector3(
                     Random.Range((int)velocity.x / 2, (int)velocity.x * 1.5f)
                     ,Random.Range((int)velocity.y / 2, (int)velocity.y * 1.5f)
                     ,0);
             });
+
+            StartCoroutine(ContinuouslyUpForce(velocity));
+        }
+
+        IEnumerator ContinuouslyUpForce(Vector3 velocity)
+        {
+            WaitForEndOfFrame WFE = new WaitForEndOfFrame();
+            while(true)
+            {
+                rigidbodies.ForEach(value => {
+                    value.AddForce(new Vector3(20f, 20f, 0), ForceMode.Acceleration);
+                });
+
+                yield return WFE;
+            }
         }
 
         /// <summary>

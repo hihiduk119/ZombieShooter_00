@@ -9,7 +9,7 @@ namespace WoosanStudio.ZombieShooter
     /// Player도 될수 있고 AI 도 될수 있다.
     /// 
     /// </summary>
-    public class Character : MonoBehaviour
+    public class Character : MonoBehaviour , IHaveHit
     {
         [SerializeField] public CharacterSettings characterSettings;
         public Transform target;
@@ -22,6 +22,9 @@ namespace WoosanStudio.ZombieShooter
         private ICharacterAnimatorModule characterAnimatorModule;
         //죽었는지 살았는지 확인용
         public bool isDead = false;
+
+        //데이지 연출용
+        BlinkMaterial blinkMaterial;
 
         private void Awake()
         {
@@ -51,6 +54,8 @@ namespace WoosanStudio.ZombieShooter
             Animator animator = GetComponentInChildren<Animator>();
             characterAnimatorModule = new ZombieAnimatorModule(animator) as ICharacterAnimatorModule;
 
+            //데미지 연출용 블링크
+            blinkMaterial = transform.GetComponentInChildren<BlinkMaterial>();
         }
 
         private void Update()
@@ -66,6 +71,16 @@ namespace WoosanStudio.ZombieShooter
             if (characterInput != null) { characterInput.ReadInput(); }
             if (characterDrivingModule != null) { characterDrivingModule.Tick(); }
             if (characterAnimatorModule != null) { characterAnimatorModule.Move(characterDrivingModule.Speed); }
+        }
+
+        /// <summary>
+        /// 데미지 받았을때 연출
+        /// </summary>
+        public void Hit()
+        {
+            Debug.Log("hi");
+            //빨갛게 깜빡임.
+            if (blinkMaterial != null && blinkMaterial.gameObject.activeSelf) { blinkMaterial.Blink(); }
         }
     }
 }

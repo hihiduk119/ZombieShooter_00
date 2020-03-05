@@ -60,7 +60,7 @@ namespace WoosanStudio.ZombieShooter
         //List<GameObject> _impactPool = new List<GameObject>();
 
         //오브젝트 풀에서 오브젝트 생성 기본 값
-        private int poolMax = 30;
+        private int poolMax = 20;
 
 
         void Start()
@@ -238,6 +238,9 @@ namespace WoosanStudio.ZombieShooter
                 //rocketInstance.AddForce(spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max));
                 //[Object Pool]
                 Rigidbody rocketInstance;
+                //test code start
+                TestPrefabs.instance.MakeStart(spawnLocator.position);
+                //test code end
                 rocketInstance = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation);
                 rocketInstance.GetComponent<ExplodingProjectile>().Force = spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max);
                 rocketInstance.GetComponent<ExplodingProjectile>().Launch();

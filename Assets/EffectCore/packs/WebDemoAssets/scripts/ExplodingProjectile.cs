@@ -22,7 +22,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     //
 
     //자동으로 탄이 디스폰되는 시간 설정값
-    private float autoDieTime = 2f;
+    private float autoDieTime = 1f;
 
     //캐싱용
     RaycastHit hit;
@@ -31,7 +31,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     Coroutine dieTimer;
 
     //=====================>   IHaveHitDamage 시작    <=====================
-    private int _damage = 50;
+    private int _damage = 40;
     public int Damage { get => _damage; set => _damage = value; }
     //=====================>   IHaveHitDamage 끝    <=====================
 
@@ -47,13 +47,28 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
         //가속도 초기화
         thisRigidbody.velocity = Vector3.zero;
         thisRigidbody.angularVelocity = Vector3.zero;
+
         //포지션 초기화
         transform.Reset();
+
         //오브젝트 비활성화
         gameObject.SetActive(false);
+
         //오브젝플 디스폰
         Lean.Pool.LeanPool.Despawn(gameObject);
+
+        //StartCoroutine(Despawn());
     }
+
+    //IEnumerator Despawn()
+    //{
+    //    yield return new WaitForEndOfFrame();
+    //    //오브젝플 디스폰
+    //    Lean.Pool.LeanPool.Despawn(gameObject);
+
+    //    //오브젝트 비활성화
+    //    gameObject.SetActive(false);
+    //}
 
     /// <summary>
     /// 자동으로 autoDieTime시간이 지나면 Despawn
@@ -124,11 +139,15 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             IHaveHit haveHit = hit.transform.GetComponent<IHaveHit>();
             if (haveHit != null) { haveHit.Hit(); }
 
+            //test code start
+            TestPrefabs.instance.MakeEnd(pos);
+            //test code end
 
             //Instantiate(impactPrefab, pos, rot);
             //Destroy(gameObject);
             //[Object Pool]
             Lean.Pool.LeanPool.Spawn(impactPrefab, pos, rot);
+
             //사용을 안하는 이유가 궁금
             Reset();
         }

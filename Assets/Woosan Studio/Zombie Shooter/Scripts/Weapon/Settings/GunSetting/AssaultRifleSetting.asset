@@ -20,7 +20,4 @@ MonoBehaviour:
   _prefabInstance: {fileID: 0}
   _level: 1
   _damage: 0
-  _maxAmmo: 30
-  _currentAmmo: 15
-  _reloadTime: 2
-  _fireSpeed: 0
+  _maxAmmo: 10000

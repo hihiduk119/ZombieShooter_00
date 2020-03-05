@@ -87,7 +87,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Hit()
         {
-            Debug.Log("hi");
+            //Debug.Log("hi");
             //빨갛게 깜빡임.
             if (blink != null && blink.myGameObject.activeSelf) { blink.Blink(); }
         }

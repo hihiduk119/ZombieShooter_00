@@ -25,13 +25,10 @@ namespace WoosanStudio.ZombieShooter
             if (defaultMaterial == null) { defaultMaterial = _renderer.sharedMaterials[0]; }
             //damagedMaterial이 비어 있을때만 세팅
             if (damagedMaterial == null) { damagedMaterial = _renderer.sharedMaterials[1]; }
-
-            Debug.Log("render = " + _renderer.name);
         }
 
         public void Blink()
         {
-            Debug.Log("Blink");
             Initialize();
             
             swapMaterial = StartCoroutine(SwapMaterial());

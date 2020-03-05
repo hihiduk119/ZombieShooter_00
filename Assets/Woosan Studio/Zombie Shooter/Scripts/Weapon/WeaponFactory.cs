@@ -78,7 +78,6 @@ namespace WoosanStudio.ZombieShooter
                 //총의 발사 탄환 생성
                 _iGun.ProjectileLauncher.projectileSetting = _iGun.GunSettings.ProjectileSettings;
 
-                
                 //인풋 핸들러 연결부분.
                 _iGun.SetInputEventHandler(inputEvents);
 
@@ -86,8 +85,7 @@ namespace WoosanStudio.ZombieShooter
                 reloadActionList.ForEach(value => _iGun.ReloadEvent.AddListener(value.ReloadAction));
 
                 //해당 런처에서 발사시 화면 흔들림 액션 등록
-                if (cameraShaker != null) 
-                    _iGun.ProjectileLauncher.TriggerEvent.AddListener(cameraShaker.Shake);
+                if (cameraShaker != null) { _iGun.ProjectileLauncher.TriggerEvent.AddListener(cameraShaker.Shake); }                    
 
                 //탄 초기화
                 _iGun.Initialize();

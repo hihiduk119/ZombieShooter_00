@@ -52,10 +52,10 @@ public class destroyMe : MonoBehaviour{
 
         if (timer >= deathtimer)
         {
+
+            //Destroy(gameObject);
             //[Object Pool]
             Reset();
-            //Destroy(gameObject);
-            //Debug.Log("Die");
         }
-	}
+    }
 }

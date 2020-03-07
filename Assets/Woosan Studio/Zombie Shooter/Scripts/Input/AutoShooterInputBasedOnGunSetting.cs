@@ -72,5 +72,20 @@ namespace WoosanStudio.ZombieShooter
             //인풋 시작 이벤트 빌생
             StartEvent.Invoke();
         }
+
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                StartEvent.Invoke();
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                EndEvent.Invoke();
+            }
+        }
+
     }
 }

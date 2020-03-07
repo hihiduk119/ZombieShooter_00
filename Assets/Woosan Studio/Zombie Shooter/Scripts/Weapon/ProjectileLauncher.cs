@@ -32,10 +32,6 @@ namespace WoosanStudio.ZombieShooter
 
         //총구 들림 활성화
         //public bool MuzzleFlip = false;
-        //탄퍼짐 활성화
-        public bool MinorRotate;
-        public bool MajorRotate = false;
-        int seq = 0;
 
         private Coroutine _updateFrame;
 
@@ -201,7 +197,7 @@ namespace WoosanStudio.ZombieShooter
             TriggerEvent.Invoke();
 
             //Instantiate(projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation);
-            //   bombList[bombType].muzzleflare.Play();
+            //bombList[bombType].muzzleflare.Play(); //????
             //[Object Pool]
             _muzzlePool.Spawn();
 
@@ -227,6 +223,8 @@ namespace WoosanStudio.ZombieShooter
                     rocketInstanceShotgun = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation);
                     rocketInstanceShotgun.GetComponent<ExplodingProjectile>().Force = shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max);
                     rocketInstanceShotgun.GetComponent<ExplodingProjectile>().Launch();
+
+                    //?????
                     //rocketInstanceShotgun.velocity = Vector3.zero;//가속도 초기화
                     //rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max));
 
@@ -244,6 +242,8 @@ namespace WoosanStudio.ZombieShooter
                 rocketInstance = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation);
                 rocketInstance.GetComponent<ExplodingProjectile>().Force = spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max);
                 rocketInstance.GetComponent<ExplodingProjectile>().Launch();
+
+                //???
                 //rocketInstance.velocity = Vector3.zero;//가속도 초기화
                 //rocketInstance.AddForce(spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max));
             }
@@ -252,88 +252,6 @@ namespace WoosanStudio.ZombieShooter
             //{
             //    rocketInstance.AddTorque(spawnLocator.up * Random.Range(Tor_min, Tor_max));
             //}
-
-            //탄퍼짐 작음
-            if (MinorRotate)
-            {
-                RandomizeRotation();
-            }
-            //탄퍼짐 큼
-            if (MajorRotate)
-            {
-                Major_RandomizeRotation();
-            }
-        }
-
-
-        //탄퍼짐 메소드
-        void RandomizeRotation()
-        {
-            if (seq == 0)
-            {
-                seq++;
-                transform.Rotate(0, 1 * BulletSpreadPower, 0);
-            }
-            else if (seq == 1)
-            {
-                seq++;
-                transform.Rotate(1 * BulletSpreadPower, 1 * BulletSpreadPower, 0);
-            }
-            else if (seq == 2)
-            {
-                seq++;
-                transform.Rotate(1 * BulletSpreadPower, -3 * BulletSpreadPower, 0);
-            }
-            else if (seq == 3)
-            {
-                seq++;
-                transform.Rotate(-2 * BulletSpreadPower, 1 * BulletSpreadPower, 0);
-            }
-            else if (seq == 4)
-            {
-                seq++;
-                transform.Rotate(1 * BulletSpreadPower, 1 * BulletSpreadPower, 1 * BulletSpreadPower);
-            }
-            else if (seq == 5)
-            {
-                seq = 0;
-                transform.Rotate(-1 * BulletSpreadPower, -1 * BulletSpreadPower, -1 * BulletSpreadPower);
-            }
-        }
-
-        //탄퍼짐 메소드 2
-        void Major_RandomizeRotation()
-        {
-            if (seq == 0)
-            {
-                seq++;
-                transform.Rotate(0, 5 * BulletSpreadPower, 0);
-            }
-            else if (seq == 1)
-            {
-                seq++;
-                transform.Rotate(5 * BulletSpreadPower, 5 * BulletSpreadPower, 0);
-            }
-            else if (seq == 2)
-            {
-                seq++;
-                transform.Rotate(5 * BulletSpreadPower, -15 * BulletSpreadPower, 0);
-            }
-            else if (seq == 3)
-            {
-                seq++;
-                transform.Rotate(-10 * BulletSpreadPower, 5 * BulletSpreadPower, 0);
-            }
-            else if (seq == 4)
-            {
-                seq++;
-                transform.Rotate(5 * BulletSpreadPower, 5 * BulletSpreadPower, 5 * BulletSpreadPower);
-            }
-            else if (seq == 5)  
-            {
-                seq = 0;
-                transform.Rotate(-5 * BulletSpreadPower, -5* BulletSpreadPower, -5 * BulletSpreadPower);
-            }
         }
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IProjectileLauncher Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

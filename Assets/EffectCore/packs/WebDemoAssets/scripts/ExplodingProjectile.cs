@@ -39,6 +39,9 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     {
         thisRigidbody = GetComponent<Rigidbody>();
         previousPosition = transform.position;
+
+        //[Object Pool] 아닐때 사용.[Object Pool] 사용시 제거되어야 함.
+        //BeginDieTimer();
     }
 
     //[Object Pool] 사용시 초기화용, 근데 사용을 안함???
@@ -56,19 +59,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
 
         //오브젝플 디스폰
         Lean.Pool.LeanPool.Despawn(gameObject);
-
-        //StartCoroutine(Despawn());
     }
-
-    //IEnumerator Despawn()
-    //{
-    //    yield return new WaitForEndOfFrame();
-    //    //오브젝플 디스폰
-    //    Lean.Pool.LeanPool.Despawn(gameObject);
-
-    //    //오브젝트 비활성화
-    //    gameObject.SetActive(false);
-    //}
 
     /// <summary>
     /// 자동으로 autoDieTime시간이 지나면 Despawn
@@ -86,9 +77,13 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
         while(autoDieTime > deltaTime)
         {
             deltaTime += Time.deltaTime;
+
             yield return WFE;
         }
 
+
+        //Destroy(gameObject);
+        //[Object Pool]
         Reset();
     }    
 
@@ -147,8 +142,6 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             //Destroy(gameObject);
             //[Object Pool]
             Lean.Pool.LeanPool.Spawn(impactPrefab, pos, rot);
-
-            //사용을 안하는 이유가 궁금
             Reset();
         }
     }

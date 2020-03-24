@@ -45,21 +45,21 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     }
 
     //[Object Pool] 사용시 초기화용, 근데 사용을 안함???
-    private void Reset()
-    {
-        //가속도 초기화
-        thisRigidbody.velocity = Vector3.zero;
-        thisRigidbody.angularVelocity = Vector3.zero;
+    //private void Reset()
+    //{
+    //    //가속도 초기화
+    //    thisRigidbody.velocity = Vector3.zero;
+    //    thisRigidbody.angularVelocity = Vector3.zero;
 
-        //포지션 초기화
-        transform.Reset();
+    //    //포지션 초기화
+    //    transform.Reset();
 
-        //오브젝트 비활성화
-        gameObject.SetActive(false);
+    //    //오브젝트 비활성화
+    //    gameObject.SetActive(false);
 
-        //오브젝플 디스폰
-        Lean.Pool.LeanPool.Despawn(gameObject);
-    }
+    //    //오브젝플 디스폰
+    //    Lean.Pool.LeanPool.Despawn(gameObject);
+    //}
 
     /// <summary>
     /// 자동으로 autoDieTime시간이 지나면 Despawn
@@ -135,8 +135,10 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             if (haveHit != null) { haveHit.Hit(); }
 
             //test code start
+            #region - [Test]
             TestPrefabs.instance.MakeEnd(pos);
             //test code end
+            #endregion
 
             //Instantiate(impactPrefab, pos, rot);
             Destroy(gameObject);

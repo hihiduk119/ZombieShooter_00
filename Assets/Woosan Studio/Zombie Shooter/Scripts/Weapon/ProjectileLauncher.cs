@@ -47,7 +47,7 @@ namespace WoosanStudio.ZombieShooter
         //오브젝트 풀 관련 캐슁
         IObjectPool _shellPool;
         IObjectPool _muzzlePool;
-        IObjectPool _projectilePool;
+        //IObjectPool _projectilePool;
         IObjectPool _impactPool;
 
         //List<GameObject> _shellPool = new List<GameObject>();
@@ -109,8 +109,9 @@ namespace WoosanStudio.ZombieShooter
             _muzzlePool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation, 4, 4);
             foreach (Transform child in _muzzlePool.ThisGameObject.transform) { _muzzlePool.ObjectPool.Add(child.gameObject); }
 
+            #region - 오브젝트 풀 이상 현상으로 발사체는 오브젝트 풀 사용 안함.
             //샷건 사용시 탄 생성은 샷 갯수 만큼 생성
-            if (projectileSetting.shotgunBehavior)
+            /*if (projectileSetting.shotgunBehavior)
             {
                 _projectilePool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.gameObject, shotgunLocator[0].position, shotgunLocator[0].rotation, poolMax * projectileSetting.shotgunPellets, poolMax * projectileSetting.shotgunPellets);
                 foreach (Transform child in _projectilePool.ThisGameObject.transform) { _projectilePool.ObjectPool.Add(child.gameObject); }
@@ -120,7 +121,8 @@ namespace WoosanStudio.ZombieShooter
                 //root = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.GetComponent<ExplodingProjectile>().impactPrefab, Vector3.zero, Quaternion.identity, poolMax, poolMax);
                 _projectilePool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.gameObject, spawnLocator.position, spawnLocator.rotation, poolMax, poolMax);
                 foreach (Transform child in _projectilePool.ThisGameObject.transform) { _projectilePool.ObjectPool.Add(child.gameObject); }
-            }
+            }*/
+            #endregion
 
             _impactPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.GetComponent<ExplodingProjectile>().impactPrefab, Vector3.zero, Quaternion.identity, poolMax, poolMax);
             foreach (Transform child in _impactPool.ThisGameObject.transform) { _impactPool.ObjectPool.Add(child.gameObject); }
@@ -215,14 +217,14 @@ namespace WoosanStudio.ZombieShooter
             {
                 for (int i = 0; i < projectileSetting.shotgunPellets; i++)
                 {
-                    Rigidbody rocketInstanceShotgun;
-                    rocketInstanceShotgun = Instantiate(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation) as Rigidbody;
-                    rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max));
-                    //[Object Pool] * 제대로 할려면 인터페이스로 간접 접근해야 하지만 복잡해서 일단 직접 접근
                     //Rigidbody rocketInstanceShotgun;
-                    //rocketInstanceShotgun = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation);
-                    //rocketInstanceShotgun.GetComponent<ExplodingProjectile>().Force = shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max);
-                    //rocketInstanceShotgun.GetComponent<ExplodingProjectile>().Launch();
+                    //rocketInstanceShotgun = Instantiate(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation) as Rigidbody;
+                    //rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max));
+                    //[Object Pool] * 제대로 할려면 인터페이스로 간접 접근해야 하지만 복잡해서 일단 직접 접근
+                    Rigidbody rocketInstanceShotgun;
+                    rocketInstanceShotgun = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation);
+                    rocketInstanceShotgun.GetComponent<ExplodingProjectile>().Force = shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max);
+                    rocketInstanceShotgun.GetComponent<ExplodingProjectile>().Launch();
 
                     //?????
                     //rocketInstanceShotgun.velocity = Vector3.zero;//가속도 초기화
@@ -231,18 +233,20 @@ namespace WoosanStudio.ZombieShooter
                 }
             } else
             {
-                Rigidbody rocketInstance;
-                rocketInstance = Instantiate(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation) as Rigidbody;
-                rocketInstance.AddForce(spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max));
-                //[Object Pool]
                 //Rigidbody rocketInstance;
-                //rocketInstance = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation);
-                //rocketInstance.GetComponent<ExplodingProjectile>().Force = spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max);
-                //rocketInstance.GetComponent<ExplodingProjectile>().Launch();
+                //rocketInstance = Instantiate(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation) as Rigidbody;
+                //rocketInstance.AddForce(spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max));
+                //[Object Pool]
+                Rigidbody rocketInstance;
+                rocketInstance = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation);
+                rocketInstance.GetComponent<ExplodingProjectile>().Force = spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max);
+                rocketInstance.GetComponent<ExplodingProjectile>().Launch();
 
+                #region - [Test]
                 //test code start
                 TestPrefabs.instance.MakeStart(spawnLocator.position);
                 //test code end
+                #endregion
 
                 //???
                 //rocketInstance.velocity = Vector3.zero;//가속도 초기화

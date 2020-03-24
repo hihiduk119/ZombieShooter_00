@@ -9,7 +9,7 @@ namespace WoosanStudio.ZombieShooter
     /// Player도 될수 있고 AI 도 될수 있다.
     /// 
     /// </summary>
-    public class Character : MonoBehaviour , IHaveHit
+    public class Character : MonoBehaviour , IHaveHit ,  ICanDestory
     {
         [SerializeField] public CharacterSettings characterSettings;
         public Transform target;
@@ -29,6 +29,12 @@ namespace WoosanStudio.ZombieShooter
 
         //데이지 연출용
         IBlink blink;
+
+        private IEnumerator waitThenCallback(float time, System.Action callback)
+        {
+            yield return new WaitForSeconds(time);
+            callback();
+        }
 
         private void Awake()
         {
@@ -90,6 +96,15 @@ namespace WoosanStudio.ZombieShooter
             //Debug.Log("hi");
             //빨갛게 깜빡임.
             if (blink != null && blink.myGameObject.activeSelf) { blink.Blink(); }
+        }
+
+        /// <summary>
+        /// 자동 삭제
+        /// </summary>
+        /// <param name="deley">해당 시간만큼 딜레이</param>
+        public void Destory(float deley)
+        {
+            StartCoroutine(waitThenCallback(deley, () => { Object.Destroy(this.gameObject); }));
         }
     }
 }

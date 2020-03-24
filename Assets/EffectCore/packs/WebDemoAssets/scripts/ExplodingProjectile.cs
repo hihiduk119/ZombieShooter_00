@@ -82,9 +82,9 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
         }
 
 
-        //Destroy(gameObject);
+        Destroy(gameObject);
         //[Object Pool]
-        Reset();
+        //Reset();
     }    
 
     /// <summary>
@@ -139,10 +139,10 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             //test code end
 
             //Instantiate(impactPrefab, pos, rot);
-            //Destroy(gameObject);
+            Destroy(gameObject);
             //[Object Pool]
             Lean.Pool.LeanPool.Spawn(impactPrefab, pos, rot);
-            Reset();
+            //Reset();
         }
     }
 }

@@ -215,14 +215,14 @@ namespace WoosanStudio.ZombieShooter
             {
                 for (int i = 0; i < projectileSetting.shotgunPellets; i++)
                 {
-                    //Rigidbody rocketInstanceShotgun;
-                    //rocketInstanceShotgun = Instantiate(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation) as Rigidbody;
-                    //rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max));
-                    //[Object Pool] * 제대로 할려면 인터페이스로 간접 접근해야 하지만 복잡해서 일단 직접 접근
                     Rigidbody rocketInstanceShotgun;
-                    rocketInstanceShotgun = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation);
-                    rocketInstanceShotgun.GetComponent<ExplodingProjectile>().Force = shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max);
-                    rocketInstanceShotgun.GetComponent<ExplodingProjectile>().Launch();
+                    rocketInstanceShotgun = Instantiate(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation) as Rigidbody;
+                    rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max));
+                    //[Object Pool] * 제대로 할려면 인터페이스로 간접 접근해야 하지만 복잡해서 일단 직접 접근
+                    //Rigidbody rocketInstanceShotgun;
+                    //rocketInstanceShotgun = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation);
+                    //rocketInstanceShotgun.GetComponent<ExplodingProjectile>().Force = shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max);
+                    //rocketInstanceShotgun.GetComponent<ExplodingProjectile>().Launch();
 
                     //?????
                     //rocketInstanceShotgun.velocity = Vector3.zero;//가속도 초기화
@@ -231,17 +231,18 @@ namespace WoosanStudio.ZombieShooter
                 }
             } else
             {
-                //Rigidbody rocketInstance;
-                //rocketInstance = Instantiate(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation) as Rigidbody;
-                //rocketInstance.AddForce(spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max));
-                //[Object Pool]
                 Rigidbody rocketInstance;
+                rocketInstance = Instantiate(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation) as Rigidbody;
+                rocketInstance.AddForce(spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max));
+                //[Object Pool]
+                //Rigidbody rocketInstance;
+                //rocketInstance = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation);
+                //rocketInstance.GetComponent<ExplodingProjectile>().Force = spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max);
+                //rocketInstance.GetComponent<ExplodingProjectile>().Launch();
+
                 //test code start
                 TestPrefabs.instance.MakeStart(spawnLocator.position);
                 //test code end
-                rocketInstance = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation);
-                rocketInstance.GetComponent<ExplodingProjectile>().Force = spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max);
-                rocketInstance.GetComponent<ExplodingProjectile>().Launch();
 
                 //???
                 //rocketInstance.velocity = Vector3.zero;//가속도 초기화

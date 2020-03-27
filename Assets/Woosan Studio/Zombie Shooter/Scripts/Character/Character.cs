@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace WoosanStudio.ZombieShooter
@@ -11,21 +12,15 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class Character : MonoBehaviour , IHaveHit ,  ICanDestory
     {
+        //캐릭터의 네비메쉬 관련 이동 및 정지거리 등의 셋업 값.
         [SerializeField] public CharacterSettings characterSettings;
         public Transform target;
 
         //캐릭터 조증을 위한 유한상태기게
         private IFiniteStateMachine FSM;
-        //캐릭터의 입력 부분.
-        private ICharacterInput characterInput;
-        //캐릭터를 해당 입력에 의해 움직이는 부분.
-        private ICharacterDrivingModule characterDrivingModule;
-        //캐릭터의 에니메이션을 조작하는 부분
-        private ICharacterAnimatorModule characterAnimatorModule;
 
         //죽었는지 살았는지 확인용
         public bool isDead = false;
-
 
         //데이지 연출용
         IBlink blink;
@@ -38,7 +33,10 @@ namespace WoosanStudio.ZombieShooter
 
         private void Awake()
         {
-            target = GameObject.FindGameObjectWithTag("Player").transform;
+            //최소거리의 바리케이트 오브젝트를 찾음
+            //target = FindNearestTarget("Barrier");
+            //랜덤한 바리케이트 오브젝트 찾음
+            target = FindRandomTarget("Barrier");
 
             if (target == null)
             {
@@ -46,39 +44,16 @@ namespace WoosanStudio.ZombieShooter
                 return;
             }
 
-            //처음부터 미리 생각해서 만들다 보면 나중에 기억나지 않아 문제가 된다.
-            //차라리 일단 만들고 리팩토링 한면서 코드수정을 하는게 더 나을 수 있다.
-            /*
-            //FSM 세팅 생성
-            FSM = characterSettings.UseAi ?
-                new MonsterFSM() as IFiniteStateMachine :
-                new PlayerFSM() as IFiniteStateMachine;
-
-            //입력부분 세팅 생성
-            characterInput = characterSettings.UseAi ?
-                new AiInput() as ICharacterInput :
-                new ControllerInput() as ICharacterInput;
-            */
-
             //FSM 세팅 생성
             FSM = new MonsterFSM();
 
-            //입력부분 세팅 생성
-            characterInput = new AiInput();
-
-            //움직임부분 세팅 생성
-            UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-            characterDrivingModule = characterSettings.UseAi ?
-                new AiDrivingModule(agent, transform, target, characterSettings) as ICharacterDrivingModule :
-                new PlayerDrivingModule(characterInput, transform, characterSettings) as ICharacterDrivingModule;
-                
-
-            //에니메이션부분 세팅 생성
-            Animator animator = GetComponentInChildren<Animator>();
-            characterAnimatorModule = new ZombieAnimatorModule(animator) as ICharacterAnimatorModule;
-
             //유한상태기계 세팅
-            FSM.SetFSM(characterInput,characterDrivingModule, characterAnimatorModule);
+            //character는 순수 하게 FSM의 Tick호출만 할 뿐 모든 작업은 FSM 에서 진행한다.
+            FSM.SetFSM(
+                target,//어떤 타겟을 목표로 움직이는 세팅
+                new AiInput(), //입력부분 생성
+                new AiDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, characterSettings) as ICharacterDrivingModule,//움직임부분 생성
+                new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule);// 에니메이션부분 생성
 
             //데미지 연출용 블링크
             blink = transform.GetComponentInChildren<IBlink>();
@@ -95,6 +70,39 @@ namespace WoosanStudio.ZombieShooter
             }
 
             FSM.Tick();
+        }
+
+
+        /// <summary>
+        /// 가장 가까운 거리의 타겟을 찾는다.
+        /// </summary>
+        /// <returns></returns>
+        private Transform FindNearestTarget(string findTag)
+        {
+            Transform nearestTarget = null;
+            List<GameObject> targets = new List<GameObject>(GameObject.FindGameObjectsWithTag(findTag));
+
+            List<float> distances = new List<float>();
+
+            targets.ForEach(value => distances.Add(Vector3.Distance(value.transform.position, transform.position)));
+
+            nearestTarget = targets[distances.IndexOf(distances.Min())].transform;
+
+            return nearestTarget;
+        }
+
+        /// <summary>
+        /// 랜덤 타겟을 찾는다.
+        /// </summary>
+        /// <returns></returns>
+        private Transform FindRandomTarget(string findTag)
+        {
+            Transform nearestTarget = null;
+            List<GameObject> targets = new List<GameObject>(GameObject.FindGameObjectsWithTag(findTag));
+
+            nearestTarget = targets[Random.Range(0,targets.Count)].transform;
+
+            return nearestTarget;
         }
 
         /// <summary>

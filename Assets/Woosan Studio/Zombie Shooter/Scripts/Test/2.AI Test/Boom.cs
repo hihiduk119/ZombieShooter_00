@@ -27,7 +27,8 @@ public class Boom
         {
             Rigidbody rb = hit.GetComponent<Rigidbody>();
 
-            if (rb != null)
+            //레이어가 레그돌 인것에만 폭팔 포스 부여.
+            if (rb != null && rb.gameObject.layer == LayerMask.NameToLayer("Regdoll"))
             {
                 rb.AddExplosionForce(power, explosionPos, radius, 0.5F,ForceMode.VelocityChange);
             }

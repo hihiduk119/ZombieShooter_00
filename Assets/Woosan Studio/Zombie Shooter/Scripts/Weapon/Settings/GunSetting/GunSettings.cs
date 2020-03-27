@@ -10,18 +10,20 @@ namespace WoosanStudio.ZombieShooter
         /// 무기 타입 - 추가 될 경우를 대비해 int로 만듬
         /// </summary>
         [SerializeField] private int _index = 0;
+        public int Index { get => _index; }
 
         /// <summary>
         /// 무기 이름
         /// </summary>
         [SerializeField] private string _name = "None";
+        public string Name { get => _name; }
 
         /// <summary>
         /// projectileActor.cs 에서 가져온 클래스
         /// </summary>
         [SerializeField] private ProjectileSettings _projectileSettings;
-        public int Index { get => _index; }
-        public string Name { get => _name; }
+        
+        
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IHaveModel Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         /// <summary>

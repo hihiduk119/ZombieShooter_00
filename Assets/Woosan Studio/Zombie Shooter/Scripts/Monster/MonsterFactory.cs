@@ -14,6 +14,8 @@ namespace WoosanStudio.ZombieShooter
         [Tooltip("스폰 위치")]
         public SpawnPoints SpawnPoints;
 
+        public LevelConfig monsterLevelConfig;
+
         IEnumerator Start()
         {
             while(true)

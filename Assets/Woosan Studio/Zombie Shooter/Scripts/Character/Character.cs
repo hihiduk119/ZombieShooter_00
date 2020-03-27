@@ -5,9 +5,9 @@ using UnityEngine;
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
-    /// 모든 캐릭터의 시작점.
-    /// Player도 될수 있고 AI 도 될수 있다.
-    /// 
+    /// 몬스터의 시작점이나 문제가 있음
+    /// 모든 플레이어 공용으로 사용하려 하였으나 정의가 재대로 안돼서 일단
+    /// 몬스터용으로만 사용
     /// </summary>
     public class Character : MonoBehaviour , IHaveHit ,  ICanDestory
     {
@@ -25,7 +25,7 @@ namespace WoosanStudio.ZombieShooter
 
         //죽었는지 살았는지 확인용
         public bool isDead = false;
-        
+
 
         //데이지 연출용
         IBlink blink;
@@ -46,25 +46,34 @@ namespace WoosanStudio.ZombieShooter
                 return;
             }
 
-            //FSM 세팅
+            //처음부터 미리 생각해서 만들다 보면 나중에 기억나지 않아 문제가 된다.
+            //차라리 일단 만들고 리팩토링 한면서 코드수정을 하는게 더 나을 수 있다.
+            /*
+            //FSM 세팅 생성
             FSM = characterSettings.UseAi ?
                 new MonsterFSM() as IFiniteStateMachine :
                 new PlayerFSM() as IFiniteStateMachine;
 
-            //입력부분 세팅
+            //입력부분 세팅 생성
             characterInput = characterSettings.UseAi ?
                 new AiInput() as ICharacterInput :
                 new ControllerInput() as ICharacterInput;
-                
+            */
 
-            //움직임부분 세팅 
+            //FSM 세팅 생성
+            FSM = new MonsterFSM();
+
+            //입력부분 세팅 생성
+            characterInput = new AiInput();
+
+            //움직임부분 세팅 생성
             UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             characterDrivingModule = characterSettings.UseAi ?
                 new AiDrivingModule(agent, transform, target, characterSettings) as ICharacterDrivingModule :
                 new PlayerDrivingModule(characterInput, transform, characterSettings) as ICharacterDrivingModule;
                 
 
-            //에니메이션부분 세팅
+            //에니메이션부분 세팅 생성
             Animator animator = GetComponentInChildren<Animator>();
             characterAnimatorModule = new ZombieAnimatorModule(animator) as ICharacterAnimatorModule;
 
@@ -105,6 +114,6 @@ namespace WoosanStudio.ZombieShooter
         public void Destory(float deley)
         {
             StartCoroutine(waitThenCallback(deley, () => { Object.Destroy(this.gameObject); }));
-        }
+        }     
     }
 }

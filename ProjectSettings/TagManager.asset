@@ -30,6 +30,7 @@ TagManager:
   - Level Design Ground
   - UITouch
   - Regdoll
+  - Character
   - 
   - 
   - 
@@ -44,8 +45,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Props
   m_SortingLayers:
   - name: Default
     uniqueID: 0

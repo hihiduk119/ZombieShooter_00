@@ -18,11 +18,20 @@ public class MoveScreenPointToRayPosition : MonoBehaviour
 
     public UpdatePositionEvent UpdatePositionEvent = new UpdatePositionEvent();
 
+    int layerMask = 0;
+
     //Layer
 
     //캐쉬
     Ray _ray;
     RaycastHit _hit;
+
+    private void Awake()
+    {
+        //Props & Barrier & Character를 제외한 나머지만 체크함.
+        layerMask = ((1 << LayerMask.NameToLayer("Props")) | (1 << LayerMask.NameToLayer("Barrier")) | (1 << LayerMask.NameToLayer("Character")));
+        layerMask = ~layerMask;
+    }
 
     private void OnDisable()
     {
@@ -56,7 +65,7 @@ public class MoveScreenPointToRayPosition : MonoBehaviour
         {
             _ray = Camera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(_ray, out _hit))
+            if (Physics.Raycast(_ray, out _hit,1000f,this.layerMask))
             {
                 _point = _hit.point;
                 //_point.y += 0.25f;

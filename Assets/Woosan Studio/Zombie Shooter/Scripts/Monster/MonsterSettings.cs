@@ -65,11 +65,11 @@ namespace WoosanStudio.ZombieShooter
         public DamageCalculator DamageCalculator { get; }
 
         /// <summary>
-        /// 공격 속도
+        /// 공격 딜레이
         /// </summary>
-        [Tooltip("공격 속도")]
-        [SerializeField] private float _attackSpeed;
-        public float AttackSpeed { get => _attackSpeed; }
+        [Tooltip("공격 딜레이")]
+        [SerializeField] private float _attackDelay;
+        public float AttackDelay { get => _attackDelay; }
 
         /// <summary>
         /// 이동 속도
@@ -77,6 +77,20 @@ namespace WoosanStudio.ZombieShooter
         [Tooltip("이동 속도")]
         [SerializeField] private float _moveSpeed;
         public float MoveSpeed { get => _moveSpeed; }
+
+        /// <summary>
+        /// 회전 속도
+        /// </summary>
+        [Tooltip("회전 속도")]
+        [SerializeField] private float turnSpeed = 130f;
+        public float TurnSpeed { get => turnSpeed; }
+
+        /// <summary>
+        /// 정지 거리
+        /// </summary>
+        [Tooltip("정지 거리")]
+        [SerializeField] private float stoppingDistance = 3f;
+        public float StopingDistance { get => stoppingDistance; }
 
         /// <summary>
         /// 모델을 만듬

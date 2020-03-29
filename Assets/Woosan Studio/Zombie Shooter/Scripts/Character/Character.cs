@@ -13,7 +13,10 @@ namespace WoosanStudio.ZombieShooter
     public class Character : MonoBehaviour , IHaveHit ,  ICanDestory
     {
         //캐릭터의 네비메쉬 관련 이동 및 정지거리 등의 셋업 값.
-        [SerializeField] public CharacterSettings characterSettings;
+        //[SerializeField] public CharacterSettings characterSettings;
+        //몬스터의 네비메쉬 및 공격력 이동 관련등의 세팅 값.
+        [SerializeField] public MonsterSettings monsterSettings;
+
         public Transform target;
 
         //캐릭터 조증을 위한 유한상태기게
@@ -31,7 +34,7 @@ namespace WoosanStudio.ZombieShooter
             callback();
         }
 
-        private void Awake()
+        private void Start()
         {
             //최소거리의 바리케이트 오브젝트를 찾음
             //target = FindNearestTarget("Barrier");
@@ -47,13 +50,19 @@ namespace WoosanStudio.ZombieShooter
             //FSM 세팅 생성
             FSM = new MonsterFSM();
 
+            if(monsterSettings == null)
+            Debug.Log("monsterSettings null ");
+              
+
             //유한상태기계 세팅
             //character는 순수 하게 FSM의 Tick호출만 할 뿐 모든 작업은 FSM 에서 진행한다.
             FSM.SetFSM(
                 target,//어떤 타겟을 목표로 움직이는 세팅
                 new AiInput(), //입력부분 생성
-                new AiDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, characterSettings) as ICharacterDrivingModule,//움직임부분 생성
-                new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule);// 에니메이션부분 생성
+                //new AiDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, characterSettings) as ICharacterDrivingModule,//움직임부분 생성
+                new AiDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
+                new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
+                monsterSettings);
 
             //데미지 연출용 블링크
             blink = transform.GetComponentInChildren<IBlink>();

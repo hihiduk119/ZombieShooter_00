@@ -25,7 +25,7 @@ namespace WoosanStudio.ZombieShooter
 
         public void Blink()
         {
-            Debug.Log("Blink");
+            //Debug.Log("Blink");
             Initialize();
 
             swapMaterial = StartCoroutine(SwapMaterial());
@@ -34,7 +34,7 @@ namespace WoosanStudio.ZombieShooter
         IEnumerator SwapMaterial()
         {
             _renderer.sharedMaterial = damagedMaterial;
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(1.25f);
             _renderer.sharedMaterial = defaultMaterial;
         }
 

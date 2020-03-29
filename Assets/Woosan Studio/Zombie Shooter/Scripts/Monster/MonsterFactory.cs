@@ -14,6 +14,7 @@ namespace WoosanStudio.ZombieShooter
         [Tooltip("스폰 위치")]
         public SpawnPoints SpawnPoints;
 
+        //작업해야함
         public LevelConfig monsterLevelConfig;
 
         IEnumerator Start()
@@ -22,7 +23,7 @@ namespace WoosanStudio.ZombieShooter
             {
                 MakeMonster(0, SpawnPoints.GetSpawnPosition());
 
-                yield return new WaitForSeconds(200f);
+                yield return new WaitForSeconds(2f);
             }
         }
 
@@ -33,6 +34,9 @@ namespace WoosanStudio.ZombieShooter
         private void MakeMonster(int index,Transform parent = null)
         {
             GameObject clone = monsterSettings[index].MakeModel(monsterSettings[index].name, parent);
+            //세팅값 넣어주기
+            //clone.GetComponent<Character>().monsterSettings = Instantiate(monsterSettings[index]) as MonsterSettings;
+            clone.GetComponent<Character>().monsterSettings = monsterSettings[index];
 
             if (parent != null) { clone.transform.parent = parent; } 
             clone.transform.Reset();

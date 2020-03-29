@@ -9,28 +9,42 @@ namespace WoosanStudio.ZombieShooter
         ICharacterInput characterInput;
         ICharacterDrivingModule characterDrivingModule;
         ICharacterAnimatorModule characterAnimatorModule;
+        MonsterSettings monsterSettings;
+
         Transform target;
 
         //공격 시작 플레그
         private bool attackStart = false;
-        private float attackDeltaTime = 0;
-        private float attackDelay = 2.5f;
-
+        private float attackDelay = 2f;
+        private float attackDeltaTime = 0; 
         private bool hitStart = false;
         private float hitDeltaTime = 0;
         private float hitDelay = 0.75f;
 
-        public void SetFSM(Transform target, ICharacterInput characterInput,ICharacterDrivingModule characterDrivingModule, ICharacterAnimatorModule characterAnimatorModule)
+
+
+        public void SetFSM(Transform target, ICharacterInput characterInput,ICharacterDrivingModule characterDrivingModule, ICharacterAnimatorModule characterAnimatorModule , MonsterSettings monsterSettings)
         {
             this.characterInput = characterInput;
             this.characterDrivingModule = characterDrivingModule;
             this.characterAnimatorModule = characterAnimatorModule;
-
+            this.monsterSettings = monsterSettings;
 
             //공격이 시작되었음을 등록
-            characterDrivingModule.ReachDestinationEvent.AddListener(() => { attackStart = true;});
+            characterDrivingModule.ReachDestinationEvent.AddListener(() => {
+                attackStart = true;
+            });
+
+            //목적지 도달시 공격 모션을 수행하기 위해 해당 이벤트 세팅
+            //characterDrivingModule.ReachDestinationEvent.AddListener(characterAnimatorModule.Attack);
 
             this.target = target;
+
+            //몬스터 데이터를 실제 공격 부분과 일치하게 세팅함.
+            attackDelay = monsterSettings.AttackDelay;
+            
+            //처음 시작시 바로 공격을 해야하기에 attackDelay값과 동일하게 마춰줌
+            attackDeltaTime = attackDelay;
         }
 
         //Update와 같은 역활.
@@ -47,11 +61,11 @@ namespace WoosanStudio.ZombieShooter
                 Attack();
             }
 
-            if (hitStart)
-            {
-                //공격을 바로 할려고 값을 일부러 넣어줌
-                Hit();
-            }
+            //if (hitStart)
+            //{
+            //    //공격을 바로 할려고 값을 일부러 넣어줌
+            //    Hit();
+            //}
         }
 
         /// <summary>
@@ -60,25 +74,33 @@ namespace WoosanStudio.ZombieShooter
         public void Attack()
         {
             attackDeltaTime += Time.deltaTime;
-            if(attackDeltaTime > attackDelay)
-            {
-                Debug.Log("attack s");
-                //목적지 도달시 공격 모션을 수행하기 위해 해당 이벤트 세팅
-                characterDrivingModule.ReachDestinationEvent.AddListener(characterAnimatorModule.Attack);
+            hitDeltaTime += Time.deltaTime;
+            //Debug.Log("attackDeltaTime = " + attackDeltaTime + "         attackDelay = " + attackDelay);
 
-                hitStart = true;
+            if (attackDeltaTime > attackDelay)
+            {
+                //Debug.Log("attack s");
+                characterAnimatorModule.Attack();
 
                 attackDeltaTime = 0;
+                hitDeltaTime = 0;
+                //공격이 시작되면 바리케이트 맞는 연출 활성화.
+                hitStart = true;
             }
+
+            if (hitStart)
+            {
+                Hit();
+            }
+            
         }
 
         public void Hit()
         {
-            hitDeltaTime += Time.deltaTime;
-
+            //Debug.Log("hitDeltaTime = " + hitDeltaTime + "         hitDelay = " + hitDelay);
             if (hitDeltaTime > hitDelay)
             {
-                Debug.Log("hit s");
+                //Debug.Log("hit s");
                 //바리케이트에 히트 호출
                 target.GetComponent<IHaveHit>().Hit();
 

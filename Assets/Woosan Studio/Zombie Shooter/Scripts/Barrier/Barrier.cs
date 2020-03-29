@@ -30,12 +30,14 @@ namespace WoosanStudio.ZombieShooter
             blink.Blink();
         }
 
-        void Update()
+        #region [-TestCode]
+        /*void Update()
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
                 Hit();
             }
-        }
+        }*/
+        #endregion
     }
 }

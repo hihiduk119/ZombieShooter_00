@@ -10,7 +10,8 @@ namespace WoosanStudio.ZombieShooter
     {
         private Transform _transform;
         private Transform _destination;
-        private CharacterSettings _characterSettings;
+        private MonsterSettings _monsterSettings;
+        //private CharacterSettings _characterSettings;
         private NavMeshAgent _agent;
 
         private UnityEvent _reachDestinationEvent = new UnityEvent();
@@ -18,13 +19,20 @@ namespace WoosanStudio.ZombieShooter
 
         public float Speed { get => _agent.speed; }
 
-        public AiDrivingModule(NavMeshAgent agent,Transform transform,Transform destination, CharacterSettings characterSettings)
+        //public AiDrivingModule(NavMeshAgent agent,Transform transform,Transform destination, CharacterSettings characterSettings)
+        public AiDrivingModule(NavMeshAgent agent, Transform transform, Transform destination, MonsterSettings monterSettings)
         {
             _agent = agent;
             _transform = transform;
             _destination = destination;
-            _characterSettings = characterSettings;
-            _agent.stoppingDistance = characterSettings.StopingDistance;
+            _monsterSettings = monterSettings;
+
+            //캐릭터 세팅 값을 네비메쉬 에이전트에 세팅하는 부분
+            _agent.speed = monterSettings.MoveSpeed;
+            _agent.stoppingDistance = monterSettings.StopingDistance;
+
+            //_characterSettings = characterSettings;
+            //_agent.speed = characterSettings.MoveSpeed;
         }
 
         public void Tick()

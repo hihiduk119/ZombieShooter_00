@@ -17,6 +17,9 @@ namespace WoosanStudio.ZombieShooter
         {
             if (_animator == null) return;
 
+            _animator.SetFloat("Speed", 0);
+
+            _animator.Play("Idle");
             _animator.SetTrigger("Attack");
         }
 

@@ -6,8 +6,9 @@ namespace WoosanStudio.ZombieShooter
     public interface IHaveHealth
     {
         int Health { get; set; }
-        void Damaged(int damage,Vector3 hit);
+        void DamagedListener(int damage,Vector3 hit);
         DamagedEvent DamagedEvent { get; set; }
+        UnityEvent ZeroHealthEvent { get; set; }
     }
 
     [System.Serializable]

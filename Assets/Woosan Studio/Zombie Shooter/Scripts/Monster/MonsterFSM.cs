@@ -10,6 +10,7 @@ namespace WoosanStudio.ZombieShooter
         ICharacterDrivingModule characterDrivingModule;
         ICharacterAnimatorModule characterAnimatorModule;
         MonsterSettings monsterSettings;
+        IHaveHealth haveHealth;
 
         Transform target;
 
@@ -45,6 +46,9 @@ namespace WoosanStudio.ZombieShooter
             
             //처음 시작시 바로 공격을 해야하기에 attackDelay값과 동일하게 마춰줌
             attackDeltaTime = attackDelay;
+
+            //타겟의 체력 가져오기. 베리어의 체력
+            haveHealth = target.GetComponent<IHaveHealth>();
         }
 
         //Update와 같은 역활.
@@ -105,6 +109,13 @@ namespace WoosanStudio.ZombieShooter
                 target.GetComponent<IHaveHit>().Hit();
 
                 hitDeltaTime = 0;
+
+                //베리어에 데미지 이벤트 호출
+                if(haveHealth != null)
+                {
+                    haveHealth.DamagedEvent.Invoke(this.monsterSettings.Damage, Vector3.zero);
+                }
+
                 hitStart = false;
             }
         }

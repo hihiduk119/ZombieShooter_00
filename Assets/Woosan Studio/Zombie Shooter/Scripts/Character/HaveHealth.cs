@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -15,16 +16,23 @@ namespace WoosanStudio.ZombieShooter
         private DamagedEvent _damagedEvent = new DamagedEvent();
         public DamagedEvent DamagedEvent { get => _damagedEvent; set => throw new System.NotImplementedException(); }
 
+        private UnityEvent _zeroHealthEvent = new UnityEvent();
+        public UnityEvent ZeroHealthEvent { get => _zeroHealthEvent; set => throw new System.NotImplementedException(); }
+
         void Awake()
         {
-            _damagedEvent.AddListener(Damaged);
+            _damagedEvent.AddListener(DamagedListener);
         }
 
-        public void Damaged(int damage,Vector3 hit)
+        public void DamagedListener(int damage,Vector3 hit)
         {
             Health -= damage;
 
-            //Debug.Log("Health = " + Health);
+            //체력이 0 이하면 호출
+            if(Health <= 0)
+            {
+                _zeroHealthEvent.Invoke();
+            }
         }
     }
 }

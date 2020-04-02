@@ -104,14 +104,11 @@ MonoBehaviour:
   damping: 10
   textTypes:
   - keyType: default
-    poolCount: 10
+    poolCount: 5
     prefab: {fileID: 114685088414384168, guid: 5e2ce031cab7c49b2a5622c25e258dfc, type: 3}
   - keyType: critical
-    poolCount: 10
+    poolCount: 5
     prefab: {fileID: 114685088414384168, guid: b88fd4f14462c4a7da076ddd439c8733, type: 3}
-  - keyType: status
-    poolCount: 10
-    prefab: {fileID: 114315480412742854, guid: 64c7a124b32c24b048235985ce1c2a46, type: 3}
 --- !u!114 &-8905789912047137822
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,7 +23,8 @@ namespace WoosanStudio.ZombieShooter
         //===================>   몬스터의 데미지 계산용    <===================
         static public int GetDamage(int id,int level, MonsterSettings.AttackType attackType,bool isMonster )
         {
-            return -1;
+            //return -1;
+            return 20;
         }
     }
 }

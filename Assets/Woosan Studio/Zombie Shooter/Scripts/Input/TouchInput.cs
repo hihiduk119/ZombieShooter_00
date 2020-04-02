@@ -19,13 +19,13 @@ namespace WoosanStudio.ZombieShooter
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("Down");
+                //Debug.Log("Down");
                 touchDownEvent.Invoke();
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                Debug.Log("Up   ");
+                //Debug.Log("Up   ");
                 touchUpEvent.Invoke();
             }
         }

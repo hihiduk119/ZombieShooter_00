@@ -74,18 +74,19 @@ namespace WoosanStudio.ZombieShooter
         }
 
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                StartEvent.Invoke();
-            }
-
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                EndEvent.Invoke();
-            }
-        }
+        #region [-TestCode]
+        //private void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        StartEvent.Invoke();
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.S))
+        //    {
+        //        EndEvent.Invoke();
+        //    }
+        //}
+        #endregion
 
     }
 }

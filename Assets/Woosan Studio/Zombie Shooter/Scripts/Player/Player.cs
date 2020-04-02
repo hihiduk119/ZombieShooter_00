@@ -33,7 +33,10 @@ namespace WoosanStudio.ZombieShooter
 
         private void Awake()
         {
-            _cameraShaker = Shaker.GetComponent<ICameraShaker>();
+            //플레이어 팩토리 동작시 삭제 예정
+            //_cameraShaker = Shaker.GetComponent<ICameraShaker>();
+            //
+
             _inputEvents = GetComponent<IInputEvents>();
             _reloadActionList.Add(GetComponent<IReloadAction>());
 
@@ -42,14 +45,27 @@ namespace WoosanStudio.ZombieShooter
             _doRoll.SetAnimator(_animator);
         }
 
+        /// <summary>
+        /// 플레이어 팩토리에서 생성시 반드시 초기화 해야함.
+        /// </summary>
+        /// <param name="weaponFactory">무기공장 세팅</param>
+        /// <param name="cameraShaker">카메라 쉐이커 세팅</param>
+        public void Initialize(WeaponFactory weaponFactory,ICameraShaker cameraShaker)
+        {
+            this._weaponFactory = weaponFactory;
+            this._cameraShaker = cameraShaker;
+        }
+
         IEnumerator Start()
         {
-            _weaponFactory = FindObjectOfType<WeaponFactory>();
+            //플레이어 팩토리 동작시 삭제 예정
+            //_weaponFactory = FindObjectOfType<WeaponFactory>();
+            //
 
             yield return new WaitForSeconds(0.2f);
 
+            if (_inputEvents == null) { Debug.Log("키 인풋이 널임!!"); }
             //키인풋으로 사격 컨트롤
-            //_iWeapon = _weaponFactory.MakeWeapon(_inputEvents, null, _reloadActionList, ref _iGun, Joint, 1);
             _iWeapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker, _reloadActionList, ref _iGun, Joint, 1);
 
             yield return new WaitForSeconds(0.1f);

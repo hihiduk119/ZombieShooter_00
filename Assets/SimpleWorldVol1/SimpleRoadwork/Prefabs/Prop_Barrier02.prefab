@@ -102,11 +102,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 451096}
+  - component: {fileID: 1091749386947573706}
   - component: {fileID: 2098699556}
   - component: {fileID: -2171470738813585701}
   - component: {fileID: 5657080821711368784}
-  - component: {fileID: 1091749386947573706}
   - component: {fileID: 1023730321896594846}
+  - component: {fileID: 2876473683285978161}
   m_Layer: 10
   m_Name: Prop_Barrier02
   m_TagString: Barrier
@@ -130,6 +131,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1091749386947573706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 934835eeaeb904512a696a3bc41a3e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 200
 --- !u!64 &2098699556
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -175,19 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff4a7c0c25ff46028d3954e0e823fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1091749386947573706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 934835eeaeb904512a696a3bc41a3e89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 200
 --- !u!114 &1023730321896594846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +203,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textManager: {fileID: 0}
   overrideTransform: {fileID: 3507900481114681618}
+--- !u!114 &2876473683285978161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b67d8750d564547b048e7c973b12c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthLink:
+    targetScript: {fileID: 1091749386947573706}
+    fieldName: health
+  HealthbarPrefab: {fileID: 22400004, guid: f3cbc3b42afbd42bd9685a5feda5da2f, type: 3}
+  yOffset: 2
+  keepSize: 1
+  scale: 7
+  sizeOffsets: {x: 100, y: -200}
+  DrawOFFDistance: 0
+  drawDistance: 10
+  showHealthInfo: 1
+  healthInfoAlignment: 1
+  healthInfoSize: 15
+  alphaSettings:
+    defaultAlpha: 0
+    defaultFadeSpeed: 0.05
+    fullAplpha: 0
+    fullFadeSpeed: 0
+    nullAlpha: 0
+    nullFadeSpeed: 0.05
+    onHit:
+      fadeSpeed: 0.2
+      onHitAlpha: 1
+      duration: 2
+  canvas: {fileID: 0}
+  keyTag: HealthBarCanvas
 --- !u!1 &2905350889310135685
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2905350889310135685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.7, z: 0}
+  m_LocalPosition: {x: 0, y: 0.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 451096}

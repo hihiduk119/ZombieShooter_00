@@ -20,6 +20,6 @@ MonoBehaviour:
   _health: 0
   _damage: 20
   _attackDelay: 3
-  _moveSpeed: 25
+  _moveSpeed: 2.5
   turnSpeed: 130
   stoppingDistance: 3

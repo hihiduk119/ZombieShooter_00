@@ -27,24 +27,26 @@ public class destroyMe : MonoBehaviour{
     /// <summary>
     /// 파티클 재사용하기 위한 리//[Object Pool]
     /// </summary>
-    private void Reset()
-    {
-        timer = 0;
+    #region -오브젝트풀 사용부분
+    //private void Reset()
+    //{
+    //    timer = 0;
 
-        transform.position = Vector3.zero;
-        transform.rotation = Quaternion.identity;
+    //    transform.position = Vector3.zero;
+    //    transform.rotation = Quaternion.identity;
 
-        if (_particleSystem != null)
-        {
-            _particleSystem.Clear();
-            _particleSystem.Simulate(0.0f, true, true);
-            _particleSystem.Play();
-        }
+    //    if (_particleSystem != null)
+    //    {
+    //        _particleSystem.Clear();
+    //        _particleSystem.Simulate(0.0f, true, true);
+    //        _particleSystem.Play();
+    //    }
 
-        gameObject.SetActive(false);
+    //    gameObject.SetActive(false);
 
-        Lean.Pool.LeanPool.Despawn(gameObject);
-    }
+    //    Lean.Pool.LeanPool.Despawn(gameObject);
+    //}
+    #endregion
 
     void Update ()
     {
@@ -53,9 +55,9 @@ public class destroyMe : MonoBehaviour{
         if (timer >= deathtimer)
         {
 
-            //Destroy(gameObject);
+            Destroy(gameObject);
             //[Object Pool]
-            Reset();
+            //Reset();
         }
     }
 }

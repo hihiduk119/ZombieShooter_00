@@ -140,10 +140,11 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             //test code end
             #endregion
 
-            //Instantiate(impactPrefab, pos, rot);
+            
             Destroy(gameObject);
             //[Object Pool]
-            Lean.Pool.LeanPool.Spawn(impactPrefab, pos, rot);
+            //Lean.Pool.LeanPool.Spawn(impactPrefab, pos, rot);
+            Instantiate(impactPrefab, pos, rot);
             //Reset();
         }
     }

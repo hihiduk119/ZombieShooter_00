@@ -35,8 +35,6 @@ namespace WoosanStudio.ZombieShooter
         {
             //플레이어 팩토리 동작시 삭제 예정
             //_cameraShaker = Shaker.GetComponent<ICameraShaker>();
-            //
-
             _inputEvents = GetComponent<IInputEvents>();
             _reloadActionList.Add(GetComponent<IReloadAction>());
 

@@ -40,6 +40,9 @@ namespace WoosanStudio.ZombieShooter
 
             if (parent != null) { clone.transform.parent = parent; } 
             clone.transform.Reset();
+
+            //생성된 몬스터를 몬스터 메니저에 등록[몬스터 메니저는 AI 플레이어의 자동 타겟을 찾기위해 사용됨]
+            MonsterList.Instance.Items.Add(clone.transform);
         }
     }
 }

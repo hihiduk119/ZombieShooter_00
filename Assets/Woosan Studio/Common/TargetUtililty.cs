@@ -19,9 +19,13 @@ namespace WoosanStudio.Common
 
             if (targets.Count == 0) return null;
 
+            //Debug.Log(targets.Count);
+
             //두사이 거리를 distanceList에 집어 넣기
             for (int index = 0; index < targets.Count; index++)
             {
+                //Debug.Log(targets[index].name);
+                //Debug.Log("me = [" + me.position + "]   target = [" + targets[index].position + "]");
                 distanceList.Add(Vector3.Distance(me.position, targets[index].position));
             }
 

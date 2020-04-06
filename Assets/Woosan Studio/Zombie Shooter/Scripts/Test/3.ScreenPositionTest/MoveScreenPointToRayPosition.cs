@@ -1,22 +1,34 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Events;
+using WoosanStudio.ZombieShooter;
 
 [System.Serializable]
-public class UpdatePositionEvent : UnityEvent<Vector3> { }
+public class UpdatePositionEvent : UnityEvent<Vector3>
+{
+    internal void AddListener(PlayerFactory.Look lookDelegate)
+    {
+        throw new NotImplementedException();
+    }
+}
 
-public class MoveScreenPointToRayPosition : MonoBehaviour
+public class MoveScreenPointToRayPosition : MonoBehaviour , ILookPoint
 {
     //카메라 세팅부분
     public Camera Camera;
 
     private bool Activate { get; set; }
 
+    #region [-ILookPoint 구현부]
     private Vector3 _point = Vector3.zero;
-
-    public UpdatePositionEvent UpdatePositionEvent = new UpdatePositionEvent();
+    public Vector3 Point { get => this._point; set => throw new NotImplementedException(); }
+    
+    private UpdatePositionEvent _updatePositionEvent = new UpdatePositionEvent();
+    public UpdatePositionEvent UpdatePositionEvent { get => _updatePositionEvent; set => throw new NotImplementedException(); }
+    #endregion
 
     int layerMask = 0;
 

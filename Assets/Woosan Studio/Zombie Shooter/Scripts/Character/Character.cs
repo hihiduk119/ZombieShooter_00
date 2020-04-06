@@ -123,6 +123,14 @@ namespace WoosanStudio.ZombieShooter
             if (blink != null && blink.myGameObject.activeSelf) { blink.Blink(); }
         }
 
+        public void Die()
+        {
+            this.isDead = true;
+
+            //몬스터 메니저 등록에서 제거
+            MonsterList.Instance.Items.Remove(this.transform);
+        }
+
         /// <summary>
         /// 자동 삭제
         /// </summary>

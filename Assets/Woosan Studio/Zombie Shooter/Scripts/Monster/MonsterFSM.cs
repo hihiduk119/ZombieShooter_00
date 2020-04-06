@@ -23,6 +23,8 @@ namespace WoosanStudio.ZombieShooter
         private float hitDelay = 0.75f;
 
 
+        //플레이어 와 중첩으로 사용되어 임시로 하나 선언
+        public void SetFSM(Transform target, ICharacterInput characterInput, ICharacterDrivingModule characterDrivingModule, ICharacterAnimatorModule characterAnimatorModule, PlayerConfig playerConfig) { throw new System.NotImplementedException(); }
 
         public void SetFSM(Transform target, ICharacterInput characterInput,ICharacterDrivingModule characterDrivingModule, ICharacterAnimatorModule characterAnimatorModule , MonsterSettings monsterSettings)
         {

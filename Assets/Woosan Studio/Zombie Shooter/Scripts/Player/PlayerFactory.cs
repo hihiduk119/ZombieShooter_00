@@ -4,6 +4,8 @@ using UnityEngine;
 
 using WoosanStudio.Extension;
 
+using UnityEngine.Events;
+
 namespace WoosanStudio.ZombieShooter
 {
     public class PlayerFactory : MonoBehaviour
@@ -28,8 +30,12 @@ namespace WoosanStudio.ZombieShooter
         public Transform PlayerPoint2;
         [Header("[플레이어 생성 위치3]")]
         public Transform PlayerPoint3;
-        [Header("[플레이어 터치 위치에 따른 회전]")]
+        [Header("[(AI 미 사용시)[플레이어 터치 위치에 따른 회전]")]
         public MoveScreenPointToRayPosition MoveScreenPointToRayPosition;
+        [Header("[(AI 사용시) 가장 가까운 몬스터 자동 회전]")]
+        public AutoAim AutoAim;
+
+
 
         //카메라 쉐이커
         private ICameraShaker cameraShaker;
@@ -40,6 +46,12 @@ namespace WoosanStudio.ZombieShooter
         //플레이어
         private Player player;
 
+        public delegate void Look(Vector3 pos);
+        public Look lookDelegate;
+
+        public UnityAction<Vector3> lookAction;
+
+        //이벤트
         #region [-캐쉬용]
         GameObject clone = null;
         #endregion
@@ -52,27 +64,49 @@ namespace WoosanStudio.ZombieShooter
         #region [-TestCode]
         private void Start()
         {
-            Make(PlayerPoint, PlayerModels.Sheriff, playerConfigs[0].prefab);
-            Make(PlayerPoint2, PlayerModels.Sheriff, playerConfigs[0].prefab);
-            Make(PlayerPoint3, PlayerModels.Sheriff, playerConfigs[0].prefab);
+            Make(PlayerPoint, playerConfigs[0], playerConfigs[0].prefab);
+            //Make(PlayerPoint2, playerConfigs[0], playerConfigs[0].prefab);
+            //Make(PlayerPoint3, playerConfigs[0], playerConfigs[0].prefab);
         }
         #endregion
 
-        /// <summary>
+        
         /// 플레이어 생성
-        /// </summary>
-        /// <param name="playerModels">해당 타입의 모델 생</param>
-        /// <returns></returns>
-        public GameObject Make(Transform parent, PlayerModels playerModels , GameObject prefab)
+        
+        public GameObject Make(Transform parent, PlayerConfig playerConfig , GameObject prefab)
         {
             clone = Instantiate(prefab) as GameObject;
             player = clone.GetComponent<Player>();
-            player.Initialize(WeaponFactory, cameraShaker);
+
+            //AI 사용시 = 자동 몬스터 조준 사용
+            //AI 미 사용시 = 터치스크린 사용
+            ILookPoint lookPoint = playerConfig.useAI ? (ILookPoint)MoveScreenPointToRayPosition :
+                (ILookPoint)AutoAim;
+
+            //실제 처다보게 하는 스크립
+            lookAction = clone.GetComponent<LookAhead>().Look;
+
+            if(playerConfig.useAI)
+            {
+                AutoAim.UpdatePositionEvent.AddListener(lookAction);
+            } else
+            {
+                MoveScreenPointToRayPosition.UpdatePositionEvent.AddListener(lookAction);
+            }
+
+            //MoveScreenPointToRayPosition.UpdatePositionEvent.AddListener(lookAction);
+
+            player.Initialize(WeaponFactory, cameraShaker ,ref lookAction ,ref lookPoint);
             clone.transform.parent = parent;
             clone.transform.Reset(Quaternion.Euler(0,270,0));
 
-            //터치에 따라 플레이어 회clone
-            MoveScreenPointToRayPosition.UpdatePositionEvent.AddListener(clone.GetComponent<LookAhead>().Look);
+            /*ICharacterDrivingModule characterDrivingModule = playerConfig.useAI ?
+                new AiDrivingModule(agent, transform, target, characterSettings) as ICharacterDrivingModule :
+                new PlayerDrivingModule(characterInput, transform, characterSettings) as ICharacterDrivingModule;*/
+
+            //터치에 따라 플레이어 회전
+            //lookAction = clone.GetComponent<LookAhead>().Look;
+            //MoveScreenPointToRayPosition.UpdatePositionEvent.AddListener(lookAction);
 
             return clone;
         }

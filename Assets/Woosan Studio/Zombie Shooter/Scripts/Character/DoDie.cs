@@ -61,7 +61,7 @@ namespace WoosanStudio.ZombieShooter
         {
             blink.Initialize();
 
-            character.isDead = true;
+            character.Die();
 
             navMeshController.Stop();
             CopyComponets.Copy();

@@ -17,7 +17,6 @@ namespace WoosanStudio.ZombieShooter
         public GameObject Shaker;
         //무기 연결 부분
         public Transform Joint;
-
         //카메라 쉐이커
         ICameraShaker _cameraShaker;
         //리로딩시 콜벡 액션 리스트
@@ -27,6 +26,7 @@ namespace WoosanStudio.ZombieShooter
         IWeapon _iWeapon;
         IGun _iGun;
         Transform target;
+        bool useLaserPoint = false;
 
         //프로퍼티 형태의 클래스
         private DoRoll _doRoll;
@@ -51,60 +51,23 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="weaponFactory">무기공장 세팅</param>
         /// <param name="cameraShaker">카메라 쉐이커 세팅</param>
         /// <param name="playerConfig">플레이어 데이터</param>
-        public void Initialize(WeaponFactory weaponFactory,ICameraShaker cameraShaker , ref UnityAction<Vector3> lookAction , ref ILookPoint lookPoint)
+        public void Initialize(WeaponFactory weaponFactory,ICameraShaker cameraShaker , ref UnityAction<Vector3> lookAction , ref ILookPoint lookPoint,bool useLaserPoint)
         {
             this._weaponFactory = weaponFactory;
             this._cameraShaker = cameraShaker;
-
-            //lookPoint.UpdatePositionEvent.AddListener(lookAction);
-        }
-
-        IEnumerator Start()
-        {
-            //플레이어 팩토리 동작시 삭제 예정
-            //_weaponFactory = FindObjectOfType<WeaponFactory>();
-
-            yield return new WaitForSeconds(0.2f);
-
-            if (_inputEvents == null) { Debug.Log("키 인풋이 널임!!"); }
-
-            //playerFSM = new PlayerFSM();
+            this.useLaserPoint = useLaserPoint;
 
             //키인풋으로 사격 컨트롤
-            _iWeapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker, _reloadActionList, ref _iGun, Joint, 1);
-
-            yield return new WaitForSeconds(0.1f);
+            _iWeapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker, _reloadActionList, ref _iGun, Joint, 1, useLaserPoint);
         }
 
-        //private void Update()
-        //{
-        //    FSM();
-        //}
-
-        //public void FSM()
-        //{
-        //    Movement();
-        //    Input();
-        //}
-
-        //void Movement()
-        //{
-
-        //}
-
-        //void Input()
-        //{
-        //    target = TargetUtililty.GetNearestTarget(MonsterList.Instance.Items, this.transform);
 
 
-        //    #region [-TestCode : Player와 현재 가장 가까운 몬스터 타겟의 거리를 표시한다]
-        //    if (target != null)
-        //    {
-        //        Vector3 pos = GameObject.FindGameObjectWithTag("Player").transform.position;
-        //        Debug.DrawLine(pos, target.position, Color.green) ;
-        //    }
-        //    #endregion
-        //}
+
+
+
+
+
 
         public void PlayAnimation(float number)
         {

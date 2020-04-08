@@ -35,8 +35,6 @@ namespace WoosanStudio.ZombieShooter
         [Header("[(AI 사용시) 가장 가까운 몬스터 자동 회전]")]
         public AutoAim AutoAim;
 
-
-
         //카메라 쉐이커
         private ICameraShaker cameraShaker;
 
@@ -64,18 +62,18 @@ namespace WoosanStudio.ZombieShooter
         #region [-TestCode]
         private void Start()
         {
-            Make(PlayerPoint, playerConfigs[0], playerConfigs[0].prefab);
-            //Make(PlayerPoint2, playerConfigs[0], playerConfigs[0].prefab);
-            //Make(PlayerPoint3, playerConfigs[0], playerConfigs[0].prefab);
+            Make(PlayerPoint, playerConfigs[0]);
+            Make(PlayerPoint2, playerConfigs[1]);
+            Make(PlayerPoint3, playerConfigs[1]);
         }
         #endregion
 
         
         /// 플레이어 생성
         
-        public GameObject Make(Transform parent, PlayerConfig playerConfig , GameObject prefab)
+        public GameObject Make(Transform parent, PlayerConfig playerConfig)
         {
-            clone = Instantiate(prefab) as GameObject;
+            clone = Instantiate(playerConfig.prefab) as GameObject;
             player = clone.GetComponent<Player>();
 
             //AI 사용시 = 자동 몬스터 조준 사용
@@ -83,30 +81,30 @@ namespace WoosanStudio.ZombieShooter
             ILookPoint lookPoint = playerConfig.useAI ? (ILookPoint)MoveScreenPointToRayPosition :
                 (ILookPoint)AutoAim;
 
-            //실제 처다보게 하는 스크립
-            lookAction = clone.GetComponent<LookAhead>().Look;
+            //실제 처다보게 하는 스크립트
+            //에르고가 높다면 회전이 좋게 만들기
+            lookAction = clone.GetComponent<LookAhead>().SmoothLook;
 
-            if(playerConfig.useAI)
+            //AI사용시 
+            if (playerConfig.useAI)
             {
+                //자동 조준 action 연결
                 AutoAim.UpdatePositionEvent.AddListener(lookAction);
-            } else
+                
+            } else //유저 직접 조정시
             {
+                //마우스 터치 조준 action 연결
                 MoveScreenPointToRayPosition.UpdatePositionEvent.AddListener(lookAction);
+                //덤블링 스크립트.
+                DoRoll doRoll = clone.GetComponentInChildren<DoRoll>();
+                //덤블링 스크립트와 좌우 화면 터치 이벤트 연결
+                doRoll.ConnectEvents(FindObjectOfType<TouchController>());
             }
 
-            //MoveScreenPointToRayPosition.UpdatePositionEvent.AddListener(lookAction);
-
-            player.Initialize(WeaponFactory, cameraShaker ,ref lookAction ,ref lookPoint);
+            //플레이어 초기화
+            player.Initialize(WeaponFactory, cameraShaker ,ref lookAction ,ref lookPoint , !playerConfig.useAI);
             clone.transform.parent = parent;
             clone.transform.Reset(Quaternion.Euler(0,270,0));
-
-            /*ICharacterDrivingModule characterDrivingModule = playerConfig.useAI ?
-                new AiDrivingModule(agent, transform, target, characterSettings) as ICharacterDrivingModule :
-                new PlayerDrivingModule(characterInput, transform, characterSettings) as ICharacterDrivingModule;*/
-
-            //터치에 따라 플레이어 회전
-            //lookAction = clone.GetComponent<LookAhead>().Look;
-            //MoveScreenPointToRayPosition.UpdatePositionEvent.AddListener(lookAction);
 
             return clone;
         }

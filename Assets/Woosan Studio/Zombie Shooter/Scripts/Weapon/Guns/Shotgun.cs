@@ -9,6 +9,9 @@ namespace WoosanStudio.ZombieShooter
     public class Shotgun : MonoBehaviour, IWeapon, IGun
     {
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        private bool _useLaserPoint;
+        public bool UseLaserPoint { get => _useLaserPoint; set => _useLaserPoint = value; }
+
         private ProjectileLauncher _projectileLauncher;
         public ProjectileLauncher ProjectileLauncher { get => _projectileLauncher; set => _projectileLauncher = value; }
 

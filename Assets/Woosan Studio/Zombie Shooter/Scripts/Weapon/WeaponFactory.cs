@@ -25,10 +25,13 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="inputEvents">사용할 인풋 인터페이스 세팅</param>
         /// <param name="cameraShaker">카메라 쉐이킹 인터페이스</param>
-        /// <param name="parant">생성될 오브젝트의 부모</param>
+        /// <param name="reloadActionList"></param>
+        /// <param name="iGun"></param>
+        /// <param name="joint"></param>
         /// <param name="type">생성할 무기의 인덱스</param>
+        /// <param name="useLaserPoint">생성할 무기의 인덱스</param>
         /// <returns></returns>
-        public IWeapon MakeWeapon(IInputEvents inputEvents,ICameraShaker cameraShaker,List<IReloadAction> reloadActionList,ref IGun iGun , Transform joint,int type)
+        public IWeapon MakeWeapon(IInputEvents inputEvents,ICameraShaker cameraShaker,List<IReloadAction> reloadActionList,ref IGun iGun , Transform joint,int type , bool useLaserPoint)
         {
             //어떤 무기는 모델을 가지고 있으면 IHaveModel인터페이스를 상속 받기에 해당 인터페이스 호출.
             IHaveModel haveModel = _gunSettings[type];
@@ -68,6 +71,9 @@ namespace WoosanStudio.ZombieShooter
                     _iWeapon = (IWeapon)_weapon.GetComponent<LaserRifle>();
                     break;
             }
+
+            //레이저 포인터 사용 여부 활성, 비활성화
+            joint.GetComponentInChildren<LaserPointerActor>().isVisible = useLaserPoint;
 
             //발사체 무기는 IProjectileLauncher 를 상속 받기 때문에 인터페이스 호출
             if (_iGun != null)

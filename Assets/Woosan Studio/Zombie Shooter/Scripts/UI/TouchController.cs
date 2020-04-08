@@ -11,8 +11,8 @@ namespace WoosanStudio.ZombieShooter
     {
         [Header("[왼쪽 클릭 트리거]")]
         public EventTrigger left;
-        [Header("[중앙 클릭 트리거]")]
-        public EventTrigger center;
+        //[Header("[중앙 클릭 트리거]")]
+        //public EventTrigger center;
         [Header("[오른쪽 클릭 트리거]")]
         public EventTrigger right;
 
@@ -21,7 +21,7 @@ namespace WoosanStudio.ZombieShooter
         public enum TouchPosition
         {
             Left,
-            Center,
+            //Center,
             Right,
         }
 
@@ -32,15 +32,10 @@ namespace WoosanStudio.ZombieShooter
         private void Awake()
         {
             eventTriggers = new List<EventTrigger>(transform.GetComponentsInChildren<EventTrigger>());
-
+            //이벤트 등록
             left = eventTriggers.Find(value => value.gameObject.name.Equals("Left"));
-            center = eventTriggers.Find(value => value.gameObject.name.Equals("Center"));
+            //center = eventTriggers.Find(value => value.gameObject.name.Equals("Center"));
             right = eventTriggers.Find(value => value.gameObject.name.Equals("Right"));
-
-            //이벤트 생성 및 등록 부분
-            //AddNewEventType(left, EventTriggerType.PointerDown, data => { OnPointerDownDelegate((PointerEventData)data, left.gameObject); });
-            //AddNewEventType(center, EventTriggerType.PointerDown, data => { OnPointerDownDelegate((PointerEventData)data, center.gameObject);});
-            //AddNewEventType(right, EventTriggerType.PointerDown, data => { OnPointerDownDelegate((PointerEventData)data, right.gameObject); });
         }
 
         void AddNewEventType(EventTrigger eventTrigger, EventTriggerType type, UnityAction<BaseEventData> action)
@@ -59,10 +54,10 @@ namespace WoosanStudio.ZombieShooter
                     AddNewEventType(left, EventTriggerType.PointerDown, action);
                     //Debug.Log("Left Touch!");
                     break;
-                case TouchPosition.Center:
-                    AddNewEventType(center, EventTriggerType.PointerDown, action);
+                //case TouchPosition.Center:
+                //    AddNewEventType(center, EventTriggerType.PointerDown, action);
                     //Debug.Log("Center Touch!");
-                    break;
+                    //break;
                 case TouchPosition.Right:
                     AddNewEventType(right, EventTriggerType.PointerDown, action);
                     //Debug.Log("Right Touch!");

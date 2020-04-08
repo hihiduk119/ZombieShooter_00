@@ -22,10 +22,18 @@ namespace WoosanStudio.ZombieShooter
         //Test Code Start
         TouchController touchController;
 
-        private void Start()
-        {
-            touchController = FindObjectOfType<TouchController>();
+        //private void Start()
+        //{
+            //TouchController touchController = FindObjectOfType<TouchController>();
 
+            //touchController.AddEvent(TouchController.TouchPosition.Left, data => { LeftCallback((PointerEventData)data); });
+            //touchController.AddEvent(TouchController.TouchPosition.Right, data => { RightCallback((PointerEventData)data); });
+
+            //ConnectEvents();
+        //}
+
+        public void ConnectEvents(TouchController touchController)
+        {
             touchController.AddEvent(TouchController.TouchPosition.Left, data => { LeftCallback((PointerEventData)data); });
             touchController.AddEvent(TouchController.TouchPosition.Right, data => { RightCallback((PointerEventData)data); });
         }
@@ -62,17 +70,19 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
-        private void Update()
-        {
-            if(Input.GetKeyDown(KeyCode.A))
-            {
-                Roll(Direction.Left);
-            }
+        #region [-TestCode]
+        //private void Update()
+        //{
+        //    if(Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        Roll(Direction.Left);
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                Roll(Direction.Right);
-            }
-        }
+        //    if (Input.GetKeyDown(KeyCode.D))
+        //    {
+        //        Roll(Direction.Right);
+        //    }
+        //}
+        #endregion
     }
 }

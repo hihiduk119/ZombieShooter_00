@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b77c89d2ff4e24791a11c2493d36efd3, type: 3}
+  m_Name: BlueDemonFire
+  m_EditorClassIdentifier: 
+  name: BlueDemonFire
+  prefabs:
+  - {fileID: 1000012903210382, guid: a2eeb1d442bcb7f478fc55e0975bb631, type: 3}
+  - {fileID: 1000012903210382, guid: c80add9b36d77a64bbc0b82c4ca7c690, type: 3}
+  - {fileID: 1000012903210382, guid: 801c56597287a4a49b09aee4555278d6, type: 3}

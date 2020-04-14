@@ -9546,7 +9546,7 @@ GameObject:
   - component: {fileID: 114409874962607200}
   - component: {fileID: 199866926003231802}
   - component: {fileID: 198971252353732916}
-  - component: {fileID: 2389644340933791620}
+  - component: {fileID: -2678569132312766234}
   m_Layer: 11
   m_Name: Bullet_GoldFire_Medium_Projectile_Template
   m_TagString: FX
@@ -14436,18 +14436,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &2389644340933791620
-MonoBehaviour:
+--- !u!75 &-2678569132312766234
+ConstantForce:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796749963149706}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a47bac80a21a18b4b91b990df1cb4e7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Force: {x: 0, y: 0, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!1 &1924905033165216
 GameObject:
   m_ObjectHideFlags: 0

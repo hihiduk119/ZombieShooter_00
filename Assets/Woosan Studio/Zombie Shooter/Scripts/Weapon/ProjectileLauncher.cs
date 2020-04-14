@@ -38,6 +38,9 @@ namespace WoosanStudio.ZombieShooter
         //탄퍼짐시 해당 파워
         public float BulletSpreadPower = 0.25f;
 
+        //
+        Vector3 forceValue;
+
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IProjectileLauncherActions Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         private UnityEvent _triggerEvent = new UnityEvent();
@@ -218,7 +221,12 @@ namespace WoosanStudio.ZombieShooter
                 {
                     Rigidbody rocketInstanceShotgun;
                     rocketInstanceShotgun = Instantiate(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation) as Rigidbody;
-                    rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max));
+
+                    this.forceValue = shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max) * (1f / Time.fixedDeltaTime) * 0.02f;
+
+                    rocketInstanceShotgun.AddForce(this.forceValue);
+
+
                     //[Object Pool] * 제대로 할려면 인터페이스로 간접 접근해야 하지만 복잡해서 일단 직접 접근
                     //Rigidbody rocketInstanceShotgun;
                     //rocketInstanceShotgun = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation);
@@ -234,7 +242,10 @@ namespace WoosanStudio.ZombieShooter
             {
                 Rigidbody rocketInstance;
                 rocketInstance = Instantiate(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation) as Rigidbody;
-                rocketInstance.AddForce(spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max));
+
+                this.forceValue = spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max) * (1f / Time.fixedDeltaTime) * 0.02f;
+
+                rocketInstance.AddForce(this.forceValue);
                 //[Object Pool]
                 //Rigidbody rocketInstance;
                 //rocketInstance = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation);

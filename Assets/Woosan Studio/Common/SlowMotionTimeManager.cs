@@ -7,11 +7,20 @@ namespace WoosanStudio.Common
     public class SlowMotionTimeManager : MonoBehaviour
     {
         //get 의 초기화를 위해 사용.
-        public float slowdownFactor { get; private set; } = 0.1f;
-        public float recoverFactor{ get; private set; } = 1.5f;
+        public float slowdownFactor { get; private set; } = 0.2f;
+        //public float recoverFactor{ get; private set; } = 1.5f;
 
         //인터페이스로 만든 오디
         public new WoosanStudio.Common.Audio.IAudio audio;
+
+        private float defaultFixedDeltaTime = 1f;
+
+        private void Awake()
+        {
+            //defaultFixedDeltaTime = Time.fixedDeltaTime;
+
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        }
 
         /// <summary>
         /// 슬로우 모션을 발생 시키는 부분
@@ -20,7 +29,7 @@ namespace WoosanStudio.Common
             Time.timeScale = slowdownFactor;
             //Time.fixedDeltaTime 는 0.05시간에 한번씩 계산하기 때문에 변환 time scale 변경시 같이 해줘야함
             //안그러면 오브젝트가 끊기는 것처럼 날아감 보임
-            Time.fixedDeltaTime = Time.timeScale * 0.05f;
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
 
             //느린 사운드 적용 부분 [둘중에 하나 써야]
             //인터페이스로 구현
@@ -40,9 +49,11 @@ namespace WoosanStudio.Common
             if (Input.GetKeyDown(KeyCode.C))
             {
                 Time.timeScale = 1f;
-                //Time.fixedDeltaTime 는 0.05시간에 한번씩 계산하기 때문에 변환 time scale 변경시 같이 해줘야함
+                //Time.fixedDeltaTime 는 0.02시간에 한번씩 계산하기 때문에 변환 time scale 변경시 같이 해줘야함
                 //안그러면 오브젝트가 끊기는 것처럼 날아감 보임
-                Time.fixedDeltaTime = Time.timeScale * 0.05f;
+                //Time.fixedDeltaTime = defaultFixedDeltaTime;
+                Time.fixedDeltaTime = Time.timeScale * 0.02f;
+
                 //Debug.Log("[3] time = " + Time.timeScale + "   Time.fixedDeltaTime = " + Time.fixedDeltaTime);
             }
 

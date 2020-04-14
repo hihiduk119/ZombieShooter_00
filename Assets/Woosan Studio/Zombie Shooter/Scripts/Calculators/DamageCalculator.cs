@@ -24,7 +24,7 @@ namespace WoosanStudio.ZombieShooter
         static public int GetDamage(int id,int level, MonsterSettings.AttackType attackType,bool isMonster )
         {
             //return -1;
-            return 20;
+            return 10;
         }
     }
 }

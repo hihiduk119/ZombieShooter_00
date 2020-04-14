@@ -22,6 +22,8 @@ namespace WoosanStudio.ZombieShooter
         //리로딩시 콜벡 액션 리스트
         List<IReloadAction> _reloadActionList = new List<IReloadAction>();
 
+        public GunSettings.WeaponType weaponType = GunSettings.WeaponType.AssaultRifle;
+
         //캐슁용
         IWeapon _iWeapon;
         IGun _iGun;
@@ -57,17 +59,9 @@ namespace WoosanStudio.ZombieShooter
             this._cameraShaker = cameraShaker;
             this.useLaserPoint = useLaserPoint;
 
-            //키인풋으로 사격 컨트롤
-            _iWeapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker, _reloadActionList, ref _iGun, Joint, 1, useLaserPoint);
+            //키인풋으로 사격 컨트롤 및 몇번 무기를 사용할지 결정
+            _iWeapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker, _reloadActionList, ref _iGun, Joint, (int)weaponType, useLaserPoint);
         }
-
-
-
-
-
-
-
-
 
         public void PlayAnimation(float number)
         {

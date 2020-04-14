@@ -59,10 +59,14 @@ namespace WoosanStudio.ZombieShooter
 
         public void Die(Vector3 hit)
         {
+            Debug.Log("죽었다");
+            //데미지 이벤트 등록된 모든 리스너 등록해제
+            //해제를 안하면 데미지 받는데로 행동 실행.
+            haveHealth.DamagedEvent.RemoveAllListeners();
+
             blink.Initialize();
 
             character.Die();
-
             navMeshController.Stop();
             CopyComponets.Copy();
             NavMeshModel.SetActive(false);

@@ -32,7 +32,7 @@ namespace WoosanStudio.ZombieShooter
         {
             points = new List<Transform>(GetComponentsInChildren<Transform>());
 
-            points.ForEach(value => Debug.Log(value.name));
+            //points.ForEach(value => Debug.Log(value.name));
         }
 
         public void Show(ExplosionSetting setting)
@@ -68,6 +68,7 @@ namespace WoosanStudio.ZombieShooter
         {
             if(Input.GetKeyDown(KeyCode.A)){
                 Show(settings[(int)ExplosionType.RedOriginalFire]);
+                GlobalDamageController.Instance.DoDamage(1000);
             }   
         }
         #endregion

@@ -2477,6 +2477,7 @@ MonoBehaviour:
   _weaponFactory: {fileID: 0}
   Shaker: {fileID: 0}
   Joint: {fileID: 3522666836901722004}
+  weaponType: 1
   _animator: {fileID: 3522666837193113284}
 --- !u!114 &3522666838791289230
 MonoBehaviour:

@@ -52,7 +52,7 @@ namespace WoosanStudio.ZombieShooter
 
             if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
 
-            Debug.Log("Max [" + _gunStat.MaxAmmo + "]   CurrentAmmo [" + _gunStat.CurrentAmmo + "]");
+            //Debug.Log("Max [" + _gunStat.MaxAmmo + "]   CurrentAmmo [" + _gunStat.CurrentAmmo + "]");
 
             if (_gunStat.CurrentAmmo == 0)
             {

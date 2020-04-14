@@ -6,6 +6,13 @@ namespace WoosanStudio.ZombieShooter
     [CreateAssetMenu(menuName = "ZombieShooter/GunSettings/Make Setting", fileName = "GunData")]
     public class GunSettings : ScriptableObject , IHaveModel , IGunStat , IWeaponStat , IGunSettings
     {
+        public enum WeaponType : int
+        {
+            Pistol = 0,
+            AssaultRifle,
+            ShotGun,
+            LaserRifle,
+        }
         /// <summary>
         /// 무기 타입 - 추가 될 경우를 대비해 int로 만듬
         /// </summary>

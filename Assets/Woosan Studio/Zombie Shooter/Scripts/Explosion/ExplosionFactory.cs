@@ -10,6 +10,8 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class ExplosionFactory : MonoBehaviour
     {
+        //싱글톤 패턴 인스턴스
+        static public ExplosionFactory Instance;
         //폭발 객체의 종류
         public enum ExplosionType
         {
@@ -30,6 +32,9 @@ namespace WoosanStudio.ZombieShooter
 
         private void Awake()
         {
+            //싱글톤 생
+            Instance = this;
+
             points = new List<Transform>(GetComponentsInChildren<Transform>());
 
             //points.ForEach(value => Debug.Log(value.name));
@@ -37,12 +42,6 @@ namespace WoosanStudio.ZombieShooter
 
         public void Show(ExplosionSetting setting)
         {
-            //points.ForEach(value =>
-            //{
-            //    GameObject clone = Instantiate(setting.prefabs[Random.Range(0, setting.prefabs.Length)]);
-            //    clone.transform.position = value.position;
-            //});
-
             StartCoroutine(SequentialShow(setting));
         }
 
@@ -64,13 +63,18 @@ namespace WoosanStudio.ZombieShooter
         }
 
         #region [-TestCode]
-        private void Update()
+        public void TestRun()
         {
-            if(Input.GetKeyDown(KeyCode.A)){
-                Show(settings[(int)ExplosionType.RedOriginalFire]);
-                GlobalDamageController.Instance.DoDamage(1000);
-            }   
+            Show(settings[(int)ExplosionType.RedOriginalFire]);
+            GlobalDamageController.Instance.DoDamage(1000);
         }
+
+        //private void Update()
+        //{
+        //    if(Input.GetKeyDown(KeyCode.A)){
+        //        TestRun();
+        //    }   
+        //}
         #endregion
     }
 }

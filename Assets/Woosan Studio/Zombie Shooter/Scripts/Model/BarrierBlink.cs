@@ -34,7 +34,7 @@ namespace WoosanStudio.ZombieShooter
         IEnumerator SwapMaterial()
         {
             _renderer.sharedMaterial = damagedMaterial;
-            yield return new WaitForSeconds(1.25f);
+            yield return new WaitForSeconds(1f);
             _renderer.sharedMaterial = defaultMaterial;
         }
 

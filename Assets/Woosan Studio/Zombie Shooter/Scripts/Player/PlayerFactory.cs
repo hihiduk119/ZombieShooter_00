@@ -63,8 +63,8 @@ namespace WoosanStudio.ZombieShooter
         private void Start()
         {
             Make(PlayerPoint, playerConfigs[0]);
-            Make(PlayerPoint2, playerConfigs[1]);
-            Make(PlayerPoint3, playerConfigs[1]);
+            //Make(PlayerPoint2, playerConfigs[1]);
+            //Make(PlayerPoint3, playerConfigs[1]);
         }
         #endregion
 

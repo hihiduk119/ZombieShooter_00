@@ -48,7 +48,7 @@ namespace WoosanStudio.ZombieShooter
             }
 
             //FSM 세팅 생성
-            FSM = new MonsterFSM();
+            FSM = new WeakZombieFSM();
 
             if(monsterSettings == null)
             Debug.Log("monsterSettings null ");
@@ -59,9 +59,10 @@ namespace WoosanStudio.ZombieShooter
             FSM.SetFSM(
                 target,//어떤 타겟을 목표로 움직이는 세팅
                 new AiInput(), //입력부분 생성
-                new AiDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
+                new WeakZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
                 new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
-                monsterSettings);
+                new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>())//공격 모듈 생성.
+                );
 
             //데미지 연출용 블링크
             blink = transform.GetComponentInChildren<IBlink>();

@@ -4,12 +4,14 @@ using UnityEngine;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class MonsterFSM : IFiniteStateMachine
+    public class WeakZombieFSM : IFiniteStateMachine
     {
         ICharacterInput characterInput;
         ICharacterDrivingModule characterDrivingModule;
         ICharacterAnimatorModule characterAnimatorModule;
-        MonsterSettings monsterSettings;
+        ICharacterAttackModule characterAttackModule;
+
+        /*MonsterSettings monsterSettings;
         IHaveHealth haveHealth;
 
         Transform target;
@@ -17,40 +19,41 @@ namespace WoosanStudio.ZombieShooter
         //공격 시작 플레그
         private bool attackStart = false;
         private float attackDelay = 2f;
-        private float attackDeltaTime = 0; 
+        private float attackDeltaTime = 0;
         private bool hitStart = false;
         private float hitDeltaTime = 0;
-        private float hitDelay = 0.75f;
+        private float hitDelay = 0.75f;*/
 
 
         //플레이어 와 중첩으로 사용되어 임시로 하나 선언
-        public void SetFSM(Transform target, ICharacterInput characterInput, ICharacterDrivingModule characterDrivingModule, ICharacterAnimatorModule characterAnimatorModule, PlayerConfig playerConfig) { throw new System.NotImplementedException(); }
+        public void SetFSM(Transform target, ICharacterInput characterInput, ICharacterDrivingModule characterDrivingModule, ICharacterAnimatorModule characterAnimatorModule, ICharacterAttackModule characterAttackModule, PlayerConfig playerConfig) { throw new System.NotImplementedException(); }
 
-        public void SetFSM(Transform target, ICharacterInput characterInput,ICharacterDrivingModule characterDrivingModule, ICharacterAnimatorModule characterAnimatorModule , MonsterSettings monsterSettings)
+        public void SetFSM(Transform target, ICharacterInput characterInput, ICharacterDrivingModule characterDrivingModule, ICharacterAnimatorModule characterAnimatorModule , ICharacterAttackModule characterAttackModule)
         {
             this.characterInput = characterInput;
             this.characterDrivingModule = characterDrivingModule;
             this.characterAnimatorModule = characterAnimatorModule;
-            this.monsterSettings = monsterSettings;
+            this.characterAttackModule = characterAttackModule;
+            //this.monsterSettings = monsterSettings;
 
             //공격이 시작되었음을 등록
+            //[중요]ICharacterAttackModule 에 공격 시작을 알림 등록
             characterDrivingModule.ReachDestinationEvent.AddListener(() => {
-                attackStart = true;
+                //attackStart = true;
+                characterAttackModule.AttackStart = true;
             });
 
-            //목적지 도달시 공격 모션을 수행하기 위해 해당 이벤트 세팅
-            //characterDrivingModule.ReachDestinationEvent.AddListener(characterAnimatorModule.Attack);
-
-            this.target = target;
+            /*this.target = target;
 
             //몬스터 데이터를 실제 공격 부분과 일치하게 세팅함.
             attackDelay = monsterSettings.AttackDelay;
-            
-            //처음 시작시 바로 공격을 해야하기에 attackDelay값과 동일하게 마춰줌
+            hitDelay = monsterSettings.HitDelay;
+
+            //[중요] 처음 시작시 바로 공격을 해야하기에 attackDelay값과 동일하게 마춰줌
             attackDeltaTime = attackDelay;
 
-            //타겟의 체력 가져오기. 베리어의 체력
-            haveHealth = target.GetComponent<IHaveHealth>();
+            //타겟의 체력 가져오기.베리어의 체력
+            haveHealth = target.GetComponent<IHaveHealth>();*/
         }
 
         //Update와 같은 역활.
@@ -59,25 +62,23 @@ namespace WoosanStudio.ZombieShooter
             if (characterInput != null) { characterInput.ReadInput(); }
             if (characterDrivingModule != null) { characterDrivingModule.Tick(); }
             if (characterAnimatorModule != null) { characterAnimatorModule.Move(characterDrivingModule.Speed); }
+            //[작업중]
+            if (characterAttackModule != null) { characterAttackModule.Attack(characterAnimatorModule); }
 
             //공격이 시작되면 호출
-            if (attackStart)
+            /*if (attackStart)
             {
                 //공격을 바로 할려고 값을 일부러 넣어줌
                 Attack();
-            }
 
-            //if (hitStart)
-            //{
-            //    //공격을 바로 할려고 값을 일부러 넣어줌
-            //    Hit();
-            //}
+                //Debug.Log("attackDelay = " + this.attackDelay + "  this.hitDelay = " + this.hitDelay + "    this.damage = " + this.monsterSettings);
+            }*/
         }
 
         /// <summary>
         /// 뫁스터 공격 시작
         /// </summary>
-        public void Attack()
+        /*public void Attack()
         {
             attackDeltaTime += Time.deltaTime;
             hitDeltaTime += Time.deltaTime;
@@ -96,9 +97,9 @@ namespace WoosanStudio.ZombieShooter
 
             if (hitStart)
             {
+                //Debug.Log("Hit !!");
                 Hit();
             }
-            
         }
 
         public void Hit()
@@ -113,13 +114,13 @@ namespace WoosanStudio.ZombieShooter
                 hitDeltaTime = 0;
 
                 //베리어에 데미지 이벤트 호출
-                if(haveHealth != null)
+                if (haveHealth != null)
                 {
                     haveHealth.DamagedEvent.Invoke(this.monsterSettings.Damage, Vector3.zero);
                 }
 
                 hitStart = false;
             }
-        }
+        }*/
     }
 }

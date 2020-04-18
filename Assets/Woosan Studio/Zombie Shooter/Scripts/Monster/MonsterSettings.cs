@@ -103,7 +103,7 @@ namespace WoosanStudio.ZombieShooter
 
             if (_prefab != null)
             {
-                clone = Instantiate(_prefab, parent.position,Quaternion.identity) as GameObject;
+                clone = Instantiate(_prefab, parent.position, Quaternion.identity) as GameObject;
                 if (name.Length > 0)
                     clone.name = name;
                 else

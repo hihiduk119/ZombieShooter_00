@@ -77,7 +77,6 @@ namespace WoosanStudio.ZombieShooter
             if (hitStart)
             {
                 //Debug.Log("Hit !!");
-                //_hitEvent.Invoke();
                 Hit();
             }
         }

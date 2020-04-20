@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9181cc1333b844137891b64b7d82e2fb, type: 3}
-  m_Name: MonsterData_01
+  m_Name: ThrowZombie
   m_EditorClassIdentifier: 
   _attackType: 0
-  _id: 0
-  _name: None
-  _prefab: {fileID: 1745224648899196828, guid: 7f1900b1f06be45dfb7bc88c41166cd1, type: 3}
+  _monsterID: 0
+  _name: AirportWorker
+  _prefab: {fileID: 6486311437856862348, guid: 67c2d934d253b4a1cb3e76550818cc00, type: 3}
   _level: 1
   _health: 0
-  _damage: 0
-  _attackDelay: 0
-  hitDelay: 3
-  _moveSpeed: 0
+  _damage: 10
+  _attackDelay: 2
+  hitDelay: 0.7
+  _moveSpeed: 2.5
   turnSpeed: 130
-  stoppingDistance: 3
+  stoppingDistance: 20

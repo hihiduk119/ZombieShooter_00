@@ -17,26 +17,28 @@ namespace WoosanStudio.ZombieShooter
         //작업해야함
         public LevelConfig monsterLevelConfig;
 
+        #region [-TestCode]
         IEnumerator Start()
         {
             while(true)
             {
-                MakeMonster(0, SpawnPoints.GetSpawnPosition());
+                MakeMonster(monsterSettings[0], SpawnPoints.GetSpawnPosition());
 
                 yield return new WaitForSeconds(2f);
             }
         }
+        #endregion
 
         /// <summary>
         /// 몬스터 생성
         /// </summary>
         /// <param name="id"></param>
-        private void MakeMonster(int index,Transform parent = null)
+        private void MakeMonster(MonsterSettings monsterSettings, Transform parent = null)
         {
-            GameObject clone = monsterSettings[index].MakeModel(monsterSettings[index].name, parent);
+            GameObject clone = monsterSettings.MakeModel(monsterSettings.name, parent);
             //세팅값 넣어주기
             //clone.GetComponent<Character>().monsterSettings = Instantiate(monsterSettings[index]) as MonsterSettings;
-            clone.GetComponent<Character>().monsterSettings = monsterSettings[index];
+            clone.GetComponent<Character>().monsterSettings = monsterSettings;
 
             if (parent != null) { clone.transform.parent = parent; } 
             clone.transform.Reset();

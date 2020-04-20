@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class WeakZombieDrivingModule : ICharacterDrivingModule
+    public class WalkDrivingModule : ICharacterDrivingModule
     {
         private Transform _transform;
         private Transform _destination;
@@ -20,7 +20,7 @@ namespace WoosanStudio.ZombieShooter
         public float Speed { get => _agent.speed; }
 
         //public AiDrivingModule(NavMeshAgent agent,Transform transform,Transform destination, CharacterSettings characterSettings)
-        public WeakZombieDrivingModule(NavMeshAgent agent, Transform transform, Transform destination, MonsterSettings monterSettings)
+        public WalkDrivingModule(NavMeshAgent agent, Transform transform, Transform destination, MonsterSettings monterSettings)
         {
             _agent = agent;
             _transform = transform;

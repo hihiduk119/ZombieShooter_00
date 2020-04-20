@@ -1,16 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class WeakZombieFSM : IFiniteStateMachine
+    public class WeakZombieFSM : IFiniteStateMachine ,  IProjectileLauncher
     {
         ICharacterInput characterInput;
         ICharacterDrivingModule characterDrivingModule;
         ICharacterAnimatorModule characterAnimatorModule;
         ICharacterAttackModule characterAttackModule;
 
+        #region [-IProjectileLauncher Implement]
+        public ProjectileLauncher ProjectileLauncher { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public UnityEvent TriggerEvent { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
+        public IProjectileLauncherEvents GetProjectileLauncherEvents()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ReloadAmmo()
+        {
+            throw new System.NotImplementedException();
+        }
+        #endregion
+
+
+        #region [-IProjectileLauncher Implement]
         //플레이어 와 중첩으로 사용되어 임시로 하나 선언
         public void SetFSM(Transform target, ICharacterInput characterInput, ICharacterDrivingModule characterDrivingModule, ICharacterAnimatorModule characterAnimatorModule, ICharacterAttackModule characterAttackModule, PlayerConfig playerConfig) { throw new System.NotImplementedException(); }
 
@@ -43,5 +61,13 @@ namespace WoosanStudio.ZombieShooter
             //공격 모듈 호출
             if (characterAttackModule != null) { characterAttackModule.Attack(characterAnimatorModule); }
         }
+
+        public void UseAmmo()
+        {
+            throw new System.NotImplementedException();
+        }
+        #endregion
+
+
     }
 }

@@ -10,7 +10,7 @@ namespace WoosanStudio.ZombieShooter
     /// 모든 플레이어 공용으로 사용하려 하였으나 정의가 재대로 안돼서 일단
     /// 몬스터용으로만 사용
     /// </summary>
-    public class Character : MonoBehaviour , IHaveHit ,  ICanDestory
+    public class Character : MonoBehaviour , IHaveHit ,  ICanDestory 
     {
         //캐릭터의 네비메쉬 관련 이동 및 정지거리 등의 셋업 값.
         //[SerializeField] public CharacterSettings characterSettings;
@@ -47,22 +47,40 @@ namespace WoosanStudio.ZombieShooter
                 return;
             }
 
-            //FSM 세팅 생성
-            FSM = new WeakZombieFSM();
-
             if(monsterSettings == null)
             Debug.Log("monsterSettings null ");
-              
 
             //유한상태기계 세팅
             //character는 순수 하게 FSM의 Tick호출만 할 뿐 모든 작업은 FSM 에서 진행한다.
-            FSM.SetFSM(
-                target,//어떤 타겟을 목표로 움직이는 세팅
-                new AiInput(), //입력부분 생성
-                new WeakZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
-                new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
-                new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>())//공격 모듈 생성.
-                );
+            switch (monsterSettings.MonsterId)
+            {
+                case MonsterSettings.MonsterID.WeakZombie:
+                    //FSM 세팅 생성
+                    FSM = new WeakZombieFSM();
+
+                    FSM.SetFSM(
+                        target,//어떤 타겟을 목표로 움직이는 세팅
+                        new AiInput(), //입력부분 생성
+                        new WalkDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
+                        new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
+                        new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>())//공격 모듈 생성.
+                    );
+                    break;
+                case MonsterSettings.MonsterID.ThrowZombie:
+                    FSM.SetFSM(
+                        target,//어떤 타겟을 목표로 움직이는 세팅
+                        new AiInput(), //입력부분 생성
+                        new WalkDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
+                        new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
+                        new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>())//공격 모듈 생성.
+                    );
+
+                    break;
+                        
+            }
+
+            
+            
 
             //데미지 연출용 블링크
             blink = transform.GetComponentInChildren<IBlink>();

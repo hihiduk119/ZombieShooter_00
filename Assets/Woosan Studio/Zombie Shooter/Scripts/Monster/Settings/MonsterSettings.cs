@@ -16,16 +16,27 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 몬스터 고유 ID
+        /// </summary>
+        [SerializeField]
+        public enum MonsterID
+        {
+            WeakZombie = 0,
+            ThrowZombie,
+        }
+
+        /// <summary>
         /// 공격 타입
         /// </summary>
         [Tooltip("공격 타입")]
         [SerializeField] private AttackType _attackType = 0;
 
         /// <summary>
-        /// 고유 아이디
+        /// 몬스터 아이디
         /// </summary>
         [Tooltip("고유 아이디")]
-        [SerializeField] private int _id = 0;
+        [SerializeField] private MonsterID _monsterID = 0;
+        public MonsterID MonsterId { get => _monsterID; set => _monsterID = value; }
 
         /// <summary>
         /// 몬스터 이름
@@ -36,7 +47,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 몬스터 프리팹
         /// </summary>
-        [Tooltip("몬스터 프리팹")]
+        //[Tooltip("몬스터 프리팹")]
         [SerializeField] private GameObject _prefab;
 
         /// <summary>
@@ -52,7 +63,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         [Tooltip("체력")]
         [SerializeField] private int _health;
-        public int Health { get => _health = HealthCalculator.GetHealth(_id, _level, _attackType, true); }
+        public int Health { get => _health = HealthCalculator.GetHealth((int)_monsterID, _level, _attackType, true); }
         public HealthCalculator HealthCalculator { get; }
 
 
@@ -61,7 +72,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         [Tooltip("공격 데미지")]
         [SerializeField] private int _damage;
-        public int Damage { get => _damage = DamageCalculator.GetDamage(_id,_level, _attackType, true); }
+        public int Damage { get => _damage = DamageCalculator.GetDamage((int)_monsterID, _level, _attackType, true); }
         public DamageCalculator DamageCalculator { get; }
 
         /// <summary>
@@ -115,7 +126,7 @@ namespace WoosanStudio.ZombieShooter
                     clone.name = name;
                 else
                     clone.name = _prefab.name + " (clone)";
-    }
+            }
             else
             {
                 Debug.Log("[Error] Monster Prefab is NULL !!");

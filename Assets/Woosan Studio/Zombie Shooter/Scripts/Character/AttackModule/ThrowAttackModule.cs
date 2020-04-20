@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class MeleeAttackModule : ICharacterAttackModule
+    public class ThrowAttackModule : ICharacterAttackModule
     {
         #region [-ICharacterAttackModule Implement]
         //공격 시작 플레그
@@ -30,7 +29,7 @@ namespace WoosanStudio.ZombieShooter
         //실제 시간
         private float attackDeltaTime = 0;
         //공격이 시작됬음을 알림
-        private bool hitStart = false;
+        private bool launchStart = false;
         //공격이 시작과 실제 때림 발생 사이의 간격
         private float hitDelay = 0;
         //실제시간
@@ -40,14 +39,16 @@ namespace WoosanStudio.ZombieShooter
 
         private IHaveHit haveHit;
         private IHaveHealth haveHealth;
-        
+        private ProjectileLauncher projectileLauncher;
+
 
         /// <summary>
         /// 근접 공격 세팅
         /// </summary>
         /// <param name="attackDelay">공격 후 다음 공격간의 딜레이</param>
         /// <param name="hitDelay">공격실행 후 실제 공격 까지의 딜레이</param>
-        public MeleeAttackModule(MonsterSettings monsterSettings , IHaveHit haveHit, IHaveHealth haveHealth) {
+        public ThrowAttackModule(MonsterSettings monsterSettings, IHaveHit haveHit, IHaveHealth haveHealth , ProjectileLauncher projectileLauncher)
+        {
             //몬스터 데이터 세팅
             this.attackDelay = monsterSettings.AttackDelay;
             this.hitDelay = monsterSettings.HitDelay;
@@ -59,6 +60,8 @@ namespace WoosanStudio.ZombieShooter
 
             //[중요]처음 시작시 바로 공격을 해야하기에 attackDelay값과 동일하게 마춰줌
             attackDeltaTime = attackDelay;
+            //발사체 런처 새팅
+            this.projectileLauncher = projectileLauncher;
         }
 
         /// <summary>
@@ -78,38 +81,19 @@ namespace WoosanStudio.ZombieShooter
                 attackDeltaTime = 0;
                 hitDeltaTime = 0;
                 //공격이 시작되면 바리케이트 맞는 연출 활성화.
-                hitStart = true;
+                launchStart = true;
             }
 
-            if (hitStart)
+            if (launchStart)
             {
                 //Debug.Log("Hit !!");
-                Hit();
+                LaunchProjectile();
             }
         }
 
-        /// <summary>
-        /// 실제 공격
-        /// </summary>
-        public void Hit()
+        void LaunchProjectile()
         {
-            //Debug.Log("hitDeltaTime = " + hitDeltaTime + "         hitDelay = " + hitDelay);
-            if (hitDeltaTime > hitDelay)
-            {
-                //Debug.Log("hit s");
-                //바리케이트에 히트 호출
-                haveHit.Hit();
-
-                hitDeltaTime = 0;
-
-                //베리어에 데미지 이벤트 호출
-                if (haveHealth != null)
-                {
-                    haveHealth.DamagedEvent.Invoke(this.damage, Vector3.zero);
-                }
-
-                hitStart = false;
-            }
+            projectileLauncher.Fire();
         }
     }
 }

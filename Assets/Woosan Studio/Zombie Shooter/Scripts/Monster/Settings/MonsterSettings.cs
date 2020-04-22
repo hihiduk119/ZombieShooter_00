@@ -57,7 +57,6 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField] private int _level = 1;
         public int Level { get => _level; }
 
-
         /// <summary>
         /// 체력
         /// </summary>

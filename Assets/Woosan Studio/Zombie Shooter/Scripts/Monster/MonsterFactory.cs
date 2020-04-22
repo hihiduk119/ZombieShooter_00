@@ -22,7 +22,7 @@ namespace WoosanStudio.ZombieShooter
         {
             while(true)
             {
-                MakeMonster(monsterSettings[0], SpawnPoints.GetSpawnPosition());
+                MakeMonster(monsterSettings[1], SpawnPoints.GetSpawnPosition());
 
                 yield return new WaitForSeconds(2f);
             }

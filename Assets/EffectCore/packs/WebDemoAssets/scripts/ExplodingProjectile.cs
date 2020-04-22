@@ -16,6 +16,10 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     //Add Force에 사용될 파워
     public Vector3 Force;
 
+    //플레이어가 쏜건지 몬스터가 쏜건지 알기 위한 용도.
+    //ProjectileLauncher에게서 전달 받음.
+    public bool playerShoted = true;
+
     //
     // 관통이 되게 설계할 필요가 있다.
     // 이떼 CheckCollision 에서 맞은 것 찾아서 리스트에 담아서 찾는 방법 쓰면 될듯 함.
@@ -114,8 +118,15 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
         float dist = Vector3.Distance(transform.position, prevPos);
         if (Physics.Raycast(ray, out hit, dist))
         {
-            //충돌 예외처리
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Barrier")) return;
+            if (playerShoted)//플레이어 사격시
+            {
+                //충돌 예외처리
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Barrier")) return;
+            } else //몬스터 사격시
+            {
+                //충돌 예외처리
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy")) return;
+            }
 
             //Test Code
             //GameObject testDummy = GameObject.FindGameObjectWithTag("TestDummy");
@@ -137,11 +148,14 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
 
             //test code start
             #region - [Test]
-            TestPrefabs.instance.MakeEnd(pos);
+            if (TestPrefabs.instance != null)
+            {
+                TestPrefabs.instance.MakeEnd(pos);
+            }
             //test code end
             #endregion
 
-            
+
             Destroy(gameObject);
             //[Object Pool]
             //Lean.Pool.LeanPool.Spawn(impactPrefab, pos, rot);

@@ -12,6 +12,9 @@ namespace WoosanStudio.ZombieShooter
             AssaultRifle,
             ShotGun,
             LaserRifle,
+
+            //몬스터 무기 타입
+            Throw = 100,
         }
         /// <summary>
         /// 무기 타입 - 추가 될 경우를 대비해 int로 만듬

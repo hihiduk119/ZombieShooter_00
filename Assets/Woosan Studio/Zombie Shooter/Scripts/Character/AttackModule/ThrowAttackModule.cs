@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events;
+
 namespace WoosanStudio.ZombieShooter
 {
     public class ThrowAttackModule : ICharacterAttackModule
@@ -31,27 +33,41 @@ namespace WoosanStudio.ZombieShooter
         //공격이 시작됬음을 알림
         private bool launchStart = false;
         //공격이 시작과 실제 때림 발생 사이의 간격
-        private float hitDelay = 0;
+        private float fireDelay = 0;
         //실제시간
-        private float hitDeltaTime = 0;
+        private float fireDeltaTime = 0;
         //공격 데미지
         private int damage;
-
         private IHaveHit haveHit;
         private IHaveHealth haveHealth;
-        private ProjectileLauncher projectileLauncher;
 
+        //발사체 쏘기
+        private IProjectileLauncher projectileLauncher;
+        private Transform myTransform;
+
+        /// <summary>
+        /// 해당 트랜스 폼에 발사체 런처를 생성.
+        /// </summary>
+        /// <param name="transform">런처가 생성될 트랜스폼</param>
+        private void SetProjectileLauncher(Transform transform, ProjectileSettings projectileSettings)
+        {
+            this.myTransform = transform;
+            projectileLauncher = (IProjectileLauncher)this.myTransform.gameObject.AddComponent<ProjectileLauncher>();
+
+            projectileLauncher.ProjectileLauncher = myTransform.GetComponent<ProjectileLauncher>();
+            projectileLauncher.ProjectileLauncher.projectileSetting = projectileSettings;
+        }
 
         /// <summary>
         /// 근접 공격 세팅
         /// </summary>
         /// <param name="attackDelay">공격 후 다음 공격간의 딜레이</param>
         /// <param name="hitDelay">공격실행 후 실제 공격 까지의 딜레이</param>
-        public ThrowAttackModule(MonsterSettings monsterSettings, IHaveHit haveHit, IHaveHealth haveHealth , ProjectileLauncher projectileLauncher)
+        public ThrowAttackModule(MonsterSettings monsterSettings, IHaveHit haveHit, IHaveHealth haveHealth,Transform projectileLauncherTransform)
         {
             //몬스터 데이터 세팅
             this.attackDelay = monsterSettings.AttackDelay;
-            this.hitDelay = monsterSettings.HitDelay;
+            this.fireDelay = monsterSettings.HitDelay;
             this.damage = monsterSettings.Damage;
 
             //인터페이스 세팅
@@ -60,8 +76,9 @@ namespace WoosanStudio.ZombieShooter
 
             //[중요]처음 시작시 바로 공격을 해야하기에 attackDelay값과 동일하게 마춰줌
             attackDeltaTime = attackDelay;
-            //발사체 런처 새팅
-            this.projectileLauncher = projectileLauncher;
+
+            //프로젝타일 런처 생성.
+            SetProjectileLauncher(projectileLauncherTransform, monsterSettings.ProjectileSettings);
         }
 
         /// <summary>
@@ -70,7 +87,7 @@ namespace WoosanStudio.ZombieShooter
         public void DoAttack(ICharacterAnimatorModule characterAnimatorModule)
         {
             attackDeltaTime += Time.deltaTime;
-            hitDeltaTime += Time.deltaTime;
+            fireDeltaTime += Time.deltaTime;
             //Debug.Log("attackDeltaTime = " + attackDeltaTime + "         attackDelay = " + attackDelay);
 
             if (attackDeltaTime > attackDelay)
@@ -79,7 +96,7 @@ namespace WoosanStudio.ZombieShooter
                 characterAnimatorModule.Attack();
 
                 attackDeltaTime = 0;
-                hitDeltaTime = 0;
+                fireDeltaTime = 0;
                 //공격이 시작되면 바리케이트 맞는 연출 활성화.
                 launchStart = true;
             }
@@ -91,9 +108,22 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
+        /// <summary>
+        /// 발사체 발사
+        /// </summary>
         void LaunchProjectile()
         {
-            projectileLauncher.Fire();
+            //Debug.Log("hitDeltaTime = " + hitDeltaTime + "         hitDelay = " + hitDelay);
+            if (fireDeltaTime > fireDelay)
+            {
+                //Debug.Log("hit s");
+                //바리케이트에 히트 호출
+                fireDeltaTime = 0;
+
+                projectileLauncher.ProjectileLauncher.Fire();
+
+                launchStart = false;
+            }
         }
     }
 }

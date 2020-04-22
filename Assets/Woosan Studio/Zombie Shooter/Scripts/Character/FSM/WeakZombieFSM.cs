@@ -12,6 +12,27 @@ namespace WoosanStudio.ZombieShooter
         ICharacterAnimatorModule characterAnimatorModule;
         ICharacterAttackModule characterAttackModule;
 
+        /*
+        #region [무기 생성]
+        //무기를 만들어주는 팩토리 패턴 적용.
+        public WeaponFactory _weaponFactory;
+        //무기 생성을 위해 임시로 만듬
+        private IInputEvents inputEvents = null;
+        private ICameraShaker cameraShaker = null;
+        private List<IReloadAction> _reloadActionList = null;
+        private IGun _iGun = null;
+        //무기 연결 부분
+        private Transform joint;
+        private GunSettings.WeaponType weaponType = GunSettings.WeaponType.AssaultRifle;
+        private bool useLaserPoint = false;
+        #endregion
+
+        void Awake()
+        {
+            _weaponFactory.MakeWeapon(inputEvents, cameraShaker, _reloadActionList, ref _iGun, joint, (int)weaponType, useLaserPoint);
+        }
+        */
+
         #region [-IProjectileLauncher Implement]
         public ProjectileLauncher ProjectileLauncher { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public UnityEvent TriggerEvent { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }

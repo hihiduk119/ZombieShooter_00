@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+using WoosanStudio.Extension;
+
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
@@ -34,6 +36,7 @@ namespace WoosanStudio.ZombieShooter
             callback();
         }
 
+        [System.Obsolete]
         private void Start()
         {
             //최소거리의 바리케이트 오브젝트를 찾음
@@ -55,7 +58,7 @@ namespace WoosanStudio.ZombieShooter
             switch (monsterSettings.MonsterId)
             {
                 case MonsterSettings.MonsterID.WeakZombie:
-                    //FSM 세팅 생성
+                    //FSM 세팅 생성 [MonsterFSM 하나로 통합할지 말지 결정 해야함]
                     FSM = new WeakZombieFSM();
 
                     FSM.SetFSM(
@@ -67,23 +70,55 @@ namespace WoosanStudio.ZombieShooter
                     );
                     break;
                 case MonsterSettings.MonsterID.ThrowZombie:
+
+                    //프로젝타일 런터를 생성할 트렌스폼 가져오가
+                    //* 해당 계층 구조로 미리 만들어져 있어야 정상 작동한다.
+                    //* 현재 트렌스 폼의 자식-> 자식 에서 만듬 이때 Regdoll 이면 안되고
+                    //* Navi 오브젝트의 하위로 들어 가야 함.
+                    Transform projectileLauncherTransform = MakeTransformHierarchyForProjectileLauncher(transform.GetChild(0).GetChild(0));
+
+                    //FSM 세팅 생성 [MonsterFSM 하나로 통합할지 말지 결정 해야함]
+                    FSM = new WeakZombieFSM();
+
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅
                         new AiInput(), //입력부분 생성
                         new WalkDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
                         new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
-                        new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>())//공격 모듈 생성.
+                        new ThrowAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>(), projectileLauncherTransform)//공격 모듈 생성.
                     );
 
                     break;
-                        
             }
-
-            
-            
 
             //데미지 연출용 블링크
             blink = transform.GetComponentInChildren<IBlink>();
+        }
+
+        /// <summary>
+        /// 프로젝트 런처 생성시 필요한 GameObject 계층 구조 만들기
+        /// </summary>
+        /// <param name="parent"></param>
+        Transform MakeTransformHierarchyForProjectileLauncher(Transform parent)
+        {
+            GameObject clone = new GameObject("ProjectileLauncher");
+            clone.transform.parent = parent;
+            //높이를 1정도 높혀서 구체가 날아갈수 있도록 함.
+            clone.transform.Reset(new Vector3(0,1,0));
+
+            GameObject childClone = new GameObject("Locator");
+            childClone.transform.parent = clone.transform;
+            childClone.transform.Reset();
+
+            childClone = new GameObject("MuzzleLocator");
+            childClone.transform.parent = clone.transform;
+            childClone.transform.Reset();
+
+            childClone = new GameObject("ShellLocator");
+            childClone.transform.parent = clone.transform;
+            childClone.transform.Reset();
+
+            return clone.transform;
         }
 
         private void Update()

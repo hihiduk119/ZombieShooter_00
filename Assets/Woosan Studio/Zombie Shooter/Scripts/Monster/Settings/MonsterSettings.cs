@@ -110,6 +110,13 @@ namespace WoosanStudio.ZombieShooter
         public float StopingDistance { get => stoppingDistance; }
 
         /// <summary>
+        /// 장거리 공격 몬스터의 발사체 세팅
+        /// </summary>
+        [SerializeField]
+        private ProjectileSettings projectileSettings;
+        public ProjectileSettings ProjectileSettings { get => projectileSettings; }
+
+        /// <summary>
         /// 모델을 만듬
         /// </summary>
         /// <param name="name">생성할 이름</param>

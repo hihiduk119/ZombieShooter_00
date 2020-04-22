@@ -8,12 +8,19 @@ namespace WoosanStudio.ZombieShooter
 {
     public class ProjectileLauncher : MonoBehaviour , IProjectileLauncher
     {
+        //
+        // *모델의 이름으로 찾기 때문에 해당
+        // 총구, 총구 화염 , 탄피배출 transform 을 미리 만들어 놔야 한다
+        //
+        //총구 위치
         public Transform spawnLocator;
+        //총구 머즐 위치
         public Transform spawnLocatorMuzzleFlare;
+        //탄피 배출 위치
         public Transform shellLocator;
         //총구 들림 에니메이션 [삭제 예정]
         //public Animator recoilAnimator;
-
+        //샷건 총구 위치
         public Transform[] shotgunLocator;
 
         //발사체 세팅값
@@ -49,9 +56,6 @@ namespace WoosanStudio.ZombieShooter
         //[Object Pool]
         //오브젝트 풀 관련 캐슁
         IObjectPool _shellPool;
-        //IObjectPool _muzzlePool;
-        //IObjectPool _projectilePool;
-        //IObjectPool _impactPool;
 
         //오브젝트 풀에서 오브젝트 생성 기본 값
         private int poolMax = 20;
@@ -70,12 +74,11 @@ namespace WoosanStudio.ZombieShooter
         {
             SetModelLocator();
 
-            //[Object Pool]
-            SetObjectPool();
         }
 
         /// <summary>
         /// 모델 총기위치에 맞게 총구,총구화염,탄피배출 위치 세팅
+        /// *모델의 이름으로 찾기 때문에 해당 이름에 마추어 총구, 총구 화염 , 탄피배출 transform 을 만들어 놓아야 한다
         /// </summary>
         void SetModelLocator()
         {
@@ -90,45 +93,7 @@ namespace WoosanStudio.ZombieShooter
                 shotgunLocator = spawnLocator.GetComponentsInChildren<Transform>();
         }
 
-        /// <summary>
-        /// 최초 오브젝트풀 생성. //[Object Pool]
-        /// </summary>
-        void SetObjectPool()
-        {
-            #region - 오브젝트 풀 사용
-            /*
-            IObjectPoolFactory iObjectPoolFactory = FindObjectOfType<ObjectPoolFactory>();
-            
-            if (projectileSetting.hasShells)
-            {
-                _shellPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.shellPrefab, shellLocator.position, shellLocator.rotation, poolMax, poolMax);
-                //Debug.Log(" hi count = " + _shellPool.ThisGameObject.transform.childCount);
-                foreach (Transform child in _shellPool.ThisGameObject.transform){_shellPool.ObjectPool.Add(child.gameObject);}
-            }
-
-            
-            _muzzlePool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation, 4, 4);
-            foreach (Transform child in _muzzlePool.ThisGameObject.transform) { _muzzlePool.ObjectPool.Add(child.gameObject); }
-
-            
-            //샷건 사용시 탄 생성은 샷 갯수 만큼 생성
-            if (projectileSetting.shotgunBehavior)
-            {
-                _projectilePool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.gameObject, shotgunLocator[0].position, shotgunLocator[0].rotation, poolMax * projectileSetting.shotgunPellets, poolMax * projectileSetting.shotgunPellets);
-                foreach (Transform child in _projectilePool.ThisGameObject.transform) { _projectilePool.ObjectPool.Add(child.gameObject); }
-            }
-            else {
-                //오브젝트 풀 생성전 세팅
-                //root = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.GetComponent<ExplodingProjectile>().impactPrefab, Vector3.zero, Quaternion.identity, poolMax, poolMax);
-                _projectilePool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.gameObject, spawnLocator.position, spawnLocator.rotation, poolMax, poolMax);
-                foreach (Transform child in _projectilePool.ThisGameObject.transform) { _projectilePool.ObjectPool.Add(child.gameObject); }
-            }
-            
-
-            _impactPool = iObjectPoolFactory.MakePool(this.transform, projectileSetting.bombPrefab.GetComponent<ExplodingProjectile>().impactPrefab, Vector3.zero, Quaternion.identity, poolMax, poolMax);
-            foreach (Transform child in _impactPool.ThisGameObject.transform) { _impactPool.ObjectPool.Add(child.gameObject); }*/
-            #endregion
-        }
+        
 
         /// <summary>
         /// 유저 Key Input을 제어하는 부분의 액션 이벤트를 등록
@@ -200,17 +165,19 @@ namespace WoosanStudio.ZombieShooter
         {
             TriggerEvent.Invoke();
 
-            Instantiate(projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation);
+            //머즐 플레이어 사용시
+            if (projectileSetting.hasMuzzleFlare)
+            {
+                Instantiate(projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation);
+            }
             //bombList[bombType].muzzleflare.Play(); //????
-            //[Object Pool]
-            //_muzzlePool.Spawn();
-
+            
+            //탄피 사용시
             if (projectileSetting.hasShells)
             {
                 //Debug.Log("spawn shell");
                 Instantiate(projectileSetting.shellPrefab, shellLocator.position, shellLocator.rotation);
-                //[Object Pool]
-                //_shellPool.Spawn();
+                
             }
             //총구 들림
             //if (MuzzleFlip) { recoilAnimator.SetTrigger("recoil_trigger"); }
@@ -225,13 +192,8 @@ namespace WoosanStudio.ZombieShooter
                     this.forceValue = shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max) * (1f / Time.fixedDeltaTime) * 0.02f;
 
                     rocketInstanceShotgun.AddForce(this.forceValue);
-
-
-                    //[Object Pool] * 제대로 할려면 인터페이스로 간접 접근해야 하지만 복잡해서 일단 직접 접근
-                    //Rigidbody rocketInstanceShotgun;
-                    //rocketInstanceShotgun = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation);
-                    //rocketInstanceShotgun.GetComponent<ExplodingProjectile>().Force = shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max);
-                    //rocketInstanceShotgun.GetComponent<ExplodingProjectile>().Launch();
+                    //Player 사격인지 몬스터 사격인지 세팅
+                    rocketInstanceShotgun.GetComponent<ExplodingProjectile>().playerShoted = projectileSetting.playerShoted;
 
                     //?????
                     //rocketInstanceShotgun.velocity = Vector3.zero;//가속도 초기화
@@ -246,11 +208,9 @@ namespace WoosanStudio.ZombieShooter
                 this.forceValue = spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max) * (1f / Time.fixedDeltaTime) * 0.02f;
 
                 rocketInstance.AddForce(this.forceValue);
-                //[Object Pool]
-                //Rigidbody rocketInstance;
-                //rocketInstance = Lean.Pool.LeanPool.Spawn(projectileSetting.bombPrefab, spawnLocator.position, spawnLocator.rotation);
-                //rocketInstance.GetComponent<ExplodingProjectile>().Force = spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max);
-                //rocketInstance.GetComponent<ExplodingProjectile>().Launch();
+
+                //Player 사격인지 몬스터 사격인지 세팅
+                rocketInstance.GetComponent<ExplodingProjectile>().playerShoted = projectileSetting.playerShoted;
 
                 #region - [Test]
                 //test code start

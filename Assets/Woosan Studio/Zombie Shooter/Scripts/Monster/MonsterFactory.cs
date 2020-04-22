@@ -11,6 +11,7 @@ namespace WoosanStudio.ZombieShooter
     {
         [Tooltip("몬스터 세팅값 리스트")]
         public List<MonsterSettings> monsterSettings = new List<MonsterSettings>();
+
         [Tooltip("스폰 위치")]
         public SpawnPoints SpawnPoints;
 

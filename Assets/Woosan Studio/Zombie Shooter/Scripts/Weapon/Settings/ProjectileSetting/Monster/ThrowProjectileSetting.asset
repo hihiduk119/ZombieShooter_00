@@ -12,14 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5deb7c3afe74a72865c0fcfc2f1915, type: 3}
   m_Name: ThrowProjectileSetting
   m_EditorClassIdentifier: 
-  name: 
-  bombPrefab: {fileID: 0}
-  muzzleflare: {fileID: 0}
-  min: 0
-  max: 0
-  rapidFire: 0
-  rapidFireCooldown: 0
+  name: Plasma Poison Green Small
+  bombPrefab: {fileID: 54344322164163910, guid: 53969f535551323489f9059fbe5ca740,
+    type: 3}
+  muzzleflare: {fileID: 1000012903210382, guid: 8b89c403978447f4aa56b43be456dd4f,
+    type: 3}
+  min: 1000
+  max: 1200
+  rapidFire: 1
+  rapidFireCooldown: 2
   shotgunBehavior: 0
   shotgunPellets: 0
-  shellPrefab: {fileID: 0}
+  shellPrefab: {fileID: 1467181274829480, guid: 41e86fd3ee46b76448791422f9949474,
+    type: 3}
+  hasMuzzleFlare: 0
   hasShells: 0
+  playerShoted: 0

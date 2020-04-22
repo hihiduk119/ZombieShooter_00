@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 100
   _name: Throw
-  _projectileSettings: {fileID: 0}
+  _projectileSettings: {fileID: 11400000, guid: 4eb0c94cf23a349f8a81f39bcd12dd05,
+    type: 2}
   _prefab: {fileID: 2188498122872309382, guid: c8e1b04a257484280a97bd431d65bbc1, type: 3}
   _prefabInstance: {fileID: 0}
   _level: 1

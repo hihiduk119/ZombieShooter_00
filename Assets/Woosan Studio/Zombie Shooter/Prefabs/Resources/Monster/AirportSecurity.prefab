@@ -54,8 +54,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be058660747ec47839b50c59f314c0ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMaterial: {fileID: 0}
-  damagedMaterial: {fileID: 0}
+  defaultMaterial: {fileID: 2100000, guid: 3811677930c7b3946abaf2ce9cdfea21, type: 2}
+  damagedMaterial: {fileID: 2100000, guid: 91663fa724da34917a4b010f93f4cb5f, type: 2}
 --- !u!1 &246062895001225752
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 6627010519585101974}
   - component: {fileID: 4213669199024862083}
   m_Layer: 16
-  m_Name: CharacterWithRegdoll
+  m_Name: AirportSecurity
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7137,7 +7137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 13771954, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 13771954, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
       propertyPath: m_Materials.Array.data[1]

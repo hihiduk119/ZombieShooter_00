@@ -56,7 +56,8 @@ namespace WoosanStudio.ZombieShooter
 
         private void Awake()
         {
-            cameraShaker = Shaker.GetComponent<ICameraShaker>();
+            //
+            //cameraShaker = Shaker.GetComponent<ICameraShaker>();
         }
 
         #region [-TestCode]

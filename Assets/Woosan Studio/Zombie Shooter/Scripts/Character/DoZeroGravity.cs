@@ -49,7 +49,8 @@ namespace WoosanStudio.ZombieShooter
             while(true)
             {
                 rigidbodies.ForEach(value => {
-                    value.AddForce(new Vector3(20f, 20f, 0), ForceMode.Acceleration);
+                    //x = 화면으로 이동하는 방향 y = UP 속도
+                    value.AddForce(new Vector3(Random.Range(25,35), Random.Range(15, 25), 0), ForceMode.Acceleration);
                 });
 
                 yield return WFE;

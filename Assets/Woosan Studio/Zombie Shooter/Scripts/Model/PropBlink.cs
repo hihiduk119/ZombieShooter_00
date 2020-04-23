@@ -5,6 +5,8 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 공용 메터리얼을 사용하여 두녀석을 스왑 시켜서 깜빡임 연출
+    ///
+    /// **몬스터 추가시 메터리일 2개 사용하기 때문에 일반 메터리얼 및 데미지 입는 메터리얼 추가 필요.
     /// </summary>
     public class PropBlink: MonoBehaviour , IBlink
     {
@@ -22,14 +24,14 @@ namespace WoosanStudio.ZombieShooter
             _renderer = transform.GetComponentInChildren<Renderer>();
 
             //defaultMaterial이 비어 있을때만 세팅
-            if (defaultMaterial == null) { defaultMaterial = _renderer.sharedMaterials[0]; }
+            //if (defaultMaterial == null) { defaultMaterial = _renderer.sharedMaterials[0]; }
             //damagedMaterial이 비어 있을때만 세팅
-            if (damagedMaterial == null) { damagedMaterial = _renderer.sharedMaterials[1]; }
+            //if (damagedMaterial == null) { damagedMaterial = _renderer.sharedMaterials[1]; }
         }
 
         public void Blink()
         {
-            Initialize();
+            //Initialize();
             
             swapMaterial = StartCoroutine(SwapMaterial());
         }
@@ -44,9 +46,9 @@ namespace WoosanStudio.ZombieShooter
         public void Initialize()
         {
             if (swapMaterial != null) { StopCoroutine(swapMaterial); }
-            
+
             _renderer.sharedMaterial = defaultMaterial;
-            _renderer.sharedMaterials = new Material[] { defaultMaterial, damagedMaterial };
+            //_renderer.sharedMaterials = new Material[] { defaultMaterial, damagedMaterial };
         }
     }
 }

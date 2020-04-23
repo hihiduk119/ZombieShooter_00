@@ -15,6 +15,8 @@ namespace WoosanStudio.Common
 
         private float defaultFixedDeltaTime = 1f;
 
+        private bool isSlow = false;
+
         private void Awake()
         {
             //defaultFixedDeltaTime = Time.fixedDeltaTime;
@@ -25,7 +27,7 @@ namespace WoosanStudio.Common
         /// <summary>
         /// 슬로우 모션을 발생 시키는 부분
         /// </summary>
-        void DoSlowMotion() {
+        private void DoSlowMotion() {
             Time.timeScale = slowdownFactor;
             //Time.fixedDeltaTime 는 0.05시간에 한번씩 계산하기 때문에 변환 time scale 변경시 같이 해줘야함
             //안그러면 오브젝트가 끊기는 것처럼 날아감 보임
@@ -37,8 +39,30 @@ namespace WoosanStudio.Common
             //실제 호출
             //AudioManager.instance.SlowMotion(Time.timeScale);
         }
+         
+        private void Rollback()
+        {
+            Time.timeScale = 1f;
+            //Time.fixedDeltaTime 는 0.02시간에 한번씩 계산하기 때문에 변환 time scale 변경시 같이 해줘야함
+            //안그러면 오브젝트가 끊기는 것처럼 날아감 보임
+            //Time.fixedDeltaTime = defaultFixedDeltaTime;
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        }
 
         #region [-TestCode]
+        public void Swap()
+        {
+            isSlow = !isSlow;
+            if(isSlow)
+            {
+                DoSlowMotion();
+            } else
+            {
+                Rollback();
+            }
+        }
+
+
         private void Update()
         {
             if(Input.GetKeyDown(KeyCode.Space)) {
@@ -48,12 +72,7 @@ namespace WoosanStudio.Common
 
             if (Input.GetKeyDown(KeyCode.C))
             {
-                Time.timeScale = 1f;
-                //Time.fixedDeltaTime 는 0.02시간에 한번씩 계산하기 때문에 변환 time scale 변경시 같이 해줘야함
-                //안그러면 오브젝트가 끊기는 것처럼 날아감 보임
-                //Time.fixedDeltaTime = defaultFixedDeltaTime;
-                Time.fixedDeltaTime = Time.timeScale * 0.02f;
-
+                Rollback();
                 //Debug.Log("[3] time = " + Time.timeScale + "   Time.fixedDeltaTime = " + Time.fixedDeltaTime);
             }
 

@@ -221,7 +221,7 @@ MonoBehaviour:
   HealthbarPrefab: {fileID: 22400004, guid: f3cbc3b42afbd42bd9685a5feda5da2f, type: 3}
   yOffset: 2
   keepSize: 1
-  scale: 7
+  scale: 10
   sizeOffsets: {x: 100, y: -200}
   DrawOFFDistance: 0
   drawDistance: 10

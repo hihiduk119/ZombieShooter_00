@@ -125,7 +125,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             } else //몬스터 사격시
             {
                 //충돌 예외처리
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy")) return;
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Monster")) return;
             }
 
             //Test Code

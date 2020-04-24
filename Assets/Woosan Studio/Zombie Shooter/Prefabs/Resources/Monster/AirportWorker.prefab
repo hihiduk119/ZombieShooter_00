@@ -6756,7 +6756,7 @@ GameObject:
   - component: {fileID: 7140392108655318703}
   m_Layer: 16
   m_Name: AirportWorker
-  m_TagString: Enemy
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

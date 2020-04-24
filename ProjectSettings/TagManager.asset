@@ -12,6 +12,8 @@ TagManager:
   - Fire
   - HealthBarCanvas
   - TestDummy
+  - Monster
+  - Point
   layers:
   - Default
   - TransparentFX
@@ -29,7 +31,7 @@ TagManager:
   - Level Design Ground
   - UITouch
   - Regdoll
-  - Character
+  - Monster
   - 
   - 
   - 

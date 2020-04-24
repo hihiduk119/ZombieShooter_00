@@ -214,7 +214,7 @@ namespace WoosanStudio.ZombieShooter
 
                 #region - [Test]
                 //test code start
-                TestPrefabs.instance.MakeStart(spawnLocator.position);
+                //TestPrefabs.instance.MakeStart(spawnLocator.position);
                 //test code end
                 #endregion
 

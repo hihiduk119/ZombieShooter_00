@@ -8,12 +8,12 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 공격타입을 정의
         /// </summary>
-        [SerializeField] 
+        /*[SerializeField] 
         public enum AttackType
         {
             Melee = 0,
             Throwing,
-        }
+        }*/
 
         /// <summary>
         /// 몬스터 고유 ID
@@ -28,8 +28,9 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 공격 타입
         /// </summary>
-        [Tooltip("공격 타입")]
+        /*[Tooltip("공격 타입")]
         [SerializeField] private AttackType _attackType = 0;
+        */
 
         /// <summary>
         /// 몬스터 아이디
@@ -62,7 +63,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         [Tooltip("체력")]
         [SerializeField] private int _health;
-        public int Health { get => _health = HealthCalculator.GetHealth((int)_monsterID, _level, _attackType, true); }
+        public int Health { get => _health = HealthCalculator.GetHealth((int)_monsterID, _level, _monsterID, true); }
         public HealthCalculator HealthCalculator { get; }
 
 
@@ -71,7 +72,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         [Tooltip("공격 데미지")]
         [SerializeField] private int _damage;
-        public int Damage { get => _damage = DamageCalculator.GetDamage((int)_monsterID, _level, _attackType, true); }
+        public int Damage { get => _damage = DamageCalculator.GetDamage((int)_monsterID, _level, _monsterID, true); }
         public DamageCalculator DamageCalculator { get; }
 
         /// <summary>

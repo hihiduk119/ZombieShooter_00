@@ -8,7 +8,7 @@ namespace WoosanStudio.ZombieShooter
     public class HealthCalculator
     {
         //===================>   건 데미지 계산용    <===================
-        public static int GetHealth(int id, int level, MonsterSettings.AttackType attackType, bool v)
+        public static int GetHealth(int id, int level, MonsterSettings.MonsterID monsterID, bool v)
         {
             return -1;
         }

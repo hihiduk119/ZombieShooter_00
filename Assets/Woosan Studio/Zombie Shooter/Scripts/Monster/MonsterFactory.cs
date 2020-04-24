@@ -47,7 +47,7 @@ namespace WoosanStudio.ZombieShooter
             GameObject clone = monsterSettings.MakeModel(monsterSettings.name, parent);
             //세팅값 넣어주기
             //clone.GetComponent<Character>().monsterSettings = Instantiate(monsterSettings[index]) as MonsterSettings;
-            clone.GetComponent<Character>().monsterSettings = monsterSettings;
+            clone.GetComponent<Monster>().monsterSettings = monsterSettings;
 
             if (parent != null) { clone.transform.parent = parent; } 
             clone.transform.Reset();

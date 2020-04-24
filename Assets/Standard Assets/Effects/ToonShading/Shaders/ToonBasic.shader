@@ -49,7 +49,7 @@ Shader "Toon/Basic" {
 
 			fixed4 frag (v2f i) : SV_Target
 			{
-				fixed4 col = _Color * tex2D(_MainTex, i.texcoord);
+				fixed4 col = _Color * tex2D(_MainTex, i.texcoord) * 1.33;
 				fixed4 cube = texCUBE(_ToonShade, i.cubenormal);
 				fixed4 c = fixed4(2.0f * cube.rgb * col.rgb, col.a);
 				UNITY_APPLY_FOG(i.fogCoord, c);

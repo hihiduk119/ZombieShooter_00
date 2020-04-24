@@ -17,7 +17,7 @@ namespace WoosanStudio.ZombieShooter
         private RegdollController regdollController;
         private NavMeshController navMeshController;
         //캐릭터에 죽음 체크용
-        private Character character;
+        private Monster monster;
         //체력 계산용
         private IHaveHealth haveHealth;
         //죽었을때 무중력으로 떠오르게 하기 위해
@@ -37,7 +37,7 @@ namespace WoosanStudio.ZombieShooter
         {
             regdollController = GetComponent<RegdollController>();
             navMeshController = GetComponent<NavMeshController>();
-            character = GetComponent<Character>();
+            monster = GetComponent<Monster>();
             haveHealth = GetComponent<IHaveHealth>();
             doZeroGravity = GetComponent<DoZeroGravity>();
             blink = transform.GetComponentInChildren<IBlink>();
@@ -65,7 +65,7 @@ namespace WoosanStudio.ZombieShooter
 
             blink.Initialize();
 
-            character.Die();
+            monster.Die();
             navMeshController.Stop();
             CopyComponets.Copy();
             NavMeshModel.SetActive(false);

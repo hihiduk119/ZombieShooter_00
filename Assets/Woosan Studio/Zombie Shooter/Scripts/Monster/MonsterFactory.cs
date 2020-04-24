@@ -18,20 +18,23 @@ namespace WoosanStudio.ZombieShooter
         //작업해야함
         public LevelConfig monsterLevelConfig;
 
-        bool testCode = true;
-
         #region [-TestCode]
+        //bool testCode = true;
+
         IEnumerator Start()
         {
             while(true)
             {
+                //testCode = !testCode;
 
-                testCode = !testCode;
+                //if(testCode) 
+                //    MakeMonster(monsterSettings[0], SpawnPoints.GetSpawnPosition());
+                //else
+                //    MakeMonster(monsterSettings[1], SpawnPoints.GetSpawnPosition());
 
-                if(testCode) 
-                    MakeMonster(monsterSettings[0], SpawnPoints.GetSpawnPosition());
-                else
-                    MakeMonster(monsterSettings[1], SpawnPoints.GetSpawnPosition());
+                int index = Random.Range(0, 3);
+
+                MakeMonster(monsterSettings[index], SpawnPoints.GetSpawnPosition());
 
                 yield return new WaitForSeconds(2f);
             }

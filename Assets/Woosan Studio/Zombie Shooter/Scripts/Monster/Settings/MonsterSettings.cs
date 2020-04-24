@@ -23,6 +23,7 @@ namespace WoosanStudio.ZombieShooter
         {
             WeakZombie = 0,
             ThrowZombie,
+            RunnerZombie,
         }
 
         /// <summary>

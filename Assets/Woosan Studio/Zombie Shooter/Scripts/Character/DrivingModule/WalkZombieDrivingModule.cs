@@ -19,6 +19,9 @@ namespace WoosanStudio.ZombieShooter
 
         public float Speed { get => _agent.speed; }
 
+        private DrivingState _state = DrivingState.Move;
+        public DrivingState State { get => _state; }
+
         //public AiDrivingModule(NavMeshAgent agent,Transform transform,Transform destination, CharacterSettings characterSettings)
         public WalkDrivingModule(NavMeshAgent agent, Transform transform, Transform destination, MonsterSettings monterSettings)
         {
@@ -37,13 +40,18 @@ namespace WoosanStudio.ZombieShooter
 
         public void Tick()
         {
-            //Debug.Log("remain = " +_agent.remainingDistance + "   stop = " + _agent.stoppingDistance);
+            Debug.Log("remain = " +_agent.remainingDistance + "   stop = " + _agent.stoppingDistance);
 
             _agent.destination = _destination.position;
+            //움직이고 있는 상태
+            _state = DrivingState.Move;
 
             if (_agent.remainingDistance <= _agent.stoppingDistance)
             {
-                if(_agent.remainingDistance != 0)
+                //서있는 상태
+                _state = DrivingState.Stand;
+
+                if (_agent.remainingDistance != 0)
                 {
                     ReachDestinationEvent.Invoke();
                 }

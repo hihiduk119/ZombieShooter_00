@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9181cc1333b844137891b64b7d82e2fb, type: 3}
-  m_Name: RunnerZombie
+  m_Name: 1.WeakZombie
   m_EditorClassIdentifier: 
-  _monsterID: 2
-  _name: Bellhop
-  _prefab: {fileID: 1399632576231276088, guid: 312eff290b5b046c59890fda45aec7f5, type: 3}
+  _monsterID: 0
+  _name: WeakZombie
+  _prefab: {fileID: 246062895614678432, guid: a19c0560bc7914ea8bf07e9bb412dadf, type: 3}
   _level: 1
   _health: 0
   _damage: 10

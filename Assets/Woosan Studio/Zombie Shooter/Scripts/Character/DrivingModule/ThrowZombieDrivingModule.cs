@@ -12,6 +12,8 @@ namespace WoosanStudio.ZombieShooter
         private UnityEvent _reachDestinationEvent = new UnityEvent();
         public UnityEvent ReachDestinationEvent => _reachDestinationEvent;
 
+        public DrivingState State => throw new System.NotImplementedException();
+
         public ThrowZombieDrivingModule()
         {
 

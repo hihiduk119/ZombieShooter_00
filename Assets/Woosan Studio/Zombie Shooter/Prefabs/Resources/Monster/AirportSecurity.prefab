@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7acf09696d4754774b5c35d67aef4263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterSettings: {fileID: 0}
+  monsterSettings: {fileID: 11400000, guid: 082487ad1c0eb4266b93948689172df6, type: 2}
   target: {fileID: 0}
   isDead: 0
 --- !u!114 &246062895614678457

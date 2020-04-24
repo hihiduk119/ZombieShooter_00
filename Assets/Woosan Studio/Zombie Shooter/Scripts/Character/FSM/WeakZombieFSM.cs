@@ -78,7 +78,10 @@ namespace WoosanStudio.ZombieShooter
             //움직임 모듈 호출
             if (characterDrivingModule != null) { characterDrivingModule.Tick(); }
             //에니메이션 모듈 호출
-            if (characterAnimatorModule != null) { characterAnimatorModule.Move(characterDrivingModule.Speed); }
+            if (characterAnimatorModule != null) {
+                //드라이빙 모듈에서 움직임 상태일 때만 움직임 에니메이션 호출
+                if (characterDrivingModule.State == DrivingState.Move) { characterAnimatorModule.Move(characterDrivingModule.Speed); }
+            }
             //공격 모듈 호출
             if (characterAttackModule != null) { characterAttackModule.Attack(characterAnimatorModule); }
         }

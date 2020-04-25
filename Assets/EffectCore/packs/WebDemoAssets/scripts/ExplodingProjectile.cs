@@ -42,28 +42,8 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     void Start()
     {
         thisRigidbody = GetComponent<Rigidbody>();
-        previousPosition = transform.position;
-
-        //[Object Pool] 아닐때 사용.[Object Pool] 사용시 제거되어야 함.
-        //BeginDieTimer();
+        previousPosition = transform.position;      
     }
-
-    //[Object Pool] 사용시 초기화용, 근데 사용을 안함???
-    //private void Reset()
-    //{
-    //    //가속도 초기화
-    //    thisRigidbody.velocity = Vector3.zero;
-    //    thisRigidbody.angularVelocity = Vector3.zero;
-
-    //    //포지션 초기화
-    //    transform.Reset();
-
-    //    //오브젝트 비활성화
-    //    gameObject.SetActive(false);
-
-    //    //오브젝플 디스폰
-    //    Lean.Pool.LeanPool.Despawn(gameObject);
-    //}
 
     /// <summary>
     /// 자동으로 autoDieTime시간이 지나면 Despawn
@@ -85,7 +65,6 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             yield return WFE;
         }
 
-
         Destroy(gameObject);
         //[Object Pool]
         //Reset();
@@ -101,11 +80,11 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
         //부딫히지 않았을 자동 디스폰 타이머 작동
         BeginDieTimer();
     }
-    
+
     /// <summary>
     /// 픽스드 업데이트를 통해서 매 프레임마다 레이를 쏴서 물체와의 충동을 체크
     /// </summary>
-    void FixedUpdate()
+    void Update()
     {
         CheckCollision(previousPosition);
         previousPosition = transform.position;
@@ -114,23 +93,32 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     void CheckCollision(Vector3 prevPos)
     {
         direction = transform.position - prevPos;
+
+        Debug.Log("direction = " + direction);
+
         ray = new Ray(prevPos, direction);
         float dist = Vector3.Distance(transform.position, prevPos);
+
+        //Debug.DrawRay(transform.position, prevPos, Color.blue, 0.3f);
+
         if (Physics.Raycast(ray, out hit, dist))
         {
             if (playerShoted)//플레이어 사격시
             {
                 //충돌 예외처리
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Barrier")) return;
+
+                //Debug.Log("맞은 녀석 " + hit.transform.name);
             } else //몬스터 사격시
             {
                 //충돌 예외처리
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Monster")) return;
             }
 
-            //Test Code
-            //GameObject testDummy = GameObject.FindGameObjectWithTag("TestDummy");
-            //testDummy.transform.position = hit.point;
+            #region - [Test]
+            GameObject testDummy = GameObject.FindGameObjectWithTag("TestDummy");
+            testDummy.transform.position = hit.point;
+            #endregion
 
             transform.position = hit.point;
             Quaternion rot = Quaternion.FromToRotation(Vector3.forward, hit.normal);
@@ -155,12 +143,9 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             //test code end
             #endregion
 
-
             Destroy(gameObject);
-            //[Object Pool]
-            //Lean.Pool.LeanPool.Spawn(impactPrefab, pos, rot);
+            //임팩트 생성/
             Instantiate(impactPrefab, pos, rot);
-            //Reset();
         }
     }
 }

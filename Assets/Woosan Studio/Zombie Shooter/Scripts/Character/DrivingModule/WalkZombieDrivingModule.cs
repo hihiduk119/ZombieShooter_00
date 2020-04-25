@@ -40,7 +40,7 @@ namespace WoosanStudio.ZombieShooter
 
         public void Tick()
         {
-            Debug.Log("remain = " +_agent.remainingDistance + "   stop = " + _agent.stoppingDistance);
+            //Debug.Log("remain = " +_agent.remainingDistance + "   stop = " + _agent.stoppingDistance);
 
             _agent.destination = _destination.position;
             //움직이고 있는 상태

@@ -15,3 +15,6 @@ MonoBehaviour:
   name: SheriffBlack
   prefab: {fileID: 3522666838791289221, guid: cd714560246914192ab0a483cd9b18a8, type: 3}
   useAI: 0
+  useMuzzleFlare: 1
+  muzzleFlare: {fileID: 9069414672468361755, guid: 0f5d7fa27ce2a4721a8f99462d4ebce2,
+    type: 3}

@@ -103,7 +103,8 @@ namespace WoosanStudio.ZombieShooter
             }
 
             //플레이어 초기화
-            player.Initialize(WeaponFactory, cameraShaker ,ref lookAction ,ref lookPoint , !playerConfig.useAI);
+            //player.Initialize(WeaponFactory, cameraShaker ,ref lookAction ,ref lookPoint , !playerConfig.useAI);
+            player.Initialize(WeaponFactory, cameraShaker, ref lookAction, ref lookPoint, playerConfig);
             clone.transform.parent = parent;
             clone.transform.Reset(Quaternion.Euler(0,270,0));
 

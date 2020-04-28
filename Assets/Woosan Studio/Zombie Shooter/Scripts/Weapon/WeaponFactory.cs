@@ -31,7 +31,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="type">생성할 무기의 인덱스</param>
         /// <param name="useLaserPoint">생성할 무기의 인덱스</param>
         /// <returns></returns>
-        public IWeapon MakeWeapon(IInputEvents inputEvents,ICameraShaker cameraShaker,List<IReloadAction> reloadActionList,ref IGun iGun , Transform joint,int type , bool useLaserPoint)
+        public IWeapon MakeWeapon(IInputEvents inputEvents,ICameraShaker cameraShaker,List<IReloadAction> reloadActionList,ref IGun iGun , Transform joint,int type , PlayerConfig playerConfig)
         {
             //어떤 무기는 모델을 가지고 있으면 IHaveModel인터페이스를 상속 받기에 해당 인터페이스 호출.
             IHaveModel haveModel = _gunSettings[type];
@@ -72,8 +72,21 @@ namespace WoosanStudio.ZombieShooter
                     break;
             }
 
-            //레이저 포인터 사용 여부 활성, 비활성화
-            joint.GetComponentInChildren<LaserPointerActor>().isVisible = useLaserPoint;
+            //레이저 포인터 사용 여부 활성, 비활성화 => AI 는 레이저 포인터 사용 안함.
+            joint.GetComponentInChildren<LaserPointerActor>().isVisible = !playerConfig.useAI;
+
+            //머즐 플레어 사용시 머즐 플레어 생성
+            if(playerConfig.useMuzzleFlare)
+            {
+                GameObject clone = Instantiate(playerConfig.muzzleFlare) as GameObject;
+                MuzzleFlareProjector muzzleFlareProjector = clone.GetComponent<MuzzleFlareProjector>();
+                //조인트 하위로 붙여넣고 세부 위치 세팅
+                muzzleFlareProjector.SetParent(joint);
+                muzzleFlareProjector.SetLocalPosition(new Vector3(4.35f, 4.35f, 0.6f));
+                muzzleFlareProjector.SetLocalRotation(new Vector3(90, 90, 0));
+                //발사시 플레어 블링크 등록
+                _iGun.ProjectileLauncher.TriggerEvent.AddListener(((IMuzzleFlare)muzzleFlareProjector).Blink);
+            }
 
             //발사체 무기는 IProjectileLauncher 를 상속 받기 때문에 인터페이스 호출
             if (_iGun != null)

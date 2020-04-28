@@ -53,14 +53,14 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="weaponFactory">무기공장 세팅</param>
         /// <param name="cameraShaker">카메라 쉐이커 세팅</param>
         /// <param name="playerConfig">플레이어 데이터</param>
-        public void Initialize(WeaponFactory weaponFactory,ICameraShaker cameraShaker , ref UnityAction<Vector3> lookAction , ref ILookPoint lookPoint,bool useLaserPoint)
+        public void Initialize(WeaponFactory weaponFactory,ICameraShaker cameraShaker , ref UnityAction<Vector3> lookAction , ref ILookPoint lookPoint,PlayerConfig playerConfig)
         {
             this._weaponFactory = weaponFactory;
             this._cameraShaker = cameraShaker;
-            this.useLaserPoint = useLaserPoint;
+            this.useLaserPoint = !playerConfig.useAI;
 
             //키인풋으로 사격 컨트롤 및 몇번 무기를 사용할지 결정
-            _iWeapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker, _reloadActionList, ref _iGun, Joint, (int)weaponType, useLaserPoint);
+            _iWeapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker, _reloadActionList, ref _iGun, Joint, (int)weaponType, playerConfig);
         }
 
         public void PlayAnimation(float number)

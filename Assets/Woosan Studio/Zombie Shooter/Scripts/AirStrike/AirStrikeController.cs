@@ -7,13 +7,13 @@ using DG.Tweening;
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
-    /// 에어 스트라이크를 연출 전체룰 컨트롤 함.
+    /// 에어 스트라이크를 연출 전체를 컨트롤 함.
     /// </summary>
     public class AirStrikeController : MonoBehaviour
     {
         public Transform StartPoint;
         public Transform EndPoint;
-        public Transform Target;
+        public Transform Target;    
 
         public void SetPoint(Transform startPoint, Transform endPoint)
         {
@@ -26,11 +26,13 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Run()
         {
+            Target.gameObject.SetActive(true);
             Target.position = StartPoint.position;
 
             Target.DOMove(EndPoint.position, 1.5f).SetEase(Ease.Linear).OnComplete(() => {
                 Debug.Log("OnComplete");
                 ExplosionFactory.Instance.TestRun();
+                Target.gameObject.SetActive(false);
             });
         }
 

@@ -11,5 +11,8 @@ namespace WoosanStudio.ZombieShooter
         public new string name;
         public GameObject prefab;
         public bool useAI = false;
+        public bool useMuzzleFlare = false;
+        public GameObject muzzleFlare;
+        
     }
 }

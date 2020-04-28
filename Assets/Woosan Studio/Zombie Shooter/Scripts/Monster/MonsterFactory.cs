@@ -20,7 +20,6 @@ namespace WoosanStudio.ZombieShooter
 
         #region [-TestCode]
         //bool testCode = true;
-
         IEnumerator Start()
         {
             while(true)
@@ -32,8 +31,8 @@ namespace WoosanStudio.ZombieShooter
                 //else
                 //    MakeMonster(monsterSettings[1], SpawnPoints.GetSpawnPosition());
 
-                //int index = Random.Range(0, 3);
-                //MakeMonster(monsterSettings[index], SpawnPoints.GetSpawnPosition());
+                int index = Random.Range(0, 3);
+                MakeMonster(monsterSettings[index], SpawnPoints.GetSpawnPosition());
 
                 yield return new WaitForSeconds(2f);
             }

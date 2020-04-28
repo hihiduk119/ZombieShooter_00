@@ -28,11 +28,19 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     //자동으로 탄이 디스폰되는 시간 설정값
     private float autoDieTime = 1f;
 
+    //플레이어가 쏜 총알 Raycast용 마스크 
+    int playerShotedLayerMask = 0;
+    //몬스터가 쏜 총알 Raycastd용 마스크
+    int monsterShotedLayerMask = 0;
+
+    
+
     //캐싱용
     RaycastHit hit;
     Vector3 direction;
     Ray ray;
     Coroutine dieTimer;
+    int layerMask = 0;
 
     //=====================>   IHaveHitDamage 시작    <=====================
     private int _damage = 40;
@@ -42,7 +50,13 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     void Start()
     {
         thisRigidbody = GetComponent<Rigidbody>();
-        previousPosition = transform.position;      
+        previousPosition = transform.position;
+
+        //Barrier 를 제외한 나머지만 체크함.
+        playerShotedLayerMask = ~(1 << LayerMask.NameToLayer("Barrier"));
+        
+        //Barrier 를 제외한 나머지만 체크함.
+        monsterShotedLayerMask = ~(1 << LayerMask.NameToLayer("Monster"));
     }
 
     /// <summary>
@@ -84,7 +98,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     /// <summary>
     /// 픽스드 업데이트를 통해서 매 프레임마다 레이를 쏴서 물체와의 충동을 체크
     /// </summary>
-    void Update()
+    void FixedUpdate()
     {
         CheckCollision(previousPosition);
         previousPosition = transform.position;
@@ -94,27 +108,18 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     {
         direction = transform.position - prevPos;
 
-        Debug.Log("direction = " + direction);
+        //Debug.Log("direction = " + direction);
 
         ray = new Ray(prevPos, direction);
         float dist = Vector3.Distance(transform.position, prevPos);
 
         //Debug.DrawRay(transform.position, prevPos, Color.blue, 0.3f);
 
-        if (Physics.Raycast(ray, out hit, dist))
+        if (playerShoted) { layerMask = playerShotedLayerMask; }//플레이어 사격시
+        else { layerMask = monsterShotedLayerMask; }//몬스터 사격시
+
+        if (Physics.Raycast(ray, out hit, dist , layerMask))
         {
-            if (playerShoted)//플레이어 사격시
-            {
-                //충돌 예외처리
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Barrier")) return;
-
-                //Debug.Log("맞은 녀석 " + hit.transform.name);
-            } else //몬스터 사격시
-            {
-                //충돌 예외처리
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Monster")) return;
-            }
-
             #region - [Test]
             GameObject testDummy = GameObject.FindGameObjectWithTag("TestDummy");
             testDummy.transform.position = hit.point;

@@ -41,7 +41,7 @@ public class MoveScreenPointToRayPosition : MonoBehaviour , ILookPoint
     private void Awake()
     {
         //Props & Barrier & Character를 제외한 나머지만 체크함.
-        layerMask = ((1 << LayerMask.NameToLayer("Props")) | (1 << LayerMask.NameToLayer("Barrier")) | (1 << LayerMask.NameToLayer("Monster")));
+        layerMask = (1 << LayerMask.NameToLayer("Props")) | (1 << LayerMask.NameToLayer("Barrier")) | (1 << LayerMask.NameToLayer("Monster"));
         layerMask = ~layerMask;
     }
 

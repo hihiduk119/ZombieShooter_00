@@ -17,12 +17,14 @@ MonoBehaviour:
     type: 3}
   muzzleflare: {fileID: 1584403288528622, guid: c0f719210fc9a4e4aa5ac190a6eb184e,
     type: 3}
-  min: 7000
-  max: 8200
+  min: 13000
+  max: 13500
   rapidFire: 1
   rapidFireCooldown: 0.125
   shotgunBehavior: 0
   shotgunPellets: 4
   shellPrefab: {fileID: 1467181274829480, guid: 41e86fd3ee46b76448791422f9949474,
     type: 3}
+  hasMuzzleFlare: 1
   hasShells: 1
+  playerShoted: 1

@@ -75,14 +75,14 @@ namespace WoosanStudio.ZombieShooter
             //레이저 포인터 사용 여부 활성, 비활성화 => AI 는 레이저 포인터 사용 안함.
             joint.GetComponentInChildren<LaserPointerActor>().isVisible = !playerConfig.useAI;
 
-            //머즐 플레어 사용시 머즐 플레어 생성
+            //머즐 플레어 사용시 머즐 플레어 생성 및 세팅
             if(playerConfig.useMuzzleFlare)
             {
                 GameObject clone = Instantiate(playerConfig.muzzleFlare) as GameObject;
                 MuzzleFlareProjector muzzleFlareProjector = clone.GetComponent<MuzzleFlareProjector>();
                 //조인트 하위로 붙여넣고 세부 위치 세팅
                 muzzleFlareProjector.SetParent(joint);
-                muzzleFlareProjector.SetLocalPosition(new Vector3(4.35f, 4.35f, 0.6f));
+                muzzleFlareProjector.SetLocalPosition(new Vector3(4.55f, 4.35f, 0.25f));
                 muzzleFlareProjector.SetLocalRotation(new Vector3(90, 90, 0));
                 //발사시 플레어 블링크 등록
                 _iGun.ProjectileLauncher.TriggerEvent.AddListener(((IMuzzleFlare)muzzleFlareProjector).Blink);

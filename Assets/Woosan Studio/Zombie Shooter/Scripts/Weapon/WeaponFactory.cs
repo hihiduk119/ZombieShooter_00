@@ -82,7 +82,7 @@ namespace WoosanStudio.ZombieShooter
                 MuzzleFlareProjector muzzleFlareProjector = clone.GetComponent<MuzzleFlareProjector>();
                 //조인트 하위로 붙여넣고 세부 위치 세팅
                 muzzleFlareProjector.SetParent(joint);
-                muzzleFlareProjector.SetLocalPosition(new Vector3(4.55f, 4.35f, 0.25f));
+                muzzleFlareProjector.SetLocalPosition(new Vector3(5.55f, 4.35f, 0.32f));
                 muzzleFlareProjector.SetLocalRotation(new Vector3(90, 90, 0));
                 //발사시 플레어 블링크 등록
                 _iGun.ProjectileLauncher.TriggerEvent.AddListener(((IMuzzleFlare)muzzleFlareProjector).Blink);

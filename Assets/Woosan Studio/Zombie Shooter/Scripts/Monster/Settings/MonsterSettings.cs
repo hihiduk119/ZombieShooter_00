@@ -142,5 +142,19 @@ namespace WoosanStudio.ZombieShooter
 
             return clone;
         }
+
+        /// <summary>
+        /// 그림자 사용 여부
+        /// </summary>
+        [Tooltip("그림자 사용")]
+        [SerializeField] private bool _useShadow;
+        public bool UseShadow { get => _useShadow; }
+
+        /// <summary>
+        /// 그림자 사용 여부
+        /// </summary>
+        [Tooltip("그림자 사용")]
+        [SerializeField] private GameObject _shadowProjector;
+        public GameObject ShadowProejector { get => _shadowProjector;  }
     }
 }

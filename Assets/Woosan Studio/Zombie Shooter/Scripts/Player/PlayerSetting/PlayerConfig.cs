@@ -13,6 +13,7 @@ namespace WoosanStudio.ZombieShooter
         public bool useAI = false;
         public bool useMuzzleFlare = false;
         public GameObject muzzleFlare;
-        
+        public bool useShadow = false;
+        public GameObject ShadowProjector; 
     }
 }

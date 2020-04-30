@@ -24,3 +24,6 @@ MonoBehaviour:
   turnSpeed: 130
   stoppingDistance: 3
   projectileSettings: {fileID: 0}
+  _useShadow: 1
+  _shadowProjector: {fileID: 5194339502216924784, guid: eaad130044b2747ef9b15d3b0c6d7fb6,
+    type: 3}

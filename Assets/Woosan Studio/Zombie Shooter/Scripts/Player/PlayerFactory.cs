@@ -102,6 +102,14 @@ namespace WoosanStudio.ZombieShooter
                 doRoll.ConnectEvents(FindObjectOfType<TouchController>());
             }
 
+
+            //그림자 사용여부에 따라 그림자 활성화
+            if(playerConfig.useShadow)
+            {
+                GameObject shadowProjector = Instantiate(playerConfig.ShadowProjector);
+                shadowProjector.transform.parent = clone.transform;
+            }
+
             //플레이어 초기화
             //player.Initialize(WeaponFactory, cameraShaker ,ref lookAction ,ref lookPoint , !playerConfig.useAI);
             player.Initialize(WeaponFactory, cameraShaker, ref lookAction, ref lookPoint, playerConfig);

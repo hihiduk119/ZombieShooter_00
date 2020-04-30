@@ -18,3 +18,6 @@ MonoBehaviour:
   useMuzzleFlare: 1
   muzzleFlare: {fileID: 9069414672468361755, guid: 0f5d7fa27ce2a4721a8f99462d4ebce2,
     type: 3}
+  useShadow: 1
+  ShadowProjector: {fileID: 5194339502216924784, guid: eaad130044b2747ef9b15d3b0c6d7fb6,
+    type: 3}

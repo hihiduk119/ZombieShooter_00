@@ -34,6 +34,7 @@ namespace WoosanStudio.Camera
         public void FixedUpdate()
         {
             pos = aheadTarget.position - gab;
+            
             if (fixX) { pos.x = transform.position.x; }
             if (fixY) { pos.y = transform.position.y; }
             if (fixZ) { pos.z = transform.position.z; }

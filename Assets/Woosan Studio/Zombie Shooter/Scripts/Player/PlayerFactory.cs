@@ -25,11 +25,7 @@ namespace WoosanStudio.ZombieShooter
         [Header("[ICameraShaker를 가져오기 위한 용도]")]
         public GameObject Shaker;
         [Header("[플레이어 생성 위치]")]
-        public Transform PlayerPoint;
-        [Header("[플레이어 생성 위치2]")]
-        public Transform PlayerPoint2;
-        [Header("[플레이어 생성 위치3]")]
-        public Transform PlayerPoint3;
+        public List<Transform> PlayerPoints;
         [Header("[(AI 미 사용시)[플레이어 터치 위치에 따른 회전]")]
         public MoveScreenPointToRayPosition MoveScreenPointToRayPosition;
         [Header("[(AI 사용시) 가장 가까운 몬스터 자동 회전]")]
@@ -61,17 +57,22 @@ namespace WoosanStudio.ZombieShooter
         }
 
         #region [-TestCode]
-        private void Start()
+        //private void Start()
+        //{
+        //    Initialize();
+        //}
+
+        public void Initialize()
         {
-            Make(PlayerPoint, playerConfigs[0]);
-            //Make(PlayerPoint2, playerConfigs[1]);
-            //Make(PlayerPoint3, playerConfigs[1]);
+            Make(PlayerPoints[0], playerConfigs[0]);
+            //Make(PlayerPoints[1], playerConfigs[1]);
+            //Make(PlayerPoints[2], playerConfigs[1]);
         }
         #endregion
 
-        
+
         /// 플레이어 생성
-        
+
         public GameObject Make(Transform parent, PlayerConfig playerConfig)
         {
             clone = Instantiate(playerConfig.prefab) as GameObject;

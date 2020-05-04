@@ -15,14 +15,25 @@ namespace WoosanStudio.ZombieShooter
         [Tooltip("스폰 위치")]
         public SpawnPoints SpawnPoints;
 
-        //작업해야함
-        public LevelConfig monsterLevelConfig;
-
         #region [-TestCode]
         //bool testCode = true;
-        IEnumerator Start()
+        //IEnumerator Start()
+        //{
+        //    while (true)
+        //    {
+        //        Initialize();
+
+        //        yield return new WaitForSeconds(2f);
+        //    }
+        //}
+
+        /// <summary>
+        /// 테스트용으로 무한하게 몬스터 랜덤으로 만듬
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator InfiniteMakeMonster()
         {
-            while(true)
+            while (true)
             {
                 //testCode = !testCode;
 
@@ -35,10 +46,15 @@ namespace WoosanStudio.ZombieShooter
                 //몬스터 생성
                 GameObject clone = MakeMonster(monsterSettings[index], SpawnPoints.GetSpawnPosition());
                 //그림자 생성.
-                MakeShadow(monsterSettings[index],clone.transform);
+                MakeShadow(monsterSettings[index], clone.transform);
 
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(3f);
             }
+        }
+
+        public void Initialize()
+        {
+            StartCoroutine(InfiniteMakeMonster());
         }
         #endregion
 

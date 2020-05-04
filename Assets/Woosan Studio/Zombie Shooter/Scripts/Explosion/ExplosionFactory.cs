@@ -27,6 +27,8 @@ namespace WoosanStudio.ZombieShooter
         [Header("[폭발 프리팹 세팅 리스튼")]
         public List<ExplosionSetting> settings = new List<ExplosionSetting>();
 
+        public Transform Root;
+
         //폭발 포지션
         private List<Transform> points;
 
@@ -35,7 +37,7 @@ namespace WoosanStudio.ZombieShooter
             //싱글톤 생
             Instance = this;
 
-            points = new List<Transform>(GetComponentsInChildren<Transform>());
+            points = new List<Transform>(Root.GetComponentsInChildren<Transform>());
 
             //points.ForEach(value => Debug.Log(value.name));
         }

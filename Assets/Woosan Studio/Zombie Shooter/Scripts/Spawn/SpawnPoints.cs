@@ -16,23 +16,24 @@ namespace WoosanStudio.ZombieShooter
 
         private void Awake()
         {
-            FindAllPointToTheChild();
+            //FindAllPointToTheChild();
+            WoosanStudio.Common.Transforms.FindAllTransformToTheChild(ref Points, transform, CompareName);
         }
 
         /// <summary>
         /// 자식에서 모든 포인트를 찾음.
         /// </summary>
-        void FindAllPointToTheChild()
-        {
-            Transform[] childs = transform.GetComponentsInChildren<Transform>();
-            for (int index = 0; index < childs.Length; index++)
-            {
-                if (childs[index].name.Equals(CompareName))
-                {
-                    Points.Add(childs[index]);
-                }
-            }
-        }
+        //void FindAllPointToTheChild()
+        //{
+        //    Transform[] childs = transform.GetComponentsInChildren<Transform>();
+        //    for (int index = 0; index < childs.Length; index++)
+        //    {
+        //        if (childs[index].name.Equals(CompareName))
+        //        {
+        //            Points.Add(childs[index]);
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// 랜덤으로 다음 스폰할 장소를 가져옴

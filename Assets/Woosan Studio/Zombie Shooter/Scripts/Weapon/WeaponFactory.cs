@@ -73,7 +73,7 @@ namespace WoosanStudio.ZombieShooter
             }
 
             //레이저 포인터 사용 여부 활성, 비활성화 => AI 는 레이저 포인터 사용 안함.
-            joint.GetComponentInChildren<LaserPointerActor>().isVisible = !playerConfig.useAI;
+            joint.GetComponentInChildren<LaserPointerActor>().isVisible = playerConfig.useLaserPointer;
 
             //머즐 플레어 사용시 머즐 플레어 생성 및 세팅
             if(playerConfig.useMuzzleFlare)

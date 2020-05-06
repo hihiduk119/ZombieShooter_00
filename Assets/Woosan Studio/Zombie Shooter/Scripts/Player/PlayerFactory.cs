@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using WoosanStudio.Extension;
-
+using WoosanStudio.Common;
 using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
@@ -30,6 +30,14 @@ namespace WoosanStudio.ZombieShooter
         public MoveScreenPointToRayPosition MoveScreenPointToRayPosition;
         [Header("[(AI 사용시) 가장 가까운 몬스터 자동 회전]")]
         public AutoAim AutoAim;
+
+        [Header("플레이어 캐릭터 좌우 움직임 Input, 둘중에 하나만 사용 해야함")]
+        public JoystickInput JoystickInput;
+        public Accelerometer Accelerometer;
+        [Header("플레이어 캐릭터 좌우 움직임에 조이스틱 사용")]
+        public bool UseJoystick;
+        private IUserInput userInput;
+
 
         //카메라 쉐이커
         private ICameraShaker cameraShaker;
@@ -78,8 +86,11 @@ namespace WoosanStudio.ZombieShooter
             clone = Instantiate(playerConfig.prefab) as GameObject;
             player = clone.GetComponent<Player>();
 
-            //AI 사용시 = 자동 몬스터 조준 사용
+            //좌우 움직임용 인풋 인터페이스 세팅
+            userInput = UseJoystick ? (IUserInput)JoystickInput : (IUserInput)Accelerometer;
+
             //AI 미 사용시 = 터치스크린 사용
+            //자동 조
             ILookPoint lookPoint = playerConfig.useAI ? (ILookPoint)MoveScreenPointToRayPosition :
                 (ILookPoint)AutoAim;
 
@@ -87,7 +98,7 @@ namespace WoosanStudio.ZombieShooter
             //에르고가 높다면 회전이 좋게 만들기
             lookAction = clone.GetComponent<LookAhead>().SmoothLook;
 
-            //AI사용시 
+            //AI사용시
             if (playerConfig.useAI)
             {
                 //자동 조준 action 연결
@@ -97,6 +108,12 @@ namespace WoosanStudio.ZombieShooter
             {
                 //마우스 터치 조준 action 연결
                 MoveScreenPointToRayPosition.UpdatePositionEvent.AddListener(lookAction);
+                
+            }
+
+            //구르기 사용시
+            if(playerConfig.useRoll)
+            {
                 //덤블링 스크립트.
                 DoRoll doRoll = clone.GetComponentInChildren<DoRoll>();
                 //덤블링 스크립트와 좌우 화면 터치 이벤트 연결
@@ -113,7 +130,7 @@ namespace WoosanStudio.ZombieShooter
 
             //플레이어 초기화
             //player.Initialize(WeaponFactory, cameraShaker ,ref lookAction ,ref lookPoint , !playerConfig.useAI);
-            player.Initialize(WeaponFactory, cameraShaker, ref lookAction, ref lookPoint, playerConfig);
+            player.Initialize(WeaponFactory, cameraShaker, ref lookAction, ref lookPoint, playerConfig , userInput);
             clone.transform.parent = parent;
             clone.transform.Reset(Quaternion.Euler(0,270,0));
 

@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Woosan Studio/Zombie Shooter/Scenes/100.SceneControllerTest/100.MainScene.unity
     guid: d16f45e8a43fe4d6b9cd7917490079d5
+  - enabled: 0
+    path: Assets/Woosan Studio/Zombie Shooter/Scenes/7.AccelerometerTest.unity
+    guid: dfbf354f6f93543759ca7f2469ff2a0b
   m_configObjects: {}

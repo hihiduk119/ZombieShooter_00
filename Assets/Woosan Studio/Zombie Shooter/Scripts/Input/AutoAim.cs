@@ -18,8 +18,10 @@ namespace WoosanStudio.ZombieShooter
         #endregion
 
         Transform target;
+        GameObject player;
+        Vector3 pos;
 
-        void Update()
+        void FixedUpdate()
         {
             Find();
         }
@@ -31,11 +33,15 @@ namespace WoosanStudio.ZombieShooter
             #region [-TestCode : Player와 현재 가장 가까운 몬스터 타겟의 거리를 표시한다]
             if (target != null)
             {
-                Vector3 pos = GameObject.FindGameObjectWithTag("Player").transform.position;
-                Debug.DrawLine(pos, target.position, Color.green);
+                player = GameObject.FindGameObjectWithTag("Player");
+                if (player != null)
+                {
+                    pos = player.transform.position;
+                    Debug.DrawLine(pos, target.position, Color.green);
 
-                Point = target.position;
-                UpdatePositionEvent.Invoke(Point);
+                    Point = target.position;
+                    UpdatePositionEvent.Invoke(Point);
+                }
             }
             #endregion
         }

@@ -5,6 +5,8 @@ using WoosanStudio.Extension;
 using WoosanStudio.ZombieShooter;
 /* THIS CODE IS JUST FOR PREVIEW AND TESTING */
 // Feel free to use any code and picking on it, I cannot guaratnee it will fit into your project
+
+[RequireComponent(typeof(destroyMe))]
 public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
 {
     public GameObject impactPrefab;
@@ -57,6 +59,8 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
         
         //Barrier 를 제외한 나머지만 체크함.
         monsterShotedLayerMask = ~(1 << LayerMask.NameToLayer("Monster"));
+
+        //Destory Me 자동 추가
     }
 
     /// <summary>

@@ -4753,6 +4753,7 @@ GameObject:
   - component: {fileID: 54929995699331496}
   - component: {fileID: 114756686390696780}
   - component: {fileID: 114880781407873270}
+  - component: {fileID: -4435666111361482193}
   m_Layer: 11
   m_Name: Laser_Red_Medium_Projectile
   m_TagString: FX
@@ -9530,6 +9531,7 @@ MonoBehaviour:
     type: 3}
   thisRigidbody: {fileID: 54929995699331496}
   Force: {x: 0, y: 0, z: 0}
+  playerShoted: 1
 --- !u!114 &114880781407873270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9610,6 +9612,19 @@ MonoBehaviour:
       m_NumAlphaKeys: 5
   applyChanges: 0
   Keep_applyChanges: 0
+--- !u!114 &-4435666111361482193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523153560657062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a895231490da6545890b1e1794f8704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathtimer: 2
 --- !u!1 &1598420234293714
 GameObject:
   m_ObjectHideFlags: 0

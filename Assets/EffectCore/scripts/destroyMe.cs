@@ -7,7 +7,7 @@ using Lean.Pool;
 public class destroyMe : MonoBehaviour{
 
     float timer;
-    public float deathtimer = 2;
+    public float deathtimer = 1;
 
     //[Object Pool]
     private ParticleSystem _particleSystem;
@@ -55,7 +55,7 @@ public class destroyMe : MonoBehaviour{
         if (timer >= deathtimer)
         {
 
-            Destroy(gameObject);
+            Destroy(this.gameObject);
             //[Object Pool]
             //Reset();
         }

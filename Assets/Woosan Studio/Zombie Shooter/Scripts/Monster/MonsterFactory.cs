@@ -15,6 +15,8 @@ namespace WoosanStudio.ZombieShooter
         [Tooltip("스폰 위치")]
         public SpawnPoints SpawnPoints;
 
+        Coroutine coroutineInfiniteMakeMonster;
+
         #region [-TestCode]
         //bool testCode = true;
         //IEnumerator Start()
@@ -54,7 +56,13 @@ namespace WoosanStudio.ZombieShooter
 
         public void Initialize()
         {
-            StartCoroutine(InfiniteMakeMonster());
+            Stop();
+            coroutineInfiniteMakeMonster = StartCoroutine(InfiniteMakeMonster());
+        }
+
+        public void Stop()
+        {
+            if (coroutineInfiniteMakeMonster != null) StopCoroutine(coroutineInfiniteMakeMonster);
         }
         #endregion
 

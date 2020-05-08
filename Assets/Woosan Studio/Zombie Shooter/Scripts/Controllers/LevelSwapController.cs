@@ -62,9 +62,9 @@ namespace WoosanStudio.ZombieShooter
             yield return new WaitForSeconds(0.5f);
 
             //몬스터 생성 시작
-            MonsterFactory.Initialize();
+            //MonsterFactory.Initialize();
             //플레이어 생성 시작
-            PlayerFactory.Initialize();
+            //PlayerFactory.Initialize();
 
             
         }

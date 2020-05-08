@@ -14,6 +14,13 @@ namespace WoosanStudio.ZombieShooter
         //Gun 세팅값 
         public List<GunSettings> _gunSettings;
 
+        //**Player는 이미 IGun과 IWeapon을 가지고 있다는걸 명심하자.
+        //**WeaponFactory에서 가져오는 행위는 독립성을 해칠수 있다.
+        //프로젝타일 런처를 가져오려면 IGun이 필요함
+        public List<IGun> Guns = new List<IGun>();
+        //무기의 시작과 정지를 할수 있는 IWeaponAction을 가지고 있음
+        public List<IWeapon> Weapons = new List<IWeapon>();
+
         //캐슁 데이타
         GameObject _weapon;
 
@@ -71,6 +78,11 @@ namespace WoosanStudio.ZombieShooter
                     _iWeapon = (IWeapon)_weapon.GetComponent<LaserRifle>();
                     break;
             }
+
+            //생성된 IGun은 모두 Guns에 저장됨.
+            Guns.Add(iGun);
+            //생성된 IWeapon 모두 Weapons 저장됨.
+            Weapons.Add(_iWeapon);
 
             //레이저 포인터 사용 여부 활성, 비활성화 => AI 는 레이저 포인터 사용 안함.
             joint.GetComponentInChildren<LaserPointerActor>().isVisible = playerConfig.useLaserPointer;

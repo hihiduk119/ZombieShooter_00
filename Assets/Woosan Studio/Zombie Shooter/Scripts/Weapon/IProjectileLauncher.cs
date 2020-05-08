@@ -29,6 +29,17 @@
         void UseAmmo();
 
         /// <summary>
+        /// 발사 시작
+        /// </summary>
+        void Fire();
+
+        /// <summary>
+        /// 발사 정지
+        /// </summary>
+        void Stop();
+        
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>

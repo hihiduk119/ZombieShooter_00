@@ -75,7 +75,18 @@ namespace WoosanStudio.ZombieShooter
             Make(PlayerPoints[0], playerConfigs[0]);
             //Make(PlayerPoints[1], playerConfigs[1]);
             //Make(PlayerPoints[2], playerConfigs[1]);
+
+            //강제로 캐릭터의 조준점 마추는 코드 실행
+            //임시 임으로 반드시 삭제가 필요.
+            Invoke("FocusAim", 1f);
         }
+
+        void FocusAim()
+        {
+            WoosanStudio.ZombieShooter.Test.TestCode01.Instance.Swap();
+        }
+
+
         #endregion
 
 

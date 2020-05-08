@@ -37,6 +37,9 @@ namespace WoosanStudio.ZombieShooter
         public ProjectileLauncher ProjectileLauncher { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public UnityEvent TriggerEvent { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
+        public void Fire() { throw new System.NotImplementedException(); }
+        public void Stop() { throw new System.NotImplementedException(); }
+
         public IProjectileLauncherEvents GetProjectileLauncherEvents()
         {
             throw new System.NotImplementedException();

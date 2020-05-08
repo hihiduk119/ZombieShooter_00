@@ -116,7 +116,7 @@ namespace WoosanStudio.ZombieShooter
         {
             WaitForEndOfFrame WFEF = new WaitForEndOfFrame();
 
-            Fire();
+            Shoot();
             firingTimer = 0;            
 
             while (true)
@@ -125,7 +125,7 @@ namespace WoosanStudio.ZombieShooter
                 {
                     if (firingTimer > projectileSetting.rapidFireCooldown + rapidFireDelay)
                     {
-                        Fire();
+                        Shoot();
                         firingTimer = 0;
                     }
                 }
@@ -139,6 +139,12 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
+        public void Fire() { StartFiring(); }
+        public void Stop() { StopFiring(); }
+
+        /// <summary>
+        /// 사격 시작
+        /// </summary>
         public void StartFiring()
         {
             firing = true;
@@ -148,6 +154,9 @@ namespace WoosanStudio.ZombieShooter
             _updateFrame = StartCoroutine(UpdateFrame());
         }
 
+        /// <summary>
+        /// 사격 정지
+        /// </summary>
         public void StopFiring()
         {
             firing = false;
@@ -156,12 +165,26 @@ namespace WoosanStudio.ZombieShooter
             if (_updateFrame != null) StopCoroutine(_updateFrame);
         }
 
+        #region [-TestCode]
         void Update()
         {
+            //scene view에서 방향 지시
             Debug.DrawRay(spawnLocator.position, spawnLocator.forward * 1000, Color.red);
-        }
 
-        public void Fire()
+            //사격 시작 및 정지 
+            //if(Input.GetKeyDown(KeyCode.K))
+            //{
+            //    StartFiring();
+            //}
+
+            //if (Input.GetKeyDown(KeyCode.L))
+            //{
+            //    StopFiring();
+            //}
+        }
+        #endregion
+
+        public void Shoot()
         {
             TriggerEvent.Invoke();
 

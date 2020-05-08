@@ -14,6 +14,7 @@ namespace WoosanStudio.ZombieShooter
 
         private ProjectileLauncher _projectileLauncher;
         public ProjectileLauncher ProjectileLauncher { get => _projectileLauncher; set => _projectileLauncher = value; }
+        public IProjectileLauncher IProjectileLauncher { get => (IProjectileLauncher)_projectileLauncher; }
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun.IGunSettings Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         private GunSettings _gunSettings;
@@ -25,6 +26,7 @@ namespace WoosanStudio.ZombieShooter
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeapon.IAttackAction Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         public UnityAction AttackAction { get; set; }
+        
 
 
         //캐쉬용

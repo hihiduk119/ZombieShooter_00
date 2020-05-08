@@ -30,9 +30,12 @@ namespace WoosanStudio.ZombieShooter
         //유저가 사용할 인풋
         public IUserInput userInput;
 
+        //플레이어의 건
+        public IGun Gun;
+
         //캐슁용
         IWeapon _iWeapon;
-        IGun _iGun;
+        
         Transform target;
         float h;
 
@@ -69,7 +72,7 @@ namespace WoosanStudio.ZombieShooter
             GetComponent<Move>().userInput = this.userInput = playerMoveInput;
 
             //키인풋으로 사격 컨트롤 및 몇번 무기를 사용할지 결정
-            _iWeapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker, _reloadActionList, ref _iGun, Joint, (int)weaponType, playerConfig);
+            _iWeapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker, _reloadActionList, ref Gun, Joint, (int)weaponType, playerConfig);
 
             //좌우 이동 에니메이션 컨트롤러 생성 => Player의 에니메이터를 찾아서 생성 및 세팅
             AnimatorControl = new AnimatorControl(transform.GetComponentInChildren<Animator>());
@@ -96,15 +99,15 @@ namespace WoosanStudio.ZombieShooter
             AnimatorControl.SetMoveValue(value);
         }
 
-        public void AttackStart()
-        {
-            _iWeapon.Attack();
-        }
+        //public void AttackStart()
+        //{
+        //    _iWeapon.Attack();
+        //}
 
-        public void AttackStop()
-        {
-            _iWeapon.Stop();
-        }
+        //public void AttackStop()
+        //{
+        //    _iWeapon.Stop();
+        //}
 
         #region [-TestCode]
         //에니메이션 동작 확인용

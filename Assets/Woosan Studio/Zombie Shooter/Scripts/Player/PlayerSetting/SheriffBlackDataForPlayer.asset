@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: SheriffBlack
   prefab: {fileID: 3522666838791289221, guid: cd714560246914192ab0a483cd9b18a8, type: 3}
-  useAI: 0
+  useAI: 1
   useLaserPointer: 1
   useMuzzleFlare: 1
   useRoll: 1

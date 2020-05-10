@@ -19,7 +19,7 @@ namespace WoosanStudio.ZombieShooter
     {
         public static AllTextDamageManager Instance;
 
-        [Header("[갯수가 부족할때 동적으로 만들 프리팹]")]
+        [Header("[동적으로 만들 프리팹]")]
         public GameObject prefab;
         public List<UltimateTextDamageManager> managerList  =new List<UltimateTextDamageManager>();
 

@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 //NOTE! You should hava a Camera with "MainCamera" tag and a canvas with a Screen Space - Overlay mode to script works properly;
 
+using WoosanStudio.ZombieShooter;
+
 public class HealthBar : MonoBehaviour {
 	
 	public RemoteIntHealth healthLink;				//A path to the Health filed;			
@@ -88,6 +90,11 @@ public class HealthBar : MonoBehaviour {
 		HealthbarPrefab = (RectTransform)Instantiate(HealthbarPrefab, new Vector2 (-1000, -1000), Quaternion.identity);
         HealthbarPrefab.name = "HealthBar";
         HealthbarPrefab.SetParent(healthbarRoot.transform, false);
+
+		//add ma start [HealthBaManager에서 동적 관리를 위해 추가된 메서드]
+		//Initialize(HealthbarPrefab);
+        //add ma end
+
 		canvasGroup = HealthbarPrefab.GetComponent<CanvasGroup> ();
 		
 		healthVolume = HealthbarPrefab.transform.Find ("Health").GetComponent<Image>();
@@ -103,8 +110,38 @@ public class HealthBar : MonoBehaviour {
         canvasGroup.alpha = alphaSettings.fullAplpha;
 		canvasGroup.interactable = false;
 		canvasGroup.blocksRaycasts = false;
+
+		//add ma start [관리를 위해서 추가됨. 해당 오브젝트를 메니저에 등록]
+		HealthBarManager.Instance.Add(gameObject);
+        //add me end
+        
 		cam = Camera.main;
 	}
+
+	//add ma start [HealthBaManager에서 동적 관리를 위해 추가된 메서드]
+    //Start에서 하는 초기화를 여기서 할수 있게 변경.
+    /*public void Initialize(RectTransform healthbar = null)
+    {
+        //기존 연결된 프리팹 교체 및 이하 모든 연결 새로 함.
+        if(healthbar != null) { HealthbarPrefab = healthbar; }
+		
+		canvasGroup = HealthbarPrefab.GetComponent<CanvasGroup>();
+
+		healthVolume = HealthbarPrefab.transform.Find("Health").GetComponent<Image>();
+		backGround = HealthbarPrefab.transform.Find("Background").GetComponent<Image>();
+		healthInfo = HealthbarPrefab.transform.Find("HealthInfo").GetComponent<Text>();
+		healthInfo.resizeTextForBestFit = true;
+		healthInfo.rectTransform.anchoredPosition = Vector2.zero;
+		healthInfoPosition = healthInfo.rectTransform.anchoredPosition;
+		healthInfo.resizeTextMinSize = 1;
+		healthInfo.resizeTextMaxSize = 500;
+
+		healthbarSize = HealthbarPrefab.sizeDelta;
+		canvasGroup.alpha = alphaSettings.fullAplpha;
+		canvasGroup.interactable = false;
+		canvasGroup.blocksRaycasts = false;
+	}*/
+	//add ma end
 
 	// Update is called once per frame
 	void FixedUpdate() {

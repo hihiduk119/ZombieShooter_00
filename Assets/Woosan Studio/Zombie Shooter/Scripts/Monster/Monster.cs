@@ -213,6 +213,12 @@ namespace WoosanStudio.ZombieShooter
                 //데미지 UI 텍스트 연결 해제
                 connect.Disconnect();
 
+                //채력바 삭제 요청
+                //같은 레벨에 HealthBar.cs가 위치해 있음.
+                HealthBar healthBar = GetComponent<HealthBar>();
+                //현재 몬스터에 연결된 체력바 UI를 제거 요청
+                HealthBarManager.Instance.Remove(healthBar.HealthbarPrefab.gameObject);
+
                 //리얼 삭제
                 Object.Destroy(this.gameObject);
             }));

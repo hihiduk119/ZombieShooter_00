@@ -14,7 +14,6 @@ namespace WoosanStudio.ZombieShooter
     /// 
     /// **만약 몬스터가 죽었을때는 반드시 텍스트 데미지 UI 를 반환하는 작업이 필요.
     /// 현재 이 부분은 구현이 안되어 있기에 작업 및 테스트 필요.
-    /// 
     /// </summary>
     public class AllTextDamageManager : MonoBehaviour
     {
@@ -26,15 +25,33 @@ namespace WoosanStudio.ZombieShooter
 
         private Queue<UltimateTextDamageManager> managerQueue = new Queue<UltimateTextDamageManager>();
 
+        [Header("[최초 몇개 UI 만들고 시작할지 정함]")]
+        public int MaxUICount = 15;
+
         private int namingCount = 0;
 
         private void Awake()
         {
             Instance = this;
-            
+
+            //강제로 최대 개수 만큼 만들기
+            InitMake();
+
             managerList = new List<UltimateTextDamageManager>(FindObjectsOfType<UltimateTextDamageManager>());
             //최초 몇개의 텍스트 데미지 UI가 있는지 확인
-            namingCount = transform.childCount;
+            namingCount = transform.childCount;   
+        }
+        /// <summary>
+        /// 강제로 최대 개수 만큼 만들기
+        /// </summary>
+        void InitMake()
+        {
+            UltimateTextDamageManager manager = null;
+            for (int index = 0; index < MaxUICount; index++)
+            {
+                manager = Make(transform, prefab, "TextDamageUI").GetComponent<UltimateTextDamageManager>();
+                managerList.Add(manager);
+            }
         }
 
         private IEnumerator Start()
@@ -64,6 +81,8 @@ namespace WoosanStudio.ZombieShooter
         /// <returns></returns>
         public UltimateTextDamageManager GetTextDamageManager()
         {
+            //최대 갯수 이상 만들지 않는다.
+
             managerQueue.Clear();
             managerList.ForEach(value =>
             {
@@ -81,6 +100,7 @@ namespace WoosanStudio.ZombieShooter
             }
             catch
             {
+
                 //Debug.Log("UltimateTextDamageManager  가 NULL 이다. 몬스터 데이미 UI 확인해라!! ");
                 //manager = null;
                 manager = Make(transform, prefab, "TextDamageUI").GetComponent<UltimateTextDamageManager>();

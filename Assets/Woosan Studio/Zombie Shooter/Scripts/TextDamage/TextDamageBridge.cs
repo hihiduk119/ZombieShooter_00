@@ -6,13 +6,19 @@ using Guirao.UltimateTextDamage;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class TextDamageBridge : MonoBehaviour
+    /// <summary>
+    /// 데미지 UI 와 연결해주는 블릿지 클래스
+    /// </summary>
+    public class TextDamageBridge : MonoBehaviour , IConnect
     {
         [HideInInspector] public UltimateTextDamageManager textManager;
         public Transform overrideTransform;
 
         private Dictionary<int, string> keyValues = new Dictionary<int, string>()
         {{0,"default"},{1,"critical"},{2,"status"} };
+
+        //데미지 이벤트 연결용
+        IHaveHealth haveHealth;
 
         private IEnumerator Start()
         {
@@ -31,11 +37,32 @@ namespace WoosanStudio.ZombieShooter
             //}
 
             //IHaveHealth를 찾아서 이벤트 등록
-            IHaveHealth haveHealth = transform.GetComponent<IHaveHealth>();
+            haveHealth = transform.GetComponent<IHaveHealth>();
+            //리스너 연결
+            Connect();
+        }
+
+        /// <summary>
+        /// 데미지 이벤트 발생 연결
+        /// </summary>
+        public void Connect()
+        {
             haveHealth.DamagedEvent.AddListener(DamagedEventHandler);
         }
 
-        //이벤트 등록 부분
+        /// <summary>
+        /// 데이지 이벤트 연결 해제
+        /// </summary>
+        public void Disconnect()
+        {
+            haveHealth.DamagedEvent.RemoveListener(DamagedEventHandler);
+        }
+
+        /// <summary>
+        /// 이벤트 등록 부분
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <param name="hit"></param>
         public void DamagedEventHandler(int damage,Vector3 hit)
         {
             PopText(damage.ToString(), keyValues[0]);

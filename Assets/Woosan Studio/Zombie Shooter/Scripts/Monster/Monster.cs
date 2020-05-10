@@ -30,6 +30,9 @@ namespace WoosanStudio.ZombieShooter
         //데이지 연출용
         IBlink blink;
 
+        //데미지 UI 텍스트 연결용 인터페이스
+        IConnect connect;
+
         private IEnumerator waitThenCallback(float time, System.Action callback)
         {
             yield return new WaitForSeconds(time);
@@ -105,6 +108,9 @@ namespace WoosanStudio.ZombieShooter
 
             //데미지 연출용 블링크
             blink = transform.GetComponentInChildren<IBlink>();
+
+            //데미지 UI 텍스트 연결용 인터페이스
+            connect = GetComponent<IConnect>();
         }
 
         /// <summary>
@@ -195,6 +201,8 @@ namespace WoosanStudio.ZombieShooter
 
             //몬스터 메니저 등록에서 제거
             MonsterList.Instance.Items.Remove(this.transform);
+            //데미지 UI 텍스트 연결 해제
+            connect.Disconnect();
         }
 
         /// <summary>

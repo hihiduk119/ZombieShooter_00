@@ -201,8 +201,6 @@ namespace WoosanStudio.ZombieShooter
 
             //몬스터 메니저 등록에서 제거
             MonsterList.Instance.Items.Remove(this.transform);
-            //데미지 UI 텍스트 연결 해제
-            connect.Disconnect();
         }
 
         /// <summary>
@@ -211,7 +209,13 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="deley">해당 시간만큼 딜레이</param>
         public void Destory(float deley)
         {
-            StartCoroutine(waitThenCallback(deley, () => { Object.Destroy(this.gameObject); }));
+            StartCoroutine(waitThenCallback(deley, () => {
+                //데미지 UI 텍스트 연결 해제
+                connect.Disconnect();
+
+                //리얼 삭제
+                Object.Destroy(this.gameObject);
+            }));
         }     
     }
 }

@@ -82,7 +82,6 @@ namespace WoosanStudio.ZombieShooter
         public UltimateTextDamageManager GetTextDamageManager()
         {
             //최대 갯수 이상 만들지 않는다.
-
             managerQueue.Clear();
             managerList.ForEach(value =>
             {
@@ -100,8 +99,9 @@ namespace WoosanStudio.ZombieShooter
             }
             catch
             {
+                //NuLL이라면 원칙대로 추가로 UI를 만들어서는 안된다.  MaxUICount 이상은 UI 만드는것을 허용하지 않음.
+                Debug.Log("UltimateTextDamageManager  가 NULL 이다. 몬스터 데이미 UI 확인해라!! ");
 
-                //Debug.Log("UltimateTextDamageManager  가 NULL 이다. 몬스터 데이미 UI 확인해라!! ");
                 //manager = null;
                 manager = Make(transform, prefab, "TextDamageUI").GetComponent<UltimateTextDamageManager>();
                 managerList.Add(manager);

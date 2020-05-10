@@ -55,7 +55,10 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Disconnect()
         {
+            //이벤트 연결 해제
             haveHealth.DamagedEvent.RemoveListener(DamagedEventHandler);
+            //해당 UI 디스에이블
+            textManager.gameObject.SetActive(false);
         }
 
         /// <summary>

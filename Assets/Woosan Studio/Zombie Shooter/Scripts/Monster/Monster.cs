@@ -62,7 +62,7 @@ namespace WoosanStudio.ZombieShooter
             {
                 case MonsterSettings.MonsterID.WeakZombie:
                     //FSM 세팅 생성 [MonsterFSM 하나로 통합할지 말지 결정 해야함]
-                    FSM = new WeakZombieFSM();
+                    FSM = new ZombieFSM();
 
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅
@@ -81,7 +81,7 @@ namespace WoosanStudio.ZombieShooter
                     Transform projectileLauncherTransform = MakeTransformHierarchyForProjectileLauncher(transform.GetChild(0).GetChild(0));
 
                     //FSM 세팅 생성 [MonsterFSM 하나로 통합할지 말지 결정 해야함]
-                    FSM = new WeakZombieFSM();
+                    FSM = new ZombieFSM();
 
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅
@@ -94,7 +94,7 @@ namespace WoosanStudio.ZombieShooter
                     break;
                 case MonsterSettings.MonsterID.RunnerZombie:
                     //FSM 세팅 생성 [MonsterFSM 하나로 통합할지 말지 결정 해야함]
-                    FSM = new WeakZombieFSM();
+                    FSM = new ZombieFSM();
 
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅

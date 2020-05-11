@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class WeakZombieFSM : IFiniteStateMachine ,  IProjectileLauncher
+    public class ZombieFSM : IFiniteStateMachine ,  IProjectileLauncher
     {
         ICharacterInput characterInput;
         ICharacterDrivingModule characterDrivingModule;

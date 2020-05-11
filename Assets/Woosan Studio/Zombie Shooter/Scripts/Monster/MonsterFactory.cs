@@ -44,7 +44,10 @@ namespace WoosanStudio.ZombieShooter
                 //else
                 //    MakeMonster(monsterSettings[1], SpawnPoints.GetSpawnPosition());
 
-                int index = Random.Range(0, 3);
+                //int index = Random.Range(0, 3);
+
+                int index = 1;
+
                 //몬스터 생성
                 GameObject clone = MakeMonster(monsterSettings[index], SpawnPoints.GetSpawnPosition());
                 //그림자 생성.

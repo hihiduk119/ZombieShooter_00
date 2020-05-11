@@ -2459,6 +2459,8 @@ GameObject:
   - component: {fileID: 3085925795642665539}
   - component: {fileID: 248801652660824304}
   - component: {fileID: 6423873998881598936}
+  - component: {fileID: 2491272483399346644}
+  - component: {fileID: 6113385579318344460}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -2649,6 +2651,34 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &2491272483399346644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3522666838791289221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f40e0dc8291b41f8a580c6084aa005b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textManager: {fileID: 0}
+  overrideTransform: {fileID: 788700097474684162}
+--- !u!114 &6113385579318344460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3522666838791289221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be058660747ec47839b50c59f314c0ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: ed9e2c73ccbf428488411e4a5dac4fbe, type: 2}
+  damagedMaterial: {fileID: 2100000, guid: 86ed9524d8cda4cada7beb3b95c004dc, type: 2}
 --- !u!1 &6402285781482448673
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,7 +2689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 788700097474684162}
   m_Layer: 8
-  m_Name: GameObject
+  m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

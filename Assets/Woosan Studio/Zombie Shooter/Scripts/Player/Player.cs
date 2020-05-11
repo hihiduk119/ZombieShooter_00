@@ -7,7 +7,7 @@ using WoosanStudio.Common;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour , IHaveHit
     {
         //무기를 만들어주는 팩토리 패턴 적용.
         public WeaponFactory _weaponFactory;
@@ -125,5 +125,13 @@ namespace WoosanStudio.ZombieShooter
             Move(h);
         }
         #endregion
+
+        /// <summary>
+        ///강제 에니메이션 재시작[Gun Trigger 방식] 
+        /// </summary>
+        public void Hit()
+        {
+
+        }
     }
 }

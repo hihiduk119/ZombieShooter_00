@@ -12,7 +12,7 @@ namespace WoosanStudio.ZombieShooter
     /// 모든 플레이어 공용으로 사용하려 하였으나 정의가 재대로 안돼서 일단
     /// 몬스터용으로만 사용
     /// </summary>
-    public class Monster : MonoBehaviour , IHaveHit ,  ICanDestory 
+    public class Monster : MonoBehaviour , IHaveHit , ICanDestory 
     {
         //캐릭터의 네비메쉬 관련 이동 및 정지거리 등의 셋업 값.
         //[SerializeField] public CharacterSettings characterSettings;
@@ -45,7 +45,7 @@ namespace WoosanStudio.ZombieShooter
             //최소거리의 바리케이트 오브젝트를 찾음
             //target = FindNearestTarget("Barrier");
             //랜덤한 바리케이트 오브젝트 찾음
-            target = FindRandomTarget("Barrier");
+            target = FindRandomTarget("Player");
 
             if (target == null)
             {

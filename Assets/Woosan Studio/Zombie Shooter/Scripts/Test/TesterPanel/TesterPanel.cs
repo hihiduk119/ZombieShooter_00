@@ -50,10 +50,8 @@ namespace WoosanStudio.ZombieShooter.Test
         /// </summary>
         public void ClosePanel()
         {
-            Debug.Log("ClosePanel");
-
+            //Debug.Log("ClosePanel");
             CanvasActive(false);
-
         }
 
         /// <summary>
@@ -61,7 +59,7 @@ namespace WoosanStudio.ZombieShooter.Test
         /// </summary>
         public void OpenPanel()
         {
-            Debug.Log("OpenPanel");
+            //Debug.Log("OpenPanel");
             CanvasActive(true);
         }
 

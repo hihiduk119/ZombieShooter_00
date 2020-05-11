@@ -19,7 +19,6 @@ namespace WoosanStudio.ZombieShooter
             {
                 //공격을 바로 할려고 값을 일부러 넣어줌
                 DoAttack(characterAnimatorModule);
-
                 //Debug.Log("attackDelay = " + this.attackDelay + "  this.hitDelay = " + this.hitDelay + "    this.damage = " + this.damage);
             }
         }

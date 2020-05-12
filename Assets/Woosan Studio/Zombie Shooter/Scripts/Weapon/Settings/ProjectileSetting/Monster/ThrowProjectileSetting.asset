@@ -19,7 +19,7 @@ MonoBehaviour:
     type: 3}
   min: 1000
   max: 1200
-  rapidFire: 1
+  rapidFire: 0
   rapidFireCooldown: 2
   shotgunBehavior: 0
   shotgunPellets: 0

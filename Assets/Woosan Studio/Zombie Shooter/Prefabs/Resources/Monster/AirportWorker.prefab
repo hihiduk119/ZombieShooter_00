@@ -6987,6 +6987,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac7c9db41a9c4e5b89380b8d04e4e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7857066754385352546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6486311439257866461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f4591decd0e417c8c8f68f79e3e2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6486311439305914810
 GameObject:
   m_ObjectHideFlags: 0
@@ -7142,6 +7157,30 @@ PrefabInstance:
     - target: {fileID: 149146, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 486990, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 6.938895e-18
+      objectReference: {fileID: 0}
+    - target: {fileID: 486990, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -2.0679513e-25
+      objectReference: {fileID: 0}
+    - target: {fileID: 486990, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 4.826906e-35
+      objectReference: {fileID: 0}
+    - target: {fileID: 486990, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.3360726
+      objectReference: {fileID: 0}
+    - target: {fileID: 486990, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 486990, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.364346e-18
       objectReference: {fileID: 0}
     - target: {fileID: 13738334, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
       propertyPath: m_Materials.Array.data[0]

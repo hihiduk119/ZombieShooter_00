@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class WalkDrivingModule : ICharacterDrivingModule
+    public class WalkZombieDrivingModule : ICharacterDrivingModule
     {
         private Transform _transform;
         private Transform _destination;
@@ -23,7 +23,7 @@ namespace WoosanStudio.ZombieShooter
         public DrivingState State { get => _state; }
 
         //public AiDrivingModule(NavMeshAgent agent,Transform transform,Transform destination, CharacterSettings characterSettings)
-        public WalkDrivingModule(NavMeshAgent agent, Transform transform, Transform destination, MonsterSettings monterSettings)
+        public WalkZombieDrivingModule(NavMeshAgent agent, Transform transform, Transform destination, MonsterSettings monterSettings)
         {
             _agent = agent;
             _transform = transform;

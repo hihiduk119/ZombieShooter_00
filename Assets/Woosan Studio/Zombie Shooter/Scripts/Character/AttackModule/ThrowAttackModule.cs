@@ -63,7 +63,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="attackDelay">공격 후 다음 공격간의 딜레이</param>
         /// <param name="hitDelay">공격실행 후 실제 공격 까지의 딜레이</param>
-        public ThrowAttackModule(MonsterSettings monsterSettings, IHaveHit haveHit, IHaveHealth haveHealth,Transform projectileLauncherTransform)
+        public ThrowAttackModule(MonsterSettings monsterSettings, IHaveHit haveHit, IHaveHealth haveHealth,Transform projectileLauncherTransform,ref UnityEvent attackEndEvent)
         {
             //몬스터 데이터 세팅
             this.attackDelay = monsterSettings.AttackDelay;
@@ -79,6 +79,9 @@ namespace WoosanStudio.ZombieShooter
 
             //프로젝타일 런처 생성.
             SetProjectileLauncher(projectileLauncherTransform, monsterSettings.ProjectileSettings);
+
+            //실제 발사 부분 연결
+            attackEndEvent.AddListener(LaunchProjectile);
         }
 
         /// <summary>
@@ -92,20 +95,21 @@ namespace WoosanStudio.ZombieShooter
 
             if (attackDeltaTime > attackDelay)
             {
-                //Debug.Log("attack s");
+                Debug.Log("공격 에니메이션 실행");
+                //공격 에니메이션 실행
                 characterAnimatorModule.Attack();
 
                 attackDeltaTime = 0;
                 fireDeltaTime = 0;
                 //공격이 시작되면 바리케이트 맞는 연출 활성화.
-                launchStart = true;
+                //launchStart = true;
             }
 
-            if (launchStart)
-            {
-                //Debug.Log("Hit !!");
-                LaunchProjectile();
-            }
+            //if (launchStart)
+            //{
+            //    //Debug.Log("Hit !!");
+            //    LaunchProjectile();
+            //}
         }
 
         /// <summary>
@@ -113,17 +117,17 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void LaunchProjectile()
         {
-            //Debug.Log("hitDeltaTime = " + hitDeltaTime + "         hitDelay = " + hitDelay);
-            if (fireDeltaTime > fireDelay)
-            {
+            Debug.Log("실제 발사");
+            //if (fireDeltaTime > fireDelay)
+            //{
                 //Debug.Log("hit s");
                 //바리케이트에 히트 호출
-                fireDeltaTime = 0;
+                //fireDeltaTime = 0;
 
                 projectileLauncher.ProjectileLauncher.Fire();
 
-                launchStart = false;
-            }
+                //launchStart = false;
+            //}
         }
     }
 }

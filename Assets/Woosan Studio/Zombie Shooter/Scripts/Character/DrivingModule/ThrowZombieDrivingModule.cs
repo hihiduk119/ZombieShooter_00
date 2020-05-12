@@ -22,6 +22,7 @@ namespace WoosanStudio.ZombieShooter
         private DrivingState _state = DrivingState.Move;
         public DrivingState State { get => _state; }
 
+        //캐쉬용
         Vector3 lookRot;
 
         //public AiDrivingModule(NavMeshAgent agent,Transform transform,Transform destination, CharacterSettings characterSettings)

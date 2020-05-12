@@ -86,9 +86,9 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 공격실행 후 실제 공격 까지의 딜레이
         /// </summary>
-        [Tooltip("공격실행 후 실제 공격 까지의 딜레이")]
-        [SerializeField] private float hitDelay = 0.7f;
-        public float HitDelay { get => hitDelay; }
+        //[Tooltip("공격실행 후 실제 공격 까지의 딜레이")]
+        //[SerializeField] private float hitDelay = 0.7f;
+        //public float HitDelay { get => hitDelay; }
 
         /// <summary>
         /// 이동 속도

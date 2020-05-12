@@ -56,34 +56,32 @@ namespace WoosanStudio.ZombieShooter
             if(monsterSettings == null)
             Debug.Log("monsterSettings null ");
 
+            //에니메이션에 이벤트 발생 부분을 가져오기
+            AnimationEvent animationEvent = GetComponentInChildren<AnimationEvent>();
+
+            //FSM 세팅 생성 [MonsterFSM 하나로 통합할지 말지 결정 해야함]
+            //*일단 통합
+            FSM = new ZombieFSM();
+
             //유한상태기계 세팅
             //character는 순수 하게 FSM의 Tick호출만 할 뿐 모든 작업은 FSM 에서 진행한다.
             switch (monsterSettings.MonsterId)
             {
                 case MonsterSettings.MonsterID.WeakZombie:
-                    //FSM 세팅 생성 [MonsterFSM 하나로 통합할지 말지 결정 해야함]
-                    FSM = new ZombieFSM();
-
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅
                         new AiInput(), //입력부분 생성
                         new WalkZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
                         new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
-                        new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>())//공격 모듈 생성.
+                        new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>(), ref animationEvent.AttackEndEvent)//공격 모듈 생성.
                     );
                     break;
                 case MonsterSettings.MonsterID.ThrowZombie:
-
                     //프로젝타일 런터를 생성할 트렌스폼 가져오가
                     //* 해당 계층 구조로 미리 만들어져 있어야 정상 작동한다.
                     //* 현재 트렌스 폼의 자식-> 자식 에서 만듬 이때 Regdoll 이면 안되고
                     //* Navi 오브젝트의 하위로 들어 가야 함.
                     Transform projectileLauncherTransform = MakeTransformHierarchyForProjectileLauncher(transform.GetChild(0).GetChild(0));
-
-                    //FSM 세팅 생성 [MonsterFSM 하나로 통합할지 말지 결정 해야함]
-                    FSM = new ZombieFSM();
-
-                    AnimationEvent animationEvent = GetComponentInChildren<AnimationEvent>();
 
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅
@@ -95,15 +93,12 @@ namespace WoosanStudio.ZombieShooter
 
                     break;
                 case MonsterSettings.MonsterID.RunnerZombie:
-                    //FSM 세팅 생성 [MonsterFSM 하나로 통합할지 말지 결정 해야함]
-                    FSM = new ZombieFSM();
-
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅
                         new AiInput(), //입력부분 생성
                         new WalkZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
                         new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
-                        new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>())//공격 모듈 생성.
+                        new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>(), ref animationEvent.AttackEndEvent)//공격 모듈 생성.
                     );
                     break;
             }

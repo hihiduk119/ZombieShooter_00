@@ -56,6 +56,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMaterial: {fileID: 2100000, guid: 3811677930c7b3946abaf2ce9cdfea21, type: 2}
   damagedMaterial: {fileID: 2100000, guid: 91663fa724da34917a4b010f93f4cb5f, type: 2}
+--- !u!114 &472772268194427683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246062894280750577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f4591decd0e417c8c8f68f79e3e2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &246062895001225752
 GameObject:
   m_ObjectHideFlags: 0
@@ -7134,6 +7149,30 @@ PrefabInstance:
     - target: {fileID: 191886, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 486990, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 6.938895e-18
+      objectReference: {fileID: 0}
+    - target: {fileID: 486990, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -2.0679513e-25
+      objectReference: {fileID: 0}
+    - target: {fileID: 486990, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 4.826906e-35
+      objectReference: {fileID: 0}
+    - target: {fileID: 486990, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.3360726
+      objectReference: {fileID: 0}
+    - target: {fileID: 486990, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 486990, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.364346e-18
       objectReference: {fileID: 0}
     - target: {fileID: 13771954, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
       propertyPath: m_Materials.Array.size

@@ -30,10 +30,7 @@ namespace WoosanStudio.ZombieShooter
         private float attackDelay = 0;
         //실제 시간
         private float attackDeltaTime = 0;
-        //공격이 시작됬음을 알림
-        private bool launchStart = false;
-        //공격이 시작과 실제 때림 발생 사이의 간격
-        private float fireDelay = 0;
+        
         //실제시간
         private float fireDeltaTime = 0;
         //공격 데미지
@@ -67,7 +64,6 @@ namespace WoosanStudio.ZombieShooter
         {
             //몬스터 데이터 세팅
             this.attackDelay = monsterSettings.AttackDelay;
-            this.fireDelay = monsterSettings.HitDelay;
             this.damage = monsterSettings.Damage;
 
             //인터페이스 세팅
@@ -81,6 +77,7 @@ namespace WoosanStudio.ZombieShooter
             SetProjectileLauncher(projectileLauncherTransform, monsterSettings.ProjectileSettings);
 
             //실제 발사 부분 연결
+            //*실제 에니메이션에 이벤트로 연결 되어 있음을 기억하라
             attackEndEvent.AddListener(LaunchProjectile);
         }
 
@@ -104,12 +101,6 @@ namespace WoosanStudio.ZombieShooter
                 //공격이 시작되면 바리케이트 맞는 연출 활성화.
                 //launchStart = true;
             }
-
-            //if (launchStart)
-            //{
-            //    //Debug.Log("Hit !!");
-            //    LaunchProjectile();
-            //}
         }
 
         /// <summary>
@@ -117,17 +108,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void LaunchProjectile()
         {
-            Debug.Log("실제 발사");
-            //if (fireDeltaTime > fireDelay)
-            //{
-                //Debug.Log("hit s");
-                //바리케이트에 히트 호출
-                //fireDeltaTime = 0;
-
-                projectileLauncher.ProjectileLauncher.Fire();
-
-                //launchStart = false;
-            //}
+            projectileLauncher.ProjectileLauncher.Fire();
         }
     }
 }

@@ -22,6 +22,9 @@ namespace WoosanStudio.ZombieShooter
         private DrivingState _state = DrivingState.Move;
         public DrivingState State { get => _state; }
 
+        //캐쉬용
+        Vector3 lookRot;
+
         //public AiDrivingModule(NavMeshAgent agent,Transform transform,Transform destination, CharacterSettings characterSettings)
         public WalkZombieDrivingModule(NavMeshAgent agent, Transform transform, Transform destination, MonsterSettings monterSettings)
         {
@@ -54,6 +57,11 @@ namespace WoosanStudio.ZombieShooter
                 if (_agent.remainingDistance != 0)
                 {
                     ReachDestinationEvent.Invoke();
+
+                    //계속 오브젝트 쳐다보기
+                    //이때 y축이 바뀌더라도 무시 하고 회전
+                    lookRot = new Vector3(_destination.position.x, _transform.position.y, _destination.position.z);
+                    _transform.LookAt(lookRot);
                 }
             }
         }

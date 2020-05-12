@@ -46,10 +46,9 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="attackDelay">공격 후 다음 공격간의 딜레이</param>
         /// <param name="hitDelay">공격실행 후 실제 공격 까지의 딜레이</param>
-        public MeleeAttackModule(MonsterSettings monsterSettings , IHaveHit haveHit, IHaveHealth haveHealth) {
+        public MeleeAttackModule(MonsterSettings monsterSettings , IHaveHit haveHit, IHaveHealth haveHealth, ref UnityEvent attackEndEvent) {
             //몬스터 데이터 세팅
             this.attackDelay = monsterSettings.AttackDelay;
-            this.hitDelay = monsterSettings.HitDelay;
             this.damage = monsterSettings.Damage;
 
             //인터페이스 세팅
@@ -58,6 +57,10 @@ namespace WoosanStudio.ZombieShooter
 
             //[중요]처음 시작시 바로 공격을 해야하기에 attackDelay값과 동일하게 마춰줌
             attackDeltaTime = attackDelay;
+
+            //실제 발사 부분 연결
+            //*실제 에니메이션에 이벤트로 연결 되어 있음을 기억하라
+            attackEndEvent.AddListener(Hit);
         }
 
         /// <summary>
@@ -77,14 +80,14 @@ namespace WoosanStudio.ZombieShooter
                 attackDeltaTime = 0;
                 hitDeltaTime = 0;
                 //공격이 시작되면 바리케이트 맞는 연출 활성화.
-                hitStart = true;
+                //hitStart = true;
             }
 
-            if (hitStart)
-            {
-                //Debug.Log("Hit !!");
-                Hit();
-            }
+            //if (hitStart)
+            //{
+            //    //Debug.Log("Hit !!");
+            //    Hit();
+            //}
         }
 
         /// <summary>
@@ -93,22 +96,22 @@ namespace WoosanStudio.ZombieShooter
         public void Hit()
         {
             //Debug.Log("hitDeltaTime = " + hitDeltaTime + "         hitDelay = " + hitDelay);
-            if (hitDeltaTime > hitDelay)
+            //if (hitDeltaTime > hitDelay)
+            //{
+            //    //Debug.Log("hit s");
+            //    //바리케이트에 히트 호출
+            haveHit.Hit();
+
+            //    hitDeltaTime = 0;
+
+            //베리어에 데미지 이벤트 호출
+            if (haveHealth != null)
             {
-                //Debug.Log("hit s");
-                //바리케이트에 히트 호출
-                haveHit.Hit();
-
-                hitDeltaTime = 0;
-
-                //베리어에 데미지 이벤트 호출
-                if (haveHealth != null)
-                {
                     haveHealth.DamagedEvent.Invoke(this.damage, Vector3.zero);
-                }
-
-                hitStart = false;
             }
+
+                //hitStart = false;
+            //}
         }
     }
 }

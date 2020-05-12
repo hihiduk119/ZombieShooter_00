@@ -129,5 +129,20 @@ namespace WoosanStudio.ZombieShooter
 
             return items[activeIndex];
         }
+
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Debug.Log("level 1");
+                SwapStage(0);
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Debug.Log("level 2");
+                SwapStage(1);
+            }
+        }
     }
 }

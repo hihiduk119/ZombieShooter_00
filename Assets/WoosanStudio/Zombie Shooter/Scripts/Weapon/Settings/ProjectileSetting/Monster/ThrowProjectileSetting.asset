@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5deb7c3afe74a72865c0fcfc2f1915, type: 3}
+  m_Name: ThrowProjectileSetting
+  m_EditorClassIdentifier: 
+  name: Plasma Poison Green Small
+  bombPrefab: {fileID: 54344322164163910, guid: 53969f535551323489f9059fbe5ca740,
+    type: 3}
+  muzzleflare: {fileID: 1000012903210382, guid: 8b89c403978447f4aa56b43be456dd4f,
+    type: 3}
+  min: 1000
+  max: 1200
+  rapidFire: 0
+  rapidFireCooldown: 2
+  shotgunBehavior: 0
+  shotgunPellets: 0
+  shellPrefab: {fileID: 1467181274829480, guid: 41e86fd3ee46b76448791422f9949474,
+    type: 3}
+  hasMuzzleFlare: 0
+  hasShells: 0
+  playerShoted: 0

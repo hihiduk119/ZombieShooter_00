@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45500ea4ab7e4a9abefd58d830c3be4, type: 3}
+  m_Name: PistolSetting
+  m_EditorClassIdentifier: 
+  _type: 0
+  _name: Pistol
+  _maxAmmo: 8
+  _level: 1
+  _reloadTime: 2
+  _prefab: {fileID: 5701165509722036744, guid: a2ce29b5c02274c42bc08417646678b5, type: 3}
+  _prefabInstance: {fileID: 0}
+  _projectileSettings: {fileID: 11400000, guid: b2557b1e8575646058ace4a3dd7b6509,
+    type: 2}

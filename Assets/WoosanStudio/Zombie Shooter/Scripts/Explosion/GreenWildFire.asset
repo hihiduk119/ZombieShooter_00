@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b77c89d2ff4e24791a11c2493d36efd3, type: 3}
+  m_Name: GreenWildFire
+  m_EditorClassIdentifier: 
+  name: GreenWildFire
+  prefabs:
+  - {fileID: 1000012903210382, guid: 5c6f0ff8a2fd37241bcdbbba82f2af2a, type: 3}
+  - {fileID: 1000012903210382, guid: 6d6595919b8c8e14799852d449d5558b, type: 3}
+  - {fileID: 1000012903210382, guid: 62b260a80ec887346a8ce16fc04d568d, type: 3}

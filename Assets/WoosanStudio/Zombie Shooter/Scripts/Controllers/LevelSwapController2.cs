@@ -26,6 +26,10 @@ namespace WoosanStudio.ZombieShooter
 
         //메인카메라
         public UnityEngine.Camera MainCamera;
+
+        //레벨 이동 완료후 포커스 맞출 위치와 회전 값을 가짐
+        public FocusOffset FocusOffset;
+
         //포커스 사용시 화면 듀레이
         float Duration = 0.5f;
 
@@ -37,7 +41,7 @@ namespace WoosanStudio.ZombieShooter
         private void Awake()
         {
             //도착 완료 이벤트 발생시 RunFocus실행 되게 등록.
-            //distanceCheck.closeEvent.AddListener(AutoFocus);
+            distanceCheck.closeEvent.AddListener(AutoFocus);
         }
 
         private void Start() {}
@@ -68,8 +72,13 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void FocusCamera()
         {
-            MainCamera.transform.DOLocalMove(new Vector3(0, 0, 0), Duration).SetRelative(false).SetEase(Ease.InOutSine);
-            MainCamera.transform.DOLocalRotate(new Vector3(30, 0, 0), Duration).SetRelative(false).SetEase(Ease.InOutSine);
+            int index = swapTargetController.Previous;
+            Focus focus = FocusOffset.Offsets[index];
+
+            //해당 트윈으로 포커스 마춤
+            MainCamera.transform.DOLocalMove(focus.Position, Duration).SetRelative(false).SetEase(Ease.InOutSine);
+            MainCamera.transform.DOLocalRotate(focus.Rotation, Duration).SetRelative(false).SetEase(Ease.InOutSine);
+            //FOV 설정.
             MainCamera.DOFieldOfView(22f, Duration);
         }
 

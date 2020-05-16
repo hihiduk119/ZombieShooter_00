@@ -145,18 +145,18 @@ public class SwapTargetController : MonoBehaviour
     }
 
     #region [-TestCode]
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Swap(3);
-        }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.P))
+    //    {
+    //        Swap(3);
+    //    }
 
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            Swap(4);
-        }
-    }
+    //    if (Input.GetKeyDown(KeyCode.N))
+    //    {
+    //        Swap(4);
+    //    }
+    //}
     #endregion
 
 

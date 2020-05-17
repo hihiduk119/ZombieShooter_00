@@ -21,9 +21,6 @@ namespace WoosanStudio.ZombieShooter
         public CustomCamFollow CustomCamFollow;
         [Header("[따라다닐 카메라의 타겟모음]")]
         public List<Transform> FollowCameraTargets = new List<Transform>();
-
-        [Header("[방어 구조물]")]
-        public List<Transform> Barriers = new List<Transform>();
         
         
         [Header("[몬스터 팩토리]")]
@@ -75,7 +72,7 @@ namespace WoosanStudio.ZombieShooter
             /*
             //모두 비활성화
             FollowCameraTargets.ForEach(value => value.gameObject.SetActive(false));
-            Barriers.ForEach(value => value.gameObject.SetActive(false));
+            
             MonsterSpawnPoints.ForEach(value => value.gameObject.SetActive(false));
             PlayerSpawnPoints.ForEach(value => value.gameObject.SetActive(false));
             ExplosionSpwanPoints.ForEach(value => value.gameObject.SetActive(false));
@@ -84,7 +81,7 @@ namespace WoosanStudio.ZombieShooter
 
             //해당 스테이지만 활성화
             FollowCameraTargets[index].gameObject.SetActive(true);
-            Barriers[index].gameObject.SetActive(true);
+            
             MonsterSpawnPoints[index].gameObject.SetActive(true);
             PlayerSpawnPoints[index].gameObject.SetActive(true);
             ExplosionSpwanPoints[index].gameObject.SetActive(true);
@@ -106,8 +103,6 @@ namespace WoosanStudio.ZombieShooter
             MonsterFactory.SpawnPoints = SelectiveActivate(ref MonsterSpawnPoints, index).GetComponentInChildren<SpawnPoints>();
             //플레이어 스폰 포인트 가져와서 세팅
             PlayerFactory.PlayerPoints = SelectiveActivate(ref PlayerSpawnPoints, index).GetComponent<ITransforms>().Items;
-            //베리어 선택적 활성화
-            SelectiveActivate(ref Barriers, index);
             //공습연출 선택적 활성화
             SelectiveActivate(ref ExplosionSpwanPoints, index);
 

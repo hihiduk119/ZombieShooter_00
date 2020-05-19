@@ -66,7 +66,8 @@ namespace WoosanStudio.Camera
             desiredVelocity = v * camForward + h * cam.right;
 
             //플레이어의 좌표와 왜곡 보정계산된 방향 가속도를 현재 좌표에 적용.
-            pos = player.transform.position;
+            //pos = player.transform.position;
+            pos = followTarget.transform.position;
             pos.z += desiredVelocity.z * distance;
             pos.x += desiredVelocity.x * distance;
 

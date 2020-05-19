@@ -124,7 +124,7 @@ namespace WoosanStudio.ZombieShooter
                 case 0: pos.x -= distance; break;
             }
 
-            //폭발루트에 변경된 좌표와 회전값 넣/
+            //폭발루트에 변경된 좌표와 회전값 넣음
             followTarget.position = pos;
             //카메라 회전 y축 각도 그대로 적용
             //rot.y = Camera.localRotation.eulerAngles.y;
@@ -140,8 +140,6 @@ namespace WoosanStudio.ZombieShooter
             Debug.Log("On");
             CustomCamFollow.enabled = false;
             VirtualCamera.enabled = true;
-
-
         }
 
         /// <summary>
@@ -153,6 +151,10 @@ namespace WoosanStudio.ZombieShooter
             Debug.Log("Off");
             CustomCamFollow.enabled = true;
             VirtualCamera.enabled = false;
+
+            //카메라가 따라다닐 위치 재계산
+            //이거 안써도 동작함 ...알수 없음.
+            //CalculateFollowCameraTarget(FollowCameraTarget, this.Camera);
         }
 
         #region [-TestCode]

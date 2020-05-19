@@ -15,7 +15,6 @@ namespace WoosanStudio.ZombieShooter
         public Transform Camera;
         [Header("[그림자 타겟]")]
         public Transform Target;
-
         //시작 좌표
         private Vector3 StartPoint;
         //끝 좌표
@@ -41,7 +40,7 @@ namespace WoosanStudio.ZombieShooter
             Vector3 rot = target.rotation.eulerAngles;
 
             //타겟 회전을 위해
-            rot.y = y - 90;
+            rot.y = y - 270;
             target.rotation = Quaternion.Euler(rot);
 
             //카메라의 포지션을 시작 포인트와 엔드포인트 초기화
@@ -71,8 +70,8 @@ namespace WoosanStudio.ZombieShooter
         public void Run()
         {
             Target.gameObject.SetActive(true);
-            //Target.position = StartPoint.position;
-            MakeMovingCoordinate(this.Camera, 150,ref StartPoint,ref EndPoint,ref Target);
+            
+            MakeMovingCoordinate(this.Camera, 150,ref EndPoint, ref  StartPoint, ref Target);
 
             //타겟 위치 시작 포지션으로 조정
             Target.position = StartPoint;

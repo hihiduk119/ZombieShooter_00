@@ -42,7 +42,8 @@ namespace WoosanStudio.ZombieShooter
         public ExplosionRect MyExplosionRect;
 
         //실제 폭발 반경을 위해 카메라와의 거리
-        public float distance = 75f;
+        //**LevelSwapController2.distance 와 값을 마춰라
+        public float distance = 80f;
 
         [Header("[폭발 프리팹 세팅 리스튼")]
         public List<ExplosionSetting> settings = new List<ExplosionSetting>();

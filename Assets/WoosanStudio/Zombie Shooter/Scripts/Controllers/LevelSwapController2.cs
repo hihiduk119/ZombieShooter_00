@@ -30,6 +30,16 @@ namespace WoosanStudio.ZombieShooter
         //레벨 이동 완료후 포커스 맞출 위치와 회전 값을 가짐
         public FocusOffset FocusOffset;
 
+        //카메라가 따라다니게 만드는 스크립트
+        public Transform FollowCameraTarget;
+
+        //메인 카메라의 트렌스폼
+        private Transform Camera;
+
+        //실제 폭발 반경을 위해 카메라와의 거리
+        //**ExplosionFactory.distance 와 값을 마춰라
+        public float distance = 80f;
+
         //포커스 사용시 화면 듀레이
         float Duration = 0.5f;
 
@@ -42,6 +52,9 @@ namespace WoosanStudio.ZombieShooter
         {
             //도착 완료 이벤트 발생시 RunFocus실행 되게 등록.
             distanceCheck.closeEvent.AddListener(AutoFocus);
+
+            //카메라의 트랜스폼 받아옴
+            Camera = MainCamera.GetComponent<Transform>();
         }
 
         private void Start() {}
@@ -83,6 +96,42 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 카메라가 따라다닐 위치 재계산
+        /// ExplosionFactory.cs => CalculateExplosionPosition와 유사
+        /// </summary>
+        /// <param name="followTarget"></param>
+        /// <param name="camera"></param>
+        /// <param name="height"></param>
+        void CalculateFollowCameraTarget(Transform followTarget, Transform camera, float height = 0)
+        {
+            //일단 카메라 포지션 기준
+            followTarget.position = camera.position;
+            //보정 값
+            Vector3 pos = followTarget.position;
+            //높이가 있다면 높이 적용 => 고가 도로 맵에
+            pos.y = height;
+
+            //카메라 각도에 따라 폭발 루트를 회전시키기 위해 미리 받아둠.
+            //Vector3 rot = followTarget.localRotation.eulerAngles;
+
+            //회전 각에 따라 Distance도 다르게 적용.
+            //회전 각에 따라 영역의 가로 새로도 변경
+            switch ((int)Camera.localRotation.eulerAngles.y)
+            {
+                case 90: pos.z += distance; break;
+                case 180: pos.x += distance; break;
+                case 270: pos.z -= distance; break;
+                case 0: pos.x -= distance; break;
+            }
+
+            //폭발루트에 변경된 좌표와 회전값 넣/
+            followTarget.position = pos;
+            //카메라 회전 y축 각도 그대로 적용
+            //rot.y = Camera.localRotation.eulerAngles.y;
+            //followTarget.localRotation = Quaternion.Euler(rot);
+        }
+
+        /// <summary>
         /// 캠 이동전 호출
         /// 씨네머신 활성화
         /// </summary>
@@ -91,6 +140,8 @@ namespace WoosanStudio.ZombieShooter
             Debug.Log("On");
             CustomCamFollow.enabled = false;
             VirtualCamera.enabled = true;
+
+
         }
 
         /// <summary>

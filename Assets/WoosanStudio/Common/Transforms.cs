@@ -7,7 +7,7 @@ namespace WoosanStudio.Common
     public class Transforms : MonoBehaviour, ITransforms
     {
         [SerializeField]
-        List<Transform> items = new List<Transform>();
+        private List<Transform> items = new List<Transform>();
         public List<Transform> Items { get => items; }
 
         //[Header("[자식에서 비교해서 찾을 이름]")]
@@ -37,6 +37,24 @@ namespace WoosanStudio.Common
             items = new List<Transform>(parent.GetComponentsInChildren<Transform>());
             //그냥 가저요면 부모가 0번이기 때문에 자식만 가져오게 하기위해 0번 삭제.
             items.RemoveAt(0);
+        }
+
+        /// <summary>
+        /// 현재 트렌스폼의 자식을 모두 가져옴
+        /// </summary> 
+        /// <returns></returns>
+        public List<Transform> GetChilds(string CompareName)
+        {
+            Transform[] childs = this.GetComponentsInChildren<Transform>();
+            for (int index = 0; index < childs.Length; index++)
+            {
+                if (childs[index].name.Equals(CompareName))
+                {
+                    items.Add(childs[index]);
+                }
+            }
+
+            return items;
         }
     }
 }

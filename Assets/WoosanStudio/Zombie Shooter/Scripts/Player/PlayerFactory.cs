@@ -24,6 +24,8 @@ namespace WoosanStudio.ZombieShooter
         public WeaponFactory WeaponFactory;
         [Header("[ICameraShaker를 가져오기 위한 용도]")]
         public GameObject Shaker;
+
+        public Transforms PlayerPointRoot;
         [Header("[플레이어 생성 위치]")]
         public List<Transform> PlayerPoints;
         [Header("[(AI 미 사용시)[플레이어 터치 위치에 따른 회전]")]
@@ -72,6 +74,9 @@ namespace WoosanStudio.ZombieShooter
 
         public void Initialize()
         {
+            //플레어 포인트를 루트에서 가져옴
+            PlayerPoints = PlayerPointRoot.GetChilds("Point");
+
             Make(PlayerPoints[0], playerConfigs[0]);
             //Make(PlayerPoints[1], playerConfigs[1]);
             //Make(PlayerPoints[2], playerConfigs[1]);
@@ -85,13 +90,10 @@ namespace WoosanStudio.ZombieShooter
         {
             WoosanStudio.ZombieShooter.Test.TestCode01.Instance.Swap();
         }
-
-
         #endregion
 
 
         /// 플레이어 생성
-
         public GameObject Make(Transform parent, PlayerConfig playerConfig)
         {
             clone = Instantiate(playerConfig.prefab) as GameObject;

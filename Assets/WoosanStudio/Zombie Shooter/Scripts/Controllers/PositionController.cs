@@ -24,18 +24,18 @@ namespace WoosanStudio.ZombieShooter
         private void Awake()
         {
             //mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<UnityEngine.Camera>();
-            #region [-TestCode]
-            MakeMovingCoordinate(mainCamera.transform, this.Distance, ref Target);
-            #endregion
+            //#region [-TestCode]
+            //MovingCoordinate(mainCamera.transform, this.Distance, ref Target);
+            //#endregion
         }
 
         /// <summary>
-        /// 카메라가 바로보는 방향으로 베리어 위치 이동
+        /// 카메라가 바로보는 방향으로 위치 이동
         /// </summary>
         /// <param name="camera">해당 카메라</param>
         /// /// <param name="distance">시작과 끝 간의 이동거리</param>
         /// <param name="coordination">반환되는 끝 포인트</param>
-        void MakeMovingCoordinate(Transform camera, float distance, ref Transform target)
+        void MovingCoordinate(Transform camera, float distance, ref Transform target)
         {
             //일부러 int 로 받음. 소수 허용 안하게 하기 위해.
             int y = (int)camera.localRotation.eulerAngles.y;
@@ -79,14 +79,22 @@ namespace WoosanStudio.ZombieShooter
             target.position = coordination;
         }
 
-        #region [-TestCode]
-        private void Update()
+        /// <summary>
+        /// 외부에서 포지션 이동을 위해 실제 호출하는 부분
+        /// </summary>
+        public void Repositon()
         {
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                MakeMovingCoordinate(mainCamera.transform, this.Distance,ref Target);
-            }
+            MovingCoordinate(mainCamera.transform, this.Distance, ref Target);
         }
-        #endregion
+
+        //#region [-TestCode]
+        //private void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.K))
+        //    {
+        //        MovingCoordinate(mainCamera.transform, this.Distance,ref Target);
+        //    }
+        //}
+        //#endregion
     }
 }

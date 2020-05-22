@@ -14,7 +14,8 @@ namespace WoosanStudio.Common
         //public string CompareName = "";
 
         /// <summary>
-        /// 자식에서 이름으로 찾아서 리스트에 아이템에 넣기.
+        /// 모든 자식에서 이름으로 찾아서 리스트에 아이템에 넣기.
+        /// *바로 아래 Layer에서만 찾는 방식이 아나리 모든 Layer에서 찾은다.
         /// </summary>
         /// <param name="items">찾아서 넣어줄 리스트</param>
         /// <param name="parent">찾을 트랜스폼 부모</param>
@@ -41,6 +42,19 @@ namespace WoosanStudio.Common
             items = new List<Transform>(parent.GetComponentsInChildren<Transform>());
             //그냥 가저요면 부모가 0번이기 때문에 자식만 가져오게 하기위해 0번 삭제.
             items.RemoveAt(0);
+        }
+
+        /// <summary>
+        /// 바로 아래 Layer에서만 자식을 찾음.
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="parent"></param>
+        static public void FindChildInFirstLayer(ref List<Transform> items, Transform parent)
+        {
+            for(int index = 0; index < parent.childCount; index++)
+            {
+                items.Add(parent.GetChild(index));
+            }
         }
 
         /// <summary>

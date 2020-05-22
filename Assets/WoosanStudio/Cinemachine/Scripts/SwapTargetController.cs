@@ -9,6 +9,9 @@ using WoosanStudio.Common;
 
 namespace WoosanStudio.ZombieShooter
 {
+    /// <summary>
+    /// 화면 연출을 위해 씨네머신을 스테이지에 따라 움직이는 컨트롤러
+    /// </summary>
     public class SwapTargetController : MonoBehaviour
     {
         [Header("[돌리카트 타겟]")]
@@ -189,6 +192,10 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="next"></param>
         public void Swap(int previous, int next)
         {
+            //일단 임시
+            this.Previous = previous;
+            this.Next = next;
+
             //돌리 카트 활성화
             cart.enabled = true;
             //인덱스 세팅
@@ -197,7 +204,7 @@ namespace WoosanStudio.ZombieShooter
             cart.m_Position = previous;
             //거리 체커의 목표 변경
             DistanceCheck.Reset(WaypointList[next]);
-            //더미 타겟 이동
+            //더미 타겟 이동  
             Dummy.transform.position = WaypointList[next];
 
             //화면 옵셋 변경

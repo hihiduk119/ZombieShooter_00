@@ -46,6 +46,9 @@ namespace WoosanStudio.ZombieShooter
         //실제 돌리 카트가 거리를 체크하는 넘
         public DistanceCheck distanceCheck;
 
+
+        [Header("==============(스왑 부분==============)")]
+
         Coroutine coroutineFocusCamera;
 
         private void Awake()

@@ -158,6 +158,7 @@ namespace WoosanStudio.ZombieShooter
 
 
         //폭파 영역을 미리 확인하기위해 사용 빌드시 제거 필요
+        //해당 사각형은 눈으로 보는 확인용으로 실제 특정한 곳에 사용돼지는 않는다
         #region [-TestCode]
         
         void OnDrawGizmosSelected()

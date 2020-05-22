@@ -31,7 +31,11 @@ namespace WoosanStudio.Common
             }
         }
 
-        /// <param name="CompareName">찾을 이름</param>
+        /// <summary>
+        /// parent 에서 자식을 찾아서 가져옴
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="parent"></param>
         static public void FindAll(ref List<Transform> items, Transform parent)
         {
             items = new List<Transform>(parent.GetComponentsInChildren<Transform>());

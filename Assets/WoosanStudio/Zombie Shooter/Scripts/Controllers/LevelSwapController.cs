@@ -182,16 +182,12 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void AutoSwap()
         {
-            //최대 레벨 초과시 
-            if (CurrentLevel > MaxLevel)
-            {
-                NextLevel = 0;
-                CurrentLevel = MaxLevel - 1;
-            }
-            else
-            {
-                NextLevel = CurrentLevel + 1;
-            }
+            Debug.Log("CurrentLevel = " + CurrentLevel + "   MaxLevel = " + MaxLevel);
+
+            //최대 레벨 초과시 0으로 초기화
+            if (CurrentLevel >= MaxLevel) { CurrentLevel = 0; }
+            if (NextLevel >= MaxLevel) { NextLevel = 0; }
+
 
             Debug.Log("현재 레벨 = " + CurrentLevel + "    다음 레벨 = " + NextLevel);
 
@@ -203,6 +199,7 @@ namespace WoosanStudio.ZombieShooter
 
             //레벨 자동 증가
             CurrentLevel++;
+            NextLevel++;
         }
 
 

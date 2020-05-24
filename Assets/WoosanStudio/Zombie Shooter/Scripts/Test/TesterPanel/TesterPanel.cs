@@ -10,7 +10,7 @@ namespace WoosanStudio.ZombieShooter.Test
 
         private PlayerFactory playerFactory;
         private MonsterFactory monsterFactory;
-        private Player player = null;
+        private Player[] players = null;
 
         private void Awake()
         {
@@ -105,11 +105,14 @@ namespace WoosanStudio.ZombieShooter.Test
         /// </summary>
         public void StartShoot()
         {
-            if(player == null)  player = GameObject.FindObjectOfType<Player>();
-
-            if (player != null)
+            if (players == null)  players = GameObject.FindObjectsOfType<Player>();
+                 
+            if (players != null)
             {
-                player.Gun.IProjectileLauncher.Fire();
+                for(int index = 0; index < players.Length;index++)
+                {
+                    players[index].Gun.IProjectileLauncher.Fire();
+                }
             }
             else
             {
@@ -123,11 +126,14 @@ namespace WoosanStudio.ZombieShooter.Test
         /// </summary>
         public void StopShoot()
         {
-            if (player == null) player = GameObject.FindObjectOfType<Player>();
+            if (players == null) players = GameObject.FindObjectsOfType<Player>();
 
-            if (player != null)
+            if (players != null)
             {
-                player.Gun.IProjectileLauncher.Stop();
+                for (int index = 0; index < players.Length; index++)
+                {
+                    players[index].Gun.IProjectileLauncher.Stop();
+                }
             }
             else
             {

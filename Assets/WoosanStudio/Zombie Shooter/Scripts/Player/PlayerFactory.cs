@@ -47,6 +47,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[플레이어의 모든 정보를 가지고 있는 프리팹]")]
         public PlayerConfig[] playerConfigs;
 
+        [Header("[플레이어 컨트롤러]")]
+        public PlayersController PlayersController;
+
         //플레이어
         private Player player;
 
@@ -77,9 +80,9 @@ namespace WoosanStudio.ZombieShooter
             //플레어 포인트를 루트에서 가져옴
             PlayerPoints = PlayerPointRoot.GetChilds("Point");
 
-            Make(PlayerPoints[0], playerConfigs[0]);
-            //Make(PlayerPoints[1], playerConfigs[1]);
-            //Make(PlayerPoints[2], playerConfigs[1]);
+            PlayersController.Players.Add( Make(PlayerPoints[0], playerConfigs[0]).GetComponent<Player>() );
+            PlayersController.Players.Add( Make(PlayerPoints[1], playerConfigs[1]).GetComponent<Player>() );
+            PlayersController.Players.Add( Make(PlayerPoints[2], playerConfigs[1]).GetComponent<Player>() );
 
             //강제로 캐릭터의 조준점 마추는 코드 실행
             //임시 임으로 반드시 삭제가 필요.

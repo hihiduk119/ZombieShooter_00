@@ -47,7 +47,7 @@ namespace WoosanStudio.ZombieShooter
         [Header("[플레이어의 모든 정보를 가지고 있는 프리팹]")]
         public PlayerConfig[] playerConfigs;
 
-        [Header("[플레이어 컨트롤러]")]
+        [Header("[플레이어생성 이후 활성 비활성 시키는 컨트롤러]")]
         public PlayersController PlayersController;
 
         //플레이어

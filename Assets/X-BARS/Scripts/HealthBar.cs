@@ -112,7 +112,8 @@ public class HealthBar : MonoBehaviour {
 		canvasGroup.blocksRaycasts = false;
 
 		//add ma start [관리를 위해서 추가됨. 해당 오브젝트를 메니저에 등록]
-		HealthBarManager.Instance.Add(gameObject);
+		if(HealthBarManager.Instance != null)
+			HealthBarManager.Instance.Add(gameObject);
         //add me end
         
 		cam = Camera.main;

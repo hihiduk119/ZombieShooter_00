@@ -36,12 +36,25 @@ namespace WoosanStudio.ZombieShooter
         {
             if (value)  //활성화
             {
-                Players.ForEach(player => player.gameObject.SetActive(true));
+                Players.ForEach(player => {
+                    //플레이어 자체 활성화
+                    player.gameObject.SetActive(true);
+                    //플레이어와 연결된 체력바 visiualization
+                    player.GetComponent<HealthBar>().HealthbarPrefab.gameObject.SetActive(true); ;
+                });
+                
+
             } else      //비활성화
             {
                 //공격 정지 시킴
                 StopShoot();
-                Players.ForEach(player => player.gameObject.SetActive(false));
+                Players.ForEach(player => {
+                    //플레이어 자체 비활성화
+                    player.gameObject.SetActive(false);
+                    //플레이어와 연결된 체력바 nonvisualization
+                    player.GetComponent<HealthBar>().HealthbarPrefab.gameObject.SetActive(false); ;
+                    
+                });
             }   
         }
     }

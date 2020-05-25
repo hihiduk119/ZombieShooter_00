@@ -4,12 +4,22 @@ using UnityEngine;
 
 namespace WoosanStudio.ZombieShooter.Test
 {
+    /// <summary>
+    /// 테스트 전용 패널로 몬스터 생성 및 활성 비활성과 플레이어 생성 활성 비활성 관여.
+    /// </summary>
     public class TesterPanel : MonoBehaviour
     {
+        //모든 캔버스 그룹
         private CanvasGroup canvasGroup;
-
+        //플레이어 생성
         private PlayerFactory playerFactory;
+        //몬스터 생성
         private MonsterFactory monsterFactory;
+        //생성된 플레이어 활성 비활성 제어
+        private PlayersController playersController;
+        //생성된 플레이어의 체력바 관련 제어를 위해
+
+        
         private Player[] players = null;
 
         private void Awake()
@@ -19,6 +29,8 @@ namespace WoosanStudio.ZombieShooter.Test
             playerFactory = GameObject.FindObjectOfType<PlayerFactory>();
 
             monsterFactory = GameObject.FindObjectOfType<MonsterFactory>();
+
+            playersController = GameObject.FindObjectOfType<PlayersController>();
 
             //weaponFactory = GameObject.FindObjectOfType<WeaponFactory>();
 
@@ -98,6 +110,23 @@ namespace WoosanStudio.ZombieShooter.Test
         {
             Debug.Log("MakePlayer");
             playerFactory.Initialize();
+        }
+
+
+        /// <summary>
+        /// 모든 플레이어 활성화 
+        /// </summary>
+        public void ActiveAllPlayer()
+        {
+            playersController.SetActiveAll(true);
+        }
+
+        /// <summary>
+        /// 모든 플레이어 비활성화
+        /// </summary>
+        public void DeactiveAllPlayer()
+        {
+            playersController.SetActiveAll(false);
         }
 
         /// <summary>

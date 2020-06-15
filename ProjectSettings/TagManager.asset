@@ -14,6 +14,7 @@ TagManager:
   - TestDummy
   - Monster
   - Point
+  - PopupBackground
   layers:
   - Default
   - TransparentFX

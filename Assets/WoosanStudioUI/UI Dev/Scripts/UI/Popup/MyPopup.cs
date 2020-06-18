@@ -96,7 +96,11 @@ namespace WoosanStudio.ZombieShooter
                     image.canvasRenderer.SetAlpha(0.0f);
                     image.CrossFadeAlpha(1.0f, 0.4f, false);
 
+                    //기존 씬과 병합을 위해 Robby Canvas 를 추가로 찾는부분 추가
                     canvas = GameObject.Find("Canvas");
+                    if (canvas == null)
+                        canvas = GameObject.Find("Robby Canvas");
+
                     m_background.transform.localScale = new Vector3(1, 1, 1);
                     m_background.GetComponent<RectTransform>().sizeDelta = canvas.GetComponent<RectTransform>().sizeDelta;
                     m_background.transform.SetParent(canvas.transform, false);

@@ -46,7 +46,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Model
   - Props
   m_SortingLayers:
   - name: Default

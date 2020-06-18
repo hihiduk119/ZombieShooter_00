@@ -16,7 +16,15 @@ namespace Ricimi
 
         protected void Start()
         {
-            m_canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+            GameObject canvasObject = GameObject.Find("Canvas");
+
+            if (canvasObject != null)
+                m_canvas = canvasObject.GetComponent<Canvas>();
+
+            canvasObject = GameObject.Find("Robby Canvas");
+
+            if (canvasObject != null)
+                m_canvas = canvasObject.GetComponent<Canvas>();
         }
 
         public virtual void OpenPopup()

@@ -7,6 +7,7 @@ using Cinemachine;
 using DG.Tweening;
 
 using WoosanStudio.Common;
+using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -15,7 +16,7 @@ namespace WoosanStudio.ZombieShooter
     /// 나중에 진짜 레벨 스와퍼와 통일 해야함.
     /// **임시임으로 반드시 추후 통합 필요.
     /// </summary>
-    public class LevelSwapController : MonoBehaviour
+    public class StageChangeController : MonoBehaviour
     {
         //화면 터치시 자동으로 하면을 따라 다니면서 연출하는 컨트롤러
         public CustomCamFollow CustomCamFollow;
@@ -85,6 +86,10 @@ namespace WoosanStudio.ZombieShooter
         [Header("[씨네머신 컨트롤러]")]
         public SwapTargetController SwapTargetController;
 
+        [Header("[스테이지 변환 완료]")]
+        public UnityEvent ChangeCompleteEvent = new UnityEvent();
+
+
         Coroutine coroutineFocusCamera;
 
         private void Awake()
@@ -131,14 +136,14 @@ namespace WoosanStudio.ZombieShooter
             MainCamera.transform.DOLocalMove(focus.Position, Duration).SetRelative(false).SetEase(Ease.InOutSine);
             MainCamera.transform.DOLocalRotate(focus.Rotation, Duration).SetRelative(false).SetEase(Ease.InOutSine);
             //FOV 설정.
-            MainCamera.DOFieldOfView(22f, Duration).OnComplete(EndFocusCamera);
+            MainCamera.DOFieldOfView(22f, Duration).OnComplete(() => ChangeCompleteEvent.Invoke());
         }
 
         /// <summary>
         /// 카메라 포커스 마추기 끝나면 호출
         /// 시퀀스의 마지막 부분
         /// </summary>
-        private void EndFocusCamera()
+        public void EndFocusCamera()
         {
             //캠 이동이 완료된 후에 호출 되어야 한다.
             //플레이어 생성 위치 캠 위치에 맞게 위치 조정
@@ -180,8 +185,11 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 자동으로 스테이지 카운팅하면서 스테이지 스왑
         /// </summary>
-        public void AutoSwap()
+        public void AutoChange()
         {
+            //카메라 락 해제
+            this.On();
+
             Debug.Log("CurrentLevel = " + CurrentLevel + "   MaxLevel = " + MaxLevel);
 
             //최대 레벨 초과시 0으로 초기화
@@ -202,35 +210,59 @@ namespace WoosanStudio.ZombieShooter
             NextLevel++;
         }
 
-        #region [-TestCode]
-        private void Update()
+        /// <summary>
+        /// 해당 스테이지로 이동
+        /// </summary>
+        /// <param name="level"></param>
+        public void Change(int level)
         {
-            if (Input.GetKeyDown(KeyCode.O))
+            //카메라 락 해제
+            this.On();
+
+            //최대 레벨 초과시 0으로 초기화
+            if (CurrentLevel >= MaxLevel)
             {
-                this.On();
+                CurrentLevel = 0;
+                NextLevel = 1;
+                Debug.Log("최고 스테이지를 초과하였습니다. 0번으로 이동합니다");
+            } else
+            {
+                //현재 마지막 레벨에 대한 예외처리는 되어 있지 않다.
+                CurrentLevel = level;
+                NextLevel = CurrentLevel + 1;
             }
 
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                this.Off();
-            }
+            //몬스터,플레이어 스폰 위치 스왑
+            MonsterFactory.Level = CurrentLevel;
 
-            if (Input.GetKeyDown(KeyCode.Alpha0))
-            {
-                this.On();
-                AutoSwap();
-            }
+            Debug.Log("현재 레벨 = " + CurrentLevel + "    다음 레벨 = " + NextLevel);
 
-            //if (Input.GetKeyDown(KeyCode.Alpha3))
-            //{
-            //    //플레이어 생성 위치 캠 위치에 맞게 위치 조정
-            //    PlayerSpawnController.Repositon();
-            //    //몬스터 스폰 위치 캠 위치에 맞게 위치 조정
-            //    MonsterSpawnController.Repositon();
-            //    //베리어 캠 위치에 맞게 위치 조정
-            //    BarrierSpawnController.Repositon();
-            //}
+            //씨네머신 스왑
+            SwapTargetController.Swap(CurrentLevel, NextLevel);
+
+            //레벨 자동 증가
+            CurrentLevel++;
+            NextLevel++;
         }
+
+        #region [-TestCode]
+        //private void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.O))
+        //    {
+        //        this.On();
+        //    }
+
+        //    if (Input.GetKeyDown(KeyCode.P))
+        //    {
+        //        this.Off();
+        //    }
+
+        //    if (Input.GetKeyDown(KeyCode.Alpha0))
+        //    {
+        //        AutoChange();
+        //    }
+        //}
         #endregion
     }
 }

@@ -40,6 +40,11 @@ namespace WoosanStudio.ZombieShooter
         private UnityEvent _loadCompleteEvent = new UnityEvent();
         public UnityEvent loadCompleteEvent { get => _loadCompleteEvent; set => _loadCompleteEvent = value; }
 
+        [Header("[fade 시간]")]
+        public float FadeDuration = 1f;
+        [Header("[loading 대기 시간]")]
+        public float LoadingDuration = 0.2f;
+
         /// <summary>
         /// 콜백시 어떤 씬 로드였는지 확인용 플래그
         /// </summary>
@@ -121,7 +126,7 @@ namespace WoosanStudio.ZombieShooter
             switch ((State)stateIndex)
             {
                 case State.CallLoadingScene:        //[3. 로딩씬 호출 완료되면 뚜렷해짐 실행]
-                    DoFade(Fade.In, () => LoadingStepThree(1f));
+                    DoFade(Fade.In, () => LoadingStepThree(LoadingDuration));
                     break;
                 case State.CallNextScene:           //[5. 다음씬 호출 완료시 뚜렸해짐 실행]
                     DoFade(Fade.In, () => LoadingStepFour());
@@ -140,11 +145,11 @@ namespace WoosanStudio.ZombieShooter
             {
                 case Fade.Out:          //사라짐
                     canvasGroup.alpha = 0f;
-                    canvasGroup.DOFade(1f, 1f).OnComplete(callback);
+                    canvasGroup.DOFade(1f, FadeDuration).OnComplete(callback);
                     break;
                 case Fade.In:           //뚜렷해짐
                     canvasGroup.alpha = 1f;
-                    canvasGroup.DOFade(0f, 1f).OnComplete(callback);
+                    canvasGroup.DOFade(0f, FadeDuration).OnComplete(callback);
                     break;
             }
         }
@@ -211,22 +216,22 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// [테스트용 코드]
         /// </summary>
-        //private void Update()
-        //{
-        //    if(Input.GetKeyDown(KeyCode.Alpha1))
-        //    {
-        //        Load("1.TestScene");
-        //    }
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Load("1.TestScene");
+            }
 
-        //    if (Input.GetKeyDown(KeyCode.Alpha2))
-        //    {
-        //        Load("2.TestScene");
-        //    }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Load("2.TestScene");
+            }
 
-        //    if (Input.GetKeyDown(KeyCode.Alpha3))
-        //    {
-        //        Load("3.TestScene");   
-        //    }
-        //}
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                Load("3.TestScene");
+            }
+        }
     }
 }

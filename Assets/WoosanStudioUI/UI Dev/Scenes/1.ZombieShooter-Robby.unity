@@ -1458,6 +1458,11 @@ PrefabInstance:
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: PerformTransition
       objectReference: {fileID: 0}
+    - target: {fileID: 1504814877810655221, guid: 18b164d91d4fc42cda09a816a113e182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18b164d91d4fc42cda09a816a113e182, type: 3}
 --- !u!114 &1504814877744276486 stripped

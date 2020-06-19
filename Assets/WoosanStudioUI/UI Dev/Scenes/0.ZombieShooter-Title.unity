@@ -409,6 +409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 544115542}
   - component: {fileID: 544115543}
+  - component: {fileID: 544115544}
   m_Layer: 0
   m_Name: SceneTransition
   m_TagString: Untagged
@@ -446,6 +447,19 @@ MonoBehaviour:
   scene: 1.ZombieShooter-Robby
   duration: 0.3
   color: {r: 0.8, g: 0.8509804, b: 0.87058824, a: 1}
+--- !u!114 &544115544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544115541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413d6669be34046169bcf42788ae4f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DelayTime: 2
 --- !u!1 &737330884
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +544,7 @@ GameObject:
   - component: {fileID: 777777162}
   - component: {fileID: 777777161}
   m_Layer: 0
-  m_Name: TestKeyInput
+  m_Name: TestKeyInput [not use]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -543,7 +557,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777777160}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb323fa2503b246968a24b120787ed8e, type: 3}
   m_Name: 

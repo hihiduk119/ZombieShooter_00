@@ -58,16 +58,20 @@ namespace WoosanStudio.ZombieShooter
 
         public UnityAction<Vector3> lookAction;
 
+        //캐릭터가 생성 됐는지 아닌지 여부 확인을 위해 사용.
+        //캐릭터의 갯수와 상관없이 Initialize 가 한번이라도 호출됐다면 체크됨.
+        private bool mbInitialized = false;
+        public bool IsInitialzed { get => mbInitialized; set => mbInitialized = value; }
+
         //이벤트
         #region [-캐쉬용]
         GameObject clone = null;
         #endregion
 
-        private void Awake()
-        {
-            //
-            //cameraShaker = Shaker.GetComponent<ICameraShaker>();
-        }
+        //private void Awake()
+        //{
+        //    cameraShaker = Shaker.GetComponent<ICameraShaker>();
+        //}
 
         #region [-TestCode]
         //private void Start()
@@ -75,14 +79,22 @@ namespace WoosanStudio.ZombieShooter
         //    Initialize();
         //}
 
+        /// <summary>
+        /// 초기화
+        /// 실제 캐릭터를 생성함.
+        /// </summary>
         public void Initialize()
         {
+            //초기화 체크
+            IsInitialzed = true;
+
             //플레어 포인트를 루트에서 가져옴
             PlayerPoints = PlayerPointRoot.GetChilds("Point");
 
             PlayersController.Players.Add( Make(PlayerPoints[0], playerConfigs[0]).GetComponent<Player>() );
-            PlayersController.Players.Add( Make(PlayerPoints[1], playerConfigs[1]).GetComponent<Player>() );
-            PlayersController.Players.Add( Make(PlayerPoints[2], playerConfigs[1]).GetComponent<Player>() );
+            //2명의 플레이어를 더 만들수 있는 구조로 되어 있음
+            //PlayersController.Players.Add( Make(PlayerPoints[1], playerConfigs[1]).GetComponent<Player>() );
+            //PlayersController.Players.Add( Make(PlayerPoints[2], playerConfigs[1]).GetComponent<Player>() );
 
             //강제로 캐릭터의 조준점 마추는 코드 실행
             //임시 임으로 반드시 삭제가 필요.
@@ -101,6 +113,9 @@ namespace WoosanStudio.ZombieShooter
         {
             clone = Instantiate(playerConfig.prefab) as GameObject;
             player = clone.GetComponent<Player>();
+
+            //조이스틱 사용 값 받아오기
+            UseJoystick = playerConfig.useJoystick;
 
             //좌우 움직임용 인풋 인터페이스 세팅
             userInput = UseJoystick ? (IUserInput)JoystickInput : (IUserInput)Accelerometer;

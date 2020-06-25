@@ -38,10 +38,13 @@ namespace WoosanStudio.ZombieShooter
         {
             LoadAllProps();
         }
-        
+
+        /// <summary>
+        /// 해당 레벨에서 로드할수 있는 모든 것을 로드 한다.
+        /// </summary>
         private void LoadAllProps()
         {
-            monsterFactory.Initialize();
+            //monsterFactory.Initialize();
             playerFactory.Initialize();
         }
 
@@ -66,6 +69,11 @@ namespace WoosanStudio.ZombieShooter
             if (Input.GetKeyDown(KeyCode.S))
             {
                 Initialize(1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                Load();
             }
         }
         #endregion

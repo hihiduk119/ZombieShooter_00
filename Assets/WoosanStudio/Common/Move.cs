@@ -45,9 +45,9 @@ namespace WoosanStudio.Common
         //캐슁용 리지드바디
         private new Rigidbody rigidbody;
         //Lock 용 좌표들
-        float x;
-        float y;
-        float z;
+        //float x;
+        //float y;
+        //float z;
 
         void Start()
         {
@@ -75,6 +75,8 @@ namespace WoosanStudio.Common
             h = userInput.Horizontal;
             v = userInput.Vertical;
 
+            //Debug.Log("Move h = " + h + "   v = " + v);
+
             if (camera != null)
             {
                 //카메라 기준으로 조이스틱 방향성 바꿔줌
@@ -98,6 +100,9 @@ namespace WoosanStudio.Common
 
             //최종 값을 리지드 바디에 더한다.
             rigidbody.velocity = desiredVelocity;
+            //회전을 0로 해주지 않으면 desiredVelocity의한 회전값이 넣어진다.
+            rigidbody.angularVelocity = Vector3.zero;
+
         }
     }
 }

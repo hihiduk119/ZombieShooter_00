@@ -38,6 +38,7 @@ namespace WoosanStudio.ZombieShooter
         
         Transform target;
         float h;
+        float v;
 
         //프로퍼티 형태의 클래스
         private DoRoll _doRoll;
@@ -119,10 +120,10 @@ namespace WoosanStudio.ZombieShooter
             //h = Input.acceleration.x * 2;
             //인풋 인터페이스에서 설정
             h = userInput.Horizontal;
-
+            v = userInput.Vertical;
 
             //Debug.Log("h = "+ h);
-            Move(h);
+            Move(new Vector2(h,v).magnitude);
         }
         #endregion
 

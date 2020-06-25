@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace WoosanStudio.Common
 {
+    /// <summary>
+    /// 가속도 센서에 의해서 좌우로만 움직이는 유저 인풋
+    /// </summary>
     public class Accelerometer : MonoBehaviour, IUserInput
     {
         #region [IUserInput 구현]

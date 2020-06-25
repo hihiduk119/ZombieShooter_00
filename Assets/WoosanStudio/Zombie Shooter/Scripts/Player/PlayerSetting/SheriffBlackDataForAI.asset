@@ -17,8 +17,9 @@ MonoBehaviour:
   useAI: 1
   useLaserPointer: 0
   useMuzzleFlare: 0
+  useRoll: 0
   muzzleFlare: {fileID: 0}
   useShadow: 1
   ShadowProjector: {fileID: 5194339502216924784, guid: eaad130044b2747ef9b15d3b0c6d7fb6,
     type: 3}
-  useJoystick: 1
+  useJoystick: 0

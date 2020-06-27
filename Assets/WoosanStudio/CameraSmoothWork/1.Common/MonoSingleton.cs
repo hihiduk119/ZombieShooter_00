@@ -8,20 +8,19 @@ namespace WoosanStudio.Common
     /// </summary>
     public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
     {
-        public static T Instance;
+        public static T instance;
 
         void Awake()
         {
-            if (Instance != null) return;
-            Instance = FindObjectOfType(typeof(T)) as T;
-            Instance.Init();
+            instance = FindObjectOfType(typeof(T)) as T;
+            instance.Init();
         }
 
         public virtual void Init() { }
 
         private void OnApplicateQuit()
         {
-            Instance = null;
+            instance = null;
         }
     }
 }

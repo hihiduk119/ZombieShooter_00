@@ -17,7 +17,7 @@ MonoBehaviour:
   useAI: 1
   useLaserPointer: 1
   useMuzzleFlare: 1
-  useRoll: 1
+  useRoll: 0
   muzzleFlare: {fileID: 9069414672468361755, guid: 0f5d7fa27ce2a4721a8f99462d4ebce2,
     type: 3}
   useShadow: 1

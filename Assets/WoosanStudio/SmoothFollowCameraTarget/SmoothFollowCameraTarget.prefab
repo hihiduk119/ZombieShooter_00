@@ -244,7 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1746710919247761371}
   m_Layer: 0
-  m_Name: JoystickTarget
+  m_Name: LeadTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 1746710919781714730}
   - component: {fileID: 1746710919781714731}
   m_Layer: 0
-  m_Name: CamTarget
+  m_Name: SmoothFollowCameraTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -392,14 +392,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  joystickTarget: {fileID: 1746710919247761370}
+  LeadTarget: {fileID: 1746710919247761370}
   aheadTarget: {fileID: 1746710920298802871}
   followTarget: {fileID: 8328833394204396529}
   distanceLockCenterTarget: {fileID: 2930275875992473343}
   distanceLockDummyTarget: {fileID: 5760809143920144497}
   recoverStrong: 2.5
-  distance: 8.5
+  distance: 5.5
   cam: {fileID: 0}
+  LookAtTarget: {fileID: 0}
+  Between: {fileID: 0}
+  bLookAt: 0
 --- !u!1 &1746710920298802871
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,7 +451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1746710920350499396
 Transform:
   m_ObjectHideFlags: 0
@@ -527,7 +530,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1746710920827535724
 Transform:
   m_ObjectHideFlags: 0
@@ -604,7 +607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8111686931079223534
 Transform:
   m_ObjectHideFlags: 0
@@ -714,7 +717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3475779467852306110
 Transform:
   m_ObjectHideFlags: 0
@@ -747,7 +750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4436567814967304385
 Transform:
   m_ObjectHideFlags: 0

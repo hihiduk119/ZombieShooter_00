@@ -1,0 +1,7 @@
+﻿최초 실행전 필수 에셋 설치
+
+1.Standard Assets
+2.Ultimate Joystick
+3.SimpleCitizens
+4.DOTweenPro
+5.NavMeshComponents.package

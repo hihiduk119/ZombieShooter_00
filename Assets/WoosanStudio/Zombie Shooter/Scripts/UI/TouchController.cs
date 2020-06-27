@@ -32,10 +32,6 @@ namespace WoosanStudio.ZombieShooter
         private void Awake()
         {
             eventTriggers = new List<EventTrigger>(transform.GetComponentsInChildren<EventTrigger>());
-            //이벤트 등록
-            left = eventTriggers.Find(value => value.gameObject.name.Equals("Left"));
-            //center = eventTriggers.Find(value => value.gameObject.name.Equals("Center"));
-            right = eventTriggers.Find(value => value.gameObject.name.Equals("Right"));
         }
 
         void AddNewEventType(EventTrigger eventTrigger, EventTriggerType type, UnityAction<BaseEventData> action)
@@ -54,10 +50,6 @@ namespace WoosanStudio.ZombieShooter
                     AddNewEventType(left, EventTriggerType.PointerDown, action);
                     //Debug.Log("Left Touch!");
                     break;
-                //case TouchPosition.Center:
-                //    AddNewEventType(center, EventTriggerType.PointerDown, action);
-                    //Debug.Log("Center Touch!");
-                    //break;
                 case TouchPosition.Right:
                     AddNewEventType(right, EventTriggerType.PointerDown, action);
                     //Debug.Log("Right Touch!");
@@ -72,18 +64,7 @@ namespace WoosanStudio.ZombieShooter
 
         public void Touch(GameObject touch)
         {
-            /*switch(touch.name)
-            {
-                case "Left":
-                    Debug.Log("Left Touch!");
-                    break;
-                case "Center":
-                    Debug.Log("Center Touch!");
-                    break;
-                case "Right":
-                    Debug.Log("Right Touch!");
-                    break;
-            }*/
+            
         }
     }
 }

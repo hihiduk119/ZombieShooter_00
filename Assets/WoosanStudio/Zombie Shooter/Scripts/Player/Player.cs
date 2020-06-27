@@ -79,9 +79,7 @@ namespace WoosanStudio.ZombieShooter
             AnimatorControl = new AnimatorControl(transform.GetComponentInChildren<Animator>());
         }
 
-        //public void PlayAnimation(float number)
-        //{
-        //}
+        
 
         public void Move(float value)
         {
@@ -100,15 +98,7 @@ namespace WoosanStudio.ZombieShooter
             AnimatorControl.SetMoveValue(value);
         }
 
-        //public void AttackStart()
-        //{
-        //    _iWeapon.Attack();
-        //}
-
-        //public void AttackStop()
-        //{
-        //    _iWeapon.Stop();
-        //}
+        
 
         #region [-TestCode]
         //에니메이션 동작 확인용
@@ -122,8 +112,8 @@ namespace WoosanStudio.ZombieShooter
             h = userInput.Horizontal;
             v = userInput.Vertical;
 
-            //Debug.Log("h = "+ h);
-            Move(new Vector2(h,v).magnitude);
+            //[움직임 변경중]
+            //Move(new Vector2(h,v).magnitude);
         }
         #endregion
 
@@ -132,7 +122,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Hit()
         {
-
+            Debug.Log("do nothing!!");
         }
     }
 }

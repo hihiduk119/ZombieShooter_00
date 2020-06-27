@@ -10,7 +10,7 @@ namespace WoosanStudio.Common
     public class JoystickInput : MonoBehaviour , IUserInput
     {
         [Header("[울티메이트 조이스틱의 이름]")]
-        public string JoystickTag = "LookAhead";
+        public string JoystickTag = "Move";
 
         #region [IUserInput 구현]
         float _horizontal;

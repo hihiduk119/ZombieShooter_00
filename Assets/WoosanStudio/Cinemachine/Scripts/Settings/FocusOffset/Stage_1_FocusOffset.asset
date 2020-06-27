@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Stage_1_FocusOffset
   m_EditorClassIdentifier: 
   Offsets:
-  - Position: {x: -55, y: 0, z: -40}
-    Rotation: {x: 30, y: 0, z: 0}
+  - Position: {x: -55, y: 0, z: -5}
+    Rotation: {x: 50, y: 0, z: 0}
   - Position: {x: -80, y: 0, z: -58}
     Rotation: {x: 30, y: 90, z: 0}
   - Position: {x: -110, y: 0, z: -180}

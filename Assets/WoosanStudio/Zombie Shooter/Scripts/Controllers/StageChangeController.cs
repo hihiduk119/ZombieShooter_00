@@ -37,6 +37,9 @@ namespace WoosanStudio.ZombieShooter
         //카메라가 따라다니게 만드는 스크립트
         public Transform FollowCameraTarget;
 
+        //마지막 포커스시 필드 오브 뷰 값
+        public float FOV_Value = 22f;
+
         //메인 카메라의 트렌스폼
         private Transform Camera;
 
@@ -136,7 +139,7 @@ namespace WoosanStudio.ZombieShooter
             MainCamera.transform.DOLocalMove(focus.Position, Duration).SetRelative(false).SetEase(Ease.InOutSine);
             MainCamera.transform.DOLocalRotate(focus.Rotation, Duration).SetRelative(false).SetEase(Ease.InOutSine);
             //FOV 설정.
-            MainCamera.DOFieldOfView(22f, Duration).OnComplete(() => ChangeCompleteEvent.Invoke());
+            MainCamera.DOFieldOfView(FOV_Value, Duration).OnComplete(() => ChangeCompleteEvent.Invoke());
         }
 
         /// <summary>

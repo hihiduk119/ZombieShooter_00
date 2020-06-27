@@ -2567,9 +2567,9 @@ MonoBehaviour:
     targetScript: {fileID: 5730739926234182449}
     fieldName: health
   HealthbarPrefab: {fileID: 22400004, guid: f3cbc3b42afbd42bd9685a5feda5da2f, type: 3}
-  yOffset: 0
+  yOffset: -1.5
   keepSize: 1
-  scale: 9
+  scale: 3.5
   sizeOffsets: {x: 50, y: 200}
   DrawOFFDistance: 0
   drawDistance: 10

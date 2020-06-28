@@ -38,7 +38,7 @@ namespace WoosanStudio.ZombieShooter
         public Accelerometer Accelerometer;
         [Header("플레이어 캐릭터 좌우 움직임에 조이스틱 사용")]
         public bool UseJoystick;
-        private IUserInput userInput;
+        private IInput userInput;
 
 
         //카메라 쉐이커
@@ -86,6 +86,7 @@ namespace WoosanStudio.ZombieShooter
         public void Initialize()
         {
             //초기화 체크
+            //캐릭터의 갯수와 상관없이 Initialize 가 한번이라도 호출됐다면 체크됨.
             IsInitialzed = true;
 
             //플레어 포인트를 루트에서 가져옴
@@ -118,7 +119,7 @@ namespace WoosanStudio.ZombieShooter
             UseJoystick = playerConfig.useJoystick;
 
             //좌우 움직임용 인풋 인터페이스 세팅
-            userInput = UseJoystick ? (IUserInput)JoystickInput : (IUserInput)Accelerometer;
+            userInput = UseJoystick ? (IInput)JoystickInput : (IInput)Accelerometer;
 
             //AI 미 사용시 = 터치스크린 사용
             //자동 조

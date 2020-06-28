@@ -256,14 +256,14 @@ namespace WoosanStudio.ZombieShooter
 
 
         #region [-TestCode]
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                //콘텐츠 추가
-                Resize(1, scrollRect);
-            }
-        }
+        //private void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        //콘텐츠 추가
+        //        Resize(1, scrollRect);
+        //    }
+        //}
         #endregion
     }
 }

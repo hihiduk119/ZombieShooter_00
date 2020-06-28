@@ -17,13 +17,13 @@ namespace WoosanStudio.ZombieShooter.Test
         //씬 전환용 클래스
         public SceneTransition SceneTransition;
              
-        private void Update()
-        {
-            //씬 전환 호출
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                SceneTransition.PerformTransition();
-            }
-        }
+        //private void Update()
+        //{
+        //    //씬 전환 호출
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        SceneTransition.PerformTransition();
+        //    }
+        //}
     }
 }

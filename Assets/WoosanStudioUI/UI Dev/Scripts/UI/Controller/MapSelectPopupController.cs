@@ -165,36 +165,34 @@ namespace WoosanStudio.ZombieShooter
         }
 
         #region [-TestCode]
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                LeftClick();
-                UpdateText();
-            }
-
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                RightClick();
-                UpdateText();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                MoveScroll(0);
-                UpdateText();
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                MoveScroll(1);
-                UpdateText();
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                MoveScroll(2);
-                UpdateText();
-            }
-        }
+        //private void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        LeftClick();
+        //        UpdateText();
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.S))
+        //    {
+        //        RightClick();
+        //        UpdateText();
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.Alpha1))
+        //    {
+        //        MoveScroll(0);
+        //        UpdateText();
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.Alpha2))
+        //    {
+        //        MoveScroll(1);
+        //        UpdateText();
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.Alpha3))
+        //    {
+        //        MoveScroll(2);
+        //        UpdateText();
+        //    }
+        //}
         #endregion 
     }
 }

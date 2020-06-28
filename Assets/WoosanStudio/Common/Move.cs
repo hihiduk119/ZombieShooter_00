@@ -30,7 +30,7 @@ namespace WoosanStudio.Common
         public bool zLock = false;
 
         //유저가 사용할 인풋
-        public IUserInput userInput;
+        public IInput userInput;
 
 
         ///캐슁용 변수들

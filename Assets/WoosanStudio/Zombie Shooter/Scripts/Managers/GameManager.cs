@@ -58,6 +58,10 @@ namespace WoosanStudio.ZombieShooter
             stageChangeController.Change(level);
         }
 
+
+        /// <summary>
+        /// 스테이지 변경을 위한 테스트 코드
+        /// </summary>
         #region [-TestCode]
         void Update()
         {

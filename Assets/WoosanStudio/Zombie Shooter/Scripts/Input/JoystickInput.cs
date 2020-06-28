@@ -7,7 +7,7 @@ namespace WoosanStudio.Common
     /// <summary>
     /// 조이스틱을 이용한 유저 인풋
     /// </summary>
-    public class JoystickInput : MonoBehaviour , IUserInput
+    public class JoystickInput : MonoBehaviour , IInput
     {
         [Header("[울티메이트 조이스틱의 이름]")]
         public string JoystickTag = "Move";

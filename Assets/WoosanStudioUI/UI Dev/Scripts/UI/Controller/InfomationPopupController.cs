@@ -27,18 +27,18 @@ namespace WoosanStudio.ZombieShooter
         }
 
         #region [-TestCode]
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                Open();
-            }
+        //void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        Open();
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                Close();
-            }
-        }
+        //    if (Input.GetKeyDown(KeyCode.S))
+        //    {
+        //        Close();
+        //    }
+        //}
         #endregion
 
     }

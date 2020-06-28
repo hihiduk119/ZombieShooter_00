@@ -7,7 +7,7 @@ namespace WoosanStudio.Common
     /// <summary>
     /// 가속도 센서에 의해서 좌우로만 움직이는 유저 인풋
     /// </summary>
-    public class Accelerometer : MonoBehaviour, IUserInput
+    public class Accelerometer : MonoBehaviour, IInput
     {
         #region [IUserInput 구현]
         float _horizontal;

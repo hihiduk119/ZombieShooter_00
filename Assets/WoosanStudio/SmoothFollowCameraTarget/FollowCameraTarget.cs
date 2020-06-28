@@ -88,6 +88,7 @@ namespace Woosan.SurvivalGame01
             return pos;
         }
 
+        //카메라 화면을 타겟에 락온 & 릴리즈 시키는 코드
         #region [-TestUnit]
         //void Update()
         //{

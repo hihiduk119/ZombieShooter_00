@@ -28,7 +28,7 @@ namespace WoosanStudio.ZombieShooter
         public AnimatorControl AnimatorControl;
 
         //유저가 사용할 인풋
-        public IUserInput userInput;
+        public IInput userInput;
 
         //플레이어의 건
         public IGun Gun;
@@ -65,7 +65,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="cameraShaker">카메라 쉐이커 세팅</param>
         /// <param name="playerConfig">플레이어 데이터</param>
         public void Initialize(WeaponFactory weaponFactory,ICameraShaker cameraShaker , ref UnityAction<Vector3> lookAction
-            , ref ILookPoint lookPoint,PlayerConfig playerConfig , IUserInput playerMoveInput)
+            , ref ILookPoint lookPoint,PlayerConfig playerConfig , IInput playerMoveInput)
         {
             this._weaponFactory = weaponFactory;
             this._cameraShaker = cameraShaker;

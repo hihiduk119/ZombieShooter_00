@@ -109,24 +109,28 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 실제 데미지를 주는 부분
         /// </summary>
-        public void DoDamage(int damage)
+        public void DoDamage()
         {
+            //데미지 1000줌
+            //테스트용임 따로 작업 해야함
+            int damage = 1000;
+
             Initialize();
 
             haveHits.ForEach(value => value.Hit());
             haveHealths.ForEach(value => value.DamagedEvent.Invoke(damage, Vector3.zero));
-
-            
         }
+
+
 
         #region [-TestCode]
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                DoDamage(1000);
-            }
-        }
+        //private void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.G))
+        //    {
+        //        DoDamage();
+        //    }
+        //}
         #endregion
     }
 }

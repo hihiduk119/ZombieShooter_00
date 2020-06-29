@@ -100,7 +100,7 @@ namespace WoosanStudio.ZombieShooter.Test
         {
             Debug.Log("DeleteAllMonster");
             //모든 몬스터에 데미지 1000줌
-            GlobalDamageController.Instance.DoDamage(1000);
+            GlobalDamageController.Instance.DoDamage();
         }
 
         /// <summary>

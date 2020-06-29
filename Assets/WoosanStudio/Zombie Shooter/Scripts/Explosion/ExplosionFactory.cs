@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System;
+using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 화면 전체에 폭발을 만듬.
     /// </summary>
-    public class ExplosionFactory : MonoBehaviour
+    public class ExplosionFactory : MonoBehaviour , ISequential
     {
         //싱글톤 패턴 인스턴스
         static public ExplosionFactory Instance;
@@ -41,9 +42,12 @@ namespace WoosanStudio.ZombieShooter
         //폭파 반경
         public ExplosionRect MyExplosionRect;
 
-        //실제 폭발 반경을 위해 카메라와의 거리
         //**LevelSwapController2.distance 와 값을 마춰라
+        [Header("[실제 폭발 반경을 위해 카메라와의 거리]")]
         public float distance = 80f;
+
+        [Header("[포벌의 반경의 높이]")]
+        public float Height = 0f;
 
         [Header("[폭발 프리팹 세팅 리스튼")]
         public List<ExplosionSetting> settings = new List<ExplosionSetting>();
@@ -56,6 +60,24 @@ namespace WoosanStudio.ZombieShooter
 
         //캐쉬
         private Vector3 size = Vector3.zero;
+
+        #region [ISequential Implement]
+        [SerializeField]
+        private UnityEvent mStartEvent = new UnityEvent();
+        [SerializeField]
+        private UnityEvent mMidpointEvent = new UnityEvent();
+        [SerializeField]
+        private UnityEvent mEndEvent = new UnityEvent();
+        //폭격 시작 이벤
+        public UnityEvent StartEvent => mStartEvent;
+        //폭격 중간 이벤트
+        public UnityEvent MidpointEvent => mMidpointEvent;
+        //폭격 끝 이벤트
+        public UnityEvent EndEvent => mEndEvent;
+        #endregion
+
+        //보이기 위해 영역 그리기용
+        Transform mExplosionRoot;
 
         private void Awake()
         {
@@ -76,6 +98,8 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void CalculateExplosionPosition(Transform explosionRoot,Transform camera,float height = 0)
         {
+            mExplosionRoot = explosionRoot;
+
             //박스 사이즈로 높이를 결정.
             size.y = 0;
 
@@ -88,33 +112,49 @@ namespace WoosanStudio.ZombieShooter
 
             //카메라 각도에 따라 폭발 루트를 회전시키기 위해 미리 받아둠.
             Vector3 rot = explosionRoot.localRotation.eulerAngles;
+
             //회전 각에 따라 Distance도 다르게 적용.
             //회전 각에 따라 영역의 가로 새로도 변경
             switch ((int)Camera.localRotation.eulerAngles.y)
             {
-                case 90: pos.z += distance;  break;
-                case 180: pos.x += distance; break;
-                case 270: pos.z -= distance; break;
-                case 0: pos.x -= distance; break;
+                //case 90: pos.z += distance;  break;
+                //case 180: pos.x += distance; break;
+                //case 270: pos.z -= distance; break;
+                //case 0: pos.x -= distance; break;
+
+                case 0:
+                    pos.z += distance;
+                    break;
+                case 90:
+                    pos.x += distance;
+                    break;
+                case 180:
+                    pos.z -= distance;
+                    break;
+                case 270:
+                    pos.x -= distance;
+                    break;
             }
 
             //폭발루트에 변경된 좌표와 회전값 넣/
             explosionRoot.position = pos;
+
             //카메라 회전 y축 각도 그대로 적용
             rot.y = Camera.localRotation.eulerAngles.y;
+            //폭발 영역 자체가 90도 틀어져있기에 90추가 더
+            rot.y += 90;
             explosionRoot.localRotation = Quaternion.Euler(rot);
         }
 
         /// <summary>
         /// 실제 폭파 연출 호출
         /// </summary>
-        /// <param name="setting"></param>
-        public void Show(ExplosionSetting setting)
+        public void Show()
         {
             //폭탄위치 계산
-            CalculateExplosionPosition(ExplosionRoot, Camera);
+            CalculateExplosionPosition(ExplosionRoot, Camera, Height);
             // 폭탄을 터트리는 연출.
-            StartCoroutine(SequentialShow(setting));
+            StartCoroutine(SequentialShow(settings[(int)ExplosionType.RedOriginalFire]));
         }
 
         /// <summary>
@@ -126,6 +166,9 @@ namespace WoosanStudio.ZombieShooter
         IEnumerator SequentialShow(ExplosionSetting setting)
         {
             int index = 0;
+            //시작에 이벤트 발생
+            StartEvent.Invoke();
+
             while(points.Count > index)
             {
                 //폭탄의 형태를 랜덤하게 하기위해 사용
@@ -134,18 +177,31 @@ namespace WoosanStudio.ZombieShooter
 
                 clone.transform.position = points[index].position;
 
+                //폭격 중간쯤에 중간 이벤트 발생
+                if(index == (int)(points.Count/2))
+                {
+                    MidpointEvent.Invoke();
+                }
+
                 yield return new WaitForSeconds(0.06f);
                 index++;
             }
+
+            //끝에 이벤트 발생
+            EndEvent.Invoke();
         }
+
+
 
         #region [-TestCode]
         //해당 영역에 폭탈을 떨어뜨림.
-        public void TestRun()
-        {
-            Show(settings[(int)ExplosionType.RedOriginalFire]);
-            GlobalDamageController.Instance.DoDamage(1000);
-        }
+        //public void TestRun()
+        //{
+        //    //폭탄이 터지는 연출
+        //    Show();
+        //    //전체 오브젝트에 데미지를 줌
+        //    GlobalDamageController.Instance.DoDamage();
+        //}
 
         //private void Update()
         //{
@@ -154,59 +210,6 @@ namespace WoosanStudio.ZombieShooter
         //        TestRun();
         //    }
         //}
-        #endregion
-
-
-        //폭파 영역을 미리 확인하기위해 사용 빌드시 제거 필요
-        //해당 사각형은 눈으로 보는 확인용으로 실제 특정한 곳에 사용돼지는 않는다
-        #region [-TestCode]
-        
-        void OnDrawGizmosSelected()
-        {
-            //박스 사이즈로 높이를 결정.
-            size.y = 0;
-
-            //일단 카메라 포지션 기준
-            MyExplosionRect.Position = Camera.position;
-            //보정 값
-            MyExplosionRect.Position.y = 0;
-
-            //회전 각에 따라 Distance도 다르게 적용.
-            //회전 각에 따라 영역의 가로 새로도 변경
-            switch ((int)Camera.localRotation.eulerAngles.y)
-            {
-                case 90:
-                    MyExplosionRect.Position.z += distance;
-                    size.z = MyExplosionRect.Area.x;
-                    size.x = MyExplosionRect.Area.y;
-                    break;
-                case 180:
-                    MyExplosionRect.Position.x += distance;
-                    size.x = MyExplosionRect.Area.x;
-                    size.z = MyExplosionRect.Area.y;
-                    break;
-                case 270:
-                    MyExplosionRect.Position.z -= distance;
-                    size.z = MyExplosionRect.Area.x;
-                    size.x = MyExplosionRect.Area.y;
-                    break;
-                case 0:
-                    MyExplosionRect.Position.x -= distance;
-                    size.x = MyExplosionRect.Area.x;
-                    size.z = MyExplosionRect.Area.y;
-                    break;
-            }
-
-
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireCube(MyExplosionRect.Position, size);
-            //Gizmos.DrawCube(MyExplosionRect.Position, size);
-            //Gizmos.DrawSphere(MyExplosionRect.Position,40);
-
-            //테스트 타겟의 위치 조정
-            //TestTarget.position = MyExplosionRect.Position;
-
-        }
         #endregion
     }
 }

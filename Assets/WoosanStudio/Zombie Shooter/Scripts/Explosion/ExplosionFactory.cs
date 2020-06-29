@@ -49,10 +49,13 @@ namespace WoosanStudio.ZombieShooter
         [Header("[포벌의 반경의 높이]")]
         public float Height = 0f;
 
+        [Header("[폭발과 다음 폭발 사이 간격]")]
+        public float Margin = 0.04f;
+
         [Header("[폭발 프리팹 세팅 리스튼")]
         public List<ExplosionSetting> settings = new List<ExplosionSetting>();
 
-        //폭발 위치의 루트
+        [Header("[폭발 위치를 가져올 루트")]
         public Transform ExplosionRoot;
 
         //폭발 포지션
@@ -117,11 +120,6 @@ namespace WoosanStudio.ZombieShooter
             //회전 각에 따라 영역의 가로 새로도 변경
             switch ((int)Camera.localRotation.eulerAngles.y)
             {
-                //case 90: pos.z += distance;  break;
-                //case 180: pos.x += distance; break;
-                //case 270: pos.z -= distance; break;
-                //case 0: pos.x -= distance; break;
-
                 case 0:
                     pos.z += distance;
                     break;
@@ -183,7 +181,7 @@ namespace WoosanStudio.ZombieShooter
                     MidpointEvent.Invoke();
                 }
 
-                yield return new WaitForSeconds(0.06f);
+                yield return new WaitForSeconds(Margin);
                 index++;
             }
 

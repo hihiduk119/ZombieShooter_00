@@ -10,7 +10,7 @@ namespace WoosanStudio.ZombieShooter
     /// <summary>
     ///쉐도우 프로젝터 연출을 함
     /// </summary>
-    public class AirStrikeController : MonoBehaviour ,IStart, IEnd 
+    public class AirStrikeShadowController : MonoBehaviour ,IStart, IEnd 
     {
         [Header("[이동 간격 거리]")]
         public float Distance = 75f;

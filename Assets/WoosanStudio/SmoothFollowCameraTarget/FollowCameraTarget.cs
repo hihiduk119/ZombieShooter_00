@@ -64,6 +64,15 @@ namespace Woosan.SurvivalGame01
         }
 
         /// <summary>
+        /// 플레이와 나의 기준 따라다니는 기준 좌표 재조
+        /// </summary>
+        //void Reposition()
+        //{
+        //    Vector3 pos = player.transform.position;
+        //    transform.position = pos;
+        //}
+
+        /// <summary>
         /// 조이스틱 사용시 좌표 얻어옴
         /// </summary>
         /// <returns></returns>
@@ -92,14 +101,9 @@ namespace Woosan.SurvivalGame01
         #region [-TestUnit]
         //void Update()
         //{
-        //    if (Input.GetKeyDown(KeyCode.A))
+        //    if (Input.GetKeyDown(KeyCode.K))
         //    {
-        //        bLookAt = true;
-        //    }
-
-        //    if (Input.GetKeyDown(KeyCode.S))
-        //    {
-        //        bLookAt = false;
+        //        Reposition();
         //    }
         //}
         #endregion

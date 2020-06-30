@@ -14,32 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Offsets:
   - Position: {x: -55, y: 0, z: 15}
-    Rotation: {x: 75, y: 0, z: 0}
+    Rotation: {x: 65, y: 0, z: 0}
   - Position: {x: -80, y: 0, z: -58}
-    Rotation: {x: 30, y: 90, z: 0}
+    Rotation: {x: 65, y: 90, z: 0}
   - Position: {x: -110, y: 0, z: -180}
-    Rotation: {x: 30, y: 0, z: 0}
+    Rotation: {x: 65, y: 0, z: 0}
   - Position: {x: -108, y: 0, z: -113}
-    Rotation: {x: 30, y: 90, z: 0}
+    Rotation: {x: 65, y: 90, z: 0}
   - Position: {x: 5, y: 0, z: 5}
-    Rotation: {x: 30, y: 180, z: 0}
+    Rotation: {x: 65, y: 180, z: 0}
   - Position: {x: 65, y: 0, z: -174}
-    Rotation: {x: 30, y: 0, z: 0}
+    Rotation: {x: 65, y: 0, z: 0}
   - Position: {x: 65, y: 0, z: -41}
-    Rotation: {x: 30, y: 0, z: 0}
+    Rotation: {x: 65, y: 0, z: 0}
   - Position: {x: 40, y: 0, z: 61}
-    Rotation: {x: 30, y: 180, z: 0}
+    Rotation: {x: 65, y: 180, z: 0}
   - Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 30, y: 0, z: 0}
   - Position: {x: 65, y: 0, z: 185}
     Rotation: {x: 30, y: 180, z: 0}
   - Position: {x: -121, y: 0, z: 42}
-    Rotation: {x: 30, y: 90, z: 0}
+    Rotation: {x: 65, y: 90, z: 0}
   - Position: {x: -55, y: 0, z: 132}
-    Rotation: {x: 30, y: 180, z: 0}
+    Rotation: {x: 65, y: 180, z: 0}
   - Position: {x: -110, y: 0, z: 159}
-    Rotation: {x: 30, y: 180, z: 0}
+    Rotation: {x: 65, y: 180, z: 0}
   - Position: {x: -165, y: 0, z: 22}
-    Rotation: {x: 30, y: 90, z: 0}
+    Rotation: {x: 65, y: 90, z: 0}
   - Position: {x: -175, y: 0, z: -58}
-    Rotation: {x: 30, y: 90, z: 0}
+    Rotation: {x: 65, y: 90, z: 0}

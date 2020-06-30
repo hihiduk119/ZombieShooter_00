@@ -25,6 +25,17 @@ namespace WoosanStudio.ZombieShooter
         [Header("[시네머신의 가상 카메라]")]
         public CinemachineVirtualCamera VirtualCamera;
 
+        [Header("[카메라의 느리게 좌우로 움직임]")]
+        public CameraNativeWalk CameraNativeWalk;
+
+        [Header("[플레이어 포지셔너]")]
+        //**이벤츠 호출 방식으로 변경 되어야함
+        public Positioner PlayerPositioner;
+
+        [Header("[펠로우 카메라 포지셔너]")]
+        //**이벤츠 호출 방식으로 변경 되어야함
+        public Positioner FollowCameraPositioner;
+
         private CameraMoveController stageChangeController;
 
         //플레이어 생성
@@ -83,6 +94,8 @@ namespace WoosanStudio.ZombieShooter
             Debug.Log("On");
             CustomCamFollow.enabled = false;
             VirtualCamera.enabled = true;
+            //카메라 느리게 좌우로 흔듬 정지
+            CameraNativeWalk.Stop();
         }
 
         /// <summary>
@@ -92,8 +105,15 @@ namespace WoosanStudio.ZombieShooter
         public void Off()
         {
             Debug.Log("Off");
-            CustomCamFollow.enabled = true;
+            //CustomCamFollow.enabled = true;
             VirtualCamera.enabled = false;
+            //플레이어 위치 재조정
+            //PlayerPositioner.Move();
+            //펠로우 카메라 위치 재조정
+            //FollowCameraPositioner.Move();
+            //카메라 느리게 좌우로 흔듬 시작
+            CameraNativeWalk.Run();
+            
         }
 
 

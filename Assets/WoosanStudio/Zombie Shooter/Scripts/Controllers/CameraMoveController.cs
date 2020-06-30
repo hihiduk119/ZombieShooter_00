@@ -22,6 +22,12 @@ namespace WoosanStudio.ZombieShooter
         [Header("[실제 시네머신을 동작 컨트롤러")]
         public RailController railController;
 
+        [Header("[카메라의 위치 전담 축")]
+        public Transform CameraPositionAxis;
+
+        [Header("[카메라의 회전 전담 축")]
+        public Transform CameraRotationAxis;
+
         [Header("[메인카메라")]
         public UnityEngine.Camera MainCamera;
 
@@ -123,8 +129,17 @@ namespace WoosanStudio.ZombieShooter
             Focus focus = FocusOffset.Offsets[index];
 
             //해당 트윈으로 포커스 마춤
-            MainCamera.transform.DOLocalMove(focus.Position, Duration).SetRelative(false).SetEase(Ease.InOutSine);
-            MainCamera.transform.DOLocalRotate(focus.Rotation, Duration).SetRelative(false).SetEase(Ease.InOutSine);
+            //MainCamera.transform.DOLocalMove(focus.Position, Duration).SetRelative(false).SetEase(Ease.InOutSine);
+            //MainCamera.transform.DOLocalRotate(focus.Rotation, Duration).SetRelative(false).SetEase(Ease.InOutSine);
+
+            //해당 트윈으로 포커스 마춤
+            CameraPositionAxis.transform.DOMove(railController.WaypointList[index], Duration).SetRelative(false).SetEase(Ease.InOutSine);
+            MainCamera.transform.localPosition = Vector3.zero;
+            CameraRotationAxis.DOLocalRotate(focus.Rotation, Duration).SetRelative(false).SetEase(Ease.InOutSine);
+
+            //실제 레일의 포지션
+            //railController.WaypointList[index];
+
             //FOV 설정.
             MainCamera.DOFieldOfView(FOV_Value, Duration).OnComplete(() => ChangeCompleteEvent.Invoke());
         }

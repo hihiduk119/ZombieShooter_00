@@ -62,6 +62,13 @@ namespace WoosanStudio.ZombieShooter
         public void Load()
         {
             LoadAllProps();
+
+            //조이스틱으로 화면 따라다니는 카메라 포지션 초기화
+            CustomCamFollow.GetComponent<Transform>().localPosition = Vector3.zero;
+            //조이스틱으로 화면 따라다니는 카메라 활성화
+            CustomCamFollow.enabled = true;
+            //카메라 느리게 좌우로 흔듬 시작
+            CameraNativeWalk.Run();
         }
 
         /// <summary>
@@ -69,8 +76,10 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void LoadAllProps()
         {
+            //몬스터 초기화
             //monsterFactory.Initialize();
-            playerFactory.Initialize();
+            //플레이어 초기화
+            //playerFactory.Initialize();
         }
 
         /// <summary>
@@ -111,9 +120,6 @@ namespace WoosanStudio.ZombieShooter
             //PlayerPositioner.Move();
             //펠로우 카메라 위치 재조정
             //FollowCameraPositioner.Move();
-            //카메라 느리게 좌우로 흔듬 시작
-            CameraNativeWalk.Run();
-            
         }
 
 

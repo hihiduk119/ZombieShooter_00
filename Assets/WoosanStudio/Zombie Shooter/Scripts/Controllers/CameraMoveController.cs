@@ -125,7 +125,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void FocusCamera()
         {
-            int index = railController.Previous;
+            int index = railController.Next;
             Focus focus = FocusOffset.Offsets[index];
 
             //해당 트윈으로 포커스 마춤

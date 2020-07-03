@@ -38,6 +38,10 @@ namespace WoosanStudio.ZombieShooter
         //펠로우 캠 포지션 변경
         public Positioner FollowCameraPositioner;
 
+        [Header("[DoNotEnterSign 포지셔너]")]
+        //이벤트 호출 방식으로 변경 하려 했으나 호출 우선 순위 문제로 변경 보류
+        public Positioner DoNotEnterPositioner;
+
         private CameraMoveController stageChangeController;
 
         //플레이어 생성
@@ -87,6 +91,8 @@ namespace WoosanStudio.ZombieShooter
             //펠로우 카메라 위치 재조정
             //**펠로우 캠 의 포지션이 끝난후에 CustomCamFollow.cs 초기화가 호출되어야 한다.
             FollowCameraPositioner.Move();
+            //DoNotEnterSign 재조정
+            DoNotEnterPositioner.Move();
 
             //딜레이 후에 펠로우캠 실행해야 포커스 이상 발생이 없음.
             //**왜 그런지는 알수 없음. 추후 문재가 발생시 수정 해야함.

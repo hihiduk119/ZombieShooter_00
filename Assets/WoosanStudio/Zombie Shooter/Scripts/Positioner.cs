@@ -12,13 +12,18 @@ namespace WoosanStudio.ZombieShooter
         [Header ("[이동하려는 포지션]")]
         public Transform Target;
 
+        [Header("[추가 값]")]
+        public Vector3 ExtraValue;
+
         /// <summary>
         /// 포지션 재조정
         /// 카메라 위치가 조정되었을때 호출
         /// </summary>
         public void Move()
         {
-            transform.position = Target.position;
+            Vector3 pos = Target.position;
+            pos += ExtraValue;
+            transform.position = pos;
         }
 
         #region [-TestCode]

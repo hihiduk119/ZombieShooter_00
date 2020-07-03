@@ -29,11 +29,13 @@ namespace WoosanStudio.ZombieShooter
         public CameraNativeWalk CameraNativeWalk;
 
         [Header("[플레이어 포지셔너]")]
-        //**이벤츠 호출 방식으로 변경 되어야함
+        //이벤트 호출 방식으로 변경 하려 했으나 호출 우선 순위 문제로 변경 보류
+        //플레이어 포지션 변경
         public Positioner PlayerPositioner;
 
         [Header("[펠로우 카메라 포지셔너]")]
-        //**이벤츠 호출 방식으로 변경 되어야함
+        //이벤트 호출 방식으로 변경 하려 했으나 호출 우선 순위 문제로 변경 보류
+        //펠로우 캠 포지션 변경
         public Positioner FollowCameraPositioner;
 
         private CameraMoveController stageChangeController;
@@ -44,6 +46,8 @@ namespace WoosanStudio.ZombieShooter
         private MonsterFactory monsterFactory;
         //생성된 플레이어 활성 비활성 제어
         private PlayersController playersController;
+
+        
 
         private void Awake()
         {
@@ -57,18 +61,39 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 람다식 코루틴
+        /// </summary>
+        /// <param name="time">대기시간</param>
+        /// <param name="action">실행액션</param>
+        /// <returns></returns>
+        IEnumerator WaitAndDoCoroutine(float time, System.Action action)
+        {
+            yield return new WaitForSeconds(time);
+            action();
+        }
+
+        /// <summary>
         /// 플레이이어와 몬스터 들을 세팅 한다.
         /// </summary>
         public void Load()
         {
             LoadAllProps();
 
-            //조이스틱으로 화면 따라다니는 카메라 포지션 초기화
-            CustomCamFollow.GetComponent<Transform>().localPosition = Vector3.zero;
-            //조이스틱으로 화면 따라다니는 카메라 활성화
-            CustomCamFollow.enabled = true;
             //카메라 느리게 좌우로 흔듬 시작
             CameraNativeWalk.Run();
+
+            //플레이어 위치 재조정
+            PlayerPositioner.Move();
+            //펠로우 카메라 위치 재조정
+            //**펠로우 캠 의 포지션이 끝난후에 CustomCamFollow.cs 초기화가 호출되어야 한다.
+            FollowCameraPositioner.Move();
+
+            //딜레이 후에 펠로우캠 실행해야 포커스 이상 발생이 없음.
+            //**왜 그런지는 알수 없음. 추후 문재가 발생시 수정 해야함.
+            StartCoroutine(WaitAndDoCoroutine(1f, () => {
+                //조이스틱으로 화면 따라다니는 카메라 활성화
+                CustomCamFollow.enabled = true;
+            }));
         }
 
         /// <summary>
@@ -92,8 +117,6 @@ namespace WoosanStudio.ZombieShooter
             stageChangeController.Change(level);
         }
 
-
-
         /// <summary>
         /// 캠 이동전 호출
         /// 씨네머신 활성화
@@ -101,7 +124,11 @@ namespace WoosanStudio.ZombieShooter
         public void On()
         {
             Debug.Log("On");
+            //조이스틱으로 화면 따라다니는 카메라 포지션 비활성화
             CustomCamFollow.enabled = false;
+            //조이스틱으로 화면 따라다니는 카메라 포지션 초기화
+            CustomCamFollow.GetComponent<Transform>().localPosition = Vector3.zero;
+
             VirtualCamera.enabled = true;
             //카메라 느리게 좌우로 흔듬 정지
             CameraNativeWalk.Stop();
@@ -114,12 +141,8 @@ namespace WoosanStudio.ZombieShooter
         public void Off()
         {
             Debug.Log("Off");
-            //CustomCamFollow.enabled = true;
+            
             VirtualCamera.enabled = false;
-            //플레이어 위치 재조정
-            //PlayerPositioner.Move();
-            //펠로우 카메라 위치 재조정
-            //FollowCameraPositioner.Move();
         }
 
 

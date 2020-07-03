@@ -278,5 +278,16 @@ namespace WoosanStudio.ZombieShooter
         {
             Swap(this.Previous, this.Next);
         }
+
+
+        /// <summary>
+        /// 웨이포이트 포지션으로 이동시킴
+        /// </summary>
+        /// <param name="target">이동시킬 타겟</param>
+        /// <param name="waypointIndex">해당 웨이포인트</param>
+        //public void MoveToWaypoint(Transform target,int waypointIndex)
+        //{
+        //    target.position = WaypointList[waypointIndex];
+        //}
     }
 }

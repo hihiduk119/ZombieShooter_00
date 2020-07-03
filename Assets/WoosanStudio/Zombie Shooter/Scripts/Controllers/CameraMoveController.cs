@@ -114,8 +114,20 @@ namespace WoosanStudio.ZombieShooter
             yield return new WaitForSeconds(delay);
 
             //시네머신 해제
-            //**해당 부분은 나중에 이벤트 호출로 변경 되어야 함 
-            StageManager.Instance.Off(); 
+            //**해당 부분은 나중에 이벤트 호출로 변경 되어야 함
+            //CM_카메라 비활성화. CM 카메라가 비활성화 되면 카메라 움직임 가능해짐
+            StageManager.Instance.Off();
+
+            //카메라의 포지션축을 CM웨이 포인트로 강제 이동 시킴
+            //CM카메라 이동과 실제 포지션이동은 다르기 때문에 마추기 위해 사용
+            //CM카메라 사용으로 강제로 틀어진 축을 재정비 시킴
+            Vector3 pos = CameraRotationAxis.position;
+            Quaternion rot = CameraRotationAxis.rotation;
+            CameraPositionAxis.position = pos;
+            CameraRotationAxis.localPosition = Vector3.zero;
+
+            Debug.Log("실행 OFF");
+
             //화면 포커스 실
             FocusCamera();
         }
@@ -170,6 +182,7 @@ namespace WoosanStudio.ZombieShooter
         {
             //카메라 락 해제
             //**해당 부분은 나중에 이벤트 호출로 변경 되어야 함
+            //CM_카메라 활성화. CM 카메라가 활성화되면 카메라 피봇이 강제 조정됨.
             StageManager.Instance.On();
 
             Debug.Log("CurrentLevel = " + CurrentLevel + "   MaxLevel = " + MaxLevel);

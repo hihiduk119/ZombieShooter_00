@@ -42,20 +42,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac7c9db41a9c4e5b89380b8d04e4e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5988949180340777580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246062894280750577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be058660747ec47839b50c59f314c0ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultMaterial: {fileID: 2100000, guid: 3811677930c7b3946abaf2ce9cdfea21, type: 2}
-  damagedMaterial: {fileID: 2100000, guid: 91663fa724da34917a4b010f93f4cb5f, type: 2}
 --- !u!114 &472772268194427683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,6 +57,20 @@ MonoBehaviour:
   AttackEndEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5988949180340777580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246062894280750577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be058660747ec47839b50c59f314c0ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: 3811677930c7b3946abaf2ce9cdfea21, type: 2}
+  damagedMaterial: {fileID: 2100000, guid: 91663fa724da34917a4b010f93f4cb5f, type: 2}
 --- !u!1 &246062895001225752
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +298,7 @@ MonoBehaviour:
   HealthbarPrefab: {fileID: 22400004, guid: f3cbc3b42afbd42bd9685a5feda5da2f, type: 3}
   yOffset: 3.5
   keepSize: 1
-  scale: 4.5
+  scale: 1.25
   sizeOffsets: {x: 0, y: -200}
   DrawOFFDistance: 0
   drawDistance: 25

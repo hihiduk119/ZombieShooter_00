@@ -81,7 +81,7 @@ namespace WoosanStudio.ZombieShooter.Test
         public void MakeMonster()
         {
             Debug.Log("MakeMonster");
-            monsterFactory.Initialize();
+            monsterFactory.MakeMonsterByStageLevel();
         }
 
         /// <summary>

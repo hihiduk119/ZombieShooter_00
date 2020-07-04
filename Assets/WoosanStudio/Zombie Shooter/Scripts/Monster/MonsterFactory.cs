@@ -55,7 +55,7 @@ namespace WoosanStudio.ZombieShooter
         /// 테스트용으로 무한하게 몬스터 랜덤으로 만듬
         /// </summary>
         /// <returns></returns>
-        IEnumerator InfiniteMakeMonster()
+        IEnumerator InfiniteMakeMonster(int level)
         {
             while (true)
             {
@@ -70,7 +70,7 @@ namespace WoosanStudio.ZombieShooter
 
                 //int index = 1;
                 //스폰 리스트에서 스폰위치 현재 레벨에 맞는 스폰위치 가져옴
-                SpawnPoints = SpawnPointList[Level].GetComponent<SpawnPoints>();
+                SpawnPoints = SpawnPointList[level].GetComponent<SpawnPoints>();
 
                 //몬스터 생성
                 GameObject clone = MakeMonster(monsterSettings[index], SpawnPoints.GetSpawnPosition());
@@ -81,12 +81,20 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
-        public void Initialize()
+        /// <summary>
+        /// 해당 레벨로 몬스터 만들기
+        /// 무한으로 몬스터를 만든다.
+        /// *해당 레벨은 Level 이다.
+        /// </summary>
+        public void MakeMonsterByStageLevel()
         {
             Stop();
-            coroutineInfiniteMakeMonster = StartCoroutine(InfiniteMakeMonster());
+            coroutineInfiniteMakeMonster = StartCoroutine(InfiniteMakeMonster(Level));
         }
 
+        /// <summary>
+        /// 무한대로 몬스터 만드는 코루틴 정지
+        /// </summary>
         public void Stop()
         {
             if (coroutineInfiniteMakeMonster != null) StopCoroutine(coroutineInfiniteMakeMonster);
@@ -125,6 +133,17 @@ namespace WoosanStudio.ZombieShooter
             clone.transform.parent = parent.GetChild(0).GetChild(0);
             //그림자 위치 초기화
             clone.transform.localPosition = new Vector3(0, 5, 0);
-        }             
+        }
+
+        #region [-TestCode]
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                MakeMonsterByStageLevel();
+            }
+        }
+        #endregion
+
     }
 }

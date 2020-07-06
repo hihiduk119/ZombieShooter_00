@@ -324,15 +324,12 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
-      improve retargeting quality.\n\t'Body_jnt' has translation animation that will
-      be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 0
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -464,7 +461,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 3
@@ -598,100 +595,175 @@ ModelImporter:
         length: 0.22015
         modified: 1
     skeleton:
-    - name: SimpleCitizens
+    - name: SimpleCitizens(Clone)
       parentName: 
       position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 0.99999994}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Base_mesh
+      parentName: SimpleCitizens(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Biker_mesh
+      parentName: SimpleCitizens(Clone)
+      position: {x: 8.4237575e-16, y: 0, z: 1.1149975e-19}
+      rotation: {x: 1.5537054e-16, y: -3.6512507e-16, z: -2.1566082e-14, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cap_mesh
+      parentName: SimpleCitizens(Clone)
+      position: {x: 8.4237575e-16, y: 0, z: -4.606948e-18}
+      rotation: {x: 1.5537054e-16, y: -3.6512507e-16, z: -2.1566082e-14, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cheerleader_mesh
+      parentName: SimpleCitizens(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Clown_mesh
+      parentName: SimpleCitizens(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Emo_mesh
+      parentName: SimpleCitizens(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Footballer_mesh
+      parentName: SimpleCitizens(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Grandma_mesh
+      parentName: SimpleCitizens(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hair_mesh
+      parentName: SimpleCitizens(Clone)
+      position: {x: 8.4237575e-16, y: 0, z: 1.1149975e-19}
+      rotation: {x: 1.5537054e-16, y: -3.6512507e-16, z: -2.1566082e-14, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hippie_mesh
+      parentName: SimpleCitizens(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Luchador_mesh
+      parentName: SimpleCitizens(Clone)
+      position: {x: 8.4237575e-16, y: -0.10097058, z: -4.555185e-19}
+      rotation: {x: 1.5537054e-16, y: -3.6512507e-16, z: -2.1566082e-14, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mountie_mesh
+      parentName: SimpleCitizens(Clone)
+      position: {x: 8.4237575e-16, y: 0, z: -1.66056e-19}
+      rotation: {x: 1.5537054e-16, y: -3.6512507e-16, z: -2.1566082e-14, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Root_jnt
-      parentName: 
+      parentName: SimpleCitizens(Clone)
       position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 0.99999994}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Hips_jnt
-      parentName: 
+      parentName: Root_jnt
       position: {x: -0, y: 1.0449876, z: 0}
-      rotation: {x: 0, y: 0, z: 0.25974357, w: 0.96567756}
+      rotation: {x: 0, y: 0, z: 0.2597436, w: 0.9656776}
       scale: {x: 1, y: 1, z: 1}
     - name: Body_jnt
-      parentName: 
+      parentName: Hips_jnt
       position: {x: 0.009555898, y: 0.016478358, z: 0}
-      rotation: {x: -0, y: 0, z: 0.8665036, w: -0.4991707}
+      rotation: {x: -0, y: 0, z: 0.86650366, w: -0.49917072}
       scale: {x: 1, y: 1, z: 1}
     - name: Spine_jnt
-      parentName: 
+      parentName: Body_jnt
       position: {x: -0.6703252, y: 1.488421e-16, z: 0}
-      rotation: {x: 0, y: 0, z: -1.6657681e-15, w: 0.99999994}
+      rotation: {x: 0, y: 0, z: -1.6657682e-15, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Head_jnt
-      parentName: 
+      parentName: Spine_jnt
       position: {x: -0.3106261, y: 6.897285e-17, z: 0}
-      rotation: {x: 0, y: 0, z: -1.5543121e-15, w: 0.99999994}
+      rotation: {x: 0, y: 0, z: -1.5543122e-15, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Hat_jnt
-      parentName: 
+      parentName: Head_jnt
       position: {x: -0.54227096, y: 1.2040834e-16, z: 0}
-      rotation: {x: 3.6886908e-16, y: -1.5061074e-16, z: 0.70710677, w: 0.70710677}
+      rotation: {x: 3.688691e-16, y: -1.5061076e-16, z: 0.7071068, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
     - name: UpperArm_Left_jnt
-      parentName: 
+      parentName: Spine_jnt
       position: {x: -0.21910845, y: -0.565232, z: 0}
-      rotation: {x: 0, y: 0, z: -0.70710677, w: 0.70710677}
+      rotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
     - name: LowerArm_Left_jnt
-      parentName: 
+      parentName: UpperArm_Left_jnt
       position: {x: 0.471188, y: -2.842171e-16, z: 5.77041e-17}
-      rotation: {x: 0, y: 0, z: -3.3306689e-15, w: 0.99999994}
+      rotation: {x: 0, y: 0, z: -3.330669e-15, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Hand_Left_jnt
-      parentName: 
+      parentName: LowerArm_Left_jnt
       position: {x: 0.4403, y: 0, z: 5.39209e-17}
-      rotation: {x: -1.7592054e-13, y: 0.99999994, z: -5.053215e-16, w: -2.2838075e-15}
+      rotation: {x: -1.7592056e-13, y: 1, z: -5.0532154e-16, w: -2.2838077e-15}
       scale: {x: 1, y: 1, z: 1}
     - name: UpperArm_Right_jnt
-      parentName: 
+      parentName: Spine_jnt
       position: {x: -0.21910845, y: 0.565232, z: 0}
-      rotation: {x: -0.70710677, y: 0.70710677, z: 3.4273996e-23, w: -8.659558e-17}
+      rotation: {x: -0.7071068, y: 0.7071068, z: 3.4274e-23, w: -8.6595586e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: LowerArm_Right_jnt
-      parentName: 
+      parentName: UpperArm_Right_jnt
       position: {x: -0.47118998, y: 5.684342e-16, z: -5.770413e-17}
-      rotation: {x: -6.6276564e-19, y: -3.5869217e-21, z: 6.132247e-16, w: 0.99999994}
+      rotation: {x: -6.627657e-19, y: -3.586922e-21, z: 6.1322475e-16, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Hand_Right_jnt
-      parentName: 
+      parentName: LowerArm_Right_jnt
       position: {x: -0.4403, y: -8.5265126e-16, z: -5.3921198e-17}
-      rotation: {x: 1.4172567e-13, y: 0.99999994, z: -9.494106e-16, w: 1.7323246e-15}
+      rotation: {x: 1.4172569e-13, y: 1, z: -9.494107e-16, w: 1.7323247e-15}
       scale: {x: 1, y: 1, z: 1}
     - name: UpperLeg_Left_jnt
-      parentName: 
+      parentName: Hips_jnt
       position: {x: -0.25698245, y: -1.4210854e-16, z: 0}
-      rotation: {x: -0.00013711103, y: -0.00008424716, z: 0.49917462, w: 0.86650133}
+      rotation: {x: -0.00013711104, y: -0.00008424717, z: 0.49917465, w: 0.8665014}
       scale: {x: 1, y: 1, z: 1}
     - name: LowerLeg_Left_jnt
-      parentName: 
+      parentName: UpperLeg_Left_jnt
       position: {x: -0.37452164, y: -3.5527136e-17, z: -2.7105054e-22}
-      rotation: {x: -0.70759016, y: 0.0000064468913, z: -0.0000061459114, w: 0.70662296}
+      rotation: {x: -0.7075902, y: 0.000006446892, z: -0.000006145912, w: 0.706623}
       scale: {x: 1, y: 1, z: 1}
     - name: Foot_Left_jnt
-      parentName: 
+      parentName: LowerLeg_Left_jnt
       position: {x: -0.38874373, y: 1.2252568e-17, z: 7.3426066e-12}
-      rotation: {x: 0.5004222, y: 0.5004221, z: -0.49957308, w: 0.49958178}
+      rotation: {x: 0.50042224, y: 0.5004222, z: -0.4995731, w: 0.4995818}
       scale: {x: 1, y: 1, z: 1}
     - name: UpperLeg_Right_jnt
-      parentName: 
+      parentName: Hips_jnt
       position: {x: 0.12763838, y: -0.22304337, z: 0}
-      rotation: {x: -0.49918565, y: 0.86646986, z: 0.005724977, w: -0.0032841237}
+      rotation: {x: -0.49918568, y: 0.8664699, z: 0.0057249772, w: -0.003284124}
       scale: {x: 1, y: 1, z: 1}
     - name: LowerLeg_Right_jnt
-      parentName: 
+      parentName: UpperLeg_Right_jnt
       position: {x: 0.374522, y: 2.4868996e-16, z: -1.0987412e-12}
-      rotation: {x: -0.7041099, y: -0.000030960502, z: 0.000051819636, w: 0.7100909}
+      rotation: {x: -0.70410997, y: -0.000030960506, z: 0.000051819643, w: 0.71009094}
       scale: {x: 1, y: 1, z: 1}
     - name: Foot_Right_jnt
-      parentName: 
+      parentName: LowerLeg_Right_jnt
       position: {x: 0.388744, y: 8.197135e-12, z: -3.6907224e-11}
-      rotation: {x: 0.5011712, y: 0.50119686, z: -0.49882898, w: 0.49879733}
+      rotation: {x: 0.50117123, y: 0.5011969, z: -0.498829, w: 0.49879736}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Runner_mesh
+      parentName: SimpleCitizens(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ShopKeeper_mesh
+      parentName: SimpleCitizens(Clone)
+      position: {x: 5.491461e-15, y: 2.5872586, z: 0}
+      rotation: {x: 1.5537054e-16, y: -3.6512507e-16, z: -2.1566082e-14, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tourist_mesh
+      parentName: SimpleCitizens(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5

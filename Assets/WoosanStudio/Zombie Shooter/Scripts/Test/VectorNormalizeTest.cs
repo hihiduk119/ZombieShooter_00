@@ -18,12 +18,12 @@ namespace WoosanStudio.ZombieShooter
             Debug.Log("========================================");
         }
 
-        private void Update()
-        {
-            if(Input.GetKeyDown(KeyCode.T))
-            {
-                PrintNormalize();
-            }
-        }
+        //private void Update()
+        //{
+        //    if(Input.GetKeyDown(KeyCode.T))
+        //    {
+        //        PrintNormalize();
+        //    }
+        //}
     }
 }

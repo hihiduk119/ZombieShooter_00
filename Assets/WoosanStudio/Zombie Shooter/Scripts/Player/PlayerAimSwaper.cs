@@ -1,0 +1,71 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+using RootMotion.FinalIK;
+
+namespace WoosanStudio.ZombieShooter
+{
+    /// <summary>
+    /// Final Ik 에서 에임 타겟을 부드럽게 다른 타겟으로 조준 하는 스크립트
+    /// 조준변경시 AimTarget 만 변경하면 됨
+    /// </summary>
+    public class PlayerAimSwaper : MonoBehaviour
+    {
+        private AimIK mAimIK;
+        //실제 조준 되고 있는 타겟
+        private Transform mAimIKTarget;
+
+        [Header("[조준 시키려는 타겟]")]
+        public Transform AimTarget;
+        [Header("[조준 변환 속도]")]
+        public float Speed = 0.1f;
+
+        //테스트용
+        //public List<Transform> TestTarget = new List<Transform>();
+        //public int TestIndex = 0;
+
+        private void Awake()
+        {
+            mAimIK = GetComponent<AimIK>();
+
+            //Aim IK 에 타겟이 있는지 확인,
+            if (mAimIK.solver.target != null)
+            {
+                mAimIKTarget = mAimIK.solver.target;
+            } else
+            {
+                Debug.Log("에임 타겟이 존제하지 않습니다.");
+            }
+        }
+
+        /// <summary>
+        /// 조준하기
+        /// </summary>
+        /// <param name="target">스왑 시킬 타겟</param>
+        private void Aiming(Transform target)
+        {
+            if (target == null) return;
+
+            mAimIKTarget.position = Vector3.Lerp(mAimIKTarget.position, target.position, Speed);
+        }
+
+        #region [-TestCode]
+        //void Update()
+        //{
+        //    //조준하기
+        //    Aiming(AimTarget);
+
+        //    //테스트용 타겟을 변경해서 타겟 조정
+        //    if (Input.GetKeyDown(KeyCode.T))
+        //    {
+        //        AimTarget = TestTarget[TestIndex];
+        //        TestIndex++;
+
+        //        if (TestIndex >= TestTarget.Count) { TestIndex = 0; }                
+        //    }
+        //}
+        #endregion
+
+    }
+}

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b0536a994f80429289bd5b3d16eb705, type: 3}
+  m_Name: CheerleaderForPlayer
+  m_EditorClassIdentifier: 
+  name: Cheerleader
+  prefab: {fileID: 9011850915550675213, guid: 7b5154f6218344a6f96b8e6c4b9093c6, type: 3}
+  useAI: 0
+  useLaserPointer: 1
+  useMuzzleFlare: 1
+  useRoll: 0
+  muzzleFlare: {fileID: 0}
+  useShadow: 0
+  ShadowProjector: {fileID: 0}
+  useJoystick: 1

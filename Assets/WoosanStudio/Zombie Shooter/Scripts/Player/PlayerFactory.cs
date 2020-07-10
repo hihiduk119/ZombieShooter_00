@@ -92,7 +92,9 @@ namespace WoosanStudio.ZombieShooter
             //플레어 포인트를 루트에서 가져옴
             PlayerPoints = PlayerPointRoot.GetChilds("Point");
 
-            PlayersController.Players.Add( Make(PlayerPoints[0], playerConfigs[0]).GetComponent<Player>() );
+            PlayersController.Players.Add(Make(PlayerPoints[0], playerConfigs[0]).GetComponent<Player>());
+            //PlayersController.Players.Add(Make(PlayerPoints[2], playerConfigs[2]).GetComponent<Player>());
+
             //2명의 플레이어를 더 만들수 있는 구조로 되어 있음
             //PlayersController.Players.Add( Make(PlayerPoints[1], playerConfigs[1]).GetComponent<Player>() );
             //PlayersController.Players.Add( Make(PlayerPoints[2], playerConfigs[1]).GetComponent<Player>() );

@@ -46,14 +46,14 @@ namespace Woosan.SurvivalGame01
         private float h;
         private float v;
         private Vector3 pos, desiredVelocity;
-        private SkinnedMeshRenderer skinnedMeshRenderer;
+        //private SkinnedMeshRenderer skinnedMeshRenderer;
         //더미 좌표에 플레이어 좌료를 집어 넣기용. 범위를 벗어났을때 한번씩만 가능a
         private bool setAbleDummy = true;
 
         private void Awake()
         {
             //메모리 절약용 렌더 캐슁
-            skinnedMeshRenderer = player.GetComponentInChildren<SkinnedMeshRenderer>();
+            //skinnedMeshRenderer = player.GetComponentInChildren<SkinnedMeshRenderer>();
         }
 
         void BetweenTargetAndPlayer()
@@ -111,11 +111,11 @@ namespace Woosan.SurvivalGame01
 
         void FixedUpdate()
         {
-            if (skinnedMeshRenderer != null)
-            {
-                //해당 오브젝트가 비활성화 상태라면 움직이지 않음 [비용절약용 코드]
-                if (!skinnedMeshRenderer.isVisible) return;
-            }
+            //if (skinnedMeshRenderer != null)
+            //{
+            //    //해당 오브젝트가 비활성화 상태라면 움직이지 않음 [비용절약용 코드]
+            //    if (!skinnedMeshRenderer.isVisible) return;
+            //}
 
             //실제 러프를 거는 followedCam.    
             if (!bLookAt) //Look At 비활성화시

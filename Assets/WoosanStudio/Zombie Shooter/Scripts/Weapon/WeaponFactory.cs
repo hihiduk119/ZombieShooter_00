@@ -21,6 +21,9 @@ namespace WoosanStudio.ZombieShooter
         //무기의 시작과 정지를 할수 있는 IWeaponAction을 가지고 있음
         public List<IWeapon> Weapons = new List<IWeapon>();
 
+        [Header("[무기를 생성시킬 앵커]")]
+        public Transform WeaponAnchor;
+
         //캐슁 데이타
         GameObject _weapon;
 
@@ -30,15 +33,15 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 무기를 생성
         /// </summary>
-        /// <param name="inputEvents">사용할 인풋 인터페이스 세팅</param>
+        /// <param name="inputEvents">총의 발사 시작 및 발사 끝을 알리는 이벤트</param>
         /// <param name="cameraShaker">카메라 쉐이킹 인터페이스</param>
-        /// <param name="reloadActionList"></param>
+        /// <param name="reloadActionList">재장전시 발생 되는 이벤트 액션 리스트</param>
         /// <param name="iGun"></param>
         /// <param name="joint"></param>
         /// <param name="type">생성할 무기의 인덱스</param>
         /// <param name="useLaserPoint">생성할 무기의 인덱스</param>
         /// <returns></returns>
-        public IWeapon MakeWeapon(IInputEvents inputEvents,ICameraShaker cameraShaker,List<IReloadAction> reloadActionList,ref IGun iGun , Transform joint,int type , PlayerConfig playerConfig)
+        public IWeapon MakeWeapon(IInputEvents inputEvents,ICameraShaker cameraShaker,List<IReloadAction> reloadActionList,ref IGun iGun , Transform joint,int type ,bool useLaserPointer, GameObject prefabMuzzleFlare)
         {
             //어떤 무기는 모델을 가지고 있으면 IHaveModel인터페이스를 상속 받기에 해당 인터페이스 호출.
             IHaveModel haveModel = _gunSettings[type];
@@ -85,12 +88,16 @@ namespace WoosanStudio.ZombieShooter
             Weapons.Add(_iWeapon);
 
             //레이저 포인터 사용 여부 활성, 비활성화 => AI 는 레이저 포인터 사용 안함.
-            joint.GetComponentInChildren<LaserPointerActor>().isVisible = playerConfig.useLaserPointer;
+            joint.GetComponentInChildren<LaserPointerActor>().isVisible = useLaserPointer;
+
+            //??머즐 플레어 사용 안하는 경우가 있나??
+            //bool useMuzleFlare = playerConfig.useMuzzleFlare;
+            //GameObject prefabMuzzleFlare = playerConfig.muzzleFlare;
 
             //머즐 플레어 사용시 머즐 플레어 생성 및 세팅
-            if(playerConfig.useMuzzleFlare)
-            {
-                GameObject clone = Instantiate(playerConfig.muzzleFlare) as GameObject;
+            //if (useMuzleFlare)
+            //{
+                GameObject clone = Instantiate(prefabMuzzleFlare) as GameObject;
                 MuzzleFlareProjector muzzleFlareProjector = clone.GetComponent<MuzzleFlareProjector>();
                 //조인트 하위로 붙여넣고 세부 위치 세팅
                 muzzleFlareProjector.SetParent(joint);
@@ -98,7 +105,7 @@ namespace WoosanStudio.ZombieShooter
                 muzzleFlareProjector.SetLocalRotation(new Vector3(90, 90, 0));
                 //발사시 플레어 블링크 등록
                 _iGun.ProjectileLauncher.TriggerEvent.AddListener(((IMuzzleFlare)muzzleFlareProjector).Blink);
-            }
+            //}
 
             //발사체 무기는 IProjectileLauncher 를 상속 받기 때문에 인터페이스 호출
             if (_iGun != null)

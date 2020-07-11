@@ -8,6 +8,7 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 해당 오브젝트를 만들어 주고 연결할 Action이 있으면 연결까지 다 해줌.
+    /// 다해주기 위해서는 모두 가지고 있어야 함
     /// </summary>
     public class WeaponFactory : MonoBehaviour
     {
@@ -24,9 +25,19 @@ namespace WoosanStudio.ZombieShooter
         [Header("[무기를 생성시킬 앵커]")]
         public Transform WeaponAnchor;
 
+        //무기의 공격 시작과 끝을 이벤트 인터페이스
+        public IInputEvents InputEvents { get => inputEvents; set => inputEvents = value; }
+        //카메라 쉐이킹용 이벤트 인터페이스 => IInputEvent와 통합 가능 할듯 리팩토링 해야함.
+        public ICameraShaker CameraShaker { get => cameraShaker; set => cameraShaker = value; }
+        //무기의 재장전 이밴트 액션 리스트
+        public List<IReloadAction> ReloadActionList { get => reloadActionList; set => reloadActionList = value; }
+
+        IInputEvents inputEvents;
+        ICameraShaker cameraShaker;
+        List<IReloadAction> reloadActionList;
+
         //캐슁 데이타
         GameObject _weapon;
-
         IWeapon _iWeapon;
         IGun _iGun;
 
@@ -36,8 +47,8 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="inputEvents">총의 발사 시작 및 발사 끝을 알리는 이벤트</param>
         /// <param name="cameraShaker">카메라 쉐이킹 인터페이스</param>
         /// <param name="reloadActionList">재장전시 발생 되는 이벤트 액션 리스트</param>
-        /// <param name="iGun"></param>
-        /// <param name="joint"></param>
+        /// <param name="iGun">해당 컴퍼넌트 생성</param>
+        /// <param name="joint">생성 시킬 오브젝트의 부</param>
         /// <param name="type">생성할 무기의 인덱스</param>
         /// <param name="useLaserPoint">생성할 무기의 인덱스</param>
         /// <returns></returns>
@@ -117,10 +128,10 @@ namespace WoosanStudio.ZombieShooter
                 _iGun.ProjectileLauncher.projectileSetting = _iGun.GunSettings.ProjectileSettings;
 
                 //인풋 핸들러 연결부분.
-                _iGun.SetInputEventHandler(inputEvents);
+                if(inputEvents != null) _iGun.SetInputEventHandler(inputEvents);
 
                 //리로드시 액션 연결부분
-                reloadActionList.ForEach(value => _iGun.ReloadEvent.AddListener(value.ReloadAction));
+                if(reloadActionList != null) reloadActionList.ForEach(value => _iGun.ReloadEvent.AddListener(value.ReloadAction));
 
                 //해당 런처에서 발사시 화면 흔들림 액션 등록
                 if (cameraShaker != null) { _iGun.ProjectileLauncher.TriggerEvent.AddListener(cameraShaker.Shake); }                    
@@ -130,5 +141,16 @@ namespace WoosanStudio.ZombieShooter
             }
             return _iWeapon;
         }
+
+        #region [-TestCode]
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+
+            }
+        }
+        #endregion
+
     }
 }

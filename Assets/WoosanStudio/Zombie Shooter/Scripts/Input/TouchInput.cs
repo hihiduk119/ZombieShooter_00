@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 namespace WoosanStudio.ZombieShooter
 {
-    public class TouchInput : MonoBehaviour , IInputEvents
+    public class TouchInput : MonoBehaviour , IStart,IEnd
     {
         [Header("[화면 터치 다운 발생시]")]
         public UnityEvent touchDownEvent = new UnityEvent();

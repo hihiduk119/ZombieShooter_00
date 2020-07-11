@@ -7,7 +7,7 @@
         ProjectileLauncher ProjectileLauncher { get; set; }
         IProjectileLauncher IProjectileLauncher { get; }
 
-        void SetInputEventHandler(IInputEvents inputEvents);
+        void SetInputEventHandler(IStart start, IEnd end);
 
         void Initialize();
     }

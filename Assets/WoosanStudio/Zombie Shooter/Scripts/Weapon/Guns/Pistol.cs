@@ -102,10 +102,10 @@ namespace WoosanStudio.ZombieShooter
             return (IProjectileLauncherEvents)_projectileLauncher;
         }
 
-        public IInputEvents GetInput()
-        {
-            return null;
-        }
+        //public IInputEvents GetInput()
+        //{
+        //    return null;
+        //}
 
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeapon Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -126,9 +126,9 @@ namespace WoosanStudio.ZombieShooter
 
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        public void SetInputEventHandler(IInputEvents inputEvents)
+        public void SetInputEventHandler(IStart start, IEnd end)
         {
-            ProjectileLauncher.SetInputEventHandler(inputEvents);
+            ProjectileLauncher.SetInputEventHandler(start, end);
         }
 
         public void Initialize()

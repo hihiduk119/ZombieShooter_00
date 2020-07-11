@@ -10,7 +10,7 @@ namespace WoosanStudio.ZombieShooter
     /// [행위]
     /// 1. 리로드 완료 시간 안려줌.
     /// </summary>
-    public class AutoShooterInputBasedOnGunSetting : MonoBehaviour, IInputEvents, IReloadAction
+    public class AutoShooterInputBasedOnGunSetting : MonoBehaviour,IStart ,IEnd, IReloadAction
     {
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IInputEvents Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         private UnityEvent _startEvent = new UnityEvent();

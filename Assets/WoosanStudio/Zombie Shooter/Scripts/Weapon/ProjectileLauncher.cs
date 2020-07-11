@@ -98,10 +98,11 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 유저 Key Input을 제어하는 부분의 액션 이벤트를 등록
         /// </summary>
-        public void SetInputEventHandler(IInputEvents inputEvents)
+        public void SetInputEventHandler(IStart start,IEnd end)
         {
-            inputEvents.StartEvent.AddListener(StartFiring);
-            inputEvents.EndEvent.AddListener(StopFiring);
+            //Debug.Log("등록 시작과 끝 이벤트");
+            start.StartEvent.AddListener(StartFiring);
+            end.EndEvent.AddListener(StopFiring);
         }
 
         /// <summary>
@@ -166,22 +167,20 @@ namespace WoosanStudio.ZombieShooter
         }
 
         #region [-TestCode]
-        void Update()
-        {
-            //scene view에서 방향 지시
-            Debug.DrawRay(spawnLocator.position, spawnLocator.forward * 1000, Color.red);
-
-            //사격 시작 및 정지 
-            //if(Input.GetKeyDown(KeyCode.K))
-            //{
-            //    StartFiring();
-            //}
-
-            //if (Input.GetKeyDown(KeyCode.L))
-            //{
-            //    StopFiring();
-            //}
-        }
+        //void Update()
+        //{
+        //    //scene view에서 방향 지시
+        //    Debug.DrawRay(spawnLocator.position, spawnLocator.forward * 1000, Color.red);
+        //    //사격 시작 및 정지 
+        //    if (Input.GetKeyDown(KeyCode.K))
+        //    {
+        //        StartFiring();
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.L))
+        //    {
+        //        StopFiring();
+        //    }
+        //}
         #endregion
 
         public void Shoot()

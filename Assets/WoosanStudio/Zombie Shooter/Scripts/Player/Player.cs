@@ -11,8 +11,12 @@ namespace WoosanStudio.ZombieShooter
     {
         //무기를 만들어주는 팩토리 패턴 적용.
         public WeaponFactory _weaponFactory;
-        //인풋 액션
-        IInputEvents _inputEvents;
+        
+        //IInputEvents _inputEvents;
+        //공격 시작 이벤트
+        IStart startEvent;
+        //공격 끝 이벤트
+        IEnd endEvent;
         //ICameraShaker를 가져오기 위한 용도
         public GameObject Shaker;
         //무기 연결 부분
@@ -48,7 +52,9 @@ namespace WoosanStudio.ZombieShooter
         {
             //플레이어 팩토리 동작시 삭제 예정
             //_cameraShaker = Shaker.GetComponent<ICameraShaker>();
-            _inputEvents = GetComponent<IInputEvents>();
+            //_inputEvents = GetComponent<IInputEvents>();
+            startEvent = GetComponent<IStart>();
+            endEvent = GetComponent<IEnd>();
 
             _reloadActionList.Add(GetComponent<IReloadAction>());
 
@@ -73,7 +79,7 @@ namespace WoosanStudio.ZombieShooter
             GetComponent<Move>().userInput = this.userInput = playerMoveInput;
 
             //키인풋으로 사격 컨트롤 및 몇번 무기를 사용할지 결정
-            _iWeapon = _weaponFactory.MakeWeapon(_inputEvents, _cameraShaker, _reloadActionList, ref Gun, Joint, (int)weaponType, playerConfig.useLaserPointer,playerConfig.muzzleFlare);
+            _iWeapon = _weaponFactory.MakeWeapon(startEvent,endEvent, _cameraShaker, _reloadActionList, ref Gun, Joint, (int)weaponType, playerConfig.useLaserPointer,playerConfig.muzzleFlare);
 
             //좌우 이동 에니메이션 컨트롤러 생성 => Player의 에니메이터를 찾아서 생성 및 세팅
             AnimatorControl = new AnimatorControl(transform.GetComponentInChildren<Animator>());

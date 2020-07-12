@@ -19,30 +19,49 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 무기 타입 - 추가 될 경우를 대비해 int로 만듬
         /// </summary>
+        [Header("[무기 타입 - 추가 될 경우를 대비해 int로 만듬]")]
         [SerializeField] private int _index = 0;
         public int Index { get => _index; }
 
         /// <summary>
         /// 무기 이름
         /// </summary>
+        [Header("[무기 이름]")]
         [SerializeField] private string _name = "None";
         public string Name { get => _name; }
 
         /// <summary>
+        /// 생성시 로컬 포지션
+        /// </summary>
+        [Header("[생성시 로컬 포지션]")]
+        [SerializeField] private Vector3 _initPosition;
+        public Vector3 InitPosition { get => _initPosition; }
+
+        /// <summary>
+        /// 레이저 포인터 생성시 로컬 포지션
+        /// </summary>
+        [Header("[레이저 포인터 생성시 로컬 포지션]")]
+        [SerializeField] private Vector3 _initLaserPointerPosition;
+        public Vector3 InitLaserPointerPosition { get => _initLaserPointerPosition; }
+
+        /// <summary>
         /// projectileActor.cs 에서 가져온 클래스
         /// </summary>
+        [Header("[발사체 세팅 - projectileActor.cs 에서 가져온 클래스]")]
         [SerializeField] private ProjectileSettings _projectileSettings;
-        
-        
+
+
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IHaveModel Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         /// <summary>
         /// 총기 모델 프리팹
         /// </summary>
+        [Header("[총기 모델 프리팹 - [IHaveModel]]")]
         [SerializeField] private GameObject _prefab;
         /// <summary>
         /// 총기 모델 프리팹 인스턴스
         /// </summary>
+        [Header("[총기 모델 프리팹 인스턴스 - [IHaveModel]]")]
         [SerializeField] [HideInInspector] private GameObject _prefabInstance;
 
         public GameObject Prefab { get { return MakeModel(); } }
@@ -51,17 +70,21 @@ namespace WoosanStudio.ZombieShooter
 
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeaponStat Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        [Header("[무기 레벨 - [IWeaponStat]]")]
         [SerializeField] private int _level = 1;
         public int Level { get => _level; }
 
         public int Type { get => _index; }
 
+        [Header("[무기 데미지 - [IWeaponStat]]")]
         [SerializeField] private int _damage;
         public int Damage { get => _damage = DamageCalculator.GetDamage(this); }
         public DamageCalculator DamageCalculator { get; }
 
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGunStat Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+        [Header("[최대 탄약 수 - [IGunStat]]")]
         [SerializeField] private int _maxAmmo = 10;
         public int MaxAmmo { get => _maxAmmo; }
 

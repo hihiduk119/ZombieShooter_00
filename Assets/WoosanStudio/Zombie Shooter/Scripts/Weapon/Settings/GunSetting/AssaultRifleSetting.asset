@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 1
   _name: AssaultRifle
+  _initPosition: {x: 0.3, y: -0.05, z: 0}
+  _initLaserPointerPosition: {x: 0.2, y: -0.08, z: 0.03}
   _projectileSettings: {fileID: 11400000, guid: 22615d03967a8462c9c2c40f82d7d9ad,
     type: 2}
   _prefab: {fileID: 863729631154490029, guid: 3897f9a3fadf048f387389ae71bf527c, type: 3}

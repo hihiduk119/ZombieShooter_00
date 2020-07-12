@@ -65,7 +65,7 @@ namespace WoosanStudio.ZombieShooter
             _weapon.transform.parent = joint;
 
             //초기 위치 설정
-            _weapon.transform.localPosition = Vector3.zero;
+            _weapon.transform.localPosition = _gunSettings[type].InitPosition;
             _weapon.transform.localRotation = Quaternion.identity;
 
             //Debug.Log("_weapon parent = " + _weapon.transform.parent.ToString());

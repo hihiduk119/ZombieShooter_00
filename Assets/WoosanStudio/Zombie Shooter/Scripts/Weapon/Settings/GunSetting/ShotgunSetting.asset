@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 2
   _name: Shotgun
+  _initPosition: {x: 0.29, y: 0.05, z: 0}
+  _initLaserPointerPosition: {x: 0.41, y: 0.07, z: 0.04}
   _projectileSettings: {fileID: 11400000, guid: 9143eda5fb42f4ea89b533287d6762b1,
     type: 2}
   _prefab: {fileID: 8165819401053523319, guid: 06551f5d8ff2845708e2d3afe53d57f7, type: 3}

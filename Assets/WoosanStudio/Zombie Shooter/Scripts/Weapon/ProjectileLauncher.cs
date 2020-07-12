@@ -190,7 +190,7 @@ namespace WoosanStudio.ZombieShooter
             //머즐 플레이어 사용시
             if (projectileSetting.hasMuzzleFlare)
             {
-                Instantiate(projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation);
+                Instantiate(projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation, spawnLocatorMuzzleFlare);
             }
             //bombList[bombType].muzzleflare.Play(); //????
             

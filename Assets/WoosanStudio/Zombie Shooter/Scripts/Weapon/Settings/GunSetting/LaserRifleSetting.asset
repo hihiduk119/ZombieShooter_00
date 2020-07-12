@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 3
   _name: LaserRifle
+  _initPosition: {x: 0.186, y: -0.055, z: -0.08}
+  _initLaserPointerPosition: {x: 0.12, y: -0.18, z: 0}
   _projectileSettings: {fileID: 11400000, guid: cfaeda0e543714d5e8dbaafc126213be,
     type: 2}
   _prefab: {fileID: 5304141356055359961, guid: 2008640c6b32e4ba38ecb924bda09aaa, type: 3}
@@ -21,6 +23,3 @@ MonoBehaviour:
   _level: 1
   _damage: 0
   _maxAmmo: 50
-  _currentAmmo: 50
-  _reloadTime: 2
-  _fireSpeed: 0

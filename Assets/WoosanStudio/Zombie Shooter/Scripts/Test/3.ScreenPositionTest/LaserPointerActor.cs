@@ -13,9 +13,7 @@ namespace WoosanStudio.ZombieShooter
         public List<Transform> laserPointers = new List<Transform>();
         [Header("[라인 랜더 세팅]")]
         public LineRenderer lineRenderer;
-        [Header ("[보여주기 토글]")]
-        public bool isVisible = true;
-        [Header("[length]")]
+        [Header("[최대 길이")]
         public float MaxLength = 100f;
 
         //캐슁
@@ -23,8 +21,6 @@ namespace WoosanStudio.ZombieShooter
 
         private void Update()
         {
-            if (!isVisible) return;
-
             lineRenderer.SetPosition(0, laserPointers[0].position);
             tmpPos = laserPointers[0].TransformPoint(new Vector3(0, 0f, MaxLength));
             lineRenderer.SetPosition(1, tmpPos);

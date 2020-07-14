@@ -9,11 +9,26 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class Positioner : MonoBehaviour
     {
+        [Header("[이동하려는 포지션 이름으로 찾기]")]
+        public bool UseName = false;
+
+        [Header("[이동하려는 포지션 이름]")]
+        public string Name = "FindName";
+
         [Header ("[이동하려는 포지션]")]
         public Transform Target;
 
         [Header("[추가 값]")]
         public Vector3 ExtraValue;
+
+        private void Awake()
+        {
+            //이동 하려는 포지션을 이름으로 찾ㅇ
+            if(UseName)
+            {
+                Target = GameObject.Find(Name).transform;
+            }
+        }
 
         /// <summary>
         /// 포지션 재조정

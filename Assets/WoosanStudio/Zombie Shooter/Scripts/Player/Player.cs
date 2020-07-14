@@ -5,13 +5,120 @@ using UnityEngine;
 using UnityEngine.Events;
 using WoosanStudio.Common;
 
+using UnityStandardAssets.Characters.ThirdPerson;
+using RootMotion.FinalIK;
+
 namespace WoosanStudio.ZombieShooter
 {
+    /// <summary>
+    /// 플레이어가 가진 모든 컴퍼턴트를 다 가지고 컨트롤함
+    /// 1. 활성 비활성
+    /// 2. 사격 통제 & 재장전
+    /// 3. 조준 비조준
+    /// </summary>
     public class Player : MonoBehaviour , IHaveHit
     {
+        //[Auto-Awake()]
+        //움직임
+        public Move Move;
+        //에니메이션 -> 이건 따로 스크립트 만들어야 할듯
+        public Animator Animator;
+        //PlayerMoveActor 와 연결된 실제 회전 움직임
+        public MyThirdPersonCharacter MyThirdPersonCharacter;
+        //회전 및 조준
+        public PlayerMoveActor PlayerMoveActor;
+        //데미지 UI텍스트 
+        public TextDamageBridge TextDamageBridge;
+        //데미지 UI체력바 
+        public HealthBar HealthBar;
+        //실제 체력
+        public HaveHit HaveHit;
+        //조준시 팔다리몸 IK
+        public AimIK AimIK;
+        //조준시 헤드 IK
+        public LookAtIK LookAtIK;
+        //조준 IK들을 더부드럽게 움직이게 만들어주는 Aim컨트롤
+        public PlayerAimSwaper PlayerAimSwaper;
+        //실제 사격 컨트롤
+        public FireController FireController;
+        //포지션 재배체
+        public Positioner Positioner;
+        //모델 변경
+        public Model Model;
+
+        void Awake()
+        {
+            //생성과 동시에 자동 셋업
+            Move = GetComponent<Move>();
+            Animator = GetComponent<Animator>();
+            MyThirdPersonCharacter = GetComponent<MyThirdPersonCharacter>();
+            PlayerMoveActor = GetComponent<PlayerMoveActor>();
+            TextDamageBridge = GetComponent<TextDamageBridge>();
+            HealthBar = GetComponent<HealthBar>();
+            HaveHit = GetComponent<HaveHit>();
+            AimIK = GetComponent<AimIK>();
+            LookAtIK = GetComponent<LookAtIK>();
+            PlayerAimSwaper = GetComponent<PlayerAimSwaper>();
+            FireController = GetComponent<FireController>();
+            Positioner = GetComponent<Positioner>();
+            Model = GetComponentInChildren<Model>();
+    }
+
+        /// <summary>
+        /// 플레이어를 활성화 시킴
+        /// </summary>
+        void Active()
+        {
+
+        }
+
+        /// <summary>
+        /// 플레이어 비활성화
+        /// </summary>
+        void Deactive()
+        {
+
+        }
+
+        /// <summary>
+        /// 타겟 조준
+        /// </summary>
+        void Aiming()
+        {
+
+        }
+
+        /// <summary>
+        /// 조준 해제
+        /// </summary>
+        void Release()
+        {
+
+        }
+
+
+        /// <summary>
+        /// 조준 해제
+        /// </summary>
+        void Fire()
+        {
+
+        }
+
+        void Reload()
+        {
+
+        }
+
+
+
+
+
+
+        //=====================   [Old code]   =====================
+        /*
         //무기를 만들어주는 팩토리 패턴 적용.
         public WeaponFactory _weaponFactory;
-        
         //IInputEvents _inputEvents;
         //공격 시작 이벤트
         IStart startEvent;
@@ -122,6 +229,9 @@ namespace WoosanStudio.ZombieShooter
             //Move(new Vector2(h,v).magnitude);
         }
         #endregion
+        */
+
+
 
         /// <summary>
         ///강제 에니메이션 재시작[Gun Trigger 방식] 

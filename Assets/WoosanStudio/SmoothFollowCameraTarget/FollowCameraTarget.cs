@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Woosan.SurvivalGame01
+namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 캠이 따라 다니는 해당 타겟을 조정하는 컨트롤러.

@@ -10,8 +10,11 @@ namespace WoosanStudio.ZombieShooter
     /// <summary>
     /// 게임 전체를 통합 관리 한다.
     ///
-    /// 1.캐릭터는 몇명 생성 할지
-    /// 2.몇번째 스테이지로 씬을 보낼지
+    /// 1.캐릭터는 생성 할지
+    /// 2.캐릭터 활성 비활성화
+    /// 3.몬스터 생성
+    /// 4.몇번째 스테이지로 씬을 보낼지
+    ///
     /// 
     /// </summary>
     public class StageManager : MonoBehaviour
@@ -28,6 +31,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[카메라의 느리게 좌우로 움직임]")]
         public CameraNativeWalk CameraNativeWalk;
 
+        [Header("[플레이어 팩토리 [Auto-Awake()]]")]
+        public PlayerFactory PlayerFactory;
+
         [Header("[플레이어 포지셔너]")]
         //이벤트 호출 방식으로 변경 하려 했으나 호출 우선 순위 문제로 변경 보류
         //플레이어 포지션 변경
@@ -42,14 +48,19 @@ namespace WoosanStudio.ZombieShooter
         //이벤트 호출 방식으로 변경 하려 했으나 호출 우선 순위 문제로 변경 보류
         public Positioner DoNotEnterPositioner;
 
-        private CameraMoveController stageChangeController;
+        //카메라를 움직이는 컨트롤
+        private CameraMoveController CameraMoveController;
 
         //플레이어 생성
         private PlayerFactory playerFactory;
+
+        //플레이어 팩토리에서 생성된 플레이어
+        private Player Player;
+
         //몬스터 생성
         private MonsterFactory monsterFactory;
         //생성된 플레이어 활성 비활성 제어
-        private PlayersController playersController;
+        //private PlayersController playersController;
 
         
 
@@ -60,8 +71,20 @@ namespace WoosanStudio.ZombieShooter
             //자동으로 가져오기
             playerFactory = GameObject.FindObjectOfType<PlayerFactory>();
             monsterFactory = GameObject.FindObjectOfType<MonsterFactory>();
-            stageChangeController = GameObject.FindObjectOfType<CameraMoveController>();
-            playersController = GameObject.FindObjectOfType<PlayersController>();
+            CameraMoveController = GameObject.FindObjectOfType<CameraMoveController>();
+            //playersController = GameObject.FindObjectOfType<PlayersController>();
+            //플레이어 생성 담당
+            PlayerFactory = GameObject.FindObjectOfType<PlayerFactory>();
+        }
+
+
+        /// <summary>
+        /// 최초 플레이어 생성 및 디스에이블
+        /// </summary>
+        private void Initialize()
+        {
+            //플레이어 생성 - 생성된 플레이어 저장
+            Player = PlayerFactory.Initialize().GetComponent<Player>();
         }
 
         /// <summary>
@@ -85,7 +108,6 @@ namespace WoosanStudio.ZombieShooter
 
             //카메라 느리게 좌우로 흔듬 시작
             CameraNativeWalk.Run();
-
             //플레이어 위치 재조정
             PlayerPositioner.Move();
             //펠로우 카메라 위치 재조정
@@ -120,7 +142,7 @@ namespace WoosanStudio.ZombieShooter
         public void Initialize(int level)
         {
             //해당 스테이지로 화면을 이동시킴
-            stageChangeController.Change(level);
+            CameraMoveController.Change(level);
         }
 
         /// <summary>
@@ -150,7 +172,6 @@ namespace WoosanStudio.ZombieShooter
             
             VirtualCamera.enabled = false;
         }
-
 
         /// <summary>
         /// 스테이지 변경을 위한 테스트 코드

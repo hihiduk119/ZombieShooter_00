@@ -16,7 +16,7 @@ namespace WoosanStudio.ZombieShooter.Test
         //몬스터 생성
         private MonsterFactory monsterFactory;
         //생성된 플레이어 활성 비활성 제어
-        private PlayersController playersController;
+        //private PlayersController playersController;
         //생성된 플레이어의 체력바 관련 제어를 위해
 
         
@@ -30,7 +30,7 @@ namespace WoosanStudio.ZombieShooter.Test
 
             monsterFactory = GameObject.FindObjectOfType<MonsterFactory>();
 
-            playersController = GameObject.FindObjectOfType<PlayersController>();
+            //playersController = GameObject.FindObjectOfType<PlayersController>();
 
             //weaponFactory = GameObject.FindObjectOfType<WeaponFactory>();
 
@@ -118,7 +118,7 @@ namespace WoosanStudio.ZombieShooter.Test
         /// </summary>
         public void ActiveAllPlayer()
         {
-            playersController.SetActiveAll(true);
+            //playersController.SetActiveAll(true);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace WoosanStudio.ZombieShooter.Test
         /// </summary>
         public void DeactiveAllPlayer()
         {
-            playersController.SetActiveAll(false);
+            //playersController.SetActiveAll(false);
         }
 
         /// <summary>
@@ -134,19 +134,19 @@ namespace WoosanStudio.ZombieShooter.Test
         /// </summary>
         public void StartShoot()
         {
-            if (players == null)  players = GameObject.FindObjectsOfType<Player>();
+            //if (players == null)  players = GameObject.FindObjectsOfType<Player>();
                  
-            if (players != null)
-            {
-                for(int index = 0; index < players.Length;index++)
-                {
-                    players[index].Gun.IProjectileLauncher.Fire();
-                }
-            }
-            else
-            {
-                Debug.Log("player 가져오기 실패");
-            }
+            //if (players != null)
+            //{
+            //    for(int index = 0; index < players.Length;index++)
+            //    {
+            //        players[index].Gun.IProjectileLauncher.Fire();
+            //    }
+            //}
+            //else
+            //{
+            //    Debug.Log("player 가져오기 실패");
+            //}
         }
 
 
@@ -155,19 +155,19 @@ namespace WoosanStudio.ZombieShooter.Test
         /// </summary>
         public void StopShoot()
         {
-            if (players == null) players = GameObject.FindObjectsOfType<Player>();
+            //if (players == null) players = GameObject.FindObjectsOfType<Player>();
 
-            if (players != null)
-            {
-                for (int index = 0; index < players.Length; index++)
-                {
-                    players[index].Gun.IProjectileLauncher.Stop();
-                }
-            }
-            else
-            {
-                Debug.Log("player 가져오기 실패");
-            }
+            //if (players != null)
+            //{
+            //    for (int index = 0; index < players.Length; index++)
+            //    {
+            //        players[index].Gun.IProjectileLauncher.Stop();
+            //    }
+            //}
+            //else
+            //{
+            //    Debug.Log("player 가져오기 실패");
+            //}
         }
     }
 }

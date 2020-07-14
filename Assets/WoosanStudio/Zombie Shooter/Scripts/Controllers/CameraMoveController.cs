@@ -12,8 +12,7 @@ using UnityEngine.Events;
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
-    /// 임시로 만든 레벨 스와퍼
-    /// 나중에 진짜 레벨 스와퍼와 통일 해야함.
+    /// 레일을 사용하여 카메라를 움직이도 스왑 시킴
     /// **임시임으로 반드시 추후 통합 필요.
     /// </summary>
     public class CameraMoveController : MonoBehaviour
@@ -68,9 +67,6 @@ namespace WoosanStudio.ZombieShooter
         [Header("[베리어용 스폰 포지션 컨트롤러]")]
         //스테이지 변경시 cam위치에 맞게 스폰위치 변경을 위해 호출 필수
         public PositionController BarrierSpawnController;
-
-
-
 
         [Header("[현재 레벨]")]
         public int CurrentLevel = 0;

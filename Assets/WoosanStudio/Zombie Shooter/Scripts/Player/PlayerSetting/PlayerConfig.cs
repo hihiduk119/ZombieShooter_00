@@ -14,7 +14,7 @@ namespace WoosanStudio.ZombieShooter
         public bool useLaserPointer = false;
         public bool useMuzzleFlare = false;
         public bool useRoll = false;
-        public GameObject muzzleFlare;
+        //public GameObject muzzleFlare;
         public bool useShadow = false;
         public GameObject ShadowProjector;
         public bool useJoystick = true;

@@ -92,8 +92,8 @@ namespace WoosanStudio.ZombieShooter
             //플레어 포인트를 루트에서 가져옴
             PlayerPoints = PlayerPointRoot.GetChilds("Point");
 
-            PlayersController.Players.Add(Make(PlayerPoints[0], playerConfigs[0]).GetComponent<Player>());
-            //PlayersController.Players.Add(Make(PlayerPoints[2], playerConfigs[2]).GetComponent<Player>());
+            //PlayersController.Players.Add(Make(PlayerPoints[0], playerConfigs[0]).GetComponent<Player>());
+            PlayersController.Players.Add(Make(PlayerPoints[0], playerConfigs[3]).GetComponent<Player>());
 
             //2명의 플레이어를 더 만들수 있는 구조로 되어 있음
             //PlayersController.Players.Add( Make(PlayerPoints[1], playerConfigs[1]).GetComponent<Player>() );
@@ -130,6 +130,8 @@ namespace WoosanStudio.ZombieShooter
 
             //실제 처다보게 하는 스크립트
             //에르고가 높다면 회전이 좋게 만들기
+
+            //신버전에서는 사용 안함.
             lookAction = clone.GetComponent<LookAhead>().SmoothLook;
 
             //AI사용시
@@ -142,7 +144,6 @@ namespace WoosanStudio.ZombieShooter
             {
                 //마우스 터치 조준 action 연결
                 MoveScreenPointToRayPosition.UpdatePositionEvent.AddListener(lookAction);
-                
             }
 
             //구르기 사용시

@@ -60,8 +60,17 @@ namespace WoosanStudio.ZombieShooter
         {
             //초기에 리지드 바디 가져옴
             myRigidbody = GetComponent<Rigidbody>();
+
             //이유는 알수 없지만 Y축으로 천천히 가라않는 문제 발생.
-            //해당 트렌스 폼에서 인풋 인터페이스 가져옴?
+            //조이스틱 인터페이스를 가져올 트랜스폼이 널이라면 
+            if(JoystickInput == null)
+            {
+                //조이스틱 인풋 스크립트는 하나만 존제하기 때문에 해당 씬에서 가져옴
+                //나중에 싱글톤으로 만들어야 할듯
+                JoystickInput = Transform.FindObjectOfType<JoystickInput>().transform;
+            }
+
+            //해당 트렌스 폼에서 인풋 인터페이스 가져옴
             MoveInput = JoystickInput.GetComponent<IInput>();
         }
 

@@ -24,13 +24,19 @@ namespace WoosanStudio.ZombieShooter
         ICameraShaker cameraShaker;
         IGun gun;
 
-
         //IStart,IEnd 를 가지고 있음
         public FireController FireController;
 
         //ICameraShaker cameraShaker;
-
         //IGun gun;
+
+        private void Awake()
+        {
+            //최초 세팅이 안되어 있다면 파인드 오브젝트로 가져옴.
+            //*나중에 싱글톤으로 바꿀지 말지 결정.
+            if(WeaponFactory == null) WeaponFactory = GameObject.FindObjectOfType<WeaponFactory>();
+            if (LaserPointerFactory == null) LaserPointerFactory = GameObject.FindObjectOfType<LaserPointerFactory>();
+        }
 
         /// <summary>
         /// 실제 연결

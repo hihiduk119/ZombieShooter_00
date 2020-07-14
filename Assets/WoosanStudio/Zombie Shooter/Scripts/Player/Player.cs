@@ -79,7 +79,7 @@ namespace WoosanStudio.ZombieShooter
             GetComponent<Move>().userInput = this.userInput = playerMoveInput;
 
             //키인풋으로 사격 컨트롤 및 몇번 무기를 사용할지 결정
-            _iWeapon = _weaponFactory.MakeWeapon(startEvent,endEvent, _cameraShaker, _reloadActionList, ref Gun, Joint, (int)weaponType, playerConfig.useLaserPointer,playerConfig.muzzleFlare);
+            _iWeapon = _weaponFactory.MakeWeapon(startEvent,endEvent, _cameraShaker, _reloadActionList, ref Gun, Joint, (int)weaponType, playerConfig.useLaserPointer,playerConfig.ShadowProjector);
 
             //좌우 이동 에니메이션 컨트롤러 생성 => Player의 에니메이터를 찾아서 생성 및 세팅
             AnimatorControl = new AnimatorControl(transform.GetComponentInChildren<Animator>());

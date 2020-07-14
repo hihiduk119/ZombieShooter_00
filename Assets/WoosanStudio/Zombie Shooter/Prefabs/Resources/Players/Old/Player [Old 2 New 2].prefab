@@ -2305,7 +2305,7 @@ GameObject:
   - component: {fileID: 1006808122}
   - component: {fileID: 1006808123}
   m_Layer: 8
-  m_Name: Player [Old 2]
+  m_Name: Player [Old 2 New 2]
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2659,7 +2659,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f5619d03c2a04a38addac5fd73e093d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponIndex: 3
   WeaponFactory: {fileID: 0}
+  LaserPointerFactory: {fileID: 0}
   WeaponAnchor: {fileID: 1836758713930583949}
   FireController: {fileID: 1006808122}
 --- !u!1 &2998971302469008760
@@ -2710,7 +2712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2998971302611349061
 Transform:
   m_ObjectHideFlags: 0

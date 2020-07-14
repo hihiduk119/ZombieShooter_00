@@ -31,6 +31,12 @@ namespace WoosanStudio.Player
         //캐슁용 리지드바디
         private new Rigidbody rigidbody;
 
+        private void Awake()
+        {
+            //카메라가 연결이 안되어 있으면 메인카메라를 기본으로 잡음
+            if(camera == null) camera = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        }
+
         void Start()
         {
             //내 자신의 리지드바디 캐슁

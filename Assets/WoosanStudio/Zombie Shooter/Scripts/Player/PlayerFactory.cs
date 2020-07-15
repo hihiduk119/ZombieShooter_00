@@ -27,7 +27,7 @@ namespace WoosanStudio.ZombieShooter
         [Header("[조이스틱에 의해 화면 움직임 담당 [Auto-Awake()]]")]
         public FollowCameraTarget FollowCameraTarget;
 
-        public Transforms PlayerPointRoot;
+        //public Transforms PlayerPointRoot;
         [Header("[플레이어 생성 위치]")]
         public List<Transform> PlayerPoints;
         [Header("[(AI 미 사용시)[플레이어 터치 위치에 따른 회전]")]
@@ -91,18 +91,7 @@ namespace WoosanStudio.ZombieShooter
             //캐릭터의 갯수와 상관없이 Initialize 가 한번이라도 호출됐다면 체크됨.
             IsInitialzed = true;
 
-            //플레어 포인트를 루트에서 가져옴
-            PlayerPoints = PlayerPointRoot.GetChilds("Point");
-
-            //PlayersController.Players.Add(Make(PlayerPoints[0], playerConfigs[0]).GetComponent<Player>());
-            return Make(PlayerPoints[0], playerConfigs[3]);
-
-            //플레이어 사격 및 사격 정지 등을 컨트롤하는 컨트롤러는 필요함.
-
-            //2명의 플레이어를 더 만들수 있는 구조로 되어 있음
-            //PlayersController.Players.Add( Make(PlayerPoints[1], playerConfigs[1]).GetComponent<Player>() );
-            //PlayersController.Players.Add( Make(PlayerPoints[2], playerConfigs[1]).GetComponent<Player>() );
-
+            return Make(null, playerConfigs[3]);
             //강제로 캐릭터의 조준점 마추는 코드 실행
             //임시 임으로 반드시 삭제가 필요.
             //Invoke("FocusAim", 1f);
@@ -140,6 +129,7 @@ namespace WoosanStudio.ZombieShooter
                 shadowProjector.transform.parent = clone.transform;
             }
 
+            //부모지
             clone.transform.parent = parent;
             clone.transform.Reset(Quaternion.Euler(0,270,0));
 

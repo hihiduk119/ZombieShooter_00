@@ -20,7 +20,7 @@ namespace WoosanStudio.ZombieShooter
     {
         //[Auto-Awake()]
         //움직임
-        public Move Move;
+        public WoosanStudio.Player.Move Move;
         //에니메이션 -> 이건 따로 스크립트 만들어야 할듯
         public Animator Animator;
         //PlayerMoveActor 와 연결된 실제 회전 움직임
@@ -49,7 +49,7 @@ namespace WoosanStudio.ZombieShooter
         void Awake()
         {
             //생성과 동시에 자동 셋업
-            Move = GetComponent<Move>();
+            Move = GetComponent<WoosanStudio.Player.Move>();
             Animator = GetComponent<Animator>();
             MyThirdPersonCharacter = GetComponent<MyThirdPersonCharacter>();
             PlayerMoveActor = GetComponent<PlayerMoveActor>();
@@ -62,50 +62,69 @@ namespace WoosanStudio.ZombieShooter
             FireController = GetComponent<FireController>();
             Positioner = GetComponent<Positioner>();
             Model = GetComponentInChildren<Model>();
-    }
+        }
 
         /// <summary>
         /// 플레이어를 활성화 시킴
         /// </summary>
-        void Active()
+        public void Active()
         {
-
+            Move.enabled = true;
+            MyThirdPersonCharacter.enabled = true;
+            PlayerMoveActor.enabled = true;
+            //UI Health Bar 비활성화
+            HealthBar.HealthbarPrefab.gameObject.SetActive(true);
+            PlayerAimSwaper.enabled = true;
+            FireController.enabled = true;
         }
 
         /// <summary>
         /// 플레이어 비활성화
         /// </summary>
-        void Deactive()
+        public void Deactive()
         {
-
+            Move.enabled = false;
+            MyThirdPersonCharacter.enabled = false;
+            PlayerMoveActor.enabled = false;
+            //UI Health Bar 비활성화
+            HealthBar.HealthbarPrefab.gameObject.SetActive(false);
+            AimIK.enabled = false;
+            LookAtIK.enabled = false;
+            PlayerAimSwaper.enabled = false;
+            FireController.enabled = false;
         }
 
         /// <summary>
         /// 타겟 조준
         /// </summary>
-        void Aiming()
+        public void Aiming()
         {
-
+            AimIK.enabled = true;
+            LookAtIK.enabled = true;
         }
 
         /// <summary>
         /// 조준 해제
         /// </summary>
-        void Release()
+        public void Release()
         {
-
+            AimIK.enabled = false;
+            LookAtIK.enabled = false;
         }
 
 
         /// <summary>
-        /// 조준 해제
+        /// 사격
         /// </summary>
-        void Fire()
+        public void Fire()
         {
-
+            FireController.StartEvent.Invoke();
         }
 
-        void Reload()
+        /// <summary>
+        /// 재장ㅖ
+        /// </summary>
+        public void Reload()
         {
 
         }

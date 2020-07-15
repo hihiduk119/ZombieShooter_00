@@ -25,6 +25,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[화면 터치시 자동으로 하면을 따라 다니면서 연출하는 컨트롤러]")]
         public CustomCamFollow CustomCamFollow;
 
+        [Header("[캐릭터 중심으로 캠 따라다니는 컨트롤러]")]
+        public FollowCameraTarget FollowCameraTarget;
+
         [Header("[시네머신의 가상 카메라]")]
         public CinemachineVirtualCamera VirtualCamera;
 
@@ -75,13 +78,14 @@ namespace WoosanStudio.ZombieShooter
             //playersController = GameObject.FindObjectOfType<PlayersController>();
             //플레이어 생성 담당
             PlayerFactory = GameObject.FindObjectOfType<PlayerFactory>();
+            FollowCameraTarget = GameObject.FindObjectOfType<FollowCameraTarget>();
         }
 
 
         /// <summary>
         /// 최초 플레이어 생성 및 디스에이블
         /// </summary>
-        private void Initialize()
+        public void Initialize()
         {
             //플레이어 생성 - 생성된 플레이어 저장
             Player = PlayerFactory.Initialize().GetComponent<Player>();
@@ -104,6 +108,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Load()
         {
+            Debug.Log("Load");
             LoadAllProps();
 
             //카메라 느리게 좌우로 흔듬 시작
@@ -160,6 +165,12 @@ namespace WoosanStudio.ZombieShooter
             VirtualCamera.enabled = true;
             //카메라 느리게 좌우로 흔듬 정지
             CameraNativeWalk.Stop();
+
+            //플레이어 비활성화
+            Player.Deactive();
+
+            //FollowCamTarget 비활성화
+            FollowCameraTarget.enabled = false;
         }
 
         /// <summary>
@@ -171,6 +182,13 @@ namespace WoosanStudio.ZombieShooter
             Debug.Log("Off");
             
             VirtualCamera.enabled = false;
+
+
+            //플레이어 비활성화
+            Player.Active();
+
+            //FollowCamTarget 비활성화
+            FollowCameraTarget.enabled = true;
         }
 
         /// <summary>

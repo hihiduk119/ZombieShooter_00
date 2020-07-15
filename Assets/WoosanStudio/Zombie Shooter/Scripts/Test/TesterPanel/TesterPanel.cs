@@ -15,6 +15,8 @@ namespace WoosanStudio.ZombieShooter.Test
         private PlayerFactory playerFactory;
         //몬스터 생성
         private MonsterFactory monsterFactory;
+
+        private StageManager stageManager;
         //생성된 플레이어 활성 비활성 제어
         //private PlayersController playersController;
         //생성된 플레이어의 체력바 관련 제어를 위해
@@ -29,6 +31,8 @@ namespace WoosanStudio.ZombieShooter.Test
             playerFactory = GameObject.FindObjectOfType<PlayerFactory>();
 
             monsterFactory = GameObject.FindObjectOfType<MonsterFactory>();
+
+            stageManager = GameObject.FindObjectOfType<StageManager>();
 
             //playersController = GameObject.FindObjectOfType<PlayersController>();
 
@@ -109,7 +113,8 @@ namespace WoosanStudio.ZombieShooter.Test
         public void MakePlayer()
         {
             Debug.Log("MakePlayer");
-            playerFactory.Initialize();
+            stageManager.Initialize();
+            
         }
 
 

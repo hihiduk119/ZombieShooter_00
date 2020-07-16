@@ -121,6 +121,9 @@ namespace WoosanStudio.ZombieShooter
             //DoNotEnterSign 재조정
             DoNotEnterPositioner.Move();
 
+            //두 낫 엔터 가이드 활성화
+            DoNotEnterPositioner.gameObject.SetActive(true);
+
             //딜레이 후에 펠로우캠 실행해야 포커스 이상 발생이 없음.
             //**왜 그런지는 알수 없음. 추후 문재가 발생시 수정 해야함.
             StartCoroutine(WaitAndDoCoroutine(1f, () => {
@@ -171,6 +174,9 @@ namespace WoosanStudio.ZombieShooter
 
             //FollowCamTarget 비활성화
             FollowCameraTarget.enabled = false;
+
+            //두 낫 엔터 가이드 비활성화
+            DoNotEnterPositioner.gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -189,6 +195,7 @@ namespace WoosanStudio.ZombieShooter
 
             //FollowCamTarget 비활성화
             FollowCameraTarget.enabled = true;
+
         }
 
         /// <summary>

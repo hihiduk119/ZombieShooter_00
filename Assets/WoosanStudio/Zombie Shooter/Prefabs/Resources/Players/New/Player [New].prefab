@@ -2402,7 +2402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d493964151e6e4c45b96fb03c489a103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 8
+  power: 16
   camera: {fileID: 0}
 --- !u!114 &1836758714628244881
 MonoBehaviour:
@@ -2680,6 +2680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Move: {fileID: 0}
+  Animator: {fileID: 0}
   MyThirdPersonCharacter: {fileID: 0}
   PlayerMoveActor: {fileID: 0}
   TextDamageBridge: {fileID: 0}
@@ -2690,6 +2691,7 @@ MonoBehaviour:
   PlayerAimSwaper: {fileID: 0}
   FireController: {fileID: 0}
   Positioner: {fileID: 0}
+  Model: {fileID: 0}
 --- !u!1 &2998971302469008760
 GameObject:
   m_ObjectHideFlags: 0

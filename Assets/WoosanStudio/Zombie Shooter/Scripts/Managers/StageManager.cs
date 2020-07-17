@@ -14,7 +14,7 @@ namespace WoosanStudio.ZombieShooter
     /// 2.캐릭터 활성 비활성화
     /// 3.몬스터 생성
     /// 4.몇번째 스테이지로 씬을 보낼지
-    ///
+    /// 5.스테이지의 시작과 끝 및 중간 UI 표출등 모든 부분 관리.
     /// 
     /// </summary>
     public class StageManager : MonoBehaviour
@@ -79,6 +79,17 @@ namespace WoosanStudio.ZombieShooter
             //플레이어 생성 담당
             PlayerFactory = GameObject.FindObjectOfType<PlayerFactory>();
             FollowCameraTarget = GameObject.FindObjectOfType<FollowCameraTarget>();
+        }
+
+        /// <summary>
+        /// 씬이 로드되고 첫 실행 
+        /// </summary>
+        public void FirstStage()
+        {
+            //플레이어 생성
+            Initialize();
+            //카메라 연출 시
+            CameraMoveController.AutoChange();
         }
 
 
@@ -186,9 +197,9 @@ namespace WoosanStudio.ZombieShooter
         public void Off()
         {
             Debug.Log("Off");
-            
-            VirtualCamera.enabled = false;
 
+            //연출 카메라 비활성화
+            VirtualCamera.enabled = false;
 
             //플레이어 비활성화
             Player.Active();
@@ -204,19 +215,25 @@ namespace WoosanStudio.ZombieShooter
         #region [-TestCode]
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                Initialize(0);
-            }
+            //if (Input.GetKeyDown(KeyCode.A))
+            //{
+            //    Initialize(0);
+            //}
 
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                Initialize(1);
-            }
+            //if (Input.GetKeyDown(KeyCode.S))
+            //{
+            //    Initialize(1);
+            //}
 
-            if (Input.GetKeyDown(KeyCode.D))
+            //if (Input.GetKeyDown(KeyCode.D))
+            //{
+            //    Load();
+            //}
+
+            //씬이 첫 로딩이 되고 실행되는 메서 
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                Load();
+                FirstStage();
             }
         }
         #endregion

@@ -84,11 +84,11 @@ namespace WoosanStudio.ZombieShooter
         {
             //X 값은 연출용 값으로 값이 클수록 화면 쪽으로 시체가 앞으록 움직임.
             //Y 값은 떠오르는 속도이며 값이 크면 빠르게 떠오름.
-            doZeroGravity.UpForce(new Vector3(10, 10, 0));
+            doZeroGravity.UpForce(new Vector3(0, 7.5f, 0));
 
             if (canDestory != null)
             {
-                canDestory.Destory(2f);
+                canDestory.Destory(2.5f);
             }
             else
             {

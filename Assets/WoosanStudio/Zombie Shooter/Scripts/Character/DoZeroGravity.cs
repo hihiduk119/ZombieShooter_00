@@ -35,27 +35,27 @@ namespace WoosanStudio.ZombieShooter
 
                 value.useGravity = false;
                 value.velocity = new Vector3(
-                    Random.Range((int)velocity.x / 2, (int)velocity.x * 1.5f)
-                    ,Random.Range((int)velocity.y / 2, (int)velocity.y * 1.5f)
+                    0
+                    ,Random.Range((int)velocity.y / 3, (int)velocity.y * 1.5f)
                     ,0);
             });
 
-            StartCoroutine(ContinuouslyUpForce(velocity));
+            //StartCoroutine(ContinuouslyUpForce(velocity));
         }
 
-        IEnumerator ContinuouslyUpForce(Vector3 velocity)
-        {
-            WaitForEndOfFrame WFE = new WaitForEndOfFrame();
-            while(true)
-            {
-                rigidbodies.ForEach(value => {
-                    //x = 화면으로 이동하는 방향 y = UP 속도
-                    value.AddForce(new Vector3(Random.Range(25,35), Random.Range(15, 25), 0), ForceMode.Acceleration);
-                });
+        //IEnumerator ContinuouslyUpForce(Vector3 velocity)
+        //{
+        //    WaitForEndOfFrame WFE = new WaitForEndOfFrame();
+        //    while(true)
+        //    {
+        //        rigidbodies.ForEach(value => {
+        //            //x = 화면으로 이동하는 방향 y = UP 속도
+        //            //value.AddForce(new Vector3(0, Random.Range(5, 15), 0), ForceMode.Acceleration);
+        //        });
 
-                yield return WFE;
-            }
-        }
+        //        yield return WFE;
+        //    }
+        //}
 
         /// <summary>
         /// 제로 그라비티 상태로 만든 부분 초기화

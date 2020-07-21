@@ -14,12 +14,15 @@ namespace WoosanStudio.ZombieShooter
     {
         private AimIK mAimIK;
         //실제 조준 되고 있는 타겟
-        private Transform mAimIKTarget;
+        public Transform mAimIKTarget;
 
         [Header("[조준 시키려는 타겟]")]
         public Transform AimTarget;
         [Header("[조준 변환 속도]")]
         public float Speed = 0.1f;
+
+        [Header("[조준할 타겟을 찾아줌. (Auto->Awake())]")]  
+        public FindAimTarget FindAimTarget;
 
         //테스트용
         //public List<Transform> TestTarget = new List<Transform>();
@@ -28,6 +31,7 @@ namespace WoosanStudio.ZombieShooter
         private void Awake()
         {
             mAimIK = GetComponent<AimIK>();
+            FindAimTarget = GetComponent<FindAimTarget>();
 
             //Aim IK 에 타겟이 있는지 확인,
             if (mAimIK.solver.target != null)
@@ -48,6 +52,11 @@ namespace WoosanStudio.ZombieShooter
             if (target == null) return;
 
             mAimIKTarget.position = Vector3.Lerp(mAimIKTarget.position, target.position, Speed);
+        }
+
+        private void FixedUpdate() 
+        {
+            Aiming(FindAimTarget.target);
         }
 
         #region [-TestCode]

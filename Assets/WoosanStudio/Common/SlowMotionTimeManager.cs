@@ -63,7 +63,7 @@ namespace WoosanStudio.Common
         }
 
 
-        private void Update()
+        /*private void Update()
         {
             if(Input.GetKeyDown(KeyCode.Space)) {
                 //씬안의 모든 리지드 바디 가져와서 벨로시티 저장
@@ -79,7 +79,7 @@ namespace WoosanStudio.Common
             if(Input.GetKeyDown(KeyCode.P)) {
                 //AudioManager.Instance.MusicLoop(SoundLoop.LetsRock);
             }
-        }
+        }*/
         #endregion
     }
 }

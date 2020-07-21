@@ -51,6 +51,9 @@ namespace WoosanStudio.ZombieShooter
         //이벤트 호출 방식으로 변경 하려 했으나 호출 우선 순위 문제로 변경 보류
         public Positioner DoNotEnterPositioner;
 
+        [Header("[AimIK Target 포지셔너]")]
+        public Positioner AimIKTargetPositioner;
+
         //카메라를 움직이는 컨트롤
         private CameraMoveController CameraMoveController;
 
@@ -124,13 +127,16 @@ namespace WoosanStudio.ZombieShooter
 
             //카메라 느리게 좌우로 흔듬 시작
             CameraNativeWalk.Run();
-            //플레이어 위치 재조정
+            //플레이어 위치 위치 재조정
             PlayerPositioner.Move();
-            //펠로우 카메라 위치 재조정
+            //펠로우 카메라 위치 위치 재조정
             //**펠로우 캠 의 포지션이 끝난후에 CustomCamFollow.cs 초기화가 호출되어야 한다.
             FollowCameraPositioner.Move();
-            //DoNotEnterSign 재조정
+            //DoNotEnterSign 위치 재조정
             DoNotEnterPositioner.Move();
+
+            //AimIK Target 위치 재조정
+            AimIKTargetPositioner.Move();
 
             //두 낫 엔터 가이드 활성화
             DoNotEnterPositioner.gameObject.SetActive(true);

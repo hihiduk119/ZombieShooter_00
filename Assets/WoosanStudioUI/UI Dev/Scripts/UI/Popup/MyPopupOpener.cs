@@ -45,12 +45,12 @@ namespace WoosanStudio.ZombieShooter
             Instance.GetComponent<MyPopup>().Open();
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                Instance.SetActive(true);
-            }
-        }
+        //private void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.O))
+        //    {
+        //        Instance.SetActive(true);
+        //    }
+        //}
     }
 }

@@ -7,7 +7,7 @@ using WoosanStudio.Common;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class AutoAim : MonoBehaviour , ILookPoint
+    public class FindAimTarget : MonoBehaviour , ILookPoint
     {
         #region [-ILookPoint 구현부]
         private Vector3 _point = Vector3.zero;
@@ -17,15 +17,23 @@ namespace WoosanStudio.ZombieShooter
         public UpdatePositionEvent UpdatePositionEvent { get => _updatePositionEvent; set => throw new NotImplementedException(); }
         #endregion
 
-        Transform target;
+        //매 프레임 마다 가장 가까운 타겟을 가져옴.
+        [Header("[자동으로 가장 가까운 타겟을 가져옴. (Auto-FixedUpdate())]")]
+        public Transform target;
         GameObject player;
         Vector3 pos;
 
+        /// <summary>
+        /// 물리 프레임으로 타겟 찾음
+        /// </summary>
         void FixedUpdate()
         {
             Find();
         }
 
+        /// <summary>
+        /// 가장 가까운 타겟을 찾고 해당 나와 타겟간의 거리를 녹색으로 Scene화면에 표시.
+        /// </summary>
         void Find()
         {
             target = TargetUtililty.GetNearestTarget(MonsterList.Instance.Items, this.transform);

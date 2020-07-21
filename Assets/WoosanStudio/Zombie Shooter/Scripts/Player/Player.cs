@@ -48,7 +48,7 @@ namespace WoosanStudio.ZombieShooter
 
         void Awake()
         {
-            //생성과 동시에 자동 셋업
+            //생성과 동시에 자동 셋업ㅂ
             Move = GetComponent<WoosanStudio.Player.Move>();
             Animator = GetComponent<Animator>();
             MyThirdPersonCharacter = GetComponent<MyThirdPersonCharacter>();

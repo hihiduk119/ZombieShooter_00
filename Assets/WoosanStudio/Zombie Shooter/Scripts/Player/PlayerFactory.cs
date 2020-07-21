@@ -32,8 +32,8 @@ namespace WoosanStudio.ZombieShooter
         public List<Transform> PlayerPoints;
         [Header("[(AI 미 사용시)[플레이어 터치 위치에 따른 회전]")]
         public MoveTouchPointToRayPosition MoveTouchPointToRayPosition;
-        [Header("[(AI 사용시) 가장 가까운 몬스터 자동 회전]")]
-        public AutoAim AutoAim;
+        [Header("[가장 가까운 몬스터 자동 회전 -> 전체 몬스터에서 가장 가까운 몬스터 찾음]")]
+        public FindAimTarget FindAimTarget;
 
         [Header("플레이어 캐릭터 좌우 움직임에 조이스틱 사용")]
         public bool UseJoystick;

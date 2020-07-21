@@ -9,12 +9,11 @@ using WoosanStudio.ZombieShooter;
 [System.Serializable]
 public class UpdatePositionEvent : UnityEvent<Vector3>
 {
-    internal void AddListener(PlayerFactory.Look lookDelegate)
-    {
-        throw new NotImplementedException();
-    }
 }
 
+/// <summary>
+/// 스크린 터치를 사용한 레이 포지션 가져옴
+/// </summary>
 public class MoveTouchPointToRayPosition : MonoBehaviour , ILookPoint
 {
     //카메라 세팅부분

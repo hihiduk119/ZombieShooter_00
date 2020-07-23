@@ -21,8 +21,10 @@ namespace WoosanStudio.ZombieShooter
         public LookAtIK LookAtIK;
         [Header("[Final IK 사용시 딱딱한 움직인 부드럽게 바꿔줌 (Auto->Awake())]")]
         public PlayerAimSwaper PlayerAimSwaper;
-        
-
+        [Header("[가장가까운 몬스터를 가져오기위해. (Auto->Awake())]")]
+        public FindAimTarget FindAimTarget;
+        [Header("[조준하는 최소 거리]")]
+        public float AimDistance = 10f;
 
         private void Awake()
         {
@@ -31,6 +33,7 @@ namespace WoosanStudio.ZombieShooter
             AimIK = GetComponent<AimIK>();
             LookAtIK = GetComponent<LookAtIK>();
             PlayerAimSwaper = GetComponent<PlayerAimSwaper>();
+            FindAimTarget = GetComponent<FindAimTarget>();
 
             //이름으로 타겟 설정 초기화
             Initializ(TargetName);
@@ -48,7 +51,6 @@ namespace WoosanStudio.ZombieShooter
             PlayerMoveActor.fireTarget = target;
         }
 
-
         /// <summary>
         /// 조준 시작
         /// </summary>
@@ -61,9 +63,10 @@ namespace WoosanStudio.ZombieShooter
             //LookAt IK 컨트롤
             LookAtIK.enabled = true;
             //Final IK 를 부드럽게 만듬
-            //PlayerAimSwaper.enabled = true;
+            PlayerAimSwaper.enabled = true;
+            
 
-            //플레이어 에임 스와퍼와 자연스러운 연결이 필요.
+            //*플레이어 에임 스와퍼와 자연스러운 연결이 필요.
             //테스트 용으로 작업 필요함.
         }
 
@@ -79,12 +82,29 @@ namespace WoosanStudio.ZombieShooter
             //LookAt IK 컨트롤
             LookAtIK.enabled = false;
             //Final IK 를 부드럽게 만듬
-            //PlayerAimSwaper.enabled = false;
+            PlayerAimSwaper.enabled = false;
         }
 
         #region [-TestCode]
         void Update()
         {
+            //가장 가까운 몬스터 찾아서 에임 스와퍼에 넣어서 조준 할수 있게 만듬.
+            PlayerAimSwaper.AimTarget = FindAimTarget.target;
+
+            if(FindAimTarget.target != null)
+            {
+                //나와 조준 타겟간의 거리차에 의해서
+                //Aim
+                if (AimDistance >= Vector3.Distance(transform.position, PlayerAimSwaper.AimTarget.position))
+                {
+                    Aim();
+                }
+                else//Release
+                {
+                    Release();
+                }
+            }
+
             //플레이어 몬스터 조준
             if (Input.GetKeyDown(KeyCode.O))
             {

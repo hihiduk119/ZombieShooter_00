@@ -2617,13 +2617,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836758714628244879}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33d9554f35e15434097e8033b21ff90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mAimIKTarget: {fileID: 0}
   AimTarget: {fileID: 0}
   Speed: 0.1
+  FindAimTarget: {fileID: 0}
+  ExtraValue: {x: 0, y: 0, z: 0}
 --- !u!114 &1006808122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2719,10 +2722,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b350f514c57be42169f1bf850ed3b06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TargetName: Aim IK Target
   PlayerMoveActor: {fileID: 0}
   AimIK: {fileID: 0}
   LookAtIK: {fileID: 0}
   PlayerAimSwaper: {fileID: 0}
+  FindAimTarget: {fileID: 0}
+  AimDistance: 12
 --- !u!1 &2998971302469008760
 GameObject:
   m_ObjectHideFlags: 0

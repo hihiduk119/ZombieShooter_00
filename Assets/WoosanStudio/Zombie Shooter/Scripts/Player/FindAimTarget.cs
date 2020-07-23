@@ -37,6 +37,12 @@ namespace WoosanStudio.ZombieShooter
         void Find()
         {
             target = TargetUtililty.GetNearestTarget(MonsterList.Instance.Items, this.transform);
+            //해당 몬스터 에서 강제로 "AimPivot" 이름을 가진 오브젝트 찾아서 넣기
+            //*해당 오브젝트가 눈높이를 가지기 때문에 이렇게 사용
+            if (target != null)
+            {
+                target = target.Find("AimPivot");
+            }
 
             #region [-TestCode : Player와 현재 가장 가까운 몬스터 타겟의 거리를 표시한다]
             if (target != null)
@@ -46,7 +52,7 @@ namespace WoosanStudio.ZombieShooter
                 {
                     pos = player.transform.position;
                     Debug.DrawLine(pos, target.position, Color.green);
-
+                    //Debug.Log("거리 = " + Vector3.Distance(pos, target.position));
                     Point = target.position;
                     UpdatePositionEvent.Invoke(Point);
                 }

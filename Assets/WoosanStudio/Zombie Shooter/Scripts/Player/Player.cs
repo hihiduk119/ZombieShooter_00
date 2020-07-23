@@ -74,8 +74,9 @@ namespace WoosanStudio.ZombieShooter
             PlayerMoveActor.enabled = true;
             //UI Health Bar 비활성화
             HealthBar.HealthbarPrefab.gameObject.SetActive(true);
-            PlayerAimSwaper.enabled = true;
             FireController.enabled = true;
+
+            Debug.Log("==========[Active]==========");
         }
 
         /// <summary>
@@ -90,8 +91,8 @@ namespace WoosanStudio.ZombieShooter
             HealthBar.HealthbarPrefab.gameObject.SetActive(false);
             AimIK.enabled = false;
             LookAtIK.enabled = false;
-            PlayerAimSwaper.enabled = false;
             FireController.enabled = false;
+            Debug.Log("==========[Deactive]==========");
         }
 
         /// <summary>
@@ -101,6 +102,7 @@ namespace WoosanStudio.ZombieShooter
         {
             AimIK.enabled = true;
             LookAtIK.enabled = true;
+            PlayerAimSwaper.enabled = true;
         }
 
         /// <summary>
@@ -110,6 +112,7 @@ namespace WoosanStudio.ZombieShooter
         {
             AimIK.enabled = false;
             LookAtIK.enabled = false;
+            PlayerAimSwaper.enabled = false;
         }
 
 

@@ -158,6 +158,7 @@ Transform:
   m_Children:
   - {fileID: 246062895001225755}
   - {fileID: 246062894111202473}
+  - {fileID: 5974073030912350338}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -7079,6 +7080,36 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.5182699, y: 0.0000017285347, z: 0.0064869523}
     m_Extent: {x: 1.5634874, y: 1.6845057, z: 0.59226257}
   m_DirtyAABB: 0
+--- !u!1 &7923308043418542153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5974073030912350338}
+  m_Layer: 16
+  m_Name: AimPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5974073030912350338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7923308043418542153}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 246062895614678435}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &246062894280657681
 PrefabInstance:
   m_ObjectHideFlags: 0

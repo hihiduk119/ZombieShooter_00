@@ -24,6 +24,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[조준할 타겟을 찾아줌. (Auto->Awake())]")]  
         public FindAimTarget FindAimTarget;
 
+        [Header("[추가 값]")]
+        public Vector3 ExtraValue;
+
         //테스트용
         //public List<Transform> TestTarget = new List<Transform>();
         //public int TestIndex = 0;
@@ -49,6 +52,10 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="target">스왑 시킬 타겟</param>
         private void Aiming(Transform target)
         {
+            if(mAimIKTarget == null)
+            {
+                mAimIKTarget = mAimIK.solver.target;
+            }
             if (target == null) return;
 
             mAimIKTarget.position = Vector3.Lerp(mAimIKTarget.position, target.position, Speed);
@@ -60,20 +67,20 @@ namespace WoosanStudio.ZombieShooter
         }
 
         #region [-TestCode]
-        //void Update()
-        //{
-        //    //조준하기
-        //    Aiming(AimTarget);
+        void Update()
+        {
+            //조준하기
+            Aiming(AimTarget);
 
-        //    //테스트용 타겟을 변경해서 타겟 조정
-        //    if (Input.GetKeyDown(KeyCode.T))
-        //    {
-        //        AimTarget = TestTarget[TestIndex];
-        //        TestIndex++;
+            //테스트용 타겟을 변경해서 타겟 조정
+            //if (Input.GetKeyDown(KeyCode.T))
+            //{
+            //         = TestTarget[TestIndex];
+            //    TestIndex++;
 
-        //        if (TestIndex >= TestTarget.Count) { TestIndex = 0; }                
-        //    }
-        //}
+            //    if (TestIndex >= TestTarget.Count) { TestIndex = 0; }
+            //}
+        }
         #endregion
 
     }

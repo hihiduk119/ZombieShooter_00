@@ -23,8 +23,13 @@ namespace WoosanStudio.ZombieShooter
         public PlayerAimSwaper PlayerAimSwaper;
         [Header("[가장가까운 몬스터를 가져오기위해. (Auto->Awake())]")]
         public FindAimTarget FindAimTarget;
+        [Header("[카메라의 보는 위치를 카메라와 타겟 중간으로 마춰주기 위해 사용(Auto->Awake())]")]
+        public FollowCameraTarget FollowCameraTarget;
         [Header("[조준하는 최소 거리]")]
         public float AimDistance = 10f;
+
+        
+
 
         private void Awake()
         {
@@ -34,6 +39,7 @@ namespace WoosanStudio.ZombieShooter
             LookAtIK = GetComponent<LookAtIK>();
             PlayerAimSwaper = GetComponent<PlayerAimSwaper>();
             FindAimTarget = GetComponent<FindAimTarget>();
+            FollowCameraTarget = GameObject.FindObjectOfType<FollowCameraTarget>();
 
             //이름으로 타겟 설정 초기화
             Initializ(TargetName);
@@ -64,7 +70,9 @@ namespace WoosanStudio.ZombieShooter
             LookAtIK.enabled = true;
             //Final IK 를 부드럽게 만듬
             PlayerAimSwaper.enabled = true;
-            
+            //캐릭터와 타겟 사이에 카메라 위치 활성화
+            FollowCameraTarget.bLookAt = true;
+
 
             //*플레이어 에임 스와퍼와 자연스러운 연결이 필요.
             //테스트 용으로 작업 필요함.
@@ -83,6 +91,8 @@ namespace WoosanStudio.ZombieShooter
             LookAtIK.enabled = false;
             //Final IK 를 부드럽게 만듬
             PlayerAimSwaper.enabled = false;
+            //캐릭터와 타겟 사이에 카메라 위치 활성화
+            FollowCameraTarget.bLookAt = false;
         }
 
         #region [-TestCode]
@@ -90,8 +100,10 @@ namespace WoosanStudio.ZombieShooter
         {
             //가장 가까운 몬스터 찾아서 에임 스와퍼에 넣어서 조준 할수 있게 만듬.
             PlayerAimSwaper.AimTarget = FindAimTarget.target;
+            //에임시 카메라를 캐릭터와 타겟 중간에 위치 시키기 위해 사용.
+            FollowCameraTarget.LookAtTarget = FindAimTarget.target;
 
-            if(FindAimTarget.target != null)
+            if (FindAimTarget.target != null)
             {
                 //나와 조준 타겟간의 거리차에 의해서
                 //Aim

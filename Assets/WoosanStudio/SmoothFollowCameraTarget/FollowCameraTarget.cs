@@ -10,6 +10,7 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class FollowCameraTarget : MonoBehaviour
     {
+        //static public FollowCameraTarget Instance;
         [Header("[따라다닐 타겟]")]
         public GameObject player;
         [Header("[누구를 따르는지 확인용 타겟]")]
@@ -34,7 +35,7 @@ namespace WoosanStudio.ZombieShooter
         [Header("[Look At 사용 할지 말지 결정]")]
         public bool bLookAt = false;
         [Header("[Look At 사용시 사용할 타겟]")]
-        public GameObject LookAtTarget;
+        public Transform LookAtTarget;
         [Header("[Look At 타겟과 사이 타겟]")]
         public GameObject Between;
         [Header("[[0-1]Look At 타겟과 사이 타겟 간격 설정]")]
@@ -52,6 +53,7 @@ namespace WoosanStudio.ZombieShooter
 
         private void Awake()
         {
+            //Instance = this;
             //메모리 절약용 렌더 캐슁
             //skinnedMeshRenderer = player.GetComponentInChildren<SkinnedMeshRenderer>();
         }
@@ -59,7 +61,9 @@ namespace WoosanStudio.ZombieShooter
         void BetweenTargetAndPlayer()
         {
             //Vector3 pos = ((LookAtTarget.transform.position + player.transform.position) * 0.5f);
-            Vector3 pos = Vector3.Lerp(LookAtTarget.transform.position, player.transform.position, margin);
+            if (LookAtTarget == null) return;
+
+            Vector3 pos = Vector3.Lerp(LookAtTarget.position, player.transform.position, margin);
             Between.transform.position = pos;
         }
 

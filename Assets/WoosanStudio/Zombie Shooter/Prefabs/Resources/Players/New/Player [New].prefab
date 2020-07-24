@@ -2405,7 +2405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d493964151e6e4c45b96fb03c489a103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 16
+  power: 8
   camera: {fileID: 0}
 --- !u!114 &1836758714628244881
 MonoBehaviour:
@@ -2655,6 +2655,7 @@ MonoBehaviour:
   WeaponIndex: 3
   WeaponFactory: {fileID: 0}
   LaserPointerFactory: {fileID: 0}
+  MuzzleFlashFactory: {fileID: 0}
   WeaponAnchor: {fileID: 1836758713930583949}
   FireController: {fileID: 1006808122}
 --- !u!114 &2314736967032967840

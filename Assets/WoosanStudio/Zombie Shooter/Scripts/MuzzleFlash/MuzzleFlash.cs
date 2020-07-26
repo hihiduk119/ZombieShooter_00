@@ -16,13 +16,18 @@ namespace WoosanStudio.ZombieShooter
 
         //껏다 켯다 하기 위한 코루티
         private Coroutine blinkCoroutine;
-        private WaitForEndOfFrame mWFEF = new WaitForEndOfFrame();
+        //private WaitForEndOfFrame mWFEF = new WaitForEndOfFrame();
+
+        //*실제 사격되는 발사체보다 빠르면 Blink가 정지한듯 보일수 있다.주의 필요.
+        private WaitForSeconds mWFS = new WaitForSeconds(0.05f);
         //자동 할당 (Auto->Awake())
         private Projector projector;
 
         private void Awake()
         {
             projector = GetComponent<Projector>();
+            //생성시 디스에이블
+            projector.enabled = false;
         }
 
         /// <summary>
@@ -42,14 +47,13 @@ namespace WoosanStudio.ZombieShooter
         public void Active()
         {
             if (blinkCoroutine != null)
-            {
+            {                
                 //코루틴 정지
                 StopCoroutine(blinkCoroutine);
-            } else
-            {
-                //코루틴 시작
-                blinkCoroutine = StartCoroutine(BlinkCoroutine());
             }
+
+            //코루틴 시작
+            blinkCoroutine = StartCoroutine(BlinkCoroutine());
         }
 
         /// <summary>
@@ -72,12 +76,14 @@ namespace WoosanStudio.ZombieShooter
         /// <returns></returns>
         IEnumerator BlinkCoroutine()
         {
+            //Debug.Log("Blink A");
             //프로젝터 인에이블
             projector.enabled = true;
             //한 프레임 대기
-            yield return mWFEF;
+            yield return mWFS;
             //프로젝터 디스에이블
             projector.enabled = false;
+            //Debug.Log("Blink B");
         }
 
         //======================== [IMuzzleFlare Implement] ========================

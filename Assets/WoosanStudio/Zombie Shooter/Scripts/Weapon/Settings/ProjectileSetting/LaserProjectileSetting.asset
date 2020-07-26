@@ -20,9 +20,11 @@ MonoBehaviour:
   min: 1700
   max: 1700
   rapidFire: 1
-  rapidFireCooldown: 0.2
+  rapidFireCooldown: 0.1
   shotgunBehavior: 0
   shotgunPellets: 4
   shellPrefab: {fileID: 1467181274829480, guid: 41e86fd3ee46b76448791422f9949474,
     type: 3}
+  hasMuzzleFlare: 1
   hasShells: 0
+  playerShoted: 1

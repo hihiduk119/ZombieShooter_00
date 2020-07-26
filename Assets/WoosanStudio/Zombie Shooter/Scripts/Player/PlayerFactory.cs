@@ -123,6 +123,7 @@ namespace WoosanStudio.ZombieShooter
 
 
             //그림자 사용여부에 따라 그림자 활성화
+            //*사용 안하는거 같은데 제거할지 말지 결정 해야함.
             if (playerConfig.useShadow)
             {
                 GameObject shadowProjector = Instantiate(playerConfig.ShadowProjector);

@@ -130,6 +130,9 @@ namespace WoosanStudio.ZombieShooter
             {
                 MuzzleFlash muzzleFlash = muzzleFlashProjector.GetComponent<MuzzleFlash>();
 
+                Debug.Log("hellow = " + muzzleFlashProjector.name);
+               
+
                 //발사시 플레어 블링크 등록
                 _iGun.ProjectileLauncher.TriggerEvent.AddListener(((IMuzzleFlare)muzzleFlash).Blink);
             }
@@ -161,8 +164,5 @@ namespace WoosanStudio.ZombieShooter
             }
             return _iWeapon;
         }
-
-        
-
     }
 }

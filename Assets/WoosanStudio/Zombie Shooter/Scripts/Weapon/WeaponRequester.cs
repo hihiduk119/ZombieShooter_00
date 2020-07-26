@@ -29,9 +29,6 @@ namespace WoosanStudio.ZombieShooter
         //IStart,IEnd 를 가지고 있음
         public FireController FireController;
 
-        //ICameraShaker cameraShaker;
-        //IGun gun;
-
         private void Awake()
         {
             //최초 세팅이 안되어 있다면 파인드 오브젝트로 가져옴.
@@ -51,7 +48,8 @@ namespace WoosanStudio.ZombieShooter
             //야매로 넣기
             // * MuzzleFlashFactory에서 생성 및 앵커에 연결하고 초기화까지 함
             WeaponFactory.MakeWeapon((IStart)FireController, (IEnd)FireController, null, null,ref gun, WeaponAnchor, WeaponIndex, false, MuzzleFlashFactory.Make(WeaponAnchor));
-            //레이저 포인터 생성전에 로컬좌표 설정
+            //레이저 포인터 생성전에 로컬좌표 설정 & 엔커 설정
+            LaserPointerFactory.Anchor = WeaponAnchor;
             LaserPointerFactory.InitPosition = WeaponFactory._gunSettings[WeaponIndex].InitLaserPointerPosition;
             LaserPointerFactory.Make();
         }

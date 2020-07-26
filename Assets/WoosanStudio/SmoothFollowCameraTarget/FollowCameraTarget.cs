@@ -159,6 +159,11 @@ namespace WoosanStudio.ZombieShooter
             if (bLookAt) {
                 BetweenTargetAndPlayer();
             }
+            //사용 안할때는 플레이어를 중심으로 따라다니게 함 -> 값자기 사용할 경우 멀리서 호출되어 화면 흔들림 발생.
+            else
+            {
+                Between.transform.position = player.transform.position;
+            }
         }
     }
 }

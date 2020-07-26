@@ -78,7 +78,6 @@ MonoBehaviour:
   laserPointers:
   - {fileID: 3145174515353699979}
   lineRenderer: {fileID: 3145174515598606555}
-  isVisible: 1
   MaxLength: 100
 --- !u!120 &3145174515598606555
 LineRenderer:
@@ -128,8 +127,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.06635094
+        time: 0.002960205
+        value: 0.019369125
         inSlope: 0
         outSlope: 0
         tangentMode: 0

@@ -12,7 +12,7 @@ namespace WoosanStudio.ZombieShooter
         [Header ("[레이저 포인터 프리팹]")]
         public GameObject Prefab;
 
-        [Header("[레이저 포인터 를 생성 시킬 부모]")]
+        [Header("[레이저 포인터 를 생성 시킬 부모 -> 생성 플레이어에 마춰 바꿔주야함")]
         public Transform Anchor;
 
         [Header("[초기화 로컬 position]")]
@@ -26,6 +26,8 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Make()
         {
+            Debug.Log("Anchor name = " + Anchor.name);
+
             GameObject clone = Instantiate(Prefab) as GameObject;
             clone.transform.parent = Anchor;
             clone.transform.localPosition = InitPosition;

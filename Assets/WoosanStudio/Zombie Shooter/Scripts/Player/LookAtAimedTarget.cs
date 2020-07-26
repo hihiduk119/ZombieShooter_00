@@ -28,8 +28,10 @@ namespace WoosanStudio.ZombieShooter
         [Header("[조준하는 최소 거리]")]
         public float AimDistance = 10f;
 
-        
-
+        //이전 릴리즈 상태 저장 -> 타겟 변경시 이전 타겟지점을 잡고 있어서 확확 움직이는 동작을 막기위해 필요.
+        private bool bReleased = true;
+        //Look At 테스트용 토글
+        //private bool bTestLookAtToggle = false;
 
         private void Awake()
         {
@@ -70,12 +72,10 @@ namespace WoosanStudio.ZombieShooter
             LookAtIK.enabled = true;
             //Final IK 를 부드럽게 만듬
             PlayerAimSwaper.enabled = true;
+
+            //*기존에 있던 포지션 때문에 확확 도는 문제 해결용 [미해결]
             //캐릭터와 타겟 사이에 카메라 위치 활성화
-            FollowCameraTarget.bLookAt = true;
-
-
-            //*플레이어 에임 스와퍼와 자연스러운 연결이 필요.
-            //테스트 용으로 작업 필요함.
+            //FollowCameraTarget.bLookAt = true;
         }
 
         /// <summary>
@@ -83,6 +83,10 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Release()
         {
+            //이전에 잡고있엇던 타겟 저장용
+            //*기존에 있던 포지션 때문에 확확 도는 문제 해결용
+            //previousTarget = FindAimTarget.target;
+
             //플레이어 에니메이션 관련 컨트롤
             PlayerMoveActor.aimed = false;
             //Aim IK 컨트롤
@@ -91,8 +95,10 @@ namespace WoosanStudio.ZombieShooter
             LookAtIK.enabled = false;
             //Final IK 를 부드럽게 만듬
             PlayerAimSwaper.enabled = false;
+
+            //*기존에 있던 포지션 때문에 확확 도는 문제 해결용 [미해결]
             //캐릭터와 타겟 사이에 카메라 위치 활성화
-            FollowCameraTarget.bLookAt = false;
+            //FollowCameraTarget.bLookAt = false;
         }
 
         #region [-TestCode]
@@ -109,13 +115,28 @@ namespace WoosanStudio.ZombieShooter
                 //Aim
                 if (AimDistance >= Vector3.Distance(transform.position, PlayerAimSwaper.AimTarget.position))
                 {
+                    
                     Aim();
+
+                    //*기존에 있던 포지션 때문에 확확 도는 문제 해결용 [미해결]
+                    //릴리즈 상태에서 에임상태로 들어 왔다.
+                    if (bReleased)
+                    {
+                        //조준점 타겟위치로 즉시 이동 실행
+                        PlayerAimSwaper.ImmediatelyAiming(FindAimTarget.target);
+                    }
+
+                    //bReleased = false;
                 }
                 else//Release
                 {
+                    //*기존에 있던 포지션 때문에 확확 도는 문제 해결용 [미해결]
+                    bReleased = true;
+
                     Release();
                 }
             }
+            
 
             //플레이어 몬스터 조준
             if (Input.GetKeyDown(KeyCode.O))
@@ -128,6 +149,14 @@ namespace WoosanStudio.ZombieShooter
             {
                 Release();
             }
+
+            //룩엣을 이용하여 화면 움직임 테스트하기 위해 사용
+            //if(Input.GetKeyDown(KeyCode.Q))
+            //{
+            //    bTestLookAtToggle = !bTestLookAtToggle;
+            //    FollowCameraTarget.bLookAt = bTestLookAtToggle;
+            //    Debug.Log("룩엣 타겟 활성상태 = " + bTestLookAtToggle.ToString());
+            //}
         }
         #endregion
     }

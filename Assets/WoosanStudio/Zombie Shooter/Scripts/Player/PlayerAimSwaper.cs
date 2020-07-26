@@ -61,6 +61,21 @@ namespace WoosanStudio.ZombieShooter
             mAimIKTarget.position = Vector3.Lerp(mAimIKTarget.position, target.position, Speed);
         }
 
+        /// <summary>
+        /// 즉시 조준하기
+        /// </summary>
+        /// <param name="target">조준할 타겟</param>
+        public void ImmediatelyAiming(Transform target)
+        {
+            if (mAimIKTarget == null)
+            {
+                mAimIKTarget = mAimIK.solver.target;
+            }
+            if (target == null) return;
+
+            mAimIKTarget.position = target.position;
+        }
+
         private void FixedUpdate() 
         {
             Aiming(FindAimTarget.target);

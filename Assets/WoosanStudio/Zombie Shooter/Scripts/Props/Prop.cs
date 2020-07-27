@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace WoosanStudio.ZombieShooter
 {
+    [RequireComponent(typeof(Animator))]
     public class Prop : MonoBehaviour, IHaveHit
     {
         //cashe

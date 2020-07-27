@@ -2652,7 +2652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f5619d03c2a04a38addac5fd73e093d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponIndex: 2
+  WeaponIndex: 1
   WeaponFactory: {fileID: 0}
   LaserPointerFactory: {fileID: 0}
   MuzzleFlashFactory: {fileID: 0}

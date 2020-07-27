@@ -17,8 +17,12 @@ namespace WoosanStudio.ZombieShooter
         public LaserPointerFactory LaserPointerFactory;
         [Header("[머즐 플래쉬 생성 (Auto-Awake())]")]
         public MuzzleFlashFactory MuzzleFlashFactory;
+        [Header("[사격시 카메라 쉐이킹 (Auto-Awake())]")]
+        public CameraShakeProjectile CameraShakeProjectile;
         [Header("[무기&레이저 포인터를 생성시킬 앵커]")]
         public Transform WeaponAnchor;
+        
+
 
         IStart start;
         IEnd end;
@@ -36,6 +40,7 @@ namespace WoosanStudio.ZombieShooter
             if (WeaponFactory == null) WeaponFactory = GameObject.FindObjectOfType<WeaponFactory>();
             if (LaserPointerFactory == null) LaserPointerFactory = GameObject.FindObjectOfType<LaserPointerFactory>();
             if (MuzzleFlashFactory == null) MuzzleFlashFactory = GameObject.FindObjectOfType<MuzzleFlashFactory>();
+            if (CameraShakeProjectile == null) CameraShakeProjectile = GameObject.FindObjectOfType<CameraShakeProjectile>();
         }
 
         /// <summary>
@@ -47,7 +52,7 @@ namespace WoosanStudio.ZombieShooter
             //WeaponFactory.MakeWeapon(start, end, cameraShaker, reloadActionList,ref gun, WeaponAnchor, 0, false, null);
             //야매로 넣기
             // * MuzzleFlashFactory에서 생성 및 앵커에 연결하고 초기화까지 함
-            WeaponFactory.MakeWeapon((IStart)FireController, (IEnd)FireController, null, null,ref gun, WeaponAnchor, WeaponIndex, false, MuzzleFlashFactory.Make(WeaponAnchor));
+            WeaponFactory.MakeWeapon((IStart)FireController, (IEnd)FireController, (ICameraShaker)CameraShakeProjectile, null,ref gun, WeaponAnchor, WeaponIndex, false, MuzzleFlashFactory.Make(WeaponAnchor));
             //레이저 포인터 생성전에 로컬좌표 설정 & 엔커 설정
             LaserPointerFactory.Anchor = WeaponAnchor;
             LaserPointerFactory.InitPosition = WeaponFactory._gunSettings[WeaponIndex].InitLaserPointerPosition;

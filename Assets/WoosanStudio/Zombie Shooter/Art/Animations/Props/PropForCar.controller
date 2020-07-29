@@ -58,7 +58,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Prop2
+  m_Name: PropForCar
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Pong
@@ -100,7 +100,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9e499982accbe4917b4e24208ca73f50, type: 2}
+  m_Motion: {fileID: 7400000, guid: 2ac561e0b6f144b78bb2159d4db4e8c9, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

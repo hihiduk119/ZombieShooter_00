@@ -122,7 +122,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Load()
         {
-            Debug.Log("Load");
+            Debug.Log("!!!!!!!!!! => Load");
             LoadAllProps();
 
             //카메라 느리게 좌우로 흔듬 시작
@@ -143,7 +143,9 @@ namespace WoosanStudio.ZombieShooter
 
             //딜레이 후에 펠로우캠 실행해야 포커스 이상 발생이 없음.
             //**왜 그런지는 알수 없음. 추후 문재가 발생시 수정 해야함.
-            StartCoroutine(WaitAndDoCoroutine(1f, () => {
+            //*원인 찾은듯 AheadTarget이 타겟 위치로 움직이는 시간이 걸려서 그런듯함.
+            //*AheadTarget을 씬 마무리에 캐릭터 위치로 초기화하는 부분이 필요할듯.
+            StartCoroutine(WaitAndDoCoroutine(0.2f, () => {
                 //조이스틱으로 화면 따라다니는 카메라 활성화
                 CustomCamFollow.enabled = true;
             }));
@@ -240,6 +242,14 @@ namespace WoosanStudio.ZombieShooter
             if (Input.GetKeyDown(KeyCode.F))
             {
                 FirstStage();
+            }
+
+
+            //펠로우 캠 포지셔너만 해당위치로 이동
+            //스테이지 이동시 카메라 이상행동 때문에 
+            if(Input.GetKeyDown(KeyCode.K))
+            {
+                FollowCameraPositioner.Move();
             }
         }
         #endregion

@@ -191,7 +191,7 @@ namespace WoosanStudio.ZombieShooter
             Debug.Log("현재 레벨 = " + CurrentLevel + "    다음 레벨 = " + NextLevel);
 
             //몬스터,플레이어 스폰 위치 스왑
-            MonsterFactory.Level = NextLevel;
+            MonsterFactory.Level = CurrentLevel;
 
             //씨네머신 스왑
             railController.Swap(CurrentLevel, NextLevel);

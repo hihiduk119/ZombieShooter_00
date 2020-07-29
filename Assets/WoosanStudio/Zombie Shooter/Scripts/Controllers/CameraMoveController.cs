@@ -176,11 +176,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void AutoChange()
         {
-            //카메라 락 해제
-            //**해당 부분은 나중에 이벤트 호출로 변경 되어야 함
-            //CM_카메라 활성화. CM 카메라가 활성화되면 카메라 피봇이 강제 조정됨.
-            StageManager.Instance.On();
-
+            // * level up 카운팅을 여기서 하는게 맞는지 확인 필요.
             Debug.Log("CurrentLevel = " + CurrentLevel + "   MaxLevel = " + MaxLevel);
 
             //최대 레벨 초과시 0으로 초기화
@@ -240,6 +236,7 @@ namespace WoosanStudio.ZombieShooter
         #region [-TestCode]
         private void Update()
         {
+            //스테이지 이동을 자동으로 함 -> StageManager가 할일을 하고있음.
             if (Input.GetKeyDown(KeyCode.Alpha0))
             {
                 AutoChange();

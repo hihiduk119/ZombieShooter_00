@@ -91,7 +91,29 @@ namespace WoosanStudio.ZombieShooter
         {
             //플레이어 생성
             Initialize();
-            //카메라 연출 시
+            //카메라 락 해제
+            //**해당 부분은 나중에 이벤트 호출로 변경 되어야 함
+            //CM_카메라 활성화. CM 카메라가 활성화되면 카메라 피봇이 강제 조정됨.
+            //On();
+
+            //자동으로 스테이지 카운팅하면서 스테이지 스왑
+            //CameraMoveController.AutoChange();
+
+            NextStage();
+        }
+
+
+        /// <summary>
+        /// 자동으로 스테이지 이동
+        /// </summary>
+        public void NextStage()
+        {
+            //카메라 락 해제
+            //**해당 부분은 나중에 이벤트 호출로 변경 되어야 함
+            //CM_카메라 활성화. CM 카메라가 활성화되면 카메라 피봇이 강제 조정됨.
+            On();
+
+            //자동으로 스테이지 카운팅하면서 스테이지 스왑
             CameraMoveController.AutoChange();
         }
 
@@ -132,6 +154,8 @@ namespace WoosanStudio.ZombieShooter
             //펠로우 카메라 위치 위치 재조정
             //**펠로우 캠 의 포지션이 끝난후에 CustomCamFollow.cs 초기화가 호출되어야 한다.
             FollowCameraPositioner.Move();
+            //펠로의 캡에 모든 타겟들의 포지션을 초기화 시킴.ㅌ
+            FollowCameraTarget.Reposition();
             //DoNotEnterSign 위치 재조정
             DoNotEnterPositioner.Move();
 
@@ -145,7 +169,7 @@ namespace WoosanStudio.ZombieShooter
             //**왜 그런지는 알수 없음. 추후 문재가 발생시 수정 해야함.
             //*원인 찾은듯 AheadTarget이 타겟 위치로 움직이는 시간이 걸려서 그런듯함.
             //*AheadTarget을 씬 마무리에 캐릭터 위치로 초기화하는 부분이 필요할듯.
-            StartCoroutine(WaitAndDoCoroutine(0.2f, () => {
+            StartCoroutine(WaitAndDoCoroutine(1f, () => {
                 //조이스틱으로 화면 따라다니는 카메라 활성화
                 CustomCamFollow.enabled = true;
             }));
@@ -244,10 +268,16 @@ namespace WoosanStudio.ZombieShooter
                 FirstStage();
             }
 
+            //스테이지 이동을 자동으로 함 -> StageManager가 할일을 하고있음.
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                NextStage();
+            }
+
 
             //펠로우 캠 포지셔너만 해당위치로 이동
             //스테이지 이동시 카메라 이상행동 때문에 
-            if(Input.GetKeyDown(KeyCode.K))
+            if (Input.GetKeyDown(KeyCode.K))
             {
                 FollowCameraPositioner.Move();
             }

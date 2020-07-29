@@ -58,6 +58,18 @@ namespace WoosanStudio.ZombieShooter
             //skinnedMeshRenderer = player.GetComponentInChildren<SkinnedMeshRenderer>();
         }
 
+        /// <summary>
+        /// 모든 타겟들의 로컬 포지션을 초기화 시킴
+        /// </summary>
+        public void Reposition()
+        {
+            LeadTarget.transform.localPosition = Vector3.zero;
+            aheadTarget.transform.localPosition = Vector3.zero;
+            followTarget.transform.localPosition = Vector3.zero;
+            distanceLockCenterTarget.transform.localPosition = Vector3.zero;
+            distanceLockDummyTarget.transform.localPosition = Vector3.zero;
+        }
+
         void BetweenTargetAndPlayer()
         {
             //Vector3 pos = ((LookAtTarget.transform.position + player.transform.position) * 0.5f);

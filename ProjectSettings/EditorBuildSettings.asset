@@ -6,12 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/WoosanStudioUI/UI Dev/Scenes/0.ZombieShooter-Title.unity
+    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/0.ZombieShooter-Title.unity
     guid: 77658e535836b4b57bc91fca873ea0cd
   - enabled: 1
-    path: Assets/WoosanStudioUI/UI Dev/Scenes/1.ZombieShooter-Robby.unity
+    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/1.ZombieShooter-Robby.unity
     guid: 5254705d9c84c4dcbb2f6919a5cb54a6
   - enabled: 1
-    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Chapter-1 Town.unity
+    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/Chapter/Town-A hours after
+      the incident.unity
     guid: d1feb4e21a24e4e3a908c42bb9d986f0
   m_configObjects: {}

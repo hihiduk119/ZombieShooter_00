@@ -36,8 +36,8 @@ namespace WoosanStudio.ZombieShooter
         public void Select()
         {
             //컬러셋 0번으로 변//컬러셋 0번으로 변경
-            Fill.color = FillColorSet.ColorList[0];
-            Outline.color = OutlineColorSet.ColorList[0];
+            Fill.color = FillColorSet.ColorList[1];
+            Outline.color = OutlineColorSet.ColorList[1];
         }
 
         /// <summary>
@@ -46,8 +46,8 @@ namespace WoosanStudio.ZombieShooter
         public void Release()
         {
             //컬러셋 1번으로 변경
-            Fill.color = FillColorSet.ColorList[1];
-            Outline.color = OutlineColorSet.ColorList[1];
+            Fill.color = FillColorSet.ColorList[0];
+            Outline.color = OutlineColorSet.ColorList[0];
         }
 
 

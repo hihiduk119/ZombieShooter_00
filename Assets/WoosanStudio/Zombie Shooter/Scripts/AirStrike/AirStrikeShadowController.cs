@@ -129,14 +129,14 @@ namespace WoosanStudio.ZombieShooter
 
 
         #region [-TestCode]
-        private void Update()
-        {
-            //폭격 연출 호
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                Run();
-            }
-        }
+        //private void Update()
+        //{
+        //    //폭격 연출 호
+        //    if (Input.GetKeyDown(KeyCode.M))
+        //    {
+        //        Run();
+        //    }
+        //}
         #endregion
     }
 }

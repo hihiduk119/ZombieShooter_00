@@ -33,6 +33,15 @@ namespace WoosanStudio.ZombieShooter
         //Look At 테스트용 토글
         //private bool bTestLookAtToggle = false;
 
+        //Aim 사용시 즉시 조준할경우 부드럽게 안되게 즉시 반응하기에 이부분을 부드럽게 만들기 위한 추가 코루틴
+        //Coroutine delayAimCoroutine;
+
+        //이전 조준 타겟
+        //Transform previousTarget;
+
+        [Header("[지정 타겟이 없을때 [AimIKTarget] 초기화 포지션]")]
+        public Transform AimIKTargetAnchor;
+
         private void Awake()
         {
             //Auto
@@ -66,6 +75,12 @@ namespace WoosanStudio.ZombieShooter
         {
             //플레이어 에니메이션 관련 컨트롤
             PlayerMoveActor.aimed = true;
+
+            //Aim루틴이 남았으면 즉시 정지
+            //if (delayAimCoroutine != null) StopCoroutine(delayAimCoroutine);
+            //조준후 0.5초 후 AimIK동작
+            //delayAimCoroutine = StartCoroutine(DelayAimCoroutine(0.5f));
+
             //Aim IK 컨트롤
             AimIK.enabled = true;
             //LookAt IK 컨트롤
@@ -73,10 +88,28 @@ namespace WoosanStudio.ZombieShooter
             //Final IK 를 부드럽게 만듬
             PlayerAimSwaper.enabled = true;
 
+
             //*기존에 있던 포지션 때문에 확확 도는 문제 해결용 [미해결]
             //캐릭터와 타겟 사이에 카메라 위치 활성화
             //FollowCameraTarget.bLookAt = true;
         }
+
+        /// <summary>
+        /// Aim 사용시 조준 부드럽게 하기 위해 사용
+        /// 대기 시간 후에 AimIK 동작
+        /// </summary>
+        /// <param name="delay">대기 시간</param>
+        /// <returns></returns>
+        //IEnumerator DelayAimCoroutine(float delay)
+        //{
+        //    yield return new WaitForSeconds(delay);
+        //    //Aim IK 컨트롤
+        //    AimIK.enabled = true;
+        //    //LookAt IK 컨트롤
+        //    LookAtIK.enabled = true;
+        //    //Final IK 를 부드럽게 만듬
+        //    PlayerAimSwaper.enabled = true;
+        //}
 
         /// <summary>
         /// 조준 해제
@@ -86,6 +119,10 @@ namespace WoosanStudio.ZombieShooter
             //이전에 잡고있엇던 타겟 저장용
             //*기존에 있던 포지션 때문에 확확 도는 문제 해결용
             //previousTarget = FindAimTarget.target;
+
+            //Aim루틴이 남았으면 즉시 정지
+            //if (delayAimCoroutine != null) StopCoroutine(delayAimCoroutine);
+
 
             //플레이어 에니메이션 관련 컨트롤
             PlayerMoveActor.aimed = false;
@@ -105,38 +142,51 @@ namespace WoosanStudio.ZombieShooter
         void Update()
         {
             //가장 가까운 몬스터 찾아서 에임 스와퍼에 넣어서 조준 할수 있게 만듬.
-            PlayerAimSwaper.AimTarget = FindAimTarget.target;
-            //에임시 카메라를 캐릭터와 타겟 중간에 위치 시키기 위해 사용.
-            FollowCameraTarget.LookAtTarget = FindAimTarget.target;
+            //[Aim IK Target]을 몬스터에 마
+            //PlayerAimSwaper.AimTarget = FindAimTarget.target;
 
+            //에임시 카메라를 캐릭터와 타겟 중간에 위치 시키기 위해 사용.
+            //FollowCameraTarget.LookAtTarget = FindAimTarget.target;
+
+            //타겟이 존제 할때만 실행
             if (FindAimTarget.target != null)
             {
+                //이전 타겟과 지금 타겟이 같은지 확인.
+                //*기존에 있던 포지션 때문에 확확 도는 문제 해결용
+                //if (previousTarget != null)
+                //{
+                //    if (!previousTarget.Equals(FindAimTarget.target))
+                //    {
+                //        //Debug.Log("새로운 타겟으로 벼뀠음!!!!!");
+                //        //PlayerAimSwaper.ImmediatelyAiming(FindAimTarget.target);
+                //    }
+                //} else
+                //{
+                //    Debug.Log("타겟이 존제하지 안습니다.");
+                //}
+
                 //나와 조준 타겟간의 거리차에 의해서
                 //Aim
-                if (AimDistance >= Vector3.Distance(transform.position, PlayerAimSwaper.AimTarget.position))
+                if (AimDistance >= Vector3.Distance(transform.position, FindAimTarget.target.position))
                 {
-                    
-                    Aim();
-
-                    //*기존에 있던 포지션 때문에 확확 도는 문제 해결용 [미해결]
-                    //릴리즈 상태에서 에임상태로 들어 왔다.
-                    if (bReleased)
-                    {
-                        //조준점 타겟위치로 즉시 이동 실행
-                        PlayerAimSwaper.ImmediatelyAiming(FindAimTarget.target);
-                    }
-
-                    //bReleased = false;
+                    Aim();    
                 }
                 else//Release
                 {
-                    //*기존에 있던 포지션 때문에 확확 도는 문제 해결용 [미해결]
-                    bReleased = true;
-
                     Release();
+
+                    //타겟이 없을때 AimIKTarget 초기화 포지션으로 이동시킴
+                    PlayerAimSwaper.ImmediatelyAiming(AimIKTargetAnchor);
                 }
+
+                //이전 타겟 저장
+                //previousTarget = FindAimTarget.target;
+            } else
+            {
+                //타겟이 없을때 AimIKTarget 초기화 포지션으로 이동시킴
+                PlayerAimSwaper.ImmediatelyAiming(AimIKTargetAnchor);
             }
-            
+
 
             //플레이어 몬스터 조준
             if (Input.GetKeyDown(KeyCode.O))

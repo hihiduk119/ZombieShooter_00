@@ -9,6 +9,8 @@ namespace WoosanStudio.ZombieShooter
     /// <summary>
     /// Final Ik 에서 에임 타겟을 부드럽게 다른 타겟으로 조준 하는 스크립트
     /// 조준변경시 AimTarget 만 변경하면 됨
+    /// * Aim IK Target를 실제 조종함. => 리팩토링할 필요 있음.
+    /// 
     /// </summary>
     public class PlayerAimSwaper : MonoBehaviour
     {

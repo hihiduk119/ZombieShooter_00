@@ -161,7 +161,7 @@ namespace WoosanStudio.ZombieShooter
         {
             aimed = true;
 
-            LookStart?.Invoke();
+            LookStart?.Invoke(); //null 이 아리면 Invoke();
         }
 
         /// <summary>

@@ -2746,7 +2746,6 @@ GameObject:
   - component: {fileID: 3390923243920136078}
   - component: {fileID: 2748544861363819161}
   - component: {fileID: 8562256346562167419}
-  - component: {fileID: 5503216437859392825}
   m_Layer: 8
   m_Name: Aim IK Target Anchor
   m_TagString: Untagged
@@ -2783,7 +2782,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2809910139438166224}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2814,19 +2813,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &5503216437859392825
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2809910139438166224}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2998971302469008760
 GameObject:
   m_ObjectHideFlags: 0

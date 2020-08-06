@@ -55,10 +55,9 @@ namespace WoosanStudio.ZombieShooter
 
         //[Object Pool]
         //오브젝트 풀 관련 캐슁
-        IObjectPool _shellPool;
-
+        //IObjectPool _shellPool;
         //오브젝트 풀에서 오브젝트 생성 기본 값
-        private int poolMax = 20;
+        //private int poolMax = 20;
 
 
         void Start()

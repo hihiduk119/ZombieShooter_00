@@ -14,6 +14,7 @@ namespace WoosanStudio.ZombieShooter
     public class StartCounter : MonoBehaviour , IStart , IEnd, ISound
     {
         //카운팅 시작과 끝을 알리는 이벤트
+        
         public UnityEvent StartEvent => startEvent;
         public UnityEvent EndEvent => endEvent;
         public UnityEvent PlayEvent => playEvent;
@@ -25,8 +26,11 @@ namespace WoosanStudio.ZombieShooter
         private CanvasGroup canvasGroup;
         private Image image;
 
+        [SerializeField]
         private UnityEvent startEvent = new UnityEvent();
+        [SerializeField]
         private UnityEvent endEvent = new UnityEvent();
+        [SerializeField]
         private UnityEvent playEvent = new UnityEvent();
 
         private int count = 0;

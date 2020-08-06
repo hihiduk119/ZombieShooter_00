@@ -45,10 +45,16 @@ namespace WoosanStudio.ZombieShooter
         public Positioner Positioner;
         //모델 변경
         public Model Model;
+        //실제 조준 및 조준 해제 컨트롤 함
+        public LookAtAimedTarget LookAtAimedTarget;
+
+        //LookAtAimedTarget 에서 가져온 Aim,Release 이벤트 인터페이스
+        private IAim aim;
+
 
         void Awake()
         {
-            //생성과 동시에 자동 셋업ㅂ
+            //생성과 동시에 자동 셋업
             Move = GetComponent<WoosanStudio.Player.Move>();
             Animator = GetComponent<Animator>();
             MyThirdPersonCharacter = GetComponent<MyThirdPersonCharacter>();
@@ -62,6 +68,20 @@ namespace WoosanStudio.ZombieShooter
             FireController = GetComponent<FireController>();
             Positioner = GetComponent<Positioner>();
             Model = GetComponentInChildren<Model>();
+            LookAtAimedTarget = GetComponent<LookAtAimedTarget>();
+
+            //조준 및 조준 해제 이벤트 연결
+            aim = (IAim)LookAtAimedTarget;
+            //조준 이벤트 연결
+            aim.AimEvent.AddListener(() => {
+                //사격 컨트롤러 시작 이벤트 호출
+                FireController.StartEvent.Invoke();
+            });
+            //조준 해제 이벤트 연결
+            aim.ReleaseEvent.AddListener(() => {
+                //사격 컨트롤러 중지 이벤트 호출
+                FireController.EndEvent.Invoke();
+            });   
         }
 
         /// <summary>
@@ -76,7 +96,7 @@ namespace WoosanStudio.ZombieShooter
             HealthBar.HealthbarPrefab.gameObject.SetActive(true);
             FireController.enabled = true;
 
-            Debug.Log("==========[Active]==========");
+            Debug.Log("==[" + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name + "]==");
         }
 
         /// <summary>
@@ -92,40 +112,53 @@ namespace WoosanStudio.ZombieShooter
             AimIK.enabled = false;
             LookAtIK.enabled = false;
             FireController.enabled = false;
-            Debug.Log("==========[Deactive]==========");
+
+            Debug.Log("==["+this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name+ "]==");
         }
 
         /// <summary>
         /// 타겟 조준
         /// </summary>
-        public void Aiming()
-        {
-            AimIK.enabled = true;
-            LookAtIK.enabled = true;
-            PlayerAimSwaper.enabled = true;
-        }
+        //public void Aiming()
+        //{
+        //    AimIK.enabled = true;
+        //    LookAtIK.enabled = true;
+        //    PlayerAimSwaper.enabled = true;
+
+        //    Debug.Log("Player.Aiming()");
+        //}
 
         /// <summary>
         /// 조준 해제
         /// </summary>
-        public void Release()
-        {
-            AimIK.enabled = false;
-            LookAtIK.enabled = false;
-            PlayerAimSwaper.enabled = false;
-        }
+        //public void Release()
+        //{
+        //    AimIK.enabled = false;
+        //    LookAtIK.enabled = false;
+        //    PlayerAimSwaper.enabled = false;
+
+        //    Debug.Log("Player.Release()");
+        //}
 
 
         /// <summary>
-        /// 사격
+        /// 사격 
         /// </summary>
-        public void Fire()
-        {
-            FireController.StartEvent.Invoke();
-        }
+        //public void Fire()
+        //{
+        //    FireController.StartEvent.Invoke();
+        //}
 
         /// <summary>
-        /// 재장ㅖ
+        /// 사격 중지
+        /// </summary>
+        //public void Stop()
+        //{
+        //    FireController.EndEvent.Invoke();
+        //}
+
+        /// <summary>
+        /// 재장전
         /// </summary>
         public void Reload()
         {

@@ -181,18 +181,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactPrefab: {fileID: 1879272669879180, guid: 7bef351ddc33ae044b671a7664396a20,
     type: 3}
-  explosionPrefab: {fileID: 0}
-  thrust: 0
   thisRigidbody: {fileID: 54453457801900860}
-  particleKillGroup: {fileID: 0}
-  LookRotation: 1
-  Missile: 0
-  missileTarget: {fileID: 0}
-  projectileSpeed: 0
-  projectileSpeedMultiplier: 0
-  ignorePrevRotation: 0
-  explodeOnTimer: 0
-  explosionTimer: 0
+  Force: {x: 0, y: 0, z: 0}
+  playerShoted: 1
 --- !u!199 &199822515480979474
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4923,9 +4914,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1238843893459588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a1fce775f0f5431aa35f9eef42d306a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a895231490da6545890b1e1794f8704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathtimer: 1
 --- !u!1 &1540588367011230
 GameObject:
   m_ObjectHideFlags: 0

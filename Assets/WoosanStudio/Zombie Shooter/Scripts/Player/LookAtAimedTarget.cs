@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using RootMotion.FinalIK;
+using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 타겟을 조준 및 해제 시킴.
     /// </summary>
-    public class LookAtAimedTarget : MonoBehaviour
+    public class LookAtAimedTarget : MonoBehaviour , IAim
     {
         [Header("[실제 AimIK에서 조준할 타겟이름]")]
         public string TargetName = "Aim IK Target";
@@ -30,17 +31,29 @@ namespace WoosanStudio.ZombieShooter
 
         //이전 릴리즈 상태 저장 -> 타겟 변경시 이전 타겟지점을 잡고 있어서 확확 움직이는 동작을 막기위해 필요.
         private bool bReleased = true;
-        //Look At 테스트용 토글
-        //private bool bTestLookAtToggle = false;
-
-        //Aim 사용시 즉시 조준할경우 부드럽게 안되게 즉시 반응하기에 이부분을 부드럽게 만들기 위한 추가 코루틴
-        //Coroutine delayAimCoroutine;
-
-        //이전 조준 타겟
-        //Transform previousTarget;
 
         [Header("[지정 타겟이 없을때 [AimIKTarget] 초기화 포지션]")]
         public Transform AimIKTargetAnchor;
+
+        //조준 상태 이넘
+        public enum State {
+            Aim,
+            Release,
+        }
+        //현재 상태 토글
+        public State CurrentState = State.Release;
+        //이전 프레임 상태 토글
+        private State PriviousState = State.Release;
+
+        //IAim 구현부 -> 조준 이벤트 발생
+        public UnityEvent AimEvent => aimEvent;
+        //IAim 구현부 -> 조준해제 이벤트 발생
+        public UnityEvent ReleaseEvent => releaseEvent;
+
+        [SerializeField]
+        private UnityEvent aimEvent = new UnityEvent();
+        [SerializeField]
+        private UnityEvent releaseEvent = new UnityEvent();
 
         private void Awake()
         {
@@ -76,11 +89,6 @@ namespace WoosanStudio.ZombieShooter
             //플레이어 에니메이션 관련 컨트롤
             PlayerMoveActor.aimed = true;
 
-            //Aim루틴이 남았으면 즉시 정지
-            //if (delayAimCoroutine != null) StopCoroutine(delayAimCoroutine);
-            //조준후 0.5초 후 AimIK동작
-            //delayAimCoroutine = StartCoroutine(DelayAimCoroutine(0.5f));
-
             //Aim IK 컨트롤
             AimIK.enabled = true;
             //LookAt IK 컨트롤
@@ -88,42 +96,20 @@ namespace WoosanStudio.ZombieShooter
             //Final IK 를 부드럽게 만듬
             PlayerAimSwaper.enabled = true;
 
-
-            //*기존에 있던 포지션 때문에 확확 도는 문제 해결용 [미해결]
-            //캐릭터와 타겟 사이에 카메라 위치 활성화
-            //FollowCameraTarget.bLookAt = true;
+            //현재 상태 aim으로 변경
+            CurrentState = State.Aim;
+            //이전 상태가 aim가 아니라면 이벤트 발생
+            if (PriviousState != State.Aim) { AimEvent.Invoke(); Debug.Log("조준 이벤트 발생"); }
+            //현재 상태와 이전 상태 동일하게 마춤
+            PriviousState = CurrentState;
+            //Debug.Log("LookAtAimedTarget.Aim()");
         }
-
-        /// <summary>
-        /// Aim 사용시 조준 부드럽게 하기 위해 사용
-        /// 대기 시간 후에 AimIK 동작
-        /// </summary>
-        /// <param name="delay">대기 시간</param>
-        /// <returns></returns>
-        //IEnumerator DelayAimCoroutine(float delay)
-        //{
-        //    yield return new WaitForSeconds(delay);
-        //    //Aim IK 컨트롤
-        //    AimIK.enabled = true;
-        //    //LookAt IK 컨트롤
-        //    LookAtIK.enabled = true;
-        //    //Final IK 를 부드럽게 만듬
-        //    PlayerAimSwaper.enabled = true;
-        //}
 
         /// <summary>
         /// 조준 해제
         /// </summary>
         public void Release()
         {
-            //이전에 잡고있엇던 타겟 저장용
-            //*기존에 있던 포지션 때문에 확확 도는 문제 해결용
-            //previousTarget = FindAimTarget.target;
-
-            //Aim루틴이 남았으면 즉시 정지
-            //if (delayAimCoroutine != null) StopCoroutine(delayAimCoroutine);
-
-
             //플레이어 에니메이션 관련 컨트롤
             PlayerMoveActor.aimed = false;
             //Aim IK 컨트롤
@@ -133,9 +119,13 @@ namespace WoosanStudio.ZombieShooter
             //Final IK 를 부드럽게 만듬
             PlayerAimSwaper.enabled = false;
 
-            //*기존에 있던 포지션 때문에 확확 도는 문제 해결용 [미해결]
-            //캐릭터와 타겟 사이에 카메라 위치 활성화
-            //FollowCameraTarget.bLookAt = false;
+            //현재 상태 release으로 변경
+            CurrentState = State.Release;
+            //이전 상태가 Release가 아니라면 이벤트 발생
+            if(PriviousState != State.Release) { ReleaseEvent.Invoke(); Debug.Log("조준해제 이벤트 발생"); }
+            //현재 상태와 이전 상태 동일하게 마춤
+            PriviousState = CurrentState;
+            //Debug.Log("LookAtAimedTarget.Release()");
         }
 
         #region [-TestCode]

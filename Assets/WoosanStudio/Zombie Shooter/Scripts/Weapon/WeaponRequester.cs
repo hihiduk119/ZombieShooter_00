@@ -21,8 +21,6 @@ namespace WoosanStudio.ZombieShooter
         public CameraShakeProjectile CameraShakeProjectile;
         [Header("[무기&레이저 포인터를 생성시킬 앵커]")]
         public Transform WeaponAnchor;
-        
-
 
         IStart start;
         IEnd end;

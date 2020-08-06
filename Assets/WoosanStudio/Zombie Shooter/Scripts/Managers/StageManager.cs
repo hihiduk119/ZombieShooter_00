@@ -37,6 +37,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[플레이어 팩토리 [Auto-Awake()]]")]
         public PlayerFactory PlayerFactory;
 
+        [Header("[몬스터 팩토리 [Auto-Awake()]]")]
+        public MonsterFactory MonsterFactory;
+
         [Header("[플레이어 포지셔너]")]
         //이벤트 호출 방식으로 변경 하려 했으나 호출 우선 순위 문제로 변경 보류
         //플레이어 포지션 변경
@@ -54,17 +57,22 @@ namespace WoosanStudio.ZombieShooter
         [Header("[AimIK Target 포지셔너]")]
         public Positioner AimIKTargetPositioner;
 
+        [Header("[UI 카운터 [Auto-Awake()]]")]
+        public StartCounter StartCounter;
+
+        [Header("[Fog 컨트롤러 [Auto-Awake()]]")]
+        public FogController FogController;
+
         //카메라를 움직이는 컨트롤
         private CameraMoveController CameraMoveController;
-
-        //플레이어 생성
-        private PlayerFactory playerFactory;
 
         //플레이어 팩토리에서 생성된 플레이어
         private Player Player;
 
-        //몬스터 생성
-        private MonsterFactory monsterFactory;
+        //플레이어가 가지고 있는 무기 요청 스크립트
+        private WeaponRequester WeaponRequester;
+
+        
         //생성된 플레이어 활성 비활성 제어
         //private PlayersController playersController;
 
@@ -75,13 +83,17 @@ namespace WoosanStudio.ZombieShooter
             Instance = this;
 
             //자동으로 가져오기
-            playerFactory = GameObject.FindObjectOfType<PlayerFactory>();
-            monsterFactory = GameObject.FindObjectOfType<MonsterFactory>();
+            MonsterFactory = GameObject.FindObjectOfType<MonsterFactory>();
             CameraMoveController = GameObject.FindObjectOfType<CameraMoveController>();
             //playersController = GameObject.FindObjectOfType<PlayersController>();
             //플레이어 생성 담당
             PlayerFactory = GameObject.FindObjectOfType<PlayerFactory>();
             FollowCameraTarget = GameObject.FindObjectOfType<FollowCameraTarget>();
+
+            //UI 카운터
+            StartCounter = GameObject.FindObjectOfType<StartCounter>();
+            //안개 컨트롤
+            FogController = GameObject.FindObjectOfType<FogController>();
         }
 
         /// <summary>
@@ -125,6 +137,8 @@ namespace WoosanStudio.ZombieShooter
         {
             //플레이어 생성 - 생성된 플레이어 저장
             Player = PlayerFactory.Initialize().GetComponent<Player>();
+            //플레이어가 가지고 있는 무기 요청 가지고 옴
+            WeaponRequester = Player.GetComponent<WeaponRequester>();
         }
 
         /// <summary>
@@ -173,10 +187,28 @@ namespace WoosanStudio.ZombieShooter
                 //조이스틱으로 화면 따라다니는 카메라 활성화
                 CustomCamFollow.enabled = true;
             }));
+
+            #region [TestCode] -테스트 폰에 올리기 위한 강제 실행 코드
+            //무기 만들어서 앵커에 달
+            WeaponRequester.Anchor();
+            //카운팅 시작
+            StartCounter.Count();
+            #endregion
+        }
+
+        /// <summary>
+        /// 카운팅 까지 다 끝나고 UI카운터의 끝에서 호출.
+        /// *실질적인 스테이지의 시작
+        /// </summary>
+        public void CountingEnd()
+        {
+            //해당 레벨에 맞는 몬스터 생
+            MonsterFactory.MakeMonsterByStageLevel();
         }
 
         /// <summary>
         /// 해당 레벨에서 로드할수 있는 모든 것을 로드 한다.
+        /// *지금 왜 사용안하는지 모름
         /// </summary>
         private void LoadAllProps()
         {
@@ -220,6 +252,9 @@ namespace WoosanStudio.ZombieShooter
 
             //두 낫 엔터 가이드 비활성화
             DoNotEnterPositioner.gameObject.SetActive(false);
+
+            //안개 연하게
+            FogController.DencityChange(1);
         }
 
         /// <summary>
@@ -239,6 +274,8 @@ namespace WoosanStudio.ZombieShooter
             //FollowCamTarget 비활성화
             FollowCameraTarget.enabled = true;
 
+            //안개 진하게
+            FogController.DencityChange(0);
         }
 
         /// <summary>

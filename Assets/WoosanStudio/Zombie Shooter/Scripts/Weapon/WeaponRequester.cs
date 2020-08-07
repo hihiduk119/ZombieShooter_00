@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events;
+
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
@@ -50,7 +52,11 @@ namespace WoosanStudio.ZombieShooter
             //WeaponFactory.MakeWeapon(start, end, cameraShaker, reloadActionList,ref gun, WeaponAnchor, 0, false, null);
             //야매로 넣기
             // * MuzzleFlashFactory에서 생성 및 앵커에 연결하고 초기화까지 함
-            WeaponFactory.MakeWeapon((IStart)FireController, (IEnd)FireController, (ICameraShaker)CameraShakeProjectile, null,ref gun, WeaponAnchor, WeaponIndex, false, MuzzleFlashFactory.Make(WeaponAnchor));
+
+            //재장전시 작동할 액션 리스트
+            List<IReloadAction> reloadActionList = new List<IReloadAction>();
+
+            WeaponFactory.MakeWeapon((IStart)FireController, (IEnd)FireController, (ICameraShaker)CameraShakeProjectile, reloadActionList, ref gun, WeaponAnchor, WeaponIndex, false, MuzzleFlashFactory.Make(WeaponAnchor));
             //레이저 포인터 생성전에 로컬좌표 설정 & 엔커 설정
             LaserPointerFactory.Anchor = WeaponAnchor;
             LaserPointerFactory.InitPosition = WeaponFactory._gunSettings[WeaponIndex].InitLaserPointerPosition;

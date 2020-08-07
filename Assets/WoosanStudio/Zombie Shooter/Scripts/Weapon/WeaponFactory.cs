@@ -143,7 +143,7 @@ namespace WoosanStudio.ZombieShooter
                 //총 세팅값 설정
                 _iGun.GunSettings = _gunSettings[type];
 
-                //총의 발사 탄환 생성
+                //총의 발사 탄환 생성ㄴ
                 _iGun.ProjectileLauncher.projectileSetting = _iGun.GunSettings.ProjectileSettings;
 
                 //에벤트 없을을 통지함.

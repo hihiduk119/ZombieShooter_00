@@ -13,8 +13,8 @@ namespace WoosanStudio.ZombieShooter
     /// <summary>
     /// 플레이어가 가진 모든 컴퍼턴트를 다 가지고 컨트롤함
     /// 1. 활성 비활성
-    /// 2. 사격 통제 & 재장전
-    /// 3. 조준 비조준
+    /// 2. 조준 됐으니 사격 통제 장치에 사격 할수있으면 하라 통지
+    /// 3. 비 조준 상태니 사격 하지말라 명령
     /// </summary>
     public class Player : MonoBehaviour , IHaveHit
     {
@@ -41,6 +41,8 @@ namespace WoosanStudio.ZombieShooter
         public PlayerAimSwaper PlayerAimSwaper;
         //실제 사격 컨트롤
         public FireController FireController;
+        //교체 하려는 사격 컨트롤러
+        public AutoFireControlInputBasedOnGunSetting AutoFireControlInputBasedOnGunSetting;
         //포지션 재배체
         public Positioner Positioner;
         //모델 변경
@@ -66,6 +68,7 @@ namespace WoosanStudio.ZombieShooter
             LookAtIK = GetComponent<LookAtIK>();
             PlayerAimSwaper = GetComponent<PlayerAimSwaper>();
             FireController = GetComponent<FireController>();
+            AutoFireControlInputBasedOnGunSetting = GetComponent<AutoFireControlInputBasedOnGunSetting>();
             Positioner = GetComponent<Positioner>();
             Model = GetComponentInChildren<Model>();
             LookAtAimedTarget = GetComponent<LookAtAimedTarget>();
@@ -76,12 +79,16 @@ namespace WoosanStudio.ZombieShooter
             //조준 이벤트 연결
             aim.AimEvent.AddListener(() => {
                 //사격 컨트롤러 시작 이벤트 호출
-                FireController.StartEvent.Invoke();
+                //FireController.StartEvent.Invoke();
+                AutoFireControlInputBasedOnGunSetting.AimEvent.Invoke();
+                //AutoFireControlInputBasedOnGunSetting.FireAble = true;
             });
             //조준 해제 이벤트 연결
             aim.ReleaseEvent.AddListener(() => {
                 //사격 컨트롤러 중지 이벤트 호출
-                FireController.EndEvent.Invoke();
+                //FireController.EndEvent.Invoke();
+                AutoFireControlInputBasedOnGunSetting.ReleaseEvent.Invoke();
+                //AutoFireControlInputBasedOnGunSetting.FireAble = false;
             });   
         }
 

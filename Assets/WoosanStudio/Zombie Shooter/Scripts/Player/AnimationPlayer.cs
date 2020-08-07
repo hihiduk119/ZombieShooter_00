@@ -83,30 +83,30 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 해당 에니메이션 실행
         /// </summary>
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                Play(AnimationList[TestIndex]);
+        //void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        Play(AnimationList[TestIndex]);
 
-                TestIndex++;
-                if(TestIndex >= AnimationList.Count)
-                {
-                    TestIndex = 0;
-                }
-            }
+        //        TestIndex++;
+        //        if(TestIndex >= AnimationList.Count)
+        //        {
+        //            TestIndex = 0;
+        //        }
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                Play(AnimationList[TestIndex]);
+        //    if (Input.GetKeyDown(KeyCode.S))
+        //    {
+        //        Play(AnimationList[TestIndex]);
 
-                TestIndex--;
-                if(TestIndex < 0)
-                {
-                    TestIndex = AnimationList.Count - 1;
-                }
-            }
-        }
+        //        TestIndex--;
+        //        if(TestIndex < 0)
+        //        {
+        //            TestIndex = AnimationList.Count - 1;
+        //        }
+        //    }
+        //}
         #endregion
     }
 }

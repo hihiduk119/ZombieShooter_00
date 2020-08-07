@@ -16,25 +16,25 @@ namespace WoosanStudio.ZombieShooter.Test
             mRectTransform = GetComponent<RectTransform>();
         }
 
-        private void Update()
-        {
-            if(Input.GetKeyDown(KeyCode.A))
-            {
-                value = mRectTransform.anchoredPosition.x;
-                value += 100;
+        //private void Update()
+        //{
+        //    if(Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        value = mRectTransform.anchoredPosition.x;
+        //        value += 100;
 
-                mRectTransform.anchoredPosition = new Vector2(value, mRectTransform.anchoredPosition.y);
-                Debug.Log(value);
-            }
+        //        mRectTransform.anchoredPosition = new Vector2(value, mRectTransform.anchoredPosition.y);
+        //        Debug.Log(value);
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                value = mRectTransform.anchoredPosition.x;
-                value -= 100; 
+        //    if (Input.GetKeyDown(KeyCode.S))
+        //    {
+        //        value = mRectTransform.anchoredPosition.x;
+        //        value -= 100; 
 
-                mRectTransform.anchoredPosition = new Vector2(value, mRectTransform.anchoredPosition.y);
-                Debug.Log(value);
-            }
-        }
+        //        mRectTransform.anchoredPosition = new Vector2(value, mRectTransform.anchoredPosition.y);
+        //        Debug.Log(value);
+        //    }
+        //}
     }
 }

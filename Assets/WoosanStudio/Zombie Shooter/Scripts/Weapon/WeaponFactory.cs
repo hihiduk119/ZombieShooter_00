@@ -153,13 +153,13 @@ namespace WoosanStudio.ZombieShooter
                 //무기 공격시작, 공격 끝 핸들러 연결부분.
                 if (start != null && end != null) _iGun.SetInputEventHandler(start, end);
 
-                //리로드 시작시 액션 연결부분
+                //탄약 다씀 이벤트 발생시 리로드 액션과 연결
                 //*연결해 놓으면 리로드 시작시 알아서 실행
-                if(startReloadActionList != null) startReloadActionList.ForEach(value => _iGun.StartReloadEvent.AddListener(value));
+                if(startReloadActionList != null) startReloadActionList.ForEach(value => _iGun.EmptyEvent.AddListener(value));
 
                 //리로드 끝났을때 액션 연결부분
                 //*연결해 놓으면 리로드 끝났을대 알아서 실행
-                if (endReloadActionList != null) endReloadActionList.ForEach(value => _iGun.EndReloadEvent.AddListener(value));
+                //if (endReloadActionList != null) endReloadActionList.ForEach(value => _iGun.EndReloadEvent.AddListener(value));
 
                 //해당 런처에서 발사시 화면 흔들림 액션 등록
                 if (cameraShaker != null) { _iGun.ProjectileLauncher.TriggerEvent.AddListener(cameraShaker.Shake); }                    

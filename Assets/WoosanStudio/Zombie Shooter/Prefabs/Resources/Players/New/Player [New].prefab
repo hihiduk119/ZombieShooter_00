@@ -2302,11 +2302,13 @@ GameObject:
   - component: {fileID: 1836758714628244874}
   - component: {fileID: 1836758714628244872}
   - component: {fileID: 1006808122}
+  - component: {fileID: -3121772247989425817}
   - component: {fileID: 1006808123}
   - component: {fileID: 2314736967032967840}
   - component: {fileID: 1006808115}
   - component: {fileID: 519284015428072839}
   - component: {fileID: 1006808107}
+  - component: {fileID: 7348214225103667043}
   m_Layer: 8
   m_Name: Player [New]
   m_TagString: Player
@@ -2636,9 +2638,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836758714628244879}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ad65c568bc344e06accf4b01eff2023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3121772247989425817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836758714628244879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a3234bcc36f48e58d82b3ed6712f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1006808123
@@ -2660,6 +2674,7 @@ MonoBehaviour:
   CameraShakeProjectile: {fileID: 0}
   WeaponAnchor: {fileID: 1836758713930583949}
   FireController: {fileID: 1006808122}
+  AutoFireControlInputBasedOnGunSetting: {fileID: 0}
 --- !u!114 &2314736967032967840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2699,8 +2714,10 @@ MonoBehaviour:
   LookAtIK: {fileID: 0}
   PlayerAimSwaper: {fileID: 0}
   FireController: {fileID: 0}
+  AutoFireControlInputBasedOnGunSetting: {fileID: 0}
   Positioner: {fileID: 0}
   Model: {fileID: 0}
+  LookAtAimedTarget: {fileID: 0}
 --- !u!114 &519284015428072839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2735,6 +2752,26 @@ MonoBehaviour:
   FollowCameraTarget: {fileID: 0}
   AimDistance: 12
   AimIKTargetAnchor: {fileID: 3390923243920136078}
+  CurrentState: 1
+  aimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  releaseEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7348214225103667043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836758714628244879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6282b2a32a4d49928cf225de9614b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerName: Reload
 --- !u!1 &2809910139438166224
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 ﻿namespace WoosanStudio.ZombieShooter
 {
-    public interface IGun : IReloadEvent, IGunSettings
+    public interface IGun : IReload, IGunSettings
     {
         bool UseLaserPoint { get; set; }
         //IGunStat GetGunStat();

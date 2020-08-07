@@ -141,20 +141,6 @@ namespace WoosanStudio.ZombieShooter
             //타겟이 존제 할때만 실행
             if (FindAimTarget.target != null)
             {
-                //이전 타겟과 지금 타겟이 같은지 확인.
-                //*기존에 있던 포지션 때문에 확확 도는 문제 해결용
-                //if (previousTarget != null)
-                //{
-                //    if (!previousTarget.Equals(FindAimTarget.target))
-                //    {
-                //        //Debug.Log("새로운 타겟으로 벼뀠음!!!!!");
-                //        //PlayerAimSwaper.ImmediatelyAiming(FindAimTarget.target);
-                //    }
-                //} else
-                //{
-                //    Debug.Log("타겟이 존제하지 안습니다.");
-                //}
-
                 //나와 조준 타겟간의 거리차에 의해서
                 //Aim
                 if (AimDistance >= Vector3.Distance(transform.position, FindAimTarget.target.position))
@@ -189,14 +175,6 @@ namespace WoosanStudio.ZombieShooter
             {
                 Release();
             }
-
-            //룩엣을 이용하여 화면 움직임 테스트하기 위해 사용
-            //if(Input.GetKeyDown(KeyCode.Q))
-            //{
-            //    bTestLookAtToggle = !bTestLookAtToggle;
-            //    FollowCameraTarget.bLookAt = bTestLookAtToggle;
-            //    Debug.Log("룩엣 타겟 활성상태 = " + bTestLookAtToggle.ToString());
-            //}
         }
         #endregion
     }

@@ -10,7 +10,7 @@ namespace WoosanStudio.ZombieShooter
     /// [행위]
     /// 1. 리로드 완료 시간 안려줌.
     /// </summary>
-    public class AutoShooterInputBasedOnGunSetting : MonoBehaviour,IStart ,IEnd, IReloadAction
+    public class AutoShooterInputBasedOnGunSetting : MonoBehaviour,IStart ,IEnd , IReload 
     {
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IInputEvents Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         private UnityEvent _startEvent = new UnityEvent();
@@ -18,16 +18,17 @@ namespace WoosanStudio.ZombieShooter
         public UnityEvent StartEvent { get { return _startEvent; } set { _startEvent = value; } }
         public UnityEvent EndEvent { get { return _endEvent; } set { _endEvent = value; } }
 
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IReloadAction Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        public UnityAction<float> ReloadAction { get; set; }
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IReload Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        public UnityEvent StartReloadEvent { get => startReloadEvent; }
+        public UnityEvent EndReloadEvent { get => endReloadEvent; }
+        private UnityEvent startReloadEvent = new UnityEvent();
+        private UnityEvent endReloadEvent = new UnityEvent();
+
+
+        //재장전 대기 시간
+        private float reloadTime = 2.0f;
 
         Coroutine refireChecker;
-
-        void Awake()
-        {
-            //재장전 콜백 등록
-            ReloadAction += Reloading;
-        }
 
         /// <summary>
         /// 임시 코드로 1초후 자동으로 시작 이벤트 발생
@@ -44,11 +45,10 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 재장전
         /// </summary>
-        /// <param name="_reloadTime"></param>
-        void Reloading(float _reloadTime)
+        void Reloading()
         {
             if (refireChecker != null) StopCoroutine(refireChecker);
-            refireChecker = StartCoroutine(RefireChecker(_reloadTime));
+            refireChecker = StartCoroutine(RefireChecker(reloadTime));
         }
 
         /// <summary>

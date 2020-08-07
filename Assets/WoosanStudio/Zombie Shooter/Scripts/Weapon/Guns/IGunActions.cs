@@ -4,11 +4,9 @@ using System.Collections;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public interface IReloadEvent
+    public interface IReload
     {
-        ReloadEvent ReloadEvent { get; set; }
-
+        UnityEvent StartReloadEvent { get; }
+        UnityEvent EndReloadEvent { get; }
     }
-
-    public class ReloadEvent : UnityEvent<float> {}
 }

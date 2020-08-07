@@ -71,6 +71,7 @@ namespace WoosanStudio.ZombieShooter
             LookAtAimedTarget = GetComponent<LookAtAimedTarget>();
 
             //조준 및 조준 해제 이벤트 연결
+            //* LookAtAimedTarget.cs 조준 이벤트 발생시 사격 시작
             aim = (IAim)LookAtAimedTarget;
             //조준 이벤트 연결
             aim.AimEvent.AddListener(() => {

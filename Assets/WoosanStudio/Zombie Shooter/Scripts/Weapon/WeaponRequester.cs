@@ -26,7 +26,7 @@ namespace WoosanStudio.ZombieShooter
 
         IStart start;
         IEnd end;
-        List<IReloadAction> reloadActionList;
+        //List<IReloadAction> reloadActionList;
         ICameraShaker cameraShaker;
         IGun gun;
 
@@ -53,10 +53,21 @@ namespace WoosanStudio.ZombieShooter
             //야매로 넣기
             // * MuzzleFlashFactory에서 생성 및 앵커에 연결하고 초기화까지 함
 
-            //재장전시 작동할 액션 리스트
-            List<IReloadAction> reloadActionList = new List<IReloadAction>();
+            //재장전 시작시 작동할 액션 리스트
+            //List<IReloadAction> startReloadActionList = new List<IReloadAction>();
+            List<UnityAction> startReloadActionList = new List<UnityAction>();
+            startReloadActionList.Add(()=> { Debug.Log("Start Reload");});
 
-            WeaponFactory.MakeWeapon((IStart)FireController, (IEnd)FireController, (ICameraShaker)CameraShakeProjectile, reloadActionList, ref gun, WeaponAnchor, WeaponIndex, false, MuzzleFlashFactory.Make(WeaponAnchor));
+            //재장전 끝났을때 작동할 액션 리스트
+            //List<IReloadAction> endReloadActionList = new List<IReloadAction>();
+            List<UnityAction> endReloadActionList = new List<UnityAction>();
+
+            //FireController 의 사격 시작 및 중지 이벤트연
+            //*(IStart)FireController => 사격 시작 인터페이스 연결
+            //*(IEnd)FireController => 사격 중지 인터페이스 연결
+            //*(ICameraShaker)CameraShakeProjectile => 화면 흔들림 연출 이벤트 연결
+            WeaponFactory.MakeWeapon((IStart)FireController, (IEnd)FireController, (ICameraShaker)CameraShakeProjectile,
+                startReloadActionList, endReloadActionList, ref gun, WeaponAnchor, WeaponIndex, false, MuzzleFlashFactory.Make(WeaponAnchor));
             //레이저 포인터 생성전에 로컬좌표 설정 & 엔커 설정
             LaserPointerFactory.Anchor = WeaponAnchor;
             LaserPointerFactory.InitPosition = WeaponFactory._gunSettings[WeaponIndex].InitLaserPointerPosition;

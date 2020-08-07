@@ -20,9 +20,11 @@ namespace WoosanStudio.ZombieShooter
         private GunSettings _gunSettings;
         public GunSettings GunSettings { get => _gunSettings; set => _gunSettings = value; }
 
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun.IReloadEvent Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        [SerializeField] ReloadEvent _reloadEvent = new ReloadEvent();
-        public ReloadEvent ReloadEvent { get => _reloadEvent; set => _reloadEvent = value; }
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun.IReload Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        public UnityEvent StartReloadEvent { get => startReloadEvent; }
+        public UnityEvent EndReloadEvent { get => endReloadEvent; }
+        private UnityEvent startReloadEvent = new UnityEvent();
+        private UnityEvent endReloadEvent = new UnityEvent();
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeapon.IAttackAction Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         public UnityAction AttackAction { get; set; }
@@ -64,7 +66,7 @@ namespace WoosanStudio.ZombieShooter
                 //Debug.Log("ReloadEvent!! reloadTime = [" + GunSettings.ReloadTime + "]");
 
                 //재장전 호출 
-                ReloadEvent.Invoke(GunSettings.ReloadTime);
+                StartReloadEvent.Invoke();
 
                 //탄약 재장전
                 FullOfAmmo();

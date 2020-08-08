@@ -40,7 +40,7 @@ namespace WoosanStudio.ZombieShooter
         //조준 IK들을 더부드럽게 움직이게 만들어주는 Aim컨트롤
         public PlayerAimSwaper PlayerAimSwaper;
         //실제 사격 컨트롤
-        public FireController FireController;
+        //public FireController FireController;
         //교체 하려는 사격 컨트롤러
         public AutoFireControlInputBasedOnGunSetting AutoFireControlInputBasedOnGunSetting;
         //포지션 재배체
@@ -67,7 +67,7 @@ namespace WoosanStudio.ZombieShooter
             AimIK = GetComponent<AimIK>();
             LookAtIK = GetComponent<LookAtIK>();
             PlayerAimSwaper = GetComponent<PlayerAimSwaper>();
-            FireController = GetComponent<FireController>();
+            //FireController = GetComponent<FireController>();
             AutoFireControlInputBasedOnGunSetting = GetComponent<AutoFireControlInputBasedOnGunSetting>();
             Positioner = GetComponent<Positioner>();
             Model = GetComponentInChildren<Model>();
@@ -102,7 +102,7 @@ namespace WoosanStudio.ZombieShooter
             PlayerMoveActor.enabled = true;
             //UI Health Bar 비활성화
             HealthBar.HealthbarPrefab.gameObject.SetActive(true);
-            FireController.enabled = true;
+            //FireController.enabled = true;
 
             Debug.Log("==[" + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name + "]==");
         }
@@ -119,7 +119,7 @@ namespace WoosanStudio.ZombieShooter
             HealthBar.HealthbarPrefab.gameObject.SetActive(false);
             AimIK.enabled = false;
             LookAtIK.enabled = false;
-            FireController.enabled = false;
+            //FireController.enabled = false;
 
             Debug.Log("==["+this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name+ "]==");
         }

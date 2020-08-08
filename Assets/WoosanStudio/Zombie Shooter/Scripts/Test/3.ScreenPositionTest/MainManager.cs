@@ -16,7 +16,7 @@ namespace WoosanStudio.ZombieShooter {
         {
             yield return new WaitForSeconds(0.1f);
             //스테이지 최초 시작 실행
-            StageManager.Instance.FirstStage();
+            //StageManager.Instance.FirstStage();
         }
         #endregion
     }

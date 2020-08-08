@@ -34,7 +34,7 @@ namespace WoosanStudio.ZombieShooter
         IGun gun;
 
         //IStart,IEnd 를 가지고 있음
-        public FireController FireController;
+        //public FireController FireController;
         //IStart,IEnd 를 가지고 있음 => 기존 FireController을 이걸로 교체
         [Header("[사격시 컨트롤러 (Auto-Awake())]")]
         public AutoFireControlInputBasedOnGunSetting AutoFireControlInputBasedOnGunSetting;

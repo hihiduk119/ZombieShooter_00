@@ -153,7 +153,7 @@ namespace WoosanStudio.ZombieShooter
             if (_updateFrame != null) StopCoroutine(_updateFrame);
             _updateFrame = StartCoroutine(UpdateFrame());
 
-            Debug.Log("==[" + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name + "]==");
+            //Debug.Log("==[" + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name + "]==");
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace WoosanStudio.ZombieShooter
 
             if (_updateFrame != null) StopCoroutine(_updateFrame);
 
-            Debug.Log("==[" + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name + "]==");
+            //Debug.Log("==[" + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name + "]==");
         }
 
         #region [-TestCode]

@@ -26,6 +26,7 @@ namespace WoosanStudio.ZombieShooter
         public FindAimTarget FindAimTarget;
         [Header("[카메라의 보는 위치를 카메라와 타겟 중간으로 마춰주기 위해 사용(Auto->Awake())]")]
         public FollowCameraTarget FollowCameraTarget;
+        
         [Header("[조준하는 최소 거리]")]
         public float AimDistance = 10f;
 
@@ -55,6 +56,7 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField]
         private UnityEvent releaseEvent = new UnityEvent();
 
+
         private void Awake()
         {
             //Auto
@@ -64,6 +66,7 @@ namespace WoosanStudio.ZombieShooter
             PlayerAimSwaper = GetComponent<PlayerAimSwaper>();
             FindAimTarget = GetComponent<FindAimTarget>();
             FollowCameraTarget = GameObject.FindObjectOfType<FollowCameraTarget>();
+            
 
             //이름으로 타겟 설정 초기화
             Initializ(TargetName);
@@ -99,7 +102,9 @@ namespace WoosanStudio.ZombieShooter
             //현재 상태 aim으로 변경
             CurrentState = State.Aim;
             //이전 상태가 aim가 아니라면 이벤트 발생
-            if (PriviousState != State.Aim) { AimEvent.Invoke(); Debug.Log("조준 이벤트 발생"); }
+            if (PriviousState != State.Aim) {
+                AimEvent.Invoke(); Debug.Log("조준 이벤트 발생");
+            }
             //현재 상태와 이전 상태 동일하게 마춤
             PriviousState = CurrentState;
             //Debug.Log("LookAtAimedTarget.Aim()");

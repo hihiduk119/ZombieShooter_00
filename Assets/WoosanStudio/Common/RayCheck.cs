@@ -10,8 +10,8 @@ using UnityEngine.Events;
 /// </summary>
 public class RayCheck : MonoBehaviour
 {
-    [Header("[대상 타겟]")]
-    public GameObject Target;
+    //[Header("[대상 타겟]")]
+    //public GameObject Target;
 
     [Header("[체크 최대 거리]")]
     public float MaxDistance = 100f;
@@ -19,26 +19,37 @@ public class RayCheck : MonoBehaviour
     [Header("[해당 되는 레이어]")]
     public LayerMask UseLayerMask;
 
+    //히트 전용 이벤트 클레스
+    public class HitEvent : UnityEvent<bool>{ }
+
     [Header("[히트 이벤트 발생]")]
-    public UnityEvent HitEvent = new UnityEvent();
+    public HitEvent RayHitEvent = new HitEvent();
 
     private RaycastHit hit;
+
+    [HideInInspector]
+    //private bool isHit = false;
+    //public bool IsHit { get => isHit; set => isHit = value; }
 
     /// <summary>
     /// 레이 체크
     /// </summary>
     void Check()
     {
-        if (Target == null) return;
+        //if (Target == null) return;
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, MaxDistance,UseLayerMask.value))
         {
             Debug.DrawRay(transform.position, transform.forward * MaxDistance, Color.green, 0.1f);
             //히트 이벤트 발생
-            HitEvent?.Invoke();
+            RayHitEvent?.Invoke(true);
+            //IsHit = true;
         } else
         {
             Debug.DrawRay(transform.position, transform.forward * MaxDistance, Color.red, 0.1f);
+            //히트 이벤트 발생
+            RayHitEvent?.Invoke(false);
+            //IsHit = false;
         }
     }
 

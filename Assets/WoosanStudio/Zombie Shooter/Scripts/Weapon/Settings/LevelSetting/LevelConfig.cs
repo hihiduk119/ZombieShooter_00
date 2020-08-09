@@ -15,7 +15,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 출현 몬스터 프리팹
         /// </summary>
-        [SerializeField] private List<GameObject> _prefabList;
+        [SerializeField] private List<GameObject> _prefabList = null;
 
         public GameObject GetPrefab(int index)
         {

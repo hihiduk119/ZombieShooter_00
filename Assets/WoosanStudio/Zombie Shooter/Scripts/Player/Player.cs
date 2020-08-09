@@ -50,6 +50,10 @@ namespace WoosanStudio.ZombieShooter
         //실제 조준 및 조준 해제 컨트롤 함
         public LookAtAimedTarget LookAtAimedTarget;
 
+        [Header("[타겟과 조준선이 정렬 됐는지 판별(Auto->Awake())]")]
+        public RayCheck RayCheck;
+
+
         //LookAtAimedTarget 에서 가져온 Aim,Release 이벤트 인터페이스
         private IAim aim;
 
@@ -79,17 +83,18 @@ namespace WoosanStudio.ZombieShooter
             //조준 이벤트 연결
             aim.AimEvent.AddListener(() => {
                 //사격 컨트롤러 시작 이벤트 호출
-                //FireController.StartEvent.Invoke();
                 AutoFireControlInputBasedOnGunSetting.AimEvent.Invoke();
-                //AutoFireControlInputBasedOnGunSetting.FireAble = true;
+                
             });
             //조준 해제 이벤트 연결
             aim.ReleaseEvent.AddListener(() => {
                 //사격 컨트롤러 중지 이벤트 호출
-                //FireController.EndEvent.Invoke();
                 AutoFireControlInputBasedOnGunSetting.ReleaseEvent.Invoke();
-                //AutoFireControlInputBasedOnGunSetting.FireAble = false;
-            });   
+            });
+
+            RayCheck = GetComponentInChildren<RayCheck>();
+            //자동 사격 시스템의 조준선 정렬 플레그 와 레이 체커 Hit 플레그 연결
+            RayCheck.RayHitEvent.AddListener(value => AutoFireControlInputBasedOnGunSetting.IsSightAlimentComplete = value);
         }
 
         /// <summary>

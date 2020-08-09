@@ -51,7 +51,7 @@ namespace WoosanStudio.ZombieShooter
                 if (player != null)
                 {
                     pos = player.transform.position;
-                    Debug.DrawLine(pos, target.position, Color.green);
+                    Debug.DrawLine(pos, target.position, Color.blue);
                     //Debug.Log("거리 = " + Vector3.Distance(pos, target.position));
                     Point = target.position;
                     UpdatePositionEvent.Invoke(Point);

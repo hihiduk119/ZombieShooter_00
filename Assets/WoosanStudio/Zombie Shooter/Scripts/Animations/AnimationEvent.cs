@@ -11,7 +11,7 @@ namespace WoosanStudio.ZombieShooter
 
         public void AttackEnd()
         {
-            Debug.Log("AttackEnd");
+            //Debug.Log("AttackEnd");
             AttackEndEvent.Invoke();
         }
     }

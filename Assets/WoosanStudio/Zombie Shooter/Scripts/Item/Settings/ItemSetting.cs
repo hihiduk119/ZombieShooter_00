@@ -18,8 +18,12 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField] private GameObject model;
         public GameObject Model { get => model; }
 
-        [Header("[이펙트 프리팹]")]
-        [SerializeField] private GameObject effect;
-        public GameObject Effect { get => effect; }
+        [Header("[메인 이펙트 프리팹]")]
+        [SerializeField] private GameObject mainEffect;
+        public GameObject MainEffect { get => mainEffect; }
+
+        [Header("[서브 이펙트 프리팹]")]
+        [SerializeField] private GameObject subEffect;
+        public GameObject SubEffect { get => subEffect; }
     }
 }

@@ -16,7 +16,7 @@ namespace WoosanStudio.ZombieShooter
     /// 플레이어가 조준상태를 알려주면 알아서 사ㄱ
     /// 발사체 컨트롤러에 실제 사격 및 재장전 등을 통제
     /// </summary>
-    public class AutoFireControlInputBasedOnGunSetting : MonoBehaviour, IAim,IStart ,IEnd , IReload 
+    public class AutoFireControlInputBasedOnGunSetting : MonoBehaviour, IAim,IStart ,IEnd , IReload
     {
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IAim Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         //조준 됐다 -> 사격을 해도 좋다 
@@ -28,18 +28,19 @@ namespace WoosanStudio.ZombieShooter
         private UnityEvent releaseEvent = new UnityEvent();
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IStart ,IEnd Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        private UnityEvent _startEvent = new UnityEvent();
-        private UnityEvent _endEvent = new UnityEvent();
         //사격을 시작
         public UnityEvent StartEvent { get { return _startEvent; } set { _startEvent = value; } }
         //사격 중지
         public UnityEvent EndEvent { get { return _endEvent; } set { _endEvent = value; } }
+        private UnityEvent _startEvent = new UnityEvent();
+        private UnityEvent _endEvent = new UnityEvent();
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IReload Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         //재장전 시작
         public UnityEvent StartReloadEvent { get => startReloadEvent; }
         //재장전 끝
         public UnityEvent EndReloadEvent { get => endReloadEvent; }
+
         private UnityEvent startReloadEvent = new UnityEvent();
         private UnityEvent endReloadEvent = new UnityEvent();
 
@@ -50,7 +51,15 @@ namespace WoosanStudio.ZombieShooter
         //재장전 대기 시간
         private float reloadTime = 2.0f;
 
-        Coroutine refireChecker;
+        //조준선이 정렬됬다
+        [HideInInspector]
+        public bool IsSightAlimentComplete = false;
+
+        private Coroutine sightAlimentCheckCoroutine;
+
+        private Coroutine refireCheckCoroutine;
+
+        private WaitForEndOfFrame WEF = new WaitForEndOfFrame();
 
         void Awake()
         {
@@ -86,8 +95,33 @@ namespace WoosanStudio.ZombieShooter
                     break;
                 case FireState.Stoped:
                     Debug.Log("사격을 시작 합니다.");
-                    StartEvent.Invoke();
+                    //StartEvent.Invoke();
+
+                    //조준선이 정렬 됐는지 확인 후 사격 시작
+                    if (sightAlimentCheckCoroutine != null) StopCoroutine(sightAlimentCheckCoroutine);
+                    sightAlimentCheckCoroutine = StartCoroutine(SightAlimentCheckCoroutine());
                     break;
+            }
+        }
+
+        /// <summary>
+        /// 조준선이 정렬 됐는지 확인 후 사격 시작
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator SightAlimentCheckCoroutine()
+        {
+            while (true)
+            {
+                //조준선 정렬 확인
+                if (IsSightAlimentComplete)
+                {
+                    //사격 시작
+                    StartEvent.Invoke();
+                    //코루틴 탈출
+                    yield break;
+                }
+                //코루틴 반복
+                yield return WEF;
             }
         }
 
@@ -109,8 +143,8 @@ namespace WoosanStudio.ZombieShooter
             //재장전 시작 이벤트 호출
             StartReloadEvent.Invoke();
 
-            if (refireChecker != null) StopCoroutine(refireChecker);
-            refireChecker = StartCoroutine(RefireChecker(reloadTime));
+            if (refireCheckCoroutine != null) StopCoroutine(refireCheckCoroutine);
+            refireCheckCoroutine = StartCoroutine(RefireCheckCoroutine(reloadTime));
         }
 
         /// <summary>
@@ -129,7 +163,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="reloadDelay"></param>
         /// <returns></returns>
-        IEnumerator RefireChecker(float reloadDelay)
+        IEnumerator RefireCheckCoroutine(float reloadDelay)
         {
             //재장전 상태 변경
             fireState = FireState.Reloading;

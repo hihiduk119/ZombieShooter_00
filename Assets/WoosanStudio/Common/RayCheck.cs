@@ -16,6 +16,9 @@ public class RayCheck : MonoBehaviour
     [Header("[체크 최대 거리]")]
     public float MaxDistance = 100f;
 
+    [Header("[해당 되는 레이어]")]
+    public LayerMask UseLayerMask;
+
     [Header("[히트 이벤트 발생]")]
     public UnityEvent HitEvent = new UnityEvent();
 
@@ -28,7 +31,7 @@ public class RayCheck : MonoBehaviour
     {
         if (Target == null) return;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, MaxDistance))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, MaxDistance,UseLayerMask.value))
         {
             Debug.DrawRay(transform.position, transform.forward * MaxDistance, Color.green, 0.1f);
             //히트 이벤트 발생

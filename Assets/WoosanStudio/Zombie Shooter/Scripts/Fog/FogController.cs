@@ -48,20 +48,20 @@ namespace WoosanStudio.ZombieShooter
 
         #region [-TestCode]
         //안개 변경 코드
-        void Update()
-        {
-            //짙은 안개 설정
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                DencityChange(0);
-            }
+        //void Update()
+        //{
+        //    //짙은 안개 설정
+        //    if (Input.GetKeyDown(KeyCode.G))
+        //    {
+        //        DencityChange(0);
+        //    }
 
-            //옅은 안개 설정
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                DencityChange(1);
-            }
-        }
+        //    //옅은 안개 설정
+        //    if (Input.GetKeyDown(KeyCode.H))
+        //    {
+        //        DencityChange(1);
+        //    }
+        //}
         #endregion
     }
 }

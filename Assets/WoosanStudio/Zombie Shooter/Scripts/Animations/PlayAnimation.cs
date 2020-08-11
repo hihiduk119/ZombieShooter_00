@@ -9,7 +9,7 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class PlayAnimation : MonoBehaviour
     {
-        [Header("[플레이하려는 에니메이션 이름]")]
+        [Header("[트리거 이름]")]
         public string TriggerName = "";
 
         private Animator animator;
@@ -23,7 +23,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// TriggerName 트리거 에니메이션 실행
         /// </summary>
-        public void Player()
+        public void Play()
         {
             animator.SetTrigger(TriggerName);
         }

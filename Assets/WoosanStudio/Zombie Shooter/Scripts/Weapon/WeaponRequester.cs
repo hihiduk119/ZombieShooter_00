@@ -79,7 +79,7 @@ namespace WoosanStudio.ZombieShooter
             //자동 사격 시스템의 리로드 액션 넣기
             startReloadActionList.Add(AutoFireControlInputBasedOnGunSetting.ReloadAction);
             //리로드시 에니메이션 플레이
-            startReloadActionList.Add(PlayAnimation.Player);
+            startReloadActionList.Add(PlayAnimation.Play);
             //startReloadActionList.Add();
             // 해당 리로드에 자동 사젹에서 리로딩 넣어야
 

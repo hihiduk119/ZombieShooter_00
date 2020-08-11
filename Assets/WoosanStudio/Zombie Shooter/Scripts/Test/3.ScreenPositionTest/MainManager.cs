@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace WoosanStudio.ZombieShooter {
-
+namespace WoosanStudio.ZombieShooter
+{
+    /// <summary>
+    /// 씬의 시작점
+    /// </summary>
     public class MainManager : MonoBehaviour
     {
         private void Awake()
@@ -16,7 +19,7 @@ namespace WoosanStudio.ZombieShooter {
         {
             yield return new WaitForSeconds(0.1f);
             //스테이지 최초 시작 실행
-            StageManager.Instance.FirstStage();
+            //StageManager.Instance.FirstStage();
         }
         #endregion
     }

@@ -20,13 +20,13 @@ public class CameraShakeProjectile : MonoBehaviour , ICameraShaker {
     }
 
     #region [-TestCode]
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Shake();
-        }
-    }
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.G))
+    //    {
+    //        Shake();
+    //    }
+    //}
     #endregion
 
 }

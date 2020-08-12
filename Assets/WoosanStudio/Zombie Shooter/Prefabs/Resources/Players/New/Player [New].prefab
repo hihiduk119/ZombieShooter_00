@@ -2643,6 +2643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16a3234bcc36f48e58d82b3ed6712f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsSightAlimentComplete: 0
 --- !u!114 &1006808123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2661,6 +2662,7 @@ MonoBehaviour:
   MuzzleFlashFactory: {fileID: 0}
   CameraShakeProjectile: {fileID: 0}
   PlayAnimation: {fileID: 0}
+  CameraZoom: {fileID: 0}
   WeaponAnchor: {fileID: 1836758713930583949}
   AutoFireControlInputBasedOnGunSetting: {fileID: 0}
 --- !u!114 &2314736967032967840
@@ -2705,6 +2707,7 @@ MonoBehaviour:
   Positioner: {fileID: 0}
   Model: {fileID: 0}
   LookAtAimedTarget: {fileID: 0}
+  RayCheck: {fileID: 0}
 --- !u!114 &519284015428072839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3023,9 +3026,6 @@ MonoBehaviour:
   UseLayerMask:
     serializedVersion: 2
     m_Bits: 65536
-  HitEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &8589174069017025969
 PrefabInstance:
   m_ObjectHideFlags: 0

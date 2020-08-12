@@ -27,6 +27,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("스테이지 모음 리스트")]
         public List<Transform> SpawnPointList = new List<Transform>();
 
+        [Header("아이템 리퀘스터 [(Auto->Awake())]")]
+        public ItemRequester ItemRequester;
+
         //해당 레벨에 의해 생성위치가 변함
         [Header("스테이지 레벨")]
         public int Level = 1;
@@ -37,6 +40,9 @@ namespace WoosanStudio.ZombieShooter
         {
             //몬스터 생성할 스테이지의 생성 위치를 가져오기 위해
             Transforms.FindChildInFirstLayer(ref SpawnPointList, parent.transform);
+
+            //자동으로 할당
+            ItemRequester = GameObject.FindObjectOfType<ItemRequester>();
         }
 
         #region [-TestCode]
@@ -117,6 +123,10 @@ namespace WoosanStudio.ZombieShooter
 
             //생성된 몬스터를 몬스터 메니저에 등록[몬스터 메니저는 AI 플레이어의 자동 타겟을 찾기위해 사용됨]
             MonsterList.Instance.Items.Add(clone.transform);
+
+            //생성시 해당 DoDie.cs의 GoToHeavenEvent 에 
+            //아이템 리퀘스터의 리퀘스터 부분 연결
+            clone.GetComponent<DoDie>().HeavenEvent.AddListener(ItemRequester.Requester);
 
             return clone;
         }

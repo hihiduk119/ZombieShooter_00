@@ -10,7 +10,7 @@ namespace WoosanStudio.ZombieShooter
     /// <summary>
     /// 카메라의 줌인 줌 아웃 에니메이션 컨트롤
     /// </summary>
-    public class CameraZoom : MonoBehaviour// , IStart , IEnd
+    public class CameraZoom : MonoBehaviour
     {
         [Header("[이동 로컬 포지션]")]
         public Vector3 TargetPosition;
@@ -23,6 +23,9 @@ namespace WoosanStudio.ZombieShooter
 
         [Header("[줌 인 아웃 데이터 ]")]
         public List<ZoomSet> ZoomSets = new List<ZoomSet>();
+
+        [Header("[Auto 줌 인 아웃 사용시 인덱스 => 구조적으로 문제 있으니 나중에 변경 해야함]")]
+        public int ZoomIndex = 0;
 
         //초기화 시킬 처음값
         private Vector3 mDefalutPos;
@@ -45,25 +48,22 @@ namespace WoosanStudio.ZombieShooter
             public float Duration;
         }
 
-        
-
         //지금 사용 가능한지 여부확인.
         private bool isAble = false;
         public bool IsAble => isAble;
-
-
-        //카메라 에니미에션이 시작 됬음과 끝났음 통지
-        //#region [IStart,IEnd Implement]
-        //private UnityEvent mStartEvent = new UnityEvent();
-        //private UnityEvent mEndEvent = new UnityEvent();
-        //public UnityEvent StartEvent => mStartEvent;
-        //public UnityEvent EndEvent => mEndEvent;
-        //#endregion
 
         private void Awake()
         {
             //초기값 세팅 [로컬 값임]
             mDefalutPos = transform.localPosition;
+        }
+
+        /// <summary>
+        /// 리로드 전용 줌 아웃
+        /// </summary>
+        public void AutoZoomOut()
+        {
+            ZoomOut(1);
         }
 
         /// <summary>
@@ -73,24 +73,17 @@ namespace WoosanStudio.ZombieShooter
         {
             //에니메이션 시작시 사용 불가로 만듬
             isAble = false;
-            //에니메이션 시작 알림
-            //mStartEvent.Invoke();
+            //현재 인덱스 바로 세팅
+            ZoomIndex = index;
             //강제로 최초 상태로 초기화
             transform.localPosition = mDefalutPos;
 
-            transform.DOLocalMove(TargetPosition, Duration).SetEase(Ease).OnComplete(() => {
+            transform.DOLocalMove(ZoomSets[index].TargetPosition, ZoomSets[index].Duration).SetEase(Ease).OnComplete(() => {
                 //에니메이션 끝에 사용 불가 해제
                 isAble = true;
                 //에니메이션 끝 알림림
                 //mEndEvent.Invoke();
             });
-
-            /*transform.DOLocalMoveY(-Height, Duration).SetEase(Ease).OnComplete(() => {
-                //에니메이션 끝에 사용 불가 해제
-                isAble = true;
-                //에니메이션 끝 알림림
-                //mEndEvent.Invoke();
-                }); */
         }
 
         /// <summary>
@@ -100,14 +93,10 @@ namespace WoosanStudio.ZombieShooter
         {
             //에니메이션 시작시 사용 불가로 만듬
             isAble = false;
-            //에니메이션 시작 알림
-            //mStartEvent.Invoke();
 
-            transform.DOLocalMove(mDefalutPos,Duration).SetEase(Ease).OnComplete(() => {
+            transform.DOLocalMove(mDefalutPos, ZoomSets[ZoomIndex].Duration).SetEase(Ease).OnComplete(() => {
                 //에니메이션 끝에 사용 불가 해제
                 isAble = true;
-                //에니메이션 끝 알림림
-                //mEndEvent.Invoke();
             });
         }
 

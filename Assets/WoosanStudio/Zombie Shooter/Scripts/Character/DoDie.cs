@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
     [RequireComponent(typeof(RegdollController))]
     [RequireComponent(typeof(NavMeshController))]
-    public class DoDie : MonoBehaviour
+    public class DoDie : MonoBehaviour 
     {
         
         public GameObject NavMeshModel;
@@ -31,7 +32,10 @@ namespace WoosanStudio.ZombieShooter
         //public GameObject testDummy;
         Boom boom;
 
-        
+        [Header("[죽은다음 하늘로 이동할때 이벤트 발생]")]
+        public GoToHeavenEvent HeavenEvent = new GoToHeavenEvent();
+        //죽은 위치의 좌표를 위해 Vector3 포함
+        public class GoToHeavenEvent : UnityEvent<Vector3> { }
 
         private void Awake()
         {
@@ -80,14 +84,22 @@ namespace WoosanStudio.ZombieShooter
             //Debug.Log("=================>    GoToHeaven");
         }
 
+        /// <summary>
+        /// 하늘로 떠오르며 죽는 연출
+        /// </summary>
         void GoToHeaven()
         {
+            //하늘로 올름 이벤트 발생
+            HeavenEvent.Invoke(transform.position);
+
             //X 값은 연출용 값으로 값이 클수록 화면 쪽으로 시체가 앞으록 움직임.
             //Y 값은 떠오르는 속도이며 값이 크면 빠르게 떠오름.
             doZeroGravity.UpForce(new Vector3(0, 7.5f, 0));
 
             if (canDestory != null)
             {
+                //연결돈 모든 리스너 삭제
+                HeavenEvent.RemoveAllListeners();
                 canDestory.Destory(2.5f);
             }
             else

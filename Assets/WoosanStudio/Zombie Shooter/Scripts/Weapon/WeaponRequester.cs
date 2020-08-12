@@ -23,7 +23,8 @@ namespace WoosanStudio.ZombieShooter
         public CameraShakeProjectile CameraShakeProjectile;
         [Header("[리로드 애니메이션 수행 (Auto-Awake())]")]
         public PlayAnimation PlayAnimation;
-
+        [Header("[카메라 줌 수행 (Auto-Awake())]")]
+        public CameraZoom CameraZoom;
         [Header("[무기&레이저 포인터를 생성시킬 앵커]")]
         public Transform WeaponAnchor;
 
@@ -52,6 +53,7 @@ namespace WoosanStudio.ZombieShooter
             if (MuzzleFlashFactory == null) MuzzleFlashFactory = GameObject.FindObjectOfType<MuzzleFlashFactory>();
             if (CameraShakeProjectile == null) CameraShakeProjectile = GameObject.FindObjectOfType<CameraShakeProjectile>();
             PlayAnimation = GetComponent<PlayAnimation>();
+            CameraZoom = GameObject.FindObjectOfType<CameraZoom>();
 
             //사격 통제 인터페이스 가져옴
             //fireStartEvent = (IStart)FireController;
@@ -73,26 +75,31 @@ namespace WoosanStudio.ZombieShooter
             // * MuzzleFlashFactory에서 생성 및 앵커에 연결하고 초기화까지 함
 
             //재장전 시작시 작동할 액션 리스트
-            //List<IReloadAction> startReloadActionList = new List<IReloadAction>();
             List<UnityAction> startReloadActionList = new List<UnityAction>();
             startReloadActionList.Add(()=> { Debug.Log("Start Reload");});
             //자동 사격 시스템의 리로드 액션 넣기
-            startReloadActionList.Add(AutoFireControlInputBasedOnGunSetting.ReloadAction);
+            //startReloadActionList.Add(AutoFireControlInputBasedOnGunSetting.ReloadAction);
             //리로드시 에니메이션 플레이
             startReloadActionList.Add(PlayAnimation.Play);
-            //startReloadActionList.Add();
-            // 해당 리로드에 자동 사젹에서 리로딩 넣어야
+            //리로드시 카메라 줌 수행
+            CameraZoom.ZoomIndex = 1;
+            startReloadActionList.Add(CameraZoom.AutoZoomOut);
+            //자동 사격 컨트롤러의 재장전 시작 이벤트에 리로드 시작 등록
+            startReloadActionList.ForEach(value => ((IReload)AutoFireControlInputBasedOnGunSetting).StartReloadEvent.AddListener(value));
 
             //재장전 끝났을때 작동할 액션 리스트
-            //List<IReloadAction> endReloadActionList = new List<IReloadAction>();
             List<UnityAction> endReloadActionList = new List<UnityAction>();
+            //리로드 끝시 카메라 아웃 수행
+            endReloadActionList.Add(CameraZoom.ZoomIn);
+            //자동 사격 컨트롤러의 재장전 끝 이벤트에 리로드 끝 등록
+            endReloadActionList.ForEach(value => ((IReload)AutoFireControlInputBasedOnGunSetting).EndReloadEvent.AddListener(value));
 
             //FireController 의 사격 시작 및 중지 이벤트연
             //*(IStart)FireController => 사격 시작 인터페이스 연결
             //*(IEnd)FireController => 사격 중지 인터페이스 연결
             //*(ICameraShaker)CameraShakeProjectile => 화면 흔들림 연출 이벤트 연결
             WeaponFactory.MakeWeapon(fireStartEvent, fireEndEvent, (ICameraShaker)CameraShakeProjectile,
-                startReloadActionList, endReloadActionList, ref gun, WeaponAnchor, WeaponIndex, false, MuzzleFlashFactory.Make(WeaponAnchor));
+                AutoFireControlInputBasedOnGunSetting.ReloadAction, ref gun, WeaponAnchor, WeaponIndex, false, MuzzleFlashFactory.Make(WeaponAnchor));
             //레이저 포인터 생성전에 로컬좌표 설정 & 엔커 설정
             LaserPointerFactory.Anchor = WeaponAnchor;
             LaserPointerFactory.InitPosition = WeaponFactory._gunSettings[WeaponIndex].InitLaserPointerPosition;

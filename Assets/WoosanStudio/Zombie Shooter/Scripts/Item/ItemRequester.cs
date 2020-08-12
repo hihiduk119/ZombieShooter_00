@@ -29,17 +29,37 @@ namespace WoosanStudio.ZombieShooter
         [Header("[Ray에 맞은 포지션 타겟 -> [눈으로 보기위한 테스트용]")]
         public GameObject RayHitTarget;
 
+        //캐시
+        private GameObject player;
 
-        
+        /// <summary>
+        /// 외부에서 생성요청 
+        /// </summary>
+        public void Requester(Vector3 targetPosition)
+        {
+            Make(Calculate(), targetPosition);
+        }
+
+        /// <summary>
+        /// 어떤 아이템을 생성 할지 말지 확율데이터에 의해 계산한 값을 리턴
+        /// </summary>
+        int Calculate()
+        {
+            return 0;
+        }
+
 
         /// <summary>
         /// 생성 요청 및 생성된 아이템에 필요한 컨퍼넌트 추가 및 세 
         /// </summary>
         /// <param name="index"></param>
-        public void Requester(int index)
+        private void Make(int index,Vector3 targetPosition)
         {
             //아이템 생성 -> ItemController 생성.
             Item = ItemFactory.Make(index);
+
+            //위치 재조정
+            Item.transform.position = targetPosition;
 
             //ItemFactory에서 생성된 컨트롤러 가져오기
             ItemController itemController = Item.GetComponent<ItemController>();
@@ -67,11 +87,22 @@ namespace WoosanStudio.ZombieShooter
             //거리 체크 스크립트 추가
             DistanceCheck distanceCheck = Item.AddComponent<DistanceCheck>();
 
+            //캐시로 찾은 플레이어가 없을때 한번 찾음
+            if (player == null)
+            {
+                player = GameObject.FindObjectOfType<Player>().gameObject;
+            }            
+
             //아이템 컨트로러에 거리체크 세팅
             itemController.DistanceCheck = distanceCheck;
-
+            //찾을 타겟을 플레이어로 설정
+            itemController.DistanceCheck.Reset(player);
+            //타겟을 사용하게 온
+            itemController.DistanceCheck.UseTarget = true;
             //반응거리 넣기
-            distanceCheck.MixDistance = 2f;
+            distanceCheck.MixDistance = 6f;
+            //거리 체커의 근접이벤트 발생과  아이템 컨트롤러의 아이템 획득 연결.
+            itemController.DistanceCheck.CloseEvent.AddListener(itemController.GetItem);
         }
 
 
@@ -81,7 +112,7 @@ namespace WoosanStudio.ZombieShooter
             //아이템 요
             if (Input.GetKeyDown(KeyCode.G))
             {
-                Requester(0);
+                Make(0,Vector3.zero);
             }
         }
         #endregion

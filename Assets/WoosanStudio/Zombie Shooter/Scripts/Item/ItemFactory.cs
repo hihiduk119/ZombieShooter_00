@@ -28,14 +28,17 @@ namespace WoosanStudio.ZombieShooter
 
             //해당 모델 생성
             GameObject model = Instantiate(ItemSettings[index].Model, item.transform);
-            //메인 이펙트 생성
-            GameObject mainEffect = Instantiate(ItemSettings[index].MainEffect, item.transform);
 
             //아이템 컨트롤러에 모델 세팅
             itemController.Model = model;
-            //아이템 컨트롤러에 메인 이펙트 세팅
-            itemController.MainEffect = mainEffect;
-            
+
+            //메인 이펙트 생성
+            if (ItemSettings[index].MainEffect != null)
+            {
+                GameObject mainEffect = Instantiate(ItemSettings[index].MainEffect, item.transform);
+                //아이템 컨트롤러에 메인 이펙트 세팅
+                itemController.MainEffect = mainEffect;
+            }
 
             //서브 이펙트 생성
             if (ItemSettings[index].SubEffect != null)

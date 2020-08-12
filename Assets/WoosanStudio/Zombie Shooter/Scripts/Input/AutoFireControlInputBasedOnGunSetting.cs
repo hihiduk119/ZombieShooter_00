@@ -143,6 +143,8 @@ namespace WoosanStudio.ZombieShooter
             //재장전 시작 이벤트 호출
             StartReloadEvent.Invoke();
 
+            Debug.Log("=>>>>>>>>>>>>>>>>. 재장전 시작");
+
             if (refireCheckCoroutine != null) StopCoroutine(refireCheckCoroutine);
             refireCheckCoroutine = StartCoroutine(RefireCheckCoroutine(reloadTime));
         }
@@ -181,6 +183,7 @@ namespace WoosanStudio.ZombieShooter
 
             //재장전 끝 이벤트 호출
             EndReloadEvent.Invoke();
+            Debug.Log("=>>>>>>>>>>>>>>>>. 재장전 끝");
 
             //사격 가능한지 여부 확인 후 동작수행
             FireControl();

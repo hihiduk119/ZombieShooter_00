@@ -63,7 +63,7 @@ namespace WoosanStudio.ZombieShooter
                 //사격 중지
                 ProjectileLauncher.StopFiring();
 
-                Debug.Log("==[ReloadEvent!! reloadTime = [" + GunSettings.ReloadTime + "]]==");
+                //Debug.Log("==[ReloadEvent!! reloadTime = [" + GunSettings.ReloadTime + "]]==");
 
                 //재장전 호출 
                 EmptyEvent.Invoke();

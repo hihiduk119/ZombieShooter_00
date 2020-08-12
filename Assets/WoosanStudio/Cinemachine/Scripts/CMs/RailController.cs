@@ -66,7 +66,7 @@ namespace WoosanStudio.ZombieShooter
 
             //close 이벤트 발생시 Swap (목표 타겟 변경) 실행
             //DistanceCheck.closeEvent.AddListener(AutoSwap);
-            DistanceCheck.closeEvent.AddListener(AutoFocus);
+            DistanceCheck.CloseEvent.AddListener(AutoFocus);
 
             for (int index = 0; index < cinemachinePath.m_Waypoints.Length; index++)
             {

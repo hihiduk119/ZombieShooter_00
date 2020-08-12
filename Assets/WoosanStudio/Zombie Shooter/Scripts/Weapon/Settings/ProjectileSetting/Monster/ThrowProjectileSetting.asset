@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: ThrowProjectileSetting
   m_EditorClassIdentifier: 
   name: Plasma Poison Green Small
-  bombPrefab: {fileID: 54344322164163910, guid: 53969f535551323489f9059fbe5ca740,
-    type: 3}
+  bombPrefab: {fileID: 5479992, guid: d3d42c25113bf3b4c94e325a3ee0a4e9, type: 3}
   muzzleflare: {fileID: 1000012903210382, guid: 8b89c403978447f4aa56b43be456dd4f,
     type: 3}
   min: 1000

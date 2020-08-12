@@ -86,7 +86,7 @@ namespace WoosanStudio.ZombieShooter
         private void Awake()
         {
             //도착 완료 이벤트 발생시 RunFocus실행 되게 등록.
-            distanceCheck.closeEvent.AddListener(AutoFocus);
+            distanceCheck.CloseEvent.AddListener(AutoFocus);
 
             //카메라의 트랜스폼 받아옴
             Camera = MainCamera.GetComponent<Transform>();

@@ -86,7 +86,7 @@ namespace WoosanStudio.ZombieShooter
                 //UI 좌표계를 Screen 좌표계로 변환
                 Vector2 pos = GetPixelPositionOfRect(TargetUI);
 
-                Debug.Log(pos.ToString());
+                //Debug.Log(pos.ToString());
 
                 //화면의 고정 포인트 지점으로 레이 쏨
                 ray = camera.ScreenPointToRay(new Vector3(pos.x, pos.y,0 ));
@@ -103,7 +103,7 @@ namespace WoosanStudio.ZombieShooter
                     }
 
                     //러프 이동
-                    transform.position = Vector3.Lerp(transform.position, hit.point, 0.05f);
+                    transform.position = Vector3.Lerp(transform.position, hit.point, 0.1f);
                 }
 
                 //마우스 따라 다니는 테스트 코드

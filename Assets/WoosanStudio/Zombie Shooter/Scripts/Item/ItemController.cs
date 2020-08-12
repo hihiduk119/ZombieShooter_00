@@ -31,7 +31,7 @@ namespace WoosanStudio.ZombieShooter
         public void Deactivate()
         {
             Model.SetActive(false);
-            MainEffect.SetActive(false);
+            MainEffect?.SetActive(false);
             SubEffect?.SetActive(false);
         }
 
@@ -44,7 +44,7 @@ namespace WoosanStudio.ZombieShooter
             transform.position = position;
 
             Model.SetActive(true);
-            MainEffect.SetActive(true);
+            MainEffect?.SetActive(true);
             SubEffect?.SetActive(true);
         }
 
@@ -54,7 +54,7 @@ namespace WoosanStudio.ZombieShooter
         public void GetItem()
         {
             //메인 이펙트 비활성
-            MainEffect.SetActive(false);
+            MainEffect?.SetActive(false);
             //서브 이펙트 비활성
             SubEffect?.SetActive(false);
             //이동 시작

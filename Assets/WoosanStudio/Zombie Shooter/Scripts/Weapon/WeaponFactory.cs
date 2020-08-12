@@ -24,17 +24,17 @@ namespace WoosanStudio.ZombieShooter
 
         //무기의 공격 시작과 끝을 이벤트 인터페이스
         //public IInputEvents InputEvents { get => inputEvents; set => inputEvents = value; }
-        public IStart StartEvent { get => startEvent; set => startEvent = value; }
-        public IEnd EndEvent { get => endEvent; set => endEvent = value; }
+        //public IStart StartEvent { get => startEvent; set => startEvent = value; }
+        //public IEnd EndEvent { get => endEvent; set => endEvent = value; }
 
         //카메라 쉐이킹용 이벤트 인터페이스 => IInputEvent와 통합 가능 할듯 리팩토링 해야함.
-        public ICameraShaker CameraShaker { get => cameraShaker; set => cameraShaker = value; }
+        //public ICameraShaker CameraShaker { get => cameraShaker; set => cameraShaker = value; }
         //무기의 재장전 이밴트 액션 리스트
         //public List<IReloadAction> ReloadActionList { get => reloadActionList; set => reloadActionList = value; }
 
-        IStart startEvent;
-        IEnd endEvent;
-        ICameraShaker cameraShaker;
+        //IStart startEvent;
+        //IEnd endEvent;
+        //ICameraShaker cameraShaker;
         //List<IReloadAction> reloadActionList;
 
         //캐슁 데이타
@@ -54,7 +54,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="type">생성할 무기의 인덱스</param>
         /// <param name="useLaserPoint">생성할 무기의 인덱스</param>
         /// <returns></returns>
-        public IWeapon MakeWeapon(IStart start,IEnd end,ICameraShaker cameraShaker,List<UnityAction> startReloadActionList, List<UnityAction> endReloadActionList, ref IGun iGun , Transform joint,int type ,bool useLaserPointer, GameObject muzzleFlashProjector)
+        public IWeapon MakeWeapon(IStart start,IEnd end,ICameraShaker cameraShaker,UnityAction ammoEmpty, ref IGun iGun , Transform joint,int type ,bool useLaserPointer, GameObject muzzleFlashProjector)
         {
             //어떤 무기는 모델을 가지고 있으면 IHaveModel인터페이스를 상속 받기에 해당 인터페이스 호출.
             IHaveModel haveModel = _gunSettings[type];
@@ -153,13 +153,9 @@ namespace WoosanStudio.ZombieShooter
                 //무기 공격시작, 공격 끝 핸들러 연결부분.
                 if (start != null && end != null) _iGun.SetInputEventHandler(start, end);
 
-                //탄약 다씀 이벤트 발생시 리로드 액션과 연결
+                //탄약 다씀 이벤트 연결
                 //*연결해 놓으면 리로드 시작시 알아서 실행
-                if(startReloadActionList != null) startReloadActionList.ForEach(value => _iGun.EmptyEvent.AddListener(value));
-
-                //리로드 끝났을때 액션 연결부분
-                //*연결해 놓으면 리로드 끝났을대 알아서 실행
-                //if (endReloadActionList != null) endReloadActionList.ForEach(value => _iGun.EndReloadEvent.AddListener(value));
+                if (ammoEmpty != null) _iGun.EmptyEvent.AddListener(ammoEmpty);
 
                 //해당 런처에서 발사시 화면 흔들림 액션 등록
                 if (cameraShaker != null) { _iGun.ProjectileLauncher.TriggerEvent.AddListener(cameraShaker.Shake); }                    

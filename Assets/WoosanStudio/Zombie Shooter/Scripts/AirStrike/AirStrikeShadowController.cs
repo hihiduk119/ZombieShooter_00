@@ -22,6 +22,9 @@ namespace WoosanStudio.ZombieShooter
         public Transform StartDummy;
         [Header("[더미용 끝 포지션 [위치 확인용. 없어도 그만]]")]
         public Transform EndDummy;
+        [Header("[그림자 이동 지속 시간]")]
+        public float Duration = 1.2f;
+
 
         //시작 좌표
         private Vector3 StartPoint;
@@ -119,7 +122,7 @@ namespace WoosanStudio.ZombieShooter
             Target.position = StartPoint;
 
             //실제 트윈으로 에니메이션 실행
-            Target.DOMove(EndPoint, 1.2f).SetEase(Ease.Linear).OnComplete(() => {
+            Target.DOMove(EndPoint, Duration).SetEase(Ease.Linear).OnComplete(() => {
                 //에니메이션 끝남 이벤트 발생
                 mEndEvent.Invoke();
                 //ExplosionFactory.Instance.TestRun();

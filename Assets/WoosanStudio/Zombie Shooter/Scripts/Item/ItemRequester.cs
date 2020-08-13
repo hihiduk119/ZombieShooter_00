@@ -100,7 +100,7 @@ namespace WoosanStudio.ZombieShooter
             //타겟을 사용하게 온
             itemController.DistanceCheck.UseTarget = true;
             //반응거리 넣기
-            distanceCheck.MixDistance = 6f;
+            distanceCheck.MixDistance = 1.5f;
             //거리 체커의 근접이벤트 발생과  아이템 컨트롤러의 아이템 획득 연결.
             itemController.DistanceCheck.CloseEvent.AddListener(itemController.GetItem);
         }

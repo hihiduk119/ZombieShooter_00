@@ -67,10 +67,8 @@ public class DistanceCheck : MonoBehaviour
             {
                 distance = Vector3.Distance(TargetPos, transform.position);
 
-                //Debug.Log("Distance = " + distance);
-
                 //최소 거리보다 작으면 이벤트 발생
-                if (distance <= 1f)
+                if (distance <= MixDistance)
                 {
                     Close = true;
                     Debug.Log("체크포인트");
@@ -83,10 +81,8 @@ public class DistanceCheck : MonoBehaviour
             {
                 distance = Vector3.Distance(Target.transform.position, transform.position);
 
-                //Debug.Log("Distance = " + distance);
-
                 //최소 거리보다 작으면 이벤트 발생
-                if (distance <= 1f)
+                if (distance <= MixDistance)
                 {
                     Close = true;
                     Debug.Log("체크포인트");
@@ -96,6 +92,8 @@ public class DistanceCheck : MonoBehaviour
                 //디버깅용 드로우 라인
                 Debug.DrawLine(transform.position, Target.transform.position, Color.red);
             }
+
+            //Debug.Log("Distance = " + distance);
         }
     }
 

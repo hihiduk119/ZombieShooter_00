@@ -146,13 +146,13 @@ namespace WoosanStudio.ZombieShooter
         }
 
         #region [-TestCode]
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.N))
-            {
-                MakeMonsterByStageLevel();
-            }
-        }
+        //void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.N))
+        //    {
+        //        MakeMonsterByStageLevel();
+        //    }
+        //}
         #endregion
 
     }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 using WoosanStudio.Extension;
 using UnityEngine.AI;
-
 using WoosanStudio.Common;
+using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -30,6 +30,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("아이템 리퀘스터 [(Auto->Awake())]")]
         public ItemRequester ItemRequester;
 
+        [Header("몬스터 죽임시 행동 액션]")]
+        public List<UnityAction<Vector3>> MonsterDieActions = new List<UnityAction<Vector3>>();
+
         //해당 레벨에 의해 생성위치가 변함
         [Header("스테이지 레벨")]
         public int Level = 1;
@@ -39,73 +42,22 @@ namespace WoosanStudio.ZombieShooter
         private void Awake()
         {
             //몬스터 생성할 스테이지의 생성 위치를 가져오기 위해
-            Transforms.FindChildInFirstLayer(ref SpawnPointList, parent.transform);
+            //Transforms.FindChildInFirstLayer(ref SpawnPointList, parent.transform);
 
             //자동으로 할당
             ItemRequester = GameObject.FindObjectOfType<ItemRequester>();
         }
 
-        #region [-TestCode]
-        //bool testCode = true;
-        //IEnumerator Start()
-        //{
-        //    while (true)
-        //    {
-        //        Initialize();
-
-        //        yield return new WaitForSeconds(2f);
-        //    }
-        //}
-
         /// <summary>
-        /// 테스트용으로 무한하게 몬스터 랜덤으로 만듬
+        /// 외부에서 실행하는 Make
         /// </summary>
+        /// <param name="index"></param>
         /// <returns></returns>
-        IEnumerator InfiniteMakeMonster(int level)
+        public GameObject Make(int index, SpawnPoints spawnPoints)
         {
-            while (true)
-            {
-                //testCode = !testCode;
-
-                //if(testCode) 
-                //    MakeMonster(monsterSettings[0], SpawnPoints.GetSpawnPosition());
-                //else
-                //    MakeMonster(monsterSettings[1], SpawnPoints.GetSpawnPosition());
-
-                int index = Random.Range(0, 3);
-
-                //int index = 1;
-                //스폰 리스트에서 스폰위치 현재 레벨에 맞는 스폰위치 가져옴
-                SpawnPoints = SpawnPointList[level].GetComponent<SpawnPoints>();
-
-                //몬스터 생성
-                GameObject clone = MakeMonster(monsterSettings[index], SpawnPoints.GetSpawnPosition());
-                //그림자 생성.
-                MakeShadow(monsterSettings[index], clone.transform);
-
-                yield return new WaitForSeconds(3f);
-            }
+            //몬스터 생성
+            return  MakeMonster(monsterSettings[index], spawnPoints.GetSpawnPosition());
         }
-
-        /// <summary>
-        /// 해당 레벨로 몬스터 만들기
-        /// 무한으로 몬스터를 만든다.
-        /// *해당 레벨은 Level 이다.
-        /// </summary>
-        public void MakeMonsterByStageLevel()
-        {
-            Stop();
-            coroutineInfiniteMakeMonster = StartCoroutine(InfiniteMakeMonster(Level));
-        }
-
-        /// <summary>
-        /// 무한대로 몬스터 만드는 코루틴 정지
-        /// </summary>
-        public void Stop()
-        {
-            if (coroutineInfiniteMakeMonster != null) StopCoroutine(coroutineInfiniteMakeMonster);
-        }
-        #endregion
 
         /// <summary>
         /// 몬스터 생성
@@ -126,7 +78,13 @@ namespace WoosanStudio.ZombieShooter
 
             //생성시 해당 DoDie.cs의 GoToHeavenEvent 에 
             //아이템 리퀘스터의 리퀘스터 부분 연결
-            clone.GetComponent<DoDie>().HeavenEvent.AddListener(ItemRequester.Requester);
+            //=> 액션 리스트를 받아서 처리하게 바꿔야 함.
+
+            MonsterDieActions?.ForEach(value => clone.GetComponent<DoDie>().HeavenEvent.AddListener(value));
+            //clone.GetComponent<DoDie>().HeavenEvent.AddListener(ItemRequester.Requester);
+
+            //그림자 생성.
+            MakeShadow(monsterSettings, clone.transform);
 
             return clone;
         }

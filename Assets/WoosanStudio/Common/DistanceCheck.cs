@@ -76,7 +76,7 @@ public class DistanceCheck : MonoBehaviour
                 }
 
                 //디버깅용 드로우 라인
-                Debug.DrawLine(transform.position, TargetPos, Color.red);
+                //Debug.DrawLine(transform.position, TargetPos, Color.red);
             } else // Target 사용시
             {
                 distance = Vector3.Distance(Target.transform.position, transform.position);
@@ -90,7 +90,7 @@ public class DistanceCheck : MonoBehaviour
                 }
 
                 //디버깅용 드로우 라인
-                Debug.DrawLine(transform.position, Target.transform.position, Color.red);
+                //Debug.DrawLine(transform.position, Target.transform.position, Color.red);
             }
 
             //Debug.Log("Distance = " + distance);

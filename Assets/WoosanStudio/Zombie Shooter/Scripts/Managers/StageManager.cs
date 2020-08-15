@@ -37,8 +37,11 @@ namespace WoosanStudio.ZombieShooter
         [Header("[플레이어 팩토리 [Auto-Awake()]]")]
         public PlayerFactory PlayerFactory;
 
-        [Header("[몬스터 팩토리 [Auto-Awake()]]")]
-        public MonsterFactory MonsterFactory;
+        //[Header("[몬스터 팩토리 [Auto-Awake()]]")]
+        //public MonsterFactory MonsterFactory;
+
+        [Header("[몬스터 요청 [Auto-Awake()]]")]
+        public MonsterRequester MonsterRequester;
 
         [Header("[플레이어 포지셔너]")]
         //이벤트 호출 방식으로 변경 하려 했으나 호출 우선 순위 문제로 변경 보류
@@ -83,7 +86,8 @@ namespace WoosanStudio.ZombieShooter
             Instance = this;
 
             //자동으로 가져오기
-            MonsterFactory = GameObject.FindObjectOfType<MonsterFactory>();
+            //MonsterFactory = GameObject.FindObjectOfType<MonsterFactory>();
+            MonsterRequester = GameObject.FindObjectOfType<MonsterRequester>();
             CameraMoveController = GameObject.FindObjectOfType<CameraMoveController>();
             //playersController = GameObject.FindObjectOfType<PlayersController>();
             //플레이어 생성 담당
@@ -202,8 +206,9 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void CountingEnd()
         {
-            //해당 레벨에 맞는 몬스터 생
-            MonsterFactory.MakeMonsterByStageLevel();
+            //해당 레벨에 맞는 몬스터 생성
+            //MonsterFactory.MakeMonsterByStageLevel();
+            MonsterRequester.MakeMonsterByStageLevel();
         }
 
         /// <summary>

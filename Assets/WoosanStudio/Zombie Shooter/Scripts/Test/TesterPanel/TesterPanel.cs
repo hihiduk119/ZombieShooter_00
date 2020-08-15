@@ -14,7 +14,8 @@ namespace WoosanStudio.ZombieShooter.Test
         //플레이어 생성
         private PlayerFactory playerFactory;
         //몬스터 생성
-        private MonsterFactory monsterFactory;
+        //private MonsterFactory monsterFactory;
+        private MonsterRequester monsterRequester;
 
         private StageManager stageManager;
         //생성된 플레이어 활성 비활성 제어
@@ -30,7 +31,7 @@ namespace WoosanStudio.ZombieShooter.Test
 
             playerFactory = GameObject.FindObjectOfType<PlayerFactory>();
 
-            monsterFactory = GameObject.FindObjectOfType<MonsterFactory>();
+            monsterRequester = GameObject.FindObjectOfType<MonsterRequester>();
 
             stageManager = GameObject.FindObjectOfType<StageManager>();
 
@@ -85,7 +86,7 @@ namespace WoosanStudio.ZombieShooter.Test
         public void MakeMonster()
         {
             Debug.Log("MakeMonster");
-            monsterFactory.MakeMonsterByStageLevel();
+            monsterRequester.MakeMonsterByStageLevel();
         }
 
         /// <summary>
@@ -94,7 +95,7 @@ namespace WoosanStudio.ZombieShooter.Test
         public void StopMakeMonster()
         {
             Debug.Log("StopMakeMonster");
-            monsterFactory.Stop();
+            monsterRequester.Stop();
         }
 
         /// <summary>

@@ -44,7 +44,7 @@ namespace WoosanStudio.ZombieShooter
                 mAimIKTarget = mAimIK.solver.target;
             } else
             {
-                Debug.Log("에임 타겟이 존제하지 않습니다.");
+                Debug.Log("에임 타겟이 존재하지 않습니다.");
             }
         }
 

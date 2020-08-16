@@ -6,8 +6,10 @@ namespace WoosanStudio.Common
 {
     public class SlowMotionTimeManager : MonoBehaviour
     {
+        //기존 코드 0.2f => 0.5f변경 후 문제 발생 여부 확인 해야함. 
+        //public float slowdownFactor { get; private set; } = 0.2f;
         //get 의 초기화를 위해 사용.
-        public float slowdownFactor { get; private set; } = 0.2f;
+        public float slowdownFactor { get; private set; } = 0.5f;
         //public float recoverFactor{ get; private set; } = 1.5f;
 
         //인터페이스로 만든 오디
@@ -39,7 +41,10 @@ namespace WoosanStudio.Common
             //실제 호출
             //AudioManager.instance.SlowMotion(Time.timeScale);
         }
-         
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void Rollback()
         {
             Time.timeScale = 1f;

@@ -12,14 +12,20 @@ namespace WoosanStudio.ZombieShooter
     public interface ICard
     {
         /// <summary>
-        /// 고유 아이디
+        /// 고유 아이디 => CardType과 일치 해야 한다.
         /// </summary>
-        int ID { get; set; }
+        int ID { get;}
 
         /// <summary>
         /// 스킬 레벨
         /// </summary>
-        int SkillLevel { get; set; }
+        int SkillLevel { get;}
+
+
+        /// <summary>
+        /// 언락 레벨
+        /// </summary>
+        int UnlockLevel { get;}
     }
 
     public interface ICardOverlap

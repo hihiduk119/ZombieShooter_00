@@ -72,6 +72,11 @@ namespace WoosanStudio.ZombieShooter
             //첫 이미지 숫자 1 이미지로 초기화
             image.sprite = images[count];
 
+            //숫자 흔들기 위해 회전각 만듬
+            image.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 20f));
+            //숫자 흔듬
+            image.transform.DORotate(new Vector3(0, 0, -20f), 0.2f).SetLoops(4, LoopType.Yoyo);
+
             canvasGroup.DOFade(0, 1f).OnComplete(() => {
                 //최대 카운트 만큼 재귀 호출
                 if (maxCount-1 > count)
@@ -80,6 +85,16 @@ namespace WoosanStudio.ZombieShooter
                     count++;
                     //재귀 호출
                     Swap(images[count]);
+
+                    //마지막 카운트시에 스캐일 연출 
+                    if((maxCount - 1) == count)
+                    {
+                        //숫자 크게 키우기
+                        image.transform.DOScale(30, 1f).SetEase(Ease.InCubic).OnComplete(() =>
+                            //연출 끝난 후에는 초기화
+                            image.transform.localScale = Vector3.one
+                        );
+                    }
                 }
                 else
                 {

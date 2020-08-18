@@ -150,11 +150,16 @@ namespace WoosanStudio.ZombieShooter
                 //Aim
                 if (AimDistance >= Vector3.Distance(transform.position, FindAimTarget.target.position))
                 {
-                    Aim();    
+                    Aim();
+                    //타겟 마커 활성화
+                    AimMaker.Instance.SetValue(FindAimTarget.target);
                 }
                 else//Release
                 {
                     Release();
+
+                    //타겟 마커 활성화
+                    AimMaker.Instance.Reset();
 
                     //타겟이 없을때 AimIKTarget 초기화 포지션으로 이동시킴
                     PlayerAimSwaper.ImmediatelyAiming(AimIKTargetAnchor);
@@ -169,17 +174,18 @@ namespace WoosanStudio.ZombieShooter
             }
 
 
-            //플레이어 몬스터 조준
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                Aim();
-            }
-
-            //플레이어 몬스터 조준 해제
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                Release();
-            }
+            #region [-TestCode]
+            ////플레이어 몬스터 조준
+            //if (Input.GetKeyDown(KeyCode.O))
+            //{
+            //    Aim();
+            //}
+            ////플레이어 몬스터 조준 해제
+            //if (Input.GetKeyDown(KeyCode.P))
+            //{
+            //    Release();
+            //}
+            #endregion
         }
         #endregion
     }

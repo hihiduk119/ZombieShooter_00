@@ -81,16 +81,20 @@ namespace WoosanStudio.ZombieShooter
             //startReloadActionList.Add(AutoFireControlInputBasedOnGunSetting.ReloadAction);
             //리로드시 에니메이션 플레이
             startReloadActionList.Add(PlayAnimation.Play);
-            //리로드시 카메라 줌 수행
-            CameraZoom.ZoomIndex = 1;
-            startReloadActionList.Add(CameraZoom.AutoZoomOut);
+
+            //리로드시 카메라 줌 수행 => 일단 제거
+            //CameraZoom.ZoomIndex = 1;
+            //startReloadActionList.Add(CameraZoom.AutoZoomOut);
+
             //자동 사격 컨트롤러의 재장전 시작 이벤트에 리로드 시작 등록
             startReloadActionList.ForEach(value => ((IReload)AutoFireControlInputBasedOnGunSetting).StartReloadEvent.AddListener(value));
 
             //재장전 끝났을때 작동할 액션 리스트
             List<UnityAction> endReloadActionList = new List<UnityAction>();
-            //리로드 끝시 카메라 아웃 수행
-            endReloadActionList.Add(CameraZoom.ZoomIn);
+
+            //리로드 끝시 카메라 아웃 수행 -> 일단 제거
+            //endReloadActionList.Add(CameraZoom.ZoomIn);
+
             //자동 사격 컨트롤러의 재장전 끝 이벤트에 리로드 끝 등록
             endReloadActionList.ForEach(value => ((IReload)AutoFireControlInputBasedOnGunSetting).EndReloadEvent.AddListener(value));
 

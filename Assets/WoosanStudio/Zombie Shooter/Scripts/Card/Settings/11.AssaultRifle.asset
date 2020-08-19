@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
-  m_Name: 2.Damage
+  m_Name: 11.AssaultRifle
   m_EditorClassIdentifier: 
-  id: 2
-  sprite: {fileID: 21300000, guid: aeb10ba34e09a4bb4a83efbb24781fe7, type: 3}
-  title: Base Damage
-  contents: Increases base damage by 25%.
-  type: 2
+  id: 0
+  skillLevel: 0
+  unlockLevel: 0
+  sprite: {fileID: 21300000, guid: 6fac19f63873545c6b3aab5fa3438be1, type: 3}
+  title: Assault Rifle
+  contents: Change weapon to assault rifle and increase the assault rifle damage by
+    25%.
+  type: 11

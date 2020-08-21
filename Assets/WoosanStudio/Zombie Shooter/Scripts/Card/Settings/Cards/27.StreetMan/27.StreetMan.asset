@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
+  m_Name: 27.StreetMan
+  m_EditorClassIdentifier: 
+  level: 0
+  maxLevel: 0
+  unlockLevel: 0
+  researchTimeFormula: 
+  sprite: {fileID: 21300000, guid: eaf9eab90de40456abe788ae6da2796d, type: 3}
+  title: Street Man
+  type: 311
+  Properties:
+  - {fileID: 11400000, guid: 35340ad18357e4746822e74ad2736cfd, type: 2}
+  - {fileID: 11400000, guid: 26979460e172c4e3592c5e92d64eda99, type: 2}
+  - {fileID: 11400000, guid: f0f212212031647abbcd2078105b3393, type: 2}

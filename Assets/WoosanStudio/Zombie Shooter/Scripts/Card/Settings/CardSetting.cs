@@ -11,17 +11,22 @@ namespace WoosanStudio.ZombieShooter
     public class CardSetting : ScriptableObject , ICard
     {
         //===============================[ICard Implemet]===============================
-        [Header("[고유 아이디]")]
-        [SerializeField] private int id;
-        public int ID { get => id; }
-
         [Header("[스킬 레벨]")]
-        [SerializeField] private int skillLevel;
-        public int SkillLevel { get => skillLevel; }
+        [SerializeField] private int level = 0;
+        public int Level { get => level; }
 
-        [Header("[언락 레벨]")]
-        [SerializeField] private int unlockLevel;
+        [Header("[최대 레벨]")]
+        [SerializeField] private int maxLevel = 25;
+        public int MaxLevel { get => maxLevel; }
+        
+        [Header("[언락에 필요한 Exp 레벨]")]
+        [SerializeField] private int unlockLevel = 0;
         public int UnlockLevel { get => unlockLevel; }
+
+        [Header("[레벨업시 필요한 시간 공식]")]
+        [SerializeField][TextArea(2, 4)]
+        private string researchTimeFormula;
+        public string ResearchTimeFormula { get => researchTimeFormula; }
         //==============================================================================
 
         [Header("[UI Sprite]")]
@@ -32,43 +37,47 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField] private string title;
         public string Title { get => title; }
 
-        [Header("[표시 설명]")]
-        [TextArea]
-        [SerializeField] private string contents;
-        public string Contents { get => contents; }
+        //[Header("[표시 설명]")]
+        //[TextArea(5,8)]
+        //[SerializeField] private string contents;
+        //public string Contents { get => contents; }
 
-        [Header("[해당 카드 Enum]")]
+        [Header("[해당 카드 ID]")]
         [SerializeField] private CardType type;
         public CardType Type { get => type; }
+
+        [Header("[프로퍼티 값 리스트[순서대로 넣음]]")]
+        [SerializeField]
+        public List<CardProperty> Properties = new List<CardProperty>();
+
 
         [SerializeField]
         public enum CardType
         {
-            //RecoverHP,        //체력 회복 25% 증가 => 체력회복 의문..
             AttackSpeed = 0,    //공격 속도 25% 증가
             MagazineCapacity,   //탄창 용량 25% 증가
             CriticalDamage,     //치명 데미지 25% 증가
             CriticalChance,     //치명 기회 10% 증가
             MaxHP,              //최대 체력 25% 증가
             AirStrikeDamage,    //공습 데미지 25% 증가
-            AirStrikeGauge,     //공습 체움 속도 25% 증가
+            AirStrikeRecharge,     //공습 체움 속도 25% 증가
 
             Coin,               //획득 돈 25% 증가
             Exp,                //획득 경험치 25% 증가
 
             //*아래 4개는 하나의 그룹 토글
-            Pistol,             //무기를 권총으로 변경 및 해당 무기 데미지 25%증가
+            Pistol = 100,             //무기를 권총으로 변경 및 해당 무기 데미지 25%증가
             Shotgun,            //무기를 샷건으로 변경 및 해당 무기 데미지 25%증가   lv 4 unlock
             AssaultRifle,       //무기를 돌격소총으로 변경 및 무기 데미지 25%증가    lv 8 unlock  
             SniperRifle,        //무기를 스나이퍼소총으로 변경 및 무기 데미지 25%증가 lv 12 unlock
 
             //아래 3개는 하나의 구룹 토글
-            BulletAmmo,         //총알타입탄약 변경 및 총알타입탄약 데미지 25% 증가
+            BulletAmmo = 200,         //총알타입탄약 변경 및 총알타입탄약 데미지 25% 증가
             LaserAmmo,          //레이저타입탄약 변경 및 레이저타입탄약 데미지 25% 증가        lv 10 unlock
             PlasmaAmmo,         //플라즈마타입탄약 변경 및 플라즈마타입탄약 데미지 25% 증가       lv 14 unlock
 
             //캐릭터들은 토글 그룹 [장점 단점이 동시 존재]
-            BusinessMan,        //캐릭터 변경 및 권총 데미지 10% 증가 & 레이저타입탄약 데미지 -10% 감소                      
+            BusinessMan = 300,        //캐릭터 변경 및 권총 데미지 10% 증가 & 레이저타입탄약 데미지 -10% 감소                      
             FireFighter,        //캐릭터 변경 및 샷건 데미지 10% 증가 & 탄챵 용량 -10% 감소                                 lv 2 unlock
             Hobo,               //캐릭터 변경 및 돌격소총 데미지 10% 증가 & 공격 속도 -10% 감소                             lv 3 unlock
             Pimp,               //캐릭터 변경 및 치명 데미지 10% 증가 & 치명타 기회 -10% 감소                               lv 5 unlock

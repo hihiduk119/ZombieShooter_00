@@ -34,6 +34,10 @@ namespace WoosanStudio.ZombieShooter
         //테스트용
         int testIndex = 0;
 
+        /// <summary>
+        /// 모델을 변경함
+        /// </summary>
+        /// <param name="type"></param>
         public void Swap( ModelType type)
         {
             Models.ForEach(value => value.SetActive(false));

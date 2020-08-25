@@ -15,7 +15,7 @@ MonoBehaviour:
   level: 0
   maxLevel: 0
   unlockLevel: 0
-  researchTimeFormula: 
+  researchTimeFormula: General
   sprite: {fileID: 21300000, guid: 6dc5b6bd0c60347c29d700893d2d2b9d, type: 3}
   title: Pimp
   type: 303

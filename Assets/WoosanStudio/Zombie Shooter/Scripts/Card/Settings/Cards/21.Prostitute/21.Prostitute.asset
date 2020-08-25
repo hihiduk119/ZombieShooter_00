@@ -15,7 +15,7 @@ MonoBehaviour:
   level: 0
   maxLevel: 0
   unlockLevel: 0
-  researchTimeFormula: 
+  researchTimeFormula: General
   sprite: {fileID: 21300000, guid: 7cb55ed74833442e2b475ed85ad758c4, type: 3}
   title: Schoolgirl
   type: 305

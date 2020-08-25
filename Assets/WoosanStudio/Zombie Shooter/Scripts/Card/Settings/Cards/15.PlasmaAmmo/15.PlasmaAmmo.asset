@@ -15,7 +15,7 @@ MonoBehaviour:
   level: 0
   maxLevel: 0
   unlockLevel: 0
-  researchTimeFormula: 
+  researchTimeFormula: General
   sprite: {fileID: 21300000, guid: c2b52f79421e7463693ca823b6bce6a6, type: 3}
   title: Plasma Ammo
   type: 202

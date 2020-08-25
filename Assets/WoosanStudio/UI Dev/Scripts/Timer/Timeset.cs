@@ -8,11 +8,17 @@ using System.Text;
 
 namespace WoosanStudio.ZombieShooter
 {
+    /// <summary>
+    /// 시간 데이터변환 클래스
+    /// 사용법
+    /// -> Make 또는 생성자에 시간 넣기. 생성시간이 셋업됨.
+    /// -> GetRemainTime() 호출하여 셋업된 시간으로부터 남은 시간 가져오기.
+    /// </summary>
     public class Timeset
     {
         DateTime myDateTime;
         //전체 몇초인지 구해놓기
-        int totalSecond = 0;
+        int totalSeconds = 0;
         
         //스트링 메모리 절약용 스트링 빌더
         StringBuilder stringBuilder = new StringBuilder();
@@ -24,27 +30,67 @@ namespace WoosanStudio.ZombieShooter
         String tmp;
         string[] timeSpan;
 
-
         /// <summary>
-        /// 생성자 생성시 시간 분단위로 넣음
+        /// 현재 셋업된 데이터 타임을 가져옴
         /// </summary>
-        /// <param name="minutes"></param>
-        public Timeset(int minutes)
+        /// <returns></returns>
+        public DateTime GetDateTime()
         {
-            Make(minutes);
+            //JsonUtility.ToJson(myDateTime.ToBinary());
+            return myDateTime;
         }
 
         /// <summary>
-        /// 생성시 셋업 
+        /// 현재 셋업된 데이터 타임을 바이너리로 가져옴
+        /// -> Jason 세이브용 
+        /// </summary>
+        /// <returns>바이너리데이터</returns>
+        public long GetDateTimeByBinary()
+        {
+            return myDateTime.ToBinary();
+        }
+
+        /// <summary>
+        /// 현재 셋업된 데이터 타임을 가져옴
+        /// 세이브 로드시 사용
+        /// </summary>
+        /// <returns></returns>
+        public void SetDateTime(DateTime dateTime)
+        {
+            myDateTime = dateTime;
+        }
+
+        /// <summary>
+        /// 현재 셋업된 데이터 타임을 가져옴
+        /// -> 제이슨 로드용 
+        /// </summary>
+        /// <returns></returns>
+        public void SetDateTimeByBinary(long dateTimeValue)
+        {
+            myDateTime = DateTime.FromBinary(dateTimeValue);
+        }
+
+        /// <summary>
+        /// 현재 시간 기준으로 셋업 생성자
+        /// </summary>
+        /// <param name="minutes">분단위로 셋업</param>
+        public Timeset(int Seconds)
+        {
+            Make(Seconds);
+        }
+
+        /// <summary>
+        /// 현재 시간 기준으로 셋업 
         /// </summary>
         /// <param name="minutes"></param>
-        public void Make(int minutes)
+        public void Make(int seconds)
         {
             //Debug.Log("지금 시간 = " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초"));
             myDateTime = DateTime.Now;
-            myDateTime = myDateTime.AddMinutes(minutes);
-            //전체 몇초인지 구해 놓기
-            totalSecond = minutes * 60;
+            //myDateTime = myDateTime.AddMinutes(minutes);
+            myDateTime = myDateTime.AddSeconds(seconds);
+            //전체 몇초 저장
+            totalSeconds = seconds;
         }
 
         /// <summary>
@@ -61,6 +107,7 @@ namespace WoosanStudio.ZombieShooter
 
         /// <summary>
         /// 남은시간은 0-1사이 값으로 반환
+        /// * 슬라이더에 사용하기 위함
         /// </summary>
         public float GetRemainValue()
         {
@@ -68,12 +115,17 @@ namespace WoosanStudio.ZombieShooter
 
             //int currentSec = timeSpan.TotalSeconds;
 
-            float value = (float)(Math.Floor(timeSpan.TotalSeconds) / totalSecond);
+            float value = (float)(Math.Floor(timeSpan.TotalSeconds) / totalSeconds);
             value = 1 - value;
-            //Debug.Log("currentSec = " + totalSecond + "   remainSec = " + Math.Floor(timeSpan.TotalSeconds) + "  value = " + value);
+            //Debug.Log("currentSec = " + totalSeconds + "   remainSec = " + Math.Floor(timeSpan.TotalSeconds) + "  value = " + value);
             return value;
         }
 
+        /// <summary>
+        /// 타임 스팬에서 #D ##:##:## 형식으로 시간 가져오기.
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
         public String TimeToString(TimeSpan time)
         {
             tmp = time.ToString();

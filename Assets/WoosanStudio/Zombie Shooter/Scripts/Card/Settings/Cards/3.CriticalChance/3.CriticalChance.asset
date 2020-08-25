@@ -15,7 +15,7 @@ MonoBehaviour:
   level: 0
   maxLevel: 0
   unlockLevel: 0
-  researchTimeFormula: 
+  researchTimeFormula: General
   sprite: {fileID: 21300000, guid: aeb10ba34e09a4bb4a83efbb24781fe7, type: 3}
   title: CriticalChance
   type: 3

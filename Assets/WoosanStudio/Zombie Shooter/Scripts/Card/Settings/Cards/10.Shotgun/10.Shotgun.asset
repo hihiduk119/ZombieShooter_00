@@ -15,7 +15,7 @@ MonoBehaviour:
   level: 0
   maxLevel: 0
   unlockLevel: 0
-  researchTimeFormula: 
+  researchTimeFormula: General
   sprite: {fileID: 21300000, guid: 10e49c7f263964eb89ede4bd40e9e740, type: 3}
   title: Shotgun
   type: 101

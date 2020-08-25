@@ -15,7 +15,7 @@ MonoBehaviour:
   level: 0
   maxLevel: 0
   unlockLevel: 0
-  researchTimeFormula: 
+  researchTimeFormula: General
   sprite: {fileID: 21300000, guid: 2b48dcc1ba5954b26ac0bdb1b465f58c, type: 3}
   title: Air Strike Damage
   type: 5

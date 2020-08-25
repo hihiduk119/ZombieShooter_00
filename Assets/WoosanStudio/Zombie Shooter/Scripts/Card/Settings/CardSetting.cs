@@ -23,9 +23,9 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField] private int unlockLevel = 0;
         public int UnlockLevel { get => unlockLevel; }
 
-        [Header("[레벨업시 필요한 시간 공식]")]
-        [SerializeField][TextArea(2, 4)]
-        private string researchTimeFormula;
+        [Header("[레벨업시 필요한 시간 공식 메서드 이름]")]
+        [SerializeField]
+        private string researchTimeFormula = "General";
         public string ResearchTimeFormula { get => researchTimeFormula; }
         //==============================================================================
 

@@ -15,7 +15,7 @@ MonoBehaviour:
   level: 0
   maxLevel: 0
   unlockLevel: 0
-  researchTimeFormula: 
+  researchTimeFormula: General
   sprite: {fileID: 21300000, guid: 150ec6b02a6e74b428766ffe43dcf405, type: 3}
   title: Pistol
   type: 100

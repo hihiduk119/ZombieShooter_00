@@ -15,7 +15,7 @@ MonoBehaviour:
   level: 0
   maxLevel: 0
   unlockLevel: 0
-  researchTimeFormula: 
+  researchTimeFormula: General
   sprite: {fileID: 21300000, guid: 36e017c54b6e04474b248a12c1e959f3, type: 3}
   title: Bullet Ammo
   type: 200

@@ -5,6 +5,10 @@ using UnityEngine;
 
 namespace WoosanStudio.ZombieShooter
 {
+    /// <summary>
+    /// 카드 자체의 프로퍼티
+    /// 프로퍼티의 초기값 및 레벨당 증가 수치 및 설명 등이 있음
+    /// </summary>
     [CreateAssetMenu(menuName = "ZombieShooter/CardPropertySettings/Make Setting", fileName = "Property")]
     [System.Serializable]
     public class CardProperty : ScriptableObject, IProperty

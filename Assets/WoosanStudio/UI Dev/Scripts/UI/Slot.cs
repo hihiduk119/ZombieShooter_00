@@ -96,7 +96,7 @@ namespace WoosanStudio.ZombieShooter
         IEnumerator TimeUpdate(Text textProcess, Image progressBar, Timeset timeset)
         {
             //1분 집어 넣음
-            timeset = new Timeset(5);
+            timeset = new Timeset(60*5);
 
             WaitForSeconds WFS = new WaitForSeconds(0.5f);
 

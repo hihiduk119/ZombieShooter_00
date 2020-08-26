@@ -6,9 +6,11 @@ using UnityEngine.Events;
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
-    /// 연구 남은 시간을 계산해주는 계산기
+    /// 모든 다음 것을 계산해주는 계산기
+    /// * 연구 시간
+    /// * 연구 비용
     /// </summary>
-    public class ResearchRemainTimeCalculator : MonoBehaviour
+    public class NextValueCalculator : MonoBehaviour
     {
         [Header("[공식의 호출부 이며 Invoke를 통해서 해당 공식 사용함]")]
         [SerializeField]
@@ -29,8 +31,12 @@ namespace WoosanStudio.ZombieShooter
             //남은 시간 계산 공식 등록
             //*공식이 추가될때 마다 등록 시켜야 함.
             StartEvent.AddListener(RunFormula);
+
+            //*리스너에 2개 동시에 있을경우 Total 이 중첩되어 적용됨 알아둬야함.
             //디버그용 리스너 등록 => TestCode 삭제시 삭제 요망.
-            EndEvent.AddListener(EndEventPrint);
+            //EndEvent.AddListener(ResearchTimeCallback);
+            //디버그용 리스너 등록 => TestCode 삭제시 삭제 요망.
+            EndEvent.AddListener(CoinCallback);
         }
 
         /// <summary>
@@ -62,34 +68,66 @@ namespace WoosanStudio.ZombieShooter
         /// 기본 레벨 업글 시간
         /// * 메서드 추가로 새로운 공식 넣으면 됨.
         /// </summary>
-        void General()
+        void ResearchTime()
         {
             //공격속도 업글 시간 공식 (25레벨 시 9Day 소요,total = 62Day)
             int seconds = (level * level * level * 30) * 2 + 30;
 
+
             //계산 완료 및 일종의 리턴 호출
             EndEvent.Invoke(seconds);
         }
+
+        /// <summary>
+        /// 코인공식 레벨에 따라 올라가는
+        /// This is a coin calculation formula that step by step by level.
+        /// </summary>
+        void Coin()
+        {
+            //공격속도 업글 시간 공식 (25레벨 시 9Day 소요,total = 62Day)
+            int seconds = (level * level * level * level * 5) * 2 + 30;
+
+            //계산 완료 및 일종의 리턴 호출
+            EndEvent.Invoke(seconds);
+        }
+
+
 
         #region [-TestCode]
         //전체 시간 계산용
         private int total = 0;
 
         /// <summary>
-        /// 오직 값 출력용 
+        /// ResearchTime 결과 출력용
         /// </summary>
         /// <param name="seconds"></param>
-        void EndEventPrint(int seconds)
+        void ResearchTimeCallback(int seconds)
         {
+            //생성시 셋업으로 현재 시간을 세팅
             Timeset secondsTimeset = new Timeset(seconds);
+            //실행을 통해 현재시간 대비 해당 남은 시간 가져옴
             secondsTimeset.GetRemainTime();
 
+            //전체 시간을 구하기 위해 더해줌
             total += seconds;
 
             Timeset totalTimeset = new Timeset(total);
             totalTimeset.GetRemainTime();
 
-            Debug.Log("[level : " + level + "]  seconds = " + seconds + " s  [" + secondsTimeset.TimeString + "]  " + "+ total = [" + " /  " + totalTimeset.TimeString + "]");
+            Debug.Log("[level : " + level + "]  seconds = " + seconds + " s  [" + secondsTimeset.TimeString + "]  " + "+ total = ["+ totalTimeset.TimeString + "]");
+        }
+
+
+        /// <summary>
+        /// coin 결과 출력
+        /// </summary>
+        /// <param name="coin"></param>
+        void CoinCallback(int coin)
+        {
+            //전체 시간을 구하기 위해 더해줌
+            total += coin;
+
+            Debug.Log("[level : " + level + "] "+"[coin : " + coin + "] "+ "total = [" + total + "]");
         }
 
         /// <summary>
@@ -101,8 +139,11 @@ namespace WoosanStudio.ZombieShooter
             //레벨 25까지 실행
             for (int index = 0; index < 25; index++)
             {
-                //General 이름 메서드 실행
-                StartEvent.Invoke("General", index);
+                //다음 연구 시간을 알아오기 위해 ResearchTime 이름 메서드 실행
+                //StartEvent.Invoke("ResearchTime", index);
+
+                //다음 코인량을 알아오기위해 Coin 이름 메서드 실행
+                StartEvent.Invoke("Coin", index);
 
                 yield return new WaitForEndOfFrame();
             }

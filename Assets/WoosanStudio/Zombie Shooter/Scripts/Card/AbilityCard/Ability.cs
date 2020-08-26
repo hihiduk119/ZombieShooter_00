@@ -30,6 +30,11 @@ namespace WoosanStudio.ZombieShooter
         /// 레벨업시 연구시 걸리는 시간 공식
         /// </summary>
         string ResearchTimeFormula { get; }
+
+        /// <summary>
+        /// 다음 업그레이드에 필요한 코인 공식
+        /// </summary>
+        string CoinFormula { get; }
     }
 
     /// <summary>

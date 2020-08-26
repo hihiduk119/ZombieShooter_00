@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Property
   m_EditorClassIdentifier: 
   type: 7
-  value: 25
-  increasedValuePerLevelUp: 1
-  descripsion: Increase coin gain by 25%.
+  value: 100
+  increasedValuePerLevelUp: 25
+  descripsion: Increase coin gain by 100%.

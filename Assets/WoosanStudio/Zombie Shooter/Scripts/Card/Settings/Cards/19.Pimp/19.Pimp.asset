@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 19.Pimp
   m_EditorClassIdentifier: 
-  level: 0
-  maxLevel: 0
+  maxLevel: 25
   unlockLevel: 0
-  researchTimeFormula: General
+  researchTimeFormula: ResearchTime
+  coinFormula: Coin
   sprite: {fileID: 21300000, guid: 6dc5b6bd0c60347c29d700893d2d2b9d, type: 3}
   title: Pimp
   type: 303

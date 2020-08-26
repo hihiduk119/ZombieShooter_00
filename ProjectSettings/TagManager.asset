@@ -36,7 +36,7 @@ TagManager:
   - PropsLoad
   - SkyBox
   - LandCollider
-  - 
+  - Background UI
   - 
   - 
   - 
@@ -51,4 +51,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background Layer
+    uniqueID: 433212469
     locked: 0

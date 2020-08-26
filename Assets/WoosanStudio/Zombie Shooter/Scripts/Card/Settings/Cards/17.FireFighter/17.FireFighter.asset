@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 17.FireFighter
   m_EditorClassIdentifier: 
-  level: 0
-  maxLevel: 0
+  maxLevel: 25
   unlockLevel: 0
-  researchTimeFormula: General
+  researchTimeFormula: ResearchTime
+  coinFormula: Coin
   sprite: {fileID: 21300000, guid: d419d3350b886423f8b625b0b4193c42, type: 3}
   title: Firefighter
   type: 301

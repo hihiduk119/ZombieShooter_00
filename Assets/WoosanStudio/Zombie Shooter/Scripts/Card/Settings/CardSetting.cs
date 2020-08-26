@@ -12,7 +12,7 @@ namespace WoosanStudio.ZombieShooter
     {
         //===============================[ICard Implemet]===============================
         [Header("[스킬 레벨]")]
-        [SerializeField] private int level = 0;
+        [HideInInspector] private int level = 0;
         public int Level { get => level; }
 
         [Header("[최대 레벨]")]
@@ -25,8 +25,13 @@ namespace WoosanStudio.ZombieShooter
 
         [Header("[레벨업시 필요한 시간 공식 메서드 이름]")]
         [SerializeField]
-        private string researchTimeFormula = "General";
+        private string researchTimeFormula = "ResearchTime";
         public string ResearchTimeFormula { get => researchTimeFormula; }
+
+        [Header("[레벨업시 필요한 시간 공식 메서드 이름]")]
+        [SerializeField]
+        private string coinFormula = "Coin";
+        public string CoinFormula { get => coinFormula; }
         //==============================================================================
 
         [Header("[UI Sprite]")]

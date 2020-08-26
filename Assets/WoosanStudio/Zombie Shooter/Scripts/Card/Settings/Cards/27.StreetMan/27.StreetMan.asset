@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 27.StreetMan
   m_EditorClassIdentifier: 
-  level: 0
-  maxLevel: 0
+  maxLevel: 25
   unlockLevel: 0
-  researchTimeFormula: General
+  researchTimeFormula: ResearchTime
+  coinFormula: Coin
   sprite: {fileID: 21300000, guid: eaf9eab90de40456abe788ae6da2796d, type: 3}
   title: Street Man
   type: 311

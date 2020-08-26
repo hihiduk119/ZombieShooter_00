@@ -882,6 +882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 200
+  Reload: 30
 --- !u!1 &835882112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,6 +1145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 500
+  Reload: 0
 --- !u!114 &949802951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1438,6 +1440,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 150
+  Reload: 30
+--- !u!114 &1208018036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208018030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b67d8750d564547b048e7c973b12c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthLink:
+    targetScript: {fileID: 1208018033}
+    fieldName: Health
+  HealthbarPrefab: {fileID: 22400004, guid: e1937e1c6f9ba6c4ba4d36e07d553b6d, type: 3}
+  yOffset: 2.25
+  keepSize: 1
+  scale: 3
+  sizeOffsets: {x: 0, y: -100}
+  DrawOFFDistance: 1
+  drawDistance: 25
+  showHealthInfo: 1
+  healthInfoAlignment: 1
+  healthInfoSize: 13
+  alphaSettings:
+    defaultAlpha: 1
+    defaultFadeSpeed: 0.1
+    fullAplpha: 1
+    fullFadeSpeed: 0
+    nullAlpha: 0
+    nullFadeSpeed: 0.05
+    onHit:
+      fadeSpeed: 0.1
+      onHitAlpha: 1
+      duration: 1
+  canvas: {fileID: 0}
+  keyTag: 
 --- !u!1 &1213954541
 GameObject:
   m_ObjectHideFlags: 0

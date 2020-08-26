@@ -17,7 +17,7 @@ public class CameraShakeProjectile : MonoBehaviour , ICameraShaker {
     public void Shake()
     {
         //일단 못하게 막음
-        //ShakeCamera();
+        ShakeCamera();
     }
 
     #region [-TestCode]

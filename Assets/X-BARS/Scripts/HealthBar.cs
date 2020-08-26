@@ -26,6 +26,7 @@ public class HealthBar : MonoBehaviour {
 	private CanvasGroup canvasGroup;
 	private Vector2 healthbarPosition, healthbarSize, healthInfoPosition;
 	private Transform thisT;
+	//defaultHealth 수정하면 최대 체력을 올릴수 있다.
 	private float defaultHealth, lastHealth, camDistance, dist, pos, rate;
 	private Camera cam;
     private GameObject healthbarRoot;
@@ -88,8 +89,10 @@ public class HealthBar : MonoBehaviour {
             healthbarRoot = new GameObject("HealthbarRoot", typeof(RectTransform), typeof(HealthbarRoot));
         healthbarRoot.transform.SetParent(canvas.transform, false);
 		HealthbarPrefab = (RectTransform)Instantiate(HealthbarPrefab, new Vector2 (-1000, -1000), Quaternion.identity);
-        HealthbarPrefab.name = "HealthBar";
-        HealthbarPrefab.SetParent(healthbarRoot.transform, false);
+		//HealthbarPrefab.name = "HealthBar";
+		//프리팹 이름으로 생성하게 변경 -> 수정 코드
+		HealthbarPrefab.name = HealthbarPrefab.name;
+		HealthbarPrefab.SetParent(healthbarRoot.transform, false);
 
 		//add ma start [HealthBaManager에서 동적 관리를 위해 추가된 메서드]
 		//Initialize(HealthbarPrefab);

@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyHealth : MonoBehaviour {
 
 	public int Health;
+    public int Reload = 30;
     private Animation anim;
 
 	// Update is called once per frame

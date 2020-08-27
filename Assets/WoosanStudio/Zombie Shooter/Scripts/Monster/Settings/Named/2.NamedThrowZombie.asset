@@ -10,22 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9181cc1333b844137891b64b7d82e2fb, type: 3}
-  m_Name: 1.WeakZombie
+  m_Name: 2.NamedThrowZombie
   m_EditorClassIdentifier: 
-  _monsterID: 0
-  _name: WeakZombie
-  _prefab: {fileID: 246062895614678432, guid: a19c0560bc7914ea8bf07e9bb412dadf, type: 3}
-  _level: 0
-  _health: 50
+  _monsterID: 1
+  _name: AirportWorker
+  _prefab: {fileID: 6486311437856862348, guid: 67c2d934d253b4a1cb3e76550818cc00, type: 3}
+  _level: 1
+  _health: 0
   healthFormula: MonsterHealth
   _damage: 10
   damageFormula: MonsterDamage
-  _propertys: []
-  _attackDelay: 2
+  _propertys:
+  - {fileID: 11400000, guid: da9b9168941164e919b1df1bbce7367a, type: 2}
+  - {fileID: 11400000, guid: 21cac7246f0a54ce986a9749094add00, type: 2}
+  _attackDelay: 5
   _moveSpeed: 2.5
   turnSpeed: 130
-  stoppingDistance: 3
-  projectileSettings: {fileID: 0}
+  stoppingDistance: 10
+  projectileSettings: {fileID: 11400000, guid: 4eb0c94cf23a349f8a81f39bcd12dd05, type: 2}
   _useShadow: 1
   _shadowProjector: {fileID: 5194339502216924784, guid: eaad130044b2747ef9b15d3b0c6d7fb6,
     type: 3}

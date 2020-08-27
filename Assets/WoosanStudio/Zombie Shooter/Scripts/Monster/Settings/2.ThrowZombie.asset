@@ -15,9 +15,12 @@ MonoBehaviour:
   _monsterID: 1
   _name: AirportWorker
   _prefab: {fileID: 6486311437856862348, guid: 67c2d934d253b4a1cb3e76550818cc00, type: 3}
-  _level: 1
-  _health: 0
+  _level: 0
+  _health: 50
+  healthFormula: MonsterHealth
   _damage: 10
+  damageFormula: MonsterDamage
+  _propertys: []
   _attackDelay: 5
   _moveSpeed: 2.5
   turnSpeed: 130

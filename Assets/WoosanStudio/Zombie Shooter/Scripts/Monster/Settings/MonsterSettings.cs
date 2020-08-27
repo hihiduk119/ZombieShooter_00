@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -16,6 +17,13 @@ namespace WoosanStudio.ZombieShooter
         }*/
 
         /// <summary>
+        /// 공격 타입
+        /// </summary>
+        /*[Tooltip("공격 타입")]
+        [SerializeField] private AttackType _attackType = 0;
+        */
+
+        /// <summary>
         /// 몬스터 고유 ID
         /// </summary>
         [SerializeField]
@@ -27,23 +35,16 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
-        /// 공격 타입
-        /// </summary>
-        /*[Tooltip("공격 타입")]
-        [SerializeField] private AttackType _attackType = 0;
-        */
-
-        /// <summary>
         /// 몬스터 아이디
         /// </summary>
-        [Tooltip("고유 아이디")]
+        [Header("[고유 아이디]")]
         [SerializeField] private MonsterID _monsterID = 0;
         public MonsterID MonsterId { get => _monsterID; set => _monsterID = value; }
 
         /// <summary>
         /// 몬스터 이름
         /// </summary>
-        [Tooltip("몬스터 이름")]
+        [Header("[몬스터 이름]")]
         [SerializeField] private string _name = "None";
 
         /// <summary>
@@ -55,59 +56,69 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 몬스터의 레벨
         /// </summary>
-        [Tooltip("몬스터의 레벨")]
-        [SerializeField] private int _level = 1;
+        [Header("[몬스터의 티어]")]
+        [SerializeField] private int _level = 0;
         public int Level { get => _level; }
 
         /// <summary>
         /// 체력
         /// </summary>
-        [Tooltip("체력")]
+        [Header("[기본 체력 => [레벨에 따라 변경됨]]")]
         [SerializeField] private int _health;
         public int Health { get => _health = HealthCalculator.GetHealth((int)_monsterID, _level, _monsterID, true); }
         public HealthCalculator HealthCalculator { get; }
 
+        [Header("[레벨에 따른 체력 공식]")]
+        [SerializeField]
+        private string healthFormula = "MonsterHealth";
+        public string HealthFormula { get => healthFormula; }
 
         /// <summary>
         /// 공격 데미지
         /// </summary>
-        [Tooltip("공격 데미지")]
+        [Header("[기본 공격력 => [레벨에 따라 변경됨]]")]
         [SerializeField] private int _damage;
         public int Damage { get => _damage = DamageCalculator.GetDamage((int)_monsterID, _level, _monsterID, true); }
         public DamageCalculator DamageCalculator { get; }
 
+        [Header("[레벨에 따른 공격력 공식]")]
+        [SerializeField]
+        private string damageFormula = "MonsterDamage";
+        public string DamageFormula { get => damageFormula; }
+
+
+        //몬스터 레벨에 따라 저항 갯수 증가 필요.
+        [Header("[해당 몬스터가 가진 프로퍼티]")]
+        [SerializeField]
+        private List<CardProperty> _propertys = new List<CardProperty>();
+        public List<CardProperty> Propertys { get => _propertys; }
+
+     
         /// <summary>
         /// 공격 딜레이
         /// </summary>
-        [Tooltip("공격과 다음 공격 간 딜레이")]
+        [Header("[공격과 다음 공격 간 딜레이]")]
         [SerializeField] private float _attackDelay = 2;
         public float AttackDelay { get => _attackDelay; }
 
         /// <summary>
-        /// 공격실행 후 실제 공격 까지의 딜레이
-        /// </summary>
-        //[Tooltip("공격실행 후 실제 공격 까지의 딜레이")]
-        //[SerializeField] private float hitDelay = 0.7f;
-        //public float HitDelay { get => hitDelay; }
-
-        /// <summary>
         /// 이동 속도
         /// </summary>
-        [Tooltip("이동 속도")]
+        [Header("[이동 속도]")]
         [SerializeField] private float _moveSpeed;
         public float MoveSpeed { get => _moveSpeed; }
 
         /// <summary>
         /// 회전 속도
         /// </summary>
-        [Tooltip("회전 속도")]
+        [Header("[회전 속도]")]
         [SerializeField] private float turnSpeed = 130f;
         public float TurnSpeed { get => turnSpeed; }
 
         /// <summary>
         /// 정지 거리
         /// </summary>
-        [Tooltip("정지 거리")]
+        [Header("[정지 거리]")]
         [SerializeField] private float stoppingDistance = 3f;
         public float StopingDistance { get => stoppingDistance; }
 
@@ -146,14 +157,14 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 그림자 사용 여부
         /// </summary>
-        [Tooltip("그림자 사용")]
+        [Header("그림자 사용")]
         [SerializeField] private bool _useShadow;
         public bool UseShadow { get => _useShadow; }
 
         /// <summary>
         /// 그림자 사용 여부
         /// </summary>
-        [Tooltip("그림자 사용")]
+        [Header("그림자 사용")]
         [SerializeField] private GameObject _shadowProjector;
         public GameObject ShadowProejector { get => _shadowProjector;  }
     }

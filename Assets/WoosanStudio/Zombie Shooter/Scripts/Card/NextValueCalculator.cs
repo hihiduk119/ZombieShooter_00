@@ -84,13 +84,34 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void Coin()
         {
-            //공격속도 업글 시간 공식 (25레벨 시 9Day 소요,total = 62Day)
+            //코인 추가 공식 
             int seconds = (level * level * level * level * 5) * 2 + 30;
 
             //계산 완료 및 일종의 리턴 호출
             EndEvent.Invoke(seconds);
         }
 
+        /// <summary>
+        /// 몬스터 체력 레벨에 따라 올라가는
+        /// </summary>
+        void MonsterHealth()
+        {
+            int seconds = (level * 5) * 2 + 30;
+
+            //계산 완료 및 일종의 리턴 호출
+            EndEvent.Invoke(seconds);
+        }
+
+        /// <summary>
+        /// 몬스터 대미지 레벨에 따라 올라가는
+        /// </summary>
+        void MonsterDamage()
+        {
+            int seconds = (level * 5) * 2 + 30;
+
+            //계산 완료 및 일종의 리턴 호출
+            EndEvent.Invoke(seconds);
+        }
 
 
         #region [-TestCode]

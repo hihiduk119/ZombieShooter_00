@@ -16,20 +16,28 @@ namespace WoosanStudio.ZombieShooter
         /// 기본 룰
         /// 1 스테이지는 15라운드로 구성.
         /// 매 5라운드 마다 보스 출현
-        /// 
         /// </summary>
 
         [Header("[생성 몬스터 리스트]")]
-        public List<GameObject> Monsters = new List<GameObject>();
+        public string StageName = "";
 
-        [Header("[생성 네임드 몬스터 (보스몹)]")]
-        public GameObject NamedMonster;
+        [Header("[생성 몬스터 세팅 리스트]")]
+        public List<MonsterSettings> Monsters = new List<MonsterSettings>();
 
-        [Header("[스테이지 별 최대 스폰 갯수]")]
-        public List<int> MaxSpawn = new List<int>();
+        [Header("[생성 네임드 몬스터 세팅 (보스몹)]")]
+        public MonsterSettings NamedMonster;
+
+        [Header("[라운드 별 최대 스폰 갯수 => 한 라운드에 최대 몇명까지 스폰 되는]")]
+        public List<int> MaxSpawnByRound = new List<int>();
+
+        [Header("[네이드 몬스터가 스폰할 라운드 인덱스]")]
+        public List<int> SpawnRoundIndexByNamedMonster = new List<int>();
+
+        [Header("[최대 스폰 제한 => 성능 때문에 맵에 최대 생성 할수 있는 몬수터 수]")]
+        public int MaxSpawnLimit = 10;
 
         [Header("[동시 스폰하는 최대 갯수]")]
-        public int MaxSpawnPoint = 1;
+        public int MaxSameTimeSpawn = 1;
 
         [Header("[스폰과 스폰사이의 시간]")]
         public float SpawnInterval = 2.5f;

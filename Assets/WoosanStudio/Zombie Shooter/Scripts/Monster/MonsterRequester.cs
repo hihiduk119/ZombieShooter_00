@@ -119,8 +119,6 @@ namespace WoosanStudio.ZombieShooter
             Debug.Log("정지");
             if (infiniteMonsterRequestCoroutine != null) StopCoroutine(infiniteMonsterRequestCoroutine);
         }
-
-
         
         void Update()
         {

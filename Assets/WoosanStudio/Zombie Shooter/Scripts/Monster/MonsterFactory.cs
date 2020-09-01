@@ -15,7 +15,7 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class MonsterFactory : MonoBehaviour
     {
-        [Header("몬스터 세팅값 리스트")]
+        [Header("[몬스터 세팅값 리스트 => 스케줄러에서 재새팅 되기 때문에 현재 값은 테스트용]")]
         public List<MonsterSettings> monsterSettings = new List<MonsterSettings>();
         
         //[Header("스폰 위치")]

@@ -35,6 +35,27 @@ namespace WoosanStudio.ZombieShooter
             MonsterRequester = GameObject.FindObjectOfType<MonsterRequester>();
         }
 
+
+        public static string GenerateName(int len)
+        {
+            System.Random r = new System.Random();
+            string[] consonants = { "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "l", "n", "p", "q", "r", "s", "sh", "zh", "t", "v", "w", "x" };
+            string[] vowels = { "a", "e", "i", "o", "u", "ae", "y" };
+            string Name = "";
+            Name += consonants[r.Next(consonants.Length)].ToUpper();
+            Name += vowels[r.Next(vowels.Length)];
+            int b = 2; //b tells how many times a new letter has been added. It's 2 right now because the first two letters are already in the name.
+            while (b < len)
+            {
+                Name += consonants[r.Next(consonants.Length)];
+                b++;
+                Name += vowels[r.Next(vowels.Length)];
+                b++;
+            }
+
+            return Name;
+        }
+
         /// <summary>
         /// 해당 스테이지의 몬스터 스폰을 실행 한다.
         /// </summary>
@@ -85,6 +106,11 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="isFirst"></param>
         void Spawn(int stage, int round, MonsterScheduleSetting monsterSchedule,bool isFirst = false)
         {
+            //테스트 이름 생성기
+            string name = GenerateName(Random.Range(5, 15));
+            Debug.Log("생성 이름 = " + name);
+
+
             //맵에 최대 몬스터 생성 제한게 걸렸는으면 생성 중지
             if (CurrentSpawnedMonster >= monsterSchedule.MaxSpawnLimit)
             {

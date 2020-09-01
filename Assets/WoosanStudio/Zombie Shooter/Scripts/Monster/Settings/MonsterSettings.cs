@@ -106,7 +106,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 정지 거리
         /// </summary>
-        [Header("[정지 거리]")]
+        [Header("[최소 공격 거리]")]
         [SerializeField] private float stoppingDistance = 3f;
         public float StopingDistance { get => stoppingDistance; }
 

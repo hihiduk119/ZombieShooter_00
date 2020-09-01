@@ -160,7 +160,7 @@ namespace WoosanStudio.ZombieShooter
                     //조준해제
                     Release();
 
-                    //타겟 마커 활성화
+                    //타겟 마커 비활성화
                     AimMaker.Instance.Reset();
 
                     //타겟이 없을때 AimIKTarget 초기화 포지션으로 이동시킴
@@ -169,10 +169,14 @@ namespace WoosanStudio.ZombieShooter
 
                 //이전 타겟 저장
                 //previousTarget = FindAimTarget.target;
-            } else //타겟이 존제하지 않을때
+            } else //타겟이 존재하지 않을때
             {
                 //조준해제
                 Release();
+
+                //타겟 마커 비활성화
+                AimMaker.Instance.Reset();
+
                 //타겟이 없을때 AimIKTarget 초기화 포지션으로 이동시킴
                 PlayerAimSwaper.ImmediatelyAiming(AimIKTargetAnchor);
             }

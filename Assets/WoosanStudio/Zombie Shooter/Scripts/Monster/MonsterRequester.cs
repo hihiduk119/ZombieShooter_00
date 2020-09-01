@@ -37,12 +37,35 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 몬스터 요청
         /// </summary>
-        /// <param name="level">스테이지 레벨</param>
+        /// <param name="stage">스테이지 레벨</param>
         /// <param name="index">몬스터 조</param>
-        public void Requester(int level, int index)
+        public void Requester(int stage, int index)
         {
             //스폰 리스트에서 스폰위치 현재 레벨에 맞는 스폰위치 가져옴
-            spawnPoints = SpawnPositionController.GetSpawnPoints(level);
+            spawnPoints = SpawnPositionController.GetSpawnPoints(stage);
+
+            //몬스터 죽음시 아이템 생성 요청.
+            MonsterFactory.MonsterDieActions.Add(ItemRequester.Requester);
+
+            //몬스터 생성
+            GameObject clone = MonsterFactory.Make(index, spawnPoints);
+        }
+
+        /// <summary>
+        /// 몬스터 요청
+        /// </summary>
+        /// <param name="stage">스테이지 레벨</param>
+        /// <param name="index">몬스터 조</param>
+        /// <param name="monsterSettings">생성할 몬스터 세팅 리스트</param>
+        public void Requester(int stage, int index , List<MonsterSettings> monsterSettings)
+        {
+            Debug.Log("생성??");
+
+            //스폰 리스트에서 스폰위치 현재 레벨에 맞는 스폰위치 가져옴
+            spawnPoints = SpawnPositionController.GetSpawnPoints(stage);
+
+            //출현 몬스터 세팅 리스트를 해당 세팅으로 교체
+            MonsterFactory.monsterSettings = monsterSettings;
 
             //몬스터 죽음시 아이템 생성 요청.
             MonsterFactory.MonsterDieActions.Add(ItemRequester.Requester);
@@ -53,6 +76,7 @@ namespace WoosanStudio.ZombieShooter
 
         #region [-TestCode]
         /// <summary>
+        /// ->삭제 요망
         /// 테스트용으로 무한하게 몬스터 랜덤으로 만듬
         /// </summary>
         /// <returns></returns>
@@ -60,6 +84,7 @@ namespace WoosanStudio.ZombieShooter
         {
             while (true)
             {
+                Debug.Log("생성!!");
                 //몬스터 랜덤 생성
                 int index = Random.Range(0, 3);
                 //요청
@@ -70,6 +95,7 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// ->삭제 요망
         /// 해당 레벨로 몬스터 만들기
         /// 무한으로 몬스터를 만든다.
         /// *해당 레벨은 Level 이다.
@@ -90,7 +116,18 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Stop()
         {
+            Debug.Log("정지");
             if (infiniteMonsterRequestCoroutine != null) StopCoroutine(infiniteMonsterRequestCoroutine);
+        }
+
+
+        
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                Stop();
+            }
         }
         #endregion
     }

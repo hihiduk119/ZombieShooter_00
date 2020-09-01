@@ -106,14 +106,14 @@ namespace WoosanStudio.ZombieShooter
         }
 
         #region [-TestCode]
-        void Update()
-        {
-            //카운트 다운 시작
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                Count();
-            }
-        }
+        //void Update()
+        //{
+        //    //카운트 다운 시작
+        //    if (Input.GetKeyDown(KeyCode.C))
+        //    {
+        //        Count();
+        //    }
+        //}
         #endregion
 
     }

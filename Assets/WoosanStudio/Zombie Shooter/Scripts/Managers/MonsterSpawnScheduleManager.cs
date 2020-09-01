@@ -48,7 +48,7 @@ namespace WoosanStudio.ZombieShooter
             //코루틴이 이미 실행 중이라면 중지
             if (autoSpawnCallCoroutine != null) StopCoroutine(autoSpawnCallCoroutine);
             //코루틴이 시작
-            StartCoroutine(AutoSpawnCallCoroutine( monsterSchedule, WFS));
+            StartCoroutine(AutoSpawnCallCoroutine(stage, monsterSchedule, WFS));
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="maxSameTimeSpawn">최대 동시 스폰 갯수</param>
         /// <param name="waitForSeconds">스폰과 스폰사이 interval</param>
         /// <returns></returns>
-        IEnumerator AutoSpawnCallCoroutine( MonsterScheduleSetting monsterSchedule, WaitForSeconds waitForSeconds)
+        IEnumerator AutoSpawnCallCoroutine(int stage, MonsterScheduleSetting monsterSchedule, WaitForSeconds waitForSeconds)
         {
             //첫 시작시 라운드 초기화
             round = 0;
@@ -70,7 +70,7 @@ namespace WoosanStudio.ZombieShooter
             while (true)
             {
                 //몬스터 스폰
-                Spawn(round, monsterSchedule);
+                Spawn(stage, round, monsterSchedule);
                 yield return waitForSeconds;
                 //라운드 증가
                 round++;
@@ -83,31 +83,34 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="round">해당 라운드</param>
         /// <param name="monsterSchedule"></param>
         /// <param name="isFirst"></param>
-        void Spawn(int round, MonsterScheduleSetting monsterSchedule,bool isFirst = false)
+        void Spawn(int stage, int round, MonsterScheduleSetting monsterSchedule,bool isFirst = false)
         {
             //맵에 최대 몬스터 생성 제한게 걸렸는으면 생성 중지
-            if (CurrentSpawnedMonster < monsterSchedule.MaxSpawnLimit)
+            if (CurrentSpawnedMonster >= monsterSchedule.MaxSpawnLimit)
             {
                 Debug.Log("몬스터 스폰이 정지 됐습니다. 맵에 최대 스폰 [" + monsterSchedule.MaxSpawnLimit + "]   현재 스폰 [" + CurrentSpawnedMonster + "]");
                 return;
             }
 
             //전체 생성된 몬스터의 숫자가 해당 라운드 최대 스폰 수에 도달 했으면 정지
-            if(TotalSpawnedMonster <= monsterSchedule.MaxSpawnByRound[round])
+            if(TotalSpawnedMonster >= monsterSchedule.MaxSpawnByRound[round])
             {
-                Debug.Log("몬스터 스폰이 정지 됐습니다. Total 스폰 [" + TotalSpawnedMonster + "]   round ["+ round + "] Max 스폰 [" + monsterSchedule.MaxSpawnByRound[round] + "]");
+                Debug.Log("몬스터 스폰이 정지 됐습니다. Total 스폰 [" + TotalSpawnedMonster + "]   round ["+ round + "] 한라운드 당 최대 Max 스폰 [" + monsterSchedule.MaxSpawnByRound[round] + "]");
                 return;
             }
 
+            Debug.Log("현재 스폰 상태 =>  Total 스폰 [" + TotalSpawnedMonster + "]   round [" + round + "]  한라운드 당 최대 Max 스폰 [" + monsterSchedule.MaxSpawnByRound[round] + "]  맵에 최대 스폰 = [" + monsterSchedule.MaxSpawnLimit + "]");
+
 
             //첫번째 라운드에 네임드 몬스터 확인
-            if(round == 0)
+            if (round == 0)
             {
                 //현재 라운드가 네임드 몬스터 출현 라운드 인가?
                 //네임드 스폰 인덱스에 현재 라운드가 존재 한다
                 if (monsterSchedule.SpawnRoundIndexByNamedMonster.Exists(value => value.Equals(round)))
                 {
                     //보스 몬스터 생성 요청
+
                 }
             }
 
@@ -115,16 +118,18 @@ namespace WoosanStudio.ZombieShooter
             for(int index = 0; index < monsterSchedule.MaxSameTimeSpawn;index++)
             {
                 
-                //몬스터 랜덤 생성
-                int monsterIndex = Random.Range(0, 3);
+                //몬스터 랜덤 생성 => 몬스터 스캐줄의 생성몬스터 인덱스대로 생성
+                int monsterIndex = Random.Range(0, monsterSchedule.Monsters.Count);
                 //실제 스폰이 일어남.
                 //몬스터 리퀘스트 호출.
                 //*실제 몬스터 호출 부이며 index 부분은 좀더 생각해서 작업할 필요가 있음
-                MonsterRequester.Requester(round, monsterIndex);
+                MonsterRequester.Requester(stage, monsterIndex, monsterSchedule.Monsters);
                 //현재 몬스터 카운트 증가
                 CurrentSpawnedMonster++;
-                //전체 생성된 몬스터 카운트 증ㄱ
+                //전체 생성된 몬스터 카운트 증가
                 TotalSpawnedMonster++;
+
+                Debug.Log("[몬스터 호출] 현재 스폰카운트 = " + CurrentSpawnedMonster + "    전체 생성 몬스터 카운트 = " + TotalSpawnedMonster);
             }
         }
     }

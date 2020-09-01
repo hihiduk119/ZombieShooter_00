@@ -150,12 +150,14 @@ namespace WoosanStudio.ZombieShooter
                 //Aim
                 if (AimDistance >= Vector3.Distance(transform.position, FindAimTarget.target.position))
                 {
+                    //조준
                     Aim();
                     //타겟 마커 활성화
                     AimMaker.Instance.SetValue(FindAimTarget.target);
                 }
                 else//Release
                 {
+                    //조준해제
                     Release();
 
                     //타겟 마커 활성화
@@ -167,8 +169,10 @@ namespace WoosanStudio.ZombieShooter
 
                 //이전 타겟 저장
                 //previousTarget = FindAimTarget.target;
-            } else
+            } else //타겟이 존제하지 않을때
             {
+                //조준해제
+                Release();
                 //타겟이 없을때 AimIKTarget 초기화 포지션으로 이동시킴
                 PlayerAimSwaper.ImmediatelyAiming(AimIKTargetAnchor);
             }

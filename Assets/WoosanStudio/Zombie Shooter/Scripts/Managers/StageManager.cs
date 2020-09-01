@@ -22,7 +22,7 @@ namespace WoosanStudio.ZombieShooter
         //싱글톤 패턴으로 만들기
         static public StageManager Instance;
 
-        [Header("[씬이름 리스트 => [이걸로 어떤 스테이지 실행인지 확인]]")]
+        [Header("[씬이름 리스트 [Auto->Awake()]]")]
         public List<string> StageNames = new List<string>();
 
         [Header("[화면 터치시 자동으로 하면을 따라 다니면서 연출하는 컨트롤러]")]
@@ -95,6 +95,12 @@ namespace WoosanStudio.ZombieShooter
             //MonsterFactory = GameObject.FindObjectOfType<MonsterFactory>();
             MonsterRequester = GameObject.FindObjectOfType<MonsterRequester>();
             MonsterSpawnScheduleManager = GameObject.FindObjectOfType<MonsterSpawnScheduleManager>();
+
+            //스테이지 네임 자동 세팅 => 해당 씬 이름과 같음
+            for (int i = 0; i < MonsterSpawnScheduleManager.MonsterScheduleList.Count; i++)
+            {
+                StageNames.Add(MonsterSpawnScheduleManager.MonsterScheduleList[i].StageName);
+            }
 
             CameraMoveController = GameObject.FindObjectOfType<CameraMoveController>();
             //playersController = GameObject.FindObjectOfType<PlayersController>();
@@ -214,9 +220,24 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void CountingEnd()
         {
+            //테스토 용으로 남겨놔야 함
+            //*해당 스테이지 강제 생성 테스트용
+            //MonsterRequester.MakeMonsterByStageLevel();
+
+            //스케줄러에 의해 몬스터 생성
             //해당 레벨에 맞는 몬스터 생성
-            //* 이 부분을 몬스터 스폰 스케줄 메니저가 해야한다
-            MonsterRequester.MakeMonsterByStageLevel();
+            for (int i = 0; i < StageNames.Count; i++)
+            {
+                Debug.Log("현재 스테이지 이름 = " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+                Debug.Log("[" + i + "] = " + StageNames[i]);
+
+                //현재 씬 이름과 씬 이름 리스트에서 같은 이름 찾아서 인덱스 가져오기
+                if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals(StageNames[i]))
+                {
+                    //현재 씬과 같은 이름을 찾았다면 해당 인덱스로 스테이지로 스폰시작
+                    MonsterSpawnScheduleManager.SpawnStage(i);
+                }
+            }
         }
 
         /// <summary>

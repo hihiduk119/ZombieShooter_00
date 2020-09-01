@@ -19,12 +19,21 @@ namespace WoosanStudio.ZombieShooter
         [Header("[전체 스폰된 몬스터 수]")]
         public int TotalSpawnedMonster = 0;
 
+        [Header("[실제 몬스터를 호출하는 부분 [Auto->Awake()]]")]
+        public MonsterRequester MonsterRequester;
+
         //캐쉬용
         private MonsterScheduleSetting monsterSchedule;
         private Coroutine autoSpawnCallCoroutine;
         private WaitForSeconds WFS;
         private bool bSpawnedNamedMonster = false;
         private int round = 0;
+
+        private void Awake()
+        {
+            //자동으로 찾아서 넣어줌
+            MonsterRequester = GameObject.FindObjectOfType<MonsterRequester>();
+        }
 
         /// <summary>
         /// 해당 스테이지의 몬스터 스폰을 실행 한다.
@@ -105,7 +114,13 @@ namespace WoosanStudio.ZombieShooter
             //동시 스폰 갯수만큼 (일반)몬스터 스폰함
             for(int index = 0; index < monsterSchedule.MaxSameTimeSpawn;index++)
             {
-
+                
+                //몬스터 랜덤 생성
+                int monsterIndex = Random.Range(0, 3);
+                //실제 스폰이 일어남.
+                //몬스터 리퀘스트 호출.
+                //*실제 몬스터 호출 부이며 index 부분은 좀더 생각해서 작업할 필요가 있음
+                MonsterRequester.Requester(round, monsterIndex);
                 //현재 몬스터 카운트 증가
                 CurrentSpawnedMonster++;
                 //전체 생성된 몬스터 카운트 증ㄱ

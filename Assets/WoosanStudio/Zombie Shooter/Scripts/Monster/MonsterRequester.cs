@@ -38,7 +38,7 @@ namespace WoosanStudio.ZombieShooter
         /// 몬스터 요청
         /// </summary>
         /// <param name="level">스테이지 레벨</param>
-        /// <param name="index">몬스터 인덱스</param>
+        /// <param name="index">몬스터 조</param>
         public void Requester(int level, int index)
         {
             //스폰 리스트에서 스폰위치 현재 레벨에 맞는 스폰위치 가져옴
@@ -73,10 +73,15 @@ namespace WoosanStudio.ZombieShooter
         /// 해당 레벨로 몬스터 만들기
         /// 무한으로 몬스터를 만든다.
         /// *해당 레벨은 Level 이다.
+        /// ** 이 부분이 몬스터 스폰 스케줄 매니저가 해야 한다.
         /// </summary>
         public void MakeMonsterByStageLevel()
         {
+            //* 이 부분 -> 몬스터를 생성하고 어떤 스케줄로 스폰하는지를
+            //           몬스터 스폰 스케줄 메니저가 해야한다
+            //코루틴이 실행 중이면 일단 정지
             Stop();
+            //몬스터 무한 생성 코루틴 시작
             infiniteMonsterRequestCoroutine = StartCoroutine(InfiniteMonsterRequest());
         }
 

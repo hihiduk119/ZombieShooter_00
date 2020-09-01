@@ -3,26 +3,14 @@ using System.Collections.Generic;
 
 namespace WoosanStudio.ZombieShooter
 {
+    /// <summary>
+    /// 몬스터의 고유 데이터
+    /// 몬스터 프리팹
+    /// 몬스터 레벨
+    /// </summary>
     [CreateAssetMenu(menuName = "ZombieShooter/MonsterSettings/Make Setting", fileName = "MonsterData")]
     public class MonsterSettings : ScriptableObject
     {
-        /// <summary>
-        /// 공격타입을 정의
-        /// </summary>
-        /*[SerializeField] 
-        public enum AttackType
-        {
-            Melee = 0,
-            Throwing,
-        }*/
-
-        /// <summary>
-        /// 공격 타입
-        /// </summary>
-        /*[Tooltip("공격 타입")]
-        [SerializeField] private AttackType _attackType = 0;
-        */
-
         /// <summary>
         /// 몬스터 고유 ID
         /// </summary>
@@ -56,7 +44,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 몬스터의 레벨
         /// </summary>
-        [Header("[몬스터의 티어]")]
+        [Header("[몬스터의 레벨]")]
         [SerializeField] private int _level = 0;
         public int Level { get => _level; }
 

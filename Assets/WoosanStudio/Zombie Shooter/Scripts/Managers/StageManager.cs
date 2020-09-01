@@ -22,6 +22,9 @@ namespace WoosanStudio.ZombieShooter
         //싱글톤 패턴으로 만들기
         static public StageManager Instance;
 
+        [Header("[씬이름 리스트 => [이걸로 어떤 스테이지 실행인지 확인]]")]
+        public List<string> StageNames = new List<string>();
+
         [Header("[화면 터치시 자동으로 하면을 따라 다니면서 연출하는 컨트롤러]")]
         public CustomCamFollow CustomCamFollow;
 
@@ -42,6 +45,9 @@ namespace WoosanStudio.ZombieShooter
 
         [Header("[몬스터 요청 [Auto-Awake()]]")]
         public MonsterRequester MonsterRequester;
+
+        [Header("[몬스터 스폰 스케줄에 따라 몬스터 요청 [Auto-Awake()]]")]
+        public MonsterSpawnScheduleManager MonsterSpawnScheduleManager;
 
         [Header("[플레이어 포지셔너]")]
         //이벤트 호출 방식으로 변경 하려 했으나 호출 우선 순위 문제로 변경 보류
@@ -88,6 +94,8 @@ namespace WoosanStudio.ZombieShooter
             //자동으로 가져오기
             //MonsterFactory = GameObject.FindObjectOfType<MonsterFactory>();
             MonsterRequester = GameObject.FindObjectOfType<MonsterRequester>();
+            MonsterSpawnScheduleManager = GameObject.FindObjectOfType<MonsterSpawnScheduleManager>();
+
             CameraMoveController = GameObject.FindObjectOfType<CameraMoveController>();
             //playersController = GameObject.FindObjectOfType<PlayersController>();
             //플레이어 생성 담당
@@ -207,7 +215,7 @@ namespace WoosanStudio.ZombieShooter
         public void CountingEnd()
         {
             //해당 레벨에 맞는 몬스터 생성
-            //MonsterFactory.MakeMonsterByStageLevel();
+            //* 이 부분을 몬스터 스폰 스케줄 메니저가 해야한다
             MonsterRequester.MakeMonsterByStageLevel();
         }
 

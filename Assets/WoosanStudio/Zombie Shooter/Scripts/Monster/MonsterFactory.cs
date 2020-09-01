@@ -18,16 +18,18 @@ namespace WoosanStudio.ZombieShooter
         [Header("몬스터 세팅값 리스트")]
         public List<MonsterSettings> monsterSettings = new List<MonsterSettings>();
         
-        [Header("스폰 위치")]
-        public SpawnPoints SpawnPoints;
+        //[Header("스폰 위치")]
+        //public SpawnPoints SpawnPoints;
 
-        [Header("스테이지 모음 루트")]
-        public Transforms parent;
+        //[Header("스테이지 모음 루트")]
+        //public Transforms parent;
 
-        [Header("스테이지 모음 리스트")]
-        public List<Transform> SpawnPointList = new List<Transform>();
+        //[Header("스테이지 모음 리스트")]
+        //public List<Transform> SpawnPointList = new List<Transform>();
 
-        [Header("아이템 리퀘스터 [(Auto->Awake())]")]
+        //[Header("땅에 떨어진 아이템 리퀘스터 [(Auto->Awake())]")]
+        [HideInInspector]
+        //몬스터 리퀘스터 에서 넣어주기 때문에 숨겨둘 필요가 있음
         public ItemRequester ItemRequester;
 
         [Header("몬스터 죽임시 행동 액션]")]
@@ -37,6 +39,7 @@ namespace WoosanStudio.ZombieShooter
         [Header("스테이지 레벨")]
         public int Level = 1;
 
+        //캐쉬
         Coroutine coroutineInfiniteMakeMonster;
 
         private void Awake()
@@ -44,7 +47,7 @@ namespace WoosanStudio.ZombieShooter
             //몬스터 생성할 스테이지의 생성 위치를 가져오기 위해
             //Transforms.FindChildInFirstLayer(ref SpawnPointList, parent.transform);
 
-            //자동으로 할당
+            //땅에 떨어진 아이템 만드는 리퀘스터 가져오기
             ItemRequester = GameObject.FindObjectOfType<ItemRequester>();
         }
 
@@ -102,16 +105,5 @@ namespace WoosanStudio.ZombieShooter
             //그림자 위치 초기화
             clone.transform.localPosition = new Vector3(0, 5, 0);
         }
-
-        #region [-TestCode]
-        //void Update()
-        //{
-        //    if (Input.GetKeyDown(KeyCode.N))
-        //    {
-        //        MakeMonsterByStageLevel();
-        //    }
-        //}
-        #endregion
-
     }
 }

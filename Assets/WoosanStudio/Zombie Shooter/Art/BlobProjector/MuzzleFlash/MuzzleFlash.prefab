@@ -46,7 +46,7 @@ Projector:
   m_FieldOfView: 70
   m_AspectRatio: 2
   m_Orthographic: 1
-  m_OrthographicSize: 2
+  m_OrthographicSize: 3
   m_Material: {fileID: 2100000, guid: 32c74dd1890044f7e9fc5c38e5f8dc2f, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
@@ -63,5 +63,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17005c3e7dca84180a47e6192b40b693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitLocalPosition: {x: 1.61, y: 1.55, z: 0.34}
+  InitLocalPosition: {x: 2.8, y: 1.55, z: 0.34}
   InitLocalRotation: {x: 90, y: 90, z: 0}

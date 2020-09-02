@@ -55,12 +55,10 @@ namespace WoosanStudio.ZombieShooter
         /// 몬스터 요청
         /// </summary>
         /// <param name="stage">스테이지 레벨</param>
-        /// <param name="index">몬스터 조</param>
+        /// <param name="index">몬스터 종류</param>
         /// <param name="monsterSettings">생성할 몬스터 세팅 리스트</param>
-        public void Requester(int stage, int index , List<MonsterSettings> monsterSettings)
+        public void RequesterBySettings(int stage, int index , List<MonsterSettings> monsterSettings)
         {
-            Debug.Log("생성??");
-
             //스폰 리스트에서 스폰위치 현재 레벨에 맞는 스폰위치 가져옴
             spawnPoints = SpawnPositionController.GetSpawnPoints(stage);
 
@@ -72,6 +70,23 @@ namespace WoosanStudio.ZombieShooter
 
             //몬스터 생성
             GameObject clone = MonsterFactory.Make(index, spawnPoints);
+        }
+
+        /// <summary>
+        /// 몬스터 요청 => 네임드
+        /// </summary>
+        /// <param name="stage">스테이지 레벨</param>
+        /// <param name="monsterSettings">몬스터 종류</param>
+        public void RequesterBySetting(int stage, MonsterSettings monsterSettings) 
+        {
+            //스폰 리스트에서 스폰위치 현재 레벨에 맞는 스폰위치 가져옴
+            spawnPoints = SpawnPositionController.GetSpawnPoints(stage);
+
+            //몬스터 죽음시 아이템 생성 요청.
+            MonsterFactory.MonsterDieActions.Add(ItemRequester.Requester);
+
+            //몬스터 생성 => 몬스터 데이터 직접 넣기
+            GameObject clone = MonsterFactory.Make(monsterSettings, spawnPoints);
         }
 
         #region [-TestCode]

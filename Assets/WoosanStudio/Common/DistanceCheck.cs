@@ -71,7 +71,7 @@ public class DistanceCheck : MonoBehaviour
                 if (distance <= MixDistance)
                 {
                     Close = true;
-                    Debug.Log("체크포인트");
+                    //Debug.Log("체크포인트");
                     CloseEvent.Invoke();
                 }
 
@@ -85,7 +85,7 @@ public class DistanceCheck : MonoBehaviour
                 if (distance <= MixDistance)
                 {
                     Close = true;
-                    Debug.Log("체크포인트");
+                    //Debug.Log("체크포인트");
                     CloseEvent.Invoke();
                 }
 

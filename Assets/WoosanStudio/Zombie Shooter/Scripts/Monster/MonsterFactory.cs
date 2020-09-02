@@ -17,7 +17,7 @@ namespace WoosanStudio.ZombieShooter
     {
         [Header("[몬스터 세팅값 리스트 => 스케줄러에서 재새팅 되기 때문에 현재 값은 테스트용]")]
         public List<MonsterSettings> monsterSettings = new List<MonsterSettings>();
-        
+
         //[Header("스폰 위치")]
         //public SpawnPoints SpawnPoints;
 
@@ -28,8 +28,9 @@ namespace WoosanStudio.ZombieShooter
         //public List<Transform> SpawnPointList = new List<Transform>();
 
         //[Header("땅에 떨어진 아이템 리퀘스터 [(Auto->Awake())]")]
-        [HideInInspector]
+
         //몬스터 리퀘스터 에서 넣어주기 때문에 숨겨둘 필요가 있음
+        [HideInInspector]
         public ItemRequester ItemRequester;
 
         [Header("몬스터 죽임시 행동 액션]")]
@@ -63,6 +64,17 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 외부에서 실행하는 Make
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public GameObject Make(MonsterSettings monsterSettings, SpawnPoints spawnPoints)
+        {
+            //몬스터 생성
+            return MakeMonster(monsterSettings, spawnPoints.GetSpawnPosition());
+        }
+
+        /// <summary>
         /// 몬스터 생성
         /// </summary>
         /// <param name="id"></param>
@@ -73,8 +85,13 @@ namespace WoosanStudio.ZombieShooter
             //clone.GetComponent<Character>().monsterSettings = Instantiate(monsterSettings[index]) as MonsterSettings;
             clone.GetComponent<Monster>().monsterSettings = monsterSettings;
 
-            if (parent != null) { clone.transform.parent = parent; } 
+            if (parent != null) { clone.transform.parent = parent; }
+            //리셋시 모든 것이 0 또는 1로 초기화됨.
+            //이때 스케일도 초기화 됨. => 스케일을 원본 프리팹을 사용해야함
             clone.transform.Reset();
+
+            //스케일은 원본 프리팹을 사용 해야함
+            clone.transform.localScale = monsterSettings._prefab.transform.localScale;
 
             //생성된 몬스터를 몬스터 메니저에 등록[몬스터 메니저는 AI 플레이어의 자동 타겟을 찾기위해 사용됨]
             MonsterList.Instance.Items.Add(clone.transform);

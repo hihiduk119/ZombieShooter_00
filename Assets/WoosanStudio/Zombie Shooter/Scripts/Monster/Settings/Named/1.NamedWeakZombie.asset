@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: 1.NamedWeakZombie
   m_EditorClassIdentifier: 
   _monsterID: 0
-  _name: WeakZombie
-  _prefab: {fileID: 246062895614678432, guid: a19c0560bc7914ea8bf07e9bb412dadf, type: 3}
-  _level: 1
-  _health: 0
+  _name: Jeff
+  _prefab: {fileID: 4927290373326563121, guid: 8746bc753857e48b5932be247f878a7c, type: 3}
+  _level: 0
+  _health: 1000
   healthFormula: MonsterHealth
-  _damage: 10
+  _damage: 20
   damageFormula: MonsterDamage
   _propertys:
   - {fileID: 11400000, guid: 2432d534329604358a3a783ed2a34ea0, type: 2}

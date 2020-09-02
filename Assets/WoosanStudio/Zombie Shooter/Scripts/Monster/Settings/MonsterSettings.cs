@@ -39,7 +39,7 @@ namespace WoosanStudio.ZombieShooter
         /// 몬스터 프리팹
         /// </summary>
         //[Tooltip("몬스터 프리팹")]
-        [SerializeField] private GameObject _prefab;
+        [SerializeField] public GameObject _prefab;
 
         /// <summary>
         /// 몬스터의 레벨

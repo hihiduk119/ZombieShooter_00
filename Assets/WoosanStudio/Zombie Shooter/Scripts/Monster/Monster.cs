@@ -192,6 +192,9 @@ namespace WoosanStudio.ZombieShooter
             if (blink != null && blink.myGameObject.activeSelf) { blink.Blink(); }
         }
 
+        /// <summary>
+        /// 몬스터 죽음
+        /// </summary>
         public void Die()
         {
             this.isDead = true;

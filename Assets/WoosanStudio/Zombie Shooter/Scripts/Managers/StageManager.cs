@@ -72,6 +72,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[Fog 컨트롤러 [Auto-Awake()]]")]
         public FogController FogController;
 
+        [Header("[카드 셀렉트 팝업 오프너]")]
+        public Ricimi.PopupOpener CardSelectPopupOpener;
+
         //카메라를 움직이는 컨트롤
         private CameraMoveController CameraMoveController;
 
@@ -342,6 +345,11 @@ namespace WoosanStudio.ZombieShooter
                 NextStage();
             }
 
+            //카드 셀렉터를 오픈한다.
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                CardSelectPopupOpener.OpenPopup();
+            }
 
             //펠로우 캠 포지셔너만 해당위치로 이동
             //스테이지 이동시 카메라 이상행동 때문에 

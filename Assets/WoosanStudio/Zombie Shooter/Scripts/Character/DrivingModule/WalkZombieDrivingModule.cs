@@ -68,10 +68,8 @@ namespace WoosanStudio.ZombieShooter
 
                 if (GetRemainingDistance() != 0)
                 {
-                    Debug.Log("목표 = " + _destination.name);
-
-                    Debug.Log( "["+_transform.name+"]   remain = " + GetRemainingDistance() + "   stop = " + _agent.stoppingDistance);
-
+                    //Debug.Log("목표 = " + _destination.name);
+                    //Debug.Log( "["+_transform.name+"]   remain = " + GetRemainingDistance() + "   stop = " + _agent.stoppingDistance);
                     //공격 가능 거리에 도착 했다는 이벤트 발생.
                     //ZombieFSM의 리스너에 등록된 AttackStart 를 true 로 변경. => 공격 시작
                     ReachDestinationEvent.Invoke();

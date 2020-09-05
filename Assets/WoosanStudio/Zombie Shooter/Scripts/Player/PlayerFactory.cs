@@ -8,6 +8,10 @@ using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
+    /// <summary>
+    /// 플레이어를 생성하는 부분
+    /// 나중에 리퀘스터를 추가한 리팩토링 필요.
+    /// </summary>
     public class PlayerFactory : MonoBehaviour
     {
         //플레이어 모델 타입
@@ -43,7 +47,7 @@ namespace WoosanStudio.ZombieShooter
         //카메라 쉐이커
         private ICameraShaker cameraShaker;
 
-        [Header("[플레이어의 모든 정보를 가지고 있는 프리팹]")]
+        [Header("[플레이어의 모든 정보를 가지고 있는 프리팹 [테스트 4개를 하나로 통일 해야함]]")]
         public PlayerConfig[] playerConfigs;
 
         //[Header("[플레이어생성 이후 활성 비활성 시키는 컨트롤러]")]

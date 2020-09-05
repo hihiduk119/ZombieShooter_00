@@ -41,21 +41,38 @@ namespace WoosanStudio.ZombieShooter
             //_agent.speed = characterSettings.MoveSpeed;
         }
 
+        /// <summary>
+        /// NavMeshAgent.remainingDistance 오동작으로 재 작성.
+        /// 목표와 나의 거리 가져옴
+        /// </summary>
+        /// <returns></returns>
+        float GetRemainingDistance()
+        {
+            if (_destination == null) return -1f;
+
+            return Vector3.Distance(_transform.position, _destination.position);
+        }
+
         public void Tick()
         {
-            //Debug.Log("remain = " +_agent.remainingDistance + "   stop = " + _agent.stoppingDistance);
+            //Debug.Log( "["+_transform.name+"]   remain = " +_agent.remainingDistance + "   stop = " + _agent.stoppingDistance);
 
             _agent.destination = _destination.position;
             //움직이고 있는 상태
             _state = DrivingState.Move;
 
-            if (_agent.remainingDistance <= _agent.stoppingDistance)
+            if (GetRemainingDistance() <= _agent.stoppingDistance)
             {
                 //서있는 상태
                 _state = DrivingState.Stand;
 
-                if (_agent.remainingDistance != 0)
+                if (GetRemainingDistance() != 0)
                 {
+                    Debug.Log("목표 = " + _destination.name);
+
+                    Debug.Log( "["+_transform.name+"]   remain = " + GetRemainingDistance() + "   stop = " + _agent.stoppingDistance);
+                    //공격 가능 거리에 도착 했다는 이벤트 발생.
+                    //ZombieFSM의 리스너에 등록된 AttackStart 를 true 로 변경.  => 공격 시작
                     ReachDestinationEvent.Invoke();
 
                     //계속 오브젝트 쳐다보기

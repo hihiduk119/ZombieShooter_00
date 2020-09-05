@@ -81,11 +81,8 @@ namespace WoosanStudio.ZombieShooter
         //플레이어가 가지고 있는 무기 요청 스크립트
         private WeaponRequester WeaponRequester;
 
-        
         //생성된 플레이어 활성 비활성 제어
-        //private PlayersController playersController;
-
-        
+        //private PlayersController playersController;        
 
         private void Awake()
         {

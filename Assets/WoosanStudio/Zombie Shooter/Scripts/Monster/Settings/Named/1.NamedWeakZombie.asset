@@ -18,7 +18,7 @@ MonoBehaviour:
   _level: 0
   _health: 1000
   healthFormula: MonsterHealth
-  _damage: 20
+  _damage: 10
   damageFormula: MonsterDamage
   _propertys:
   - {fileID: 11400000, guid: 2432d534329604358a3a783ed2a34ea0, type: 2}
@@ -26,7 +26,7 @@ MonoBehaviour:
   _attackDelay: 2
   _moveSpeed: 2.5
   turnSpeed: 130
-  stoppingDistance: 3
+  stoppingDistance: 5
   projectileSettings: {fileID: 0}
   _useShadow: 1
   _shadowProjector: {fileID: 5194339502216924784, guid: eaad130044b2747ef9b15d3b0c6d7fb6,

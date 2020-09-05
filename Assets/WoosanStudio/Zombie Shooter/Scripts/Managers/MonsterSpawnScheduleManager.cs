@@ -62,7 +62,7 @@ namespace WoosanStudio.ZombieShooter
             //코루틴이 이미 실행 중이라면 중지
             if (autoSpawnCallCoroutine != null) StopCoroutine(autoSpawnCallCoroutine);
             //코루틴이 시작
-            StartCoroutine(AutoSpawnCallCoroutine(stage, monsterSchedule, WFS));
+            autoSpawnCallCoroutine = StartCoroutine(AutoSpawnCallCoroutine(stage, monsterSchedule, WFS));
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace WoosanStudio.ZombieShooter
                 return;
             }
 
-            //전체 생성된 몬스터의 숫자가 해당 라운드 최대 스폰 수에 도달 했으면 정지
+            //전체 생성된 몬스터의 숫자가 해당 라운드 최대 스폰 수에 도달 했으면 스폰 코루틴정지
             if(TotalSpawnedMonster >= monsterSchedule.MaxSpawnByRound[round])
             {
                 Debug.Log("몬스터 스폰이 정지 됐습니다. Total 스폰 [" + TotalSpawnedMonster + "]   round ["+ round + "] 한라운드 당 최대 Max 스폰 [" + monsterSchedule.MaxSpawnByRound[round] + "]");
@@ -113,8 +113,8 @@ namespace WoosanStudio.ZombieShooter
                 MonsterList.Instance.ListEmptyEvent.AddListener(EndRound);
 
                 //현재 코루틴을 중지 시킨다
-                if (autoSpawnCallCoroutine != null) StopCoroutine(autoSpawnCallCoroutine);
-                return;
+                if (autoSpawnCallCoroutine != null){ StopCoroutine(autoSpawnCallCoroutine);}
+                Debug.Log("코루틴Null 이 아니면 을 중지 합니다");
             }
 
             Debug.Log("현재 스폰 상태 =>  Total 스폰 [" + TotalSpawnedMonster + "]   round [" + round + "]  한라운드 당 최대 Max 스폰 [" + monsterSchedule.MaxSpawnByRound[round] + "]  맵에 최대 스폰 = [" + monsterSchedule.MaxSpawnLimit + "]");

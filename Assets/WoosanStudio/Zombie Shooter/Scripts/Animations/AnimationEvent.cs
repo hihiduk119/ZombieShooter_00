@@ -11,8 +11,19 @@ namespace WoosanStudio.ZombieShooter
 
         public void AttackEnd()
         {
-            //Debug.Log("AttackEnd");
+            Debug.Log("몬스터 공격 AttackEnd");
             AttackEndEvent.Invoke();
         }
+
+        //public void MeleeAttackEnd()
+        //{
+        //    Debug.Log("몬스터 공격 AttackEnd");
+        //    AttackEndEvent.Invoke();
+        //}
+        //public void DrawAttackEnd()
+        //{
+        //    Debug.Log("몬스터 공격 AttackEnd");
+        //    //AttackEndEvent.Invoke();
+        //}
     }
 }

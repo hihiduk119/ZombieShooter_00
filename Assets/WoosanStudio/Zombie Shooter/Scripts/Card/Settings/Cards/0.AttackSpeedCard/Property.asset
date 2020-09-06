@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 0
   value: 25
   increasedValuePerLevelUp: 1
-  descripsion: Increase attack speed by 25%.
+  descripsion: Increase attack speed by /d%.

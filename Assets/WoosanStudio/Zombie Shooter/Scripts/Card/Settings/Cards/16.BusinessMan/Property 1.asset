@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 14
   value: 10
   increasedValuePerLevelUp: 1
-  descripsion: Increase the pistol damage by 10%.
+  descripsion: Increase the pistol damage by /d%.

@@ -129,7 +129,8 @@ namespace WoosanStudio.ZombieShooter
             //자동으로 스테이지 카운팅하면서 스테이지 스왑
             //CameraMoveController.AutoChange();
 
-            NextStage();
+            //Popup 테스트를 위해서 잠시 제거
+            //NextStage();
         }
 
 

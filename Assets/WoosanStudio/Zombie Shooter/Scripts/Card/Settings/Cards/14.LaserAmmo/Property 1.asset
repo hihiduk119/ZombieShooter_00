@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 20
   value: 25
   increasedValuePerLevelUp: 1
-  descripsion: Increase laser type ammunition damage by 25%.
+  descripsion: Increase laser type ammunition damage by /d%.

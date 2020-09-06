@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 3
   value: 10
   increasedValuePerLevelUp: 1
-  descripsion: Increase critical chance by 10%.
+  descripsion: Increase critical chance by /d%.

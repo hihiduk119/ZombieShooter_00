@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 15
   value: 10
   increasedValuePerLevelUp: 1
-  descripsion: Increase the shotgun damage by 10%.
+  descripsion: Increase the shotgun damage by /d%.

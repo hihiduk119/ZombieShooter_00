@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 2
   value: 15
   increasedValuePerLevelUp: 1
-  descripsion: Increase critical damage by 15%.
+  descripsion: Increase critical damage by /d%.

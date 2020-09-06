@@ -17,6 +17,8 @@ namespace WoosanStudio.ZombieShooter
         public Image Fill;
         [Header("[Background-Outline 이미지 등록)]")]
         public Image Outline;
+        [Header("[Icon 이미지 등록)]")]
+        public Image Icon;
         [Header("[Background-Fill 설정시 자동 (Auto->Awake())]")]
         public ColorSet FillColorSet;
         [Header("[Background-Outline 설정시 자동(Auto->Awake())]")]
@@ -28,6 +30,17 @@ namespace WoosanStudio.ZombieShooter
             SpriteChanger = GetComponent<SpriteChanger>();
             FillColorSet = Fill.GetComponent<ColorSet>();
             OutlineColorSet = Outline.GetComponent<ColorSet>();
+        }
+
+        /// <summary>
+        /// Icon이미지를 업데이트 함
+        /// </summary>
+        /// <param name="sprite">업데이트할 이미지</param>
+        public void IconUpdate(Sprite sprite)
+        {
+            Icon.sprite = sprite;
+            //임시
+            Icon.color = Color.white;
         }
 
         /// <summary>

@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 12
   value: 20
   increasedValuePerLevelUp: 1
-  descripsion: Increase named zombie damage by 20%.
+  descripsion: Increase named zombie damage by /d%.

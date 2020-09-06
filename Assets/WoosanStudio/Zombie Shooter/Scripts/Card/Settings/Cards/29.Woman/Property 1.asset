@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 4
   value: 25
   increasedValuePerLevelUp: 1
-  descripsion: Increase in maximum health by 25%.
+  descripsion: Increase in maximum health by /d%.

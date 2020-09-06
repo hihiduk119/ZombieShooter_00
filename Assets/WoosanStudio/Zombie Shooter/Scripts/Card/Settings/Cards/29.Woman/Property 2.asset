@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 22
   value: -50
   increasedValuePerLevelUp: 1
-  descripsion: Decrease in all types of ammunition damage by -50%.
+  descripsion: Decrease in all types of ammunition damage by /d%.

@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 1
   value: -50
   increasedValuePerLevelUp: 1
-  descripsion: Decrease magazine capacity by -50%.
+  descripsion: Decrease magazine capacity by /d%.

@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 7
   value: 100
   increasedValuePerLevelUp: 25
-  descripsion: Increase coin gain by 100%.
+  descripsion: Increase coin gain by /d%.

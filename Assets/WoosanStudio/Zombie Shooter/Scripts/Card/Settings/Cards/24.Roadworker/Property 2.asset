@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 13
   value: -50
   increasedValuePerLevelUp: 1
-  descripsion: Decrease general zombie damage by -50%.
+  descripsion: Decrease general zombie damage by /d%.

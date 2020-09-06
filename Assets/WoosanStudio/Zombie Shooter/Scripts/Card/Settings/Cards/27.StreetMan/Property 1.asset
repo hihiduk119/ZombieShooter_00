@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 18
   value: 5
   increasedValuePerLevelUp: 1
-  descripsion: Increase all weapon damage by 5%.
+  descripsion: Increase all weapon damage by /d%.

@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 5
   value: -50
   increasedValuePerLevelUp: 1
-  descripsion: Decrease airstrike damage by -50%.
+  descripsion: Decrease airstrike damage by /d%.

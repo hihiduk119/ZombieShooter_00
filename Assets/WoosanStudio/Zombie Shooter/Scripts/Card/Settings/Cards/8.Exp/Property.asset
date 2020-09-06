@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 8
   value: 20
   increasedValuePerLevelUp: 5
-  descripsion: Increase experience gain by 20%.
+  descripsion: Increase experience gain by /d%.

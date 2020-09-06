@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 19
   value: -50
   increasedValuePerLevelUp: 1
-  descripsion: Decrease bullet type ammunition damage by -50%.
+  descripsion: Decrease bullet type ammunition damage by /d%.

@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 16
   value: -50
   increasedValuePerLevelUp: 1
-  descripsion: Decrease the assault rifle damage by -50%.
+  descripsion: Decrease the assault rifle damage by /d%.

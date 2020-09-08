@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 11.AssaultRifle
   m_EditorClassIdentifier: 
+  level: 0
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: 6fac19f63873545c6b3aab5fa3438be1, type: 3}
+  scale: 0.4
+  iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Assault Rifle
   type: 102
   Properties:

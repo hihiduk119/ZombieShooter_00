@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 1.MagazineCapacity
   m_EditorClassIdentifier: 
+  level: 0
+  maxStack: 3
+  stackCount: 0
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: 398fed74244c4477e8685fe85a6e5b1f, type: 3}
+  scale: 0.25
+  iconColor: {r: 0.27058825, g: 0.3647059, b: 0.4509804, a: 1}
   title: Magazine Capacity
   type: 1
   Properties:

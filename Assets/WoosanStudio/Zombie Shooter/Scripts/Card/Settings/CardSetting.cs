@@ -12,8 +12,21 @@ namespace WoosanStudio.ZombieShooter
     {
         //===============================[ICard Implemet]===============================
         [Header("[스킬 레벨]")]
-        [HideInInspector] private int level = 0;
+        [HideInInspector]
+        [SerializeField]
+        private int level = 0;
         public int Level { get => level; }
+
+        [Header("[최대 중첩 => 0부터 계산]")]
+        [SerializeField]
+        private int maxStack = 2;
+        public int MaxStack { get => maxStack; }
+
+        [Header("[중첩 카운트]")]
+        [HideInInspector]
+        [SerializeField]
+        private int stackCount = 0;
+        public int StackCount { get => stackCount; }
 
         [Header("[최대 레벨]")]
         [SerializeField] private int maxLevel = 25;
@@ -34,9 +47,17 @@ namespace WoosanStudio.ZombieShooter
         public string CoinFormula { get => coinFormula; }
         //==============================================================================
 
-        [Header("[UI Sprite]")]
+        [Header("[Icon Sprite]")]
         [SerializeField] private Sprite sprite;
         public Sprite Sprite { get => sprite; }
+
+        [Header("[Icon Scale]")]
+        [SerializeField] private float scale = 1f;
+        public float Scale { get => scale; }
+
+        [Header("[Icon Color]")]
+        [SerializeField] private Color iconColor = Color.white;
+        public Color IconColor { get => iconColor; }
 
         [Header("[표시 이름]")]
         [SerializeField] private string title;

@@ -23,6 +23,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[스킬 타이틀]")]
         public Text title;
 
+        [Header("[스킬 스택 카운트]")]
+        public Text stack;
+
         [Header("[스킬 내용]")]
         public Text contexts;
 
@@ -52,7 +55,7 @@ namespace WoosanStudio.ZombieShooter
         void UpdateCards(int index, CardSetting cardSetting)
         {
             //해당 되는 인덱스 카드 이미지 업데이트
-            CardSelection.SelectItems[index].IconUpdate(cardSetting.Sprite);
+            CardSelection.SelectItems[index].IconUpdate(cardSetting.Sprite,cardSetting.IconColor, cardSetting.Scale);
         }
          
         /// <summary>
@@ -66,6 +69,7 @@ namespace WoosanStudio.ZombieShooter
             stringBuilder = new StringBuilder("LV ");
             stringBuilder.Append(cardSetting.Level + 1);
             stringBuilder.AppendLine();
+            //stringBuilder.Append(" ");
             stringBuilder.Append(cardSetting.Title);
 
             //타이틀에 적용
@@ -73,7 +77,30 @@ namespace WoosanStudio.ZombieShooter
 
             //재사용 위해 초기화
             stringBuilder.Clear();
-            
+
+            //중첩 카운트 적용
+            stringBuilder.Append("[");
+
+            //최대 스택 카운트-1 보다 현재 카드 카운트가 같다면
+            //"MAX"로 표기
+            if(cardSetting.MaxStack -1 == cardSetting.StackCount)
+            {
+                stringBuilder.Append("MAX");
+            } else //아니면 해당 카운트에 + 1 증가 표기 => 다음에 어떨지 표기임으로
+            {
+                stringBuilder.Append(cardSetting.StackCount + 1);
+            }
+
+            stringBuilder.Append("/");
+            //0부터 시작이기에 실제 표기에는 +1증가
+            stringBuilder.Append(cardSetting.MaxStack + 1);
+            stringBuilder.Append("]");
+
+            stack.text = stringBuilder.ToString();
+
+            //재사용 위해 초기화
+            stringBuilder.Clear();
+
             //카드의 프로퍼티의 내용들을 하나로 묶음
             for (int i = 0; i < cardSetting.Properties.Count; i++)
             {
@@ -106,8 +133,6 @@ namespace WoosanStudio.ZombieShooter
             //UI에 적용
             contexts.text = stringBuilder.ToString();
         }
-
-
 
         /// <summary>
         /// 첫번째 카드 선택됨

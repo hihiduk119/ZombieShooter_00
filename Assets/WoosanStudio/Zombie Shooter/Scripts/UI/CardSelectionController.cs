@@ -41,23 +41,23 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 토클을 강제로 활성화 시키기 위해 사용
         /// </summary>
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha6))
-            {
-                Select(0);
-            }
+        //void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Alpha6))
+        //    {
+        //        Select(0);
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.Alpha7))
-            {
-                Select(1);
-            }
+        //    if (Input.GetKeyDown(KeyCode.Alpha7))
+        //    {
+        //        Select(1);
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.Alpha8))
-            {
-                Select(2);
-            }
-        }
+        //    if (Input.GetKeyDown(KeyCode.Alpha8))
+        //    {
+        //        Select(2);
+        //    }
+        //}
         #endregion
 
     }

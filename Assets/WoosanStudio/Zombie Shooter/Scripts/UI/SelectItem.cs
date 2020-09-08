@@ -36,11 +36,15 @@ namespace WoosanStudio.ZombieShooter
         /// Icon이미지를 업데이트 함
         /// </summary>
         /// <param name="sprite">업데이트할 이미지</param>
-        public void IconUpdate(Sprite sprite)
+        public void IconUpdate(Sprite sprite , Color color,float scale)
         {
             Icon.sprite = sprite;
-            //임시
-            Icon.color = Color.white;
+            //색 적용
+            Icon.color = color;
+            //아이콘 크기 스프라이트 사이즈에 마춰 재적용.
+            Icon.rectTransform.sizeDelta = new Vector2(sprite.rect.width, sprite.rect.height);
+            //스케일 적용
+            Icon.rectTransform.localScale = new Vector3(scale, scale, scale);
         }
 
         /// <summary>

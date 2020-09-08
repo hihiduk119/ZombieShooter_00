@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 10
   value: 3
   increasedValuePerLevelUp: 0
-  descripsion: 
+  descripsion: Changes weapon to the sniper rifle.

@@ -4,6 +4,7 @@ using UnityEngine;
 
 using Cinemachine;
 using WoosanStudio.Camera;
+using WoosanStudio.Common;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -114,6 +115,14 @@ namespace WoosanStudio.ZombieShooter
             FogController = GameObject.FindObjectOfType<FogController>();
         }
 
+        //몬스터 리스트 생성보다 늦게 셋업
+        private void Start()
+        {
+            //매 라운드 종료시마다 Popup 호출하는 메서드 리스너에 등록
+            //*매 라운드 몬스터 생성이 끝났을때 모든 몬스터가 죽으면 호출 되는 이벤트
+            MonsterList.Instance.ListEmptyEvent.AddListener(CallPopup);
+        }
+
         /// <summary>
         /// 씬이 로드되고 첫 실행 
         /// </summary>
@@ -130,7 +139,7 @@ namespace WoosanStudio.ZombieShooter
             //CameraMoveController.AutoChange();
 
             //Popup 테스트를 위해서 잠시 제거
-            //NextStage();
+            NextStage();
         }
 
 
@@ -236,7 +245,7 @@ namespace WoosanStudio.ZombieShooter
                 if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals(StageNames[i]))
                 {
                     //현재 씬과 같은 이름을 찾았다면 해당 인덱스로 스테이지로 스폰시작
-                    MonsterSpawnScheduleManager.SpawnStage(i);
+                    MonsterSpawnScheduleManager.SpawnByStage(i);
                 }
             }
         }
@@ -311,6 +320,27 @@ namespace WoosanStudio.ZombieShooter
 
             //안개 진하게
             FogController.DencityChange(0);
+        }
+
+        /// <summary>
+        /// 카드를 선택하는 팝업을 호출할지 스테이지가 결과 팝업을 호출할지 결정
+        /// * 몬스터가 클리어 된 상황에 호출
+        /// * MonsterList.Instance.ListEmptyEvent 에 리스너로 등록
+        /// </summary>
+        public void CallPopup()
+        {
+            //슬로우 모션 시작
+            SlowMotionTimeManager.Instance.DoSlowMotion();
+
+            //라운드 끝이라면 스테이지 결과 종료 팝업 호출
+            if (MonsterSpawnScheduleManager.IsEndRound())
+            {
+                CardSelectPopupOpener.OpenPopup();
+            }
+            else //아니라면 카드 선택하는 팝업 호출
+            {
+                CardSelectPopupOpener.OpenPopup();
+            }
         }
 
         /// <summary>

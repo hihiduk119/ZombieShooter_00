@@ -6,6 +6,9 @@ namespace WoosanStudio.Common
 {
     public class SlowMotionTimeManager : MonoBehaviour
     {
+        //싱글톤 패넡
+        static public SlowMotionTimeManager Instance;
+
         //기존 코드 0.2f => 0.5f변경 후 문제 발생 여부 확인 해야함. 
         //public float slowdownFactor { get; private set; } = 0.2f;
         //get 의 초기화를 위해 사용.
@@ -23,17 +26,21 @@ namespace WoosanStudio.Common
         {
             //defaultFixedDeltaTime = Time.fixedDeltaTime;
 
+            //싱글톤 패넡
+            Instance = this;
+
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
         }
 
         /// <summary>
         /// 슬로우 모션을 발생 시키는 부분
         /// </summary>
-        private void DoSlowMotion() {
+        public void DoSlowMotion() {
             Time.timeScale = slowdownFactor;
-            //Time.fixedDeltaTime 는 0.05시간에 한번씩 계산하기 때문에 변환 time scale 변경시 같이 해줘야함
+            //Time.fixedDeltaTime 는 0.02시간에 한번씩 계산하기 때문에 변환 time scale 변경시 같이 해줘야함
+            //*FixedUpdate에 구현된 부분이 여기에 영향을 받음.
             //안그러면 오브젝트가 끊기는 것처럼 날아감 보임
-            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+            Time.fixedDeltaTime = 0.02f * slowdownFactor;
 
             //느린 사운드 적용 부분 [둘중에 하나 써야]
             //인터페이스로 구현
@@ -43,15 +50,15 @@ namespace WoosanStudio.Common
         }
 
         /// <summary>
-        /// 
+        /// 원래로 복귀
         /// </summary>
-        private void Rollback()
+        public void Rollback()
         {
             Time.timeScale = 1f;
             //Time.fixedDeltaTime 는 0.02시간에 한번씩 계산하기 때문에 변환 time scale 변경시 같이 해줘야함
             //안그러면 오브젝트가 끊기는 것처럼 날아감 보임
             //Time.fixedDeltaTime = defaultFixedDeltaTime;
-            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+            Time.fixedDeltaTime = 0.02f;
         }
 
         #region [-TestCode]

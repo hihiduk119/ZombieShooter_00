@@ -60,7 +60,7 @@ namespace WoosanStudio.ZombieShooter
                     //몬스터가 없다는 이벤트 발생
                     ListEmptyEvent.Invoke();
                     //한번만 실행되기에 모든 리스너 제거
-                    ListEmptyEvent.RemoveAllListeners();
+                    //ListEmptyEvent.RemoveAllListeners();
 
                     yield break;
                 }

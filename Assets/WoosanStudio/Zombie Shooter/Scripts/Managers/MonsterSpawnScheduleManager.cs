@@ -40,8 +40,10 @@ namespace WoosanStudio.ZombieShooter
         private Coroutine autoSpawnCallCoroutine;
         private WaitForSeconds WFS;
         private bool bSpawnedNamedMonster = false;
+
         //현재 라운드
-        private int round = 0;
+        private int currentRound = 0;
+        private int currentStage = 0;
 
         private void Awake()
         {
@@ -50,10 +52,29 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
-        /// 해당 스테이지의 몬스터 스폰을 실행 한다.
+        /// 해당 스테이지의 몬스터 스폰을 실행.
+        /// 라운드의 첫 시작
         /// </summary>
         /// <param name="round">해당 스테이지</param>
-        public void SpawnStage(int stage)
+        public void SpawnByStage(int stage)
+        {
+            //현재 스테이지 저장
+            currentStage = stage;
+
+            //현재 라운드 0으로 초기화
+            currentRound = 0;
+            
+            //라운드 별 몬스터 스폰 실행
+            SpawnByRound(stage,currentRound);
+        }
+
+        /// <summary>
+        /// 라운드 별 몬스터 스폰 실행.
+        /// *현재 라운드 수동으로 증가 필요
+        /// </summary>
+        /// <param name="stage">해당 스테이지</param>
+        /// <param name="round">해당 라운드</param>
+        public void SpawnByRound(int stage,int round)
         {
             //미리 캐쉬에 받아 놓기
             monsterSchedule = MonsterScheduleList[stage];
@@ -62,7 +83,25 @@ namespace WoosanStudio.ZombieShooter
             //코루틴이 이미 실행 중이라면 중지
             if (autoSpawnCallCoroutine != null) StopCoroutine(autoSpawnCallCoroutine);
             //코루틴이 시작
-            autoSpawnCallCoroutine = StartCoroutine(AutoSpawnCallCoroutine(stage, monsterSchedule, WFS));
+            autoSpawnCallCoroutine = StartCoroutine(AutoSpawnCallCoroutine(stage, round, monsterSchedule, WFS));
+        }
+
+        /// <summary>
+        /// 다음 라운드 스폰 실행
+        ///  SpawnByRound같으나 자동으로 라운드 증가
+        /// </summary>
+        public void SpawnByNextRound()
+        {
+            //현재 라운드 자동 증가
+            currentRound++;
+            //미리 캐쉬에 받아 놓기
+            monsterSchedule = MonsterScheduleList[currentStage];
+            //코루틴 스폰 호출 간격 세팅
+            WFS = new WaitForSeconds(monsterSchedule.SpawnInterval);
+            //코루틴이 이미 실행 중이라면 중지
+            if (autoSpawnCallCoroutine != null) StopCoroutine(autoSpawnCallCoroutine);
+            //코루틴이 시작
+            autoSpawnCallCoroutine = StartCoroutine(AutoSpawnCallCoroutine(currentStage, currentRound, monsterSchedule, WFS));
         }
 
         /// <summary>
@@ -72,7 +111,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="maxSameTimeSpawn">최대 동시 스폰 갯수</param>
         /// <param name="waitForSeconds">스폰과 스폰사이 interval</param>
         /// <returns></returns>
-        IEnumerator AutoSpawnCallCoroutine(int stage, MonsterScheduleSetting monsterSchedule, WaitForSeconds waitForSeconds)
+        IEnumerator AutoSpawnCallCoroutine(int stage,int round, MonsterScheduleSetting monsterSchedule, WaitForSeconds waitForSeconds)
         {
             //현재 스폰 몬스터 0으로 초기화
             CurrentSpawnedMonster = 0;
@@ -108,9 +147,9 @@ namespace WoosanStudio.ZombieShooter
             {
                 Debug.Log("몬스터 스폰이 정지 됐습니다. Total 스폰 [" + TotalSpawnedMonster + "]   round ["+ round + "] 한라운드 당 최대 Max 스폰 [" + monsterSchedule.MaxSpawnByRound[round] + "]");
 
-                //몬스터 생성 최대 숫자에 도달했으니 몬스터에 모든 몬스터가 사라졌음을 알려달라고 리스너 등록.
-                //*매번 등록하고 삭제 반복하는데 그렇게 해야할 이유가 있는 생각해 봐야함.
-                MonsterList.Instance.ListEmptyEvent.AddListener(EndRound);
+                //몬스터 생성이 모두 끝났으니 몬스터 리스트에서 모든 몬스터가 모두 사라지면 이벤트 보낸는 메서드 실행.
+                //* popup의 실행은 스테이지 메이저가 관리
+                MonsterList.Instance.ActiveEmptyEvent();
 
                 //현재 코루틴을 중지 시킨다
                 if (autoSpawnCallCoroutine != null){ StopCoroutine(autoSpawnCallCoroutine);}
@@ -155,14 +194,20 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
-
         /// <summary>
-        /// 라운드가 완전히 끝났음.
-        /// MonsterList EmptyListEvent 에 리스너 등록
+        /// 라운드의 끝인지 알려줌.
         /// </summary>
-        void EndRound()
+        /// <returns></returns>
+        public bool IsEndRound()
         {
-            Debug.Log("============ 라운드가 완전히 끝났음.============");
+            bool value = false;
+
+            //현재 스테이지의 마지막 라운드 인지 확인
+            if (MonsterScheduleList[currentStage].MaxSpawnByRound.Count <= currentRound) { value = true;}
+
+            Debug.Log("현재 라운드는 ["+ currentStage + "] 입니다 끝 라운드["+ value + "]");
+
+            return value;
         }
     }
 }

@@ -121,6 +121,9 @@ namespace WoosanStudio.ZombieShooter
             //매 라운드 종료시마다 Popup 호출하는 메서드 리스너에 등록
             //*매 라운드 몬스터 생성이 끝났을때 모든 몬스터가 죽으면 호출 되는 이벤트
             MonsterList.Instance.ListEmptyEvent.AddListener(CallPopup);
+
+            
+            
         }
 
         /// <summary>
@@ -330,16 +333,25 @@ namespace WoosanStudio.ZombieShooter
         public void CallPopup()
         {
             //슬로우 모션 시작
-            SlowMotionTimeManager.Instance.DoSlowMotion();
+            //SlowMotionTimeManager.Instance.DoSlowMotion();
 
             //라운드 끝이라면 스테이지 결과 종료 팝업 호출
             if (MonsterSpawnScheduleManager.IsEndRound())
             {
-                CardSelectPopupOpener.OpenPopup();
+                CardSelectPopupOpener.OpenPopupAndReturn();
             }
             else //아니라면 카드 선택하는 팝업 호출
             {
-                CardSelectPopupOpener.OpenPopup();
+                GameObject clone  = CardSelectPopupOpener.OpenPopupAndReturn();
+
+                //popup ok 버튼 클릭 이벤트에 몬스터 스케줄 다음으로 넘어가게 연결
+                Ricimi.BasicButton.ButtonClickedEvent clickedEvent;
+
+                clickedEvent = clone.GetComponent<CardRewardSelectPopupController>().BasicButton.OnClicked;
+
+                //다음 라운드 실행
+                //*만약 팝업 재사용 코드일때는 등록시 매번 중복 체크해서 지워줘야 함.
+                clickedEvent.AddListener(MonsterSpawnScheduleManager.SpawnByNextRound);
             }
         }
 

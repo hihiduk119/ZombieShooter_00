@@ -27,6 +27,9 @@ namespace Ricimi
                 m_canvas = canvasObject.GetComponent<Canvas>();
         }
 
+        /// <summary>
+        /// 팝업 생성
+        /// </summary>
         public virtual void OpenPopup()
         {
             var popup = Instantiate(popupPrefab) as GameObject;
@@ -34,6 +37,21 @@ namespace Ricimi
             popup.transform.localScale = Vector3.zero;
             popup.transform.SetParent(m_canvas.transform, false);
             popup.GetComponent<Popup>().Open();
+        }
+
+        /// <summary>
+        /// 팝업 생성 및 리턴
+        /// </summary>
+        /// <returns></returns>
+        public GameObject OpenPopupAndReturn()
+        {
+            var popup = Instantiate(popupPrefab) as GameObject;
+            popup.SetActive(true);
+            popup.transform.localScale = Vector3.zero;
+            popup.transform.SetParent(m_canvas.transform, false);
+            popup.GetComponent<Popup>().Open();
+
+            return popup;
         }
     }
 }

@@ -99,7 +99,7 @@ namespace WoosanStudio.ZombieShooter
             //생성시 해당 DoDie.cs의 GoToHeavenEvent 에 
             //아이템 리퀘스터의 리퀘스터 부분 연결
             //=> 액션 리스트를 받아서 처리하게 바꿔야 함.
-
+            //*죽자 마자 생성 되게 바꾸는 중 
             MonsterDieActions?.ForEach(value => clone.GetComponent<DoDie>().HeavenEvent.AddListener(value));
             //clone.GetComponent<DoDie>().HeavenEvent.AddListener(ItemRequester.Requester);
 

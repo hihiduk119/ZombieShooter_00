@@ -29,6 +29,11 @@ namespace WoosanStudio.ZombieShooter
         [Header("[스킬 내용]")]
         public Text contexts;
 
+        [Header("[Ok 버튼 click 컨트롤")]
+        //클릭 이벤트를 제어하기 위해 사용
+        public Ricimi.BasicButton BasicButton;
+
+
         //캐쉬용
         private StringBuilder stringBuilder;
         string[] splits;

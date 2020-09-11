@@ -24,6 +24,9 @@ namespace Ricimi
         [SerializeField]
         private ButtonClickedEvent onClicked = new ButtonClickedEvent();
 
+        //추가로 만듬 => 외부에서 접근 가능하게
+        public ButtonClickedEvent OnClicked => onClicked;
+
         private CanvasGroup canvasGroup;
 
         private void Awake()

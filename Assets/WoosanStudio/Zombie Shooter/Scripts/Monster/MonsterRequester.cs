@@ -44,8 +44,10 @@ namespace WoosanStudio.ZombieShooter
             //스폰 리스트에서 스폰위치 현재 레벨에 맞는 스폰위치 가져옴
             spawnPoints = SpawnPositionController.GetSpawnPoints(stage);
 
+            //몬스터 천국 이동시 아이템 생성 요청.
+            //MonsterFactory.MonsterGoHeavenActions.Add(ItemRequester.Requester);
             //몬스터 죽음시 아이템 생성 요청.
-            MonsterFactory.MonsterDieActions.Add(ItemRequester.Requester);
+            MonsterFactory.MonsterOnDieActions.Add(ItemRequester.Requester);
 
             //몬스터 생성
             GameObject clone = MonsterFactory.Make(index, spawnPoints);
@@ -65,8 +67,10 @@ namespace WoosanStudio.ZombieShooter
             //출현 몬스터 세팅 리스트를 해당 세팅으로 교체
             MonsterFactory.monsterSettings = monsterSettings;
 
+            //몬스터 천국 이동시 아이템 생성 요청.
+            //MonsterFactory.MonsterGoHeavenActions.Add(ItemRequester.Requester);
             //몬스터 죽음시 아이템 생성 요청.
-            MonsterFactory.MonsterDieActions.Add(ItemRequester.Requester);
+            MonsterFactory.MonsterOnDieActions.Add(ItemRequester.Requester);
 
             //몬스터 생성
             GameObject clone = MonsterFactory.Make(index, spawnPoints);
@@ -82,8 +86,10 @@ namespace WoosanStudio.ZombieShooter
             //스폰 리스트에서 스폰위치 현재 레벨에 맞는 스폰위치 가져옴
             spawnPoints = SpawnPositionController.GetSpawnPoints(stage);
 
+            //몬스터 천국 이동시 아이템 생성 요청.
+            //MonsterFactory.MonsterGoHeavenActions.Add(ItemRequester.Requester);
             //몬스터 죽음시 아이템 생성 요청.
-            MonsterFactory.MonsterDieActions.Add(ItemRequester.Requester);
+            MonsterFactory.MonsterOnDieActions.Add(ItemRequester.Requester);
 
             //몬스터 생성 => 몬스터 데이터 직접 넣기
             GameObject clone = MonsterFactory.Make(monsterSettings, spawnPoints);

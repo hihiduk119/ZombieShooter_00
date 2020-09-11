@@ -33,8 +33,11 @@ namespace WoosanStudio.ZombieShooter
         [HideInInspector]
         public ItemRequester ItemRequester;
 
+        [Header("몬스터 하늘로 뜰때 행동 액션]")]
+        public List<UnityAction<Vector3>> MonsterGoHeavenActions = new List<UnityAction<Vector3>>();
+
         [Header("몬스터 죽임시 행동 액션]")]
-        public List<UnityAction<Vector3>> MonsterDieActions = new List<UnityAction<Vector3>>();
+        public List<UnityAction<Vector3>> MonsterOnDieActions = new List<UnityAction<Vector3>>();
 
         //해당 레벨에 의해 생성위치가 변함
         [Header("스테이지 레벨")]
@@ -100,8 +103,9 @@ namespace WoosanStudio.ZombieShooter
             //아이템 리퀘스터의 리퀘스터 부분 연결
             //=> 액션 리스트를 받아서 처리하게 바꿔야 함.
             //*죽자 마자 생성 되게 바꾸는 중 
-            MonsterDieActions?.ForEach(value => clone.GetComponent<DoDie>().HeavenEvent.AddListener(value));
+            MonsterGoHeavenActions?.ForEach(value => clone.GetComponent<DoDie>().GoHeavenEvent.AddListener(value));
             //clone.GetComponent<DoDie>().HeavenEvent.AddListener(ItemRequester.Requester);
+            MonsterOnDieActions?.ForEach(value => clone.GetComponent<DoDie>().OnDieEvent.AddListener(value));
 
             //그림자 생성.
             MakeShadow(monsterSettings, clone.transform);

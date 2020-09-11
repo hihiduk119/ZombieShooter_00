@@ -194,6 +194,7 @@ namespace WoosanStudio.ZombieShooter
 
         /// <summary>
         /// 몬스터 죽음
+        /// *죽자마자 DoDie.cs에 의해서 호출됨.
         /// </summary>
         public void Die()
         {

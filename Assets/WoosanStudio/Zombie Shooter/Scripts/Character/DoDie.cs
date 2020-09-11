@@ -32,10 +32,13 @@ namespace WoosanStudio.ZombieShooter
         //public GameObject testDummy;
         Boom boom;
 
+        [Header("[죽음 이벤트]")]
+        public PositionEvent OnDieEvent = new PositionEvent();
+
         [Header("[죽은다음 하늘로 이동할때 이벤트 발생]")]
-        public GoToHeavenEvent HeavenEvent = new GoToHeavenEvent();
+        public PositionEvent GoHeavenEvent = new PositionEvent();
         //죽은 위치의 좌표를 위해 Vector3 포함
-        public class GoToHeavenEvent : UnityEvent<Vector3> { }
+        public class PositionEvent : UnityEvent<Vector3> { }
 
         private void Awake()
         {
@@ -49,9 +52,6 @@ namespace WoosanStudio.ZombieShooter
 
             //IHaveHealth 에 체력 체크 등록.
             haveHealth.DamagedEvent.AddListener(CheckHealth);
-
-            //Test Code
-            //testDummy = GameObject.FindGameObjectWithTag("TestDummy");
         }
 
         //체력 체크용 콜백 함수
@@ -66,6 +66,11 @@ namespace WoosanStudio.ZombieShooter
             //데미지 이벤트 등록된 모든 리스너 등록해제
             //해제를 안하면 데미지 받는데로 행동 실행.
             haveHealth.DamagedEvent.RemoveAllListeners();
+
+            //죽음 이벤트 시작
+            //* 원래는 모든 체력, 블릭크초기화 몬스터 죽음호출 정지 등 모든 부분이 이벤트의
+            //* 리스너로 넣어야 한다. -> 리팩토링 필요한 부분
+            OnDieEvent.Invoke(hit);
 
             blink.Initialize();
 
@@ -90,7 +95,7 @@ namespace WoosanStudio.ZombieShooter
         void GoToHeaven()
         {
             //하늘로 올름 이벤트 발생
-            HeavenEvent.Invoke(transform.position);
+            GoHeavenEvent.Invoke(transform.position);
 
             //X 값은 연출용 값으로 값이 클수록 화면 쪽으로 시체가 앞으록 움직임.
             //Y 값은 떠오르는 속도이며 값이 크면 빠르게 떠오름.
@@ -99,7 +104,7 @@ namespace WoosanStudio.ZombieShooter
             if (canDestory != null)
             {
                 //연결돈 모든 리스너 삭제
-                HeavenEvent.RemoveAllListeners();
+                GoHeavenEvent.RemoveAllListeners();
                 canDestory.Destory(2.5f);
             }
             else

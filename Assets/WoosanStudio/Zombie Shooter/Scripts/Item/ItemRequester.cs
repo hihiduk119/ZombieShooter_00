@@ -58,6 +58,10 @@ namespace WoosanStudio.ZombieShooter
             //아이템 생성 -> ItemController 생성.
             Item = ItemFactory.Make(index);
 
+            //높이 0으로 초기화.
+            //그래야 바닦에 생김
+            targetPosition.y = 0;
+
             //위치 재조정
             Item.transform.position = targetPosition;
 

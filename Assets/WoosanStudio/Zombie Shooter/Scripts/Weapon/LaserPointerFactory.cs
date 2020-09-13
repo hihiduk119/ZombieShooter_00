@@ -24,7 +24,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 해당 레이저 포인터 생성
         /// </summary>
-        public void Make()
+        public GameObject Make()
         {
             Debug.Log("Anchor name = " + Anchor.name);
 
@@ -32,6 +32,8 @@ namespace WoosanStudio.ZombieShooter
             clone.transform.parent = Anchor;
             clone.transform.localPosition = InitPosition;
             clone.transform.localRotation = Quaternion.Euler(InitRotation);
+
+            return clone;
         }
 
         #region [-TestCode]

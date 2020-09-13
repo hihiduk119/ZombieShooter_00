@@ -27,7 +27,6 @@ namespace WoosanStudio.ZombieShooter
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeapon.IAttackAction Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         public UnityAction AttackAction { get; set; }
 
-
         //캐쉬용
         IGunStat _gunStat;
 
@@ -121,6 +120,11 @@ namespace WoosanStudio.ZombieShooter
         public IWeaponStat GetWeaponStat()
         {
             return (IWeaponStat)GunSettings;
+        }
+
+        public GameObject GetInstnace()
+        {
+            return this.gameObject;
         }
 
 

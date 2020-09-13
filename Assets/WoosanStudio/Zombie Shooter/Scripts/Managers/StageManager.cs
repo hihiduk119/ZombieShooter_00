@@ -221,7 +221,7 @@ namespace WoosanStudio.ZombieShooter
 
             #region [TestCode] -테스트 폰에 올리기 위한 강제 실행 코드
             //무기 만들어서 앵커에 달
-            WeaponRequester.Anchor();
+            //WeaponRequester.Anchor();
             //카운팅 시작
             StartCounter.Count();
             #endregion

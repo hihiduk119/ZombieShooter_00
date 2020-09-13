@@ -1,4 +1,5 @@
-﻿using UnityEngine.Events;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -8,6 +9,8 @@ namespace WoosanStudio.ZombieShooter
         //void Stop();
 
         IWeaponStat GetWeaponStat();
+
+        GameObject GetInstnace();
     }
 
     //public class PlayAnimationEvent : UnityEvent<int> { }

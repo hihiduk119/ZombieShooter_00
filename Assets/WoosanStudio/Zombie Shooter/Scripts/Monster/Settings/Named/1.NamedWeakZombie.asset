@@ -29,5 +29,5 @@ MonoBehaviour:
   stoppingDistance: 5
   projectileSettings: {fileID: 0}
   _useShadow: 1
-  _shadowProjector: {fileID: 5194339502216924784, guid: eaad130044b2747ef9b15d3b0c6d7fb6,
+  _shadowProjector: {fileID: 5194339502216924784, guid: 31c8c77d1744c48ab9cff8cb99bc0d28,
     type: 3}

@@ -8,14 +8,32 @@ namespace WoosanStudio.ZombieShooter
     /// 카드의 정보와 고유 아이디 및 성능
     /// </summary>
     [CreateAssetMenu(menuName = "ZombieShooter/CardSettings/Make Setting", fileName = "CardData")]
-    public class CardSetting : ScriptableObject , ICard
+    public class CardSetting : ScriptableObject , ICard , ICardData
     {
-        //===============================[ICard Implemet]===============================
+        //===============================[ICardData Implemet]===============================
+
+        [Header("[현재 내구도]")]
+        [SerializeField]
+        private int drability = 10;
+        public int Durability { get => drability; }
+
         [Header("[스킬 레벨]")]
         [HideInInspector]
         [SerializeField]
         private int level = 0;
         public int Level { get => level; }
+
+
+        [HideInInspector]//레벨 업그레이드 연구 중이라면 남은 시간 System.Data
+        private long remainResearchTime = 0;
+        public long RemainResearchTime => remainResearchTime;
+
+        [HideInInspector]//연구 중이었다면 해당 슬롯
+        private int researchSlot = -1;
+        public int ResearchSlot => researchSlot;
+
+        //===============================[ICard Implemet]===============================
+        
 
         [Header("[최대 중첩 => 0부터 계산]")]
         [SerializeField]
@@ -27,6 +45,11 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField]
         private int stackCount = 0;
         public int StackCount { get => stackCount; }
+
+        [Header("[최대 내구도]")]
+        [SerializeField]
+        private int maxDurability = 10;
+        public int MaxDurability { get => maxDurability; }
 
         [Header("[최대 레벨]")]
         [SerializeField] private int maxLevel = 25;

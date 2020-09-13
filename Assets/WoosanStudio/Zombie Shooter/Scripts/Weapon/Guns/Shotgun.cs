@@ -123,6 +123,11 @@ namespace WoosanStudio.ZombieShooter
             return (IWeaponStat)GunSettings;
         }
 
+        public GameObject GetInstnace()
+        {
+            return this.gameObject;
+        }
+
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 

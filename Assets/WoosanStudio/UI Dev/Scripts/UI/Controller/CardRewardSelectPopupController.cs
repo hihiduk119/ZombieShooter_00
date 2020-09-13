@@ -83,12 +83,13 @@ namespace WoosanStudio.ZombieShooter
             //재사용 위해 초기화
             stringBuilder.Clear();
 
-            //중첩 카운트 적용
-            stringBuilder.Append("[");
 
+
+            #region [-스택 카운트 표기]
+            /*stringBuilder.Append("[");
             //최대 스택 카운트-1 보다 현재 카드 카운트가 같다면
             //"MAX"로 표기
-            if(cardSetting.MaxStack -1 == cardSetting.StackCount)
+            if (cardSetting.MaxStack -1 == cardSetting.StackCount)
             {
                 stringBuilder.Append("MAX");
             } else //아니면 해당 카운트에 + 1 증가 표기 => 다음에 어떨지 표기임으로
@@ -100,11 +101,23 @@ namespace WoosanStudio.ZombieShooter
             //0부터 시작이기에 실제 표기에는 +1증가
             stringBuilder.Append(cardSetting.MaxStack + 1);
             stringBuilder.Append("]");
-
             stack.text = stringBuilder.ToString();
 
             //재사용 위해 초기화
+            stringBuilder.Clear();*/
+            #endregion
+
+
+            #region [-내구도 표기]
+            stringBuilder.Append("Durability : [");
+            stringBuilder.Append(cardSetting.Durability);
+            stringBuilder.Append("/");
+            stringBuilder.Append(cardSetting.MaxDurability);
+            stringBuilder.Append("]");
+            stack.text = stringBuilder.ToString();
+            //재사용 위해 초기화x
             stringBuilder.Clear();
+            #endregion
 
             //카드의 프로퍼티의 내용들을 하나로 묶음
             for (int i = 0; i < cardSetting.Properties.Count; i++)

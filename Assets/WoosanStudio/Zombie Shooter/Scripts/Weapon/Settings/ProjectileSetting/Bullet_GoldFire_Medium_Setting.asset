@@ -10,19 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e5deb7c3afe74a72865c0fcfc2f1915, type: 3}
-  m_Name: AssaultRifleProjectileSetting
+  m_Name: Bullet_GoldFire_Medium_Setting
   m_EditorClassIdentifier: 
-  name: Goldfire Bullet Small
-  bombPrefab: {fileID: 54453457801900860, guid: edc555170136714468e06ae43a7e0c86,
+  ammoType: 0
+  gunTypes: 0100000002000000
+  name: Goldfire Medium
+  bombPrefab: {fileID: 54212628334827884, guid: 6c6c2a3bbf7c85449b8e9515d0c6f273,
     type: 3}
-  muzzleflare: {fileID: 1000012903210382, guid: 01e91ba42e028824b86d47ee5f416589,
+  muzzleflare: {fileID: 1584403288528622, guid: c0f719210fc9a4e4aa5ac190a6eb184e,
     type: 3}
-  min: 3000
-  max: 3500
-  rapidFire: 1
-  rapidFireCooldown: 0.125
-  shotgunBehavior: 0
-  shotgunPellets: 4
+  min: 2500
+  max: 3000
   shellPrefab: {fileID: 1467181274829480, guid: 41e86fd3ee46b76448791422f9949474,
     type: 3}
   hasMuzzleFlare: 1

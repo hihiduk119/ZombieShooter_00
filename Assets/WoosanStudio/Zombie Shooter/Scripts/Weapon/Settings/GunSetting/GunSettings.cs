@@ -44,13 +44,26 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField] private Vector3 _initLaserPointerPosition;
         public Vector3 InitLaserPointerPosition { get => _initLaserPointerPosition; }
 
-        /// <summary>
-        /// projectileActor.cs 에서 가져온 클래스
-        /// *분리됨.
-        /// </summary>
-        //[Header("[발사체 세팅 - projectileActor.cs 에서 가져온 클래스]")]
-        //[SerializeField] private ProjectileSettings _projectileSettings;
-        //public ProjectileSettings ProjectileSettings { get => _projectileSettings; }
+        [Header("[지속 사격]")]
+        public bool rapidFire;
+        
+        [Header("[사격간 딜레이]")]
+        public float rapidFireCooldown;
+        
+        [Header("[샷건 사용시]")]
+        public bool shotgunBehavior;
+        
+        [Header("[샷건 탄 갯수]")]
+        public int shotgunPellets;
+        
+        //[Header("[탄피 모델]")]
+        //public GameObject shellPrefab;
+       
+        //[Header("[머즐 플레어 사용 할지 말지 결정 => 몬스터가 공격시는 사용 안함]")]
+        //public bool hasMuzzleFlare = true;
+
+        //[Header("[탄피 사용할지 말지 결정]")]
+        //public bool hasShells = true;
 
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IHaveModel Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

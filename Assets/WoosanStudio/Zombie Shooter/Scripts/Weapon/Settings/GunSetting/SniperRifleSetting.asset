@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f45500ea4ab7e4a9abefd58d830c3be4, type: 3}
-  m_Name: LaserRifleSetting
+  m_Name: SniperRifleSetting
   m_EditorClassIdentifier: 
   _index: 3
-  _name: LaserRifle
+  _name: SniperRifle
   _initPosition: {x: 0.186, y: -0.055, z: -0.08}
   _initLaserPointerPosition: {x: 0.12, y: -0.18, z: 0}
-  _projectileSettings: {fileID: 11400000, guid: cfaeda0e543714d5e8dbaafc126213be,
-    type: 2}
+  rapidFire: 1
+  rapidFireCooldown: 1.5
+  shotgunBehavior: 0
+  shotgunPellets: 0
   _prefab: {fileID: 5304141356055359961, guid: 2008640c6b32e4ba38ecb924bda09aaa, type: 3}
   _prefabInstance: {fileID: 0}
   _level: 1
   _damage: 0
-  _maxAmmo: 50
+  _maxAmmo: 5

@@ -10,20 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e5deb7c3afe74a72865c0fcfc2f1915, type: 3}
-  m_Name: ThrowProjectileSetting
+  m_Name: Bullet_GoldFire_Big_Setting
   m_EditorClassIdentifier: 
-  name: Plasma Poison Green Small
-  bombPrefab: {fileID: 5479992, guid: d3d42c25113bf3b4c94e325a3ee0a4e9, type: 3}
-  muzzleflare: {fileID: 1000012903210382, guid: 8b89c403978447f4aa56b43be456dd4f,
+  ammoType: 0
+  gunTypes: 03000000
+  name: Goldfire Big
+  bombPrefab: {fileID: 54212628334827884, guid: d414b898c12e9b241917fe056bed92c7,
     type: 3}
-  min: 1000
-  max: 1200
-  rapidFire: 0
-  rapidFireCooldown: 2
-  shotgunBehavior: 0
-  shotgunPellets: 0
+  muzzleflare: {fileID: 1584403288528622, guid: a7f7e53efb9c16141af1c5631e25cbb8,
+    type: 3}
+  min: 2500
+  max: 3000
   shellPrefab: {fileID: 1467181274829480, guid: 41e86fd3ee46b76448791422f9949474,
     type: 3}
-  hasMuzzleFlare: 0
-  hasShells: 0
-  playerShoted: 0
+  hasMuzzleFlare: 1
+  hasShells: 1
+  playerShoted: 1

@@ -8,10 +8,9 @@ namespace WoosanStudio.ZombieShooter
 {
     public class ProjectileLauncher : MonoBehaviour , IProjectileLauncher
     {
-        //
         // *모델의 이름으로 찾기 때문에 해당
         // 총구, 총구 화염 , 탄피배출 transform 을 미리 만들어 놔야 한다
-        //
+        
         //총구 위치
         public Transform spawnLocator;
         //총구 머즐 위치
@@ -79,6 +78,17 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 스크립트 파괴 호출
+        /// 총교체시 삭제 부분이 있음.
+        /// </summary>
+        void OnDestory()
+        {
+            //모든 코루틴 정지
+            StopAllCoroutines();
+        }
+
+
+        /// <summary>
         /// 모델 총기위치에 맞게 총구,총구화염,탄피배출 위치 세팅
         /// *모델의 이름으로 찾기 때문에 해당 이름에 마추어 총구, 총구 화염 , 탄피배출 transform 을 만들어 놓아야 한다
         /// </summary>
@@ -124,9 +134,9 @@ namespace WoosanStudio.ZombieShooter
 
             while (true)
             {
-                if (projectileSetting.rapidFire && firing)
+                if (gunSetting.rapidFire && firing)
                 {
-                    if (firingTimer > projectileSetting.rapidFireCooldown + rapidFireDelay)
+                    if (firingTimer > gunSetting.rapidFireCooldown + rapidFireDelay)
                     {
                         Shoot();
                         firingTimer = 0;
@@ -212,9 +222,9 @@ namespace WoosanStudio.ZombieShooter
 
             ExplodingProjectile explodingProjectile;
 
-            if (projectileSetting.shotgunBehavior)
+            if (gunSetting.shotgunBehavior)
             {
-                for (int i = 0; i < projectileSetting.shotgunPellets; i++)
+                for (int i = 0; i < gunSetting.shotgunPellets; i++)
                 {
                     Rigidbody rocketInstanceShotgun;
                     rocketInstanceShotgun = Instantiate(projectileSetting.bombPrefab, shotgunLocator[i].position, shotgunLocator[i].rotation) as Rigidbody;

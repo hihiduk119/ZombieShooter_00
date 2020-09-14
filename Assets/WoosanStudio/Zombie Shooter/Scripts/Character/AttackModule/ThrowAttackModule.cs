@@ -46,13 +46,17 @@ namespace WoosanStudio.ZombieShooter
         /// 해당 트랜스 폼에 발사체 런처를 생성.
         /// </summary>
         /// <param name="transform">런처가 생성될 트랜스폼</param>
-        private void SetProjectileLauncher(Transform transform, ProjectileSettings projectileSettings)
+        private void SetProjectileLauncher(Transform transform, ProjectileSettings projectileSettings , GunSettings gunSettings)
         {
             this.myTransform = transform;
+
+            ///런처 생성하면서 인터페이스로 가져옴
             projectileLauncher = (IProjectileLauncher)this.myTransform.gameObject.AddComponent<ProjectileLauncher>();
 
-            projectileLauncher.ProjectileLauncher = myTransform.GetComponent<ProjectileLauncher>();
+            //몬스터의 ProjectileLauncher에 탄환 연결
             projectileLauncher.ProjectileLauncher.projectileSetting = projectileSettings;
+            //몬스터의 ProjectileLauncher에 건 연결
+            projectileLauncher.ProjectileLauncher.gunSetting = gunSettings;
         }
 
         /// <summary>
@@ -74,7 +78,7 @@ namespace WoosanStudio.ZombieShooter
             attackDeltaTime = attackDelay;
 
             //프로젝타일 런처 생성.
-            SetProjectileLauncher(projectileLauncherTransform, monsterSettings.ProjectileSettings);
+            SetProjectileLauncher(projectileLauncherTransform, monsterSettings.ProjectileSettings , monsterSettings.GunSettings);
 
             //실제 발사 부분 연결
             //*실제 에니메이션에 이벤트로 연결 되어 있음을 기억하라

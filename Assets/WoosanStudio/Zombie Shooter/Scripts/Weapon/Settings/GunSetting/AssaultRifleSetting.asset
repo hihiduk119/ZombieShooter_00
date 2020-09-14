@@ -16,10 +16,12 @@ MonoBehaviour:
   _name: AssaultRifle
   _initPosition: {x: 0.3, y: -0.05, z: 0}
   _initLaserPointerPosition: {x: 0.2, y: -0.08, z: 0.03}
-  _projectileSettings: {fileID: 11400000, guid: 22615d03967a8462c9c2c40f82d7d9ad,
-    type: 2}
+  rapidFire: 1
+  rapidFireCooldown: 0.4
+  shotgunBehavior: 0
+  shotgunPellets: 0
   _prefab: {fileID: 863729631154490029, guid: 3897f9a3fadf048f387389ae71bf527c, type: 3}
   _prefabInstance: {fileID: 0}
   _level: 1
   _damage: 0
-  _maxAmmo: 30
+  _maxAmmo: 20

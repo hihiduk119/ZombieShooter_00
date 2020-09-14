@@ -46,10 +46,11 @@ namespace WoosanStudio.ZombieShooter
 
         /// <summary>
         /// projectileActor.cs 에서 가져온 클래스
+        /// *분리됨.
         /// </summary>
-        [Header("[발사체 세팅 - projectileActor.cs 에서 가져온 클래스]")]
-        [SerializeField] private ProjectileSettings _projectileSettings;
-
+        //[Header("[발사체 세팅 - projectileActor.cs 에서 가져온 클래스]")]
+        //[SerializeField] private ProjectileSettings _projectileSettings;
+        //public ProjectileSettings ProjectileSettings { get => _projectileSettings; }
 
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IHaveModel Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -66,8 +67,6 @@ namespace WoosanStudio.ZombieShooter
 
         public GameObject Prefab { get { return MakeModel(); } }
         public GameObject PrefabInstance { get => _prefabInstance; }
-        public ProjectileSettings ProjectileSettings { get => _projectileSettings; }
-
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeaponStat Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         [Header("[무기 레벨 - [IWeaponStat]]")]

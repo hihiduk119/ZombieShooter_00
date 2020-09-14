@@ -26,6 +26,9 @@ namespace WoosanStudio.ZombieShooter
         //발사체 세팅값
         public ProjectileSettings projectileSetting;
 
+        //건 세팅값
+        public GunSettings gunSetting;
+
         public float rapidFireDelay;
         //public bool CameraShake = true;
         //public ICameraShaker Shaker;

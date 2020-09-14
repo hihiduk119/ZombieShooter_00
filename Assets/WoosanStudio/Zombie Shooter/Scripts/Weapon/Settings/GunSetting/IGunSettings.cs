@@ -4,4 +4,9 @@
     {
         GunSettings GunSettings { get; set; }
     }
+
+    public interface IProjectileSettings
+    {
+        ProjectileSettings ProjectileSettings { get; set; }
+    }
 }

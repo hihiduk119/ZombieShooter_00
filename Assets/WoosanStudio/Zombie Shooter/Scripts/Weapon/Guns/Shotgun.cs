@@ -20,6 +20,10 @@ namespace WoosanStudio.ZombieShooter
         private GunSettings _gunSettings;
         public GunSettings GunSettings { get => _gunSettings; set => _gunSettings = value; }
 
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun.IProjectileSettings Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        private ProjectileSettings _projectileSettings;
+        public ProjectileSettings ProjectileSettings { get => _projectileSettings; set => _projectileSettings = value; }
+
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun.IAmmo Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         public UnityEvent EmptyEvent => emptyEvent;
         private UnityEvent emptyEvent = new UnityEvent();

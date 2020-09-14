@@ -105,9 +105,6 @@ namespace WoosanStudio.ZombieShooter
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGunSettings Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         GunSettings IGunSettings.GunSettings { get { return this; } set { value = this; } }
 
-
-
-
         /// <summary>
         /// _prefab 을 사용하여 _prefabInstance에 인스턴스 만듬.
         /// </summary>

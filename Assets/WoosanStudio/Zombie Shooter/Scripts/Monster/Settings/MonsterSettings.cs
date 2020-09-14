@@ -118,6 +118,13 @@ namespace WoosanStudio.ZombieShooter
         public ProjectileSettings ProjectileSettings { get => projectileSettings; }
 
         /// <summary>
+        /// 장거리 공격 총 세팅
+        /// </summary>
+        [SerializeField]
+        private GunSettings gunSettings;
+        public GunSettings GunSettings { get => gunSettings; }
+
+        /// <summary>
         /// 모델을 만듬
         /// </summary>
         /// <param name="name">생성할 이름</param>

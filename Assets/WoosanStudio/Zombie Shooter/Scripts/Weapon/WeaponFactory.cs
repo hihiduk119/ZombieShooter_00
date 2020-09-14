@@ -15,6 +15,11 @@ namespace WoosanStudio.ZombieShooter
         //Gun 세팅값 
         public List<GunSettings> _gunSettings;
 
+        //총알 세팅값 
+        public List<ProjectileSettings> _projectileSettings;
+
+
+
         //**Player는 이미 IGun과 IWeapon을 가지고 있다는걸 명심하자.
         //**WeaponFactory에서 가져오는 행위는 독립성을 해칠수 있다.
         //프로젝타일 런처를 가져오려면 IGun이 필요함
@@ -54,10 +59,10 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="type">생성할 무기의 인덱스</param>
         /// <param name="useLaserPoint">생성할 무기의 인덱스</param>
         /// <returns></returns>
-        public IWeapon MakeWeapon(IStart start,IEnd end,ICameraShaker cameraShaker,UnityAction ammoEmpty, ref IGun iGun , Transform joint,int type ,bool useLaserPointer, GameObject muzzleFlashProjector)
+        public IWeapon MakeWeapon(IStart start,IEnd end,ICameraShaker cameraShaker,UnityAction ammoEmpty, ref IGun iGun , Transform joint,int gunType ,int ammoType,bool useLaserPointer, GameObject muzzleFlashProjector)
         {
             //어떤 무기는 모델을 가지고 있으면 IHaveModel인터페이스를 상속 받기에 해당 인터페이스 호출.
-            IHaveModel haveModel = _gunSettings[type];
+            IHaveModel haveModel = _gunSettings[gunType];
 
             //모델 인스턴스 생성 및 가져오기
             _weapon = haveModel.MakeModel();
@@ -65,13 +70,13 @@ namespace WoosanStudio.ZombieShooter
             _weapon.transform.parent = joint;
 
             //초기 위치 설정
-            _weapon.transform.localPosition = _gunSettings[type].InitPosition;
+            _weapon.transform.localPosition = _gunSettings[gunType].InitPosition;
             _weapon.transform.localRotation = Quaternion.identity;
 
             //Debug.Log("_weapon parent = " + _weapon.transform.parent.ToString());
 
             //인덱스 역
-            switch (type)
+            switch (gunType)
             {
                 case 0:
                     _weapon.AddComponent<Pistol>();
@@ -100,31 +105,6 @@ namespace WoosanStudio.ZombieShooter
             //생성된 IWeapon 모두 Weapons 저장됨.
             Weapons.Add(_iWeapon);
 
-            //레이저 포인터 사용 여부 활성, 비활성화 => AI 는 레이저 포인터 사용 안함.
-            //레이저 포인터 컴퍼넌트로 붙여넣는 방식으로 바꿔야 함.    
-            //joint.GetComponentInChildren<LaserPointerActor>().isVisible = useLaserPointer;
-
-            //??머즐 플레어 사용 안하는 경우가 있나??
-            //bool useMuzleFlare = playerConfig.useMuzzleFlare;
-            //GameObject prefabMuzzleFlare = playerConfig.muzzleFlare;
-
-            //머즐 플레어 사용시 머즐 플레어 생성 및 세팅
-            //if (useMuzleFlare)
-            //{
-            //if(prefabMuzzleFlareProjector != null)
-            //{
-            //    GameObject clone = Instantiate(prefabMuzzleFlareProjector) as GameObject;
-            //    MuzzleFlareProjector muzzleFlareProjector = clone.GetComponent<MuzzleFlareProjector>();
-
-            //    //조인트 하위로 붙여넣고 세부 위치 세팅
-            //    muzzleFlareProjector.SetParent(joint);
-            //    muzzleFlareProjector.SetLocalPosition(new Vector3(5.55f, 4.35f, 0.32f));
-            //    muzzleFlareProjector.SetLocalRotation(new Vector3(90, 90, 0));
-
-            //    //발사시 플레어 블링크 등록
-            //    _iGun.ProjectileLauncher.TriggerEvent.AddListener(((IMuzzleFlare)muzzleFlareProjector).Blink);
-            //}
-
             //머즐 플레쉬의 블링크를 트리거 이벤트와 연결
             if (muzzleFlashProjector != null)
             {
@@ -141,10 +121,19 @@ namespace WoosanStudio.ZombieShooter
             if (_iGun != null)
             {
                 //총 세팅값 설정
-                _iGun.GunSettings = _gunSettings[type];
+                //*AssaultRifle,Pistol,등 실제 클래스에서 사용은 함.
+                //*직관성 부족으로 리팩토링 필요함.
+                _iGun.GunSettings = _gunSettings[gunType];
 
-                //총의 발사 탄환 생성ㄴ
-                _iGun.ProjectileLauncher.projectileSetting = _iGun.GunSettings.ProjectileSettings;
+                //총알 세팅
+                //* 이거 어디에 쓰는지 모르겠음
+                //_iGun.ProjectileSettings = _projectileSettings[ammoType];
+
+                //실제 (ProjectileLauncher에) 발사기관에 총 세팅
+                _iGun.ProjectileLauncher.gunSetting = _gunSettings[gunType];
+
+                //실제 (ProjectileLauncher에) 발사기관에 탄환 세팅
+                _iGun.ProjectileLauncher.projectileSetting = _projectileSettings[ammoType];
 
                 //에벤트 없을을 통지함.
                 if (start == null) Debug.Log("start event null");

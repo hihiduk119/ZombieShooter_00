@@ -68,6 +68,7 @@ namespace WoosanStudio.ZombieShooter
             switch (monsterSettings.MonsterId)
             {
                 case MonsterSettings.MonsterID.WeakZombie:
+                    //생성은 클래스로 하지만 인수는 인터페이스를 받는다.
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅
                         new AiInput(), //입력부분 생성
@@ -83,6 +84,7 @@ namespace WoosanStudio.ZombieShooter
                     //* Navi 오브젝트의 하위로 들어 가야 함.
                     Transform projectileLauncherTransform = MakeTransformHierarchyForProjectileLauncher(transform.GetChild(0).GetChild(0));
 
+                    //생성은 클래스로 하지만 인수는 인터페이스를 받는다.
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅
                         new AiInput(), //입력부분 생성
@@ -93,6 +95,7 @@ namespace WoosanStudio.ZombieShooter
 
                     break;
                 case MonsterSettings.MonsterID.RunnerZombie:
+                    //생성은 클래스로 하지만 인수는 인터페이스를 받는다.
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅
                         new AiInput(), //입력부분 생성

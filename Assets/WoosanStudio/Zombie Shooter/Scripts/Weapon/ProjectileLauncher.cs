@@ -207,6 +207,8 @@ namespace WoosanStudio.ZombieShooter
             //총구 들림
             //if (MuzzleFlip) { recoilAnimator.SetTrigger("recoil_trigger"); }
 
+            ExplodingProjectile explodingProjectile;
+
             if (projectileSetting.shotgunBehavior)
             {
                 for (int i = 0; i < projectileSetting.shotgunPellets; i++)
@@ -218,12 +220,8 @@ namespace WoosanStudio.ZombieShooter
 
                     rocketInstanceShotgun.AddForce(this.forceValue);
                     //Player 사격인지 몬스터 사격인지 세팅
-                    rocketInstanceShotgun.GetComponent<ExplodingProjectile>().playerShoted = projectileSetting.playerShoted;
-
-                    //?????
-                    //rocketInstanceShotgun.velocity = Vector3.zero;//가속도 초기화
-                    //rocketInstanceShotgun.AddForce(shotgunLocator[i].forward * Random.Range(projectileSetting.min, projectileSetting.max));
-
+                    explodingProjectile = rocketInstanceShotgun.GetComponent<ExplodingProjectile>();
+                    if (explodingProjectile != null) { explodingProjectile.playerShoted = projectileSetting.playerShoted; }
                 }
             } else
             {
@@ -234,18 +232,17 @@ namespace WoosanStudio.ZombieShooter
 
                 rocketInstance.AddForce(this.forceValue);
 
-                //Player 사격인지 몬스터 사격인지 세팅
-                rocketInstance.GetComponent<ExplodingProjectile>().playerShoted = projectileSetting.playerShoted;
+                //Player 사격인지 몬스터 사격인지 세팅생
+                explodingProjectile = rocketInstance.GetComponent<ExplodingProjectile>();
+                if (explodingProjectile != null) { explodingProjectile.playerShoted = projectileSetting.playerShoted;}
+
+                
 
                 #region - [Test]
                 //test code start
                 //TestPrefabs.instance.MakeStart(spawnLocator.position);
                 //test code end
                 #endregion
-
-                //???
-                //rocketInstance.velocity = Vector3.zero;//가속도 초기화
-                //rocketInstance.AddForce(spawnLocator.forward * Random.Range(projectileSetting.min, projectileSetting.max));
             }
 
             //if (Torque)

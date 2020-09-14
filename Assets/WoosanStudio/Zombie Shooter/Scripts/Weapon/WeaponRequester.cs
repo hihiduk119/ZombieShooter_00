@@ -84,7 +84,7 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
-        /// 실제 연결
+        /// 무기 실제 연결
         /// </summary>
         public void Anchor(int WeaponIndex)
         {

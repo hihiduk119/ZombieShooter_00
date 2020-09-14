@@ -51,14 +51,14 @@ namespace WoosanStudio.ZombieShooter
         }
 
         #region [-TestCode]
-        void Update()
-        {
-            //0.5 초 단위로 5번 흔
-            if (Input.GetKeyDown(KeyCode.N))
-            {
-                OnShakeCamera();
-            }
-        }
+        //void Update()
+        //{
+        //    //0.5 초 단위로 5번 흔
+        //    if (Input.GetKeyDown(KeyCode.N))
+        //    {
+        //        OnShakeCamera();
+        //    }
+        //}
         #endregion
 
     }

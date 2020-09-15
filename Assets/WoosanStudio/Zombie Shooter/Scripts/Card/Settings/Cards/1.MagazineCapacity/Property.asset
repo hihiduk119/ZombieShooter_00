@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   value: 25
+  fomula: MagazineCapacity
   increasedValuePerLevelUp: 1
   descripsion: Increase magazine capacity by /d%.

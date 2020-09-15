@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 16
   value: 10
+  fomula: AssaultRifleDamage
   increasedValuePerLevelUp: 1
   descripsion: Increase assault rifle damage by /d%.

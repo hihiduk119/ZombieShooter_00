@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 20
   value: 10
+  fomula: LaserAmmoDamage
   increasedValuePerLevelUp: 1
   descripsion: Increase laser type ammunition damage by /d%.

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 22
   value: -50
+  fomula: AllAmmoDamage
   increasedValuePerLevelUp: 1
   descripsion: Decrease in all types of ammunition damage by /d%.

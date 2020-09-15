@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 7
   value: 100
+  fomula: Coin
   increasedValuePerLevelUp: 25
   descripsion: Increase coin gain by /d%.

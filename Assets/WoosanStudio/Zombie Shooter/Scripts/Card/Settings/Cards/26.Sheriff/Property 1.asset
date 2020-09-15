@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 21
   value: 10
+  fomula: PlasmaAmmoDamage
   increasedValuePerLevelUp: 1
   descripsion: Increase plasma type ammunition damage by /d%.

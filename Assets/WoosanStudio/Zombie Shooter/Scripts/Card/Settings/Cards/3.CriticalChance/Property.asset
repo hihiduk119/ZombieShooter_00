@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   value: 10
+  fomula: CriticalChance
   increasedValuePerLevelUp: 1
   descripsion: Increase critical chance by /d%.

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 13
   value: -50
+  fomula: GeneralZombieDamage
   increasedValuePerLevelUp: 1
   descripsion: Decrease general zombie damage by /d%.

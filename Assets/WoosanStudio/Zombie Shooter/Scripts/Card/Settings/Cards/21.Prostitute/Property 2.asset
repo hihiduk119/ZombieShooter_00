@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 19
   value: -50
+  fomula: BulletAmmoDamage
   increasedValuePerLevelUp: 1
   descripsion: Decrease bullet type ammunition damage by /d%.

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   value: -50
+  fomula: AttackSpeed
   increasedValuePerLevelUp: 1
   descripsion: Decrease attack speed by /d%.

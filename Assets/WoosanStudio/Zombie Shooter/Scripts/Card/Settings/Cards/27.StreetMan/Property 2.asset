@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   value: -50
+  fomula: MaxHP
   increasedValuePerLevelUp: 1
   descripsion: Decrease in maximum health by /d%.

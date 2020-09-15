@@ -23,6 +23,11 @@ namespace WoosanStudio.ZombieShooter
         private int value;
         public int Value => value;
 
+        [Header("[계산 공식 => [PropertyType과 같음]]")]
+        [SerializeField]
+        private string fomula;
+        public string Fomula => fomula;
+
         [Header("[레벨 1업당 증가 수치]")]
         [SerializeField]
         private int increasedValuePerLevelUp;

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 18
   value: -50
+  fomula: AllWeaponDamage
   increasedValuePerLevelUp: 0
   descripsion: Decrease all weapon damage by /d%.

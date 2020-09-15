@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5deb7c3afe74a72865c0fcfc2f1915, type: 3}
+  m_Name: Plasma_SniperRifle_PoisonGreen_Big_Setting
+  m_EditorClassIdentifier: 
+  ammoType: 2
+  gunType: 3
+  Damage: 15
+  name: PoisonGreen Big
+  bombPrefab: {fileID: 54453457801900860, guid: 0d589ddd2ed60394784c5add357069fa,
+    type: 3}
+  muzzleflare: {fileID: 1000012903210382, guid: 8b56da22c6bc71744b3a938c65d79323,
+    type: 3}
+  min: 1100
+  max: 1500
+  shellPrefab: {fileID: 0}
+  hasMuzzleFlare: 1
+  hasShells: 0
+  playerShoted: 1

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 17
   value: -50
+  fomula: SniperRifleDamage
   increasedValuePerLevelUp: 1
   descripsion: Decrease the sniper rifle damage by /d%.

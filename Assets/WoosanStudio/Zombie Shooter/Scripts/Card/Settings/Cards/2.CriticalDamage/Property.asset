@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   value: 25
+  fomula: CriticalDamage
   increasedValuePerLevelUp: 1
   descripsion: Increase critical damage by /d%.

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 8
   value: 20
+  fomula: Exp
   increasedValuePerLevelUp: 5
   descripsion: Increase experience gain by /d%.

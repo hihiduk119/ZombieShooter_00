@@ -35,7 +35,10 @@ namespace WoosanStudio.ZombieShooter
         public AmmoType ammoType;
 
         [Header("[어떤 총에 쓰이는지]")]
-        public List<GunType> gunTypes;
+        public GunType gunType;
+
+        [Header("[기본 데미지 => 기준 데미지]")]
+        public int Damage;
 
         [Header("[이름]")]
         public new string name;
@@ -45,6 +48,7 @@ namespace WoosanStudio.ZombieShooter
         public GameObject muzzleflare;
         //발사체의 최소, 최대 속도
         public float min, max;
+
 
         //=> 이동
 

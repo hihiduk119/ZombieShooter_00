@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 5
   value: 25
+  fomula: AirStrikeDamage
   increasedValuePerLevelUp: 1
   descripsion: Increase airstrike damage by /d%.

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5deb7c3afe74a72865c0fcfc2f1915, type: 3}
+  m_Name: Plasma_Shotgun_PoisonGreen_Medium_Setting
+  m_EditorClassIdentifier: 
+  ammoType: 2
+  gunType: 1
+  Damage: 2
+  name: PoisonGreen Medium
+  bombPrefab: {fileID: 54453457801900860, guid: 918ff3ea946d5bc42920f6a004bca98a,
+    type: 3}
+  muzzleflare: {fileID: 1000012903210382, guid: 333af583f4c104e4bae5f88877d2cebb,
+    type: 3}
+  min: 1100
+  max: 1500
+  shellPrefab: {fileID: 0}
+  hasMuzzleFlare: 1
+  hasShells: 0
+  playerShoted: 1

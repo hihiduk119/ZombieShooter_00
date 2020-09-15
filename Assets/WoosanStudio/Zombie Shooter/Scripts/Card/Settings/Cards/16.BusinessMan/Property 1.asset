@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 14
   value: 10
+  fomula: PistolDamage
   increasedValuePerLevelUp: 1
   descripsion: Increase the pistol damage by /d%.

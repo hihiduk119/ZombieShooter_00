@@ -56,7 +56,7 @@ namespace WoosanStudio.ZombieShooter
 
         //체력 체크용 콜백 함수
         //
-        public void CheckHealth(int damage,Vector3 hit)
+        public void CheckHealth(int damage,Vector3 hit,string keyValue)
         {
             if(haveHealth.Health < 0) { Die(hit); }
         }

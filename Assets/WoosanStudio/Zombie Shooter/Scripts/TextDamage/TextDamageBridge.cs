@@ -66,7 +66,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="damage"></param>
         /// <param name="hit"></param>
-        public void DamagedEventHandler(int damage,Vector3 hit)
+        public void DamagedEventHandler(int damage,Vector3 hit,string keyValue)
         {
             PopText(damage.ToString(), keyValues[0]);
         }

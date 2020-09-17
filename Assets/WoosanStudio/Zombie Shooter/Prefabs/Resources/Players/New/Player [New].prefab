@@ -2749,6 +2749,7 @@ MonoBehaviour:
   Positioner: {fileID: 0}
   Model: {fileID: 0}
   LookAtAimedTarget: {fileID: 0}
+  CardList: {fileID: 0}
   RayCheck: {fileID: 0}
 --- !u!114 &519284015428072839
 MonoBehaviour:

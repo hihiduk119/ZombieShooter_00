@@ -6,29 +6,36 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 카드의 정보와 고유 아이디 및 성능
+    /// *그대로 사용하면 안돼고 Instantiate해서 사용해야함.
     /// </summary>
     [CreateAssetMenu(menuName = "ZombieShooter/CardSettings/Make Setting", fileName = "CardData")]
     public class CardSetting : ScriptableObject , ICard , ICardData
     {
         //===============================[ICardData Implemet]===============================
+        [Header("[해당 카드 ID]")]
+        [SerializeField] private CardType type;
+        public CardType Type { get => type; }
 
         [Header("[현재 내구도]")]
         [SerializeField]
+        //저장 필요
         private int drability = 10;
         public int Durability { get => drability; }
 
         [Header("[스킬 레벨]")]
         [HideInInspector]
         [SerializeField]
+        //저장 필요
         private int level = 0;
         public int Level { get => level; }
 
-
         [HideInInspector]//레벨 업그레이드 연구 중이라면 남은 시간 System.Data
+        //저장 불필요
         private long remainResearchTime = 0;
         public long RemainResearchTime => remainResearchTime;
 
         [HideInInspector]//연구 중이었다면 해당 슬롯
+        //저장 필요
         private int researchSlot = -1;
         public int ResearchSlot => researchSlot;
 
@@ -37,17 +44,20 @@ namespace WoosanStudio.ZombieShooter
 
         [Header("[최대 중첩 => 0부터 계산]")]
         [SerializeField]
+        //저장 불필요
         private int maxStack = 2;
         public int MaxStack { get => maxStack; }
 
         [Header("[중첩 카운트]")]
-        [HideInInspector]
+        //[HideInInspector]
         [SerializeField]
+        //저장 불필요 하지만 런타임중 필요
         private int stackCount = 0;
-        public int StackCount { get => stackCount; }
+        public int StackCount { get => stackCount; set => stackCount = value; }
 
         [Header("[최대 내구도]")]
         [SerializeField]
+        //저장 불필요
         private int maxDurability = 10;
         public int MaxDurability { get => maxDurability; }
 
@@ -91,14 +101,11 @@ namespace WoosanStudio.ZombieShooter
         //[SerializeField] private string contents;
         //public string Contents { get => contents; }
 
-        [Header("[해당 카드 ID]")]
-        [SerializeField] private CardType type;
-        public CardType Type { get => type; }
+        
 
         [Header("[프로퍼티 값 리스트[순서대로 넣음]]")]
         [SerializeField]
         public List<CardProperty> Properties = new List<CardProperty>();
-
 
         [SerializeField]
         public enum CardType

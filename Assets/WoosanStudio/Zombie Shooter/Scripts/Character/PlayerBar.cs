@@ -26,7 +26,7 @@ namespace WoosanStudio.ZombieShooter
             _damagedEvent.AddListener(DamagedListener);
         }
 
-        public void DamagedListener(int damage,Vector3 hit)
+        public void DamagedListener(int damage,Vector3 hit,string keyValue)
         {
             Health -= damage;
 

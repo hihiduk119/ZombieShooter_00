@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 using WoosanStudio.Extension;
 using WoosanStudio.ZombieShooter;
@@ -43,6 +44,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     Ray ray;
     Coroutine dieTimer;
     int layerMask = 0;
+    CardList cardList;
 
     //=====================>   IHaveHitDamage 시작    <=====================
     private int _damage = 40;
@@ -136,8 +138,22 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             //부딫힌 오브젝트에 IHaveHealth를 가지고 있으면 데미지를 준다
             IHaveHealth haveHealth = hit.transform.GetComponent(typeof(IHaveHealth)) as IHaveHealth;
             if (haveHealth != null) {
-                haveHealth.DamagedEvent.Invoke(Damage, hit.point);
-                Debug.Log("공격 받음 2");
+
+                //몬스터 저항도 생각 해야한다.
+                //몬스터 데이터 가져와서 저항에 따른 데미지 감소도 여기서 계산
+                MonsterSettings monsterSettings = hit.transform.GetComponent<Monster>().monsterSettings;
+
+                //카드를 통해 계산된 데미지를 주어야 한다.
+                //*현재 총알에 세팅된 카드 리스트 받아오기
+
+                cardList = this.GetComponent<CardList>();
+
+                ///카드의 정보와 몬스터의 정보를 가지고 계산해서 실제 받을 데미지를 계산
+                Damage = DamageCalculator(cardList.CardSettingsClone, monsterSettings);
+
+                //keyValue 는 다음과 같다
+                //{{0,"default"},{1,"critical"},{2,"status"} };
+                haveHealth.DamagedEvent.Invoke(Damage, hit.point,"default");
             }
 
             //부딫힌 오브젝트가 IHaveHit 가지고 있다.
@@ -159,5 +175,22 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             //임팩트 생성/
             Instantiate(impactPrefab, pos, rot);
         }
+    }
+
+    /// <summary>
+    /// 데미지 계산 해줌
+    /// * 카드의 정보와 몬스터의 정보를 가지고 계산해서 실제 받을 데미지를 계산
+    /// </summary>
+    /// <param name="CardSettingsClone">카드의 정보</param>
+    /// <param name="monsterSettings">몬스터의 정보</param>
+    /// <returns>정수로 강제 변환하여 리턴</returns>
+    int DamageCalculator(List<CardSetting> CardSettingsClone, MonsterSettings monsterSettings)
+    {
+        //Debug.Log("맞은 몬스터 ID = " + monsterSettings.MonsterId.ToString());
+        //CardSettingsClone.ForEach(value => Debug.Log("카드 종류 = " + value.Type.ToString()));
+
+
+
+        return 5;
     }
 }

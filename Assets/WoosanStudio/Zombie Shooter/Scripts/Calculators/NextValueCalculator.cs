@@ -32,14 +32,14 @@ namespace WoosanStudio.ZombieShooter
             //카드 중첩
             public int Stack;
             //기본 값
-            public int Value;
+            public float Value;
             //기본 퍼센트 값
             public int DefalutIncreaseValue;
             //레벨 1당 증가 퍼센트
             public int IncreaseValuePerLevel;
 
             //생성자
-            public CardCalcutionData(int level, int stack, int value, int defalutIncreaseValue, int increaseValuePerLevel)
+            public CardCalcutionData(int level, int stack, float value, int defalutIncreaseValue, int increaseValuePerLevel)
             {
                 Level = level;
                 Stack = stack;
@@ -55,9 +55,9 @@ namespace WoosanStudio.ZombieShooter
         public class CallBackData
         {
             public int Level;
-            public int Value;
+            public float Value;
 
-            public CallBackData(int level, int value)
+            public CallBackData(int level, float value)
             {
                 Level = level;
                 Value = value;
@@ -102,25 +102,6 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="level"></param>
         void RunFormula(string methodName, object myObject)
         {
-            /*try
-            {
-                //this.level = (int)myObject;  
-            }
-            catch (InvalidCastException)
-            {
-                Console.WriteLine("my Object => int 변환 실패");
-            }
-
-            try
-            {
-                //this.level = ((CardCalcutionData)myObject).Level;
-            }
-            catch (InvalidCastException)
-            {
-                Console.WriteLine("my Object => CardCalcutionData 변환 실패");
-            }*/
-
-            //this.methodName = methodName;
 
             //Invoke(methodName, 0);
             //이전 코루틴이 있으면 제거
@@ -215,15 +196,15 @@ namespace WoosanStudio.ZombieShooter
 
         #region [-PropertyType 계산 구현 => 카드 중첩도 같이 구현]
         /// <summary>
-        /// 공격 스피드 계산
-        /// 
+        /// 크리티컬 찬스,탄약,총,탄약 데미지 계산
+        /// 매 레벨업시 상승 값 제공
         /// </summary>
         /// <param name="myObject"></param>
-        IEnumerator ValueByCardStackCoroutine(object myObject)
+        IEnumerator UpValueByCardStackCoroutine(object myObject)
         {
             CardCalcutionData cardCalcutionData = (CardCalcutionData)myObject;
 
-            int returnValue = 0;
+            float returnValue = 0;
 
             //증감 퍼센트 계산
             int percentValue =
@@ -232,12 +213,52 @@ namespace WoosanStudio.ZombieShooter
                 * (cardCalcutionData.Stack+1);//중첩 스택 => +1더하는 이유는 중첩 0이 기본이라 
 
             //올림 계산
-            returnValue = Mathf.CeilToInt(cardCalcutionData.Value * ((percentValue + 100) * 0.01f));
+            //returnValue = Mathf.CeilToInt(cardCalcutionData.Value * ((percentValue + 100) * 0.01f));
+            //올림 계산 사용 안함
+            returnValue = cardCalcutionData.Value * ((percentValue + 100) * 0.01f);
 
             Debug.Log("레벨 = ["+ cardCalcutionData.Level +
                 "] 최종 percentValue = [" + percentValue +
-                "] 1 스택당 증가 퍼센트  ["+((cardCalcutionData.DefalutIncreaseValue +(cardCalcutionData.IncreaseValuePerLevel * cardCalcutionData.Level))) +
+                "] 스택 1 당 증가 퍼센트  ["+((cardCalcutionData.DefalutIncreaseValue +(cardCalcutionData.IncreaseValuePerLevel * cardCalcutionData.Level))) +
                 "] 기본 데미지 = [" + cardCalcutionData.Value + 
+                "] 중첩에 의한 최종 데미지 = [" + returnValue + "]");
+
+            CallBackData returnData = new CallBackData(cardCalcutionData.Level, returnValue);
+
+            //계산 완료 및 일종의 리턴 호출
+            EndEvent.Invoke(returnData);
+
+            yield break;
+        }
+
+
+        /// <summary>
+        /// 공격 속도 계산
+        /// * 공격속도는 1을 기준으로 점점 줄어야 한다.
+        /// </summary>
+        /// <param name="myObject"></param>
+        /// <returns></returns>
+        IEnumerator DownValueByCardStackCoroutine(object myObject)
+        {
+            CardCalcutionData cardCalcutionData = (CardCalcutionData)myObject;
+
+            float returnValue = 0;
+
+            //증감 퍼센트 계산
+            int percentValue =
+                (cardCalcutionData.DefalutIncreaseValue +//기본 퍼센트 값
+                (cardCalcutionData.IncreaseValuePerLevel * cardCalcutionData.Level))//1 레벨당 증가 퍼센트
+                * (cardCalcutionData.Stack + 1);//중첩 스택 => +1더하는 이유는 중첩 0이 기본이라 
+
+            //올림 계산
+            //returnValue = Mathf.CeilToInt(cardCalcutionData.Value * ((percentValue + 100) * 0.01f));
+            //올림 계산 사용 안함
+            returnValue = cardCalcutionData.Value / ((percentValue + 100) * 0.01f);
+
+            Debug.Log("레벨 = [" + cardCalcutionData.Level +
+                "] 최종 percentValue = [" + percentValue +
+                "] 스택 1 당 증가 퍼센트  [" + ((cardCalcutionData.DefalutIncreaseValue + (cardCalcutionData.IncreaseValuePerLevel * cardCalcutionData.Level))) +
+                "] 기본 데미지 = [" + cardCalcutionData.Value +
                 "] 중첩에 의한 최종 데미지 = [" + returnValue + "]");
 
             CallBackData returnData = new CallBackData(cardCalcutionData.Level, returnValue);
@@ -252,7 +273,7 @@ namespace WoosanStudio.ZombieShooter
 
         #region [-TestCode]
         //전체 시간 계산용
-        private int total = 0;
+        private float total = 0;
 
         /// <summary>
         /// ResearchTime 결과 출력용
@@ -268,7 +289,7 @@ namespace WoosanStudio.ZombieShooter
             //전체 시간을 구하기 위해 더해줌
             total += seconds;
 
-            Timeset totalTimeset = new Timeset(total);
+            Timeset totalTimeset = new Timeset( Mathf.CeilToInt( total));
             totalTimeset.GetRemainTime();
 
             //Debug.Log("[level : " + level + "]  seconds = " + seconds + " s  [" + secondsTimeset.TimeString + "]  " + "+ total = ["+ totalTimeset.TimeString + "]");
@@ -289,25 +310,52 @@ namespace WoosanStudio.ZombieShooter
 
         /// <summary>
         /// 25레벨 까지 순차 실행하기 위해 만든 임시 메서드
+        /// 4중첩 실행
+        /// *테스트 용임
         /// </summary>
         /// <returns></returns>
         IEnumerator SequenceRun()
         {
+            int defaultIncreaseValue = 50;  //최초 증가 퍼센트
+            int increaseValuePerLevel = 2;  //1레벨당 증가 퍼센트
+            float initValue = 0.8f;              //기준이 되는 데미지
+
+            int maxStack = 4;               //최대 줓업
+
+            Debug.Log("===================[테스트 시작]===================");
             //레벨 25까지 실행
             for (int index = 0; index < 25; index++)
             {
-                //다음 연구 시간을 알아오기 위해 ResearchTime 이름 메서드 테스트
+                #region [-다음 연구 시간을 알아오기 위해 ResearchTime 이름 메서드 테스트]
                 //StartEvent.Invoke("ResearchTime", index);
+                #endregion
 
-                //다음 코인량을 알아오기위해 Coin 이름 메서드 테스트
+                #region [-다음 코인량을 알아오기위해 Coin 이름 메서드 테스트]
                 //StartEvent.Invoke("Coin", index);
+                #endregion
 
-                //AttackSpeed 카드 중첩에 테스트
-                //1-25레벨 ,스택,기본 10 ,기본 증가 퍼센트 25%, 1 레벨당 2% 증가
-                StartEvent.Invoke("ValueByCardStack", (object)new CardCalcutionData(index, 0, 5, 50, 2));
 
-                yield return new WaitForEndOfFrame();
+                #region [-AttackSpeed 카드 중첩에 테스트]
+
+                //StartEvent.Invoke("UpValueByCardStack", (object)new CardCalcutionData(index, 0, initValue, defaultIncreaseValue, increaseValuePerLevel));
+
+                Debug.Log("===================[" + index + " 레벨 " + maxStack + " 중첩]===================");
+
+                //1레벨 0-4중첩 계산
+                for (int stack = 0; stack < maxStack; stack++)
+                {
+                    //n레벨 ,n스택,기본 값 5 ,기본 증가 퍼센트 50%, 1 레벨당 2% 증가
+                    //StartEvent.Invoke("UpValueByCardStack", (object)new CardCalcutionData(index, stack, initValue, defaultIncreaseValue, increaseValuePerLevel));
+                    //n레벨 ,n스택,기본 값 5 ,기본 증가 퍼센트 50%, 1 레벨당 2% 증가
+                    StartEvent.Invoke("DownValueByCardStack", (object)new CardCalcutionData(index, stack, initValue, defaultIncreaseValue, increaseValuePerLevel));
+                    yield return new WaitForEndOfFrame();
+                }
+
+                //Debug.Log("===========================================");
+                #endregion
+                //yield return new WaitForEndOfFrame();
             }
+            Debug.Log("===================[테스트 끝]===================");
         }
 
         void Update()

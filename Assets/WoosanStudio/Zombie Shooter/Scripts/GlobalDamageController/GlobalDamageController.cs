@@ -118,7 +118,7 @@ namespace WoosanStudio.ZombieShooter
             Initialize();
 
             haveHits.ForEach(value => value.Hit());
-            haveHealths.ForEach(value => value.DamagedEvent.Invoke(damage, Vector3.zero));
+            haveHealths.ForEach(value => value.DamagedEvent.Invoke(damage, Vector3.zero,"default"));
             Debug.Log("공격받음 3");
         }
 

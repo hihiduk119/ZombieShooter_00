@@ -18,7 +18,7 @@ namespace WoosanStudio.ZombieShooter
         private IEnumerator Start()
         {
             //스테이지 최초 시작 실행
-            //StageManager.Instance.FirstStage();
+            StageManager.Instance.FirstStage();
 
             yield return new WaitForSeconds(0.1f);
         }

@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 1.MagazineCapacity
   m_EditorClassIdentifier: 
+  type: 1
+  drability: 10
   level: 0
   maxStack: 3
   stackCount: 0
+  maxDurability: 10
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
@@ -23,6 +26,5 @@ MonoBehaviour:
   scale: 0.25
   iconColor: {r: 0.27058825, g: 0.3647059, b: 0.4509804, a: 1}
   title: Magazine Capacity
-  type: 1
   Properties:
   - {fileID: 11400000, guid: f8f5fea695438456db5d4eb27bb15585, type: 2}

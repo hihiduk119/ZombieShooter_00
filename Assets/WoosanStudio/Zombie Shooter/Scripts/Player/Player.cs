@@ -18,6 +18,8 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class Player : MonoBehaviour , IHaveHit
     {
+        //싱글톤 패턴 적용
+        static public Player Instance;
         //[Auto-Awake()]
         //움직임
         public WoosanStudio.Player.Move Move;
@@ -51,6 +53,8 @@ namespace WoosanStudio.ZombieShooter
         public Model Model;
         //실제 조준 및 조준 해제 컨트롤 함
         public LookAtAimedTarget LookAtAimedTarget;
+        //플레이어에 적용되어 있는 카드 리스트
+        public CardList CardList;
 
         [Header("[타겟과 조준선이 정렬 됐는지 판별(Auto->Awake())]")]
         public RayCheck RayCheck;
@@ -62,6 +66,9 @@ namespace WoosanStudio.ZombieShooter
 
         void Awake()
         {
+            //싱글톤 패턴 적용
+            Instance = this;
+
             //생성과 동시에 자동 셋업
             Move = GetComponent<WoosanStudio.Player.Move>();
             Animator = GetComponent<Animator>();

@@ -74,7 +74,8 @@ namespace WoosanStudio.ZombieShooter
         public GameObject Make(MonsterSettings monsterSettings, SpawnPoints spawnPoints)
         {
             //몬스터 생성
-            return MakeMonster(monsterSettings, spawnPoints.GetSpawnPosition());
+            //*몬스터 세팅 정보는 Instantiate로 생성
+            return MakeMonster(Instantiate<MonsterSettings>(monsterSettings), spawnPoints.GetSpawnPosition());
         }
 
         /// <summary>

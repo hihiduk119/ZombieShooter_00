@@ -93,7 +93,7 @@ namespace WoosanStudio.ZombieShooter
             //베리어에 데미지 이벤트 호출
             if (haveHealth != null)
             {
-                haveHealth.DamagedEvent.Invoke(this.damage, Vector3.zero);
+                haveHealth.DamagedEvent.Invoke(this.damage, Vector3.zero,"default");
                 Debug.Log("공격 받음");
             }
         }

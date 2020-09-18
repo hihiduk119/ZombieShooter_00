@@ -53,8 +53,6 @@ namespace WoosanStudio.ZombieShooter
         public Model Model;
         //실제 조준 및 조준 해제 컨트롤 함
         public LookAtAimedTarget LookAtAimedTarget;
-        //플레이어에 적용되어 있는 카드 리스트
-        public CardList CardList;
 
         [Header("[타겟과 조준선이 정렬 됐는지 판별(Auto->Awake())]")]
         public RayCheck RayCheck;

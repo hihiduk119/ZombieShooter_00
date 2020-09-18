@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 23
   value: 50
+  fomula: 
   increasedValuePerLevelUp: 8
-  descripsion: Resistance by the pistol damage by 25%.
+  descripsion: Resistance by the pistol damage by /d%.

@@ -17,9 +17,15 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField]
         public enum MonsterID
         {
+            //일반 몬스터
             WeakZombie = 0,
             ThrowZombie,
             RunnerZombie,
+
+            //네임드 몬스터
+            Jeff       = 100,
+            Diogo,
+            Atlas,
         }
 
         /// <summary>

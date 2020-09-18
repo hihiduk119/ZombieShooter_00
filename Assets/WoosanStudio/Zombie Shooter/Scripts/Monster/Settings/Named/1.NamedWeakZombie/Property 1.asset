@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 28
   value: 50
+  fomula: 
   increasedValuePerLevelUp: 8
-  descripsion: Resistance by bullet type ammunition damage by 25%.
+  descripsion: Resistance by bullet type ammunition damage by /d%.

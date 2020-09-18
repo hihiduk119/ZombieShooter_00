@@ -221,7 +221,6 @@ namespace WoosanStudio.ZombieShooter
             //if (MuzzleFlip) { recoilAnimator.SetTrigger("recoil_trigger"); }
 
             ExplodingProjectile explodingProjectile;
-            CardList cardList;
 
             if (gunSetting.shotgunBehavior)
             {
@@ -239,8 +238,9 @@ namespace WoosanStudio.ZombieShooter
 
                     //총알에 데미지 계산에 필요한 플레이어의 카드데이터를 넣어서 보냄
                     //*플레이어의 복제 생성된 카드들의 참조 값을 발사체에 넣어 보냄
-                    cardList = explodingProjectile.gameObject.AddComponent<CardList>();
-                    cardList.CardSettingsClone = Player.Instance.CardList.CardSettingsClone;
+                    //*카드를 가진 주체가 플레어이가 아니기에 카드 관리자에게서 가져와야함
+                    //cardList = explodingProjectile.gameObject.AddComponent<CardList>();
+                    //cardList.CardSettingsClone = Player.Instance.CardList.CardSettingsClone;
                 }
             } else
             {
@@ -257,8 +257,9 @@ namespace WoosanStudio.ZombieShooter
 
                 //총알에 데미지 계산에 필요한 플레이어의 카드데이터를 넣어서 보냄
                 //*플레이어의 복제 생성된 카드들의 참조 값을 발사체에 넣어 보냄
-                cardList = explodingProjectile.gameObject.AddComponent<CardList>();
-                cardList.CardSettingsClone = Player.Instance.CardList.CardSettingsClone;
+                //*카드를 가진 주체가 플레어이가 아니기에 카드 관리자에게서 가져와야함
+                //cardList = explodingProjectile.gameObject.AddComponent<CardList>();
+                //cardList.CardSettingsClone = Player.Instance.CardList.CardSettingsClone;
 
                 #region - [Test]
                 //test code start

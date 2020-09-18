@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3.NamedRunnerZombie
   m_EditorClassIdentifier: 
   _monsterID: 2
-  _name: Bellhop
+  _name: Atlas
   _prefab: {fileID: 1399632576231276088, guid: 312eff290b5b046c59890fda45aec7f5, type: 3}
   _level: 1
   _health: 0
@@ -28,6 +28,7 @@ MonoBehaviour:
   turnSpeed: 130
   stoppingDistance: 3
   projectileSettings: {fileID: 0}
+  gunSettings: {fileID: 0}
   _useShadow: 1
   _shadowProjector: {fileID: 5194339502216924784, guid: eaad130044b2747ef9b15d3b0c6d7fb6,
     type: 3}

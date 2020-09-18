@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9181cc1333b844137891b64b7d82e2fb, type: 3}
   m_Name: 1.NamedWeakZombie
   m_EditorClassIdentifier: 
-  _monsterID: 0
+  _monsterID: 100
   _name: Jeff
   _prefab: {fileID: 4927290373326563121, guid: 8746bc753857e48b5932be247f878a7c, type: 3}
   _level: 0
@@ -28,6 +28,7 @@ MonoBehaviour:
   turnSpeed: 130
   stoppingDistance: 5
   projectileSettings: {fileID: 0}
+  gunSettings: {fileID: 0}
   _useShadow: 1
   _shadowProjector: {fileID: 5194339502216924784, guid: 31c8c77d1744c48ab9cff8cb99bc0d28,
     type: 3}

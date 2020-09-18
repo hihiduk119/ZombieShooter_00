@@ -11,6 +11,12 @@ namespace WoosanStudio.ZombieShooter
     [CreateAssetMenu(menuName = "ZombieShooter/CardSettings/Make Setting", fileName = "CardData")]
     public class CardSetting : ScriptableObject , ICard , ICardData
     {
+        [Header("[카드 활성상태 => 무기,탄약,캐릭터는 활성상태에 따라 활서]")]
+        [SerializeField]
+        [HideInInspector]
+        private bool isActivate = false;
+        public bool IsActivate { get => isActivate; }
+
         //===============================[ICardData Implemet]===============================
         [Header("[해당 카드 ID]")]
         [SerializeField] private CardType type;

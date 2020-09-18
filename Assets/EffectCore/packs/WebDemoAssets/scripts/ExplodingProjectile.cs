@@ -44,7 +44,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     Ray ray;
     Coroutine dieTimer;
     int layerMask = 0;
-    CardList cardList;
+    CardManager cardList;
 
     //=====================>   IHaveHitDamage 시작    <=====================
     private int _damage = 40;
@@ -110,6 +110,10 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
         previousPosition = transform.position;
     }
 
+    /// <summary>
+    /// 데미지 체크
+    /// </summary>
+    /// <param name="prevPos"></param>
     void CheckCollision(Vector3 prevPos)
     {
         direction = transform.position - prevPos;
@@ -146,10 +150,8 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
                 //카드를 통해 계산된 데미지를 주어야 한다.
                 //*현재 총알에 세팅된 카드 리스트 받아오기
 
-                cardList = this.GetComponent<CardList>();
-
                 ///카드의 정보와 몬스터의 정보를 가지고 계산해서 실제 받을 데미지를 계산
-                Damage = DamageCalculator(cardList.CardSettingsClone, monsterSettings);
+                Damage = DamageCalculator(CardManager.Instance.SelectedCards, monsterSettings);
 
                 //keyValue 는 다음과 같다
                 //{{0,"default"},{1,"critical"},{2,"status"} };
@@ -189,7 +191,17 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
         //Debug.Log("맞은 몬스터 ID = " + monsterSettings.MonsterId.ToString());
         //CardSettingsClone.ForEach(value => Debug.Log("카드 종류 = " + value.Type.ToString()));
 
+        //무기 데미지 프로퍼티 계산
 
+        //탄약 데미지 프로퍼티 계산
+
+        //캐릭터의 데미지 프로퍼티 계산 [무기 데미지,무기 감소 데미지,탄약 감소 데미지]
+
+        //치명타 확률 계산
+
+        //치명타 일때 치명타 데미지 계산
+
+        //몬스터의 저항력 계산
 
         return 5;
     }

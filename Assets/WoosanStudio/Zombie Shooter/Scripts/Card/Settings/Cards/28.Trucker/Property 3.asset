@@ -15,5 +15,5 @@ MonoBehaviour:
   type: 18
   value: -50
   fomula: AllWeaponDamage
-  increasedValuePerLevelUp: 0
+  increasedValuePerLevelUp: 1
   descripsion: Decrease all weapon damage by /d%.

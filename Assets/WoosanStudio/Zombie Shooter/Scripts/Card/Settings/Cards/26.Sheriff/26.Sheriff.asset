@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 26.Sheriff
   m_EditorClassIdentifier: 
+  isActivate: 0
+  type: 310
+  typeByWeapon: 0
+  typeByAmmo: 0
+  typeByCharacter: 11
+  drability: 10
   level: 0
+  maxStack: 2
+  stackCount: 0
+  maxDurability: 10
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
@@ -21,7 +30,6 @@ MonoBehaviour:
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Sheriff
-  type: 310
   Properties:
   - {fileID: 11400000, guid: 8134fe50212e1490d89ba5736886d2e1, type: 2}
   - {fileID: 11400000, guid: 45f2eca6794fb4cc8b3c648f003a696f, type: 2}

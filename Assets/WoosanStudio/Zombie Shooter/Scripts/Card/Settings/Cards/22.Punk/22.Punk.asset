@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 22.Punk
   m_EditorClassIdentifier: 
+  isActivate: 0
+  type: 306
+  typeByWeapon: 0
+  typeByAmmo: 0
+  typeByCharacter: 7
+  drability: 10
   level: 0
+  maxStack: 2
+  stackCount: 0
+  maxDurability: 10
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
@@ -21,7 +30,6 @@ MonoBehaviour:
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Punk
-  type: 306
   Properties:
   - {fileID: 11400000, guid: d02f6fe54dd204636a0436b5e1875933, type: 2}
   - {fileID: 11400000, guid: c5c27c09354934ed9ac798cc70ce3e4a, type: 2}

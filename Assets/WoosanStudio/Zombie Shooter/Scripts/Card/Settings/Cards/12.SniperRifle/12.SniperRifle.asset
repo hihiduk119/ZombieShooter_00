@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 12.SniperRifle
   m_EditorClassIdentifier: 
+  isActivate: 0
+  type: 103
+  typeByWeapon: 4
+  typeByAmmo: 0
+  typeByCharacter: 0
+  drability: 10
   level: 0
+  maxStack: 2
+  stackCount: 0
+  maxDurability: 10
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
@@ -21,7 +30,6 @@ MonoBehaviour:
   scale: 0.4
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Sniper Rifle
-  type: 103
   Properties:
   - {fileID: 11400000, guid: 879492e6a88954c16810e2022db65b9e, type: 2}
   - {fileID: 11400000, guid: 23cdcd88d322740dcbe4bc05d9accaca, type: 2}

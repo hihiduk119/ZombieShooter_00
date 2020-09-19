@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -20,22 +21,34 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void Awake()
         {
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
 
             //실행즉시 바로 아웃라인 두껍게 만들기
-            OnLevelWasLoaded(1);
+            SetOutlineWidth(1);
+        }
+
+        void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnLevelFinishedLoading;
+        }
+
+        void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnLevelFinishedLoading;
         }
 
         /// <summary>
-        /// 해당 씬 로드시 호출
+        /// 씬 로드 이벤트 실행
         /// </summary>
-        /// <param name="level"></param>
-        private void OnLevelWasLoaded(int level)
+        /// <param name="scene"></param>
+        /// <param name="mode"></param>
+        void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
         {
-            if(level == 1)
+            if (scene.buildIndex == 1)
             {   //두꺼운 아웃라인으로 모델 변경
                 SetOutlineWidth(1);
-            } else
+            }
+            else
             {   //얕은 아웃라인으로 모델 변경
                 SetOutlineWidth(0);
             }

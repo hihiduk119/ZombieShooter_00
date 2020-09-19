@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 15.PlasmaAmmo
   m_EditorClassIdentifier: 
+  isActivate: 0
+  type: 202
+  typeByWeapon: 0
+  typeByAmmo: 3
+  typeByCharacter: 0
+  drability: 10
   level: 0
+  maxStack: 2
+  stackCount: 0
+  maxDurability: 10
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
@@ -21,7 +30,6 @@ MonoBehaviour:
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Plasma Ammo
-  type: 202
   Properties:
   - {fileID: 11400000, guid: 45b0fce1fb8b443e9806cf30efa0e25a, type: 2}
   - {fileID: 11400000, guid: 88d455c6d27aa4b90b4feb4c928887d9, type: 2}

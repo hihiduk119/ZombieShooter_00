@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 17.FireFighter
   m_EditorClassIdentifier: 
+  isActivate: 0
+  type: 301
+  typeByWeapon: 0
+  typeByAmmo: 0
+  typeByCharacter: 2
+  drability: 10
   level: 0
+  maxStack: 2
+  stackCount: 0
+  maxDurability: 10
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
@@ -21,7 +30,6 @@ MonoBehaviour:
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Firefighter
-  type: 301
   Properties:
   - {fileID: 11400000, guid: aeb5d5b622d5d4a228b89d2a268013f4, type: 2}
   - {fileID: 11400000, guid: 52c90435090d04ac18f7ed0ee81a7db5, type: 2}

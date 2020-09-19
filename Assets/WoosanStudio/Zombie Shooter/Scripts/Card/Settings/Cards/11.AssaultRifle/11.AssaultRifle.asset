@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 11.AssaultRifle
   m_EditorClassIdentifier: 
+  isActivate: 0
+  type: 102
+  typeByWeapon: 3
+  typeByAmmo: 0
+  typeByCharacter: 0
+  drability: 10
   level: 0
+  maxStack: 2
+  stackCount: 0
+  maxDurability: 10
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
@@ -21,7 +30,6 @@ MonoBehaviour:
   scale: 0.4
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Assault Rifle
-  type: 102
   Properties:
   - {fileID: 11400000, guid: 7aa75accceba540fabf1ba3becfa8132, type: 2}
   - {fileID: 11400000, guid: 6ab966244887c4387829e7a186f26b17, type: 2}

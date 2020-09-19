@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 27.StreetMan
   m_EditorClassIdentifier: 
+  isActivate: 0
+  type: 311
+  typeByWeapon: 0
+  typeByAmmo: 0
+  typeByCharacter: 12
+  drability: 10
   level: 0
+  maxStack: 2
+  stackCount: 0
+  maxDurability: 10
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
@@ -21,7 +30,6 @@ MonoBehaviour:
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Street Man
-  type: 311
   Properties:
   - {fileID: 11400000, guid: 35340ad18357e4746822e74ad2736cfd, type: 2}
   - {fileID: 11400000, guid: 26979460e172c4e3592c5e92d64eda99, type: 2}

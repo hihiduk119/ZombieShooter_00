@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 9.Pistiol
   m_EditorClassIdentifier: 
+  isActivate: 0
+  type: 100
+  typeByWeapon: 1
+  typeByAmmo: 0
+  typeByCharacter: 0
+  drability: 10
   level: 0
+  maxStack: 2
+  stackCount: 0
+  maxDurability: 10
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
@@ -21,7 +30,6 @@ MonoBehaviour:
   scale: 0.4
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Pistol
-  type: 100
   Properties:
   - {fileID: 11400000, guid: f1dd167ab3bff400baed9728f6a7ed67, type: 2}
   - {fileID: 11400000, guid: c5d907430739e485b91c82682573c2bb, type: 2}

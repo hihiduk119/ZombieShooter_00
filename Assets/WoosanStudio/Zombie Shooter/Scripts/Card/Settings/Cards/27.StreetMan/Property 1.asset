@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c124f92e2f8c6416cbfd1549d284fd89, type: 3}
   m_Name: Property 1
   m_EditorClassIdentifier: 
-  type: 18
-  value: 5
-  fomula: AllWeaponDamage
+  type: 4
+  value: -50
+  fomula: MaxHP
   increasedValuePerLevelUp: 1
-  descripsion: Increase all weapon damage by /d%.
+  descripsion: Decrease in maximum health by /d%.

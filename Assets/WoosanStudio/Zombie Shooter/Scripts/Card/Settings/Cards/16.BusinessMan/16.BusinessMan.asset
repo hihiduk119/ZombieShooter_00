@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 16.BusinessMan
   m_EditorClassIdentifier: 
+  isActivate: 0
+  type: 300
+  typeByWeapon: 0
+  typeByAmmo: 0
+  typeByCharacter: 1
+  drability: 10
   level: 0
+  maxStack: 2
+  stackCount: 0
+  maxDurability: 10
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
@@ -21,7 +30,6 @@ MonoBehaviour:
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Business Man
-  type: 300
   Properties:
   - {fileID: 11400000, guid: 98409d8dd55e9480daba805f83c5374b, type: 2}
   - {fileID: 11400000, guid: c2bb69652c3d2431db20acbe6b4da8e7, type: 2}

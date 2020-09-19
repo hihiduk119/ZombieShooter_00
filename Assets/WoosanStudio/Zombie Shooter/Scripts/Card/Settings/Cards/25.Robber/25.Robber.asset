@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 25.Robber
   m_EditorClassIdentifier: 
+  isActivate: 0
+  type: 309
+  typeByWeapon: 0
+  typeByAmmo: 0
+  typeByCharacter: 10
+  drability: 10
   level: 0
+  maxStack: 2
+  stackCount: 0
+  maxDurability: 10
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
@@ -21,7 +30,6 @@ MonoBehaviour:
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Robber
-  type: 309
   Properties:
   - {fileID: 11400000, guid: e4d859441ca844693a27f532f98499d3, type: 2}
   - {fileID: 11400000, guid: 97651b63739a94521b65599db9a0b1e7, type: 2}

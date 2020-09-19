@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 19.Pimp
   m_EditorClassIdentifier: 
+  isActivate: 0
+  type: 303
+  typeByWeapon: 0
+  typeByAmmo: 0
+  typeByCharacter: 4
+  drability: 10
   level: 0
+  maxStack: 2
+  stackCount: 0
+  maxDurability: 10
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
@@ -21,7 +30,6 @@ MonoBehaviour:
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Pimp
-  type: 303
   Properties:
   - {fileID: 11400000, guid: 7877d2295a3bf41228b4e538bc5c4f4a, type: 2}
   - {fileID: 11400000, guid: b1c56e6ff9ed647888877f27394774ea, type: 2}

@@ -151,7 +151,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
                 //*현재 총알에 세팅된 카드 리스트 받아오기
 
                 ///카드의 정보와 몬스터의 정보를 가지고 계산해서 실제 받을 데미지를 계산
-                Damage = DamageCalculator(CardManager.Instance.SelectedCards, monsterSettings);
+                Damage = DamageCalculator(CardManager.Instance.HasCards, monsterSettings);
 
                 //keyValue 는 다음과 같다
                 //{{0,"default"},{1,"critical"},{2,"status"} };
@@ -191,18 +191,54 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
         //Debug.Log("맞은 몬스터 ID = " + monsterSettings.MonsterId.ToString());
         //CardSettingsClone.ForEach(value => Debug.Log("카드 종류 = " + value.Type.ToString()));
 
-        //무기 데미지 프로퍼티 계산
+        //무기 계산은 다음과 같이 계산하다
+        //모든 프로퍼티 저장
+        //무기 와 탄약에 기반한 기본 데미지 계산 = N
 
-        //탄약 데미지 프로퍼티 계산
+        //무기와 탄약 데미지의 합.
+        //float damage = ;
+        //카드는 중첩 카운트로 계산
+        //카드 중첩 카운트 만큼 프로퍼티 생성
 
-        //캐릭터의 데미지 프로퍼티 계산 [무기 데미지,무기 감소 데미지,탄약 감소 데미지]
-
-        //치명타 확률 계산
-
-        //치명타 일때 치명타 데미지 계산
-
-        //몬스터의 저항력 계산
 
         return 5;
+    }
+
+    /// <summary>
+    /// 증가 데미지 공식
+    /// </summary>
+    /// <param name="damage">무기와 탄약을 더한 값</param>
+    /// <param name="level">카드 레밸</param>
+    /// <param name="property">카드 프로퍼티 값</param>
+    /// <param name="percentage">기본 100% 이며 크리티컬 값을 구할시 200%으로 변경</param>
+    /// <returns></returns>
+    float IncreaseDamage(float damage,int level,CardProperty property , int percentage = 100)
+    {
+        //카드 레벨에 의해 증가된 수치
+        //(1레벨당 증가 값 * 레벨) + 기본벨류+[퍼센트 100 (200이면 크리티컬)]
+        int percent = (property.IncreasedValuePerLevelUp * level) + property.Value + percentage;
+
+        //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
+        float returnValue = damage * percent * 0.01f;
+
+        return returnValue;
+    }
+
+    //같은 종류의 카드는 중첩 되지 않지만 다른 종류는 중첩된다
+    float DecreaseDamage(float damage, int level, CardProperty property)
+    {
+        //100을 기준으로 감소 퍼센트 계산
+        //100기준값 - ((1 레벨당 추가 갑소 값 * level) + 기본 감소 수치)
+        int percent = 100 - ((property.IncreasedValuePerLevelUp * level) + property.Value);
+
+        //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
+        float returnValue = damage * percent * 0.01f;
+
+        return returnValue;
+    }
+
+    int CriticalDamage()
+    {
+        return -1;
     }
 }

@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 13.BulletAmmo
   m_EditorClassIdentifier: 
+  isActivate: 0
+  type: 200
+  typeByWeapon: 0
+  typeByAmmo: 1
+  typeByCharacter: 0
+  drability: 10
   level: 0
+  maxStack: 2
+  stackCount: 0
+  maxDurability: 10
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
@@ -21,7 +30,6 @@ MonoBehaviour:
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Bullet Ammo
-  type: 200
   Properties:
   - {fileID: 11400000, guid: e297b5f7a294e4d28b93742adb314326, type: 2}
   - {fileID: 11400000, guid: 12211317117644f5fade29b684a88310, type: 2}

@@ -13,7 +13,7 @@ namespace WoosanStudio.ZombieShooter
     {
         [Header("[카드 활성상태 => 무기,탄약,캐릭터는 활성상태에 따라 활서]")]
         [SerializeField]
-        [HideInInspector]
+        //[HideInInspector]
         private bool isActivate = false;
         public bool IsActivate { get => isActivate; set => isActivate = value; }
 
@@ -22,17 +22,17 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField] private CardType type;
         public CardType Type { get => type; }
 
-        [Header("[해당 카드 무기 타입 ID]")]
-        [SerializeField] private CardTypeByWeapon typeByWeapon;
-        public CardTypeByWeapon TypeByWeapon { get => typeByWeapon; }
+        //[Header("[해당 카드 무기 타입 ID]")]
+        //[SerializeField] private CardTypeByWeapon typeByWeapon;
+        //public CardTypeByWeapon TypeByWeapon { get => typeByWeapon; }
 
-        [Header("[해당 카드 탄약 타입 ID]")]
-        [SerializeField] private CardTypeByAmmo typeByAmmo;
-        public CardTypeByAmmo TypeByAmmo { get => typeByAmmo; }
+        //[Header("[해당 카드 탄약 타입 ID]")]
+        //[SerializeField] private CardTypeByAmmo typeByAmmo;
+        //public CardTypeByAmmo TypeByAmmo { get => typeByAmmo; }
 
-        [Header("[해당 카드 캐릭터 타입 ID]")]
-        [SerializeField] private CardTypeByCharacter typeByCharacter;
-        public CardTypeByCharacter TypeByCharacter { get => typeByCharacter; }
+        //[Header("[해당 카드 캐릭터 타입 ID]")]
+        //[SerializeField] private CardTypeByCharacter typeByCharacter;
+        //public CardTypeByCharacter TypeByCharacter { get => typeByCharacter; }
 
         [Header("[현재 내구도]")]
         [SerializeField]

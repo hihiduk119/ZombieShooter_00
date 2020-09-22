@@ -199,43 +199,17 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
         //float damage = ;
         //카드는 중첩 카운트로 계산
         //카드 중첩 카운트 만큼 프로퍼티 생성
+        List<CardProperty> properties = CardManager.Instance.GetActivatedCardProperties(CardSettingsClone);
 
+        for (int i = 0; i < properties.Count; i++)
+        {
+            Debug.Log(properties[i].Descripsion);
+        }
 
         return 5;
     }
 
-    /// <summary>
-    /// 증가 데미지 공식
-    /// </summary>
-    /// <param name="damage">무기와 탄약을 더한 값</param>
-    /// <param name="level">카드 레밸</param>
-    /// <param name="property">카드 프로퍼티 값</param>
-    /// <param name="percentage">기본 100% 이며 크리티컬 값을 구할시 200%으로 변경</param>
-    /// <returns></returns>
-    float IncreaseDamage(float damage,int level,CardProperty property , int percentage = 100)
-    {
-        //카드 레벨에 의해 증가된 수치
-        //(1레벨당 증가 값 * 레벨) + 기본벨류+[퍼센트 100 (200이면 크리티컬)]
-        int percent = (property.IncreasedValuePerLevelUp * level) + property.Value + percentage;
-
-        //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
-        float returnValue = damage * percent * 0.01f;
-
-        return returnValue;
-    }
-
-    //같은 종류의 카드는 중첩 되지 않지만 다른 종류는 중첩된다
-    float DecreaseDamage(float damage, int level, CardProperty property)
-    {
-        //100을 기준으로 감소 퍼센트 계산
-        //100기준값 - ((1 레벨당 추가 갑소 값 * level) + 기본 감소 수치)
-        int percent = 100 - ((property.IncreasedValuePerLevelUp * level) + property.Value);
-
-        //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
-        float returnValue = damage * percent * 0.01f;
-
-        return returnValue;
-    }
+    
 
     int CriticalDamage()
     {

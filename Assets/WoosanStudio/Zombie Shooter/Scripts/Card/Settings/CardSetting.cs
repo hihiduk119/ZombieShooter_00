@@ -41,7 +41,7 @@ namespace WoosanStudio.ZombieShooter
         public int Durability { get => drability; }
 
         [Header("[스킬 레벨]")]
-        [HideInInspector]
+        //[HideInInspector]
         [SerializeField]
         //저장 필요
         private int level = 0;

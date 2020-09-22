@@ -27,10 +27,17 @@ namespace WoosanStudio.ZombieShooter
         [Header("[가지고 있는 카드]")]
         public List<CardSetting> HasCards = new List<CardSetting>();
 
-        [Header("[선택한 카드의 프로퍼티 리스트]")]
+        [Header("[활성화된 카드의 프로퍼티 리스트]")]
         //카드 스택 카운터에 따라 추가 프로퍼티 생성됨
         public List<CardProperty> ActivatedCardProperties = new List<CardProperty>();
 
+        [Header("[활성화된 카드의 긍정 갑 프로퍼티 리스트]")]
+        //카드 스택 카운터에 따라 추가 프로퍼티 생성됨
+        public List<CardProperty> ActivatedCardPositiveProperties = new List<CardProperty>();
+
+        [Header("[활성화된 카드의 부정 갑 프로퍼티 리스트]")]
+        public List<CardProperty> ActivatedCardNegativeProperties = new List<CardProperty>();
+        
 
         //실제 사용은 이걸로 해야함.
         //*테스트할 때는 눈으로 봐야하기 때문에 CardSettings 사용
@@ -128,21 +135,85 @@ namespace WoosanStudio.ZombieShooter
                 //Debug.Log("추가됨 = " + cardSetting.TypeByCharacter.ToString());
             }
 
-            //IsActivate 카드의 프로퍼티만 중첩횟수만큼 ActivatedCardProperties에 추가함
-            //기존 프로퍼티 모두 삭제 다시 넣기
-            if (ActivatedCardProperties == null) ActivatedCardProperties = new List<CardProperty>();
+            #region [-Test Delete]
+            //테스트용 프로퍼티
+            //if (ActivatedCardProperties == null) ActivatedCardProperties = new List<CardProperty>();
 
-            //안에 있던 모든 프로퍼티 삭제
-            if ( 0 < ActivatedCardProperties.Count )
+            ////안에 있던 모든 프로퍼티 삭제
+            //if (0 < ActivatedCardProperties.Count)
+            //{
+            //    ActivatedCardProperties.ForEach(value => Destroy(value));
+            //    //널로 초기화
+            //    ActivatedCardProperties = new List<CardProperty>();
+            //}
+
+            //모든 프로퍼티 가져오기
+            ActivatedCardProperties = GetActivatedCardProperties(this.HasCards);
+            //긍정 프로퍼티 가져오기
+            ActivatedCardPositiveProperties = GetActivatedCardPositiveProperties(this.HasCards);
+            //부정 프로퍼티 가져오기
+            ActivatedCardNegativeProperties = GetActivatedCardNegativeProperties(this.HasCards);
+
+
+            #endregion
+        }
+
+        /// <summary>
+        /// 증가 데미지 공식
+        /// </summary>
+        /// <param name="damage">무기와 탄약을 더한 값</param>
+        /// <param name="level">카드 레밸</param>
+        /// <param name="property">카드 프로퍼티 값</param>
+        /// <param name="percentage">기본 100% 이며 크리티컬 값을 구할시 200%으로 변경</param>
+        /// <returns></returns>
+        public float IncreaseDamage(float damage, int level, CardProperty property, int percentage = 100)
+        {
+            //카드 레벨에 의해 증가된 수치
+            //(1레벨당 증가 값 * 레벨) + 기본벨류+[퍼센트 100 (200이면 크리티컬)]
+            int percent = (property.IncreasedValuePerLevelUp * level) + property.Value + percentage;
+
+            //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
+            float returnValue = damage * percent * 0.01f;
+
+            return returnValue;
+        }
+
+        //같은 종류의 카드는 중첩 되지 않지만 다른 종류는 중첩된다
+        public float DecreaseDamage(float damage, int level, CardProperty property)
+        {
+            //100을 기준으로 감소 퍼센트 계산
+            //100기준값 - ((1 레벨당 추가 갑소 값 * level) + 기본 감소 수치)
+            int percent = 100 - ((property.IncreasedValuePerLevelUp * level) + property.Value);
+
+            //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
+            float returnValue = damage * percent * 0.01f;
+
+            return returnValue;
+        }
+
+        //TestCode
+        void TestCode()
+        {
+            List<CardProperty> properties = GetActivatedCardProperties(this.HasCards);
+
+            for (int i = 0; i < properties.Count; i++)
             {
-                ActivatedCardProperties.ForEach(value => Destroy(value));
-                //널로 초기화
-                ActivatedCardProperties = new List<CardProperty>();
+                Debug.Log(properties[i].Descripsion);
+                Debug.Log("value by level = " + properties[i].ValueByLevel);
             }
+        }
 
+        /// <summary>
+        /// 활성카드의 프로퍼티만 가져옴
+        /// </summary>
+        /// <param name="hasCards"></param>
+        /// <returns></returns>
+        public List<CardProperty> GetActivatedCardProperties(List<CardSetting> hasCards)
+        {
+            List<CardProperty> properties = new List<CardProperty>();
             //활성 상태인 카드의 프로퍼티만 넣기
             //*중첩(stack)이면 중첩만큼 넣어야함
-            HasCards.ForEach(value => {
+            hasCards.ForEach(value => {
                 //Debug.Log("HasCard = " + value.name + " [" + value.IsActivate + "]");
                 if (value.IsActivate)//활성 상태인 것만 넣기
                 {
@@ -150,14 +221,95 @@ namespace WoosanStudio.ZombieShooter
                     {
                         value.Properties.ForEach(value2 =>
                         {
-                            ActivatedCardProperties.Add(Instantiate<CardProperty>(value2));
-                            //Debug.Log("stack = " + stack);
-                            //Debug.Log("외 안 넎음??");
+                            //카드 레벨에 의 해 계산된 Value 넣기
+                            value2.ValueByLevel = value2.Value + (value.Level * value2.IncreasedValuePerLevelUp);
+                            properties.Add(Instantiate<CardProperty>(value2));
                         });
                     }
                 }
             });
+
+            return properties;
         }
+
+
+        /// <summary>
+        /// 활성카드의 긍정 프로퍼티만 가져옴
+        /// </summary>
+        /// <param name="hasCards"></param>
+        /// <returns></returns>
+        public List<CardProperty> GetActivatedCardPositiveProperties(List<CardSetting> hasCards)
+        {
+            List<CardProperty> properties = new List<CardProperty>();
+            //활성 상태인 카드의 프로퍼티만 넣기
+            //*중첩(stack)이면 중첩만큼 넣어야함
+            hasCards.ForEach(value => {
+                //Debug.Log("HasCard = " + value.name + " [" + value.IsActivate + "]");
+                if (value.IsActivate)//활성 상태인 것만 넣기
+                {
+                    for (int stack = 0; stack <= value.StackCount; stack++) //중첩 만큼 추가로 넣음
+                    {
+                        value.Properties.ForEach(value2 =>
+                        {
+                            //카드 레벨에 의 해 계산된 Value 넣기
+                            value2.ValueByLevel = value2.Value + (value.Level * value2.IncreasedValuePerLevelUp);
+
+                            //value의 값이0 보다 큰가?
+                            if( 0 <= value2.Value )
+                            {
+                                properties.Add(Instantiate<CardProperty>(value2));
+                            }
+                        });
+                    }
+                }
+            });
+
+            return properties;
+        }
+
+        /// <summary>
+        /// 활성카드의 부정 프로퍼티만 가져옴
+        /// </summary>
+        /// <param name="hasCards"></param>
+        /// <returns></returns>
+        public List<CardProperty> GetActivatedCardNegativeProperties(List<CardSetting> hasCards)
+        {
+            List<CardProperty> properties = new List<CardProperty>();
+            //활성 상태인 카드의 프로퍼티만 넣기
+            //*중첩(stack)이면 중첩만큼 넣어야함
+            hasCards.ForEach(value => {
+                //Debug.Log("HasCard = " + value.name + " [" + value.IsActivate + "]");
+                if (value.IsActivate)//활성 상태인 것만 넣기
+                {
+                    for (int stack = 0; stack <= value.StackCount; stack++) //중첩 만큼 추가로 넣음
+                    {
+                        value.Properties.ForEach(value2 =>
+                        {
+                            //카드 레벨에 의 해 계산된 Value 넣기
+                            value2.ValueByLevel = value2.Value + (value.Level * value2.IncreasedValuePerLevelUp);
+
+                            //value의 값이0 보다 작은가?
+                            if ( value2.Value <= 0 )
+                            {
+                                bool isExist = false;
+                                //중복 검사 하여 중복 안되게 부정 프로퍼티 넣음
+                                properties.ForEach(myProperty => {
+                                    if(myProperty.Type == value2.Type)
+                                    {
+                                        isExist = true;
+                                    }
+                                });
+
+                                if (isExist == false) { properties.Add(Instantiate<CardProperty>(value2)); }
+                            }
+                        });
+                    }
+                }
+            });
+
+            return properties;
+        }
+
 
 
         #region [-TestCode]
@@ -173,6 +325,12 @@ namespace WoosanStudio.ZombieShooter
 
                     //CardsPlayerOnClicked.Clear();
                 }
+            }
+
+            //프로퍼티의 값들을 더하기 
+            if (Input.GetKeyDown(KeyCode.Alpha9))
+            {
+                TestCode();
             }
         }
         #endregion

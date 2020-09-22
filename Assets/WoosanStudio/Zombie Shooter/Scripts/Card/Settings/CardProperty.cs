@@ -23,6 +23,11 @@ namespace WoosanStudio.ZombieShooter
         private int value;
         public int Value => value;
 
+        [Header("카드 레벨이 반영된 값 => 프로퍼티 계산에 사용]")]
+        [SerializeField]
+        private int valueByLevel;
+        public int ValueByLevel { get => valueByLevel; set => valueByLevel = value; }
+
         [Header("[계산 공식 => [PropertyType과 같음]]")]
         [SerializeField]
         private string fomula;

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c124f92e2f8c6416cbfd1549d284fd89, type: 3}
   m_Name: Property 2
   m_EditorClassIdentifier: 
-  type: 17
+  type: 103
   value: 25
+  valueByLevel: 25
   fomula: SniperRifleDamage
   increasedValuePerLevelUp: 1
   descripsion: Increase the sniper rifle damage by /d%.

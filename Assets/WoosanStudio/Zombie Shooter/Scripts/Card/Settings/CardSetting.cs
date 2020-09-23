@@ -40,6 +40,12 @@ namespace WoosanStudio.ZombieShooter
         private int drability = 10;
         public int Durability { get => drability; }
 
+        [Header("[기본 값이며 무기,탄약의 경우 기본 데미지]")]
+        [SerializeField]
+        //저장 필요
+        private int value = -1;
+        public int Value { get => value; }
+
         [Header("[스킬 레벨]")]
         //[HideInInspector]
         [SerializeField]
@@ -186,13 +192,13 @@ namespace WoosanStudio.ZombieShooter
 
             //추가 enum타입으로 이동
             
-            //*아래 4개는 하나의 그룹 토글
+            //*아래 4개는 하나의 그룹 토글 => *[Property 와 일치 해야함]
             Pistol = 100,       //무기를 권총으로 변경 및 해당 무기 데미지 25%증가
             Shotgun,            //무기를 샷건으로 변경 및 해당 무기 데미지 25%증가   lv 4 unlock
             AssaultRifle,       //무기를 돌격소총으로 변경 및 무기 데미지 25%증가    lv 8 unlock  
             SniperRifle,        //무기를 스나이퍼소총으로 변경 및 무기 데미지 25%증가 lv 12 unlock
 
-            //아래 3개는 하나의 구룹 토글
+            //아래 3개는 하나의 구룹 토글 => *[Property 와 일치 해야함]
             BulletAmmo = 200,         //총알타입탄약 변경 및 총알타입탄약 데미지 25% 증가
             LaserAmmo,          //레이저타입탄약 변경 및 레이저타입탄약 데미지 25% 증가        lv 10 unlock
             PlasmaAmmo,         //플라즈마타입탄약 변경 및 플라즈마타입탄약 데미지 25% 증가       lv 14 unlock

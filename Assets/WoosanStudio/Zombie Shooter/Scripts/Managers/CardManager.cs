@@ -27,17 +27,43 @@ namespace WoosanStudio.ZombieShooter
         [Header("[가지고 있는 카드]")]
         public List<CardSetting> HasCards = new List<CardSetting>();
 
-        [Header("[활성화된 카드의 프로퍼티 리스트]")]
-        //카드 스택 카운터에 따라 추가 프로퍼티 생성됨
-        public List<CardProperty> ActivatedCardProperties = new List<CardProperty>();
+        //[Header("[활성화된 카드의 프로퍼티 리스트]")]
+        ////카드 스택 카운터에 따라 추가 프로퍼티 생성됨
+        //public List<CardProperty> ActivatedCardProperties = new List<CardProperty>();
 
-        [Header("[활성화된 카드의 긍정 갑 프로퍼티 리스트]")]
-        //카드 스택 카운터에 따라 추가 프로퍼티 생성됨
-        public List<CardProperty> ActivatedCardPositiveProperties = new List<CardProperty>();
+        //[Header("[활성화된 카드의 긍정 갑 프로퍼티 리스트]")]
+        ////카드 스택 카운터에 따라 추가 프로퍼티 생성됨
+        //public List<CardProperty> ActivatedCardPositiveProperties = new List<CardProperty>();
 
-        [Header("[활성화된 카드의 부정 갑 프로퍼티 리스트]")]
-        public List<CardProperty> ActivatedCardNegativeProperties = new List<CardProperty>();
-        
+        //[Header("[활성화된 카드의 부정 갑 프로퍼티 리스트]")]
+        //public List<CardProperty> ActivatedCardNegativeProperties = new List<CardProperty>();
+
+        //[Header("[같은 값으로 정렬된 긍정 값]")]
+        //public List<List<CardProperty>> sameProperties;
+
+        [Header("[현재 플레이어의 무기]")]
+        public CardProperty.PropertyType PlayerWeapon = CardProperty.PropertyType.PistolDamage;
+        [Header("[현재 플레이어의 탄약]")]
+        public CardProperty.PropertyType PlayerAmmo = CardProperty.PropertyType.BulletAmmoDamage;
+        [Header("[현재 플레이어의 무기 데미지 => 계산용]")]
+        public float WeaponDamage = 0;
+        [Header("[현재 플레이어의 탄약 데미지 => 계산용]")]
+        public float AmmoDamage = 0;
+
+        //프로퍼티의 중첩을 계산하기 위해 사용
+        /*private class PropertyCalculateData
+        {
+            //중첩을 모두 더한 값.
+            public float TotalValue;
+            //프로퍼티 타입.
+            public CardProperty.PropertyType Type;
+
+            public PropertyCalculateData(float totalValue,CardProperty.PropertyType type)
+            {
+                this.TotalValue = totalValue;
+                this.Type = type;
+            }
+        }*/
 
         //실제 사용은 이걸로 해야함.
         //*테스트할 때는 눈으로 봐야하기 때문에 CardSettings 사용
@@ -69,6 +95,35 @@ namespace WoosanStudio.ZombieShooter
             });
         }
 
+
+        /// <summary>
+        /// 현재 플레이어의 무기와 탄약을 세팅시킴
+        /// </summary>
+        /// <param name="weapon"></param>
+        /// <param name="ammo"></param>
+        /// <param name="type"></param>
+        private void SetWeaponAndAmmo(ref CardProperty.PropertyType weapon , ref CardProperty.PropertyType ammo, CardSetting card)
+        {
+            int a = 0;
+            //해당 카드가 무기 타입 이라면
+            if (100 <= (int)card.Type && (int)card.Type < 200)
+            {
+                //강제 캐스트
+                weapon = (CardProperty.PropertyType)(int)card.Type;
+                //무기 데미지 넣기
+                WeaponDamage = (float)card.Value;
+            }
+
+            //해당 카드가 탄약타입 이라면
+            if (200 <= (int)card.Type && (int)card.Type < 300)
+            {
+                //강제 캐스트
+                ammo = (CardProperty.PropertyType)(int)card.Type;
+                //탄약 데미지 넣기
+                AmmoDamage = (float)card.Value;
+            }
+        }
+
         /// <summary>
         /// 카드 추가
         /// * 카드 추가시 중첩 확인 및 없을시 추가.
@@ -84,7 +139,7 @@ namespace WoosanStudio.ZombieShooter
             //카드 추가 와 상관없이 프로퍼티는 무조건 추가
             //cardSetting.Properties.ForEach(value => SelectedCardProperties.Add(Instantiate<CardProperty>(value)));
 
-            //분류가 안돼 이부분 재 정의 필요.
+            //건 타입이면 가지고 있는 모든 건카드 비활성화
             //추가 카드의 100-200 사이의 카드 - GunType
             if(100 <= (int)cardSetting.Type && (int)cardSetting.Type < 200)
             {
@@ -92,6 +147,7 @@ namespace WoosanStudio.ZombieShooter
                 DeactiveByCardType(this.HasCards, new int[] { 100, 200 });
             }
 
+            //탄약 타입이면 가지고 있는 모든 탄약카드 비활성화
             //추가 카드의 200-300 사이의 카드라면 - AmmoType
             if (200 <= (int)cardSetting.Type && (int)cardSetting.Type < 300)
             {
@@ -99,6 +155,7 @@ namespace WoosanStudio.ZombieShooter
                 DeactiveByCardType(this.HasCards, new int[] { 200, 300 });
             }
 
+            //캐릭터 타입이면 가지고 있는 모든 캐릭터카드 비활성화
             //추가 카드의 300-400 사이의 카드라면 - CharacterType
             if (300 <= (int)cardSetting.Type && (int)cardSetting.Type < 400)
             {
@@ -123,6 +180,8 @@ namespace WoosanStudio.ZombieShooter
                     ableAdd = false;
                     //해당 카드 활성화
                     HasCards[i].IsActivate = true;
+                    //활성화된 카드의 무기와 탄약을 플레이어에게 세팅시킴
+                    SetWeaponAndAmmo(ref PlayerWeapon, ref PlayerAmmo, cardSetting);
                 }
             }
 
@@ -132,6 +191,8 @@ namespace WoosanStudio.ZombieShooter
                 cardSetting.IsActivate = true;
                 //해당 카드 추가
                 HasCards.Add(cardSetting);
+                //활성화된 카드의 무기와 탄약을 플레이어에게 세팅시킴
+                SetWeaponAndAmmo(ref PlayerWeapon, ref PlayerAmmo, cardSetting);
                 //Debug.Log("추가됨 = " + cardSetting.TypeByCharacter.ToString());
             }
 
@@ -148,11 +209,11 @@ namespace WoosanStudio.ZombieShooter
             //}
 
             //모든 프로퍼티 가져오기
-            ActivatedCardProperties = GetActivatedCardProperties(this.HasCards);
+            //ActivatedCardProperties = GetActivatedCardProperties(this.HasCards);
             //긍정 프로퍼티 가져오기
-            ActivatedCardPositiveProperties = GetActivatedCardPositiveProperties(this.HasCards);
+            //ActivatedCardPositiveProperties = GetActivatedCardPositiveProperties(this.HasCards);
             //부정 프로퍼티 가져오기
-            ActivatedCardNegativeProperties = GetActivatedCardNegativeProperties(this.HasCards);
+            //ActivatedCardNegativeProperties = GetActivatedCardNegativeProperties(this.HasCards);
 
 
             #endregion
@@ -166,9 +227,9 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="property">카드 프로퍼티 값</param>
         /// <param name="percentage">기본 100% 이며 크리티컬 값을 구할시 200%으로 변경</param>
         /// <returns></returns>
-        public float IncreaseDamage(float damage, int level, CardProperty property, int percentage = 100)
+        public float CalculateDamage(float damage, int level, CardProperty property, int percentage = 100)
         {
-            //카드 레벨에 의해 증가된 수치
+            //카드 레벨에 의해 증감된 수치
             //(1레벨당 증가 값 * 레벨) + 기본벨류+[퍼센트 100 (200이면 크리티컬)]
             int percent = (property.IncreasedValuePerLevelUp * level) + property.Value + percentage;
 
@@ -179,7 +240,7 @@ namespace WoosanStudio.ZombieShooter
         }
 
         //같은 종류의 카드는 중첩 되지 않지만 다른 종류는 중첩된다
-        public float DecreaseDamage(float damage, int level, CardProperty property)
+        /*public float DecreaseDamage(float damage, int level, CardProperty property)
         {
             //100을 기준으로 감소 퍼센트 계산
             //100기준값 - ((1 레벨당 추가 갑소 값 * level) + 기본 감소 수치)
@@ -189,18 +250,109 @@ namespace WoosanStudio.ZombieShooter
             float returnValue = damage * percent * 0.01f;
 
             return returnValue;
-        }
+        }*/
+
+        /// <summary>
+        /// 같은 프로퍼티를 추출
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        /*public List<CardProperty> GetSameProperties(ref List<CardProperty> value)
+        {
+            List<CardProperty> returnValue = new List<CardProperty>();
+
+            //returnValue 첫번째 프로퍼티가 기준
+            returnValue.Add(value[0]);
+            //기준을 잡은 후 리스트에서 제거
+            value.RemoveAt(0);
+
+            for (int i = 0; i < value.Count; i++)
+            {
+                //기준과 같은 타입 찾음 => 기준 returnValue[0]
+                if (returnValue[0].Type == value[i].Type)
+                {
+                    returnValue.Add(value[i]);
+                    value.RemoveAt(i);
+                    //삭제 되었으니 i-1
+                    i--;
+                }
+            }
+
+            return returnValue;
+        }*/
 
         //TestCode
-        void TestCode()
+        //프로퍼티를 연속적으로 검사하여 값을 더하는 테스트
+        void TestDamageCode()
         {
-            List<CardProperty> properties = GetActivatedCardProperties(this.HasCards);
+            /*
+            //프로퍼티 리스트 하나더 복제
+            List<CardProperty> clone = new List<CardProperty>(ActivatedCardPositiveProperties);
 
-            for (int i = 0; i < properties.Count; i++)
+            //같은종류의 프로퍼티
+            this.sameProperties = new List<List<CardProperty>>();
+
+            //클론의 복제한 프로퍼티를 모두 사용할때까지 루프 돌려서 추출
+            while (0 < clone.Count)
             {
-                Debug.Log(properties[i].Descripsion);
-                Debug.Log("value by level = " + properties[i].ValueByLevel);
+                //추출한 프로퍼티들 넣기
+                this.sameProperties.Add(GetSameProperties(ref clone));
             }
+
+            this.sameProperties.ForEach(value => {
+                Debug.Log("================================");
+                value.ForEach(value2 =>
+                {
+                    Debug.Log("타입 = " + value2.Type);
+                });
+            });
+            */
+
+            //최대한 단순하게 계산하자-> 복잡하면 나중에 못알아 본다
+            //카드 하나 하나 돌면서 증가, 감소 시킴
+            CardProperty.PropertyType type;
+            float damage = 0;
+            int level = 0;
+            float totalDamage = 0;
+
+            //계산전 데미지
+            Debug.Log("처음 데미지   total  = " + (WeaponDamage + AmmoDamage) + "  weapon = " + WeaponDamage + " ammo = " + AmmoDamage);
+
+            //데미지 증,감 관련 값 구하기
+            //일단
+            for (int i = 0; i < this.HasCards.Count; i++)
+            {
+                //활성 상태 카드만 검사
+                if(this.HasCards[i].IsActivate)
+                {
+                    //프로퍼티 검사
+                    for (int j = 0; j < this.HasCards[i].Properties.Count; j++)
+                    {
+                        //현재 카드의 타입
+                        type = this.HasCards[i].Properties[j].Type;
+
+                        //현재 플레이어의 무기와 같은가 or
+                        //현재 플레이어의 탄약과 같은가 or
+                        //모든 탄약 데미지 인가 or
+                        //모든 무기 데미지 인가
+                        if (this.PlayerWeapon == type
+                            || this.PlayerAmmo == type
+                            || type == CardProperty.PropertyType.AllAmmoDamage
+                            || type == CardProperty.PropertyType.AllWeaponDamage)
+                        {
+                            //무기 데미지와 탄약데미지 더한 값
+                            damage = WeaponDamage+AmmoDamage;
+                            level = this.HasCards[i].Level;
+
+                            totalDamage = CalculateDamage(damage, level, this.HasCards[i].Properties[j]);
+
+                            Debug.Log("중간 계산 토탈 = " + totalDamage + "   damage = " + damage + "  level = " + level + " type = " + type.ToString());
+                        }
+                    }
+                }
+            }
+
+            Debug.Log("최종 데미지 = " + totalDamage);
         }
 
         /// <summary>
@@ -208,7 +360,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="hasCards"></param>
         /// <returns></returns>
-        public List<CardProperty> GetActivatedCardProperties(List<CardSetting> hasCards)
+        /*public List<CardProperty> GetActivatedCardProperties(List<CardSetting> hasCards)
         {
             List<CardProperty> properties = new List<CardProperty>();
             //활성 상태인 카드의 프로퍼티만 넣기
@@ -230,7 +382,7 @@ namespace WoosanStudio.ZombieShooter
             });
 
             return properties;
-        }
+        }*/
 
 
         /// <summary>
@@ -238,7 +390,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="hasCards"></param>
         /// <returns></returns>
-        public List<CardProperty> GetActivatedCardPositiveProperties(List<CardSetting> hasCards)
+        /*public List<CardProperty> GetActivatedCardPositiveProperties(List<CardSetting> hasCards)
         {
             List<CardProperty> properties = new List<CardProperty>();
             //활성 상태인 카드의 프로퍼티만 넣기
@@ -265,14 +417,14 @@ namespace WoosanStudio.ZombieShooter
             });
 
             return properties;
-        }
+        }*/
 
         /// <summary>
         /// 활성카드의 부정 프로퍼티만 가져옴
         /// </summary>
         /// <param name="hasCards"></param>
         /// <returns></returns>
-        public List<CardProperty> GetActivatedCardNegativeProperties(List<CardSetting> hasCards)
+        /*public List<CardProperty> GetActivatedCardNegativeProperties(List<CardSetting> hasCards)
         {
             List<CardProperty> properties = new List<CardProperty>();
             //활성 상태인 카드의 프로퍼티만 넣기
@@ -308,7 +460,7 @@ namespace WoosanStudio.ZombieShooter
             });
 
             return properties;
-        }
+        }*/
 
 
 
@@ -330,7 +482,7 @@ namespace WoosanStudio.ZombieShooter
             //프로퍼티의 값들을 더하기 
             if (Input.GetKeyDown(KeyCode.Alpha9))
             {
-                TestCode();
+                TestDamageCode();
             }
         }
         #endregion

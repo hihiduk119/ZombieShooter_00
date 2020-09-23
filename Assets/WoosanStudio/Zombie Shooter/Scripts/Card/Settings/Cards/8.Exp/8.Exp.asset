@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 8.Exp
   m_EditorClassIdentifier: 
+  isActivate: 0
+  type: 8
+  drability: 10
+  value: 10
   level: 0
+  maxStack: 2
+  stackCount: 0
+  maxDurability: 10
   maxLevel: 25
   unlockLevel: 0
   researchTimeFormula: ResearchTime
@@ -21,6 +28,5 @@ MonoBehaviour:
   scale: 0.25
   iconColor: {r: 0.27058825, g: 0.3647059, b: 0.4509804, a: 1}
   title: Exp
-  type: 8
   Properties:
   - {fileID: 11400000, guid: 16985e81c9a96407e91d8a6aa1d7ef2b, type: 2}

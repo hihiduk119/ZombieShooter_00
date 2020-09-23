@@ -13,9 +13,6 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     public GameObject impactPrefab;
     public Rigidbody thisRigidbody;
 
-    //매 프레임 업데이트를 통한 타겟 확인 방식.
-    private Vector3 previousPosition;
-
     //Add Force에 사용될 파워
     public Vector3 Force;
 
@@ -28,15 +25,14 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     // 이떼 CheckCollision 에서 맞은 것 찾아서 리스트에 담아서 찾는 방법 쓰면 될듯 함.
     //
 
+    //매 프레임 업데이트를 통한 타겟 확인 방식.
+    private Vector3 previousPosition;
     //자동으로 탄이 디스폰되는 시간 설정값
     private float autoDieTime = 1f;
-
     //플레이어가 쏜 총알 Raycast용 마스크 
     int playerShotedLayerMask = 0;
     //몬스터가 쏜 총알 Raycastd용 마스크
     int monsterShotedLayerMask = 0;
-
-    
 
     //캐싱용
     RaycastHit hit;
@@ -199,12 +195,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
         //float damage = ;
         //카드는 중첩 카운트로 계산
         //카드 중첩 카운트 만큼 프로퍼티 생성
-        List<CardProperty> properties = CardManager.Instance.GetActivatedCardProperties(CardSettingsClone);
-
-        for (int i = 0; i < properties.Count; i++)
-        {
-            Debug.Log(properties[i].Descripsion);
-        }
+        
 
         return 5;
     }

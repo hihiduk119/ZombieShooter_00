@@ -15,7 +15,7 @@ MonoBehaviour:
   isActivate: 0
   type: 101
   drability: 10
-  value: 2
+  value: 1
   level: 0
   maxStack: 2
   stackCount: 0

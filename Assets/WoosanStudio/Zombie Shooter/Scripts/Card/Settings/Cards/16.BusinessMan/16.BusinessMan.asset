@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActivate: 0
   type: 300
-  typeByWeapon: 0
-  typeByAmmo: 0
-  typeByCharacter: 1
   drability: 10
+  value: -1
   level: 0
   maxStack: 2
   stackCount: 0

@@ -49,6 +49,9 @@ namespace WoosanStudio.ZombieShooter
         public float WeaponDamage = 0;
         [Header("[현재 플레이어의 탄약 데미지 => 계산용]")]
         public float AmmoDamage = 0;
+        [Header("[현재 플레이어의 체력 => 계산용]")]
+        public float HealthPoint = 0;
+
 
         //프로퍼티의 중첩을 계산하기 위해 사용
         /*private class PropertyCalculateData
@@ -104,7 +107,6 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="type"></param>
         private void SetWeaponAndAmmo(ref CardProperty.PropertyType weapon , ref CardProperty.PropertyType ammo, CardSetting card)
         {
-            int a = 0;
             //해당 카드가 무기 타입 이라면
             if (100 <= (int)card.Type && (int)card.Type < 200)
             {
@@ -180,6 +182,9 @@ namespace WoosanStudio.ZombieShooter
                     ableAdd = false;
                     //해당 카드 활성화
                     HasCards[i].IsActivate = true;
+
+                    Debug.Log("1 활성 카드 = " + cardSetting.Type.ToString());
+
                     //활성화된 카드의 무기와 탄약을 플레이어에게 세팅시킴
                     SetWeaponAndAmmo(ref PlayerWeapon, ref PlayerAmmo, cardSetting);
                 }
@@ -191,6 +196,9 @@ namespace WoosanStudio.ZombieShooter
                 cardSetting.IsActivate = true;
                 //해당 카드 추가
                 HasCards.Add(cardSetting);
+
+                Debug.Log("2 활성 카드 = " + cardSetting.Type.ToString());
+
                 //활성화된 카드의 무기와 탄약을 플레이어에게 세팅시킴
                 SetWeaponAndAmmo(ref PlayerWeapon, ref PlayerAmmo, cardSetting);
                 //Debug.Log("추가됨 = " + cardSetting.TypeByCharacter.ToString());
@@ -222,19 +230,19 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 증가 데미지 공식
         /// </summary>
-        /// <param name="damage">무기와 탄약을 더한 값</param>
+        /// <param name="value">무기와 탄약을 더한 값</param>
         /// <param name="level">카드 레밸</param>
         /// <param name="property">카드 프로퍼티 값</param>
         /// <param name="percentage">기본 100% 이며 크리티컬 값을 구할시 200%으로 변경</param>
         /// <returns></returns>
-        public float CalculateDamage(float damage, int level, CardProperty property, int percentage = 100)
+        public float CalculateValue(float value, int level, CardProperty property, int percentage = 100)
         {
             //카드 레벨에 의해 증감된 수치
             //(1레벨당 증가 값 * 레벨) + 기본벨류+[퍼센트 100 (200이면 크리티컬)]
             int percent = (property.IncreasedValuePerLevelUp * level) + property.Value + percentage;
-
+            //Debug.Log("증가 퍼센트 = " + percent);
             //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
-            float returnValue = damage * percent * 0.01f;
+            float returnValue = value * percent * 0.01f;
 
             return returnValue;
         }
@@ -282,44 +290,24 @@ namespace WoosanStudio.ZombieShooter
         }*/
 
         //TestCode
-        //프로퍼티를 연속적으로 검사하여 값을 더하는 테스트
-        void TestDamageCode()
+        //데미지 받은 부터 플레이어로 
+        float DamageTakenFromPlayer()
         {
-            /*
-            //프로퍼티 리스트 하나더 복제
-            List<CardProperty> clone = new List<CardProperty>(ActivatedCardPositiveProperties);
-
-            //같은종류의 프로퍼티
-            this.sameProperties = new List<List<CardProperty>>();
-
-            //클론의 복제한 프로퍼티를 모두 사용할때까지 루프 돌려서 추출
-            while (0 < clone.Count)
-            {
-                //추출한 프로퍼티들 넣기
-                this.sameProperties.Add(GetSameProperties(ref clone));
-            }
-
-            this.sameProperties.ForEach(value => {
-                Debug.Log("================================");
-                value.ForEach(value2 =>
-                {
-                    Debug.Log("타입 = " + value2.Type);
-                });
-            });
-            */
-
             //최대한 단순하게 계산하자-> 복잡하면 나중에 못알아 본다
             //카드 하나 하나 돌면서 증가, 감소 시킴
             CardProperty.PropertyType type;
             float damage = 0;
             int level = 0;
-            float totalDamage = 0;
+            int stackCount = 0;
 
             //계산전 데미지
             Debug.Log("처음 데미지   total  = " + (WeaponDamage + AmmoDamage) + "  weapon = " + WeaponDamage + " ammo = " + AmmoDamage);
 
-            //데미지 증,감 관련 값 구하기
-            //일단
+
+            //무기 데미지와 탄약데미지 더한 값
+            damage = WeaponDamage + AmmoDamage;
+
+            //가진 카드에서 루프
             for (int i = 0; i < this.HasCards.Count; i++)
             {
                 //활성 상태 카드만 검사
@@ -331,28 +319,76 @@ namespace WoosanStudio.ZombieShooter
                         //현재 카드의 타입
                         type = this.HasCards[i].Properties[j].Type;
 
-                        //현재 플레이어의 무기와 같은가 or
-                        //현재 플레이어의 탄약과 같은가 or
-                        //모든 탄약 데미지 인가 or
-                        //모든 무기 데미지 인가
-                        if (this.PlayerWeapon == type
-                            || this.PlayerAmmo == type
-                            || type == CardProperty.PropertyType.AllAmmoDamage
-                            || type == CardProperty.PropertyType.AllWeaponDamage)
+                        if (this.PlayerWeapon == type                       //현재 플레이어의 무기와 같은가 or
+                            || this.PlayerAmmo == type                      //현재 플레이어의 탄약과 같은가 or
+                            || type == CardProperty.PropertyType.AllAmmoDamage      //모든 탄약 데미지 인가 or
+                            || type == CardProperty.PropertyType.AllWeaponDamage)   //모든 무기 데미지 인가
                         {
-                            //무기 데미지와 탄약데미지 더한 값
-                            damage = WeaponDamage+AmmoDamage;
+                            //카드레벨 가져오기
                             level = this.HasCards[i].Level;
 
-                            totalDamage = CalculateDamage(damage, level, this.HasCards[i].Properties[j]);
+                            //프로퍼티 값이 음수이면 스택없이 1번만 계산
+                            if(this.HasCards[i].Properties[j].Value < 0)
+                            {
+                                stackCount = 1;
+                            } else//프로퍼티 값이 양수이면 스택 카운터 만큼 루프 
+                            {
+                                stackCount = this.HasCards[i].StackCount + 1;
+                            }
 
-                            Debug.Log("중간 계산 토탈 = " + totalDamage + "   damage = " + damage + "  level = " + level + " type = " + type.ToString());
+                            //스택 카운트 만큼 추가
+                            for (int n = 0; n < stackCount; n++)
+                            {
+                                //레벨 반영 데미지 계산
+                                damage = CalculateValue(damage, level, this.HasCards[i].Properties[j]);
+                                Debug.Log("중간 계산 토탈 = " + damage + "  level = " + level + " type = " + type.ToString());
+                            }
                         }
                     }
                 }
             }
 
-            Debug.Log("최종 데미지 = " + totalDamage);
+            Debug.Log("최종 데미지 = " + damage);
+            return damage;
+        }
+
+
+        //최대 체력 증가 -> 테스트 필요
+        void GetHealthPoint()
+        {
+            int level = 0;
+            float totalHealthPoint = 0;
+            int stackCount = 0;
+
+            //가진 카드에서 루프
+            for (int i = 0; i < this.HasCards.Count; i++)
+            {
+                //활성 상태 카드만 검사 && MaxHp타입인가
+                if (this.HasCards[i].IsActivate && this.HasCards[i].Type == CardSetting.CardType.MaxHP)
+                {
+                    //MaxHP value에 기본값이 들어 있음
+                    totalHealthPoint = this.HasCards[i].Value;
+
+                    //프로퍼티 검사
+                    for (int j = 0; j < this.HasCards[i].Properties.Count; j++)
+                    {
+                        //카드레벨 가져오기
+                        level = this.HasCards[i].Level;
+
+                        //스택 카운터 만큼 루프
+                        stackCount = this.HasCards[i].StackCount + 1;
+
+                        //스택 카운트 만큼 추가
+                        for (int n = 0; n < stackCount; n++)
+                        {
+                            //레벨 반영 데미지 계산
+                            totalHealthPoint = CalculateValue(totalHealthPoint, level, this.HasCards[i].Properties[j]);
+                            Debug.Log("중간 계산 토탈 = " + totalHealthPoint + "  level = " + level + " type = " + this.HasCards[i].Properties[j].Type.ToString());
+                        }
+                        
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -482,7 +518,7 @@ namespace WoosanStudio.ZombieShooter
             //프로퍼티의 값들을 더하기 
             if (Input.GetKeyDown(KeyCode.Alpha9))
             {
-                TestDamageCode();
+                DamageTakenFromPlayer();
             }
         }
         #endregion

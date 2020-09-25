@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
-  m_Name: 25.Robber
+  m_Name: 25.Robber (Vincent)
   m_EditorClassIdentifier: 
   isActivate: 0
   type: 309
-  typeByWeapon: 0
-  typeByAmmo: 0
-  typeByCharacter: 10
+  name: Vincent
   drability: 10
+  value: -1
   level: 0
   maxStack: 2
   stackCount: 0

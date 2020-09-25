@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
-  m_Name: 21.Prostitute
+  m_Name: 20.Policeman (Alvin)
   m_EditorClassIdentifier: 
   isActivate: 0
-  type: 305
-  typeByWeapon: 0
-  typeByAmmo: 0
-  typeByCharacter: 6
+  type: 304
+  name: Alvin
   drability: 10
+  value: -1
   level: 0
   maxStack: 2
   stackCount: 0
@@ -26,11 +25,12 @@ MonoBehaviour:
   unlockLevel: 0
   researchTimeFormula: ResearchTime
   coinFormula: Coin
-  sprite: {fileID: 21300000, guid: 7cb55ed74833442e2b475ed85ad758c4, type: 3}
+  sprite: {fileID: 21300000, guid: b5c4d1a6873cd4e39b97dbcf5dfe434c, type: 3}
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
-  title: Schoolgirl
+  title: Policeman
   Properties:
-  - {fileID: 11400000, guid: d9eacec50cfa54f11acc1cf17164f0ed, type: 2}
-  - {fileID: 11400000, guid: 2bd689257ebe641d69ecfbe758e5b1fd, type: 2}
-  - {fileID: 11400000, guid: 2b8653c2bcb7943a4858a4c0905e73f4, type: 2}
+  - {fileID: 11400000, guid: 25963df39aacd4600a4334ec911bdec2, type: 2}
+  - {fileID: 11400000, guid: effd652e657664a1b9776dd9f694614f, type: 2}
+  - {fileID: 11400000, guid: c4e6a523115a64516846f8801602abac, type: 2}
+  - {fileID: 11400000, guid: 4c1950f7c616048e592304f7c8b1cbf8, type: 2}

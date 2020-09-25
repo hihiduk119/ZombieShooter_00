@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
-  m_Name: 17.FireFighter
+  m_Name: 29.Woman (Nancy)
   m_EditorClassIdentifier: 
   isActivate: 0
-  type: 301
-  typeByWeapon: 0
-  typeByAmmo: 0
-  typeByCharacter: 2
+  type: 313
+  name: Nancy
   drability: 10
-  level: 0
+  value: -1
+  level: 18
   maxStack: 2
   stackCount: 0
   maxDurability: 10
@@ -26,11 +25,11 @@ MonoBehaviour:
   unlockLevel: 0
   researchTimeFormula: ResearchTime
   coinFormula: Coin
-  sprite: {fileID: 21300000, guid: d419d3350b886423f8b625b0b4193c42, type: 3}
-  scale: 0.35
+  sprite: {fileID: 21300000, guid: 577947efa5cc9495e880c3cdeac559fe, type: 3}
+  scale: 0.4
   iconColor: {r: 1, g: 1, b: 1, a: 1}
-  title: Firefighter
+  title: Waitress
   Properties:
-  - {fileID: 11400000, guid: aeb5d5b622d5d4a228b89d2a268013f4, type: 2}
-  - {fileID: 11400000, guid: 52c90435090d04ac18f7ed0ee81a7db5, type: 2}
-  - {fileID: 11400000, guid: 8aad304d82b384ca9836c763b7717fc3, type: 2}
+  - {fileID: 11400000, guid: 03b032169550a49739bae371e5de9621, type: 2}
+  - {fileID: 11400000, guid: 70d8bc4e597fb4542af5bb8280aee8dd, type: 2}
+  - {fileID: 11400000, guid: 14fb7ab7bed154672b28d0a309742775, type: 2}

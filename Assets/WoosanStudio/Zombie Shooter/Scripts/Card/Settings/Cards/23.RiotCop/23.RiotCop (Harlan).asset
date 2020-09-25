@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
-  m_Name: 24.Roadworker
+  m_Name: 23.RiotCop (Harlan)
   m_EditorClassIdentifier: 
   isActivate: 0
-  type: 308
-  typeByWeapon: 0
-  typeByAmmo: 0
-  typeByCharacter: 9
+  type: 307
+  name: Harlan
   drability: 10
+  value: -1
   level: 0
   maxStack: 2
   stackCount: 0
@@ -26,11 +25,11 @@ MonoBehaviour:
   unlockLevel: 0
   researchTimeFormula: ResearchTime
   coinFormula: Coin
-  sprite: {fileID: 21300000, guid: 9acf21bf9696a475b97cb297c396ef88, type: 3}
+  sprite: {fileID: 21300000, guid: b80b250dfa31c4cbdbdddc686c8d4bdd, type: 3}
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
-  title: Road Worker
+  title: Riot Cop
   Properties:
-  - {fileID: 11400000, guid: ccd48e96f62474a4597c2cb2aed0c1cd, type: 2}
-  - {fileID: 11400000, guid: af129b0e019c74e14a39edb76e99a572, type: 2}
-  - {fileID: 11400000, guid: c645dc927b55b419db90190c5c84d53f, type: 2}
+  - {fileID: 11400000, guid: 3933f42809238465582df38ee2a288c4, type: 2}
+  - {fileID: 11400000, guid: 706fce2279bae4ba594ccc66ec6e4001, type: 2}
+  - {fileID: 11400000, guid: 125195d9df1d64f1383f2c61efbd5d33, type: 2}

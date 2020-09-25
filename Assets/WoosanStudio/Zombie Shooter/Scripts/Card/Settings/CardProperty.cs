@@ -83,8 +83,9 @@ namespace WoosanStudio.ZombieShooter
             LaserAmmoDamageResistance,      //레이저타입탄약 데미지 저항
             PlasmaAmmoDamageResistance,     //플라즈마타입탄약 데미지 저항
             AllAmmoDamageResistance = 599,  //모든 탄약 데미지 저항
-            CriticalDamageResistance = 600, //치명타 데미지 저항
-            AirStrikeDamageResistance,      //공습 데미지 저항
+            
+            AirStrikeDamageResistance = 600,      //공습 데미지 저항
+            //CriticalDamageResistance,         //치명타 데미지 저항
         }
     }
 }

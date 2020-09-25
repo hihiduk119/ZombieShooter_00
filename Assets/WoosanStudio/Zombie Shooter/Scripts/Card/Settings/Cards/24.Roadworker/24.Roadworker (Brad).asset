@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
-  m_Name: 22.Punk
+  m_Name: 24.Roadworker (Brad)
   m_EditorClassIdentifier: 
   isActivate: 0
-  type: 306
-  typeByWeapon: 0
-  typeByAmmo: 0
-  typeByCharacter: 7
+  type: 308
+  name: Brad
   drability: 10
+  value: -1
   level: 0
   maxStack: 2
   stackCount: 0
@@ -26,11 +25,11 @@ MonoBehaviour:
   unlockLevel: 0
   researchTimeFormula: ResearchTime
   coinFormula: Coin
-  sprite: {fileID: 21300000, guid: 06d1f006a54374b8abd06b03aba79f87, type: 3}
+  sprite: {fileID: 21300000, guid: 9acf21bf9696a475b97cb297c396ef88, type: 3}
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
-  title: Punk
+  title: Road Worker
   Properties:
-  - {fileID: 11400000, guid: d02f6fe54dd204636a0436b5e1875933, type: 2}
-  - {fileID: 11400000, guid: c5c27c09354934ed9ac798cc70ce3e4a, type: 2}
-  - {fileID: 11400000, guid: 9830d3596e697481e8b4f9cc14d6b2e8, type: 2}
+  - {fileID: 11400000, guid: ccd48e96f62474a4597c2cb2aed0c1cd, type: 2}
+  - {fileID: 11400000, guid: af129b0e019c74e14a39edb76e99a572, type: 2}
+  - {fileID: 11400000, guid: c645dc927b55b419db90190c5c84d53f, type: 2}

@@ -228,7 +228,7 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
-        /// 증가 데미지 공식
+        /// 데미지, 체력, 치명데미지 공식
         /// </summary>
         /// <param name="value">무기와 탄약을 더한 값</param>
         /// <param name="level">카드 레밸</param>
@@ -243,6 +243,44 @@ namespace WoosanStudio.ZombieShooter
             //Debug.Log("증가 퍼센트 = " + percent);
             //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
             float returnValue = value * percent * 0.01f;
+
+            return returnValue;
+        }
+
+        /// <summary>
+        /// 공격속도 공식
+        /// *감소할수록 빨라짐
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="level"></param>
+        /// <param name="property"></param>
+        /// <param name="percentage"></param>
+        /// <returns></returns>
+        public float CalculateValue2(float value, int level, CardProperty property, int percentage = 100)
+        {
+            //카드 레벨에 의해 증감된 수치
+            //(1레벨당 증가 값 * 레벨) + 기본벨류+[퍼센트 100 (200이면 크리티컬)]
+            int percent = (property.IncreasedValuePerLevelUp * level) + percentage;
+            //Debug.Log("증가 퍼센트 = " + percent);
+            //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
+            float returnValue = value / (percent * 0.01f);
+
+            return returnValue;
+        }
+
+        /// <summary>
+        /// 크리티컬 확률 공식
+        /// 1-100사이 값 공식
+        /// Random.Range(0,100);
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="level"></param>
+        /// <param name="property"></param>
+        /// <param name="percentage"></param>
+        /// <returns></returns>
+        public float CalculateValue3(float value, int level, CardProperty property)
+        {
+            float returnValue = (property.IncreasedValuePerLevelUp * level) + value;   
 
             return returnValue;
         }
@@ -289,9 +327,20 @@ namespace WoosanStudio.ZombieShooter
             return returnValue;
         }*/
 
-        //TestCode
-        //데미지 받은 부터 플레이어로 
-        float DamageTakenFromPlayer()
+        //*테스트 필요
+        //좀비가 영향을 받는 모든 데미지 계산
+        //-계산범위
+        // 무기 종류별
+        // 탄약 종류별
+        // 모든 무기 데미지
+        // 모든 탄약 데미지
+        // 네임드 몬스터
+        // 일반 몬스터
+        // 무기 종류별 저항
+        // 탄약 종류별 저항
+        // 모든 무기 저항
+        // 모든 탄약 저항
+        float DamageTakenFromPlayer(bool isNamedZombie = false)
         {
             //최대한 단순하게 계산하자-> 복잡하면 나중에 못알아 본다
             //카드 하나 하나 돌면서 증가, 감소 시킴
@@ -319,10 +368,17 @@ namespace WoosanStudio.ZombieShooter
                         //현재 카드의 타입
                         type = this.HasCards[i].Properties[j].Type;
 
-                        if (this.PlayerWeapon == type                       //현재 플레이어의 무기와 같은가 or
-                            || this.PlayerAmmo == type                      //현재 플레이어의 탄약과 같은가 or
-                            || type == CardProperty.PropertyType.AllAmmoDamage      //모든 탄약 데미지 인가 or
-                            || type == CardProperty.PropertyType.AllWeaponDamage)   //모든 무기 데미지 인가
+                        if (this.PlayerWeapon == type                       //현재 플레이어의 무기와 같은가 
+                            || this.PlayerAmmo == type                      //현재 플레이어의 탄약과 같은가 
+                            || type == CardProperty.PropertyType.AllAmmoDamage      //모든 탄약 데미지 인가
+                            || type == CardProperty.PropertyType.AllWeaponDamage   //모든 무기 데미지 인가
+                            || (type == CardProperty.PropertyType.NamedZombieDamage && isNamedZombie)   //네임드 좀비 데미지 카드일때
+                            || (type == CardProperty.PropertyType.GeneralZombieDamage && !isNamedZombie)//일반 좀비 카드 데미지 일때
+                            || ((int)this.PlayerWeapon + 300) == (int)type  //현재 플레이어의 무기와 카드의 저항 무기가 같은가
+                            || ((int)this.PlayerAmmo + 300) == (int)type    //현재 플레이어의 탄약과 카드의 저항 탄약이 같은가
+                            || type == CardProperty.PropertyType.AllAmmoDamageResistance  //모든 탄약 저항 인가
+                            || type == CardProperty.PropertyType.AllWeaponDamageResistance //모든 무기 저항 인가
+                            )
                         {
                             //카드레벨 가져오기
                             level = this.HasCards[i].Level;
@@ -352,22 +408,28 @@ namespace WoosanStudio.ZombieShooter
             return damage;
         }
 
-
+        //*테스트 필요
         //최대 체력 증가 -> 테스트 필요
-        void GetHealthPoint()
+        //카드 타입만 바꾸면 종류별로 테스트 가능
+        //-체력 포인트      => CardSetting.CardType.MaxHP
+        //-치명타 데미지     => CardSetting.CardType.CriticalDamage
+        //-공습 데미지      => CardSetting.CardType.AirStrikeDamage
+        //-돈             => CardSetting.CardType.Coin
+        //-경험치          => CardSetting.CardType.Exp
+        float GetValue(CardSetting.CardType cardType)
         {
             int level = 0;
-            float totalHealthPoint = 0;
+            float total = 0;
             int stackCount = 0;
 
             //가진 카드에서 루프
             for (int i = 0; i < this.HasCards.Count; i++)
             {
                 //활성 상태 카드만 검사 && MaxHp타입인가
-                if (this.HasCards[i].IsActivate && this.HasCards[i].Type == CardSetting.CardType.MaxHP)
+                if (this.HasCards[i].IsActivate && this.HasCards[i].Type == cardType)
                 {
                     //MaxHP value에 기본값이 들어 있음
-                    totalHealthPoint = this.HasCards[i].Value;
+                    total = this.HasCards[i].Value;
 
                     //프로퍼티 검사
                     for (int j = 0; j < this.HasCards[i].Properties.Count; j++)
@@ -382,14 +444,112 @@ namespace WoosanStudio.ZombieShooter
                         for (int n = 0; n < stackCount; n++)
                         {
                             //레벨 반영 데미지 계산
-                            totalHealthPoint = CalculateValue(totalHealthPoint, level, this.HasCards[i].Properties[j]);
-                            Debug.Log("중간 계산 토탈 = " + totalHealthPoint + "  level = " + level + " type = " + this.HasCards[i].Properties[j].Type.ToString());
+                            total = CalculateValue(total, level, this.HasCards[i].Properties[j]);
+                            Debug.Log("중간 계산 토탈 = " + total + "  level = " + level + " type = " + this.HasCards[i].Properties[j].Type.ToString());
                         }
-                        
                     }
                 }
             }
+
+            return total;
         }
+
+
+        /// <summary>
+        ///*테스트 필요
+        /// 공격속도
+        /// 사격간 딜레이 수치로
+        /// GunSetting.cs RapidFireCooldown이며 0.4 - 1.5로 낮을수로 빨리 사격
+        /// 사전에 선택한 총이 뭔지 알고 있다는 전제가 필요 
+        /// </summary>
+        /// <param name="defaultSpeed">선택된 총의 기본 스피드</param>
+        /// <returns></returns>
+        float GetAttackSpeed(float defaultSpeed)
+        {
+            float speed = 0;
+            int level = 0;
+            int stackCount = 0;
+
+            //가진 카드에서 루프
+            for (int i = 0; i < this.HasCards.Count; i++)
+            {
+                //활성 상태 카드만 검사 && MaxHp타입인가
+                if (this.HasCards[i].IsActivate && this.HasCards[i].Type == CardSetting.CardType.CriticalDamage)
+                {
+                    //프로퍼티 검사
+                    for (int j = 0; j < this.HasCards[i].Properties.Count; j++)
+                    {
+                        //카드레벨 가져오기
+                        level = this.HasCards[i].Level;
+
+                        //스택 카운터 만큼 루프
+                        stackCount = this.HasCards[i].StackCount + 1;
+
+                        //스택 카운트 만큼 추가
+                        for (int n = 0; n < stackCount; n++)
+                        {
+                            //레벨 반영 데미지 계산
+                            speed = CalculateValue2(speed, level, this.HasCards[i].Properties[j]);
+                            Debug.Log("중간 계산 토탈 = " + speed + "  level = " + level + " type = " + this.HasCards[i].Properties[j].Type.ToString());
+                        }
+                    }
+                }
+            }
+
+            return speed;
+        }
+
+        /// <summary>
+        /// *테스트 필요
+        /// 치명 기회
+        /// 크리티컬 기본 확률은 10이며 카드를 확인해서 추가적으로 확율을
+        /// 증감해서 크리인지 아닌지 안려줌
+        /// </summary>
+        /// <param name="defaultSpeed"></param>
+        /// <returns></returns>
+        bool IsCriticalDamage(float defaultCriticalRate = 10f)
+        {
+            bool isCriticalDamage = false;
+            int level = 0;
+            int stackCount = 0;
+
+            //가진 카드에서 루프
+            for (int i = 0; i < this.HasCards.Count; i++)
+            {
+                //활성 상태 카드만 검사 && MaxHp타입인가
+                if (this.HasCards[i].IsActivate && this.HasCards[i].Type == CardSetting.CardType.CriticalDamage)
+                {
+                    //프로퍼티 검사
+                    for (int j = 0; j < this.HasCards[i].Properties.Count; j++)
+                    {
+                        //카드레벨 가져오기
+                        level = this.HasCards[i].Level;
+
+                        //스택 카운터 만큼 루프
+                        stackCount = this.HasCards[i].StackCount + 1;
+
+                        //스택 카운트 만큼 추가
+                        for (int n = 0; n < stackCount; n++)
+                        {
+                            //레벨 반영 데미지 계산
+                            defaultCriticalRate = CalculateValue3(defaultCriticalRate, level, this.HasCards[i].Properties[j]);
+                            Debug.Log("중간 계산 토탈 = " + defaultCriticalRate + "  level = " + level + " type = " + this.HasCards[i].Properties[j].Type.ToString());
+                        }
+                    }
+                }
+            }
+
+            int rand = Random.Range(0, 100);
+
+            //랜덤값이 크리 확률값에 포함 된다면 크리 발생.            
+            if(rand <= defaultCriticalRate) { isCriticalDamage = true; }
+
+            return isCriticalDamage;
+        }
+
+        //공습 체움 속도
+        //모든 데미지에 대한 저항
+
 
         /// <summary>
         /// 활성카드의 프로퍼티만 가져옴

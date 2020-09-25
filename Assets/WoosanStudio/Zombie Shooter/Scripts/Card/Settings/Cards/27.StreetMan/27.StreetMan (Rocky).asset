@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
-  m_Name: 26.Sheriff
+  m_Name: 27.StreetMan (Rocky)
   m_EditorClassIdentifier: 
   isActivate: 0
-  type: 310
-  typeByWeapon: 0
-  typeByAmmo: 0
-  typeByCharacter: 11
+  type: 311
+  name: Rocky
   drability: 10
+  value: -1
   level: 0
   maxStack: 2
   stackCount: 0
@@ -26,11 +25,11 @@ MonoBehaviour:
   unlockLevel: 0
   researchTimeFormula: ResearchTime
   coinFormula: Coin
-  sprite: {fileID: 21300000, guid: 64356dae07170499aa7bc673d5cc4dde, type: 3}
+  sprite: {fileID: 21300000, guid: eaf9eab90de40456abe788ae6da2796d, type: 3}
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
-  title: Sheriff
+  title: Street Man
   Properties:
-  - {fileID: 11400000, guid: 8134fe50212e1490d89ba5736886d2e1, type: 2}
-  - {fileID: 11400000, guid: 45f2eca6794fb4cc8b3c648f003a696f, type: 2}
-  - {fileID: 11400000, guid: 3357bf3a6a46e4786892b7151af6e21e, type: 2}
+  - {fileID: 11400000, guid: 35340ad18357e4746822e74ad2736cfd, type: 2}
+  - {fileID: 11400000, guid: 26979460e172c4e3592c5e92d64eda99, type: 2}
+  - {fileID: 11400000, guid: f0f212212031647abbcd2078105b3393, type: 2}

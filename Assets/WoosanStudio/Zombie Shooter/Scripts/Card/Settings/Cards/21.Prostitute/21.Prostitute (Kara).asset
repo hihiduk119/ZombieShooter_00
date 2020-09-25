@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
-  m_Name: 19.Pimp
+  m_Name: 21.Prostitute (Kara)
   m_EditorClassIdentifier: 
   isActivate: 0
-  type: 303
-  typeByWeapon: 0
-  typeByAmmo: 0
-  typeByCharacter: 4
+  type: 305
+  name: Kara
   drability: 10
+  value: -1
   level: 0
   maxStack: 2
   stackCount: 0
@@ -26,11 +25,11 @@ MonoBehaviour:
   unlockLevel: 0
   researchTimeFormula: ResearchTime
   coinFormula: Coin
-  sprite: {fileID: 21300000, guid: 6dc5b6bd0c60347c29d700893d2d2b9d, type: 3}
+  sprite: {fileID: 21300000, guid: 7cb55ed74833442e2b475ed85ad758c4, type: 3}
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
-  title: Pimp
+  title: Schoolgirl
   Properties:
-  - {fileID: 11400000, guid: 7877d2295a3bf41228b4e538bc5c4f4a, type: 2}
-  - {fileID: 11400000, guid: b1c56e6ff9ed647888877f27394774ea, type: 2}
-  - {fileID: 11400000, guid: 6f58d2b5421304efa97f0e9f76fd0b6c, type: 2}
+  - {fileID: 11400000, guid: d9eacec50cfa54f11acc1cf17164f0ed, type: 2}
+  - {fileID: 11400000, guid: 2bd689257ebe641d69ecfbe758e5b1fd, type: 2}
+  - {fileID: 11400000, guid: 2b8653c2bcb7943a4858a4c0905e73f4, type: 2}

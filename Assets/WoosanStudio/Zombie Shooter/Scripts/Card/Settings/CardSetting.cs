@@ -34,6 +34,12 @@ namespace WoosanStudio.ZombieShooter
         //[SerializeField] private CardTypeByCharacter typeByCharacter;
         //public CardTypeByCharacter TypeByCharacter { get => typeByCharacter; }
 
+        [Header("[카드이름]")]
+        [SerializeField]
+        //저장 필요
+        private new string name = "";
+        public string Name { get => name; }
+
         [Header("[현재 내구도]")]
         [SerializeField]
         //저장 필요

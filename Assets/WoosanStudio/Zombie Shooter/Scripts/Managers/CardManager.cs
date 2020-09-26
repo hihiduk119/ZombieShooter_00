@@ -24,6 +24,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[로비에서 선택한 카드]")]
         public List<CardSetting> CardsSelectedInRobby;
 
+        [Header("[[테스트용]몬스터의 프로퍼티]")]
+        public List<CardProperty> monstersProperties;
+
         [Header("[가지고 있는 카드]")]
         public List<CardSetting> HasCards = new List<CardSetting>();
 
@@ -327,7 +330,7 @@ namespace WoosanStudio.ZombieShooter
             return returnValue;
         }*/
 
-        //*테스트 필요
+        /// <summary>
         //좀비가 영향을 받는 모든 데미지 계산
         //-계산범위
         // 무기 종류별
@@ -336,12 +339,8 @@ namespace WoosanStudio.ZombieShooter
         // 모든 탄약 데미지
         // 네임드 몬스터
         // 일반 몬스터
-        // 무기 종류별 저항
-        // 탄약 종류별 저항
-        // 모든 무기 저항
-        // 모든 탄약 저항
-        float DamageTakenFromPlayer(bool isNamedZombie = false)
-        {
+        float DamageCalculationTakenFromPlayer(bool isNamedZombie = false)
+        { 
             //최대한 단순하게 계산하자-> 복잡하면 나중에 못알아 본다
             //카드 하나 하나 돌면서 증가, 감소 시킴
             CardProperty.PropertyType type;
@@ -374,10 +373,6 @@ namespace WoosanStudio.ZombieShooter
                             || type == CardProperty.PropertyType.AllWeaponDamage   //모든 무기 데미지 인가
                             || (type == CardProperty.PropertyType.NamedZombieDamage && isNamedZombie)   //네임드 좀비 데미지 카드일때
                             || (type == CardProperty.PropertyType.GeneralZombieDamage && !isNamedZombie)//일반 좀비 카드 데미지 일때
-                            || ((int)this.PlayerWeapon + 300) == (int)type  //현재 플레이어의 무기와 카드의 저항 무기가 같은가
-                            || ((int)this.PlayerAmmo + 300) == (int)type    //현재 플레이어의 탄약과 카드의 저항 탄약이 같은가
-                            || type == CardProperty.PropertyType.AllAmmoDamageResistance  //모든 탄약 저항 인가
-                            || type == CardProperty.PropertyType.AllWeaponDamageResistance //모든 무기 저항 인가
                             )
                         {
                             //카드레벨 가져오기
@@ -405,6 +400,41 @@ namespace WoosanStudio.ZombieShooter
             }
 
             Debug.Log("최종 데미지 = " + damage);
+            return damage;
+        }
+
+        /// <summary>
+        /// 몬스터 세팅에서 프로퍼티에서 저항 을 찾아서 데미지 계산
+        /// - 계산범위
+        /// - 모든 종류 총기 저항
+        /// - 모든 종류 탄약 저항
+        /// - 모든 총기 저항
+        /// - 모든 탄약 저항
+        /// 
+        /// </summary>
+        /// <returns>계산 반여아여 데미지 리턴</returns>
+        float DamageCalculationReflectingMonsterResistance(float damage,List<CardProperty> properties, int monsterLevel)
+        {
+            int count = 0;
+
+            for (int i = 0; i < properties.Count; i++)
+            {
+                if(((int)this.PlayerWeapon + 300) == (int)properties[i].Type  //현재 플레이어의 무기와 카드의 저항 무기가 같은가
+                   || ((int)this.PlayerAmmo + 300) == (int)properties[i].Type    //현재 플레이어의 탄약과 카드의 저항 탄약이 같은가
+                   || properties[i].Type == CardProperty.PropertyType.AllAmmoDamageResistance  //모든 탄약 저항 인가
+                   || properties[i].Type == CardProperty.PropertyType.AllWeaponDamageResistance //모든 무기 저항 인가
+                   )
+                {
+                    //레벨 반영 데미지 계산
+                    damage = CalculateValue(damage, monsterLevel, properties[i]);
+                    Debug.Log("저항 타입 = " + properties[i].Type.ToString() + " 중간 계산 토탈 = " + damage + "  level = " + monsterLevel );
+                    //반영된 프로퍼티가 있는지 확인용 카운트
+                    count++;
+                }
+            }
+
+            if(count == 0) { Debug.Log("반영할 몬스터 저항이 없습니다."); }
+
             return damage;
         }
 
@@ -678,7 +708,22 @@ namespace WoosanStudio.ZombieShooter
             //프로퍼티의 값들을 더하기 
             if (Input.GetKeyDown(KeyCode.Alpha9))
             {
-                DamageTakenFromPlayer();
+                float total = 0;
+                //몬스터가 받는 기본 데미지 테스트
+                //데미지를 받는 대상이 네임드 좀비 라면 true 필요
+                //Debug.Log("===============> 몬스터가 받는 기본 데미지 계산 <===============");
+                //total = DamageCalculationTakenFromPlayer(true);
+
+
+                //몬스터의 저항에 의한 데미지 테스트
+                //Debug.Log("===============> 몬스터 저항 계산 <===============");
+                //DamageCalculationReflectingMonsterResistance(total,monstersProperties, 0);
+
+                //스피드 테스트
+                GetAttackSpeed(10);
+
+                //크리티컬 테스트
+                IsCriticalDamage();
             }
         }
         #endregion

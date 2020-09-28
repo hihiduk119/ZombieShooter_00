@@ -65,6 +65,7 @@ namespace WoosanStudio.ZombieShooter
 
             //유한상태기계 세팅
             //character는 순수 하게 FSM의 Tick호출만 할 뿐 모든 작업은 FSM 에서 진행한다.
+            //*몬스터 추가시마다 ID 에 맞는 세팅 추가되어야 함을 잊지 말자
             switch (monsterSettings.MonsterId)
             {
                 case MonsterSettings.MonsterID.WeakZombie:
@@ -95,6 +96,16 @@ namespace WoosanStudio.ZombieShooter
 
                     break;
                 case MonsterSettings.MonsterID.RunnerZombie:
+                    //생성은 클래스로 하지만 인수는 인터페이스를 받는다.
+                    FSM.SetFSM(
+                        target,//어떤 타겟을 목표로 움직이는 세팅
+                        new AiInput(), //입력부분 생성
+                        new WalkZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
+                        new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
+                        new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>(), ref animationEvent.AttackEndEvent)//공격 모듈 생성.
+                    );
+                    break;
+                case MonsterSettings.MonsterID.Jeff:   //네임드 몬스터 생성
                     //생성은 클래스로 하지만 인수는 인터페이스를 받는다.
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅

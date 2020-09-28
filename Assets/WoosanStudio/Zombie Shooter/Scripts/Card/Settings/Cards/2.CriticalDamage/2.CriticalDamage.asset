@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActivate: 0
   type: 2
+  name: 
   drability: 10
-  value: 150
+  value: 0
   level: 0
   maxStack: 3
   stackCount: 0

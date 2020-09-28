@@ -292,6 +292,21 @@ namespace WoosanStudio.ZombieShooter
             return returnValue;
         }
 
+        /// <summary>
+        /// 크리티컬 데미지 공식
+        /// 크리 비율만 
+        /// </summary>
+        /// <param name="level"></param>
+        /// <param name="property"></param>
+        /// <param name="percentage"></param>
+        /// <returns></returns>
+        public float CalculateValue4(float percentage,int level, CardProperty property)
+        {
+            //카드 레벨에 의해 증감된 수치
+            float percent = (property.IncreasedValuePerLevelUp * level) + property.Value + percentage;
+            return percent;
+        }
+
         //같은 종류의 카드는 중첩 되지 않지만 다른 종류는 중첩된다
         /*public float DecreaseDamage(float damage, int level, CardProperty property)
         {
@@ -343,7 +358,7 @@ namespace WoosanStudio.ZombieShooter
         // 모든 탄약 데미지
         // 네임드 몬스터
         // 일반 몬스터
-        float DamageCalculationTakenFromPlayer(bool isNamedZombie = false)
+        public float DamageCalculationTakenFromPlayer(bool isNamedZombie = false)
         { 
             //최대한 단순하게 계산하자-> 복잡하면 나중에 못알아 본다
             //카드 하나 하나 돌면서 증가, 감소 시킴
@@ -357,6 +372,7 @@ namespace WoosanStudio.ZombieShooter
 
 
             //무기 데미지와 탄약데미지 더한 값
+            //*실제는 무기 데미지만 존재
             damage = WeaponDamage + AmmoDamage;
 
             //가진 카드에서 루프
@@ -408,6 +424,64 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 크리티컬 데미지 계산시 사용
+        /// </summary>
+        /// <returns></returns>
+        public float DamageCalculationByCritical(float damage)
+        {
+            CardProperty.PropertyType type;
+            float rate = 100;
+            int level = 0;
+            int stackCount = 0;
+
+            //가진 카드에서 루프
+            for (int i = 0; i < this.HasCards.Count; i++)
+            {
+                //활성 상태 카드만 검사
+                if (this.HasCards[i].IsActivate)
+                {
+                    //프로퍼티 검사
+                    for (int j = 0; j < this.HasCards[i].Properties.Count; j++)
+                    {
+                        //현재 카드의 타입
+                        type = this.HasCards[i].Properties[j].Type;
+
+                        if (type == CardProperty.PropertyType.CriticalDamage)
+                        {
+                            //카드레벨 가져오기
+                            level = this.HasCards[i].Level;
+
+                            //프로퍼티 값이 음수이면 스택없이 1번만 계산
+                            if (this.HasCards[i].Properties[j].Value < 0)
+                            {
+                                stackCount = 1;
+                            }
+                            else//프로퍼티 값이 양수이면 스택 카운터 만큼 루프 
+                            {
+                                stackCount = this.HasCards[i].StackCount + 1;
+                            }
+
+                            //스택 카운트 만큼 추가
+                            for (int n = 0; n < stackCount; n++)
+                            {
+                                //레벨 반영 크리데미지 향상 비율만 계산
+                                rate = CalculateValue4(rate,level, this.HasCards[i].Properties[j]);
+                                Debug.Log("중간 계산 토탈 = " + rate + "  level = " + level + " type = " + type.ToString());
+                            }
+                        }
+                    }
+                }
+            }
+
+            //최종 데미지에 향상된 크리데미지를 더해서 값을 돌려줌
+            damage = damage * rate * 0.01f;
+
+            Debug.Log("크리티컬 데미지 최종 = " + damage);
+
+            return damage;
+        }
+
+        /// <summary>
         /// 몬스터 세팅에서 프로퍼티에서 저항 을 찾아서 데미지 계산
         /// - 계산범위
         /// - 모든 종류 총기 저항
@@ -417,7 +491,7 @@ namespace WoosanStudio.ZombieShooter
         /// 
         /// </summary>
         /// <returns>계산 반여아여 데미지 리턴</returns>
-        float DamageCalculationReflectingMonsterResistance(float damage,List<CardProperty> properties, int monsterLevel)
+        public float DamageCalculationReflectingMonsterResistance(float damage,List<CardProperty> properties, int monsterLevel)
         {
             int count = 0;
 
@@ -450,7 +524,7 @@ namespace WoosanStudio.ZombieShooter
         //-공습 데미지      => CardSetting.CardType.AirStrikeDamage
         //-돈             => CardSetting.CardType.Coin
         //-경험치          => CardSetting.CardType.Exp
-        float GetValue(CardSetting.CardType cardType)
+        public float GetValue(CardSetting.CardType cardType)
         {
             int level = 0;
             float total = 0;
@@ -498,7 +572,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="defaultSpeed">선택된 총의 기본 스피드</param>
         /// <returns></returns>
-        float GetAttackSpeed(float defaultSpeed)
+        public float GetAttackSpeed(float defaultSpeed)
         {
             float speed = defaultSpeed;
             int level = 0;
@@ -540,7 +614,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="defaultSpeed"></param>
         /// <returns></returns>
-        bool IsCriticalDamage(float defaultCriticalRate = 10f)
+        public bool IsCriticalDamage(float defaultCriticalRate = 10f)
         {
             bool isCriticalDamage = false;
             int level = 0;
@@ -700,30 +774,33 @@ namespace WoosanStudio.ZombieShooter
 
 
 
-        /*
+        
         #region [-TestCode]
         void Update()
         {
             //중복 체크하면 카드 중첩 잘되는지 테스트
-            //if (Input.GetKeyDown(KeyCode.Alpha8))
-            //{
-            //    for (int i = 0; i < CardsPlayerOnClicked.Count; i++)
-            //    {
-            //        Debug.Log("===============> 추가할 카드 = " + CardsPlayerOnClicked[i].name +" <==============");
-            //        AddCard(CardsPlayerOnClicked[i]);
+            if (Input.GetKeyDown(KeyCode.Alpha8))
+            {
+                for (int i = 0; i < CardsPlayerOnClicked.Count; i++)
+                {
+                    Debug.Log("===============> 추가할 카드 = " + CardsPlayerOnClicked[i].name + " <==============");
+                    AddCard(CardsPlayerOnClicked[i]);
 
-            //        //CardsPlayerOnClicked.Clear();
-            //    }
-            //}
+                    //CardsPlayerOnClicked.Clear();
+                }
+            }
 
             //프로퍼티의 값들을 더하기 
-            //if (Input.GetKeyDown(KeyCode.Alpha9))
-            //{
-                //float total = 0;
+            if (Input.GetKeyDown(KeyCode.Alpha9))
+            {
+                float total = 0;
                 //몬스터가 받는 기본 데미지 테스트
                 //데미지를 받는 대상이 네임드 좀비 라면 true 필요
-                //Debug.Log("===============> 몬스터가 받는 기본 데미지 계산 <===============");
-                //total = DamageCalculationTakenFromPlayer(true);
+                Debug.Log("===============> 몬스터가 받는 기본 데미지 계산 <===============");
+                total = DamageCalculationTakenFromPlayer(true);
+
+                Debug.Log("===============> 몬스터가 받는 크리티컬 데미지 계산 <===============");
+                DamageCalculationByCritical(total);
 
                 //몬스터의 저항에 의한 데미지 테스트
                 //Debug.Log("===============> 몬스터 저항 계산 <===============");
@@ -734,9 +811,9 @@ namespace WoosanStudio.ZombieShooter
 
                 //크리티컬 테스트
                 //IsCriticalDamage();
-            //}
+            }
         }
         #endregion
-        */
+        
     }
 }

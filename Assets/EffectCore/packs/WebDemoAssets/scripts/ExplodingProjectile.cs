@@ -147,7 +147,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
                 //*현재 총알에 세팅된 카드 리스트 받아오기
 
                 ///카드의 정보와 몬스터의 정보를 가지고 계산해서 실제 받을 데미지를 계산
-                Damage = DamageCalculator(CardManager.Instance.HasCards, monsterSettings);
+                Damage = DamageCalculator(monsterSettings);
 
                 //keyValue 는 다음과 같다
                 //{{0,"default"},{1,"critical"},{2,"status"} };
@@ -178,32 +178,35 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     /// <summary>
     /// 데미지 계산 해줌
     /// * 카드의 정보와 몬스터의 정보를 가지고 계산해서 실제 받을 데미지를 계산
+    /// * 카드에 의해 발생한 데미지 증감 모두 반영
+    /// * 몬스터 저항에 의한 데미지 증감 모두 반영
     /// </summary>
     /// <param name="CardSettingsClone">카드의 정보</param>
     /// <param name="monsterSettings">몬스터의 정보</param>
     /// <returns>정수로 강제 변환하여 리턴</returns>
-    int DamageCalculator(List<CardSetting> CardSettingsClone, MonsterSettings monsterSettings)
+    int DamageCalculator(MonsterSettings monsterSettings)
     {
-        //Debug.Log("맞은 몬스터 ID = " + monsterSettings.MonsterId.ToString());
-        //CardSettingsClone.ForEach(value => Debug.Log("카드 종류 = " + value.Type.ToString()));
+        //몬스터 아이디가 100이상이면 네임드 몬스터
+        bool isNamedZombie = false;
+        bool isCriticalDamage = false;
+        float damage = 0;
+        if(100 <= (int)monsterSettings.MonsterId) { isNamedZombie = true; }
 
-        //무기 계산은 다음과 같이 계산하다
-        //모든 프로퍼티 저장
-        //무기 와 탄약에 기반한 기본 데미지 계산 = N
+        //카드 메니저에 데미지 계산요청
+        //*건 타입 및 탄약 타입 ,네임드 ,일반 몬스터 특성에 의한 계산
+        damage = CardManager.Instance.DamageCalculationTakenFromPlayer(isNamedZombie);
 
-        //무기와 탄약 데미지의 합.
-        //float damage = ;
-        //카드는 중첩 카운트로 계산
-        //카드 중첩 카운트 만큼 프로퍼티 생성
-        
+        //카드 메니저에 크리티컬 인지 아닌지 확인
+        if (isCriticalDamage = CardManager.Instance.IsCriticalDamage())
+        {
+            //크리데미지 비율 계산해서 크리 반영한 데미지 가져오기
+            damage = CardManager.Instance.DamageCalculationByCritical(damage);
+        }
 
-        return 5;
-    }
+        //몬스터에 저항이 존재 한다면 계산해서 저항받은 데미지 계산
+        damage = CardManager.Instance.DamageCalculationReflectingMonsterResistance(damage, monsterSettings.Propertys, monsterSettings.Level);
 
-    
-
-    int CriticalDamage()
-    {
-        return -1;
+        //최종 데미지 int로 변환해서 리턴
+        return Mathf.RoundToInt(damage);
     }
 }

@@ -17,7 +17,7 @@ MonoBehaviour:
   name: Kara
   drability: 10
   value: -1
-  level: 0
+  level: 10
   maxStack: 2
   stackCount: 0
   maxDurability: 10

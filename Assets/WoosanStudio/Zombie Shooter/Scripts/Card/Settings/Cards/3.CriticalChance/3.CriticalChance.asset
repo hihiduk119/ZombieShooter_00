@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActivate: 0
   type: 3
+  name: 
   drability: 10
   value: 10
   level: 0

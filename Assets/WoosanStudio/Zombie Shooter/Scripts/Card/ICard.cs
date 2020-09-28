@@ -73,7 +73,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 레벨 1업에 증가하는 Value수치
         /// </summary>
-        int IncreasedValuePerLevelUp { get; }
+        float IncreasedValuePerLevelUp { get; }
 
         /// <summary>
         /// 해당 프로퍼티 설명

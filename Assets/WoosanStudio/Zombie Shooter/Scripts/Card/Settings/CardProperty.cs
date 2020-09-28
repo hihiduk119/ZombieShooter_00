@@ -35,8 +35,8 @@ namespace WoosanStudio.ZombieShooter
 
         [Header("[레벨 1업당 증가 수치]")]
         [SerializeField]
-        private int increasedValuePerLevelUp;
-        public int IncreasedValuePerLevelUp => increasedValuePerLevelUp;
+        private float increasedValuePerLevelUp;
+        public float IncreasedValuePerLevelUp => increasedValuePerLevelUp;
 
         [Header("[해당 속성 설명]")]
         [SerializeField][TextArea(5, 8)]

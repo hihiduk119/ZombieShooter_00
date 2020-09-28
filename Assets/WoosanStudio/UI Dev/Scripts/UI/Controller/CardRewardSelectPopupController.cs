@@ -134,12 +134,12 @@ namespace WoosanStudio.ZombieShooter
                 if (descripsion[index + 1].Equals('d')) {
                     //isFind = true;
                     //기본 값 + 카드 1레벨당 상승 값 * 카드 레벨 
-                    int value = (cardSetting.Level * cardSetting.Properties[i].IncreasedValuePerLevelUp) + cardSetting.Properties[i].Value;
+                    float value = (cardSetting.Level * cardSetting.Properties[i].IncreasedValuePerLevelUp) + cardSetting.Properties[i].Value;
 
                     //'/d'를 삭제
                     descripsion = descripsion.Remove(index,2);
-                    //삭제된 위치에 계산됨 값 넣기
-                    descripsion = descripsion.Insert(index, value.ToString());
+                    //삭제된 위치에 계산됨 값 넣기 => 소수점 1자리만 표기
+                    descripsion = descripsion.Insert(index, string.Format("{0:0.0}", value.ToString()));
                 }
 
                 //계산 완료후 완성된 문장 한줄을 더함.

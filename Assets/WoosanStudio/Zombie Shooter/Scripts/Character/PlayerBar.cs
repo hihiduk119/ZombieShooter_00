@@ -10,9 +10,11 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class PlayerBar : MonoBehaviour , IHaveHealth
     {
+        public int maxHealth = 200;
+        public int MaxHealth { get => maxHealth; set => maxHealth = value; }
         public int health = 200;
         public int Health { get => health; set => health = value; }
-
+          
         public int reload = 30;
 
         private DamagedEvent _damagedEvent = new DamagedEvent();
@@ -24,6 +26,18 @@ namespace WoosanStudio.ZombieShooter
         void Awake()
         {
             _damagedEvent.AddListener(DamagedListener);
+
+            //초기화 
+            Initialize();
+        }
+
+        /// <summary>
+        /// 초기화
+        /// </summary>
+        public void Initialize()
+        {
+            //최대 체력에 현재 체력 마춤
+            health = maxHealth;
         }
 
         public void DamagedListener(int damage,Vector3 hit,string keyValue)

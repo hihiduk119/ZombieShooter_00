@@ -34,6 +34,21 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     //몬스터가 쏜 총알 Raycastd용 마스크
     int monsterShotedLayerMask = 0;
 
+    /// <summary>
+    /// 데미지 계산 반환용 클래스
+    /// </summary>
+    public class CalculatorInfo
+    {
+        public int Damage;
+        public string KeyValue;
+
+        public CalculatorInfo(int damage,string keyValue)
+        {
+            Damage = damage;
+            KeyValue = keyValue;
+        }
+    }
+
     //캐싱용
     RaycastHit hit;
     Vector3 direction;
@@ -146,12 +161,14 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
                 //카드를 통해 계산된 데미지를 주어야 한다.
                 //*현재 총알에 세팅된 카드 리스트 받아오기
 
+                //계산 정보 전용 클래스
+                CalculatorInfo calculatorInfo =  null;
                 ///카드의 정보와 몬스터의 정보를 가지고 계산해서 실제 받을 데미지를 계산
-                Damage = DamageCalculator(monsterSettings);
+                calculatorInfo = DamageCalculator(monsterSettings);
 
                 //keyValue 는 다음과 같다
                 //{{0,"default"},{1,"critical"},{2,"status"} };
-                haveHealth.DamagedEvent.Invoke(Damage, hit.point,"default");
+                haveHealth.DamagedEvent.Invoke(calculatorInfo.Damage, hit.point, calculatorInfo.KeyValue);
             }
 
             //부딫힌 오브젝트가 IHaveHit 가지고 있다.
@@ -184,7 +201,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     /// <param name="CardSettingsClone">카드의 정보</param>
     /// <param name="monsterSettings">몬스터의 정보</param>
     /// <returns>정수로 강제 변환하여 리턴</returns>
-    int DamageCalculator(MonsterSettings monsterSettings)
+    CalculatorInfo DamageCalculator(MonsterSettings monsterSettings)
     {
         //몬스터 아이디가 100이상이면 네임드 몬스터
         bool isNamedZombie = false;
@@ -206,7 +223,15 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
         //몬스터에 저항이 존재 한다면 계산해서 저항받은 데미지 계산
         damage = CardManager.Instance.DamageCalculationReflectingMonsterResistance(damage, monsterSettings.Propertys, monsterSettings.Level);
 
+        //keyValue 는 다음과 같다
+        //{{0,"default"},{1,"critical"},{2,"status"} };
+        string keyValue = null;                 
+        if (isCriticalDamage) keyValue = "critical";
+        else keyValue = "default";
+
+        CalculatorInfo calculatorInfo = new CalculatorInfo(Mathf.RoundToInt(damage), keyValue);
+
         //최종 데미지 int로 변환해서 리턴
-        return Mathf.RoundToInt(damage);
+        return calculatorInfo;
     }
 }

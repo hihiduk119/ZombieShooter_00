@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 4927290373326563115}
   - component: {fileID: 2088736121314159111}
   - component: {fileID: 9039434000228221202}
+  - component: {fileID: 8111047074497759261}
   m_Layer: 16
   m_Name: NamedAirportSecurity
   m_TagString: Monster
@@ -86,7 +87,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934835eeaeb904512a696a3bc41a3e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  maxHealth: 100
+  health: 100
   reload: 30
 --- !u!195 &4927290373326563124
 NavMeshAgent:
@@ -259,6 +261,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childsTransform: {fileID: 5722227311824858999}
+--- !u!114 &8111047074497759261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927290373326563121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc57e0fa3fff466baa4c93e47033d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1447473072742629629
 MonoBehaviour:
   m_ObjectHideFlags: 0

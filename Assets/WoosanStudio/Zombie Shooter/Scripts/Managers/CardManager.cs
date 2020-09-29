@@ -58,7 +58,10 @@ namespace WoosanStudio.ZombieShooter
         [Header("[현재 플레이어의 체력 => 계산용]")]
         public float HealthPoint = 0;
 
-
+        [Header("[기본 크리티컬 데미지 비율 => 총괄하는 하나의 데이터로 리팩토링 필요]")]
+        public int DefaultCriticalDamageRate = 150;
+        [Header("[기본 크리티컬 확률 비율 => 총괄하는 하나의 데이터로 리팩토링 필요]")]
+        public float DefaultCriticalProbabilityRate = 10f;
 
 
         //프로퍼티의 중첩을 계산하기 위해 사용
@@ -430,7 +433,8 @@ namespace WoosanStudio.ZombieShooter
         public float DamageCalculationByCritical(float damage)
         {
             CardProperty.PropertyType type;
-            float rate = 100;
+            //크리 기본 데미지
+            float rate = DefaultCriticalDamageRate;
             int level = 0;
             int stackCount = 0;
 
@@ -614,9 +618,10 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="defaultSpeed"></param>
         /// <returns></returns>
-        public bool IsCriticalDamage(float defaultCriticalRate = 10f)
+        public bool IsCriticalDamage()
         {
             bool isCriticalDamage = false;
+            float defaultCriticalRate = DefaultCriticalProbabilityRate;
             int level = 0;
             int stackCount = 0;
 

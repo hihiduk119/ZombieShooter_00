@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using UnityEngine.Events;
 using WoosanStudio.Extension;
 
 namespace WoosanStudio.ZombieShooter
@@ -12,7 +12,7 @@ namespace WoosanStudio.ZombieShooter
     /// 모든 플레이어 공용으로 사용하려 하였으나 정의가 재대로 안돼서 일단
     /// 몬스터용으로만 사용
     /// </summary>
-    public class Monster : MonoBehaviour , IHaveHit , ICanDestory 
+    public class Monster : MonoBehaviour , IHaveHit , ICanDestory , ISpawnHandler
     {
         //캐릭터의 네비메쉬 관련 이동 및 정지거리 등의 셋업 값.
         //[SerializeField] public CharacterSettings characterSettings;
@@ -32,6 +32,9 @@ namespace WoosanStudio.ZombieShooter
 
         //데미지 UI 텍스트 연결용 인터페이스
         IConnect connect;
+
+        private UnityEvent spawnEvent = new UnityEvent();
+        public UnityEvent SpawnEvent => spawnEvent;
 
         private IEnumerator waitThenCallback(float time, System.Action callback)
         {
@@ -122,6 +125,9 @@ namespace WoosanStudio.ZombieShooter
 
             //데미지 UI 텍스트 연결용 인터페이스
             connect = GetComponent<IConnect>();
+
+            //스폰됬음을 알림
+            spawnEvent.Invoke();
         }
 
         /// <summary>

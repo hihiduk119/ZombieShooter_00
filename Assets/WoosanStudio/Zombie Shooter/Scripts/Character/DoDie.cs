@@ -8,7 +8,7 @@ namespace WoosanStudio.ZombieShooter
 {
     [RequireComponent(typeof(RegdollController))]
     [RequireComponent(typeof(NavMeshController))]
-    public class DoDie : MonoBehaviour 
+    public class DoDie : MonoBehaviour
     {
         
         public GameObject NavMeshModel;
@@ -32,11 +32,12 @@ namespace WoosanStudio.ZombieShooter
         //public GameObject testDummy;
         Boom boom;
 
-        [Header("[죽음 이벤트]")]
+        [Header("[죽음 이벤트 => 인터페이스로 바꿀지 말지 결정해야함]")]
         public PositionEvent OnDieEvent = new PositionEvent();
 
-        [Header("[죽은다음 하늘로 이동할때 이벤트 발생]")]
+        [Header("[죽은다음 하늘로 이동할때 이벤트 발생 => 인터페이스로 바꿀지 말지 결정해야함]")]
         public PositionEvent GoHeavenEvent = new PositionEvent();
+
         //죽은 위치의 좌표를 위해 Vector3 포함
         public class PositionEvent : UnityEvent<Vector3> { }
 

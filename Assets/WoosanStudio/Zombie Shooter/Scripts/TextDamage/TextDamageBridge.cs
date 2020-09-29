@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text;
 
 using Guirao.UltimateTextDamage;
 
@@ -14,11 +15,14 @@ namespace WoosanStudio.ZombieShooter
         [HideInInspector] public UltimateTextDamageManager textManager;
         public Transform overrideTransform;
 
-        private Dictionary<int, string> keyValues = new Dictionary<int, string>()
-        {{0,"default"},{1,"critical"},{2,"status"} };
+        //private Dictionary<int, string> keyValues = new Dictionary<int, string>()
+        //{{0,"default"},{1,"critical"},{2,"status"} };
+
+        private StringBuilder stringBuilder = new StringBuilder();
 
         //데미지 이벤트 연결용
-        IHaveHealth haveHealth;
+        //*데미지 이벤트가 해당 인터페이스에서 전달됨
+        private IHaveHealth haveHealth;
 
         private IEnumerator Start()
         {
@@ -36,7 +40,10 @@ namespace WoosanStudio.ZombieShooter
             //    PopText("100", "default");
             //}
 
+
             //IHaveHealth를 찾아서 이벤트 등록
+            //*ExplodingProgetile가 충돌한 객체에서 IHaveHealth를 찾아서
+            //*이벤트를 전달하기 때문에 IHaveHealth를 찾아서 가지고 있어야함
             haveHealth = transform.GetComponent<IHaveHealth>();
             //리스너 연결
             Connect();
@@ -68,7 +75,21 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="hit"></param>
         public void DamagedEventHandler(int damage,Vector3 hit,string keyValue)
         {
-            PopText(damage.ToString(), keyValues[0]);
+            //데미지 텍스트 표출
+            //*크리티컬의 경우 keyValues를 다른걸로 변경 해야함
+            //{{0,"default"},{1,"critical"},{2,"status"} };
+            stringBuilder.Clear();
+            //크리티컬이라면 "크리티컬" 단어 추가해서 넣기
+            if (keyValue.Equals("critical"))
+            {
+                stringBuilder.Append("CRIT");
+                stringBuilder.AppendLine();
+            }
+            stringBuilder.Append(damage.ToString());
+
+            PopText(stringBuilder.ToString(), keyValue);
+
+            stringBuilder.Clear();
         }
 
         /// <summary>

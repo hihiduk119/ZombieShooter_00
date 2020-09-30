@@ -15,9 +15,9 @@ MonoBehaviour:
   _monsterID: 2
   _name: Bellhop
   _prefab: {fileID: 1399632576231276088, guid: 312eff290b5b046c59890fda45aec7f5, type: 3}
-  _level: 0
-  _health: 10
-  _damage: 8
+  _level: 3
+  _health: 85
+  _damage: 20
   damageFormula: MonsterDamage
   _propertys: []
   _attackDelay: 3

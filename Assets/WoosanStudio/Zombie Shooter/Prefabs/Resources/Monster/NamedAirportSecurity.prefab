@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 2088736121314159111}
   - component: {fileID: 9039434000228221202}
   - component: {fileID: 8111047074497759261}
+  - component: {fileID: 7837202236783346626}
   m_Layer: 16
   m_Name: NamedAirportSecurity
   m_TagString: Monster
@@ -273,6 +274,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc57e0fa3fff466baa4c93e47033d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7837202236783346626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927290373326563121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4799d3c880f234b8ead4477c7e94302c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShareMaterial: {fileID: 2100000, guid: 9c52f03a407264b13a0e9a975b293520, type: 2}
+  DefaultColor: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 1}
 --- !u!114 &1447473072742629629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,8 +300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be058660747ec47839b50c59f314c0ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMaterial: {fileID: 2100000, guid: 3811677930c7b3946abaf2ce9cdfea21, type: 2}
-  damagedMaterial: {fileID: 2100000, guid: 91663fa724da34917a4b010f93f4cb5f, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: 9c52f03a407264b13a0e9a975b293520, type: 2}
+  damagedMaterial: {fileID: 2100000, guid: a7bd912d8412542249cc4000ba54bb77, type: 2}
 --- !u!114 &4721161388145426866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1600,7 +1615,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3811677930c7b3946abaf2ce9cdfea21, type: 2}
+  - {fileID: 2100000, guid: 9c52f03a407264b13a0e9a975b293520, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1895,7 +1910,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.37452167, y: 0.000000040163286, z: -0.0000000013044428}
+  m_ConnectedAnchor: {x: -0.37452167, y: 0.000000040163286, z: -0.000000002235538}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -2422,7 +2437,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.47119048, y: -0.00000005960464, z: -0.0000000037252903}
+  m_ConnectedAnchor: {x: -0.4711906, y: -0.00000005960464, z: -0.0000000037252903}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -7228,6 +7243,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 91663fa724da34917a4b010f93f4cb5f, type: 2}
+    - target: {fileID: 13771954, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c52f03a407264b13a0e9a975b293520, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 042872c1bba04d84eb9f9e686d669877, type: 3}
 --- !u!4 &4927290374090053866 stripped

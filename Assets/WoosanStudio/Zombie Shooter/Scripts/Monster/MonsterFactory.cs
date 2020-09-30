@@ -115,6 +115,9 @@ namespace WoosanStudio.ZombieShooter
             //*레벨에 성장에 의해 변화한 체력을 가져온다
             clone.GetComponent<PlayerBar>().SetHealth(monsterSettings.Health);
 
+            //몬스터 레벨에 맞는 컬러 가져옴
+            clone.GetComponent<OutlineColor>().SetColor(MonsterSettings.GrowthTable.GetLevelColor(level));
+
             //그림자 생성.
             MakeShadow(monsterSettings, clone.transform);
 

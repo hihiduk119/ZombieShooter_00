@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 1399632576231276066}
   - component: {fileID: 5472313880211731214}
   - component: {fileID: 3062372155308218395}
+  - component: {fileID: 8023443371629124989}
   m_Layer: 16
   m_Name: Bellhop
   m_TagString: Monster
@@ -230,6 +231,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childsTransform: {fileID: 1757619333243827838}
+--- !u!114 &8023443371629124989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399632576231276088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4799d3c880f234b8ead4477c7e94302c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShareMaterial: {fileID: 2100000, guid: a61cde1ee1dbdbc47a85601d74b9149d, type: 2}
+  DefaultColor: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 1}
 --- !u!1 &1399632576934000398
 GameObject:
   m_ObjectHideFlags: 0

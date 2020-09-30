@@ -38,11 +38,11 @@ namespace WoosanStudio.ZombieShooter
             public int AttackDamage;
             //고유색 [0:검정,1:녹색,2:파랑,3:노랑,4:보라:]
             static public Color[] colors = {
-                    new Color(17,17,17)         
-                    , new Color(0, 255, 43)
-                    , new Color(0, 250, 255)
-                    , new Color(255, 238, 0)
-                    , new Color(255, 5, 222)};
+                    new Color32(17,17,17,255)         
+                    , new Color32(0, 255, 43,255)
+                    , new Color32(0, 250, 255,255)
+                    , new Color32(255, 238, 0,255)
+                    , new Color32(255, 5, 222,255)};
 
             static public Color GetLevelColor(int level)
             {

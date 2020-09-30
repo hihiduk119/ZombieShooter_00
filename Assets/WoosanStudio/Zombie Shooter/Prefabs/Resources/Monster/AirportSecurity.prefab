@@ -57,20 +57,6 @@ MonoBehaviour:
   AttackEndEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5988949180340777580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246062894280750577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be058660747ec47839b50c59f314c0ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultMaterial: {fileID: 2100000, guid: 3811677930c7b3946abaf2ce9cdfea21, type: 2}
-  damagedMaterial: {fileID: 2100000, guid: 91663fa724da34917a4b010f93f4cb5f, type: 2}
 --- !u!1 &246062895001225752
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +124,7 @@ GameObject:
   - component: {fileID: 246062895614678458}
   - component: {fileID: 6627010519585101974}
   - component: {fileID: 4213669199024862083}
+  - component: {fileID: 2439673250786027446}
   m_Layer: 16
   m_Name: AirportSecurity
   m_TagString: Monster
@@ -348,6 +335,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childsTransform: {fileID: 604080447609855462}
+--- !u!114 &2439673250786027446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246062895614678432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4799d3c880f234b8ead4477c7e94302c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShareMaterial: {fileID: 2100000, guid: 3811677930c7b3946abaf2ce9cdfea21, type: 2}
+  DefaultColor: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 1}
 --- !u!1 &604080447609636561
 GameObject:
   m_ObjectHideFlags: 0

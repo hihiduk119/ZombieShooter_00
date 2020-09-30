@@ -6754,6 +6754,7 @@ GameObject:
   - component: {fileID: 6486311437856862358}
   - component: {fileID: 187444680548629946}
   - component: {fileID: 7140392108655318703}
+  - component: {fileID: 4192710744287580391}
   m_Layer: 16
   m_Name: AirportWorker
   m_TagString: Monster
@@ -6964,6 +6965,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childsTransform: {fileID: 5840094434616539338}
+--- !u!114 &4192710744287580391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6486311437856862348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4799d3c880f234b8ead4477c7e94302c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShareMaterial: {fileID: 2100000, guid: 9b7d9f32b8833a34aaff9ff4040ef8e8, type: 2}
+  DefaultColor: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 1}
 --- !u!114 &753003326279423808
 MonoBehaviour:
   m_ObjectHideFlags: 0

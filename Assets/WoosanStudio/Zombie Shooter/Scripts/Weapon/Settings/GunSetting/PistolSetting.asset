@@ -23,5 +23,5 @@ MonoBehaviour:
   _prefab: {fileID: 5701165509722036744, guid: a2ce29b5c02274c42bc08417646678b5, type: 3}
   _prefabInstance: {fileID: 0}
   _level: 1
-  _damage: 0
+  _damage: -1
   _maxAmmo: 8

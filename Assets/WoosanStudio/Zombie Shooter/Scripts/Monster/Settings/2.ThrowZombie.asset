@@ -16,8 +16,7 @@ MonoBehaviour:
   _name: AirportWorker
   _prefab: {fileID: 6486311437856862348, guid: 67c2d934d253b4a1cb3e76550818cc00, type: 3}
   _level: 0
-  _health: 50
-  healthFormula: MonsterHealth
+  _health: 15
   _damage: 10
   damageFormula: MonsterDamage
   _propertys: []
@@ -27,6 +26,22 @@ MonoBehaviour:
   stoppingDistance: 10
   projectileSettings: {fileID: 11400000, guid: 4eb0c94cf23a349f8a81f39bcd12dd05, type: 2}
   gunSettings: {fileID: 11400000, guid: 9445bc72ab5a74c86925f01504c52a27, type: 2}
+  growthTables:
+  - Level: 0
+    Health: 15
+    AttackDamage: 10
+  - Level: 1
+    Health: 45
+    AttackDamage: 15
+  - Level: 2
+    Health: 75
+    AttackDamage: 20
+  - Level: 3
+    Health: 105
+    AttackDamage: 25
+  - Level: 4
+    Health: 135
+    AttackDamage: 30
   _useShadow: 1
   _shadowProjector: {fileID: 5194339502216924784, guid: eaad130044b2747ef9b15d3b0c6d7fb6,
     type: 3}

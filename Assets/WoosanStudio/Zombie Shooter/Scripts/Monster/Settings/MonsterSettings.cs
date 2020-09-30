@@ -27,6 +27,29 @@ namespace WoosanStudio.ZombieShooter
             Diogo,
             Atlas,
         }
+        [System.Serializable]
+        public class GrowthTable
+        {
+            //레벨
+            public int Level;
+            //체력
+            public int Health;
+            //공력력
+            public int AttackDamage;
+            //고유색 [0:검정,1:녹색,2:파랑,3:노랑,4:보라:]
+            static public Color[] colors = {
+                    new Color(17,17,17)         
+                    , new Color(0, 255, 43)
+                    , new Color(0, 250, 255)
+                    , new Color(255, 238, 0)
+                    , new Color(255, 5, 222)};
+
+            static public Color GetLevelColor(int level)
+            {
+                return colors[level];
+            }
+        }
+
 
         /// <summary>
         /// 몬스터 아이디
@@ -59,21 +82,20 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         [Header("[기본 체력 => [레벨에 따라 변경됨]]")]
         [SerializeField] private int _health;
-        public int Health { get => _health = HealthCalculator.GetHealth((int)_monsterID, _level, _monsterID, true); }
-        public HealthCalculator HealthCalculator { get; }
+        public int Health { get => _health = GetHealth(); }
 
-        [Header("[레벨에 따른 체력 공식]")]
-        [SerializeField]
-        private string healthFormula = "MonsterHealth";
-        public string HealthFormula { get => healthFormula; }
+        //[Header("[레벨에 따른 체력 공식]")]
+        //[SerializeField]
+        //private string healthFormula = "MonsterHealth";
+        //public string HealthFormula { get => healthFormula; }
 
         /// <summary>
         /// 공격 데미지
         /// </summary>
         [Header("[기본 공격력 => [레벨에 따라 변경됨]]")]
         [SerializeField] private int _damage;
-        public int Damage { get => _damage = DamageCalculator.GetDamage((int)_monsterID, _level, _monsterID, true); }
-        public DamageCalculator DamageCalculator { get; }
+        public int Damage { get => _damage = GetAttackDamage(); }
+        //public DamageCalculator DamageCalculator { get; }
 
         [Header("[레벨에 따른 공격력 공식]")]
         [SerializeField]
@@ -131,6 +153,13 @@ namespace WoosanStudio.ZombieShooter
         public GunSettings GunSettings { get => gunSettings; }
 
         /// <summary>
+        /// 몬스터 성장에 맞는 새팅값
+        /// </summary>
+        [Header("[몬스터 성장에 맞는 새팅값]")]
+        [SerializeField] private List<GrowthTable> growthTables = new List<GrowthTable>();
+        public List<GrowthTable> GrowthTables => growthTables;
+
+        /// <summary>
         /// 모델을 만듬
         /// </summary>
         /// <param name="name">생성할 이름</param>
@@ -153,6 +182,27 @@ namespace WoosanStudio.ZombieShooter
             }
 
             return clone;
+        }
+
+
+        /// <summary>
+        /// 몬스터 데미지 알아옴
+        /// *성장테이블의 레벨 데미지
+        /// </summary>
+        /// <returns></returns>
+        private int GetAttackDamage()
+        {
+            return growthTables[Level].AttackDamage;
+        }
+
+        /// <summary>
+        /// 몬스터 체력 알아옴
+        /// *성장테이블의 레벨 데미지
+        /// </summary>
+        /// <returns></returns>
+        private int GetHealth()
+        {
+            return growthTables[Level].Health;
         }
 
         /// <summary>

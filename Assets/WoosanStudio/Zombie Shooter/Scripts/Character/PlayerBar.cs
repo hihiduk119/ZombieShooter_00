@@ -32,6 +32,18 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 새로운 체력을 세팅합니다
+        /// </summary>
+        /// <param name="health"></param>
+        public void SetHealth(int health)
+        {
+            //최대 체력 세로 세팅
+            maxHealth = health;
+            //현재 체력 초기화
+            Initialize();
+        }
+
+        /// <summary>
         /// 초기화
         /// </summary>
         public void Initialize()

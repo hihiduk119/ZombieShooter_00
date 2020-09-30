@@ -108,6 +108,13 @@ namespace WoosanStudio.ZombieShooter
             //clone.GetComponent<DoDie>().HeavenEvent.AddListener(ItemRequester.Requester);
             MonsterOnDieActions?.ForEach(value => clone.GetComponent<DoDie>().OnDieEvent.AddListener(value));
 
+            //몬스터 레벨에 맞는 성장 수치 가져오기
+            int level = monsterSettings.Level;
+
+            //몬스터 체력 세팅
+            //*레벨에 성장에 의해 변화한 체력을 가져온다
+            clone.GetComponent<PlayerBar>().SetHealth(monsterSettings.Health);
+
             //그림자 생성.
             MakeShadow(monsterSettings, clone.transform);
 

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   model: {fileID: 100000, guid: df7b9880239404078b5108f18bfc10fc, type: 3}
-  mainEffect: {fileID: 0}
+  mainEffect: {fileID: 183362, guid: 3f97cdb2dde8d7f44a37ce3a93c2bf69, type: 3}
   subEffect: {fileID: 0}

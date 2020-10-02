@@ -121,6 +121,10 @@ namespace WoosanStudio.ZombieShooter
             //그림자 생성.
             MakeShadow(monsterSettings, clone.transform);
 
+            //초기화 안하면 다음번 생성된 녀석이 같은 액션을 가져감
+            MonsterGoHeavenActions.Clear();
+            MonsterOnDieActions.Clear();
+
             return clone;
         }
 

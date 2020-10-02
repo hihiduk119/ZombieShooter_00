@@ -15,7 +15,7 @@ MonoBehaviour:
   _monsterID: 100
   _name: Jeff
   _prefab: {fileID: 4927290373326563121, guid: 8746bc753857e48b5932be247f878a7c, type: 3}
-  _level: 4
+  _level: 0
   _health: 0
   _damage: 10
   damageFormula: MonsterDamage

@@ -73,6 +73,10 @@ namespace WoosanStudio.ZombieShooter
             //* 리스너로 넣어야 한다. -> 리팩토링 필요한 부분
             OnDieEvent.Invoke(hit);
 
+            //ItemRequester.Instance.Requester(hit);
+
+            Debug.Log("=============" + this.gameObject.name + " 죽음 호출!!");
+
             blink.Initialize();
 
             monster.Die();

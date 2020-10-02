@@ -11,6 +11,9 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class ItemRequester : MonoBehaviour
     {
+        //싱글톤 패턴
+        //static public ItemRequester Instance;
+
         [Header("[아이템 팩토리]")]
         public ItemFactory ItemFactory;
 
@@ -32,11 +35,17 @@ namespace WoosanStudio.ZombieShooter
         //캐시
         private GameObject player;
 
+        //private void Awake()
+        //{
+        //    Instance = this;
+        //}
+
         /// <summary>
         /// 외부에서 생성요청 
         /// </summary>
         public void Requester(Vector3 targetPosition)
         {
+            Debug.Log("!!!!!=======> Requester");
             Make(Calculate(), targetPosition);
         }
 

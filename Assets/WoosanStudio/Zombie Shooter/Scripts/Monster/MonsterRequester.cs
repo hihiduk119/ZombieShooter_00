@@ -28,6 +28,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("아이템 리퀘스터 [(Auto->Awake())]")]
         public ItemRequester ItemRequester;
 
+        //TestCode
+        private int requestCount = 0;
+
         private void Awake()
         {
             //자동으로 할당
@@ -48,6 +51,8 @@ namespace WoosanStudio.ZombieShooter
             //MonsterFactory.MonsterGoHeavenActions.Add(ItemRequester.Requester);
             //몬스터 죽음시 아이템 생성 요청.
             MonsterFactory.MonsterOnDieActions.Add(ItemRequester.Requester);
+
+            Debug.Log("=======>요청 "+ requestCount);
 
             //몬스터 생성
             GameObject clone = MonsterFactory.Make(index, spawnPoints);
@@ -72,6 +77,8 @@ namespace WoosanStudio.ZombieShooter
             //몬스터 죽음시 아이템 생성 요청.
             MonsterFactory.MonsterOnDieActions.Add(ItemRequester.Requester);
 
+            Debug.Log("=======>요청 " + requestCount);
+
             //몬스터 생성
             GameObject clone = MonsterFactory.Make(index, spawnPoints);
         }
@@ -88,9 +95,11 @@ namespace WoosanStudio.ZombieShooter
 
             //몬스터 천국 이동시 아이템 생성 요청.
             //MonsterFactory.MonsterGoHeavenActions.Add(ItemRequester.Requester);
+
             //몬스터 죽음시 아이템 생성 요청.
             MonsterFactory.MonsterOnDieActions.Add(ItemRequester.Requester);
 
+            Debug.Log("=======>요청 " + requestCount);
             //몬스터 생성 => 몬스터 데이터 직접 넣기
             GameObject clone = MonsterFactory.Make(monsterSettings, spawnPoints);
         }

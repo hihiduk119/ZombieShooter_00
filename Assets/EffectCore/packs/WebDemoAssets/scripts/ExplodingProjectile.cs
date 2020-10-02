@@ -222,6 +222,8 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
 
         //몬스터에 저항이 존재 한다면 계산해서 저항받은 데미지 계산
         damage = CardManager.Instance.DamageCalculationReflectingMonsterResistance(damage, monsterSettings.Propertys, monsterSettings.Level);
+        //데미지가 1보다 작다면 최소 데미지 1로 마춤
+        if (damage < 1f) damage = 1f;
 
         //keyValue 는 다음과 같다
         //{{0,"default"},{1,"critical"},{2,"status"} };

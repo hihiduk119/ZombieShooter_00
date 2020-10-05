@@ -67,9 +67,9 @@ namespace WoosanStudio.ZombieShooter
             //아이템 생성 -> ItemController 생성.
             Item = ItemFactory.Make(index);
 
-            //높이 0으로 초기화.
-            //그래야 바닦에 생김
-            targetPosition.y = 0;
+            //높이 0.01f으로 초기화.
+            //*바닦에서 살짝 띄움 -> 그래야 바닦에 생김
+            targetPosition.y = 0.01f;
 
             //위치 재조정
             Item.transform.position = targetPosition;
@@ -120,14 +120,14 @@ namespace WoosanStudio.ZombieShooter
 
 
         #region [-TestCode]
-        void Update()
-        {
-            //아이템 요
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                Make(0,Vector3.zero);
-            }
-        }
+        //void Update()
+        //{
+        //    //아이템 요
+        //    if (Input.GetKeyDown(KeyCode.G))
+        //    {
+        //        Make(0,Vector3.zero);
+        //    }
+        //}
         #endregion
     }
 }

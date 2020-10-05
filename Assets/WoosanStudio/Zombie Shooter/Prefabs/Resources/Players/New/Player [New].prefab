@@ -2348,6 +2348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934835eeaeb904512a696a3bc41a3e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 200
   health: 200
   reload: 30
 --- !u!54 &3093294864663975162
@@ -2749,7 +2750,6 @@ MonoBehaviour:
   Positioner: {fileID: 0}
   Model: {fileID: 0}
   LookAtAimedTarget: {fileID: 0}
-  CardList: {fileID: 0}
   RayCheck: {fileID: 0}
 --- !u!114 &519284015428072839
 MonoBehaviour:
@@ -2783,7 +2783,7 @@ MonoBehaviour:
   PlayerAimSwaper: {fileID: 0}
   FindAimTarget: {fileID: 0}
   FollowCameraTarget: {fileID: 0}
-  AimDistance: 12
+  AimDistance: 15
   AimIKTargetAnchor: {fileID: 3390923243920136078}
   CurrentState: 1
   aimEvent:

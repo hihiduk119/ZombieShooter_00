@@ -353,13 +353,15 @@ namespace WoosanStudio.ZombieShooter
                 //*만약 팝업 재사용 코드일때는 등록시 매번 중복 체크해서 지워줘야 함.
                 clickedEvent.AddListener(MonsterSpawnScheduleManager.SpawnByNextRound);
             }
+
+            Debug.Log("aa");
         }
 
         /// <summary>
         /// 스테이지 변경을 위한 테스트 코드
         /// </summary>
         #region [-TestCode]
-        void Update()
+        /*void Update()
         {
             //if (Input.GetKeyDown(KeyCode.A))
             //{
@@ -400,8 +402,7 @@ namespace WoosanStudio.ZombieShooter
             {
                 FollowCameraPositioner.Move();
             }
-        }
+        }*/
         #endregion
-
     }
 }

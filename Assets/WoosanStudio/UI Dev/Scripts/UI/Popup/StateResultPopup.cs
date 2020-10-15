@@ -71,12 +71,12 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
-        private void Update()
-        {
-            if(Input.GetKeyDown(KeyCode.M))
-            {
-                SetResult(true,"1-1",2000,100,5, false,testSprites);
-            }
-         }
+        //private void Update()
+        //{
+        //    if(Input.GetKeyDown(KeyCode.M))
+        //    {
+        //        SetResult(true,"1-1",2000,100,5, false,testSprites);
+        //    }
+        //}
     }
 }

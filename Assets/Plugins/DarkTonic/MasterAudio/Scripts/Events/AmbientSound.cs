@@ -41,6 +41,8 @@ namespace DarkTonic.MasterAudio {
         // ReSharper disable once UnusedMember.Local
         void OnEnable() {
             MasterAudio.SetupAmbientNextFrame(this);
+
+            Debug.Log("aaa");
         }
 
         // ReSharper disable once UnusedMember.Local

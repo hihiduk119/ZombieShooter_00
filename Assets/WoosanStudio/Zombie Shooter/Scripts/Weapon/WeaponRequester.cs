@@ -201,6 +201,13 @@ namespace WoosanStudio.ZombieShooter
                 Remove();
                 Anchor(2, 2);
             }
+
+            //웨폰 팩토리에서 만든 무기와 인터페이스 연결
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                Remove();
+                Anchor(3, 0);
+            }
         }
         #endregion
     }

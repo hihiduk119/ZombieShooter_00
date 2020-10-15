@@ -7753,13 +7753,14 @@ GameObject:
   - component: {fileID: 1440019571}
   - component: {fileID: 1440019570}
   - component: {fileID: 1440019569}
+  - component: {fileID: 1440019573}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Test Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1440019568
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8720,7 +8721,91 @@ MonoBehaviour:
     isMechanimStateCheckEvent: 0
     mechanimStateName: 
     mechEventPlayedForState: 0
-    SoundEvents: []
+    SoundEvents:
+    - actionName: Your action name
+      isExpanded: 1
+      soundType: GUI Click
+      allPlaylistControllersForGroupCmd: 0
+      allSoundTypesForGroupCmd: 0
+      allSoundTypesForBusCmd: 0
+      volume: 1
+      useFixedPitch: 0
+      pitch: 1
+      glidePitchType: 0
+      targetGlidePitch: 1
+      pitchGlideTime: 1
+      delaySound: 0
+      currentSoundFunctionType: 0
+      currentPlaylistCommand: 0
+      currentSoundGroupCommand: 0
+      currentBusCommand: 0
+      currentCustomEventCommand: 0
+      currentGlobalCommand: 0
+      currentMixerCommand: 0
+      snapshotToTransitionTo: {fileID: 0}
+      snapshotTransitionTime: 1
+      snapshotsToBlend:
+      - snapshot: {fileID: 0}
+        weight: 1
+      currentPersistentSettingsCommand: 0
+      busName: 
+      playlistName: 
+      playlistControllerName: 
+      startPlaylist: 1
+      fadeVolume: 0
+      fadeTime: 1
+      minAge: 1
+      stopAfterFade: 0
+      restoreVolumeAfterFade: 0
+      targetVolMode: 0
+      clipName: '[None]'
+      variationType: 1
+      variationName: 
+      colliderMaxDistance: 0
+      showSphereGizmo: 0
+      theCustomEventName: 
+    - actionName: Your action name
+      isExpanded: 1
+      soundType: '[None]'
+      allPlaylistControllersForGroupCmd: 0
+      allSoundTypesForGroupCmd: 0
+      allSoundTypesForBusCmd: 0
+      volume: 1
+      useFixedPitch: 0
+      pitch: 1
+      glidePitchType: 0
+      targetGlidePitch: 1
+      pitchGlideTime: 1
+      delaySound: 0
+      currentSoundFunctionType: 3
+      currentPlaylistCommand: 1
+      currentSoundGroupCommand: 0
+      currentBusCommand: 0
+      currentCustomEventCommand: 0
+      currentGlobalCommand: 0
+      currentMixerCommand: 0
+      snapshotToTransitionTo: {fileID: 0}
+      snapshotTransitionTime: 1
+      snapshotsToBlend:
+      - snapshot: {fileID: 0}
+        weight: 1
+      currentPersistentSettingsCommand: 0
+      busName: 
+      playlistName: Card Selection playlist
+      playlistControllerName: Song PlaylistController
+      startPlaylist: 1
+      fadeVolume: 0
+      fadeTime: 1
+      minAge: 1
+      stopAfterFade: 0
+      restoreVolumeAfterFade: 0
+      targetVolMode: 0
+      clipName: '[None]'
+      variationType: 1
+      variationName: 
+      colliderMaxDistance: 0
+      showSphereGizmo: 0
+      theCustomEventName: 
     mouseDragStopMode: 0
     mouseDragFadeOutTime: 1
     retriggerLimitMode: 0
@@ -9178,8 +9263,8 @@ MonoBehaviour:
   useNguiMouseEnterSound: 0
   useNguiMouseExitSound: 0
   useUnitySliderChangedSound: 0
-  useUnityButtonClickedSound: 1
-  useUnityPointerDownSound: 0
+  useUnityButtonClickedSound: 0
+  useUnityPointerDownSound: 1
   useUnityDragSound: 0
   useUnityPointerUpSound: 0
   useUnityPointerEnterSound: 0
@@ -9238,7 +9323,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1440019571}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1440019573}
+        m_MethodName: PerformTransition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1440019571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9275,6 +9371,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440019567}
   m_CullTransparentMesh: 0
+--- !u!114 &1440019573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440019567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe329cf26bfc433b8374ebbf9aed181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: Town-A hours after the incident
+  duration: 1
+  color: {r: 0.8, g: 0.8509804, b: 0.87058824, a: 1}
 --- !u!1 &1448572668
 GameObject:
   m_ObjectHideFlags: 0
@@ -16158,48 +16269,6 @@ MonoBehaviour:
     mechanimStateName: 
     mechEventPlayedForState: 0
     SoundEvents:
-    - actionName: Click
-      isExpanded: 1
-      soundType: GUI Click
-      allPlaylistControllersForGroupCmd: 0
-      allSoundTypesForGroupCmd: 0
-      allSoundTypesForBusCmd: 0
-      volume: 1
-      useFixedPitch: 0
-      pitch: 1
-      glidePitchType: 0
-      targetGlidePitch: 1
-      pitchGlideTime: 1
-      delaySound: 0
-      currentSoundFunctionType: 0
-      currentPlaylistCommand: 0
-      currentSoundGroupCommand: 0
-      currentBusCommand: 0
-      currentCustomEventCommand: 0
-      currentGlobalCommand: 0
-      currentMixerCommand: 0
-      snapshotToTransitionTo: {fileID: 0}
-      snapshotTransitionTime: 1
-      snapshotsToBlend:
-      - snapshot: {fileID: 0}
-        weight: 1
-      currentPersistentSettingsCommand: 0
-      busName: 
-      playlistName: 
-      playlistControllerName: 
-      startPlaylist: 1
-      fadeVolume: 0
-      fadeTime: 1
-      minAge: 1
-      stopAfterFade: 0
-      restoreVolumeAfterFade: 0
-      targetVolMode: 0
-      clipName: '[None]'
-      variationType: 1
-      variationName: 
-      colliderMaxDistance: 0
-      showSphereGizmo: 0
-      theCustomEventName: 
     - actionName: Change Song
       isExpanded: 1
       soundType: '[None]'
@@ -16229,6 +16298,48 @@ MonoBehaviour:
       busName: 
       playlistName: Loading playlist
       playlistControllerName: Song PlaylistController
+      startPlaylist: 1
+      fadeVolume: 0
+      fadeTime: 1
+      minAge: 1
+      stopAfterFade: 0
+      restoreVolumeAfterFade: 0
+      targetVolMode: 0
+      clipName: '[None]'
+      variationType: 1
+      variationName: 
+      colliderMaxDistance: 0
+      showSphereGizmo: 0
+      theCustomEventName: 
+    - actionName: Click
+      isExpanded: 1
+      soundType: GUI Click
+      allPlaylistControllersForGroupCmd: 0
+      allSoundTypesForGroupCmd: 0
+      allSoundTypesForBusCmd: 0
+      volume: 1
+      useFixedPitch: 0
+      pitch: 1
+      glidePitchType: 0
+      targetGlidePitch: 1
+      pitchGlideTime: 1
+      delaySound: 0
+      currentSoundFunctionType: 0
+      currentPlaylistCommand: 0
+      currentSoundGroupCommand: 0
+      currentBusCommand: 0
+      currentCustomEventCommand: 0
+      currentGlobalCommand: 0
+      currentMixerCommand: 0
+      snapshotToTransitionTo: {fileID: 0}
+      snapshotTransitionTime: 1
+      snapshotsToBlend:
+      - snapshot: {fileID: 0}
+        weight: 1
+      currentPersistentSettingsCommand: 0
+      busName: 
+      playlistName: 
+      playlistControllerName: 
       startPlaylist: 1
       fadeVolume: 0
       fadeTime: 1

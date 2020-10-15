@@ -16,7 +16,7 @@ namespace WoosanStudio.ZombieShooter
             Pistol = 0,
             AssaultRifle,
             ShotGun,
-            LaserRifle,
+            SniperRifle,
 
             //몬스터 무기 타입
             Throw = 100,

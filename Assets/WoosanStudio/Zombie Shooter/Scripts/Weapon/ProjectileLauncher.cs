@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DarkTonic.MasterAudio;
+using System.Text;
 
 using UnityEngine.Events;
 
@@ -47,6 +49,14 @@ namespace WoosanStudio.ZombieShooter
         //탄퍼짐시 해당 파워
         public float BulletSpreadPower = 0.25f;
 
+        //캐쉬
+        //사운드 생성시 이름으로 만들기 위해 사용
+        private StringBuilder stringBuilder = new StringBuilder();
+        //사운드 이벤트 이름 생성용
+        const string head = "CustomEvent_Fire";
+        const string suffix = "With";
+        string weapon = "";
+        string ammo = "";
         //
         Vector3 forceValue;
 
@@ -130,6 +140,7 @@ namespace WoosanStudio.ZombieShooter
             WaitForEndOfFrame WFEF = new WaitForEndOfFrame();
 
             Shoot();
+
             firingTimer = 0;            
 
             while (true)
@@ -203,6 +214,9 @@ namespace WoosanStudio.ZombieShooter
         {
             TriggerEvent.Invoke();
 
+            //사운드 생성
+            MakeSound((GunSettings.WeaponType)gunSetting.Index, projectileSetting.ammoType);
+
             //머즐 플레이어 사용시
             if (projectileSetting.hasMuzzleFlare)
             {
@@ -272,6 +286,28 @@ namespace WoosanStudio.ZombieShooter
             //{
             //    rocketInstance.AddTorque(spawnLocator.up * Random.Range(Tor_min, Tor_max));
             //}
+        }
+
+        /// <summary>
+        /// 무기와 탄약 타입을 기준으로 사운드 생성함
+        /// </summary>
+        /// <param name="weaponType">무기</param>
+        /// <param name="ammoType">탄약</param>
+        void MakeSound(GunSettings.WeaponType weaponType, ProjectileSettings.AmmoType ammoType)
+        {
+            //스트링 빌더로 이벤트 호출 이름 만들기
+            stringBuilder.Append(head);
+            weapon = weaponType.ToString();
+            ammo = ammoType.ToString();
+            stringBuilder.Append(weapon);
+            stringBuilder.Append(suffix);
+            stringBuilder.Append(ammo);
+
+            Debug.Log("완성된 이름 = " + stringBuilder.ToString());
+
+            MasterAudio.FireCustomEvent(stringBuilder.ToString(), this.transform);
+
+            stringBuilder.Clear();
         }
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IProjectileLauncher Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

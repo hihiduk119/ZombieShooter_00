@@ -23,7 +23,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2432d534329604358a3a783ed2a34ea0, type: 2}
   - {fileID: 11400000, guid: 84fbd3326a4ef4a3da382f2c47ecd0fb, type: 2}
   _attackDelay: 2
-  _moveSpeed: 2.5
+  _moveSpeed: 4
   turnSpeed: 130
   stoppingDistance: 5
   projectileSettings: {fileID: 0}

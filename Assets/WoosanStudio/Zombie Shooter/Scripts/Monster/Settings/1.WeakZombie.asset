@@ -21,7 +21,7 @@ MonoBehaviour:
   damageFormula: MonsterDamage
   _propertys: []
   _attackDelay: 2
-  _moveSpeed: 2.5
+  _moveSpeed: 4
   turnSpeed: 130
   stoppingDistance: 3
   projectileSettings: {fileID: 0}

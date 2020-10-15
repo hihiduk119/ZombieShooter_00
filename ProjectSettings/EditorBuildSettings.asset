@@ -15,4 +15,13 @@ EditorBuildSettings:
     path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/Chapter/Town-A hours after
       the incident.unity
     guid: d1feb4e21a24e4e3a908c42bb9d986f0
+  - enabled: 1
+    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Audio/MasterAudioTest 0.unity
+    guid: 046f873cf0f334aa4b657aa761235263
+  - enabled: 1
+    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Audio/MasterAudioTest 1.unity
+    guid: 4d0aa4d742a6c4a0ba2020c548a596fb
+  - enabled: 1
+    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Audio/MasterAudioTest 2.unity
+    guid: 4b7a5a9e011b74fedada333f6a6636e2
   m_configObjects: {}

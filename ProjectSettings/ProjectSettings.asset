@@ -642,9 +642,9 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
-    1: CROSS_PLATFORM_INPUT;TextMeshPro
+    1: CROSS_PLATFORM_INPUT;TextMeshPro;PHY2D_ENABLED;PHY3D_ENABLED
     4: CROSS_PLATFORM_INPUT;MOBILE_INPUT;TextMeshPro
-    7: CROSS_PLATFORM_INPUT;MOBILE_INPUT;TextMeshPro
+    7: CROSS_PLATFORM_INPUT;MOBILE_INPUT;TextMeshPro;PHY2D_ENABLED;PHY3D_ENABLED
     13: TextMeshPro
     14: MOBILE_INPUT
     19: TextMeshPro

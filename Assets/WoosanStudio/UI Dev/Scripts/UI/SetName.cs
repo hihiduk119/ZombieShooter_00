@@ -7,10 +7,16 @@ using UnityEngine.UI;
 namespace WoosanStudio.ZombieShooter.Test
 {
     public class SetName : MonoBehaviour
-    {   
+    {
+        [Header ("[이름 설정]")]
+        public string Name = "";
+
         private void Start()
         {
-            GetComponent<Text>().text = transform.parent.name;
+            if (Name.Length > 0)
+                GetComponent<Text>().text = Name;
+            else 
+                GetComponent<Text>().text = transform.parent.name;
         }
     }
 }

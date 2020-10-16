@@ -215,7 +215,7 @@ namespace WoosanStudio.ZombieShooter
             TriggerEvent.Invoke();
 
             //사운드 생성
-            MakeSound((GunSettings.WeaponType)gunSetting.Index, projectileSetting.ammoType);
+            MakeSound((ProjectileSettings.GunType)gunSetting.Index, projectileSetting.ammoType);
 
             //머즐 플레이어 사용시
             if (projectileSetting.hasMuzzleFlare)
@@ -293,7 +293,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="weaponType">무기</param>
         /// <param name="ammoType">탄약</param>
-        void MakeSound(GunSettings.WeaponType weaponType, ProjectileSettings.AmmoType ammoType)
+        void MakeSound(ProjectileSettings.GunType weaponType, ProjectileSettings.AmmoType ammoType)
         {
             //스트링 빌더로 이벤트 호출 이름 만들기
             stringBuilder.Append(head);

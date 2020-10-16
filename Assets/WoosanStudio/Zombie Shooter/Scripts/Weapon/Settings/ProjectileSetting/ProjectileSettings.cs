@@ -12,23 +12,23 @@ namespace WoosanStudio.ZombieShooter
         /// 어떤 탄약 타입인지
         /// </summary>
         public enum AmmoType {
-            Bullet,
+            Bullet = 0,
             Laser,
             Plasma,
 
-            MonsterAmmo_0,
+            MonsterAmmo_0 = 100,
         }
 
         /// <summary>
         /// 어떤 총에 쓰이는지
         /// </summary>
         public enum GunType {
-            Pistol,
+            Pistol = 0,
             Shotgun,
             AssaultRifle,
             SniperRifle,
 
-            MonsterGun_0,
+            MonsterGun_0 = 100,
         }
 
         [Header("[어떤 탄약 타입]")]

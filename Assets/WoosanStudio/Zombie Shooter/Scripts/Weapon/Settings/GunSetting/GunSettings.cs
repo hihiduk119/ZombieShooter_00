@@ -11,16 +11,16 @@ namespace WoosanStudio.ZombieShooter
         /// *IGunStat,IWeaponStat, IGunSettings 쓸데없이 3개나 있음
         /// *직관성 떨어짐 하나로 통합 필요.
         /// </summary>
-        public enum WeaponType : int
-        {
-            Pistol = 0,
-            AssaultRifle,
-            ShotGun,
-            SniperRifle,
+        //public enum WeaponType : int
+        //{
+        //    Pistol = 0,
+        //    AssaultRifle,
+        //    Shotgun,
+        //    SniperRifle,
 
-            //몬스터 무기 타입
-            Throw = 100,
-        }
+        //    //몬스터 무기 타입
+        //    Throw = 100,
+        //}
 
         /// <summary>
         /// 무기 타입 - 추가 될 경우를 대비해 int로 만듬

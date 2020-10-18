@@ -21,30 +21,24 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - 'MONSTER
-
-        RESEARCH'
-      - "\uBAAC\uC2A4\uD130 \uC5F0\uAD6C"
+      - RESEARCH
+      - "\uC5F0\uAD6C"
       Flags: 0000
       Languages_Touch: []
     - Term: Card Research Icon
       TermType: 0
       Description: 
       Languages:
-      - 'CARD
-
-        RESEARCH'
-      - "\uCE74\uB4DC \uC5F0\uAD6C"
+      - RESEARCH
+      - "\uC5F0\uAD6C"
       Flags: 0000
       Languages_Touch: []
     - Term: Card Select Icon
       TermType: 0
       Description: 
       Languages:
-      - 'CARD
-
-        SELECT'
-      - "\uCE74\uB4DC \uC120\uD0DD"
+      - CARD
+      - "\uCE74\uB4DC"
       Flags: 0000
       Languages_Touch: []
     - Term: Progress Icon
@@ -52,7 +46,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - PROGRESS
-      - "\uC5F0\uAD6C \uC9C4\uD589"
+      - "\uC9C4\uD589 \uC0C1\uD669"
       Flags: 0000
       Languages_Touch: []
     - Term: Setting Icon

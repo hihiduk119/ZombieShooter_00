@@ -14729,6 +14729,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1551108457}
+  - component: {fileID: 1551108459}
+  - component: {fileID: 1551108458}
+  - component: {fileID: 1551108460}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -14751,6 +14754,61 @@ Transform:
   m_Father: {fileID: 1181512091}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1551108458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551108456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7045c2fd946104781bcea658a4344441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ModelObjects:
+  - {fileID: 1836758715523138710}
+  - {fileID: 1836758715523154196}
+  - {fileID: 1836758715523366330}
+  - {fileID: 1836758715523348992}
+  - {fileID: 1836758715523345466}
+  - {fileID: 1836758715523388556}
+  - {fileID: 1836758715523146484}
+  - {fileID: 1836758715523148280}
+  - {fileID: 1836758715523146884}
+  - {fileID: 1836758715523373352}
+  - {fileID: 1836758715523144874}
+  - {fileID: 1836758715523388244}
+  - {fileID: 1836758715523378118}
+  - {fileID: 1836758715523344678}
+  Model: {fileID: 1551108460}
+--- !u!114 &1551108459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551108456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421bfd0772cd14764a2618080bc82472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 1551108458}
+--- !u!114 &1551108460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551108456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5d6dc0cf78224ecc8ff487b2fe8fcd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    Type: 0
 --- !u!1 &1557469834
 GameObject:
   m_ObjectHideFlags: 0
@@ -17779,7 +17837,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1636537032}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1551108459}
+        m_MethodName: LeftClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1636537032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22137,7 +22206,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2109103242}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1551108459}
+        m_MethodName: RightClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2109103242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24026,7 +24106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1836758715523140516
 GameObject:
   m_ObjectHideFlags: 0

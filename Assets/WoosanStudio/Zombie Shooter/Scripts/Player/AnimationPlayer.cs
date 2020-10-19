@@ -76,7 +76,7 @@ namespace WoosanStudio.ZombieShooter
             //해당 에니메이션 트리거 실행
             animator.SetTrigger(name);
 
-            Debug.Log("플레이 => " + name);
+            //Debug.Log("플레이 => " + name);
         }
 
         #region [-TestCode]

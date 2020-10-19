@@ -51,9 +51,9 @@ namespace WoosanStudio.ZombieShooter
         void UpdageRechargeInfo()
         {
             stringBuilder.Append(Token[0]);
-            stringBuilder.Append(Model.RechargingPoint);
+            stringBuilder.Append(Model.GetData().RechargingPoint);
             stringBuilder.Append(Token[1]);
-            stringBuilder.Append(Model.MaxRechargingTime);
+            stringBuilder.Append(Model.GetData().MaxRechargingTime);
             stringBuilder.Append(Token[2]);
 
             RechargeInfoText = stringBuilder.ToString();
@@ -66,8 +66,8 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void UpdageProgress()
         {
-            int max = Model.MaxEnergy;
-            int current = Model.CurrentEnergy;
+            int max = Model.GetData().MaxEnergy;
+            int current = Model.GetData().CurrentEnergy;
             //0-1로 구하기
             float value = (float)current / (float)max;
 
@@ -75,7 +75,7 @@ namespace WoosanStudio.ZombieShooter
             if (current == max) { value = 1; isFull = true; }
             else { isFull = false; }
 
-            Debug.Log("current = " + current + ": max = " + max + " : value = " + value);
+            //Debug.Log("current = " + current + ": max = " + max + " : value = " + value);
 
             EnergySliderValue = value;
 
@@ -103,13 +103,17 @@ namespace WoosanStudio.ZombieShooter
             //남은 출력시간 string으로 만들기
             //* 분이 추가될 경우 수정 해야함. 현재는 최대 59초까지만 동작 가능
             stringBuilder.Append(Token[3]);
-            stringBuilder.Append(string.Format("{0,2:00}", Model.RemainRechargingTime));
+            stringBuilder.Append(string.Format("{0,2:00}", Model.GetData().RemainRechargingTime));
 
             RechargeTimeText = stringBuilder.ToString();
 
             stringBuilder.Clear();
         }
 
+        /// <summary>
+        /// 외부에서 호출되는 에너지 소비
+        /// </summary>
+        /// <param name="value"></param>
         public void UpdateEnergy(int value)
         {
             Model.UpdateEnergy(value);
@@ -119,6 +123,13 @@ namespace WoosanStudio.ZombieShooter
         #region [-TestCode]
         void Update()
         {
+            //에너지 소비
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                UpdateEnergy(-25);
+            }
+
+            //현재 데이터 출력
             if (Input.GetKeyDown(KeyCode.A))
             {
                 UpdateEnergy(-25);

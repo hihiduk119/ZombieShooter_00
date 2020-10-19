@@ -48,27 +48,27 @@ namespace WoosanStudio.ZombieShooter
         }
 
         #region [-TestCode]
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                Swap((ModelType)testIndex);
+        //void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.LeftArrow))
+        //    {
+        //        Swap((ModelType)testIndex);
 
-                testIndex--;
+        //        testIndex--;
 
-                if (testIndex < 0)
-                    testIndex = Models.Count - 1;
-            }
+        //        if (testIndex < 0)
+        //            testIndex = Models.Count - 1;
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                Swap((ModelType)testIndex);
-                testIndex++;
+        //    if (Input.GetKeyDown(KeyCode.RightArrow))
+        //    {
+        //        Swap((ModelType)testIndex);
+        //        testIndex++;
 
-                if (testIndex >= Models.Count)
-                    testIndex = 0;
-            }
-        }
+        //        if (testIndex >= Models.Count)
+        //            testIndex = 0;
+        //    }
+        //}
         #endregion
 
     }

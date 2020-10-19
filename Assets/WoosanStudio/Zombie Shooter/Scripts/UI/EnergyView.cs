@@ -27,7 +27,7 @@ namespace WoosanStudio.ZombieShooter
         public EnergyController Controller;
 
         //캐쉬용
-        private WaitForSeconds WFS = new WaitForSeconds(0.5f);
+        private WaitForSeconds WFS = new WaitForSeconds(0.33f);
 
         private IEnumerator Start()
         {

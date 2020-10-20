@@ -12,6 +12,10 @@ namespace WoosanStudio.ZombieShooter
     /// 모든 다음 것을 계산해주는 계산기
     /// * 연구 시간
     /// * 연구 비용
+    ///
+    /// *이벤트를 통해서 호출하며
+    /// 호출전에 EndEvent에 액션 등록 필요
+    /// 공식 사용이 끝났다면 EndEvent 리스너에서 제거 필요
     /// </summary>
     public class NextValueCalculator : MonoBehaviour
     {
@@ -92,7 +96,7 @@ namespace WoosanStudio.ZombieShooter
             //디버그용 리스너 등록 => TestCode 삭제시 삭제 요망.
             //EndEvent.AddListener(ResearchTimeCallback);
             //디버그용 리스너 등록 => TestCode 삭제시 삭제 요망.
-            EndEvent.AddListener(CoinCallback);
+            //EndEvent.AddListener(CoinCallback);
         }
 
         /// <summary>
@@ -151,6 +155,24 @@ namespace WoosanStudio.ZombieShooter
 
             //코인 추가 공식 
             int seconds = (level * level * level  * 5) * 2 + 100;
+
+            CallBackData returnData = new CallBackData(level, seconds);
+
+            //계산 완료 및 일종의 리턴 호출
+            EndEvent.Invoke(returnData);
+
+            yield break;
+        }
+
+        /// <summary>
+        /// 연구 비용 증가 공식 레벨에 따라 올라가는
+        /// </summary>
+        IEnumerator ExpCoroutine(object myObject)
+        {
+            int level = (int)myObject;
+
+            //코인 추가 공식 
+            int seconds = (level * level * level * 5) * 2 + 300;
 
             CallBackData returnData = new CallBackData(level, seconds);
 
@@ -305,7 +327,7 @@ namespace WoosanStudio.ZombieShooter
             //전체 시간을 구하기 위해 더해줌
             total += ((CallBackData)callBackData).Value;
 
-            Debug.Log("[level : " + ((CallBackData)callBackData).Level + "] "+"[coin : " + ((CallBackData)callBackData).Value + "] "+ "total = [" + total + "]");
+            Debug.Log("[level : " + ((CallBackData)callBackData).Level + "] "+"[current value : " + ((CallBackData)callBackData).Value + "] "+ "total = [" + total + "]");
         }
 
         /// <summary>
@@ -341,6 +363,8 @@ namespace WoosanStudio.ZombieShooter
 
                 Debug.Log("===================[" + index + " 레벨 " + maxStack + " 중첩]===================");
 
+                //StartEvent.Invoke("Exp", index);
+
                 //1레벨 0-4중첩 계산
                 for (int stack = 0; stack < maxStack; stack++)
                 {
@@ -348,6 +372,7 @@ namespace WoosanStudio.ZombieShooter
                     //StartEvent.Invoke("UpValueByCardStack", (object)new CardCalcutionData(index, stack, initValue, defaultIncreaseValue, increaseValuePerLevel));
                     //n레벨 ,n스택,기본 값 5 ,기본 증가 퍼센트 50%, 1 레벨당 2% 증가
                     StartEvent.Invoke("DownValueByCardStack", (object)new CardCalcutionData(index, stack, initValue, defaultIncreaseValue, increaseValuePerLevel));
+
                     yield return new WaitForEndOfFrame();
                 }
 

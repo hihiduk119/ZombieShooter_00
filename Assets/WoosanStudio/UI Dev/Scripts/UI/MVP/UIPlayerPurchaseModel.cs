@@ -11,6 +11,8 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class UIPlayerPurchaseModel : MonoBehaviour
     {
+        public int RequireGem = 100;
 
+        public int RequireLevel = 10;
     }
 }

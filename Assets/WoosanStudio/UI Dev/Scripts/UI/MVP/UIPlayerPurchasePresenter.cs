@@ -10,6 +10,9 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class UIPlayerPurchasePresenter : MonoBehaviour
     {
-
+        [Header("[MVP View]")]
+        public UIPlayerPurchaseView View;
+        [Header("[MVP Model]")]
+        public UIPlayerPurchaseModel Model;
     }
 }

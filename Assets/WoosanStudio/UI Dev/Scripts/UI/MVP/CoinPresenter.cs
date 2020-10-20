@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinPresenter : MonoBehaviour
+namespace WoosanStudio.ZombieShooter
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// 
+    /// *MPV 모델
+    /// </summary>
+    public class CoinPresenter : MonoBehaviour
     {
         
     }

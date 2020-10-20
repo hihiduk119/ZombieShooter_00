@@ -7,7 +7,9 @@ using UnityEngine.Events;
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
-    /// 
+    /// 경험치 모델
+    /// 레벨과 현재 경험치를 저장한다.
+    /// 레벨별 최대 경험치 값을 가지고 있다.
     /// *MPV 모델
     /// </summary>
     public class ExpModel : MonoBehaviour
@@ -21,9 +23,14 @@ namespace WoosanStudio.ZombieShooter
             public int Level = 1;
 
             public Data() { }
+
+            public void Print()
+            {
+                Debug.Log("레벨 = " + Level + "  경험치 = " + CurrentExp);
+            }
         }
 
-        public Data data;
+        public Data data = new Data();
         //레벨별 최대값 리스트
         public List<int> MaxExpList = new List<int>();
 
@@ -90,8 +97,12 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Load()
         {
-            if (PlayerPrefs.HasKey("Exp")) { Save(); }
+            if (!PlayerPrefs.HasKey("Exp")) { Save(); }
+            data = null;
             data = JsonUtility.FromJson<ExpModel.Data>(PlayerPrefs.GetString("Exp"));
+
+            Debug.Log("Exp 로드 완료");
+            data.Print();
         }
 
         /// <summary>
@@ -100,6 +111,25 @@ namespace WoosanStudio.ZombieShooter
         public void Save()
         {
             PlayerPrefs.SetString("Exp", JsonUtility.ToJson(data));
+
+            Debug.Log("Exp 저장 완료");
+            data.Print();
         }
+
+        #region [-TestCode]
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                Save();
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                Load();
+            }
+        }
+        #endregion
+
     }
 }

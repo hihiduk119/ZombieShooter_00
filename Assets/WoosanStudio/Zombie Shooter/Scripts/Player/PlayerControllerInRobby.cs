@@ -37,7 +37,7 @@ namespace WoosanStudio.ZombieShooter
 
             currentIndex += value;
 
-            Debug.Log("currentIndex = " + currentIndex);
+            //Debug.Log("currentIndex = " + currentIndex);
 
             int maxIndex = System.Enum.GetValues(typeof(PlayerModelInRobby.ModelType)).Length;
 

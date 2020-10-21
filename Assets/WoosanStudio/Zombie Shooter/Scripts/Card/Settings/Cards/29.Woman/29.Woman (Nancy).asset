@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 29.Woman (Nancy)
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 313
   name: Nancy
   drability: 10
@@ -22,7 +24,7 @@ MonoBehaviour:
   stackCount: 0
   maxDurability: 10
   maxLevel: 25
-  unlockLevel: 0
+  unlockLevel: 34
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: 577947efa5cc9495e880c3cdeac559fe, type: 3}

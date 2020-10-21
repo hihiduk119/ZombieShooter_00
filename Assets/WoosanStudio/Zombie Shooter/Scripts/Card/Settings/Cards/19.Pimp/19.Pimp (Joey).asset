@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 19.Pimp (Joey)
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 303
   name: Joey
   drability: 10
@@ -22,7 +24,7 @@ MonoBehaviour:
   stackCount: 0
   maxDurability: 10
   maxLevel: 25
-  unlockLevel: 0
+  unlockLevel: 5
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: 6dc5b6bd0c60347c29d700893d2d2b9d, type: 3}

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 25.Robber (Vincent)
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 309
   name: Vincent
   drability: 10
@@ -22,7 +24,7 @@ MonoBehaviour:
   stackCount: 0
   maxDurability: 10
   maxLevel: 25
-  unlockLevel: 0
+  unlockLevel: 21
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: ed8ff825aa987459dac59fab3fc7f984, type: 3}

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 23.RiotCop (Harlan)
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 307
   name: Harlan
   drability: 10
@@ -22,7 +24,7 @@ MonoBehaviour:
   stackCount: 0
   maxDurability: 10
   maxLevel: 25
-  unlockLevel: 0
+  unlockLevel: 15
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: b80b250dfa31c4cbdbdddc686c8d4bdd, type: 3}

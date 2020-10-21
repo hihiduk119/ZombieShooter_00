@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 26.Sheriff (Teddy)
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 310
   name: Teddy
   drability: 10
@@ -22,7 +24,7 @@ MonoBehaviour:
   stackCount: 0
   maxDurability: 10
   maxLevel: 25
-  unlockLevel: 0
+  unlockLevel: 24
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: 64356dae07170499aa7bc673d5cc4dde, type: 3}

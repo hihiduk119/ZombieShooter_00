@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 22.Punk (Jefferson)
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 306
   name: Jefferson
   drability: 10
@@ -22,7 +24,7 @@ MonoBehaviour:
   stackCount: 0
   maxDurability: 10
   maxLevel: 25
-  unlockLevel: 0
+  unlockLevel: 12
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: 06d1f006a54374b8abd06b03aba79f87, type: 3}

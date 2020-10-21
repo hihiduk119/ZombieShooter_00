@@ -14,5 +14,9 @@ namespace WoosanStudio.ZombieShooter
         public int RequireGem = 100;
 
         public int RequireLevel = 10;
+
+        //리스트 순서는 캐릭터 순서와 같다 -> CardSetting.CardTypeByCharacter
+        [Header("[캐릭터 카드세팅 리스트]")]
+        public List<CardSetting> cardSettings = new List<CardSetting>();
     }
 }

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 17.FireFighter (Harper)
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 301
   name: Harper
   drability: 10
@@ -22,7 +24,7 @@ MonoBehaviour:
   stackCount: 0
   maxDurability: 10
   maxLevel: 25
-  unlockLevel: 0
+  unlockLevel: 2
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: d419d3350b886423f8b625b0b4193c42, type: 3}

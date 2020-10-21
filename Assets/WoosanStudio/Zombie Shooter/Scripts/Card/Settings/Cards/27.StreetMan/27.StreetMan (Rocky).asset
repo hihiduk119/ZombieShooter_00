@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 27.StreetMan (Rocky)
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 311
   name: Rocky
   drability: 10
@@ -22,7 +24,7 @@ MonoBehaviour:
   stackCount: 0
   maxDurability: 10
   maxLevel: 25
-  unlockLevel: 0
+  unlockLevel: 27
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: eaf9eab90de40456abe788ae6da2796d, type: 3}

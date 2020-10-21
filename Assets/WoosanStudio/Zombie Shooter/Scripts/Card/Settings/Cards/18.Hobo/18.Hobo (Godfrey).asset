@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 18.Hobo (Godfrey)
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 302
   name: Godfrey
   drability: 10
@@ -22,7 +24,7 @@ MonoBehaviour:
   stackCount: 0
   maxDurability: 10
   maxLevel: 25
-  unlockLevel: 0
+  unlockLevel: 3
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: 1b6509985f22e42ea8268bc1900d1870, type: 3}

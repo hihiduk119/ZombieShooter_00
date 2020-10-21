@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 20.Policeman (Alvin)
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 304
   name: Alvin
   drability: 10
@@ -22,7 +24,7 @@ MonoBehaviour:
   stackCount: 0
   maxDurability: 10
   maxLevel: 25
-  unlockLevel: 0
+  unlockLevel: 7
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: b5c4d1a6873cd4e39b97dbcf5dfe434c, type: 3}

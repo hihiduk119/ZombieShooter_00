@@ -22,17 +22,32 @@ namespace WoosanStudio.ZombieShooter
         [Header("[필요 레벨]")]
         public Text Level;
 
-        [Header("[MVP Presenter]")]
-        public UIPlayerPurchasePresenter Presenter;
-
         /// <summary>
         /// 뷰 활성
         /// </summary>
         public void Active()
         {
             View.SetActive(true);
-            Gem.text = Presenter.Model.RequireGem.ToString();
-            Level.text = Presenter.Model.RequireLevel.ToString();
+            
+            
+        }
+
+        /// <summary>
+        /// 보석 업데이트
+        /// </summary>
+        /// <param name="value"></param>
+        public void UpdateGem(int value)
+        {
+            Gem.text = string.Format("{0:0,0}", value);
+        }
+
+        /// <summary>
+        /// 레벨 업데이트
+        /// </summary>
+        /// <param name="value"></param>
+        public void UpdateLevel(int value)
+        {
+            Level.text = string.Format("{0:0,0}", value);
         }
 
         /// <summary>

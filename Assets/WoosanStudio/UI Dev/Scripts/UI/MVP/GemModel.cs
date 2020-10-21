@@ -2,17 +2,60 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GemModel : MonoBehaviour
+namespace WoosanStudio.ZombieShooter
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// 
+    /// *MPV 모델
+    /// </summary>
+    public class GemModel : MonoBehaviour
     {
-        
-    }
+        [System.Serializable]
+        public class Data
+        {
+            [Header("[현재 Gem]")]
+            public int Gem = 0;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            public Data() { }
+
+            public void Print()
+            {
+                Debug.Log("Gem = " + Gem);
+            }
+        }
+
+        public Data data = new Data();
+
+        /// <summary>
+        /// 현재 가지고있는 코인 가져오기 위해 한번 실행 필요
+        /// </summary>
+        public void Initialize()
+        {
+            Load();
+        }
+
+        /// <summary>
+        /// 데이터 로드
+        /// </summary>
+        public void Load()
+        {
+            if (!PlayerPrefs.HasKey("Gem")) { Save(); }
+            data = null;
+            data = JsonUtility.FromJson<GemModel.Data>(PlayerPrefs.GetString("Gem"));
+
+            Debug.Log("Gem 로드 완료");
+            data.Print();
+        }
+
+        /// <summary>
+        /// 데이터 저장
+        /// </summary>
+        public void Save()
+        {
+            PlayerPrefs.SetString("Gem", JsonUtility.ToJson(data));
+
+            Debug.Log("Gem 저장 완료");
+            data.Print();
+        }
     }
 }

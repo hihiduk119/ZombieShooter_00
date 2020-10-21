@@ -35,7 +35,7 @@ namespace WoosanStudio.ZombieShooter
 
             //계산 식을 가져오는 시간 때문에 0.5f 기다림.
             //*이 바보같은 짓 보다는 그냥 가져오는 방식으로 바꿔야 할듯
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
 
             //변경된 레벨 전달
             UpdateLevelUpEvent.Invoke(Model.data.Level);
@@ -89,14 +89,14 @@ namespace WoosanStudio.ZombieShooter
 
 
         #region [-TestCode]
-        void Update()
-        {
-            //경험치 추가
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                AddExp(100);
-            }
-        }
+        //void Update()
+        //{
+        //    //경험치 추가
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        AddExp(100);
+        //    }
+        //}
         #endregion
 
     }

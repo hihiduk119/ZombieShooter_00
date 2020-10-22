@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 19.Pimp (Joey)
   m_EditorClassIdentifier: 
   isActivate: 0
-  gemPrice: -1
+  gemPrice: 500
   useAble: 0
   type: 303
   name: Joey
-  drability: 10
+  durability: 10
   value: -1
   level: 0
   maxStack: 2

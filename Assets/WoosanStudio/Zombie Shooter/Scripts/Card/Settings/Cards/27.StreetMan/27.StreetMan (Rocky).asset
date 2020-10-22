@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 27.StreetMan (Rocky)
   m_EditorClassIdentifier: 
   isActivate: 0
-  gemPrice: -1
+  gemPrice: 400
   useAble: 0
   type: 311
   name: Rocky
-  drability: 10
+  durability: 10
   value: -1
   level: 0
   maxStack: 2

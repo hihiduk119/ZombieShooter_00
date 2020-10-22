@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 26.Sheriff (Teddy)
   m_EditorClassIdentifier: 
   isActivate: 0
-  gemPrice: -1
+  gemPrice: 300
   useAble: 0
   type: 310
   name: Teddy
-  drability: 10
+  durability: 10
   value: -1
   level: 0
   maxStack: 2

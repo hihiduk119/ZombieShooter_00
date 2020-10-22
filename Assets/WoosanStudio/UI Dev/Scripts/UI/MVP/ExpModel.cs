@@ -116,6 +116,7 @@ namespace WoosanStudio.ZombieShooter
             data.Print();
         }
 
+        /*
         #region [-TestCode]
         void Update()
         {
@@ -130,6 +131,6 @@ namespace WoosanStudio.ZombieShooter
             }
         }
         #endregion
-
+        */
     }
 }

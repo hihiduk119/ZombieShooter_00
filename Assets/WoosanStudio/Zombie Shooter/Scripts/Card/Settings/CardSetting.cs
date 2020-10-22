@@ -148,7 +148,7 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField]
         public List<CardProperty> Properties = new List<CardProperty>();
 
-        [SerializeField]
+        /*[SerializeField]
         public enum CardTypeByWeapon
         {
             None = 0,
@@ -185,7 +185,7 @@ namespace WoosanStudio.ZombieShooter
             StreetMan,          //캐릭터 변경 및 모든 무기 데미지 5% 증가 & 최대 체력 -10%감소                            lv 20 unlock
             Trucker,            //캐릭터 변경 및 공습 데미지 25% 증가 & 공습 체움 속도 25% 증가 & 모든 무기 데미지 -10% 감소     lv 22 unlock
             Woman,              //캐릭터 변경 및 최대 체력 25% 증가 & 모든 타입의 탄약 데미지 10 감소                      lv 25 unlock
-        }
+        }*/
 
         [SerializeField]
         public enum CardType

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 29.Woman (Nancy)
   m_EditorClassIdentifier: 
   isActivate: 0
-  gemPrice: -1
+  gemPrice: 800
   useAble: 0
   type: 313
   name: Nancy
-  drability: 10
+  durability: 10
   value: -1
   level: 18
   maxStack: 2

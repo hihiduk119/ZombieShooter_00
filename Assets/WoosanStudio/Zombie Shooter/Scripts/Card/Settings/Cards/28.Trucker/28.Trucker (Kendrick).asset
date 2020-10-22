@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 28.Trucker (Kendrick)
   m_EditorClassIdentifier: 
   isActivate: 0
-  gemPrice: -1
+  gemPrice: 400
   useAble: 0
   type: 312
   name: Kendrick
-  drability: 10
+  durability: 10
   value: -1
   level: 0
   maxStack: 2

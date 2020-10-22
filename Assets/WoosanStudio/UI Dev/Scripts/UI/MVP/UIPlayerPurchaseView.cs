@@ -23,16 +23,6 @@ namespace WoosanStudio.ZombieShooter
         public Text Level;
 
         /// <summary>
-        /// 뷰 활성
-        /// </summary>
-        public void Active()
-        {
-            View.SetActive(true);
-            
-            
-        }
-
-        /// <summary>
         /// 보석 업데이트
         /// </summary>
         /// <param name="value"></param>
@@ -47,15 +37,27 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="value"></param>
         public void UpdateLevel(int value)
         {
-            Level.text = string.Format("{0:0,0}", value);
+            Level.text = value.ToString();
         }
 
         /// <summary>
-        /// 뷰 비활성
+        /// UIPlayerPresenter 에서 UpdatePurchaseView 받음 
         /// </summary>
-        public void Deactive()
+        /// <param name="data"></param>
+        public void UpdateViewReceiver(UIPlayerPresenter.PurchaseViewData data)
         {
-            View.SetActive(false);
+            data.Print();
+
+            //이미 구매했다면
+            if (data.UseAble) {
+                View.SetActive(false);
+                return;
+            }
+
+            //구매 안했다면
+            View.SetActive(true);
+            UpdateGem(data.RequireGem);
+            UpdateLevel(data.RequireLevel);
         }
     }
 }

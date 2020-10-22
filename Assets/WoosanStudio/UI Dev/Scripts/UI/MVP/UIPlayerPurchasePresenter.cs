@@ -5,7 +5,7 @@ using UnityEngine;
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
-    /// 
+    /// 플레이어 구매화면 컨트
     /// *MPV 모델
     /// </summary>
     public class UIPlayerPurchasePresenter : MonoBehaviour

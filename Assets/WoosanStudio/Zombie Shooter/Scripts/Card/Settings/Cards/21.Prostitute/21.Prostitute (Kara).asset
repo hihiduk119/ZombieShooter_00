@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 21.Prostitute (Kara)
   m_EditorClassIdentifier: 
   isActivate: 0
-  gemPrice: -1
+  gemPrice: 500
   useAble: 0
   type: 305
   name: Kara
-  drability: 10
+  durability: 10
   value: -1
   level: 10
   maxStack: 2

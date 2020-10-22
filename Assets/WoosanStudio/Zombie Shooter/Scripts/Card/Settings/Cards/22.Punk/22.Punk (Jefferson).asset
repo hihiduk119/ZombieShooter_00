@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 22.Punk (Jefferson)
   m_EditorClassIdentifier: 
   isActivate: 0
-  gemPrice: -1
+  gemPrice: 350
   useAble: 0
   type: 306
   name: Jefferson
-  drability: 10
+  durability: 10
   value: -1
   level: 0
   maxStack: 2

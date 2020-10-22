@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 17.FireFighter (Harper)
   m_EditorClassIdentifier: 
   isActivate: 0
-  gemPrice: -1
+  gemPrice: 300
   useAble: 0
   type: 301
   name: Harper
-  drability: 10
+  durability: 10
   value: -1
   level: 0
   maxStack: 2

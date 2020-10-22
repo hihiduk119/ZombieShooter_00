@@ -18,10 +18,12 @@ namespace WoosanStudio.ZombieShooter
         [System.Serializable]
         public class UpdateCoinEvent : UnityEvent<int> { }
 
+        public UpdateCoinEvent UpdateEvent = new UpdateCoinEvent();
+
         [Header("[코인 빼기 실패 이벤트]")]
         public UnityEvent SubtractCoinFailEvent = new UnityEvent();
 
-        public UpdateCoinEvent UpdateEvent = new UpdateCoinEvent();
+        
 
         private void Start()
         {

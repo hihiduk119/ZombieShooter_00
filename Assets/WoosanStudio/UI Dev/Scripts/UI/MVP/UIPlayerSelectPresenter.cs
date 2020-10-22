@@ -5,7 +5,7 @@ using UnityEngine;
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
-    /// 플레이어의 데이터
+    /// 플레이어의 선택
     /// *MVC패턴
     /// </summary>
     public class UIPlayerSelectPresenter : MonoBehaviour

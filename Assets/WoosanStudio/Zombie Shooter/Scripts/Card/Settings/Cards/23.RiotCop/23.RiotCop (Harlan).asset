@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 23.RiotCop (Harlan)
   m_EditorClassIdentifier: 
   isActivate: 0
-  gemPrice: -1
+  gemPrice: 500
   useAble: 0
   type: 307
   name: Harlan
-  drability: 10
+  durability: 10
   value: -1
   level: 0
   maxStack: 2

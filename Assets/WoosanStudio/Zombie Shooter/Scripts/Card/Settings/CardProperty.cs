@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using System.Text;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -42,6 +43,8 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField][TextArea(5, 8)]
         private string descripsion;
         public string Descripsion => descripsion;
+
+        private StringBuilder stringBuilder = new StringBuilder();
 
         [System.Serializable]
         public enum PropertyType
@@ -86,6 +89,40 @@ namespace WoosanStudio.ZombieShooter
             
             AirStrikeDamageResistance = 600,      //공습 데미지 저항
             //CriticalDamageResistance,         //치명타 데미지 저항
+        }
+
+        /// <summary>
+        /// 완성된 설명 가져오기
+        /// *CardRewardSelectPopupController -> ChangeCardInformation() 부분 변경가능
+        /// </summary>
+        /// <param name="cardLevel"></param>
+        /// <returns></returns>
+        public string GetCompletedDescripsion(int cardLevel)
+        {
+            //일단 초기화하고 시작
+            stringBuilder.Clear();
+
+            string desc = descripsion;
+
+            //"/d"의 첫번째 /를 알아옴
+            int index = desc.IndexOf('/');
+
+            if (desc[index + 1].Equals('d'))
+            {
+                //isFind = true;
+                //기본 값 + 카드 1레벨당 상승 값 * 카드 레벨 
+                float value = (cardLevel * IncreasedValuePerLevelUp) + Value;
+
+                //'/d'를 삭제
+                desc = desc.Remove(index, 2);
+                //삭제된 위치에 계산됨 값 넣기 => 소수점 1자리만 표기
+                desc = desc.Insert(index, string.Format("{0:0.0}", value.ToString()));
+            }
+
+            //계산 완료후 완성된 문장 한줄을 더함.
+            stringBuilder.Append(desc);
+
+            return stringBuilder.ToString();
         }
     }
 }

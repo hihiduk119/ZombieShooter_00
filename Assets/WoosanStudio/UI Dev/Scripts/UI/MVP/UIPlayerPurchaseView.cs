@@ -46,7 +46,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="data"></param>
         public void UpdateViewReceiver(UIPlayerPresenter.PurchaseViewData data)
         {
-            data.Print();
+            //data.Print();
 
             //이미 구매했다면
             if (data.UseAble) {

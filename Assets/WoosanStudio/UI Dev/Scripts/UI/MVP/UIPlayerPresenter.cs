@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Events;
+using System.Text;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -23,6 +24,9 @@ namespace WoosanStudio.ZombieShooter
         public class UpdatePurchaseView : UnityEvent<PurchaseViewData> { }
 
         [System.Serializable]
+        public class UpdateInfoView : UnityEvent<InfoViewData> { }
+
+        [System.Serializable]
         public class PurchaseViewData
         {
             public bool UseAble = false;
@@ -38,12 +42,53 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
+        [System.Serializable]
+        public class InfoViewData
+        {
+            //캐릭터 이름
+            public string Name;
+            //캐릭터 이미지
+            public Sprite Image;
+            //설명 리스트
+            public List<string> Descripsions;
+            //캐릭터 플레이 시간
+            public long PlayTime = 0;
+            //사냥한 몬스터 수
+            public int HuntedMonster = 0;
+
+            public InfoViewData(string name, Sprite image , List<string> descripsions, long playTime, int huntedMonster)
+            {
+                Name = name;
+                Image = image;
+                Descripsions = descripsions;
+                PlayTime = playTime;
+                HuntedMonster = huntedMonster;
+            }
+
+            public void Print()
+            {
+                StringBuilder stringBuilder = new StringBuilder();
+                
+                for (int i = 0; i < Descripsions.Count; i++)
+                {
+                    stringBuilder.Append("[");
+                    stringBuilder.Append(Descripsions[i]);
+                    stringBuilder.Append("]");
+                }
+
+                Debug.Log("이름 = " + Name + " 내용 = " + stringBuilder.ToString() + " 플레이 시간 = " + PlayTime + "  몬스터 킬수 = " + HuntedMonster);
+            }
+        }
+
 
         [Header("[캐릭터 업데이트 이벤트]")]
         public UpdateCharacter ChangeCharacterEvent = new UpdateCharacter();
 
-        [Header("[캐릭터 업데이트 이벤트]")]
+        [Header("[캐릭터 구매 창 이벤트]")]
         public UpdatePurchaseView PurchaseActivationEvent = new UpdatePurchaseView();
+
+        [Header("[캐릭터 정보 이벤트]")]
+        public UpdateInfoView UpdateInfoEvent = new UpdateInfoView();
 
         private void Start()
         {
@@ -76,8 +121,35 @@ namespace WoosanStudio.ZombieShooter
             //캐릭터 변경 통지
             ChangeCharacterEvent.Invoke(currentIndex);
 
+            List<string> desc = new List<string>();
+
+
+            //1부터 시작
+            //0은 캐릭터 변경한다는 내용이 있음
+            for (int i = 1; i < Model.cardSettings[currentIndex].Properties.Count; i++)
+            {
+                //0레벨 적용된 완성된 설명 가져오기
+                //* [수정필요]카드 레벨을 적용 할지 말지 나중에 결정
+                desc.Add(Model.cardSettings[currentIndex].Properties[i].GetCompletedDescripsion(Model.cardSettings[currentIndex].Level));
+            }
+
+            InfoViewData infoViewData = new InfoViewData(
+                Model.cardSettings[currentIndex].Name,
+                Model.cardSettings[currentIndex].Sprite,
+                desc,
+                0,
+                0
+                );
+
+            infoViewData.Print();
+
+            //* 죽인 몬스터 및 플레이타임 가져오는 부분 필요
+            UpdateInfoEvent.Invoke(infoViewData);
+
+
+
             //구매 뷰 사용 여부 통지
-            if(Model.data.CardDatas[currentIndex].UseAble)
+            if (Model.data.CardDatas[currentIndex].UseAble)
             {
                 PurchaseActivationEvent.Invoke(new PurchaseViewData());
             }

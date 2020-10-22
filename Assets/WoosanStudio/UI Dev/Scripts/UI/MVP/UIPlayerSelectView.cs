@@ -40,7 +40,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="index"></param>
         public void ChangedCharacter(int index)
         {
-            Debug.Log("idx = " + index);
+            //Debug.Log("idx = " + index);
             //모두 비활성화
             ModelObjects.ForEach(modelObject => modelObject.SetActive(false));
 

@@ -122,6 +122,7 @@ namespace WoosanStudio.ZombieShooter
             //카드의 프로퍼티의 내용들을 하나로 묶음
             for (int i = 0; i < cardSetting.Properties.Count; i++)
             {
+                /*
                 //일단 기본 문장 넣음
                 descripsion = cardSetting.Properties[i].Descripsion;
                 //"/d를 찾아서 해당 레벨에 맞는 값으로 변경"
@@ -144,6 +145,11 @@ namespace WoosanStudio.ZombieShooter
 
                 //계산 완료후 완성된 문장 한줄을 더함.
                 stringBuilder.Append(descripsion);
+                */
+
+                //위 부분 교체
+                stringBuilder.Append(cardSetting.Properties[i].GetCompletedDescripsion(cardSetting.Level));
+
                 //한줄 개행
                 stringBuilder.AppendLine();
             }

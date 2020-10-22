@@ -59,7 +59,7 @@ namespace WoosanStudio.ZombieShooter
                     stringBuilder.Append("] - ");
                 }
 
-                Debug.Log(prefix +  " 선택한 캐릭터 = " + SelectedCharacter + "  전체 = " + stringBuilder.ToString());
+                //Debug.Log(prefix +  " 선택한 캐릭터 = " + SelectedCharacter + "  전체 = " + stringBuilder.ToString());
 
                 stringBuilder.Clear();
             }

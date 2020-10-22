@@ -10,7 +10,7 @@ namespace WoosanStudio.ZombieShooter
     /// 플레이어의 데이터
     /// *MVC패턴
     /// </summary>
-    public class PlayerModelInRobby : MonoBehaviour
+    public class UIPlayerSelectModel : MonoBehaviour
     {
         //*모델 타입 이넘과 모델 리스트의 순서는 동일해야 한다.
         public enum ModelType
@@ -33,7 +33,7 @@ namespace WoosanStudio.ZombieShooter
 
         [Serializable]
         public class Data {
-            public PlayerModelInRobby.ModelType Type = PlayerModelInRobby.ModelType.BusinessMan;
+            public UIPlayerSelectModel.ModelType Type = UIPlayerSelectModel.ModelType.BusinessMan;
 
             public Data(){}
         }
@@ -44,7 +44,7 @@ namespace WoosanStudio.ZombieShooter
         {
             if (!PlayerPrefs.HasKey("PlayerInRobby")) { Save(); }
 
-            data = JsonUtility.FromJson<PlayerModelInRobby.Data>(PlayerPrefs.GetString("PlayerInRobby"));
+            data = JsonUtility.FromJson<UIPlayerSelectModel.Data>(PlayerPrefs.GetString("PlayerInRobby"));
         }
 
         public void Save()

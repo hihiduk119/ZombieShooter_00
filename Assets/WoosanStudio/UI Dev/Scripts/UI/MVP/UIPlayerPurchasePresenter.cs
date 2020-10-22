@@ -14,5 +14,16 @@ namespace WoosanStudio.ZombieShooter
         public UIPlayerPurchaseView View;
         [Header("[MVP Model]")]
         public UIPlayerPurchaseModel Model;
+
+        public string CharaceterName;
+
+        public Sprite CharaceterImage;
+
+        public List<CardProperty> CardProperties;
+
+        public void UpdateCharacter(int index)
+        {
+
+        }
     }
 }

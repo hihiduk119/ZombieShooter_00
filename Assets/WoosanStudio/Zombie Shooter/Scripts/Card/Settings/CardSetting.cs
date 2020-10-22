@@ -47,15 +47,15 @@ namespace WoosanStudio.ZombieShooter
 
         [Header("[카드이름]")]
         [SerializeField]
-        //저장 필요
+        //저장 필요??
         private new string name = "";
         public string Name { get => name; }
 
         [Header("[현재 내구도]")]
         [SerializeField]
         //저장 필요
-        private int drability = 10;
-        public int Durability { get => drability; }
+        private int durability = 10;
+        public int Durability { get => durability; }
 
         [Header("[기본 값이며 무기,탄약의 경우 기본 데미지]")]
         [SerializeField]
@@ -99,7 +99,7 @@ namespace WoosanStudio.ZombieShooter
         [Header("[최대 내구도]")]
         [SerializeField]
         //저장 불필요
-        private int maxDurability = 10;
+        private int maxDurability = 100;
         public int MaxDurability { get => maxDurability; }
 
         [Header("[최대 레벨]")]

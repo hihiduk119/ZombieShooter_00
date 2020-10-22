@@ -8,13 +8,13 @@ namespace WoosanStudio.ZombieShooter
     /// 플레이어의 데이터
     /// *MVC패턴
     /// </summary>
-    public class PlayerControllerInRobby : MonoBehaviour
+    public class UIPlayerSelectPresenter : MonoBehaviour
     {
         [Header("[모델 리스트]")]
         public List<GameObject> ModelObjects = new List<GameObject>();
 
         [Header("[MVC 모델]")]
-        public PlayerModelInRobby Model;
+        public UIPlayerSelectModel Model;
 
         int currentIndex = 0;
 
@@ -39,7 +39,7 @@ namespace WoosanStudio.ZombieShooter
 
             //Debug.Log("currentIndex = " + currentIndex);
 
-            int maxIndex = System.Enum.GetValues(typeof(PlayerModelInRobby.ModelType)).Length;
+            int maxIndex = System.Enum.GetValues(typeof(UIPlayerSelectModel.ModelType)).Length;
 
             if (currentIndex < 0) { currentIndex = 0; }
             if(maxIndex <= currentIndex) { currentIndex = maxIndex-1; }
@@ -51,7 +51,7 @@ namespace WoosanStudio.ZombieShooter
             ModelObjects[currentIndex].SetActive(true);
 
             //변경 된 인덱스 모델 데이터에 넣음
-            Model.data.Type = (PlayerModelInRobby.ModelType)currentIndex;
+            Model.data.Type = (UIPlayerSelectModel.ModelType)currentIndex;
 
             //[Test]
             Select();

@@ -8,18 +8,24 @@ namespace WoosanStudio.ZombieShooter
     /// 플레이어의 데이터
     /// *MVC패턴
     /// </summary>
-    public class PlayerViewInRobby : MonoBehaviour
+    public class UIPlayerSelectView : MonoBehaviour
     {
-        public PlayerControllerInRobby Controller;
+        public UIPlayerSelectPresenter Presenter;
 
+        /// <summary>
+        /// 왼쪽 이동 클릭
+        /// </summary>
         public void LeftClick()
         {
-            Controller.Change(-1);
+            Presenter.Change(-1);
         }
 
+        /// <summary>
+        /// 오른쪽 이동 클릭
+        /// </summary>
         public void RightClick()
         {
-            Controller.Change(1);
+            Presenter.Change(1);
         }
     }
 }

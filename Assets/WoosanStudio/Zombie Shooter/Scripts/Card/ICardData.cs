@@ -10,6 +10,8 @@
         int Level { get; }
         //남은 최대 내구도
         int Durability { get; }
+        //남은 최대 내구도
+        int MaxDurability { get; }
         //레벨 업그레이드 연구 중이라면 남은 시간
         long RemainResearchTime { get; }
         //연구 중이었다면 해당 슬롯

@@ -3378,7 +3378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86bba27189efb43d79a3bfe0075bc7fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundColor: {r: 0.039215688, g: 0.039215688, b: 0.039215688, a: 0.19607843}
+  backgroundColor: {r: 0.039215688, g: 0.039215688, b: 0.039215688, a: 0.627451}
   destroyTime: 0.5
 --- !u!95 &9115403343505828284
 Animator:

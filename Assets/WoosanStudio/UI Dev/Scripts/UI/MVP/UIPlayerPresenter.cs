@@ -14,7 +14,7 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class UIPlayerPresenter : MonoBehaviour
     {
-        [Header("[MVC 모델]")]
+        [Header("[MVP 모델]")]
         public UIPlayerModel Model;
 
         [System.Serializable]
@@ -27,6 +27,7 @@ namespace WoosanStudio.ZombieShooter
         public class UpdateInfoView : UnityEvent<InfoViewData> { }
 
         [System.Serializable]
+        //구매 뷰 전용 데이터
         public class PurchaseViewData
         {
             public bool UseAble = false;
@@ -43,6 +44,7 @@ namespace WoosanStudio.ZombieShooter
         }
 
         [System.Serializable]
+        //캐릭터 인포 뷰 전용 데이터
         public class InfoViewData
         {
             //캐릭터 이름
@@ -141,7 +143,7 @@ namespace WoosanStudio.ZombieShooter
                 0
                 );
 
-            infoViewData.Print();
+            //infoViewData.Print();
 
             //* 죽인 몬스터 및 플레이타임 가져오는 부분 필요
             UpdateInfoEvent.Invoke(infoViewData);

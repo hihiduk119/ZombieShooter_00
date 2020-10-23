@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 476079cd3fcd0455a9759932b856d24c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b29831af2429a46f1aed5216d5b486b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -714,7 +714,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f2df4914b6a46388ecfa3ed2d950fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 7108916855352969102, guid: d212eaf52f87144a0a27ba1d18ec3c87, type: 3}
+  scrollRect: {fileID: 0}
+  CurrentContentCount: 20
+  Contents: []
+  AddEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isSingleRow: 0
 --- !u!1 &1000012717699500
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a3e7d5486684468bf22dbbe86e3761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundColor: {r: 1, g: 1, b: 1, a: 0.29411766}
+  backgroundColor: {r: 0.039215688, g: 0.039215688, b: 0.039215688, a: 0.627451}
   deactiveTime: 0.5
   canvas: {fileID: 0}
 --- !u!225 &225000011417980328

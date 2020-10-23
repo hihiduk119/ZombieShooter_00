@@ -13,6 +13,8 @@ namespace WoosanStudio.ZombieShooter
     {
         public UnityEngine.UI.Image Image;
 
+        public UnityEngine.UI.Text Name;
+
         //인포 뷰어 열때 사용하기 위해 저장
         public UIPlayerPresenter.InfoViewData infoViewData;
 
@@ -26,6 +28,8 @@ namespace WoosanStudio.ZombieShooter
             infoViewData = data;
 
             Image.sprite = infoViewData.Image;
+
+            Name.text = infoViewData.Name;
         }
     }
 }

@@ -1690,6 +1690,7 @@ GameObject:
   - component: {fileID: 3409124}
   - component: {fileID: 3409123}
   - component: {fileID: 3409125}
+  - component: {fileID: 3409127}
   m_Layer: 5
   m_Name: Card Select Button
   m_TagString: Untagged
@@ -3144,6 +3145,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3409121}
   m_CullTransparentMesh: 0
+--- !u!114 &3409127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3409121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80dae5c87b2bd471e92f25c7b4b2dee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardSettings:
+  - {fileID: 11400000, guid: 844c1b8cd086d4e7a8b06b9391b0c1fe, type: 2}
+  - {fileID: 11400000, guid: bd4272a3359634e4a946bc2c1e9fdae8, type: 2}
+  - {fileID: 11400000, guid: 9a610c5bed63e437a917894692594254, type: 2}
+  - {fileID: 11400000, guid: ca31098cbc035427e8e6e40634509614, type: 2}
+  - {fileID: 11400000, guid: 5ca85674919ea4efbac86a75d7df3603, type: 2}
+  - {fileID: 11400000, guid: 84583ac53886d4019b8cb97969189ccf, type: 2}
+  - {fileID: 11400000, guid: a9c2d812ca3a5434fad0911ec9fcecc9, type: 2}
+  - {fileID: 11400000, guid: d3111214f0d624c5e93a5df616d7558b, type: 2}
+  - {fileID: 11400000, guid: 895248349acbf4c5998b7f4571abeeee, type: 2}
+  - {fileID: 11400000, guid: e800cd1c630324a56a5060fe0327e193, type: 2}
+  - {fileID: 11400000, guid: 077ce3a2edfd9416db11c9911c9bbcdc, type: 2}
+  - {fileID: 11400000, guid: 57989f0af9a3f4ecc90cd15db76acba2, type: 2}
+  - {fileID: 11400000, guid: b15c508f43586492ba713ae90b3c096a, type: 2}
+  - {fileID: 11400000, guid: 7dfd59b9673f44d3d8b97e31692bde9a, type: 2}
+  - {fileID: 11400000, guid: bbd9c2901651e4b838a9c8f3285f4942, type: 2}
+  - {fileID: 11400000, guid: b8fbac75fcb1f47b68b8211ffb3eafb9, type: 2}
+  - {fileID: 11400000, guid: 12a0d97aac60c4f79879ed75644a04b5, type: 2}
+  - {fileID: 11400000, guid: 0155927d0e1004bf9a61af07e6839214, type: 2}
+  - {fileID: 11400000, guid: 0a370a8f0fa6c440db75bd694492c4b0, type: 2}
+  - {fileID: 11400000, guid: 019acffb26d4f4758b449f2d03dca560, type: 2}
+  - {fileID: 11400000, guid: 8240369257cc94772a4f4b5824d6ae80, type: 2}
+  - {fileID: 11400000, guid: 5d40b4694911e44abb7838bf93640c86, type: 2}
+  - {fileID: 11400000, guid: 2c1bf3fa98e9049448a040bdb31849b6, type: 2}
+  - {fileID: 11400000, guid: 3c43f451bf19344a7b71028ceb558b04, type: 2}
+  - {fileID: 11400000, guid: 8f1ffa6137635408bb1659727dc43780, type: 2}
+  - {fileID: 11400000, guid: 75d8ef56695f04584af3c9f56b91a7f2, type: 2}
+  - {fileID: 11400000, guid: c984c90c6ae394c3491f10468e8f18d8, type: 2}
+  - {fileID: 11400000, guid: 63288cc92a95244a99733808fd62b8e6, type: 2}
+  - {fileID: 11400000, guid: c1e851608d06c4137b1d6c319c33875f, type: 2}
+  - {fileID: 11400000, guid: 5691bae4fd0dc4ed8a20a5b91428e0ed, type: 2}
+  data:
+    SelectedCharacter: 16
+    CardDatas: []
 --- !u!1 &21009250
 GameObject:
   m_ObjectHideFlags: 0
@@ -13612,7 +13659,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 968346856}
-  - component: {fileID: 968346863}
   - component: {fileID: 968346858}
   - component: {fileID: 968346857}
   - component: {fileID: 968346859}
@@ -13685,7 +13731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc7327ad52ad498388f208ead1cd42b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 968346863}
+  Model: {fileID: 3409127}
   ChangeCharacterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -13757,36 +13803,6 @@ MonoBehaviour:
   View: {fileID: 1317580225}
   Gem: {fileID: 5930649970498587004}
   Level: {fileID: 1228247391}
---- !u!114 &968346863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968346855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 792ae5f28d5784132b8e45c57be75e3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardSettings:
-  - {fileID: 11400000, guid: 12a0d97aac60c4f79879ed75644a04b5, type: 2}
-  - {fileID: 11400000, guid: 0155927d0e1004bf9a61af07e6839214, type: 2}
-  - {fileID: 11400000, guid: 0a370a8f0fa6c440db75bd694492c4b0, type: 2}
-  - {fileID: 11400000, guid: 019acffb26d4f4758b449f2d03dca560, type: 2}
-  - {fileID: 11400000, guid: 8240369257cc94772a4f4b5824d6ae80, type: 2}
-  - {fileID: 11400000, guid: 5d40b4694911e44abb7838bf93640c86, type: 2}
-  - {fileID: 11400000, guid: 2c1bf3fa98e9049448a040bdb31849b6, type: 2}
-  - {fileID: 11400000, guid: 3c43f451bf19344a7b71028ceb558b04, type: 2}
-  - {fileID: 11400000, guid: 8f1ffa6137635408bb1659727dc43780, type: 2}
-  - {fileID: 11400000, guid: 75d8ef56695f04584af3c9f56b91a7f2, type: 2}
-  - {fileID: 11400000, guid: c984c90c6ae394c3491f10468e8f18d8, type: 2}
-  - {fileID: 11400000, guid: 63288cc92a95244a99733808fd62b8e6, type: 2}
-  - {fileID: 11400000, guid: c1e851608d06c4137b1d6c319c33875f, type: 2}
-  - {fileID: 11400000, guid: 5691bae4fd0dc4ed8a20a5b91428e0ed, type: 2}
-  data:
-    SelectedCharacter: 0
-    CardDatas: []
 --- !u!1 &968801065
 GameObject:
   m_ObjectHideFlags: 0
@@ -16426,7 +16442,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 58.70996, y: 511.00006}
+  m_AnchoredPosition: {x: 58.710938, y: 511.00006}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1237288705
@@ -33738,6 +33754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed13898bc3ecd4c1c980d57cf5f35300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alpha: 0.25
 --- !u!114 &3104315454811956606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33886,11 +33903,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapSelect-Popup
       objectReference: {fileID: 0}
-    - target: {fileID: 8754846362793151103, guid: 7382f3ec52cfc4737828f3b8e3361510,
-        type: 3}
-      propertyPath: m_Text
-      value: MAP SELECT
-      objectReference: {fileID: 0}
     - target: {fileID: 8931124985809969927, guid: 7382f3ec52cfc4737828f3b8e3361510,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33995,6 +34007,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8754846362793151103, guid: 7382f3ec52cfc4737828f3b8e3361510,
+        type: 3}
+      propertyPath: m_Text
+      value: MAP SELECT
       objectReference: {fileID: 0}
     - target: {fileID: 4394398766028840477, guid: 7382f3ec52cfc4737828f3b8e3361510,
         type: 3}

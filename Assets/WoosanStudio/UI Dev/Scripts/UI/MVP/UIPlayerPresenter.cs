@@ -14,8 +14,10 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class UIPlayerPresenter : MonoBehaviour
     {
+        //[Header("[MVP 모델]")]
+        //public UIPlayerModel Model;
         [Header("[MVP 모델]")]
-        public UIPlayerModel Model;
+        public UICardModel Model;
 
         [System.Serializable]
         public class UpdateCharacter : UnityEvent<int> { }
@@ -82,7 +84,7 @@ namespace WoosanStudio.ZombieShooter
                     stringBuilder.Append("]");
                 }
 
-                Debug.Log("이름 = " + Name + " 내용 = " + stringBuilder.ToString() + " 플레이 시간 = " + PlayTime + "  몬스터 킬수 = " + HuntedMonster);
+                //Debug.Log("이름 = " + Name + " 내용 = " + stringBuilder.ToString() + " 플레이 시간 = " + PlayTime + "  몬스터 킬수 = " + HuntedMonster);
             }
         }
 
@@ -113,26 +115,34 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="type"></param>
         public void CharacterChange(int value)
         {
-            int currentIndex = 0;
+            int currentIndex = 16;
+
+            //카드 순서에의해 발생한 캐릭터 간 
+            int characterIndexInterval = 16;
 
             //현재 모델의 인덱스 가져오기
             currentIndex = Model.data.SelectedCharacter;
 
+            //카드 데이터 순서에 더하기 때문에 +16필요.
             currentIndex += value;
 
-            //Debug.Log("currentIndex = " + currentIndex);
+            //Debug.Log("currentIndex = " + currentIndex + " SelectedCharacter =  " + Model.data.SelectedCharacter + "   value = "+ value);
 
             int maxIndex = System.Enum.GetValues(typeof(UIPlayerSelectModel.ModelType)).Length;
 
-            if (currentIndex < 0) { currentIndex = 0; }
-            if (maxIndex <= currentIndex) { currentIndex = maxIndex - 1; }
+            //카드 간격 만큼 계산해서 더해주는 작업 필요
+            if (currentIndex < 0 + characterIndexInterval) { currentIndex = 0 + characterIndexInterval; }
+            if (maxIndex + characterIndexInterval <= currentIndex) { currentIndex = maxIndex - 1 + characterIndexInterval; }
 
-            //캐릭터 변경 통지
-            ChangeCharacterEvent.Invoke(currentIndex);
+            //Debug.Log("currentIndex = " + currentIndex + "   characterIndexInterval = " + characterIndexInterval);
 
+            //캐릭터 변경 통지 => 변경시 필요한 인덱스는 -16뺀 0 부터 13까지임.
+            ChangeCharacterEvent.Invoke(currentIndex - characterIndexInterval);
+
+            //설명
             List<string> desc = new List<string>();
 
-
+            //프로퍼티에서 설명들 가져옴
             //1부터 시작
             //0은 캐릭터 변경한다는 내용이 있음
             for (int i = 1; i < Model.cardSettings[currentIndex].Properties.Count; i++)
@@ -150,7 +160,7 @@ namespace WoosanStudio.ZombieShooter
                 0
                 );
 
-            //infoViewData.Print();
+            infoViewData.Print();
 
             //* 죽인 몬스터 및 플레이타임 가져오는 부분 필요
             UpdateInfoEvent.Invoke(infoViewData);

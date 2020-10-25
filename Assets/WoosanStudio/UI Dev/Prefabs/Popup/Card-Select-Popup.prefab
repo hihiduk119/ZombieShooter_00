@@ -27574,7 +27574,7 @@ PrefabInstance:
     - target: {fileID: 3444962313423330958, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
         type: 3}
       propertyPath: m_Name
-      value: Infomation-Popup
+      value: Card-Research-Area
       objectReference: {fileID: 0}
     - target: {fileID: 3230969525186891158, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
         type: 3}

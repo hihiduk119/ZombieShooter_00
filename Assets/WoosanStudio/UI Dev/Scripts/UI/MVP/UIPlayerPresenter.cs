@@ -27,6 +27,10 @@ namespace WoosanStudio.ZombieShooter
         public class UpdateInfoView : UnityEvent<InfoViewData> { }
 
         [System.Serializable]
+        public class UpdateUseAble : UnityEvent<bool> { }
+        
+
+        [System.Serializable]
         //구매 뷰 전용 데이터
         public class PurchaseViewData
         {
@@ -92,6 +96,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[캐릭터 정보 이벤트]")]
         public UpdateInfoView UpdateInfoEvent = new UpdateInfoView();
 
+        [Header("[캐릭터 사용가능 이벤트]")]
+        public UpdateUseAble UpdateUseAbleEvent = new UpdateUseAble();
+
         private void Start()
         {
             //저장된 모델 불러오기
@@ -149,6 +156,8 @@ namespace WoosanStudio.ZombieShooter
             UpdateInfoEvent.Invoke(infoViewData);
 
 
+            //캐릭터 사용 가능 여부 발생
+            UpdateUseAbleEvent.Invoke(Model.data.CardDatas[currentIndex].UseAble);
 
             //구매 뷰 사용 여부 통지
             if (Model.data.CardDatas[currentIndex].UseAble)

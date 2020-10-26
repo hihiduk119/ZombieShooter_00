@@ -44,8 +44,8 @@ namespace WoosanStudio.ZombieShooter
             data = null;
             data = JsonUtility.FromJson<CoinModel.Data>(PlayerPrefs.GetString("Coin"));
 
-            Debug.Log("Coin 로드 완료");
-            data.Print();
+            //Debug.Log("Coin 로드 완료");
+            //data.Print();
         }
 
         /// <summary>
@@ -55,8 +55,8 @@ namespace WoosanStudio.ZombieShooter
         {
             PlayerPrefs.SetString("Coin", JsonUtility.ToJson(data));
 
-            Debug.Log("Coin 저장 완료");
-            data.Print();
+            //Debug.Log("Coin 저장 완료");
+            //data.Print();
         }
     }
 }

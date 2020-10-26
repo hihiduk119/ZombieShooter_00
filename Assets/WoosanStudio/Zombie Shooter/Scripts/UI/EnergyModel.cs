@@ -150,7 +150,7 @@ namespace WoosanStudio.ZombieShooter
             string energyByJson = PlayerPrefs.GetString("Energy");
 
             //테스트 출력
-            data.Print();
+            //data.Print();
 
             EnergyModel.Data loadData = JsonUtility.FromJson<EnergyModel.Data>(energyByJson);
 
@@ -162,17 +162,17 @@ namespace WoosanStudio.ZombieShooter
             TimeSpan timeSpan = DateTime.Now.Subtract(DateTime.FromBinary(loadData.dateTimeByBinary));
 
             double seconds = timeSpan.TotalSeconds;
-            Debug.Log("seconds = " + seconds);
+            //Debug.Log("seconds = " + seconds);
 
             double addEnergy = seconds / data.MaxRechargingTime;
 
-            Debug.Log("addEnergy = " + addEnergy + " seconds  = " + seconds + " MaxRechargingTime = " + data.MaxRechargingTime);
+            //Debug.Log("addEnergy = " + addEnergy + " seconds  = " + seconds + " MaxRechargingTime = " + data.MaxRechargingTime);
 
             double addRechargingTime = seconds % data.MaxRechargingTime;
 
-            Debug.Log("addRechargingTime = " + addRechargingTime + " seconds  = " + seconds + " MaxRechargingTime = " + data.MaxRechargingTime);
+            //Debug.Log("addRechargingTime = " + addRechargingTime + " seconds  = " + seconds + " MaxRechargingTime = " + data.MaxRechargingTime);
 
-            Debug.Log("지난 시간 = " + timeSpan.ToString() + "   에너지 = " + loadData.CurrentEnergy + "/" + addEnergy);
+            //Debug.Log("지난 시간 = " + timeSpan.ToString() + "   에너지 = " + loadData.CurrentEnergy + "/" + addEnergy);
 
             //에너지 추가
             //에너지 추가

@@ -10,11 +10,14 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class ToonShader : MonoBehaviour
     {
+        [Header("[로비 씬]")]
+        public string RobbyScene = "1.ZombieShooter-Robby";
+
         [Header("[아웃라인 value 리스트]")]
         public List<float> OutlineWidths = new List<float>();
 
         [Header("[공유하는 메터리얼]")]
-        public Material material;
+        public List<Material> Materials = new List<Material>();
 
         /// <summary>
         /// 모든씬에서 살아있게 만들기
@@ -24,18 +27,21 @@ namespace WoosanStudio.ZombieShooter
             //DontDestroyOnLoad(this);
 
             //실행즉시 바로 아웃라인 두껍게 만들기
-            SetOutlineWidth(1);
-        }
 
-        void OnEnable()
-        {
             SceneManager.sceneLoaded += OnLevelFinishedLoading;
+
+            //SetOutlineWidth(1);
         }
 
-        void OnDisable()
-        {
-            SceneManager.sceneLoaded -= OnLevelFinishedLoading;
-        }
+        //void OnEnable()
+        //{
+            
+        //}
+
+        //void OnDisable()
+        //{
+        //    SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+        //}
 
         /// <summary>
         /// 씬 로드 이벤트 실행
@@ -44,13 +50,17 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="mode"></param>
         void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
         {
-            if (scene.buildIndex == 1)
+            Scene myScene = SceneManager.GetSceneByName(RobbyScene);
+
+            if (scene.buildIndex == myScene.buildIndex)
             {   //두꺼운 아웃라인으로 모델 변경
                 SetOutlineWidth(1);
+                //Debug.Log("===============> 두껍게 변경");
             }
             else
             {   //얕은 아웃라인으로 모델 변경
                 SetOutlineWidth(0);
+                //Debug.Log("===============> 얕게 변경");
             }
         }
 
@@ -60,7 +70,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="index"></param>
         public void SetOutlineWidth(int index)
         {
-            material.SetFloat("_Outline", OutlineWidths[index]);
+            Materials.ForEach(value => value.SetFloat("_Outline", OutlineWidths[index]));
         }
     }
 }

@@ -8,8 +8,10 @@ namespace WoosanStudio.ZombieShooter
     /// 카드 정보 프로젝터
     /// *MPV 모델
     /// </summary>
-    public class UICardInfoPresenter : MonoBehaviour
+    public class UICardInfoPopupPresenter : MonoBehaviour
     {
-        
+        [Header("[카드를 가져올 루트]")]
+        public Transform CardItemRoot;
+
     }
 }

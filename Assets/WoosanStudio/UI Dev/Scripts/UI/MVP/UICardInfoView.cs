@@ -105,9 +105,10 @@ namespace WoosanStudio.ZombieShooter
             Name.text = cardSetting.Name;
 
             Description.text = cardSetting.AllDescription();
-            Level.text = cardSetting.Level.ToString();
+            //1 더하는 이유는 레벨이 0부터 시작이라서
+            Level.text = (cardSetting.Level + 1).ToString();
 
-            RemainTime.text = cardSetting.GetRemainResearchTimeByString();
+            RemainTime.text = cardSetting.GetRemainUpgradeTimeByString();
             //*일단 대기-> 타임 셋을 제대로 정리하고 가야 함.안그러면 문제 생김
             //Progress.fillAmount = infoData.progressValue;
 

@@ -24,13 +24,38 @@ namespace WoosanStudio.ZombieShooter
         private int gemPrice = -1;
         public int GemPrice { get => gemPrice; set => gemPrice = value; }
 
+        //========================= [CardData] =========================
+
         [Header("[사용 가능 => 레벨 언락 또는 구매 언락이 됬음]")]
         //저장 필요
         [SerializeField]
         private bool useAble = false;
         public bool UseAble { get => useAble; set => useAble = value; }
 
-        //===============================[ICardData Implemet]===============================
+        [Header("[스킬 레벨]")]
+        //[HideInInspector]
+        [SerializeField]
+        //저장 필요
+        private int level = 0;
+        public int Level { get => level; }
+
+        [Header("[현재 내구도]")]
+        [SerializeField]
+        //저장 필요
+        private int durability = 10;
+        public int Durability { get => durability; }
+
+        //UI에서 데이터의 순서
+        public int SortIndex;
+
+        //연구 중이었다면 UI데이터의 순서
+        public int ResearchSlotIndex = -1;
+
+        //업글중 이었는지 아닌지
+        public bool IsUpgrading = false;
+
+        //==============================================================
+
         [Header("[해당 카드 ID]")]
         [SerializeField] private CardType type;
         public CardType Type { get => type; }
@@ -53,37 +78,25 @@ namespace WoosanStudio.ZombieShooter
         private new string name = "";
         public string Name { get => name; }
 
-        [Header("[현재 내구도]")]
-        [SerializeField]
-        //저장 필요
-        private int durability = 10;
-        public int Durability { get => durability; }
-
+        
         [Header("[기본 값이며 무기,탄약의 경우 기본 데미지]")]
         [SerializeField]
         //저장 필요
         private int value = -1;
         public int Value { get => value; }
 
-        [Header("[스킬 레벨]")]
-        //[HideInInspector]
-        [SerializeField]
-        //저장 필요
-        private int level = 0;
-        public int Level { get => level; }
+        
 
         [HideInInspector]//레벨 업그레이드 연구 중이라면 남은 시간 System.Data
         //저장 불필요
-        private long remainResearchTime = 0;
-        public long RemainResearchTime => remainResearchTime;
+        private long upgradeStartedTime = 0;
+        public long UpgradeStartedTime => upgradeStartedTime;
 
         [HideInInspector]//연구 중이었다면 해당 슬롯
         //저장 필요
         private int researchSlot = -1;
         public int ResearchSlot => researchSlot;
 
-        //===============================[ICard Implemet]===============================
-        
 
         [Header("[최대 중첩 => 0부터 계산]")]
         [SerializeField]
@@ -121,7 +134,7 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField]
         private string coinFormula = "Coin";
         public string CoinFormula { get => coinFormula; }
-        //==============================================================================
+        
 
         [Header("[Icon Sprite]")]
         [SerializeField] private Sprite sprite;
@@ -261,9 +274,9 @@ namespace WoosanStudio.ZombieShooter
         /// 남은 연구시간을 스트링으로 가져옴
         /// </summary>
         /// <returns></returns>
-        public string GetRemainResearchTimeByString()
+        public string GetRemainUpgradeTimeByString()
         {
-            return Timeset.TimeToString(this.RemainResearchTime);
+            return Timeset.TimeToString(this.upgradeStartedTime);
         }
     }
 }

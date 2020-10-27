@@ -34,7 +34,7 @@ namespace WoosanStudio.ZombieShooter
             public int ResearchSlotIndex = -1;
 
             //남은 업글 시간
-            public long RemainCompleteTime = 0;
+            public long UpgradeStartedTime = 0;
 
             //업글중 이었는지 아닌지
             public bool IsUpgrading = false;

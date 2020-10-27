@@ -2252,6 +2252,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3230969531048051978, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -270
+      objectReference: {fileID: 0}
+    - target: {fileID: 3230969531048051978, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467302043956496879, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467302043956496879, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 115
+      objectReference: {fileID: 0}
     - target: {fileID: 4318213683623265407, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
         type: 3}
       propertyPath: m_Color.r

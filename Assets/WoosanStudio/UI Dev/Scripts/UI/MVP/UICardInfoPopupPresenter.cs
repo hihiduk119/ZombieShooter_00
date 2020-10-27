@@ -33,12 +33,24 @@ namespace WoosanStudio.ZombieShooter
                 cardItem = CardItemRoot.GetChild(i).GetComponent<UICardItemView>();
                 CardItems.Add(cardItem);
 
+                //카드 선택시 이벤트발생 등록
+                cardItem.SelectEvent.AddListener(ReleaseCardItemListener);
+
                 //존제할수 있는 카드의 갯수 만큼만 활성화
-                if (Model.cardSettings.Count > i) { cardItem.gameObject.SetActive(true);  }
+                if (Model.cardSettings.Count > i) { cardItem.gameObject.SetActive(true);}
                 else { cardItem.gameObject.SetActive(false); }
             }
 
             Initialize();
+        }
+
+        /// <summary>
+        /// 최초 활성화시 0번 카드 선택한채로 실행
+        /// </summary>
+        private void OnEnable()
+        {
+            //강제 선택 이벤트 실행
+            CardItems[0].Selected();
         }
 
         private void Initialize()
@@ -56,6 +68,26 @@ namespace WoosanStudio.ZombieShooter
             for (int i = 0; i < Model.cardSettings.Count; i++)
             {
                 CardItems[i].UpdateInfo(Model.cardSettings[i]);
+            }
+        }
+
+        /// <summary>
+        /// 모든 카드 아이템 릴리즈 리스너
+        /// </summary>
+        public void ReleaseCardItemListener(string name)
+        {
+            for (int i = 0; i < CardItems.Count; i++)
+            {
+                if(CardItems[i].gameObject.activeSelf)
+                {
+                    //같은 이름 제외한 모든 아이템 해제
+                    if (!CardItems[i].CardSetting.Name.Equals(name))
+                    {
+                        CardItems[i].Release();
+                    }
+
+                    Debug.Log("카드네임 = " + CardItems[i].CardSetting.Name + "  현재이름 = " + name);
+                }
             }
         }
     }

@@ -412,11 +412,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757e1d8c106294ce7b9cab7b77afc877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Background: {fileID: 2889227643999300128}
   Image: {fileID: 2889227609503389188}
   Name: {fileID: 9020684445879353271}
   Level: {fileID: 8093185681025971913}
   Lock: {fileID: 3159613854160916180}
   UnlockLevel: {fileID: 4892247079449495528}
+  CardSetting: {fileID: 0}
+  View: {fileID: 0}
+  SelectEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2994355931092643458
 GameObject:
   m_ObjectHideFlags: 0

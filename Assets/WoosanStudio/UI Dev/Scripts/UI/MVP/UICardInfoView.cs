@@ -88,5 +88,47 @@ namespace WoosanStudio.ZombieShooter
                     break;
             }
         }
+
+        /// <summary>
+        /// InfoData는 나중에 변경 될수 있기에 일단 대신 InfoData
+        /// </summary>
+        public void UpdateInfoListener(CardSetting cardSetting)
+        {
+            //모든 뷰어에 데이터 입력
+            Image.sprite = cardSetting.Sprite;
+            Image.color = cardSetting.IconColor;
+            //이미지에 따라 사이즈 재정의
+            float width = Image.sprite.rect.width/2.5f;
+            float height = Image.sprite.rect.height/2.5f;
+            Image.rectTransform.sizeDelta = new Vector2(width, height);
+
+            Name.text = cardSetting.Name;
+
+            Description.text = cardSetting.AllDescription();
+            Level.text = cardSetting.Level.ToString();
+
+            RemainTime.text = cardSetting.GetRemainResearchTimeByString();
+            //*일단 대기-> 타임 셋을 제대로 정리하고 가야 함.안그러면 문제 생김
+            //Progress.fillAmount = infoData.progressValue;
+
+            //버튼 상태 *여기도 수정 해야함
+            CardInfoButtonState buttonState = CardInfoButtonState.Cancel;
+
+            //일단 모든 버튼 비활성화
+            Buttons.ForEach(value => value.SetActive(false));
+            switch (buttonState)
+            {
+                case CardInfoButtonState.Upgrade:
+                    //0번 업글레이드 버튼 활성화
+                    Buttons[0].SetActive(true);
+                    break;
+                case CardInfoButtonState.Cancel:
+                    //1번 업그레이드 취소 버튼 활성화
+                    Buttons[1].SetActive(true);
+                    break;
+                case CardInfoButtonState.None:
+                    break;
+            }
+        }
     }
 }

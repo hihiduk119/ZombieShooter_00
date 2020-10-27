@@ -24,24 +24,9 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void Awake()
         {
-            //DontDestroyOnLoad(this);
-
             //실행즉시 바로 아웃라인 두껍게 만들기
-
             SceneManager.sceneLoaded += OnLevelFinishedLoading;
-
-            //SetOutlineWidth(1);
         }
-
-        //void OnEnable()
-        //{
-            
-        //}
-
-        //void OnDisable()
-        //{
-        //    SceneManager.sceneLoaded -= OnLevelFinishedLoading;
-        //}
 
         /// <summary>
         /// 씬 로드 이벤트 실행

@@ -80,6 +80,15 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 로드한 데이터로 기준 생성
+        /// </summary>
+        /// <param name="minutes">분단위로 셋업</param>
+        public Timeset(long binary)
+        {
+            myDateTime = DateTime.FromBinary(binary);
+        }
+
+        /// <summary>
         /// 현재 시간 기준으로 셋업 
         /// </summary>
         /// <param name="minutes"></param>
@@ -126,8 +135,12 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="time"></param>
         /// <returns></returns>
-        public String TimeToString(TimeSpan time)
+        static public String TimeToString(TimeSpan time)
         {
+            String tmp, timeString;
+            string[] timeSpan;
+            StringBuilder stringBuilder = new StringBuilder();
+
             tmp = time.ToString();
             timeSpan = tmp.Split('.');
             stringBuilder.Clear();
@@ -142,6 +155,50 @@ namespace WoosanStudio.ZombieShooter
                 stringBuilder.Append("d ");
                 stringBuilder.Append(timeSpan[1]);
             } else
+            {
+                Debug.Log("시간 파싱 에러 발생!!" + time.ToString());
+                stringBuilder.Append("E 00:00:00");
+            }
+
+            //for(int index = 0; index < timeSpan.Length ;index++)
+            //{
+            //    Debug.Log(timeSpan[index]);
+            //}
+
+            //Debug.Log("원본 = " + time.ToString());
+            timeString = stringBuilder.ToString();
+            return timeString;
+        }
+
+
+        /// <summary>
+        /// 타임 스팬에서 #D ##:##:## 형식으로 시간 가져오기.
+        /// </summary>
+        /// <param name="binary">바이너리값</param>
+        /// <returns></returns>
+        static public String TimeToString(long binary)
+        {
+            TimeSpan time = DateTime.FromBinary(binary).TimeOfDay;
+            String tmp, timeString;
+            string[] timeSpan;
+            StringBuilder stringBuilder = new StringBuilder();
+
+            tmp = time.ToString();
+            timeSpan = tmp.Split('.');
+            stringBuilder.Clear();
+
+            //Day 없고 시간만 존제
+            if (timeSpan.Length == 2)
+            {
+                stringBuilder.Append(timeSpan[0]);
+            }
+            else if (timeSpan.Length == 3)
+            {
+                stringBuilder.Append(timeSpan[0]);
+                stringBuilder.Append("d ");
+                stringBuilder.Append(timeSpan[1]);
+            }
+            else
             {
                 Debug.Log("시간 파싱 에러 발생!!" + time.ToString());
                 stringBuilder.Append("E 00:00:00");

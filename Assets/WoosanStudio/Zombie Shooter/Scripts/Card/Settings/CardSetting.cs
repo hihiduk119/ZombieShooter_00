@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using System.Text;
+
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
@@ -9,7 +11,7 @@ namespace WoosanStudio.ZombieShooter
     /// *그대로 사용하면 안돼고 Instantiate해서 사용해야함.
     /// </summary>
     [CreateAssetMenu(menuName = "ZombieShooter/CardSettings/Make Setting", fileName = "CardData")]
-    public class CardSetting : ScriptableObject , ICard , ICardData
+    public class CardSetting : ScriptableObject// , ICard , ICardData
     {
         [Header("[카드 활성상태 => 무기,탄약,캐릭터는 활성상태에 따라 활서]")]
         [SerializeField]
@@ -235,6 +237,33 @@ namespace WoosanStudio.ZombieShooter
             StreetMan,          //캐릭터 변경 및 모든 무기 데미지 5% 증가 & 최대 체력 -10%감소                            lv 27 unlock
             Trucker,            //캐릭터 변경 및 공습 데미지 25% 증가 & 공습 체움 속도 25% 증가 & 모든 무기 데미지 -10% 감소     lv 30 unlock
             Woman,              //캐릭터 변경 및 최대 체력 25% 증가 & 모든 타입의 탄약 데미지 10 감소                      lv 34 unlock
+        }
+
+        /// <summary>
+        /// 프로퍼티의 모든 디스크립션 합쳐서 가져오기
+        /// </summary>
+        /// <returns></returns>
+        public string AllDescription()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < this.Properties.Count; i++)
+            {
+                stringBuilder.Append(this.Properties[i].GetCompletedDescripsion(this.Level));
+                //마지막 줄이 아니면 라인 개행 추가
+                if (i < this.Properties.Count) { stringBuilder.AppendLine(); }
+            }
+
+            return stringBuilder.ToString();
+        }
+
+        /// <summary>
+        /// 남은 연구시간을 스트링으로 가져옴
+        /// </summary>
+        /// <returns></returns>
+        public string GetRemainResearchTimeByString()
+        {
+            return Timeset.TimeToString(this.RemainResearchTime);
         }
     }
 }

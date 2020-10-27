@@ -88,7 +88,7 @@ namespace WoosanStudio.ZombieShooter
 
             data = JsonUtility.FromJson<UICardModel.Data>(PlayerPrefs.GetString("UICard"));
 
-            data.Print("[Load]");
+            //data.Print("[Load]");
         }
 
         public void Save()
@@ -108,28 +108,28 @@ namespace WoosanStudio.ZombieShooter
 
             PlayerPrefs.SetString("UICard", JsonUtility.ToJson(data));
 
-            data.Print("[Save]");
+            //data.Print("[Save]");
         }
 
         
         #region [-TestCode]
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                Load();
-            }
+        //void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        Load();
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                Save();
-            }
+        //    if (Input.GetKeyDown(KeyCode.S))
+        //    {
+        //        Save();
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                PlayerPrefs.DeleteAll();
-            }
-        }
+        //    if (Input.GetKeyDown(KeyCode.D))
+        //    {
+        //        PlayerPrefs.DeleteAll();
+        //    }
+        //}
         #endregion
     }
 }

@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: 6.AirStrikeGauge
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 6
-  drability: 10
+  name: Air Strike Gauge
+  durability: 10
   value: 1000
   level: 0
   maxStack: 2

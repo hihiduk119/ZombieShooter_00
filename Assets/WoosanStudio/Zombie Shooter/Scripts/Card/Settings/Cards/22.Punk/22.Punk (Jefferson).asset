@@ -30,7 +30,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 06d1f006a54374b8abd06b03aba79f87, type: 3}
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
-  title: Punk
+  title: Jefferson
   Properties:
   - {fileID: 11400000, guid: d02f6fe54dd204636a0436b5e1875933, type: 2}
   - {fileID: 11400000, guid: c5c27c09354934ed9ac798cc70ce3e4a, type: 2}

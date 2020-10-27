@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: 0.AttackSpeedCard
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 0
-  name: 
-  drability: 10
+  name: Attack Speed
+  durability: 10
   value: -1
   level: 0
   maxStack: 3

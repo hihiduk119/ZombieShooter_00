@@ -75,6 +75,7 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
+        //UICardInfoPopupPresenter-> 에서 카드 세팅을 가져와 사용하기 때문에 업데이트 필수
         [Header("[모든 카드 리스트 세팅 => 세이브 로드시 반드시 동기화 해야함]")]
         public List<CardSetting> cardSettings = new List<CardSetting>();
 

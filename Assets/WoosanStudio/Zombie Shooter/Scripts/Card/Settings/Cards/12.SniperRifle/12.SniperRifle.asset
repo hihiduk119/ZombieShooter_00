@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: 12.SniperRifle
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 103
-  drability: 10
+  name: Sniper Rifle
+  durability: 10
   value: 15
   level: 0
   maxStack: 2

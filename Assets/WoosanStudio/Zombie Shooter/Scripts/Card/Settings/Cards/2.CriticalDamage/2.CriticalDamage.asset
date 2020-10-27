@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: 2.CriticalDamage
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 2
-  name: 
-  drability: 10
+  name: Critical Damage
+  durability: 10
   value: 0
   level: 0
   maxStack: 3

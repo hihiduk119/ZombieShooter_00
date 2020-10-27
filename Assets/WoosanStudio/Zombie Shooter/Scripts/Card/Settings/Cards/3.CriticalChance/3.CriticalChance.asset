@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: 3.CriticalChance
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 3
-  name: 
-  drability: 10
+  name: Critical Chance
+  durability: 10
   value: 10
   level: 0
   maxStack: 2
@@ -28,6 +30,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: aeb10ba34e09a4bb4a83efbb24781fe7, type: 3}
   scale: 0.25
   iconColor: {r: 0.27058825, g: 0.3647059, b: 0.4509804, a: 1}
-  title: CriticalChance
+  title: Critical Chance
   Properties:
   - {fileID: 11400000, guid: c2669e8d3a79f44ff8826824876383ff, type: 2}

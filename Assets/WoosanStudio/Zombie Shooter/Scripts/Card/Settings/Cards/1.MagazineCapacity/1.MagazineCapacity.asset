@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
   m_Name: 1.MagazineCapacity
   m_EditorClassIdentifier: 
+  isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 1
-  drability: 10
+  name: Magazine Capacity
+  durability: 10
+  value: -1
   level: 0
   maxStack: 3
   stackCount: 0

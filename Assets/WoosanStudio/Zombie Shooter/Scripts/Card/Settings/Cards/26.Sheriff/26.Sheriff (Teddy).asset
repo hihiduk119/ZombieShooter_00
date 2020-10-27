@@ -30,7 +30,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 64356dae07170499aa7bc673d5cc4dde, type: 3}
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
-  title: Sheriff
+  title: Teddy
   Properties:
   - {fileID: 11400000, guid: 8134fe50212e1490d89ba5736886d2e1, type: 2}
   - {fileID: 11400000, guid: 45f2eca6794fb4cc8b3c648f003a696f, type: 2}

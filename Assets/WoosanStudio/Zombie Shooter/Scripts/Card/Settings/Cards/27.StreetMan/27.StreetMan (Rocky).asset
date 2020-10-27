@@ -30,7 +30,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: eaf9eab90de40456abe788ae6da2796d, type: 3}
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
-  title: Street Man
+  title: Rocky
   Properties:
   - {fileID: 11400000, guid: 35340ad18357e4746822e74ad2736cfd, type: 2}
   - {fileID: 11400000, guid: 26979460e172c4e3592c5e92d64eda99, type: 2}

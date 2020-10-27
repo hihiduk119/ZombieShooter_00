@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: 8.Exp
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 8
-  drability: 10
+  name: Exp
+  durability: 10
   value: 10
   level: 0
   maxStack: 2

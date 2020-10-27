@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: 15.PlasmaAmmo
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 202
-  name: 
-  drability: 10
+  name: Plasma Ammo
+  durability: 10
   value: 0
   level: 0
   maxStack: 2

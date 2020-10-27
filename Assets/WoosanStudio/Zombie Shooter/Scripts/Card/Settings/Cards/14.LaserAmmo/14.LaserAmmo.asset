@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: 14.LaserAmmo
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 201
-  name: 
-  drability: 10
+  name: Laser Ammo
+  durability: 10
   value: 0
   level: 0
   maxStack: 2

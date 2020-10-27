@@ -30,7 +30,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: b5c4d1a6873cd4e39b97dbcf5dfe434c, type: 3}
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
-  title: Policeman
+  title: Alvin
   Properties:
   - {fileID: 11400000, guid: 25963df39aacd4600a4334ec911bdec2, type: 2}
   - {fileID: 11400000, guid: effd652e657664a1b9776dd9f694614f, type: 2}

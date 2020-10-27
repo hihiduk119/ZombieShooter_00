@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: 13.BulletAmmo
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 200
-  name: 
-  drability: 10
+  name: Bullet Ammo
+  durability: 10
   value: 0
   level: 0
   maxStack: 2

@@ -30,7 +30,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 0a4c3638f0ad9447da859fe27424422f, type: 3}
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
-  title: Trucker
+  title: Kendrick
   Properties:
   - {fileID: 11400000, guid: da3a3d0c8412748519cff14484807af2, type: 2}
   - {fileID: 11400000, guid: 4f29588509541442c8c5672e3850af4d, type: 2}

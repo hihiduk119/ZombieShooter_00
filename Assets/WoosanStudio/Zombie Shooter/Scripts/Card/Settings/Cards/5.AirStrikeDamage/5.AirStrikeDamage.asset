@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: 5.AirStrikeDamage
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 5
-  drability: 10
+  name: Air Strike Damage
+  durability: 10
   value: 250
   level: 0
   maxStack: 2

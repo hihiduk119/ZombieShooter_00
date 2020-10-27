@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: 7.Coin
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 7
-  drability: 10
+  name: Coin
+  durability: 10
   value: 10
   level: 0
   maxStack: 2

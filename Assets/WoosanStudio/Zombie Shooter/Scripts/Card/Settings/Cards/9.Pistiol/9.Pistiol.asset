@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: 9.Pistiol
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 100
-  name: 
-  drability: 10
+  name: Pistol
+  durability: 10
   value: 5
   level: 0
   maxStack: 2

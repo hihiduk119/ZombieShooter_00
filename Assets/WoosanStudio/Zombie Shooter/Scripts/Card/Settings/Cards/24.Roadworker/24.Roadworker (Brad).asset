@@ -30,7 +30,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 9acf21bf9696a475b97cb297c396ef88, type: 3}
   scale: 0.35
   iconColor: {r: 1, g: 1, b: 1, a: 1}
-  title: Road Worker
+  title: Brad
   Properties:
   - {fileID: 11400000, guid: ccd48e96f62474a4597c2cb2aed0c1cd, type: 2}
   - {fileID: 11400000, guid: af129b0e019c74e14a39edb76e99a572, type: 2}

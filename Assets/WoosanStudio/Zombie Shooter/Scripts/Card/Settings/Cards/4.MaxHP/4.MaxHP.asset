@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: 4.MaxHP
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 4
-  drability: 10
+  name: Max HP
+  durability: 10
   value: 100
   level: 0
   maxStack: 2

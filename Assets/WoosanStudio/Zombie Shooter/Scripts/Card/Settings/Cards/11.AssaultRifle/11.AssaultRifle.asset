@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: 11.AssaultRifle
   m_EditorClassIdentifier: 
   isActivate: 0
+  gemPrice: -1
+  useAble: 0
   type: 102
-  name: 
-  drability: 10
+  name: Assault Rifle
+  durability: 10
   value: 3
   level: 0
   maxStack: 2

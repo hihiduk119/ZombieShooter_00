@@ -104,7 +104,7 @@ namespace WoosanStudio.ZombieShooter
             {
                 //남은 시간 알아오기
                 timeset.GetRemainTime();
-                TextProcess.text = timeset.TimeString;
+                //TextProcess.text = timeset.TimeString;
 
                 //0-1사이 값으로 변환한것 가져오기.
                 ProgressBar.fillAmount = timeset.GetRemainValue();

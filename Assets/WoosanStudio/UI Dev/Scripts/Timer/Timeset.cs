@@ -10,65 +10,20 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 시간 데이터변환 클래스
+    /// 시간이 필요한 모든 데이터는 생성시 이걸 가지고 있어야 한다.
     /// 사용법
     /// -> Make 또는 생성자에 시간 넣기. 생성시간이 셋업됨.
     /// -> GetRemainTime() 호출하여 셋업된 시간으로부터 남은 시간 가져오기.
     /// </summary>
     public class Timeset
     {
-        DateTime myDateTime;
+        public long endDateTime;
+        public long startDateTime;
         //전체 몇초인지 구해놓기
-        int totalSeconds = 0;
-        
-        //스트링 메모리 절약용 스트링 빌더
-        StringBuilder stringBuilder = new StringBuilder();
+        public int totalSeconds = 0;
 
-        //계산된 시간을 외부에서 가져올때 쓰는 변수
-        private String timeString;
-        public String TimeString { get => this.timeString; }
-
-        String tmp;
-        string[] timeSpan;
-
-        /// <summary>
-        /// 현재 셋업된 데이터 타임을 가져옴
-        /// </summary>
-        /// <returns></returns>
-        public DateTime GetDateTime()
-        {
-            //JsonUtility.ToJson(myDateTime.ToBinary());
-            return myDateTime;
-        }
-
-        /// <summary>
-        /// 현재 셋업된 데이터 타임을 바이너리로 가져옴
-        /// -> Jason 세이브용 
-        /// </summary>
-        /// <returns>바이너리데이터</returns>
-        public long GetDateTimeByBinary()
-        {
-            return myDateTime.ToBinary();
-        }
-
-        /// <summary>
-        /// 현재 셋업된 데이터 타임을 가져옴
-        /// 세이브 로드시 사용
-        /// </summary>
-        /// <returns></returns>
-        public void SetDateTime(DateTime dateTime)
-        {
-            myDateTime = dateTime;
-        }
-
-        /// <summary>
-        /// 현재 셋업된 데이터 타임을 가져옴
-        /// -> 제이슨 로드용 
-        /// </summary>
-        /// <returns></returns>
-        public void SetDateTimeByBinary(long dateTimeValue)
-        {
-            myDateTime = DateTime.FromBinary(dateTimeValue);
-        }
+        //1.생성시 바로 데이터 저장
+        //2.로드후 호출시 바로 데이터 반영
 
         /// <summary>
         /// 현재 시간 기준으로 셋업 생성자
@@ -79,14 +34,8 @@ namespace WoosanStudio.ZombieShooter
             Make(Seconds);
         }
 
-        /// <summary>
-        /// 로드한 데이터로 기준 생성
-        /// </summary>
-        /// <param name="minutes">분단위로 셋업</param>
-        public Timeset(long binary)
-        {
-            myDateTime = DateTime.FromBinary(binary);
-        }
+        //빈 생성자
+        public Timeset() {}
 
         /// <summary>
         /// 현재 시간 기준으로 셋업 
@@ -94,21 +43,47 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="minutes"></param>
         public void Make(int seconds)
         {
-            //Debug.Log("지금 시간 = " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초"));
-            myDateTime = DateTime.Now;
-            //myDateTime = myDateTime.AddMinutes(minutes);
-            myDateTime = myDateTime.AddSeconds(seconds);
+            Debug.Log("지금 시간 = " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초"));
+            startDateTime = endDateTime =  DateTime.Now.ToBinary();
+
+            endDateTime = DateTime.FromBinary(endDateTime).AddSeconds(seconds).ToBinary();
             //전체 몇초 저장
             totalSeconds = seconds;
         }
 
         /// <summary>
-        /// 남은시간을 timespan으로 반환
+        /// 내가 가진 시간에서 남은시간을 timespan으로 반환
         /// </summary>
         /// <returns></returns>
         public TimeSpan GetRemainTime()
         {
-            TimeSpan timeSpan = myDateTime.Subtract(DateTime.Now);
+            TimeSpan timeSpan = DateTime.FromBinary(endDateTime).Subtract(DateTime.Now);
+            TimeToString(timeSpan);
+            //Debug.Log("남은시간 = " + timeString);
+            return timeSpan;
+        }
+
+        /// <summary>
+        /// 남은시간을 timespan으로 반환
+        /// </summary>
+        /// <param name="preDateTime">현재와 비교하려고하는 이전 시간</param>
+        /// <returns></returns>
+        static public TimeSpan GetRemainTime(DateTime preDateTime)
+        {
+            TimeSpan timeSpan = preDateTime.Subtract(DateTime.Now);
+            TimeToString(timeSpan);
+            //Debug.Log("남은시간 = " + timeString);
+            return timeSpan;
+        }
+
+        /// <summary>
+        /// 남은시간을 timespan으로 반환
+        /// </summary>
+        /// <param name="preDateTime">현재와 비교하려고하는 이전 시간</param>
+        /// <returns></returns>
+        static public TimeSpan GetRemainTime(long preDateTime)
+        { 
+            TimeSpan timeSpan = DateTime.FromBinary(preDateTime).Subtract(DateTime.Now);
             TimeToString(timeSpan);
             //Debug.Log("남은시간 = " + timeString);
             return timeSpan;
@@ -167,6 +142,7 @@ namespace WoosanStudio.ZombieShooter
 
             //Debug.Log("원본 = " + time.ToString());
             timeString = stringBuilder.ToString();
+            Debug.Log(timeString);
             return timeString;
         }
 
@@ -179,7 +155,7 @@ namespace WoosanStudio.ZombieShooter
         static public String TimeToString(long binary)
         {
             TimeSpan time = DateTime.FromBinary(binary).TimeOfDay;
-            String tmp, timeString;
+            string tmp, timeString;
             string[] timeSpan;
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -211,6 +187,8 @@ namespace WoosanStudio.ZombieShooter
 
             //Debug.Log("원본 = " + time.ToString());
             timeString = stringBuilder.ToString();
+
+            Debug.Log(timeString);
             return timeString;
         }
     }

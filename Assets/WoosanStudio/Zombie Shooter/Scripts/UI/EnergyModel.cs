@@ -52,27 +52,6 @@ namespace WoosanStudio.ZombieShooter
                     );
             }
         }
-        /*
-        //최대 에너지
-        //로드해서 가져옴
-        public int MaxEnergy = 100;
-        //현재 에너지
-        //로드해서 가져옴
-        public int CurrentEnergy = 0;
-        //회복 하는 시간
-        //로드해서 가져옴
-        public int MaxRechargingTime = 45;
-
-        //회복 하는 시간
-        //로드해서 가져옴
-        public int RemainRechargingTime = 0;
-
-        //한번에 회복하는 수치
-        //로드해서 가져옴
-        public int RechargingPoint = 1;
-
-        private DateTime dateTime;
-        */
 
         [SerializeField]
         private Data data = new Data();

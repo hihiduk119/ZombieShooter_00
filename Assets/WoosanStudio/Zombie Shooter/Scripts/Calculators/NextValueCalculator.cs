@@ -89,6 +89,7 @@ namespace WoosanStudio.ZombieShooter
         private void Awake()
         {
             //남은 시간 계산 공식 등록
+            //*제거필요
             //*공식이 추가될때 마다 등록 시켜야 함.
             StartEvent.AddListener(RunFormula);
 
@@ -100,6 +101,7 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// *제거필요
         /// 계산을 실행하는 부분 이며 임의로 메서드를 변경 할수 있음
         /// </summary>
         /// <param name="methodName"></param>
@@ -116,18 +118,7 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
-        /// 레벨에 맞는 공격 속도 업글 시간을 가져옴
-        /// </summary>
-        /*void AttackSpeed()
-        {
-            //공격속도 업글 시간 공식 (25레벨 시 9Day 소요,total = 62Day)
-            int seconds = (level * level * level * 30) * 2 + 30;
-
-            //계산 완료 및 일종의 리턴 호출
-            EndEvent.Invoke(seconds);
-        }*/
-
-        /// <summary>
+        /// *제거필요
         /// 기본 레벨 업글 시간
         /// * 메서드 추가로 새로운 공식 넣으면 됨.
         /// </summary>
@@ -147,6 +138,30 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 스킬(능력,카드) 레벨이 증가함에 따라 증가하는 업그레이드 시간
+        /// </summary>
+        /// <param name="MaxLevel"></param>
+        /// <returns></returns>
+        static public List<int> GetUpgradeTime(int MaxLevel)
+        {
+            //지역변수 선언
+            List<int> valueList = new List<int>();
+            int value = 0;
+
+            for (int level = 0; level < MaxLevel; level++)
+            {
+                //공식 적용
+                value = (level * level * level * 30) * 2 + 30;
+                //리스트에 넣기
+                valueList.Add(value);
+            }
+
+            return valueList;
+        }
+
+
+        /// <summary>
+        /// *제거필요
         /// 연구 비용 증가 공식 레벨에 따라 올라가는
         /// </summary>
         IEnumerator CoinCoroutine(object myObject)
@@ -167,22 +182,50 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 연구 비용 증가 공식 레벨에 따라 올라가는
         /// </summary>
-        IEnumerator ExpCoroutine(object myObject)
+        /// <param name="MaxLevel"></param>
+        /// <returns></returns>
+        static public List<int> GetMaxCoin(int MaxLevel)
         {
-            int level = (int)myObject;
+            //지역변수 선언
+            List<int> valueList = new List<int>();
+            int value = 0;
 
-            //코인 추가 공식 
-            int seconds = (level * level * level * 5) * 2 + 300;
+            for (int level = 0; level < MaxLevel; level++)
+            {
+                //공식 적용
+                value = (level * level * level * 5) * 2 + 100;
+                //리스트에 넣기
+                valueList.Add(value);
+            }
 
-            CallBackData returnData = new CallBackData(level, seconds);
+            return valueList;
+        }
 
-            //계산 완료 및 일종의 리턴 호출
-            EndEvent.Invoke(returnData);
 
-            yield break;
+        /// <summary>
+        /// 레벨 증가에 따라 필요겸험치 증가
+        /// </summary>
+        /// <param name="MaxLevel"></param>
+        /// <returns></returns>
+        static public List<int> GetMaxExp(int MaxLevel)
+        {
+            //지역변수 선언
+            List<int> valueList = new List<int>();
+            int value = 0;
+
+            for (int level = 0; level < MaxLevel; level++)
+            {
+                //공식 적용
+                value = (level * level * level * 5) * 2 + 300;
+                //리스트에 넣기
+                valueList.Add(value);
+            }
+
+            return valueList;
         }
 
         /// <summary>
+        /// *코루틴 제거로 변경 필요
         /// 몬스터 체력이 레벨에 따라 증가
         /// </summary>
         IEnumerator MonsterHealthCoroutine(object myObject)
@@ -200,6 +243,7 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// *코루틴 제거로 변경 필요
         /// 몬스터 대미지 레벨에 따라 올라가는
         /// </summary>
         IEnumerator MonsterDamageCoroutine(object myObject)
@@ -218,6 +262,7 @@ namespace WoosanStudio.ZombieShooter
 
         #region [-PropertyType 계산 구현 => 카드 중첩도 같이 구현]
         /// <summary>
+        /// *코루틴 제거로 변경 필요
         /// 크리티컬 찬스,탄약,총,탄약 데미지 계산
         /// 매 레벨업시 상승 값 제공
         /// </summary>
@@ -255,6 +300,7 @@ namespace WoosanStudio.ZombieShooter
 
 
         /// <summary>
+        /// *코루틴 제거로 변경 필요
         /// 공격 속도 계산
         /// * 공격속도는 1을 기준으로 점점 줄어야 한다.
         /// </summary>

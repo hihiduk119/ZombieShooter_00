@@ -28,14 +28,10 @@ namespace WoosanStudio.ZombieShooter
         [Header("[레벨 업데이트 이벤트]")]
         public LevelUpEvent UpdateLevelUpEvent = new LevelUpEvent();
 
-        IEnumerator Start()
+        void Start()
         {
             //모델 초기화
             Model.Initialize();
-
-            //계산 식을 가져오는 시간 때문에 0.5f 기다림.
-            //*이 바보같은 짓 보다는 그냥 가져오는 방식으로 바꿔야 할듯
-            yield return new WaitForSeconds(1f);
 
             //변경된 레벨 전달
             UpdateLevelUpEvent.Invoke(Model.data.Level);
@@ -89,14 +85,14 @@ namespace WoosanStudio.ZombieShooter
 
 
         #region [-TestCode]
-        //void Update()
-        //{
-        //    //경험치 추가
-        //    if (Input.GetKeyDown(KeyCode.A))
-        //    {
-        //        AddExp(100);
-        //    }
-        //}
+        void Update()
+        {
+            //경험치 추가
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                AddExp(100);
+            }
+        }
         #endregion
 
     }

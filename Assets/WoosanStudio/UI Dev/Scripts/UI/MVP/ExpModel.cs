@@ -41,10 +41,10 @@ namespace WoosanStudio.ZombieShooter
 
         private UnityAction<object> callback;
         //시작 인덱스가 1이라서 
-        private int callbackCnt = 0;
+        //private int callbackCnt = 0;
 
         //확인용 
-        private int total;
+        //private int total;
 
         /// <summary>
         /// 최초 MaxExp를 가져오기 위해 한번 실행 필요
@@ -52,10 +52,11 @@ namespace WoosanStudio.ZombieShooter
         public void Initialize()
         {
             //콜백 액션을 계산기 콜벨 이벤트에 넣는다
-            callback = GetMaxExpCallback;
-            calculator.EndEvent.AddListener(callback);
+            //callback = GetMaxExpCallback;
+            //calculator.EndEvent.AddListener(callback);
+            //StartCoroutine(UpdateMexExpListCoroutine(MaxLevel));
 
-            StartCoroutine(UpdateMexExpListCoroutine(MaxLevel));
+            MaxExpList = NextValueCalculator.GetMaxExp(MaxLevel);
 
             Load();
         }
@@ -65,32 +66,32 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="maxLevel"></param>
         /// <returns></returns>
-        IEnumerator UpdateMexExpListCoroutine(int maxLevel)
-        {
-            for (int index = 0; index < maxLevel; index++)
-            {
-                calculator.StartEvent.Invoke("Exp", index);
-                yield return new WaitForEndOfFrame();
-            }
-        }
+        //IEnumerator UpdateMexExpListCoroutine(int maxLevel)
+        //{
+        //    for (int index = 0; index < maxLevel; index++)
+        //    {
+        //        calculator.StartEvent.Invoke("Exp", index);
+        //        yield return new WaitForEndOfFrame();
+        //    }
+        //}
 
         //레벨별 최대 경험치 결과 콜백
-        void GetMaxExpCallback(object callBackData)
-        {
-            //전체 시간을 구하기 위해 더해줌
-            //전체 시간을 구하기 위해 더해줌
-            total += (int)((NextValueCalculator.CallBackData)callBackData).Value;
+        //void GetMaxExpCallback(object callBackData)
+        //{
+        //    //전체 시간을 구하기 위해 더해줌
+        //    //전체 시간을 구하기 위해 더해줌
+        //    total += (int)((NextValueCalculator.CallBackData)callBackData).Value;
 
-            //최대 경험치 세팅
-            MaxExpList.Add((int)((NextValueCalculator.CallBackData)callBackData).Value);
+        //    //최대 경험치 세팅
+        //    MaxExpList.Add((int)((NextValueCalculator.CallBackData)callBackData).Value);
 
-            //Debug.Log("[level : " + ((NextValueCalculator.CallBackData)callBackData).Level + "] " + "[current value : " + ((NextValueCalculator.CallBackData)callBackData).Value + "] " + "total = [" + total + "]");
+        //    //Debug.Log("[level : " + ((NextValueCalculator.CallBackData)callBackData).Level + "] " + "[current value : " + ((NextValueCalculator.CallBackData)callBackData).Value + "] " + "total = [" + total + "]");
 
-            //콜백의 마지막을 알기위해 카운팅
-            callbackCnt++;
-            //콜백의 마지막이며 리스너 제거
-            if(callbackCnt == MaxLevel) { calculator.EndEvent.RemoveListener(GetMaxExpCallback); }
-        }
+        //    //콜백의 마지막을 알기위해 카운팅
+        //    callbackCnt++;
+        //    //콜백의 마지막이며 리스너 제거
+        //    if(callbackCnt == MaxLevel) { calculator.EndEvent.RemoveListener(GetMaxExpCallback); }
+        //}
 
         /// <summary>
         /// 데이터 로드

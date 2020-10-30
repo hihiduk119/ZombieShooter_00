@@ -48,7 +48,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="minutes"></param>
         private void Make(int seconds)
         {
-            Debug.Log("지금 시간 = " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초"));
+            //Debug.Log("지금 시간 = " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초"));
             startDateTime = endDateTime =  DateTime.Now.ToBinary();
 
             endDateTime = DateTime.FromBinary(endDateTime).AddSeconds(seconds).ToBinary();

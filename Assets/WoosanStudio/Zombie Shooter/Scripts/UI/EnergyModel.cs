@@ -174,7 +174,7 @@ namespace WoosanStudio.ZombieShooter
             string energyByJson  = JsonUtility.ToJson(data);
 
             //테스트 출력
-            data.Print();
+            //data.Print();
 
             //제이슨 저장
             PlayerPrefs.SetString("Energy", energyByJson);

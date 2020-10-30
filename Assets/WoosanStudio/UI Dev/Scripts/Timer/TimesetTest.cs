@@ -12,7 +12,7 @@ namespace WoosanStudio.ZombieShooter
 
         private void Start()
         {
-            LoadTime();
+            //LoadTime();
         }
 
         //void MakeTime()
@@ -46,24 +46,25 @@ namespace WoosanStudio.ZombieShooter
         }
 
         #region [-TestCode]
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                TimeSpan timeSpan = timeset.GetRemainTime();
-                if(timeSpan.TotalSeconds < 0)
-                {
-                    Debug.Log("시간 초과");
-                } else
-                {
-                    Debug.Log("남은 시간 = " + timeSpan.TotalSeconds);
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
+        //void Update()
+        //{
+        //    //업그레이드 연구 시간 저장 테스트
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        TimeSpan timeSpan = timeset.GetRemainTime();
+        //        if(timeSpan.TotalSeconds < 0)
+        //        {
+        //            Debug.Log("시간 초과");
+        //        } else
+        //        {
+        //            Debug.Log("남은 시간 = " + timeSpan.TotalSeconds);
+        //        }
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.S))
+        //    {
                 
-            }
-        }
+        //    }
+        //}
         #endregion
 
     }

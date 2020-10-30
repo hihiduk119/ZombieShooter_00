@@ -64,7 +64,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void UpdateCardItem()
         {
-            Debug.Log("UpdateCardItem 카드 갯수 = " + Model.cardSettings.Count);
+            //Debug.Log("UpdateCardItem 카드 갯수 = " + Model.cardSettings.Count);
             for (int i = 0; i < Model.cardSettings.Count; i++)
             {
                 CardItems[i].UpdateInfo(Model.cardSettings[i]);
@@ -86,7 +86,7 @@ namespace WoosanStudio.ZombieShooter
                         CardItems[i].Release();
                     }
 
-                    Debug.Log("카드네임 = " + CardItems[i].CardSetting.Name + "  현재이름 = " + name);
+                    //Debug.Log("카드네임 = " + CardItems[i].CardSetting.Name + "  현재이름 = " + name);
                 }
             }
         }

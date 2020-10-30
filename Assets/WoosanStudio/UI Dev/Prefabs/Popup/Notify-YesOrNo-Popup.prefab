@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 5095991077146697482}
   - component: {fileID: 4969236966441898520}
   m_Layer: 5
-  m_Name: PurchaseFinal-Popup
+  m_Name: Notify-YesOrNo-Popup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2142,8 +2142,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16, y: 40}
-  m_SizeDelta: {x: 734.8, y: 200.4}
+  m_AnchoredPosition: {x: 0, y: 9}
+  m_SizeDelta: {x: 760, y: 370}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4971315616400354008
 CanvasRenderer:
@@ -2175,16 +2175,19 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 28248718f4b2346df928b703ba135595, type: 3}
     m_FontSize: 36
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 60
     m_Alignment: 4
-    m_AlignByGeometry: 0
+    m_AlignByGeometry: 1
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Are you sure you want to purchase this item?
+  m_Text: 'Are you sure you want to purchase this item?Are you sure you want to purchase
+    this item? Are you sure you want to purchase this item?
+
+'
 --- !u!1 &6698614738744647196
 GameObject:
   m_ObjectHideFlags: 0

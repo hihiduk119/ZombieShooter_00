@@ -1834,6 +1834,7 @@ GameObject:
   - component: {fileID: 114000011163958758}
   - component: {fileID: 95000011114026944}
   - component: {fileID: 7094422195977695922}
+  - component: {fileID: 1336755406561938129}
   m_Layer: 5
   m_Name: Card-Info-Popup
   m_TagString: Untagged
@@ -1913,6 +1914,18 @@ MonoBehaviour:
   CardItemRoot: {fileID: 224000012552150534}
   CardItems: []
   Model: {fileID: 0}
+--- !u!225 &1336755406561938129
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000012783784544}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1000013049793880
 GameObject:
   m_ObjectHideFlags: 0

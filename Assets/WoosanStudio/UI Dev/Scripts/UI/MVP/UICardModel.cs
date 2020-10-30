@@ -34,10 +34,17 @@ namespace WoosanStudio.ZombieShooter
             public int ResearchSlotIndex = -1;
 
             //남은 업글 시간
-            public long UpgradeStartedTime = 0;
-
+            //public long UpgradeStartedTime = 0;
             //업글중 이었는지 아닌지
-            public bool IsUpgrading = false;
+            //public bool IsUpgrading = false;
+            //남은 업글 시간 및 업글 중인지 아닌지 까지 모두 알수 있음
+            public Timeset UpgardeTimeset;
+
+            
+
+            
+            
+            
 
             public CardData(bool useAble = false) { UseAble = useAble; }
         }

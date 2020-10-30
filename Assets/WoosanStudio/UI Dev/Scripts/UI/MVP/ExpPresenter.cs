@@ -85,14 +85,14 @@ namespace WoosanStudio.ZombieShooter
 
 
         #region [-TestCode]
-        void Update()
-        {
-            //경험치 추가
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                AddExp(100);
-            }
-        }
+        //void Update()
+        //{
+        //    //경험치 추가
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        AddExp(100);
+        //    }
+        //}
         #endregion
 
     }

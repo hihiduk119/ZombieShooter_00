@@ -92,6 +92,11 @@ namespace WoosanStudio.ZombieShooter
         private long upgradeStartedTime = 0;
         public long UpgradeStartedTime => upgradeStartedTime;
 
+        //여기 수정해야함
+        private Timeset upgradeTimeset;
+        public Timeset UpgradeTimeset => upgradeTimeset;
+
+
         [HideInInspector]//연구 중이었다면 해당 슬롯
         //저장 필요
         private int researchSlot = -1;
@@ -268,15 +273,6 @@ namespace WoosanStudio.ZombieShooter
             }
 
             return stringBuilder.ToString();
-        }
-
-        /// <summary>
-        /// 남은 연구시간을 스트링으로 가져옴
-        /// </summary>
-        /// <returns></returns>
-        public string GetRemainUpgradeTimeByString()
-        {
-            return Timeset.TimeToString(this.upgradeStartedTime);
         }
     }
 }

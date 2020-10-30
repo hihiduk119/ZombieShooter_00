@@ -103,7 +103,7 @@ namespace WoosanStudio.ZombieShooter
             data = JsonUtility.FromJson<ExpModel.Data>(PlayerPrefs.GetString("Exp"));
 
             Debug.Log("Exp 로드 완료");
-            data.Print();
+            //data.Print();
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace WoosanStudio.ZombieShooter
             PlayerPrefs.SetString("Exp", JsonUtility.ToJson(data));
 
             Debug.Log("Exp 저장 완료");
-            data.Print();
+            //data.Print();
         }
 
         /*

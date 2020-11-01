@@ -13,6 +13,8 @@ namespace WoosanStudio.ZombieShooter
     {
         [Header("[업그레이드 결과 내용]")]
         public Text Result;
+        [Header("[레벨]")]
+        public Text Level;
 
         //================> 성공 이펙트  <================
 
@@ -39,6 +41,7 @@ namespace WoosanStudio.ZombieShooter
         public Transform[] SoulEPosition;
 
         public string strResult;
+        public string strLevel;
         public bool bResult;
 
         /// <summary>
@@ -46,16 +49,26 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void OnEnable()
         {
-            UpdateResult(strResult, bResult);
+            UpdateResult(strResult, strLevel, bResult);
         }
 
         /// <summary>
         /// 결과 정보 업데이트
         /// </summary>
         /// <param name="value"></param>
-        public void UpdateResult(string value,bool resultValue)
+        public void UpdateResult(string value,string level,bool resultValue)
         {
             Result.text = value;
+            Level.text = level;
+
+            //성골시 컬러 그린
+            if (resultValue) {
+                Level.color = new Color32(0, 204, 20, 255);
+            } else {//실패시 컬러 레드
+                Level.color = new Color32(205, 0, 0, 255);
+            }
+                
+
             //이펙트 연출
             ShowEffect(resultValue);
         }
@@ -75,17 +88,10 @@ namespace WoosanStudio.ZombieShooter
 
                 //꽃 터짐 이펙트 갯수만큼
                 StartCoroutine(MakeCoroutine(ConfettiBlastEffect, ConfettiBlastPosition));
-                //for (int i = 0; i < ConfettiBlastPosition.Length; i++) {
-                //    Make(ConfettiBlastEffect, ConfettiBlastPosition[i]);
-                //}
             } else//실패 이펙트
             {
                 //영혼 이펙트 갯수만큼
-                StartCoroutine(MakeCoroutine(SoulEffect, SoulEPosition));
-                //for (int i = 0; i < SoulEPosition.Length; i++)
-                //{
-                //    Make(SoulEffect, SoulEPosition[i]);
-                //}
+                StartCoroutine(MakeCoroutine(SoulEffect, SoulEPosition));       
             }
         }
 
@@ -118,7 +124,7 @@ namespace WoosanStudio.ZombieShooter
             {
                 Make(prefab, parents[i]);
                 i++;
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.15f);
             }
         }
     }

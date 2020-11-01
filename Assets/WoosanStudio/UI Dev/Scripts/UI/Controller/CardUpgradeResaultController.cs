@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using DarkTonic.MasterAudio;
+
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
@@ -17,11 +19,13 @@ namespace WoosanStudio.ZombieShooter
         /// 결과 출력 실행
         /// </summary>
         /// <param name="result"></param>
-        public void OpenResult(string strResult, bool bResult)
+        public void OpenResult(string strResult,string strLevel, bool bResult)
         {
             UICardUpgradeResualtPopupView view = popupOpener.popupPrefab.GetComponent<UICardUpgradeResualtPopupView>();
             view.strResult = strResult;
+            view.strLevel = strLevel;
             view.bResult = bResult;
+            
 
             popupOpener.OpenPopup();
         }
@@ -31,12 +35,17 @@ namespace WoosanStudio.ZombieShooter
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                OpenResult("SUCCESS", true);
+                OpenResult("SUCCESS","2", true);
+
+                MasterAudio.FireCustomEvent("GUI_Positive", this.transform);
             }
 
             if (Input.GetKeyDown(KeyCode.S))
             {
-                OpenResult("FAIL", false);
+                OpenResult("FAIL","1", false);
+
+                MasterAudio.FireCustomEvent("GUI_Negative", this.transform);
+                //MasterAudio.FireCustomEvent("GUI_Positive", this.transform);
             }
         }
         #endregion

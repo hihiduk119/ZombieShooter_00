@@ -10,7 +10,6 @@ namespace WoosanStudio.ZombieShooter
     /// <summary>
     /// 카드연구 팝업의 컨텐츠
     /// 코인으로 연구,젬으로 연구,겜블
-    /// 
     /// </summary>
     public class UICardResearchInfoPopupView : MonoBehaviour
     {

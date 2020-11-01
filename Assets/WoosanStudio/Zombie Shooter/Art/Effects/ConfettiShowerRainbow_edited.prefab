@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 445124}
   - component: {fileID: 19872788}
   - component: {fileID: 19948398}
-  m_Layer: 0
-  m_Name: ConfettiShowerRainbow
+  m_Layer: 5
+  m_Name: ConfettiShowerRainbow_edited
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

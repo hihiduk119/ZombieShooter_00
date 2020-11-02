@@ -37,13 +37,13 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField]
         //저장 필요
         private int level = 0;
-        public int Level { get => level; }
+        public int Level { get => level; set => level = value; }
 
         [Header("[현재 내구도]")]
         [SerializeField]
         //저장 필요
         private int durability = 10;
-        public int Durability { get => durability; }
+        public int Durability { get => durability; set => durability = value; }
 
         //UI에서 데이터의 순서
         public int SortIndex;
@@ -78,29 +78,29 @@ namespace WoosanStudio.ZombieShooter
         private new string name = "";
         public string Name { get => name; }
 
-        
+
         [Header("[기본 값이며 무기,탄약의 경우 기본 데미지]")]
         [SerializeField]
         //저장 필요
         private int value = -1;
         public int Value { get => value; }
 
-        
+
 
         [HideInInspector]//레벨 업그레이드 연구 중이라면 남은 시간 System.Data
         //저장 불필요
-        private long upgradeStartedTime = 0;
-        public long UpgradeStartedTime => upgradeStartedTime;
+        //private long upgradeStartedTime = 0;
+        //public long UpgradeStartedTime => upgradeStartedTime;
 
         //여기 수정해야함
         private Timeset upgradeTimeset;
-        public Timeset UpgradeTimeset => upgradeTimeset;
+        public Timeset UpgradeTimeset{get => upgradeTimeset; set => upgradeTimeset = value; }
 
 
         [HideInInspector]//연구 중이었다면 해당 슬롯
         //저장 필요
-        private int researchSlot = -1;
-        public int ResearchSlot => researchSlot;
+        //private int researchSlot = -1;
+        //public int ResearchSlot => researchSlot;
 
 
         [Header("[최대 중첩 => 0부터 계산]")]

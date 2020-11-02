@@ -31,6 +31,14 @@ namespace WoosanStudio.ZombieShooter
         //2.로드후 호출시 바로 데이터 반영
 
         /// <summary>
+        /// 내용 출력
+        /// </summary>
+        public void Print()
+        {
+            Debug.Log("지금 업그레이드 중 = " + isUpgrading + " 끝 시간 = " + TimeToString(endDateTime) + "  시작 시간 = " + TimeToString(startDateTime) + "  전체 시간(초) = " + totalSeconds);
+        }
+
+        /// <summary>
         /// 현재 시간 기준으로 셋업 생성자
         /// </summary>
         /// <param name="minutes">분단위로 셋업</param>
@@ -230,7 +238,7 @@ namespace WoosanStudio.ZombieShooter
             //Debug.Log("원본 = " + time.ToString());
             timeString = stringBuilder.ToString();
 
-            Debug.Log(timeString);
+            //Debug.Log(timeString);
             return timeString;
         }
     }

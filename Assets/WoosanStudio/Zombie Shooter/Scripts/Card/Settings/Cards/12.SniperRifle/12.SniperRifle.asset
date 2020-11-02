@@ -14,17 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActivate: 0
   gemPrice: -1
-  useAble: 0
+  useAble: 1
+  level: 0
+  durability: 100
+  SortIndex: 0
+  ResearchSlotIndex: -1
+  IsUpgrading: 0
   type: 103
   name: Sniper Rifle
-  durability: 10
   value: 15
-  level: 0
   maxStack: 2
   stackCount: 0
   maxDurability: 10
   maxLevel: 25
-  unlockLevel: 0
+  unlockLevel: 3
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: 20196253ec9cc49a7b5f8d548fd4266e, type: 3}

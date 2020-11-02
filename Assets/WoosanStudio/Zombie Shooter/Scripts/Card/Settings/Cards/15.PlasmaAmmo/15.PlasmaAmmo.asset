@@ -15,16 +15,19 @@ MonoBehaviour:
   isActivate: 0
   gemPrice: -1
   useAble: 0
+  level: 0
+  durability: 100
+  SortIndex: 0
+  ResearchSlotIndex: -1
+  IsUpgrading: 0
   type: 202
   name: Plasma Ammo
-  durability: 10
   value: 0
-  level: 0
   maxStack: 2
   stackCount: 0
   maxDurability: 10
   maxLevel: 25
-  unlockLevel: 0
+  unlockLevel: 20
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: c2b52f79421e7463693ca823b6bce6a6, type: 3}

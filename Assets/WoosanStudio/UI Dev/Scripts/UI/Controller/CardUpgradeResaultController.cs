@@ -31,23 +31,25 @@ namespace WoosanStudio.ZombieShooter
         }
 
         #region [-TestCode]
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                OpenResult("SUCCESS","2", true);
+        //void Update()
+        //{
+        //    //업그레이드 성공 창 열기
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        OpenResult("SUCCESS","2", true);
 
-                MasterAudio.FireCustomEvent("GUI_Positive", this.transform);
-            }
+        //        MasterAudio.FireCustomEvent("GUI_Positive", this.transform);
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                OpenResult("FAIL","1", false);
+        //    //업그레이드 실패 창 열기
+        //    if (Input.GetKeyDown(KeyCode.S))
+        //    {
+        //        OpenResult("FAIL","1", false);
 
-                MasterAudio.FireCustomEvent("GUI_Negative", this.transform);
-                //MasterAudio.FireCustomEvent("GUI_Positive", this.transform);
-            }
-        }
+        //        MasterAudio.FireCustomEvent("GUI_Negative", this.transform);
+        //        //MasterAudio.FireCustomEvent("GUI_Positive", this.transform);
+        //    }
+        //}
         #endregion
     }
 }

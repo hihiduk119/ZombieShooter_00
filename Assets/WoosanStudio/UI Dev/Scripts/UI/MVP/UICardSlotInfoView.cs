@@ -7,10 +7,10 @@ using UnityEngine.UI;
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
-    /// 카드 정보 뷰
+    /// 카드 슬롯 정보 뷰
     /// *MPV 모델
     /// </summary>
-    public class UICardInfoView : MonoBehaviour
+    public class UICardSlotInfoView : MonoBehaviour
     {
         [Header("[카드 이미지]")]
         public Image Image;

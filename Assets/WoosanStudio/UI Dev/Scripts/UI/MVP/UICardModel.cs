@@ -40,12 +40,6 @@ namespace WoosanStudio.ZombieShooter
             //남은 업글 시간 및 업글 중인지 아닌지 까지 모두 알수 있음
             public Timeset UpgardeTimeset;
 
-            
-
-            
-            
-            
-
             public CardData(bool useAble = false) { UseAble = useAble; }
         }
 
@@ -89,6 +83,57 @@ namespace WoosanStudio.ZombieShooter
         [Header("[실제 모든 카드 리스트가 저장된 데이터]")]
         public UICardModel.Data data = new UICardModel.Data();
 
+
+        /// <summary>
+        /// 저장 데이터와 실제 CardSetting 데이터간 동기화 시킴
+        /// * 이때 언락 제한이 풀링는 레벨이 있다면 풀어야 함
+        /// </summary>
+        public void Synchronization()
+        {
+            //데이터 동기화전 바뀌어야 하는 부분 반영
+            
+            //이미 언락이 됬다면 역쉬 언락
+
+            //데이터 데입
+            for (int i = 0; i < cardSettings.Count; i++)
+            {
+                //[테스트 코드]
+                //data.CardDatas[i].UpgardeTimeset.Print();
+                //Debug.Log("사용 여부 = " + data.CardDatas[i].UseAble);
+                //Debug.Log("레벨 = " + data.CardDatas[i].Level);
+                //Debug.Log("내구도 = " + data.CardDatas[i].durability);
+                //Debug.Log("UI 정렬 인덱스 = " + data.CardDatas[i].SortIndex);
+                //Debug.Log("UI 연구정렬 인덱스 = " + data.CardDatas[i].ResearchSlotIndex);
+
+                //아직 언락 안된상태
+                if(data.CardDatas[i].UseAble == false)
+                {
+                    //언락 레벨 보다 현재 레벨이 높다면 언락.
+                    if (cardSettings[i].UnlockLevel <= data.CardDatas[i].Level)
+                    {
+                        //카드 언락 여부
+                        cardSettings[i].UseAble = data.CardDatas[i].UseAble = true;
+                    }
+                }
+
+                //업드레이드 타임 데이터 세팅
+                cardSettings[i].UpgradeTimeset = data.CardDatas[i].UpgardeTimeset;
+                //카드 언락 여부
+                cardSettings[i].UseAble = data.CardDatas[i].UseAble;
+                //카드의 레벨
+                cardSettings[i].Level =  data.CardDatas[i].Level;
+                //카드의 내구도 -> 사용 현재 안함
+                cardSettings[i].Durability = data.CardDatas[i].durability;
+                //UI 에서의 정렬 인덱스
+                cardSettings[i].SortIndex = data.CardDatas[i].SortIndex;
+                //연구 슬롯의 정렬 인덱스
+                cardSettings[i].ResearchSlotIndex = data.CardDatas[i].ResearchSlotIndex;
+            }
+
+            //싱크 마무리 세이브
+            Save();
+        }
+
         public void Load()
         {
             if (!PlayerPrefs.HasKey("UICard")) { Save(); }
@@ -118,25 +163,25 @@ namespace WoosanStudio.ZombieShooter
             //data.Print("[Save]");
         }
 
-        
+
         #region [-TestCode]
-        //void Update()
-        //{
-        //    if (Input.GetKeyDown(KeyCode.A))
-        //    {
-        //        Load();
-        //    }
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                Load();
+            }
 
-        //    if (Input.GetKeyDown(KeyCode.S))
-        //    {
-        //        Save();
-        //    }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                Save();
+            }
 
-        //    if (Input.GetKeyDown(KeyCode.D))
-        //    {
-        //        PlayerPrefs.DeleteAll();
-        //    }
-        //}
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                PlayerPrefs.DeleteAll();
+            }
+        }
         #endregion
     }
 }

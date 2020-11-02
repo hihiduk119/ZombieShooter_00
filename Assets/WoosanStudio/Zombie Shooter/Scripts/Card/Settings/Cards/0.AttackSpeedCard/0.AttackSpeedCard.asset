@@ -14,12 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActivate: 0
   gemPrice: -1
-  useAble: 0
+  useAble: 1
+  level: 0
+  durability: 100
+  SortIndex: 0
+  ResearchSlotIndex: -1
+  IsUpgrading: 0
   type: 0
   name: Attack Speed
-  durability: 10
   value: -1
-  level: 0
   maxStack: 3
   stackCount: 0
   maxDurability: 10

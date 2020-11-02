@@ -44,7 +44,7 @@ namespace WoosanStudio.ZombieShooter
 
         //*이게 여기있으먄 인됨 -> Presenter에 있어야 함. 변경 요망
         [Header("[[Auto->Awake()] 카드정보 뷰]")]
-        public UICardInfoView View;
+        public UICardSlotInfoView View;
 
         [Header("[카드선택 이벤트]")]
         public SelectCardItemEvent SelectEvent = new SelectCardItemEvent();
@@ -52,7 +52,7 @@ namespace WoosanStudio.ZombieShooter
 
         private void Awake()
         {
-            View = GameObject.FindObjectOfType<UICardInfoView>();
+            View = GameObject.FindObjectOfType<UICardSlotInfoView>();
 
             //UICardInfoView 의 리스너 등록
             ClickEvent.AddListener(View.UpdateInfoListener);
@@ -79,7 +79,7 @@ namespace WoosanStudio.ZombieShooter
             //파랑색으로 요요 트윈
             //Background.DOColor(new Color(32,159,194), 0.5f).SetLoops(-1, LoopType.Yoyo);
 
-            Background.DOColor(Color.gray, 0.5f).SetLoops(-1, LoopType.Yoyo);
+            Background.DOColor(Color.gray, 0.75f).SetLoops(-1, LoopType.Yoyo);
 
             //Background.color = Color.blue;
             //선택 이벤트 발생
@@ -115,8 +115,10 @@ namespace WoosanStudio.ZombieShooter
 
             Image.color = cardSetting.IconColor;
             Name.text = cardSetting.Name;
-            //사용자 언락
-            if(cardSetting.UseAble) { Lock.gameObject.SetActive(true); }
+
+            //언락이 풀렸다면 사용 가능
+            if(!cardSetting.UseAble) { Lock.gameObject.SetActive(true); }
+            //언락이 안풀렸다면 사용 불가
             else { Lock.gameObject.SetActive(false);}
             UnlockLevel.text = cardSetting.UnlockLevel.ToString();
         }

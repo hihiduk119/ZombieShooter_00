@@ -72,13 +72,38 @@ namespace WoosanStudio.ZombieShooter
         /// 기본 모든 정보 업데이트
         /// *변경시에만 업데이트 하면 됨
         /// </summary>
-        public void UpdateCardInfo(Sprite sprite, string name, string level, string description,
-            string upgradeComplateLevel, string gambleSuccessLevel, int upgradeRequierCoin ,
-            string upgradeRemainTime, int upgradeRequierGem,int gambleRequierGem,int gambleSuccessRate) {
+        public void UpdateCardInfo(Sprite sprite,Color color, string name, string level, string description,
+            string upgradeComplateLevel, string gambleSuccessLevel, string upgradeRequierCoin ,
+            string upgradeRemainTime, string upgradeRequierGem,string gambleRequierGem,int gambleSuccessRate) {
+
             Image.sprite = sprite;
+            //이미지에 따라 사이즈 재정의
+            float width = sprite.rect.width * 0.6f;
+            float height = sprite.rect.height * 0.6f;
+            Image.rectTransform.sizeDelta = new Vector2(width, height);
+            //이미지 컬러 세팅
+            Image.color = color;
+            //이름 세팅
             Name.text = name;
+            //레벨은 0부터 시작이기에 +1
             Level.text = level.ToString();
+            //설명 세팅
             Description.text = description;
+
+            //업글 완료 레벨 세팅
+            for (int i = 0; i < UpgradeComplateLevels.Length; i++) { UpgradeComplateLevels[i].text = upgradeComplateLevel;}
+            //겜블 성공 레벨
+            GambleSuccessLevel.text = gambleSuccessLevel;
+            //카드 요구 코인
+            UpgradeRequierCoin.text = upgradeRequierCoin;
+            //카드 요구 시간
+            UpgradeRemainTime.text = upgradeRemainTime;
+            //카드 요구 코인
+            UpgradeRequierGem.text = upgradeRequierGem;
+            //카드 요구 보석
+            GambleRequierGem.text = gambleRequierGem;
+            //카드 성공 확률
+            GambleSuccessRate.text = gambleSuccessRate.ToString();
         }
 
         /// <summary>

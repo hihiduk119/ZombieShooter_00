@@ -113,6 +113,24 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 내가 가진 시간에서 남은시간을 string으로 반환
+        /// ##d ##:##:## 형태
+        /// </summary>
+        /// <returns></returns>
+        public String GetRemainTimeToString()
+        {
+            TimeSpan timeSpan = DateTime.FromBinary(endDateTime).Subtract(DateTime.Now);
+            //스트링으로 출력 및 스트링 결과 리턴
+            
+
+            //업글 중인지 아닌지 확인
+            //이때 자동으로 isUpgrading에 정보 업데이트
+            IsUpgrading();
+            //Debug.Log("남은시간 = " + timeString);
+            return TimeToString(timeSpan);
+        }
+
+        /// <summary>
         /// 남은시간을 timespan으로 반환
         /// </summary>
         /// <param name="preDateTime">현재와 비교하려고하는 이전 시간</param>

@@ -179,12 +179,75 @@ namespace WoosanStudio.ZombieShooter
             yield break;
         }
 
+
+        /// <summary>
+        /// 겜블시 젬 비용
+        /// </summary>
+        /// <returns></returns>
+        static public int GetGambleGem()
+        {
+            return 10;
+        }
+
+        /// <summary>
+        /// 겜블시 젬 비용
+        /// </summary>
+        /// <returns></returns>
+        static public int GetGambleSuccessRate(int successCount)
+        {
+            int defalut = GlobalDataController.GambleDefaultRate;
+            int max = GlobalDataController.GambleMaxRate;
+            int interval = GlobalDataController.GamblePerValue;
+
+            //50시작 성공 카운트 마다 5씩 증가
+            //80이상 초과 불가.
+            int value = defalut + (successCount * interval);
+            if (value >= max) { value = max; }
+
+            return value;
+        }
+
+
+        /// <summary>
+        /// 연구 젬 비용 증가 공식 레벨에 따라 올라가는
+        /// </summary>
+        /// <param name="MaxLevel"></param>
+        /// <returns></returns>
+        static public List<int> GetRequireGems(int MaxLevel)
+        {
+            //지역변수 선언
+            List<int> valueList = new List<int>();
+            int value = 0;
+
+            for (int level = 0; level < MaxLevel; level++)
+            {
+                //공식 적용
+                value = (level * level * 10) * 2 + 50;
+                //리스트에 넣기
+                valueList.Add(value);
+            }
+
+            return valueList;
+        }
+
+        /// <summary>
+        /// 필요 젬 비용 레벨로 가져오기 
+        /// </summary>
+        /// <param name="MaxLevel"></param>
+        /// <param name="level"></param>
+        /// <returns></returns>
+        static public int GetRequireGemByLevel(int MaxLevel, int level)
+        {
+            return NextValueCalculator.GetRequireGems(MaxLevel)[level];
+        }
+
+
         /// <summary>
         /// 연구 비용 증가 공식 레벨에 따라 올라가는
         /// </summary>
         /// <param name="MaxLevel"></param>
         /// <returns></returns>
-        static public List<int> GetMaxCoin(int MaxLevel)
+        static public List<int> GetRequireCoins(int MaxLevel)
         {
             //지역변수 선언
             List<int> valueList = new List<int>();
@@ -201,13 +264,23 @@ namespace WoosanStudio.ZombieShooter
             return valueList;
         }
 
+        /// <summary>
+        /// 필요 연구 비용 레벨로 가져오기 
+        /// </summary>
+        /// <param name="MaxLevel"></param>
+        /// <param name="level"></param>
+        /// <returns></returns>
+        static public int GetRequireCoinByLevel(int MaxLevel,int level)
+        {
+            return NextValueCalculator.GetRequireCoins(MaxLevel)[level];
+        }
 
         /// <summary>
-        /// 레벨 증가에 따라 필요겸험치 증가
+        /// 필요 경험치 리스트 가져오기
         /// </summary>
         /// <param name="MaxLevel"></param>
         /// <returns></returns>
-        static public List<int> GetMaxExp(int MaxLevel)
+        static public List<int> GetRequireExps(int MaxLevel)
         {
             //지역변수 선언
             List<int> valueList = new List<int>();
@@ -222,6 +295,17 @@ namespace WoosanStudio.ZombieShooter
             }
 
             return valueList;
+        }
+
+        /// <summary>
+        /// 필요 연구 비용 레벨로 가져오기 
+        /// </summary>
+        /// <param name="MaxLevel"></param>
+        /// <param name="level"></param>
+        /// <returns></returns>
+        static public int GetRequireExpByLevel(int MaxLevel, int level)
+        {
+            return NextValueCalculator.GetRequireExps(MaxLevel)[level];
         }
 
         /// <summary>

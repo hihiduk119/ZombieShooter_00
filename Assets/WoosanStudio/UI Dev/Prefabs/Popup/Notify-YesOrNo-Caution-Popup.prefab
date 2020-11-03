@@ -2549,7 +2549,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'If gambling fails, it is reset to level 1.
 
-    Do you want to gamble?'
+    Are you lucky?'
 --- !u!1 &5779081822291725785
 GameObject:
   m_ObjectHideFlags: 0

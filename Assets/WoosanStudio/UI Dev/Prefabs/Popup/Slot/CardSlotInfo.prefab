@@ -573,7 +573,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606828f3686ee4f0289cece909531556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupPrefab: {fileID: 0}
+  popupPrefab: {fileID: 1000012865011240, guid: 0ef4ed393dc224ff381b2868f49b334e,
+    type: 3}
 --- !u!114 &6375671872546059274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2906,7 +2907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606828f3686ee4f0289cece909531556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupPrefab: {fileID: 0}
+  popupPrefab: {fileID: 1000012865011240, guid: 0ef4ed393dc224ff381b2868f49b334e,
+    type: 3}
 --- !u!114 &4298768762539542309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4291,6 +4293,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8705769995973251077}
   - component: {fileID: 4191339728309151175}
+  - component: {fileID: 2266980835645251333}
+  - component: {fileID: -2774516704865566315}
   m_Layer: 5
   m_Name: CardSlotInfo
   m_TagString: Untagged
@@ -4343,6 +4347,32 @@ MonoBehaviour:
   Buttons:
   - {fileID: 6179906599964491026}
   - {fileID: 8919758379840128045}
+--- !u!114 &2266980835645251333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8919758380067464249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1014a7e040fd4b36a4dd149e0e033af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  View: {fileID: 0}
+  Model: {fileID: 0}
+--- !u!114 &-2774516704865566315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8919758380067464249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb352657426604f4a9ed889569ce460a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8919758380595667163
 GameObject:
   m_ObjectHideFlags: 0

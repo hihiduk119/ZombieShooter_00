@@ -16,6 +16,10 @@ namespace WoosanStudio.ZombieShooter
         [Header("[[Auto->Awake()] 카드정보 프리젠터]")]
         public UICardModel Model;
 
+        //카드 세팅 데이터
+        private CardSetting cardSetting;
+        public CardSetting CardSetting { get => cardSetting; set => cardSetting = value; }
+
         //1.업글 중이라면 연구 상황 업데이트 -> 취소버튼 활성화
         //2.업글 중이 아니라면 업글버튼 활성화
         //3.슬롯이 비어 있다면 비어있다 표시
@@ -44,6 +48,9 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="cardSetting"></param>
         public void UpdateInfo(CardSetting cardSetting)
         {
+            //업데이트 명령을 받으면 스스로 가지고 있는 카드 업데이트
+            this.cardSetting = cardSetting;
+
             //업그레이드 중인지 아닌지 알아옴
             bool isUpgrading;
 

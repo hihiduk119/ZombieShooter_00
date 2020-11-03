@@ -56,7 +56,7 @@ namespace WoosanStudio.ZombieShooter
             //calculator.EndEvent.AddListener(callback);
             //StartCoroutine(UpdateMexExpListCoroutine(MaxLevel));
 
-            MaxExpList = NextValueCalculator.GetMaxExp(MaxLevel);
+            MaxExpList = NextValueCalculator.GetRequireExps(MaxLevel);
 
             Load();
         }

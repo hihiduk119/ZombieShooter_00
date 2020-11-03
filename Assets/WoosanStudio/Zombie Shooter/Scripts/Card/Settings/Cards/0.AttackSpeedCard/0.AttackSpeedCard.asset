@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActivate: 0
   gemPrice: -1
-  useAble: 1
+  useAble: 0
   level: 0
   durability: 100
   SortIndex: 0
@@ -23,6 +23,11 @@ MonoBehaviour:
   type: 0
   name: Attack Speed
   value: -1
+  upgradeTimeset:
+    endDateTime: 0
+    startDateTime: 0
+    totalSeconds: 0
+    bUpgrading: 0
   maxStack: 3
   stackCount: 0
   maxDurability: 10

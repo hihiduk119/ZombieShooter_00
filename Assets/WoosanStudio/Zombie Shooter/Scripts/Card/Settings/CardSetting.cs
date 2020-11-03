@@ -87,12 +87,13 @@ namespace WoosanStudio.ZombieShooter
 
 
 
-        [HideInInspector]//레벨 업그레이드 연구 중이라면 남은 시간 System.Data
+        //레벨 업그레이드 연구 중이라면 남은 시간 System.Data
         //저장 불필요
         //private long upgradeStartedTime = 0;
         //public long UpgradeStartedTime => upgradeStartedTime;
 
-        //여기 수정해야함
+        [Header("[업글 시간을 가지고 있는 데이터]")]
+        [SerializeField]
         private Timeset upgradeTimeset;
         public Timeset UpgradeTimeset{get => upgradeTimeset; set => upgradeTimeset = value; }
 

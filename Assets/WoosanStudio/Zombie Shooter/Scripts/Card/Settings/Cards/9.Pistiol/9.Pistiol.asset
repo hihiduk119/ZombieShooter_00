@@ -15,11 +15,19 @@ MonoBehaviour:
   isActivate: 0
   gemPrice: -1
   useAble: 0
+  level: 0
+  durability: 100
+  SortIndex: 0
+  ResearchSlotIndex: -1
+  IsUpgrading: 0
   type: 100
   name: Pistol
-  durability: 10
   value: 5
-  level: 0
+  upgradeTimeset:
+    endDateTime: 0
+    startDateTime: 0
+    totalSeconds: 0
+    bUpgrading: 0
   maxStack: 2
   stackCount: 0
   maxDurability: 10

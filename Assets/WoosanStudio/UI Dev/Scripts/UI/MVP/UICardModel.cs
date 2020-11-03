@@ -165,7 +165,7 @@ namespace WoosanStudio.ZombieShooter
 
 
         #region [-TestCode]
-        void Update()
+        /*void Update()
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
@@ -181,7 +181,7 @@ namespace WoosanStudio.ZombieShooter
             {
                 PlayerPrefs.DeleteAll();
             }
-        }
+        }*/
         #endregion
     }
 }

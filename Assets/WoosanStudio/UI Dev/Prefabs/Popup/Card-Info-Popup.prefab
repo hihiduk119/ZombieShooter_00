@@ -2133,6 +2133,20 @@ MonoBehaviour:
   m_EffectColor: {r: 0.27058825, g: 0.3647059, b: 0.4509804, a: 1}
   m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
+--- !u!114 &701042408271926211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3386637769144650747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1014a7e040fd4b36a4dd149e0e033af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  View: {fileID: 0}
+  Model: {fileID: 0}
 --- !u!114 &7372926290532628042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2265,6 +2279,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1041664054257565220, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3230969531048051978, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2275,6 +2294,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 3444962313467558548, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
+        type: 3}
+      propertyPath: m_Name
+      value: CardSlotInfo
+      objectReference: {fileID: 0}
     - target: {fileID: 3467302043956496879, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2284,6 +2308,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 3041848936895517138, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4318213683623265407, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
         type: 3}
@@ -2299,6 +2328,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 935939679816081162, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
+        type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 935939679816081162, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
+        type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 935939679816081162, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
+        type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 935939679816081162, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
+        type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 114000011163958758}
+    - target: {fileID: 935939679816081162, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
+        type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Close
+      objectReference: {fileID: 0}
+    - target: {fileID: 935939679816081162, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
+        type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3807613312703847211, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
         type: 3}
@@ -2326,6 +2385,12 @@ GameObject:
 --- !u!1 &1166779744850747338 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1224992420239617701, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
+    type: 3}
+  m_PrefabInstance: {fileID: 85911317371597167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3386637769144650747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3444962313467558548, guid: b9e3c1fd48f24402e9d6ffff3142d23d,
     type: 3}
   m_PrefabInstance: {fileID: 85911317371597167}
   m_PrefabAsset: {fileID: 0}

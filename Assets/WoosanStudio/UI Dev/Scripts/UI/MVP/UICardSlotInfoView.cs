@@ -30,69 +30,16 @@ namespace WoosanStudio.ZombieShooter
         [Header("[카드 연구 프로그레스]")]
         public Image Progress;
 
+        [Header("[슬롯 상태]")]
+        public List<GameObject> Slots = new List<GameObject>();
+
         [Header("[카드 활성 가능 버튼들]")]
         public List<GameObject> Buttons = new List<GameObject>();
 
-        [System.Serializable]
-        public enum CardInfoButtonState
-        {
-            Upgrade = 0,
-            Cancel,
-            None,
-        }
-
-        [System.Serializable]
-        public class InfoData
-        {
-            public Sprite Sprite;
-
-            public string Name;
-
-            public string Description;
-
-            public int Level;
-
-            public string RemainTime;
-
-            public float progressValue;
-
-            public CardInfoButtonState buttonState = CardInfoButtonState.None;
-        }
-
         /// <summary>
         /// InfoData는 나중에 변경 될수 있기에 일단 대신 InfoData
         /// </summary>
-        public void UpdateInfo(InfoData infoData)
-        {
-            //모든 뷰어에 데이터 입력
-            Image.sprite = infoData.Sprite;
-            Name.text = infoData.Name;
-            Description.text = infoData.Description;
-            Level.text = infoData.Level.ToString();
-            RemainTime.text = infoData.RemainTime;
-            Progress.fillAmount = infoData.progressValue;
-
-            //일단 모든 버튼 비활성화
-            Buttons.ForEach(value => value.SetActive(false));
-            switch (infoData.buttonState)
-            {
-                case CardInfoButtonState.Upgrade:
-                    //0번 업글레이드 버튼 활성화
-                    Buttons[0].SetActive(true);
-                    break;
-                case CardInfoButtonState.Cancel:
-                    //1번 업그레이드 취소 버튼 활성화
-                    Buttons[1].SetActive(true);
-                    break;
-                case CardInfoButtonState.None:
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// InfoData는 나중에 변경 될수 있기에 일단 대신 InfoData
-        /// </summary>
-        public void UpdateInfoListener(CardSetting cardSetting)
+        public void UpdateInfoListener(CardSetting cardSetting , UICardSlotInfoPresenter.State state)
         {
             //모든 뷰어에 데이터 입력
             Image.sprite = cardSetting.Sprite;
@@ -112,22 +59,30 @@ namespace WoosanStudio.ZombieShooter
             //*일단 대기-> 타임 셋을 제대로 정리하고 가야 함.안그러면 문제 생김
             //Progress.fillAmount = infoData.progressValue;
 
-            //버튼 상태 *여기도 수정 해야함
-            CardInfoButtonState buttonState = CardInfoButtonState.Cancel;
-
+            //일단 모든 슬롯 비활성화
+            Slots.ForEach(value => value.SetActive(false));
             //일단 모든 버튼 비활성화
             Buttons.ForEach(value => value.SetActive(false));
-            switch (buttonState)
+
+            //Debug.Log("state = " + state.ToString());
+
+            switch (state)
             {
-                case CardInfoButtonState.Upgrade:
+                case UICardSlotInfoPresenter.State.Empty://비어있음.
+                    //Empty slot 활성화
+                    Slots[0].SetActive(true);
+                    break;
+                case UICardSlotInfoPresenter.State.Select://선택됐고 업그레이드중
+                    //카드 정보 slot 활성화
+                    Slots[1].SetActive(true);
                     //0번 업글레이드 버튼 활성화
                     Buttons[0].SetActive(true);
                     break;
-                case CardInfoButtonState.Cancel:
+                case UICardSlotInfoPresenter.State.SelectAndUpgrading://선택만 됐음.
+                    //카드 정보 slot 활성화
+                    Slots[1].SetActive(true);
                     //1번 업그레이드 취소 버튼 활성화
                     Buttons[1].SetActive(true);
-                    break;
-                case CardInfoButtonState.None:
                     break;
             }
         }

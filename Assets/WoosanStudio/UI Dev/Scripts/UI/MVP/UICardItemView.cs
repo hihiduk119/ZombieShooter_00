@@ -38,13 +38,15 @@ namespace WoosanStudio.ZombieShooter
         public CardSetting CardSetting;
 
         //카드 아이템 클릭시 이벤트
-        public class CardItemClickEvent : UnityEvent<CardSetting>{}
+        public class CardItemClickEvent : UnityEvent<CardSetting> {}
         [Header("[카드 아이템 클릭시 이벤트]")]
         public CardItemClickEvent ClickEvent = new CardItemClickEvent();
 
         //*이게 여기있으먄 인됨 -> Presenter에 있어야 함. 변경 요망
-        [Header("[[Auto->Awake()] 카드정보 뷰]")]
-        public UICardSlotInfoView View;
+        //[Header("[[Auto->Awake()] 카드정보 뷰]")]
+        //public UICardSlotInfoView View;
+        [Header("[[Auto->Awake()] 카드정보 프리젠터]")]
+        public UICardSlotInfoPresenter Presenter;
 
         [Header("[카드선택 이벤트]")]
         public SelectCardItemEvent SelectEvent = new SelectCardItemEvent();
@@ -52,10 +54,11 @@ namespace WoosanStudio.ZombieShooter
 
         private void Awake()
         {
-            View = GameObject.FindObjectOfType<UICardSlotInfoView>();
+            //View = GameObject.FindObjectOfType<UICardSlotInfoView>();
+            Presenter = GameObject.FindObjectOfType<UICardSlotInfoPresenter>();
 
             //UICardInfoView 의 리스너 등록
-            ClickEvent.AddListener(View.UpdateInfoListener);
+            ClickEvent.AddListener(Presenter.UpdateInfo);
         }
 
         /// <summary>
@@ -64,9 +67,6 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="eventData"></param>
         public void OnPointerClick(PointerEventData eventData)
         {
-            //Debug.Log(CardSetting.Name + " 클릭됨");
-            ClickEvent.Invoke(CardSetting);
-
             //선택 호출
             Selected();
         }
@@ -76,6 +76,10 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Selected()
         {
+            Debug.Log(CardSetting.Name + " 클릭됨");
+            //클릭 이벤트 발생
+            ClickEvent.Invoke(CardSetting);
+
             //파랑색으로 요요 트윈
             //Background.DOColor(new Color(32,159,194), 0.5f).SetLoops(-1, LoopType.Yoyo);
 

@@ -137,18 +137,18 @@ namespace WoosanStudio.ZombieShooter
         }
 
         #region [-TestCode]
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                UpdateUpgradeInfoByState(true);
-            }
+        //void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        UpdateUpgradeInfoByState(true);
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                UpdateUpgradeInfoByState(false);
-            }
-        }
+        //    if (Input.GetKeyDown(KeyCode.S))
+        //    {
+        //        UpdateUpgradeInfoByState(false);
+        //    }
+        //}
         #endregion
 
     }

@@ -3880,7 +3880,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: SHOP
+  m_Text: Test
 --- !u!222 &200569991
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18035,12 +18035,12 @@ GameObject:
   - component: {fileID: 1557469836}
   - component: {fileID: 1557469838}
   m_Layer: 5
-  m_Name: Gem Shop Button
+  m_Name: Test Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1557469835
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18058,10 +18058,10 @@ RectTransform:
   m_Father: {fileID: 1150617633}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -590}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1557469836
 MonoBehaviour:
@@ -18075,7 +18075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606828f3686ee4f0289cece909531556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupPrefab: {fileID: 1000012783784544, guid: 9a3aedb7745ea4b0abebd5e3db50283c,
+  popupPrefab: {fileID: 1000012865011240, guid: 0ef4ed393dc224ff381b2868f49b334e,
     type: 3}
 --- !u!222 &1557469837
 CanvasRenderer:

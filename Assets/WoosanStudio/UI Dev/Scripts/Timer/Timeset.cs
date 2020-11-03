@@ -25,7 +25,7 @@ namespace WoosanStudio.ZombieShooter
         //전체 몇초인지 미리 구해놓기
         public int totalSeconds = 0;
         //지금 업글 중인지 아닌지 확인 => GetRemainTime()호출시 자동 변경
-        public bool isUpgrading = false;
+        public bool bUpgrading = false;
 
         //1.생성시 바로 데이터 저장
         //2.로드후 호출시 바로 데이터 반영
@@ -35,7 +35,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Print()
         {
-            Debug.Log("지금 업그레이드 중 = " + isUpgrading + " 끝 시간 = " + TimeToString(endDateTime) + "  시작 시간 = " + TimeToString(startDateTime) + "  전체 시간(초) = " + totalSeconds);
+            Debug.Log("지금 업그레이드 중 = " + bUpgrading + " 끝 시간 = " + TimeToString(endDateTime) + "  시작 시간 = " + TimeToString(startDateTime) + "  전체 시간(초) = " + totalSeconds);
         }
 
         /// <summary>
@@ -79,6 +79,8 @@ namespace WoosanStudio.ZombieShooter
 
         /// <summary>
         /// 현재 업그레이드 중인지 아닌지 확인
+        /// * 이 부분 값이 없을때는 가져오면 문제 발생
+        /// * 테스트 더 필요
         /// </summary>
         /// <returns></returns>
         public bool IsUpgrading()
@@ -86,11 +88,11 @@ namespace WoosanStudio.ZombieShooter
             TimeSpan timeSpan = DateTime.FromBinary(endDateTime).Subtract(DateTime.Now);
 
             //전체 시간을 가져와서 0보다 크다면 아직 업그레이드중
-            if (timeSpan.TotalSeconds > 0) { isUpgrading = false; }
+            if (timeSpan.TotalSeconds > 0) { bUpgrading = false; }
             //0보다 작다면 업그레이드 끝
-            else { isUpgrading = true; }
+            else { bUpgrading = true; }
 
-            return isUpgrading;
+            return bUpgrading;
         }
 
         /// <summary>

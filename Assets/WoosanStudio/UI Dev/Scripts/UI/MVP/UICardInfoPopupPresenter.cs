@@ -49,9 +49,12 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void OnEnable()
         {
-            //강제 선택 이벤트 실행
-            CardItems[0].Selected();
+            //강제 선택 이벤트 실행 -> 즉시 실행하니 뭔가 문제로 안됨 0.1f 딜레이 시켜 실행
+            Invoke("SelectCardZero", 0.1f);
         }
+
+        //팝업뷰 최초 오픈시 강제로 0번 카드를 선택하기 위해 사용.
+        void SelectCardZero() { CardItems[0].Selected();}
 
         private void Initialize()
         {
@@ -90,5 +93,20 @@ namespace WoosanStudio.ZombieShooter
                 }
             }
         }
+
+        #region [-TestCode]
+        //void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        CardItems[0].Selected();
+        //    }
+
+        //    if (Input.GetKeyDown(KeyCode.S))
+        //    {
+        //    }
+        //}
+        #endregion
+
     }
 }

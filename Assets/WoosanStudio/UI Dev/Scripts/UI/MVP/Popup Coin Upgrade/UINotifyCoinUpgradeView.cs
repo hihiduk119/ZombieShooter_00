@@ -30,7 +30,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="successLevel"></param>
         /// <param name="requireGem"></param>
         /// <param name="successRate"></param>
-        private void UpdateView(string targetLevel, string requireCoin, string requireTime)
+        public void UpdateView(string targetLevel, string requireCoin, string requireTime)
         {
             TargetLevel.text = targetLevel;
             RequireCoin.text = requireCoin;

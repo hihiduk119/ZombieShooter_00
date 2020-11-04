@@ -27,7 +27,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="successLevel"></param>
         /// <param name="requireGem"></param>
         /// <param name="successRate"></param>
-        private void UpdateView(string targetLevel, string requireGem)
+        public void UpdateView(string targetLevel, string requireGem)
         {
             TargetLevel.text = targetLevel;
             RequireGem.text = requireGem;

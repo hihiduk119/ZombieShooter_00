@@ -26671,6 +26671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f2b77edcef04d16a74b0177342b7af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data:
+    GambleCurrentSuccessRate: 50
 --- !u!4 &1880474793
 Transform:
   m_ObjectHideFlags: 0

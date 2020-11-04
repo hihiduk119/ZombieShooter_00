@@ -56,7 +56,7 @@ namespace WoosanStudio.ZombieShooter
         public GameObject BtnUpgradeByGamble;
 
         //사용자 정의 이벤트
-        [System.Serializable]
+        /*[System.Serializable]
         public class UpgradeEvent : UnityEvent<int> { }
         [Header("[코인 사용 업그레이드 이벤트]")]
         public UpgradeEvent UpgradeByCoinEvent = new UpgradeEvent();
@@ -66,7 +66,7 @@ namespace WoosanStudio.ZombieShooter
         public UpgradeEvent UpgradeByGambleEvent = new UpgradeEvent();
         [Header("[업그레이드중 취소 이벤트]")]
         public UnityEvent CancelUpgradeEvent = new UnityEvent();
-
+        */
         
         /// <summary>
         /// 기본 모든 정보 업데이트

@@ -7,7 +7,7 @@ namespace WoosanStudio.ZombieShooter
     /// <summary>
     /// 카드 슬롯 프리젠터
     /// 카드 슬롯 뷰에 어떤 것을 보여줄지 제어
-    /// *MPV 모델
+    /// *MVP 모델
     /// </summary>
     public class UICardSlotInfoPresenter : MonoBehaviour
     {

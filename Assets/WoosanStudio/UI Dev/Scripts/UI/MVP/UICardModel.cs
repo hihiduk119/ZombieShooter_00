@@ -8,7 +8,8 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 모든 카드 데이터
-    /// *MPV 모델
+    /// 카드 세팅 데이터와 동기화도 진행
+    /// *MVP 모델
     /// </summary>
     public class UICardModel : MonoBehaviour
     {
@@ -90,6 +91,8 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Synchronization()
         {
+            Debug.Log("================> 카드 데이터와 카드 세팅 데이터 동기화 진행 완료 <================");
+
             //데이터 동기화전 바뀌어야 하는 부분 반영
             
             //이미 언락이 됬다면 역쉬 언락

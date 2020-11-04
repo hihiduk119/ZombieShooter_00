@@ -10,7 +10,7 @@ namespace WoosanStudio.ZombieShooter
     /// 경험치 모델
     /// 레벨과 현재 경험치를 저장한다.
     /// 레벨별 최대 경험치 값을 가지고 있다.
-    /// *MPV 모델
+    /// *MVP 모델
     /// </summary>
     public class ExpModel : MonoBehaviour
     {

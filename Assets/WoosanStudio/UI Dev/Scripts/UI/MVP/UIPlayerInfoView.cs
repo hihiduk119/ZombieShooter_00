@@ -7,7 +7,7 @@ namespace WoosanStudio.ZombieShooter
     /// <summary>
     /// 플레이어 정보 표시
     /// *플레이어 정보 창을 여는 역활도 함.
-    /// *MPV 모델
+    /// *MVP 모델
     /// </summary>
     public class UIPlayerInfoView : MonoBehaviour
     {

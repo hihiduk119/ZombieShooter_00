@@ -13,13 +13,13 @@ namespace WoosanStudio.ZombieShooter
         //싱글톤 패턴
         static public GlobalDataController Instance;
 
-        [System.Serializable]
-        public class Data
-        {
-            public Data() { }
-        }
+        //[System.Serializable]
+        //public class Data
+        //{
+        //    public Data() { }
+        //}
 
-        public Data data;
+        //public Data data;
 
         //겜블시 소모되는 젬
         static public int GambleGem = 10;

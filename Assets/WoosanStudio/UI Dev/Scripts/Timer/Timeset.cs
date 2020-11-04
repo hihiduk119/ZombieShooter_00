@@ -72,7 +72,7 @@ namespace WoosanStudio.ZombieShooter
         public void MakeTimesetUsingLevel(int level,int maxLevel)
         {
             //최대 레벨 만큼의 모든 시간 값 가져오기
-            List<int> timeValues = NextValueCalculator.GetUpgradeTime(maxLevel);
+            List<int> timeValues = NextValueCalculator.GetUpgradeTimes(maxLevel);
             //실제 시간을 만듬
             Make(timeValues[level]);
         }
@@ -131,35 +131,6 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
-        /// 남은시간을 timespan으로 반환
-        /// </summary>
-        /// <param name="preDateTime">현재와 비교하려고하는 이전 시간</param>
-        /// <returns></returns>
-        //static public TimeSpan GetRemainTime(DateTime preDateTime)
-        //{
-        //    TimeSpan timeSpan = preDateTime.Subtract(DateTime.Now);
-        //    //스트링으로 출력 및 스트링 결과 리턴
-        //    TimeToString(timeSpan);
-        //    //Debug.Log("남은시간 = " + timeString);
-
-        //    return timeSpan;
-        //}
-
-        /// <summary>
-        /// 남은시간을 timespan으로 반환
-        /// </summary>
-        /// <param name="preDateTime">현재와 비교하려고하는 이전 시간</param>
-        /// <returns></returns>
-        //static public TimeSpan GetRemainTime(long preDateTime)
-        //{ 
-        //    TimeSpan timeSpan = DateTime.FromBinary(preDateTime).Subtract(DateTime.Now);
-        //    //스트링으로 출력 및 스트링 결과 리턴
-        //    TimeToString(timeSpan);
-        //    //Debug.Log("남은시간 = " + timeString);
-        //    return timeSpan;
-        //}
-
-        /// <summary>
         /// 남은시간은 0-1사이 값으로 반환
         /// * 슬라이더에 사용하기 위함
         /// </summary>
@@ -180,14 +151,21 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="time"></param>
         /// <returns></returns>
-        static public String TimeToString(TimeSpan time)
+        /*static public string TimeToString(TimeSpan time)
         {
             String tmp, timeString;
-            string[] timeSpan;
+            string[] timeSpan = null;
             StringBuilder stringBuilder = new StringBuilder();
 
             tmp = time.ToString();
+
+            Debug.Log("tmp = " + tmp);
+
+            //timeSpan = tmp.Split(':');
             timeSpan = tmp.Split('.');
+
+            Debug.Log("길이 = " + timeSpan.Length);
+
             stringBuilder.Clear();
 
             //Day 없고 시간만 존제
@@ -202,7 +180,53 @@ namespace WoosanStudio.ZombieShooter
             } else
             {
                 Debug.Log("시간 파싱 에러 발생!!" + time.ToString());
-                stringBuilder.Append("E 00:00:00");
+                stringBuilder.Append("E --:--:--");
+            }
+
+            //for(int index = 0; index < timeSpan.Length ;index++)
+            //{
+            //    Debug.Log(timeSpan[index]);
+            //}
+
+            //Debug.Log("원본 = " + time.ToString());
+            timeString = stringBuilder.ToString();
+            Debug.Log(timeString);
+            return timeString;
+        }*/
+
+
+        /// <summary>
+        /// 타임 스팬에서 #D ##:##:## 형식으로 시간 가져오기.
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
+        static public string TimeToString(TimeSpan time)
+        {
+            String tmp, timeString;
+            string[] timeSpan = null;
+            StringBuilder stringBuilder = new StringBuilder();
+
+            tmp = time.ToString();
+
+            timeSpan = tmp.Split('.');
+
+            stringBuilder.Clear();
+
+            //Day 없고 시간만 존제
+            if (timeSpan.Length == 1)
+            {
+                stringBuilder.Append(timeSpan[0]);
+            }
+            else if (timeSpan.Length == 2)
+            {
+                stringBuilder.Append(timeSpan[0]);
+                stringBuilder.Append("d ");
+                stringBuilder.Append(timeSpan[1]);
+            }
+            else
+            {
+                Debug.Log("시간 파싱 에러 발생!!" + time.ToString());
+                stringBuilder.Append("E --:--:--");
             }
 
             //for(int index = 0; index < timeSpan.Length ;index++)
@@ -222,7 +246,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="binary">바이너리값</param>
         /// <returns></returns>
-        static public String TimeToString(long binary)
+        static public string TimeToString(long binary)
         {
             TimeSpan time = DateTime.FromBinary(binary).TimeOfDay;
             string tmp, timeString;
@@ -230,15 +254,17 @@ namespace WoosanStudio.ZombieShooter
             StringBuilder stringBuilder = new StringBuilder();
 
             tmp = time.ToString();
+            
             timeSpan = tmp.Split('.');
+
             stringBuilder.Clear();
 
             //Day 없고 시간만 존제
-            if (timeSpan.Length == 2)
+            if (timeSpan.Length == 1)
             {
                 stringBuilder.Append(timeSpan[0]);
             }
-            else if (timeSpan.Length == 3)
+            else if (timeSpan.Length == 2)
             {
                 stringBuilder.Append(timeSpan[0]);
                 stringBuilder.Append("d ");
@@ -247,7 +273,7 @@ namespace WoosanStudio.ZombieShooter
             else
             {
                 Debug.Log("시간 파싱 에러 발생!!" + time.ToString());
-                stringBuilder.Append("E 00:00:00");
+                stringBuilder.Append("E --:--:--");
             }
 
             //for(int index = 0; index < timeSpan.Length ;index++)
@@ -260,6 +286,17 @@ namespace WoosanStudio.ZombieShooter
 
             //Debug.Log(timeString);
             return timeString;
+        }
+
+        /// <summary>
+        /// 초로 시간 스트링을 얻어오기
+        /// </summary>
+        /// <param name="seconds"></param>
+        /// <returns></returns>
+        static public string SecondsToTimeToString(int seconds)
+        {
+            TimeSpan timeSpan = new TimeSpan(0, 0, seconds);
+            return TimeToString(timeSpan);
         }
     }
 }

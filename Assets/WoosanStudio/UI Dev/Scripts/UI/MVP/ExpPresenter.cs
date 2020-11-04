@@ -7,7 +7,7 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 경험치 프리젠터
-    /// *MPV 모델
+    /// *MVP 모델
     /// </summary>
     public class ExpPresenter : MonoBehaviour
     {

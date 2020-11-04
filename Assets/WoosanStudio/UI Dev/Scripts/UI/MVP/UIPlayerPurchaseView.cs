@@ -9,7 +9,7 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 플레이어 구매 뷰
-    /// *MPV 모델
+    /// *MVP 모델
     /// </summary>
     public class UIPlayerPurchaseView : MonoBehaviour
     {

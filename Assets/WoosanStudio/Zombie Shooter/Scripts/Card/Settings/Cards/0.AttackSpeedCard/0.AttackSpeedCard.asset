@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActivate: 0
   gemPrice: -1
-  useAble: 0
+  useAble: 1
   level: 0
   durability: 100
   SortIndex: 0

@@ -8,7 +8,7 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 경험치 뷰
-    /// *MPV 모델
+    /// *MVP 모델
     /// </summary>
     public class ExpView : MonoBehaviour
     {

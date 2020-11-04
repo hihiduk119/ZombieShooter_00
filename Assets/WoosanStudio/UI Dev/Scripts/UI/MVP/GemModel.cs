@@ -6,7 +6,7 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 
-    /// *MPV 모델
+    /// *MVP 모델
     /// </summary>
     public class GemModel : MonoBehaviour
     {

@@ -12,7 +12,7 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 카드 아이템 뷰
-    /// *MPV 모델
+    /// *MVP 모델
     /// </summary>
     public class UICardItemView : MonoBehaviour , IPointerClickHandler
     {

@@ -8,7 +8,7 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 카드 슬롯 정보 뷰
-    /// *MPV 모델
+    /// *MVP 모델
     /// </summary>
     public class UICardSlotInfoView : MonoBehaviour
     {

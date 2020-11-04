@@ -137,28 +137,6 @@ namespace WoosanStudio.ZombieShooter
             yield break;
         }
 
-        /// <summary>
-        /// 스킬(능력,카드) 레벨이 증가함에 따라 증가하는 업그레이드 시간
-        /// </summary>
-        /// <param name="MaxLevel"></param>
-        /// <returns></returns>
-        static public List<int> GetUpgradeTime(int MaxLevel)
-        {
-            //지역변수 선언
-            List<int> valueList = new List<int>();
-            int value = 0;
-
-            for (int level = 0; level < MaxLevel; level++)
-            {
-                //공식 적용
-                value = (level * level * level * 30) * 2 + 30;
-                //리스트에 넣기
-                valueList.Add(value);
-            }
-
-            return valueList;
-        }
-
 
         /// <summary>
         /// *제거필요
@@ -205,6 +183,48 @@ namespace WoosanStudio.ZombieShooter
             if (value >= max) { value = max; }
 
             return value;
+        }
+
+
+        /// <summary>
+        /// 스킬(능력,카드) 레벨이 증가함에 따라 증가하는 업그레이드 시간
+        /// </summary>
+        /// <param name="MaxLevel"></param>
+        /// <returns></returns>
+        static public List<int> GetUpgradeTimes(int MaxLevel)
+        {
+            //지역변수 선언
+            List<int> valueList = new List<int>();
+            int value = 0;
+
+            for (int level = 0; level < MaxLevel; level++)
+            {
+                //공식 적용
+                value = (level * level * level * 30) * 2 + 30;
+                //리스트에 넣기
+                valueList.Add(value);
+            }
+
+            return valueList;
+        }
+
+        /// <summary>
+        /// 스킬(능력,카드) 레벨이 증가함에 따라 증가하는 업그레이드 시간
+        /// </summary>
+        /// <param name="MaxLevel"></param>
+        /// <param name="level"></param>
+        /// <returns></returns>
+        static public int GetUpgradeTimeByLevel(int MaxLevel, int level)
+        {
+            List<int> tmp = NextValueCalculator.GetUpgradeTimes(MaxLevel);
+
+            //테스트용 내용 확인코드
+            //for (int i = 0; i < MaxLevel; i++)
+            //{
+            //    Debug.Log("level = [" + i + "] [" + tmp[i] + "]");
+            //}
+            //return tmp[level];
+            return NextValueCalculator.GetUpgradeTimes(MaxLevel)[level];
         }
 
 

@@ -6,7 +6,7 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 모든 카드 모델 데이터를 필요에 따라 동기화 시키는 역활을 함.
-    /// *MPV 모델
+    /// *MVP 모델
     /// </summary>
     public class UICardPresenter : MonoBehaviour
     {
@@ -16,7 +16,9 @@ namespace WoosanStudio.ZombieShooter
 
         IEnumerator Start()
         {
-            yield return new WaitForSeconds(1);
+            //0.1f초 대기 이유??
+            //일단 에러 발생은 확인
+            yield return new WaitForSeconds(0.1f);
             Initialize();
         }
 

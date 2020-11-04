@@ -8,7 +8,7 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 카드연구 팝업의 컨텐츠를 컨트롤
-    /// *MPV 모델
+    /// *MVP 모델
     /// </summary>
     public class UICardResearchInfoPopupPresenter : MonoBehaviour
     {
@@ -20,6 +20,7 @@ namespace WoosanStudio.ZombieShooter
         private Coroutine updateUpgradeRemainTimeCoroutine;
 
         //카드 세팅 데이터
+        //*private으로 변경하니 널에러 발생
         public CardSetting cardSetting;
         public CardSetting CardSetting { get => cardSetting; set => cardSetting = value; }
 
@@ -57,7 +58,7 @@ namespace WoosanStudio.ZombieShooter
             int iGambleSuccessLevel = cardSetting.Level + 2;//도박은 +2 업글
             string gambleSuccessLevel;
             if (iGambleSuccessLevel >= cardSetting.MaxLevel) { gambleSuccessLevel = "MAX"; }
-            else { gambleSuccessLevel = (iGambleSuccessLevel+1).ToString(); }//레벨은 표시상 +1
+            else { gambleSuccessLevel = (iGambleSuccessLevel + 1).ToString(); }//레벨은 표시상 +1
 
             //요구 코인 알아오기
             int coin = NextValueCalculator.GetRequireCoinByLevel(cardSetting.MaxLevel, cardSetting.Level);
@@ -66,9 +67,25 @@ namespace WoosanStudio.ZombieShooter
             int gem = NextValueCalculator.GetRequireGemByLevel(cardSetting.MaxLevel, cardSetting.Level);
             string strGem = string.Format("{0:0,0}", gem);
 
+            //코인 사용 남은시간
+            string upgradeRemainTime = null;
+
+            //현재 업그레이드 중이라면
+            if (cardSetting.UpgradeTimeset.bUpgrading)
+            {
+                //업그레이드 시간 가져오김
+                upgradeRemainTime = cardSetting.UpgradeTimeset.GetRemainTimeToString();
+            } else {//업글중이 아니라면 다음 업글 예상 시간 가져오기
+
+                int seconds = NextValueCalculator.GetUpgradeTimeByLevel(cardSetting.MaxLevel, cardSetting.Level);
+                Debug.Log("!!!!!! seconds = " + seconds);
+                upgradeRemainTime = Timeset.SecondsToTimeToString(seconds);
+            }
+                
+
             //뷰에 계산된 정보를 넣어줌
             View.UpdateCardInfo(cardSetting.Sprite,cardSetting.IconColor, cardSetting.Name, (cardSetting.Level + 1).ToString(),//레벨은 표시상 +1더해야함
-                cardSetting.AllDescription(), upgradeComplateLevel, gambleSuccessLevel, strCoin, cardSetting.UpgradeTimeset.GetRemainTimeToString()
+                cardSetting.AllDescription(), upgradeComplateLevel, gambleSuccessLevel, strCoin, upgradeRemainTime
                 , strGem, GlobalDataController.GambleGem.ToString(), NextValueCalculator.GetGambleSuccessRate(0)) ;
         }
 

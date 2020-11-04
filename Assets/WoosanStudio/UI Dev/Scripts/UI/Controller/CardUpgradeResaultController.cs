@@ -8,7 +8,7 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 카드 업그레이드 결과 컨트롤러
-    /// *MPV 모델
+    /// *MVP 모델
     /// </summary>
     public class CardUpgradeResaultController : MonoBehaviour
     {

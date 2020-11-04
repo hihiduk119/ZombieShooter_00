@@ -6,7 +6,7 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 현재 가지고있는 모든 카드를 가져와 세팅
-    /// *MPV 모델
+    /// *MVP 모델
     /// </summary>
     public class UICardInfoPopupPresenter : MonoBehaviour
     {

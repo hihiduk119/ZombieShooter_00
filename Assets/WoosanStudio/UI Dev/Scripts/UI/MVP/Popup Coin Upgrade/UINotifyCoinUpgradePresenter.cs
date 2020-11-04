@@ -5,11 +5,12 @@ using UnityEngine;
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
-    /// 카드 정보 모델
+    /// 코인 업글 최종 알림 통지
     /// *MVP 모델
     /// </summary>
-    public class UICardInfoModel : MonoBehaviour
+    public class UINotifyCoinUpgradePresenter : MonoBehaviour
     {
-        
+        [Header("[MVP View]")]
+        public UINotifyCoinUpgradeView View;
     }
 }

@@ -30,14 +30,24 @@ namespace WoosanStudio.ZombieShooter
         /// 정보 업데이트
         /// </summary>
         /// <param name="data"></param>
-        public void UpdateInfo(Sprite image,Sprite gainValueImage,string gainValue,string description,string oldPrice,string price)
+        public void UpdateInfo(Sprite sprite, Sprite gainValueImage,int gainValue,string description,string oldPrice,string price,bool bOldPrice,bool bAds)
         {
-            Image.sprite = image;
+            Image.sprite = sprite;
+            //이미지에 따라 사이즈 재정의
+            float width = sprite.rect.width * 1f;
+            float height = sprite.rect.height * 1f;
+            Image.rectTransform.sizeDelta = new Vector2(width, height);
+
             GainValueImage.sprite = gainValueImage;
-            GainValue.text = gainValue;
+            GainValue.text = string.Format("{0:0,0}",gainValue);
             Description.text = description;
             OldPrice.text = oldPrice;
+
             Price.text = price;
+            //세일가격 사용 안함
+            if (!bOldPrice){
+                OldPrice.transform.parent.gameObject.SetActive(false);
+            }
         }
     }
 }

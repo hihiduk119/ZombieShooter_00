@@ -24,11 +24,23 @@ namespace WoosanStudio.ZombieShooter
             Gem,    //젬
         }
 
+        /// <summary>
+        /// 획득 방식
+        /// </summary>
+        [System.Serializable]
+        public enum Gain
+        {
+            Purchase,   //구매
+            ADS,        //광고 시청
+        }
+
         [System.Serializable]
         public class Data
         {
             [Header("[인덱스]")]
             public int Index;
+            [Header("[획득 방식]")]
+            public Gain gain;
             [Header("[획득 타입]")]
             public Type type;
             [Header("[아이콘 이미지]]")]

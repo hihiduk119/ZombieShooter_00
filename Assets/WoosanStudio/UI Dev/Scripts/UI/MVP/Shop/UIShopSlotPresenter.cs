@@ -18,17 +18,30 @@ namespace WoosanStudio.ZombieShooter
         public UIShopSlotModel Model;
 
         /// <summary>
+        /// 활성화시 바로 업데이트
+        /// </summary>
+        private void OnEnable()
+        {
+            UpdateInfo();
+        }
+
+        /// <summary>
         /// 정보 업데이트
         /// </summary>
         /// <param name="data"></param>
         public void UpdateInfo()
         {
-            string gainValue = Model.data.GainValue.ToString();
             string description = Model.data.Description;
             string oldPrice = "$" + Model.data.OldPrice.ToString();
             string price = "$" + Model.data.Price.ToString();
+            bool useOldPrice = true;
+            //할인가격이 0이면 사용 안함
+            if(Model.data.OldPrice == 0) { useOldPrice = false; }
 
-            View.UpdateInfo(Model.data.Image,Model.data.GainValueImage,gainValue,description,oldPrice,price);
+            //획득 방식이 ADSfk
+            if(Model.data.gain == UIShopSlotModel.Gain.ADS)
+
+            View.UpdateInfo(Model.data.Image,Model.data.GainValueImage, Model.data.GainValue, description,oldPrice,price, useOldPrice , useAds);
         }
     }
 }

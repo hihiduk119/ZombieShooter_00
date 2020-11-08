@@ -797,7 +797,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -50}
+  m_AnchoredPosition: {x: -125, y: -35}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8337521043549446390
@@ -868,7 +868,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8116591952468866348}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -917,6 +917,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481be757bd6d743e8abd187033beea93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  View: {fileID: 4659305538938761604}
+  Model: {fileID: 349452449054895371}
 --- !u!114 &349452449054895371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,6 +933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     Index: 0
+    gain: 0
     type: 0
     Image: {fileID: 0}
     Description: 

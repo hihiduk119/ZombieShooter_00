@@ -48,6 +48,11 @@ namespace WoosanStudio.ZombieShooter
             if (!bOldPrice){
                 OldPrice.transform.parent.gameObject.SetActive(false);
             }
+
+            //광고 사용시
+            //이부분 구현 해야함
+            if(bAds) { }
+
         }
     }
 }

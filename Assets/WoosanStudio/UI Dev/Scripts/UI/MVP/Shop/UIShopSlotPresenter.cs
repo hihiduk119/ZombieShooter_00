@@ -35,13 +35,15 @@ namespace WoosanStudio.ZombieShooter
             string oldPrice = "$" + Model.data.OldPrice.ToString();
             string price = "$" + Model.data.Price.ToString();
             bool useOldPrice = true;
+            bool useAds = false;
             //할인가격이 0이면 사용 안함
             if(Model.data.OldPrice == 0) { useOldPrice = false; }
 
-            //획득 방식이 ADSfk
-            if(Model.data.gain == UIShopSlotModel.Gain.ADS)
+            //획득 방식이 ADS 라면
+            if (Model.data.gain == UIShopSlotModel.Gain.ADS) { useAds = true; }
 
-            View.UpdateInfo(Model.data.Image,Model.data.GainValueImage, Model.data.GainValue, description,oldPrice,price, useOldPrice , useAds);
+            View.UpdateInfo(Model.data.Image,Model.data.GainValueImage,
+                Model.data.GainValue, description,oldPrice,price, useOldPrice , useAds);
         }
     }
 }

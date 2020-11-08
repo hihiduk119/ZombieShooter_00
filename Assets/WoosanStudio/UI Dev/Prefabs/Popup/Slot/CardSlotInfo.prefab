@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.27058825, g: 0.3647059, b: 0.4509804, a: 1}
+  m_Color: {r: 0.27058825, g: 0.3647059, b: 0.4509804, a: 0.19607843}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4373,6 +4373,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb352657426604f4a9ed889569ce460a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ToModel: {fileID: 0}
+  openPopup: {fileID: 0}
+  FromPresenter: {fileID: 0}
 --- !u!1 &8919758380595667163
 GameObject:
   m_ObjectHideFlags: 0

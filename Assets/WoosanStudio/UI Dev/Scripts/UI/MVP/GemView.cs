@@ -19,7 +19,11 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="value"></param>
         public void UpdateGem(int value)
         {
-            Text.text = string.Format("{0:0,0}", value);
+            string gam;
+            if (value < 10) { gam = value.ToString(); }
+            else { gam = string.Format("{0:0,0}", value); }
+
+            Text.text = gam;
         }
     }
 }

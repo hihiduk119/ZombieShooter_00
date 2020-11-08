@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1026947853900519448}
   - component: {fileID: 6618943718428685017}
+  - component: {fileID: 1104913771826019231}
+  - component: {fileID: 8666624202784851512}
   m_Layer: 5
   m_Name: Buy Button
   m_TagString: Untagged
@@ -56,7 +58,58 @@ MonoBehaviour:
   onClickAlpha: 0.7
   onClicked:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1104913771826019231}
+        m_MethodName: Send
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8666624202784851512}
+        m_MethodName: OpenPopup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1104913771826019231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509938178693000114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5c32e174c23467c830cdd68bb5fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ToModel: {fileID: 7682835704172619160}
+  openPopup: {fileID: 8666624202784851512}
+  FromPresenter: {fileID: 0}
+--- !u!114 &8666624202784851512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509938178693000114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 606828f3686ee4f0289cece909531556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupPrefab: {fileID: 5182120765240050754, guid: 6e58a0f23a43a493b9e1057c4eb78405,
+    type: 3}
 --- !u!1 &2402727444362755419
 GameObject:
   m_ObjectHideFlags: 0

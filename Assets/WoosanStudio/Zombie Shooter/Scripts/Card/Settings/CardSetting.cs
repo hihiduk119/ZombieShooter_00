@@ -317,7 +317,10 @@ namespace WoosanStudio.ZombieShooter
         {
             //요구 코인 알아오기
             int coin = NextValueCalculator.GetRequireCoinByLevel(cardSetting.MaxLevel, cardSetting.Level);
-            string strCoin = string.Format("{0:0,0}", coin);
+
+            string strCoin;
+            if (coin < 10) { strCoin = coin.ToString(); }
+            else { strCoin = string.Format("{0:0,0}", coin); }
 
             return strCoin;
         }
@@ -331,7 +334,10 @@ namespace WoosanStudio.ZombieShooter
         {
             //요구 젬 알아오기
             int gem = NextValueCalculator.GetRequireGemByLevel(cardSetting.MaxLevel, cardSetting.Level);
-            string strGem = string.Format("{0:0,0}", gem);
+
+            string strGem;
+            if (gem < 10) { strGem = gem.ToString(); }
+            else { strGem = string.Format("{0:0,0}", gem); }
 
             return strGem;
         }

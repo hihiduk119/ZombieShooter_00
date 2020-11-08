@@ -19,7 +19,11 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="value"></param>
         public void UpdateCoin(int value)
         {
-            Text.text = string.Format("{0:0,0}", value);
+            string coin;
+            if (value < 10) { coin = value.ToString(); }
+            else { coin = string.Format("{0:0,0}", value); }
+
+            Text.text = coin;
         }
     }
 }

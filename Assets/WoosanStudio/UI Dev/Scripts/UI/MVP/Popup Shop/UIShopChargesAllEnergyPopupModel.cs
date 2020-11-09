@@ -24,6 +24,7 @@ namespace WoosanStudio.ZombieShooter
             public float Price = 1.43f;
         }
 
+        [Header("[에너지 구매 데이터]")]
         public Data data = new Data();
     }
 }

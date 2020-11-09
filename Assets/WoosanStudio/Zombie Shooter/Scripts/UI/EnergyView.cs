@@ -24,7 +24,7 @@ namespace WoosanStudio.ZombieShooter
         public Slider EnergySlider;
 
         [Header("[에너지 컨트롤러]")]
-        public EnergyController Controller;
+        public EnergyPresenter Presenter;
 
         //캐쉬용
         private WaitForSeconds WFS = new WaitForSeconds(0.33f);
@@ -49,7 +49,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void ShowRechargeInfo()
         {
-            RechargeInfo.text = Controller.RechargeInfoText;
+            RechargeInfo.text = Presenter.RechargeInfoText;
         }
 
         /// <summary>
@@ -57,8 +57,8 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void ShowProgress()
         {
-            EnergySlider.value = Controller.EnergySliderValue;
-            Progress.text = Controller.ProgressText;
+            EnergySlider.value = Presenter.EnergySliderValue;
+            Progress.text = Presenter.ProgressText;
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void ShowRechargeTime()
         {
-            Time.text = Controller.RechargeTimeText;
+            Time.text = Presenter.RechargeTimeText;
         }
     }
 }

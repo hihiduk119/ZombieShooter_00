@@ -24936,7 +24936,7 @@ MonoBehaviour:
   Progress: {fileID: 2055984678}
   Time: {fileID: 3154183355346045801}
   EnergySlider: {fileID: 4833012221199150332}
-  Controller: {fileID: 1829861710}
+  Presenter: {fileID: 1829861710}
 --- !u!114 &1829861710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24965,9 +24965,9 @@ MonoBehaviour:
   data:
     MaxEnergy: 100
     CurrentEnergy: 0
-    MaxRechargingTime: 5
+    MaxRechargingTime: 45
     RemainRechargingTime: 0
-    RechargingPoint: 5
+    RechargingPoint: 1
     dateTimeByBinary: 0
 --- !u!1 &1832029907
 GameObject:

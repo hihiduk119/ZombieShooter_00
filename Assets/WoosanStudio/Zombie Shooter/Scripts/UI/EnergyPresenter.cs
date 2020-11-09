@@ -11,7 +11,7 @@ namespace WoosanStudio.ZombieShooter
     /// Model 에서 정보를 얻어와 필요한 곳에 전달
     /// MVC 패
     /// </summary>
-    public class EnergyController : MonoBehaviour
+    public class EnergyPresenter : MonoBehaviour
     {
         [Header("[에너지 모델]")]
         public EnergyModel Model;

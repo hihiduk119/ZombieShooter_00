@@ -121,20 +121,26 @@ namespace WoosanStudio.ZombieShooter
 
 
         #region [-TestCode]
-        //void Update()
-        //{
-        //    //에너지 소비
-        //    if (Input.GetKeyDown(KeyCode.A))
-        //    {
-        //        UpdateEnergy(-25);
-        //    }
+        /*void Update()
+        {
+            //에너지 소비
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                UpdateEnergy(-25);
+            }
 
-        //    //현재 데이터 출력
-        //    if (Input.GetKeyDown(KeyCode.A))
-        //    {
-        //        UpdateEnergy(-25);
-        //    }
-        //}
+            //현재 데이터 출력
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                UpdateEnergy(-25);
+            }
+
+            //현재 데이터 출력
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                PlayerPrefs.DeleteAll();
+            }
+        }*/
         #endregion
 
     }

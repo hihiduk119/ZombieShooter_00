@@ -13,6 +13,9 @@ namespace WoosanStudio.ZombieShooter
     public class UINotifyCoinUpgradeView : MonoBehaviour
     {
         [Header("[목표 레벨]")]
+        public Image Image;
+
+        [Header("[목표 레벨]")]
         public Text TargetLevel;
 
         [Header("[요구 코인]")]
@@ -30,8 +33,15 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="successLevel"></param>
         /// <param name="requireGem"></param>
         /// <param name="successRate"></param>
-        public void UpdateView(string targetLevel, string requireCoin, string requireTime)
+        public void UpdateView(Sprite sprite,Color color, string targetLevel, string requireCoin, string requireTime)
         {
+            Image.sprite = sprite;
+            Image.color = color;
+            //이미지에 따라 사이즈 재정의
+            float width = Image.sprite.rect.width * 0.2f;
+            float height = Image.sprite.rect.height * 0.2f;
+            Image.rectTransform.sizeDelta = new Vector2(width, height);
+
             TargetLevel.text = targetLevel;
             RequireCoin.text = requireCoin;
             RequireTime.text = requireTime;

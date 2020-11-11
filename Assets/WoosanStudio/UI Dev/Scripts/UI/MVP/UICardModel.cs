@@ -84,7 +84,6 @@ namespace WoosanStudio.ZombieShooter
         [Header("[실제 모든 카드 리스트가 저장된 데이터]")]
         public UICardModel.Data data = new UICardModel.Data();
 
-
         /// <summary>
         /// 저장 데이터와 실제 CardSetting 데이터간 동기화 시킴
         /// * 이때 언락 제한이 풀링는 레벨이 있다면 풀어야 함
@@ -137,6 +136,10 @@ namespace WoosanStudio.ZombieShooter
             Save();
         }
 
+        /// <summary>
+        /// 카드 데이터의 불러오기
+        /// * 반드시 CardSetting 과 씽크 마추는 작업 필요
+        /// </summary>
         public void Load()
         {
             if (!PlayerPrefs.HasKey("UICard")) { Save(); }
@@ -146,6 +149,10 @@ namespace WoosanStudio.ZombieShooter
             //data.Print("[Load]");
         }
 
+        /// <summary>
+        /// 카드 데이터 저장
+        /// * 반드시 CardSetting 과 씽크 마추는 작업 필요
+        /// </summary>
         public void Save()
         {
             //데이터 최초 생성시

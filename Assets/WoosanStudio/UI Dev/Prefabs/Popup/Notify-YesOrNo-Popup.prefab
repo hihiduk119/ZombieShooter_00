@@ -206,7 +206,18 @@ MonoBehaviour:
   onClickAlpha: 0.7
   onClicked:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5078961454408929788}
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4515071267891651361
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,8 +303,6 @@ GameObject:
   - component: {fileID: 5078961454408929788}
   - component: {fileID: 5095991077146697482}
   - component: {fileID: 4969236966441898520}
-  - component: {fileID: 4601445169621833621}
-  - component: {fileID: 3340001121234855771}
   m_Layer: 5
   m_Name: Notify-YesOrNo-Popup
   m_TagString: Untagged
@@ -371,36 +380,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &4601445169621833621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5182120765240050754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df6dbe1f39d3f4906b3bcb0061054843, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Description: {fileID: 5078961453967963086}
---- !u!114 &3340001121234855771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5182120765240050754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2baf69e0e5f8042a4beec5df895e23ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  View: {fileID: 4601445169621833621}
-  data:
-    Description_0: 
-    Description_1: 
-    Price: 1.43
 --- !u!1 &5182120765720136166
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,55 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using Ricimi;
-
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
-    /// 알림 팝업
+    /// 알림을 실제 호출하는 컨트롤러
     /// </summary>
     public class NotifyPopupController : MonoBehaviour
     {
-        public static NotifyPopupController Instance;
-
-        public MyPopupOpener mPopup;
-
-        private Coroutine mAutoCloseCoroutine;
+        //싱글톤 패턴
+        static public NotifyPopupController Instance;
+        [Header("[UI 팝업 오프너 -> 카드 업그레이드 결과 출력]")]
+        public Ricimi.PopupOpener popupOpener;
 
         private void Awake()
         {
+            //싱글톤 패턴
             Instance = this;
-            mPopup = GetComponent<MyPopupOpener>();
+            //다른씬에서도 사용
+            DontDestroyOnLoad(this.gameObject);
         }
-
-        public void Setup()
-        {
-
-        }
-
-        public void Open()
-        {
-            mPopup.OpenPopup();
-
-            AutoClose();
-        }
-
 
         /// <summary>
-        /// 1초 후 자동 닫음 
+        /// 결과 출력 실행
+        /// * 알림 타입에 따 다른 메시지 호출
         /// </summary>
-        public void AutoClose()
+        /// <param name="result"></param>
+        public void OpenResult(UINotifyPopupModel.Type type)
         {
-            if (mAutoCloseCoroutine != null) { StopCoroutine(mAutoCloseCoroutine); }
-            mAutoCloseCoroutine = StartCoroutine(AutoCloseCoroutine());
-        }
+            UINotifyPopupPresenter presenter = popupOpener.popupPrefab.GetComponent<UINotifyPopupPresenter>();
+            presenter.Type = type;
 
-
-        IEnumerator AutoCloseCoroutine()
-        {
-            yield return new WaitForSeconds(1f);
-
-            mPopup.Instance.GetComponent<MyPopup>().Close();
+            popupOpener.OpenPopup();
         }
     }
 }

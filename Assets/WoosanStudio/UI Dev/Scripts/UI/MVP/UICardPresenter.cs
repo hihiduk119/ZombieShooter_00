@@ -30,5 +30,21 @@ namespace WoosanStudio.ZombieShooter
             //싱크로 호출하여 데이터 동기화
             Model.Synchronization();
         }
+
+        /// <summary>
+        /// 카드 업그레이드 시작시 카드 데이터 반영 및 싱크 마추기
+        /// </summary>
+        public void CardUpgradeStart()
+        {
+
+        }
+
+        /// <summary>
+        /// 카드 업그레이드 완료시 실제 카드 데이터 반영 및 싱크마추기
+        /// </summary>
+        public void CardUpgradeComplate()
+        {
+
+        }
     }
 }

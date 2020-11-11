@@ -37,5 +37,14 @@ namespace WoosanStudio.ZombieShooter
             } else { gainValue = string.Format("{0:0,0}", data.GainValue);}
             View.UpdateView(data.Image, data.GainValueImage, gainValue, price);
         }
+
+        /// <summary>
+        /// Yes 버튼 클릭
+        /// </summary>
+        public void Send()
+        {
+            //실제 구매 컨트롤에 연결.
+            PurchaseController.Instance.BuySometing(data);
+        }
     }
 }

@@ -24,6 +24,13 @@ namespace WoosanStudio.ZombieShooter
         private void Awake()
         {
             Instance = this;
+
+            //잼 컨트롤 자동으로 추가
+            gemPresenter = GameObject.FindObjectOfType<GemPresenter>();
+            //코인 컨트롤 자동으로 추가
+            coinPresenter = GameObject.FindObjectOfType<CoinPresenter>();
+            //에너지 컨트롤 자동으로 추가
+            energyPresenter = GameObject.FindObjectOfType<EnergyPresenter>();
         }
 
         /// <summary>

@@ -156,7 +156,7 @@ namespace WoosanStudio.ZombieShooter
             {
                 //해당 카드 깜밖임.
                 tmp.Blick();
-                Debug.Log("중복된 카드가 존제한다.");
+                Debug.Log("중복된 카드가 존재한다.");
 
                 AutoScollMover(tmp);
 
@@ -167,7 +167,7 @@ namespace WoosanStudio.ZombieShooter
             if (isFull) {
                 Debug.Log("카드가 꽉차서 선택 불가");
                 //알림창 열기
-                NotifyPopupController.Instance.Open();
+                //NotifyPopupController.Instance.Open();
                 return;
             }
 

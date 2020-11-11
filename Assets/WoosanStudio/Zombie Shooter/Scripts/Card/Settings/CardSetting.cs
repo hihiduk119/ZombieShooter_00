@@ -326,6 +326,19 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 요구하는 코인을 가져옴
+        /// </summary>
+        /// <param name="cardSetting"></param>
+        /// <returns></returns>
+        static public int RequireCoin(CardSetting cardSetting)
+        {
+            //요구 코인 알아오기
+            int coin = NextValueCalculator.GetRequireCoinByLevel(cardSetting.MaxLevel, cardSetting.Level);
+
+            return coin;
+        }
+
+        /// <summary>
         /// 요구하는 젬을 스트링으로 가져옴
         /// </summary>
         /// <param name="cardSetting"></param>
@@ -340,6 +353,19 @@ namespace WoosanStudio.ZombieShooter
             else { strGem = string.Format("{0:0,0}", gem); }
 
             return strGem;
+        }
+
+        /// <summary>
+        /// 요구하는 젬을 가져옴
+        /// </summary>
+        /// <param name="cardSetting"></param>
+        /// <returns></returns>
+        static public int RequireGem(CardSetting cardSetting)
+        {
+            //요구 젬 알아오기
+            int gem = NextValueCalculator.GetRequireGemByLevel(cardSetting.MaxLevel, cardSetting.Level);
+
+            return gem;
         }
 
         /// <summary>

@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     Description_0: Charges all energy.
-    Description_1: Pay $1.43 and charges all energy.
+    Description_1: Do you really want to buy it?
     Price: 1.43
 --- !u!114 &356490706246461317
 MonoBehaviour:
@@ -2340,7 +2340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606828f3686ee4f0289cece909531556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupPrefab: {fileID: 5182120765240050754, guid: 39ed288ece9174b00b34957217dd0bb7,
+  popupPrefab: {fileID: 5182120765240050754, guid: c37675ce9d2ea4bdc91b82856245a3a8,
     type: 3}
 --- !u!114 &4852380217007329003
 MonoBehaviour:

@@ -23,8 +23,6 @@ namespace WoosanStudio.ZombieShooter
         [Header("[코인 빼기 실패 이벤트]")]
         public UnityEvent SubtractCoinFailEvent = new UnityEvent();
 
-        
-
         private void Start()
         {
             //모델 초기화
@@ -77,6 +75,15 @@ namespace WoosanStudio.ZombieShooter
             }
 
             return success;
+        }
+
+        /// <summary>
+        /// 현재 코인 알아오기
+        /// </summary>
+        /// <returns></returns>
+        public int GetCoin()
+        {
+             return Model.data.Coin;
         }
 
         #region [-TestCode]

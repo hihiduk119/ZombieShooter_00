@@ -7,10 +7,10 @@ using DarkTonic.MasterAudio;
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
-    /// 카드 업그레이드 결과 컨트롤러
+    /// 카드 업그레이드 결과 UI 컨트롤러
     /// *MVP 모델
     /// </summary>
-    public class CardUpgradeResaultController : MonoBehaviour
+    public class CardUpgradeResaultPopupController : MonoBehaviour
     {
         [Header("UI 팝업 오프너 -> 카드 업그레이드 결과 출력]")]
         public Ricimi.PopupOpener popupOpener;
@@ -25,7 +25,6 @@ namespace WoosanStudio.ZombieShooter
             view.strResult = strResult;
             view.strLevel = strLevel;
             view.bResult = bResult;
-            
 
             popupOpener.OpenPopup();
         }

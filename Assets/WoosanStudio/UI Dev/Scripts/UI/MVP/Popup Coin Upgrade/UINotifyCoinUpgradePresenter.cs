@@ -29,9 +29,34 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void UpdateView()
         {
-            View.UpdateView(CardSetting.UpgradeComplateLevelToString(CardSetting)
+            View.UpdateView(this.CardSetting.Sprite,this.CardSetting.IconColor
+                , CardSetting.UpgradeComplateLevelToString(CardSetting)
                 , CardSetting.RequireCoinToString(CardSetting)
                 , CardSetting.UpgradeRemainTimeToString(CardSetting));
+        }
+
+        /// <summary>
+        /// Ok 버튼 클릭
+        /// </summary>
+        public void ClickButtonOk()
+        {
+            //코인 소비
+            CoinPresenter coinPresenter = GameObject.FindObjectOfType<CoinPresenter>();
+
+            //업그레이드 하려는 레벨
+            int upgradeLevel = CardSetting.Level + 1;
+            int requireCoin = CardSetting.RequireCoin(this.CardSetting);
+            //요구코인보다 현재 코인이 적다.
+            if (coinPresenter.GetCoin() < requireCoin)
+            {
+                //코인이 부족하면 알림 표시 및 종료
+                NotifyPopupController.Instance.OpenResult(UINotifyPopupModel.Type.NotEnoughCoin);
+                return;
+            }
+
+            //코인이 충분하면 UICardPresenter에서 해당 카드 업글 호출
+            //카드 데이터 및 카드 레벨 및 업그레이드 시작알림
+
         }
     }
 }

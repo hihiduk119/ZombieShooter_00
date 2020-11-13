@@ -27,7 +27,7 @@ namespace WoosanStudio.ZombieShooter
         public void Initialize()
         {
             //싱크로 호출하여 데이터 동기화
-            Model.Synchronization();
+            //Model.Synchronization();
         }
 
         /// <summary>

@@ -3189,9 +3189,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 63288cc92a95244a99733808fd62b8e6, type: 2}
   - {fileID: 11400000, guid: c1e851608d06c4137b1d6c319c33875f, type: 2}
   - {fileID: 11400000, guid: 5691bae4fd0dc4ed8a20a5b91428e0ed, type: 2}
-  data:
-    SelectedCharacter: 16
-    CardDatas: []
 --- !u!114 &3409128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24163,7 +24160,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupOpener: {fileID: 1715224167}
-  Type: 0
 --- !u!114 &1715224167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26582,6 +26578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     GambleCurrentSuccessRate: 50
+    SelectedCharacter: 16
 --- !u!4 &1880474793
 Transform:
   m_ObjectHideFlags: 0

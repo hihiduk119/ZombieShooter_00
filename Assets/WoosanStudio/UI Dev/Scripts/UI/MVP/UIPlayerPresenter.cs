@@ -115,18 +115,18 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="type"></param>
         public void CharacterChange(int value)
         {
-            int currentIndex = 16;
+            int currentIndex = GlobalDataController.CharacterCardStartIndex;
 
             //카드 순서에의해 발생한 캐릭터 간 
-            int characterIndexInterval = 16;
+            int characterIndexInterval = GlobalDataController.CharacterCardStartIndex;
 
             //현재 모델의 인덱스 가져오기
-            currentIndex = Model.data.SelectedCharacter;
+            currentIndex = GlobalDataController.Instance.SelectedCharacter;
 
             //카드 데이터 순서에 더하기 때문에 +16필요.
             currentIndex += value;
 
-            //Debug.Log("currentIndex = " + currentIndex + " SelectedCharacter =  " + Model.data.SelectedCharacter + "   value = "+ value);
+            Debug.Log("currentIndex = " + currentIndex + " SelectedCharacter =  " + GlobalDataController.Instance.SelectedCharacter + "   value = " + value);
 
             int maxIndex = System.Enum.GetValues(typeof(UIPlayerSelectModel.ModelType)).Length;
 
@@ -134,7 +134,7 @@ namespace WoosanStudio.ZombieShooter
             if (currentIndex < 0 + characterIndexInterval) { currentIndex = 0 + characterIndexInterval; }
             if (maxIndex + characterIndexInterval <= currentIndex) { currentIndex = maxIndex - 1 + characterIndexInterval; }
 
-            //Debug.Log("currentIndex = " + currentIndex + "   characterIndexInterval = " + characterIndexInterval);
+            Debug.Log("currentIndex = " + currentIndex + "   characterIndexInterval = " + characterIndexInterval);
 
             //캐릭터 변경 통지 => 변경시 필요한 인덱스는 -16뺀 0 부터 13까지임.
             ChangeCharacterEvent.Invoke(currentIndex - characterIndexInterval);
@@ -167,10 +167,10 @@ namespace WoosanStudio.ZombieShooter
 
 
             //캐릭터 사용 가능 여부 발생
-            UpdateUseAbleEvent.Invoke(Model.data.CardDatas[currentIndex].UseAble);
+            UpdateUseAbleEvent.Invoke(Model.cardSettings[currentIndex].UseAble);
 
             //구매 뷰 사용 여부 통지
-            if (Model.data.CardDatas[currentIndex].UseAble)
+            if (Model.cardSettings[currentIndex].UseAble)
             {
                 PurchaseActivationEvent.Invoke(new PurchaseViewData());
             }
@@ -181,10 +181,10 @@ namespace WoosanStudio.ZombieShooter
 
 
             //변경 된 인덱스 모델 데이터에 넣음
-            Model.data.SelectedCharacter = currentIndex;
+            GlobalDataController.Instance.SelectedCharacter = currentIndex;
 
             //저장
-            Model.Save();
+            //Model.Save();
         }
     }
 }

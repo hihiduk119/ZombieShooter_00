@@ -24,35 +24,117 @@ namespace WoosanStudio.ZombieShooter
         private int gemPrice = -1;
         public int GemPrice { get => gemPrice; set => gemPrice = value; }
 
+        //========================= [Moved CardData] =========================
+
+        [System.Serializable]
+        public class CardData
+        {
+            //캐릭터가 사용 가능 한지 아닌지
+            //* 구매 또는 레벨 달성시 언락됨.
+            public bool UseAble = false;
+
+            //카드의 레벨
+            public int Level = 0;
+
+            //카드 내구도 [현재 사용 안함]
+            public int Durability = 100;
+
+            //<===== 이하 추가 한 데이터
+
+            //UI에서 데이터의 순서
+            public int SortIndex;
+
+            //연구 중이었다면 UI데이터의 순서
+            public int ResearchSlotIndex = -1;
+
+            //남은 업글 시간
+            //public long UpgradeStartedTime = 0;
+            //업글중 이었는지 아닌지
+            //public bool IsUpgrading = false;
+            //남은 업글 시간 및 업글 중인지 아닌지 까지 모두 알수 있음
+            public Timeset UpgardeTimeset;
+
+            //업글중 이었는지 아닌지
+            public bool IsUpgrading = false;
+
+            public CardData(bool useAble = false) { UseAble = useAble; }
+
+
+            public void Print()
+            {
+                Debug.Log("사용 가능 여부 = [" + UseAble.ToString() + "] 레벨 = ["
+                    + Level+"] 내구도 = [" + Durability+"] 정렬 순서 = ");
+            }
+        }
+
+        [Header("[데이터 확인용으로 열어놓지만 나중에 막아야함]")]
+        public CardData cardData = new CardData();
+
         //========================= [CardData] =========================
 
         [Header("[사용 가능 => 레벨 언락 또는 구매 언락이 됬음]")]
         //저장 필요
         [SerializeField]
         private bool useAble = false;
-        public bool UseAble { get => useAble; set => useAble = value; }
+        public bool UseAble { get => useAble; set {
+                cardData.UseAble = useAble = value;
+                Save();
+            }
+        }
 
         [Header("[스킬 레벨]")]
         //[HideInInspector]
         [SerializeField]
         //저장 필요
         private int level = 0;
-        public int Level { get => level; set => level = value; }
+        public int Level { get => level; set {
+                cardData.Level = level = value;
+                Save();
+            }
+        }
 
         [Header("[현재 내구도]")]
         [SerializeField]
         //저장 필요
         private int durability = 10;
-        public int Durability { get => durability; set => durability = value; }
+        public int Durability { get => durability; set {
+                cardData.Durability = durability = value;
+                Save();
+            }
+        }
 
         //UI에서 데이터의 순서
-        public int SortIndex;
+        private int sortIndex;
+        public int SortIndex { get => sortIndex; set {
+                cardData.SortIndex = sortIndex = value;
+                Save();
+            }
+        }
 
         //연구 중이었다면 UI데이터의 순서
-        public int ResearchSlotIndex = -1;
+        private int researchSlotIndex = -1;
+        public int ResearchSlotIndex { get => researchSlotIndex; set {
+                cardData.ResearchSlotIndex = researchSlotIndex = value;
+                Save();
+            }
+        }
 
         //업글중 이었는지 아닌지
-        public bool IsUpgrading = false;
+        private bool isUpgrading = false;
+        public bool IsUpgrading { get => isUpgrading; set {
+                cardData.IsUpgrading = isUpgrading = value;
+                Save();
+            }
+        }
+
+        [Header("[업글 시간을 가지고 있는 데이터]")]
+        [SerializeField]
+        private Timeset upgradeTimeset;
+        public Timeset UpgradeTimeset { get => upgradeTimeset; set {
+                cardData.UpgardeTimeset = upgradeTimeset = value;
+                Save();
+            }
+        }
 
         //==============================================================
 
@@ -91,12 +173,6 @@ namespace WoosanStudio.ZombieShooter
         //저장 불필요
         //private long upgradeStartedTime = 0;
         //public long UpgradeStartedTime => upgradeStartedTime;
-
-        [Header("[업글 시간을 가지고 있는 데이터]")]
-        [SerializeField]
-        private Timeset upgradeTimeset;
-        public Timeset UpgradeTimeset{get => upgradeTimeset; set => upgradeTimeset = value; }
-
 
         [HideInInspector]//연구 중이었다면 해당 슬롯
         //저장 필요
@@ -256,6 +332,43 @@ namespace WoosanStudio.ZombieShooter
             StreetMan,          //캐릭터 변경 및 모든 무기 데미지 5% 증가 & 최대 체력 -10%감소                            lv 27 unlock
             Trucker,            //캐릭터 변경 및 공습 데미지 25% 증가 & 공습 체움 속도 25% 증가 & 모든 무기 데미지 -10% 감소     lv 30 unlock
             Woman,              //캐릭터 변경 및 최대 체력 25% 증가 & 모든 타입의 탄약 데미지 10 감소                      lv 34 unlock
+        }
+
+
+        /// <summary>
+        /// Json데이터 저장
+        /// </summary>
+        void Save()
+        {
+            string strJson = JsonUtility.ToJson(this.cardData);
+            PlayerPrefs.SetString("Card_" + Name, strJson);
+        }
+
+        /// <summary>
+        /// Json데이터 로드
+        /// </summary>
+        public void Load()
+        {
+            if(!PlayerPrefs.HasKey("Card_" + Name)) { Save(); }
+
+            this.cardData = JsonUtility.FromJson<CardData>(PlayerPrefs.GetString("Card_" + Name));
+            //로드한 데이터와 현재 데이터 싱크 마추기
+            Synchronization();
+        }
+
+        /// <summary>
+        /// 데이터 싱크 마추기
+        /// </summary>
+        public void Synchronization()
+        {
+            //이떼 불필요한 Save발생을 피하기 위해 로컬 데이터 사용
+            this.useAble = cardData.UseAble;
+            this.level = cardData.Level;
+            this.durability = cardData.Durability;
+            this.sortIndex = cardData.SortIndex;
+            this.researchSlotIndex = cardData.ResearchSlotIndex;
+            this.upgradeTimeset = cardData.UpgardeTimeset;
+            this.isUpgrading = cardData.IsUpgrading;
         }
 
         /// <summary>

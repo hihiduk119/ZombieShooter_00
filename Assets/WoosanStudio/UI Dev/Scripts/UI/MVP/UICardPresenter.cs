@@ -13,7 +13,6 @@ namespace WoosanStudio.ZombieShooter
         [Header("[MVP Model]")]
         public UICardModel Model;
 
-
         IEnumerator Start()
         {
             //0.1f초 대기 이유??
@@ -34,9 +33,23 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 카드 업그레이드 시작시 카드 데이터 반영 및 싱크 마추기
         /// </summary>
-        public void CardUpgradeStart()
+        public void CardUpgradeStart(CardSetting cardSetting)
         {
+            //바꾸려는 실제 저장 카드 인덱스
+            int index = -1;
 
+            for (int i = 0; i < Model.cardSettings.Count; i++)
+            {
+                //찾으려는 카드 세팅 데이터와 모델이 가지고 있는 데이터의 인덱스 알아오기
+                if(Model.cardSettings[i].Name.Equals(cardSetting.Name)) { index = i; }
+            }
+
+            //여기에 실제 저장 데이터가 있다
+            //UICardModel.CardData cardData = Model.data.CardDatas[cardIndex];
+
+            //NextValueCalculator.GetUpgradeTimeByLevel()
+
+            //cardData.UpgardeTimeset = new Timeset();
         }
 
         /// <summary>

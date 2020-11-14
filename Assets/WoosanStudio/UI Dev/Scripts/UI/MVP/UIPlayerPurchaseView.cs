@@ -40,6 +40,7 @@ namespace WoosanStudio.ZombieShooter
             Level.text = value.ToString();
         }
 
+        /*
         /// <summary>
         /// UIPlayerPresenter 에서 UpdatePurchaseView 받음 
         /// </summary>
@@ -58,6 +59,28 @@ namespace WoosanStudio.ZombieShooter
             View.SetActive(true);
             UpdateGem(data.RequireGem);
             UpdateLevel(data.RequireLevel);
+        }*/
+
+
+        /// <summary>
+        /// UIPlayerPresenter 에서 UpdatePurchaseView 받음 
+        /// </summary>
+        /// <param name="data"></param>
+        public void UpdateViewReceiver(CardSetting cardSetting)
+        {
+            //data.Print();
+
+            //이미 구매했다면
+            if (cardSetting.UseAble)
+            {
+                View.SetActive(false);
+                return;
+            }
+
+            //구매 안했다면
+            View.SetActive(true);
+            UpdateGem(cardSetting.GemPrice);
+            UpdateLevel(cardSetting.UnlockLevel);
         }
     }
 }

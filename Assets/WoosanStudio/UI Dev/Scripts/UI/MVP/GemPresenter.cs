@@ -47,6 +47,15 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 젬 겟수 확인
+        /// </summary>
+        /// <returns></returns>
+        public int GetGem()
+        {
+            return Model.data.Gem;
+        }
+
+        /// <summary>
         /// 코인 빼기
         /// * 0뻬는 값의 크기가 0보다 작으면 실패 리턴.
         /// </summary>

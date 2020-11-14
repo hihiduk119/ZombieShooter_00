@@ -78,7 +78,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void Save()
         {
-            Debug.Log("[Save] 글로벌 컨트롤러");
+            //Debug.Log("[Save] 글로벌 컨트롤러");
             string strJson = JsonUtility.ToJson(data);
             PlayerPrefs.SetString("GlobalData", strJson);
         }
@@ -88,7 +88,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void Load()
         {
-            Debug.Log("[Load] 글로벌 컨트롤러");
+            //Debug.Log("[Load] 글로벌 컨트롤러");
             if (!PlayerPrefs.HasKey("GlobalData")) { Save(); }
 
             data = JsonUtility.FromJson<GlobalDataController.Data>(PlayerPrefs.GetString("GlobalData"));

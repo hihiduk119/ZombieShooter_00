@@ -303,6 +303,8 @@ GameObject:
   - component: {fileID: 5078961454408929788}
   - component: {fileID: 5095991077146697482}
   - component: {fileID: 4969236966441898520}
+  - component: {fileID: 4476646344118593810}
+  - component: {fileID: 1353192545851950439}
   m_Layer: 5
   m_Name: Notify-YesOrNo-Popup
   m_TagString: Untagged
@@ -380,6 +382,35 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &4476646344118593810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5182120765240050754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f117ddd4afc54a268a34fa3850bac47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  View: {fileID: 1353192545851950439}
+  YesButton: {fileID: 6591743740268358946}
+  NoButton: {fileID: 6728603774491748630}
+  Desicription: 
+--- !u!114 &1353192545851950439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5182120765240050754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2930e2080f84a3d9162d425a0edc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Description: {fileID: 5078961453967963086}
 --- !u!1 &5182120765720136166
 GameObject:
   m_ObjectHideFlags: 0

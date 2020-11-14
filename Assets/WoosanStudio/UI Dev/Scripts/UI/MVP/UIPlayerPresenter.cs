@@ -4,6 +4,7 @@ using UnityEngine;
 
 using UnityEngine.Events;
 using System.Text;
+using Ricimi;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -18,36 +19,22 @@ namespace WoosanStudio.ZombieShooter
         //public UIPlayerModel Model;
         [Header("[MVP 모델]")]
         public UICardModel Model;
+        [Header("[돈이 없음 팝업 오프너]")]
+        public PopupOpener NotifyPopupOpener;
+        [Header("[돈이 있고 최종 확인용 오프너]")]
+        public PopupOpener NotifyYesOrNoPopupOpener;
 
         [System.Serializable]
         public class UpdateCharacter : UnityEvent<int> { }
 
         [System.Serializable]
-        public class UpdatePurchaseView : UnityEvent<PurchaseViewData> { }
+        public class UpdateCharacterPurchaseView : UnityEvent<CardSetting> { }
 
         [System.Serializable]
         public class UpdateInfoView : UnityEvent<InfoViewData> { }
 
         [System.Serializable]
         public class UpdateUseAble : UnityEvent<bool> { }
-        
-
-        [System.Serializable]
-        //구매 뷰 전용 데이터
-        public class PurchaseViewData
-        {
-            public bool UseAble = false;
-            public int RequireGem = 100;
-            public int RequireLevel = 10;
-
-            public PurchaseViewData(bool value = true) { UseAble = value; }
-            public PurchaseViewData(int gem,int level,bool value = false) { RequireGem = gem; RequireLevel = level; UseAble = value; }
-
-            public void Print()
-            {
-                Debug.Log("사용 여부 = " + UseAble + " 젬 요구 = " + RequireGem + "  요구레벨 = " + RequireLevel);
-            }
-        }
 
         [System.Serializable]
         //캐릭터 인포 뷰 전용 데이터
@@ -92,8 +79,8 @@ namespace WoosanStudio.ZombieShooter
         [Header("[캐릭터 업데이트 이벤트]")]
         public UpdateCharacter ChangeCharacterEvent = new UpdateCharacter();
 
-        [Header("[캐릭터 구매 창 이벤트]")]
-        public UpdatePurchaseView PurchaseActivationEvent = new UpdatePurchaseView();
+        [Header("[신 캐릭터 구매 창 이벤트]")]
+        public UpdateCharacterPurchaseView CharacterPurchaseActivationEvent = new UpdateCharacterPurchaseView();
 
         [Header("[캐릭터 정보 이벤트]")]
         public UpdateInfoView UpdateInfoEvent = new UpdateInfoView();
@@ -126,7 +113,7 @@ namespace WoosanStudio.ZombieShooter
             //카드 데이터 순서에 더하기 때문에 +16필요.
             currentIndex += value;
 
-            Debug.Log("currentIndex = " + currentIndex + " SelectedCharacter =  " + GlobalDataController.Instance.SelectedCharacter + "   value = " + value);
+            //Debug.Log("currentIndex = " + currentIndex + " SelectedCharacter =  " + GlobalDataController.Instance.SelectedCharacter + "   value = " + value);
 
             int maxIndex = System.Enum.GetValues(typeof(UIPlayerSelectModel.ModelType)).Length;
 
@@ -134,7 +121,7 @@ namespace WoosanStudio.ZombieShooter
             if (currentIndex < 0 + characterIndexInterval) { currentIndex = 0 + characterIndexInterval; }
             if (maxIndex + characterIndexInterval <= currentIndex) { currentIndex = maxIndex - 1 + characterIndexInterval; }
 
-            Debug.Log("currentIndex = " + currentIndex + "   characterIndexInterval = " + characterIndexInterval);
+            //Debug.Log("currentIndex = " + currentIndex + "   characterIndexInterval = " + characterIndexInterval);
 
             //캐릭터 변경 통지 => 변경시 필요한 인덱스는 -16뺀 0 부터 13까지임.
             ChangeCharacterEvent.Invoke(currentIndex - characterIndexInterval);
@@ -165,26 +152,57 @@ namespace WoosanStudio.ZombieShooter
             //* 죽인 몬스터 및 플레이타임 가져오는 부분 필요
             UpdateInfoEvent.Invoke(infoViewData);
 
-
             //캐릭터 사용 가능 여부 발생
             UpdateUseAbleEvent.Invoke(Model.cardSettings[currentIndex].UseAble);
 
-            //구매 뷰 사용 여부 통지
-            if (Model.cardSettings[currentIndex].UseAble)
-            {
-                PurchaseActivationEvent.Invoke(new PurchaseViewData());
-            }
-            else
-            {
-                PurchaseActivationEvent.Invoke(new PurchaseViewData(Model.cardSettings[currentIndex].GemPrice, Model.cardSettings[currentIndex].UnlockLevel));
-            }
-
+            //구매 뷰 업데이트 통지
+            CharacterPurchaseActivationEvent.Invoke(Model.cardSettings[currentIndex]);
 
             //변경 된 인덱스 모델 데이터에 넣음
             GlobalDataController.Instance.SelectedCharacter = currentIndex;
+        }
 
-            //저장
-            //Model.Save();
+        /// <summary>
+        /// 캐릭터 구매 버튼 클릭
+        /// </summary>
+        public void ClickCharacterPurchaseButton()
+        {
+            //현재 캐릭터의 구매 가격 알아오기
+            CardSetting cardSetting = Model.cardSettings[GlobalDataController.Instance.SelectedCharacter];
+
+            Debug.Log("이 캐릭터의 가격은 요? Price = " + cardSetting.GemPrice);
+
+            //젬 프리젠트 가져오기
+            GemPresenter gemPresenter = GameObject.FindObjectOfType<GemPresenter>();
+
+            //현재 젬 확인
+            int gem = gemPresenter.GetGem();
+            //구매 가능한 수량 확인 -> 젬 부족
+            if( gem < cardSetting.GemPrice)
+            {
+                //해당 팝업 오픈
+                NotifyPopupOpener.OpenPopup();
+                //젬 부족 메시지 출력 셋업
+                NotifyPopupOpener.popupPrefab.GetComponent<UINotifyPopupPresenter>().Type = UINotifyPopupModel.Type.NotEnoughGem;
+            }
+            else //있으면 구매 확인 팝업.
+            {
+                //해당 팝업 오픈
+                NotifyYesOrNoPopupOpener.OpenPopup();
+                //젬 부족 메시지 출력 셋업 -> set a message print 
+                NotifyPopupOpener.popupPrefab.GetComponent<UINotifyYesOrNoPopupPresenter>().Desicription = "Buy ["+ cardSetting.name+"] for $" +string.Format("{0:0,0}", cardSetting.GemPrice);
+                //클릭에 이벤트에 연결된 액션에 연결 -> Connect to action to the connected event on click.
+                NotifyPopupOpener.popupPrefab.GetComponent<UINotifyYesOrNoPopupPresenter>().ClickYesAction = PurchaseCharacter;
+            }
+        }
+
+        /// <summary>
+        /// 실제 구매
+        /// </summary>
+        public void PurchaseCharacter()
+        {
+            //구매 실행
+            Debug.Log("==========> 구매실행");
         }
     }
 }

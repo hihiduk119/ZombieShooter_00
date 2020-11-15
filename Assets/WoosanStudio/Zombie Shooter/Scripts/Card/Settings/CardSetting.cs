@@ -125,6 +125,7 @@ namespace WoosanStudio.ZombieShooter
         private bool isUpgrading = false;
         public bool IsUpgrading { get => isUpgrading; set {
                 cardData.IsUpgrading = isUpgrading = value;
+                Debug.Log("===========> 업글 중인지 아닌지 저장 = [" + isUpgrading+"]");
                 Save();
             }
         }
@@ -134,6 +135,7 @@ namespace WoosanStudio.ZombieShooter
         private Timeset upgradeTimeset;
         public Timeset UpgradeTimeset { get => upgradeTimeset; set {
                 cardData.UpgardeTimeset = upgradeTimeset = value;
+                Debug.Log("===========> 업그레이드 시간 저장 = " + upgradeTimeset.GetRemainTimeToString()+"]");
                 Save();
             }
         }
@@ -371,6 +373,22 @@ namespace WoosanStudio.ZombieShooter
             this.researchSlotIndex = cardData.ResearchSlotIndex;
             this.upgradeTimeset = cardData.UpgardeTimeset;
             this.isUpgrading = cardData.IsUpgrading;
+        }
+
+        /// <summary>
+        /// 업그레이드 시작
+        /// </summary>
+        public void StartTheUpgrade(bool immediately = false)
+        {
+            //시간 데이터 업데이트
+            //세팅할 업글 시간 가져오기
+            int seconds = NextValueCalculator.GetUpgradeTimeByLevel(this.MaxLevel, this.Level);
+            //즉시 업글 활성화시 1초.
+            if (immediately) { seconds = 1; }
+            //시간 업데이트
+            this.UpgradeTimeset = new Timeset(seconds);
+            //현재 업글 중으로 변경
+            this.IsUpgrading = true;
         }
 
         /// <summary>

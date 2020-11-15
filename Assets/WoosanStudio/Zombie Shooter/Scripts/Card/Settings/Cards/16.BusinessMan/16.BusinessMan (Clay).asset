@@ -41,7 +41,7 @@ MonoBehaviour:
   stackCount: 0
   maxDurability: 10
   maxLevel: 25
-  unlockLevel: 1
+  unlockLevel: 0
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: f55ae6cf531794294870915a104fd4df, type: 3}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -24,9 +25,16 @@ namespace WoosanStudio.ZombieShooter
             canvasGroup = GetComponent<CanvasGroup>();
             canvasGroup.blocksRaycasts = value;
 
+            //연출 중지
+            transform.DOKill();
+            transform.localScale = Vector3.one;
+
             if (value)
             { 
                 canvasGroup.alpha = 1f;
+                
+                //스케일 트윈 연출
+                transform.DOScale(1.1f, 0.5f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
             } else
             {
                 canvasGroup.alpha = Alpha;

@@ -10,6 +10,8 @@ namespace WoosanStudio.ZombieShooter
     public class NotifyPopupController : MonoBehaviour
     {
         //싱글톤 패턴
+        //root prefab을 생성하는 방식이기 때문에 의미가 없다.
+        //*매번 생성 되기 때문에 문제가 다분한 코드
         static public NotifyPopupController Instance;
         [Header("[UI 팝업 오프너 -> 카드 업그레이드 결과 출력]")]
         public Ricimi.PopupOpener popupOpener;
@@ -18,7 +20,7 @@ namespace WoosanStudio.ZombieShooter
         {
             //싱글톤 패턴
             Instance = this;
-            //다른씬에서도 사용
+            //다른씬에서도 사용??
             DontDestroyOnLoad(this.gameObject);
         }
 

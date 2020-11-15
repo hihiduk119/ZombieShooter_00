@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using DG.Tweening;
+
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
@@ -24,6 +26,9 @@ namespace WoosanStudio.ZombieShooter
             else { gam = string.Format("{0:0,0}", value); }
 
             Text.text = gam;
+
+            //트윈 연출
+            Text.transform.DOScale(1.5f, 0.1f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
         }
     }
 }

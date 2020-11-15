@@ -31,9 +31,10 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public enum State
         {
-            Empty,      //비어있음.
+            Empty,              //비어있음.
             SelectAndUpgrading, //선택됐고 업그레이드중
             Select,             //선택만 됐음.
+            Lock,               //현재 사용 못함
         }
 
         private void Start()
@@ -68,6 +69,9 @@ namespace WoosanStudio.ZombieShooter
                     state = State.Select;
                 }
             }
+
+            //사용 할수 있는지 없는 확인
+            if(!cardSetting.UseAble) { state = State.Lock;}
 
             //실제 뷰에서 보여줌
             View.UpdateInfoListener(cardSetting, state);

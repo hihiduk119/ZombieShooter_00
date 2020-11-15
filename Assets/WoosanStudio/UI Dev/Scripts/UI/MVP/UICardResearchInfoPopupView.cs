@@ -103,7 +103,7 @@ namespace WoosanStudio.ZombieShooter
             //카드 요구 보석
             GambleRequierGem.text = gambleRequierGem;
             //카드 성공 확률
-            GambleSuccessRate.text = gambleSuccessRate.ToString();
+            GambleSuccessRate.text = gambleSuccessRate.ToString() + "%";
         }
 
         /// <summary>

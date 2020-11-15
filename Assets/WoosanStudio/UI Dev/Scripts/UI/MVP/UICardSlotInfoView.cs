@@ -84,6 +84,10 @@ namespace WoosanStudio.ZombieShooter
                     //1번 업그레이드 취소 버튼 활성화
                     Buttons[1].SetActive(true);
                     break;
+                case UICardSlotInfoPresenter.State.Lock://모두 비홯성
+                    //카드 정보 slot 활성화
+                    Slots[1].SetActive(true);
+                    break;
             }
         }
     }

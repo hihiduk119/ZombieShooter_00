@@ -124,7 +124,7 @@ namespace WoosanStudio.ZombieShooter
             if(!cardSetting.UseAble) { Lock.gameObject.SetActive(true); }
             //언락이 안풀렸다면 사용 불가
             else { Lock.gameObject.SetActive(false);}
-            UnlockLevel.text = cardSetting.UnlockLevel.ToString();
+            UnlockLevel.text = (cardSetting.UnlockLevel+1).ToString();
         }
     }
 }

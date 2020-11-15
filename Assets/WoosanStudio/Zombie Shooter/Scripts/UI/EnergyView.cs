@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -42,6 +44,8 @@ namespace WoosanStudio.ZombieShooter
                 ShowProgress();
                 yield return WFS;
             }
+
+            
         }
 
         /// <summary>
@@ -49,6 +53,13 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void ShowRechargeInfo()
         {
+            //연출을 위해 비교
+            if(!RechargeInfo.text.Equals(Presenter.RechargeInfoText))
+            {
+                //트윈 연출
+                RechargeInfo.transform.DOScale(1.5f, 0.1f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
+            }
+
             RechargeInfo.text = Presenter.RechargeInfoText;
         }
 
@@ -66,6 +77,13 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void ShowRechargeTime()
         {
+            //연출을 위해 비교
+            if (!Time.text.Equals(Presenter.RechargeTimeText))
+            {
+                //트윈 연출
+                Time.transform.DOScale(1.5f, 0.1f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
+            }
+
             Time.text = Presenter.RechargeTimeText;
         }
     }

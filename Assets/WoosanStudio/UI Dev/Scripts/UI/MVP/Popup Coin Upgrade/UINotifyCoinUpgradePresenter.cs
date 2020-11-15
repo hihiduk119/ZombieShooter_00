@@ -38,7 +38,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// Ok 버튼 클릭
         /// </summary>
-        public void ClickButtonOk()
+        public void ClickYes()
         {
             //코인 소비
             CoinPresenter coinPresenter = GameObject.FindObjectOfType<CoinPresenter>();
@@ -53,6 +53,14 @@ namespace WoosanStudio.ZombieShooter
                 NotifyPopupController.Instance.OpenResult(UINotifyPopupModel.Type.NotEnoughCoin);
                 return;
             }
+
+            //코인 소비
+            coinPresenter.AddCoin(-requireCoin);
+
+            //일반 업글방식
+            this.CardSetting.StartTheUpgrade();
+
+            //화면 다시 표시
 
             //코인이 충분하면 UICardPresenter에서 해당 카드 업글 호출
             //카드 데이터 및 카드 레벨 및 업그레이드 시작알림

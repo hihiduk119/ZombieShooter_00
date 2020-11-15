@@ -31,7 +31,7 @@ namespace WoosanStudio.ZombieShooter
         {
             View.UpdateView(CardSetting.GambleSuccessLevelToString(CardSetting)
                 , GlobalDataController.GambleGem.ToString()
-                , GlobalDataController.Instance.data.GambleCurrentSuccessRate.ToString());
+                , GlobalDataController.Instance.data.GambleCurrentSuccessRate.ToString() + "%");
         }
     }
 }

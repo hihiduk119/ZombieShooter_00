@@ -22,8 +22,15 @@ namespace WoosanStudio.ZombieShooter
         [Header("[[Auto => 전달받은 데이터]")]
         public string Desicription;
 
-        [Header("[버튼 클릭시 연결될 액션]")]
-        public UnityAction ClickYesAction;
+        //[Header("[버튼 클릭시 연결될 액션]")]
+        //public UnityAction ClickYesAction;
+        public enum Type
+        {
+            PurchaseCharacter = 0, //캐릭터 구매
+        }
+
+        //구매 타입에 의해 어디로 Click Yes 결과를 보낼지 결정
+        public Type type = Type.PurchaseCharacter;
 
         /// <summary>
         /// 팝업 활성화시 바로 실행하기 위해
@@ -32,8 +39,9 @@ namespace WoosanStudio.ZombieShooter
         {
             //활성화시 바로 실행
             UpdateInfo(Desicription);
+
             //Yes버튼 클릭 이벤트 발생시 호출될 액션 연결
-            YesButton.OnClicked.AddListener(ClickYesAction);
+            //YesButton.OnClicked.AddListener(ClickYesAction);
         }
 
         /// <summary>
@@ -50,6 +58,21 @@ namespace WoosanStudio.ZombieShooter
         public void UpdateInfo(string description)
         {
             View.UpdateView(description);
+        }
+
+        /// <summary>
+        /// Yes클릭
+        /// </summary>
+        public void ClickYes()
+        {
+            switch(type)
+            {
+                case Type.PurchaseCharacter://캐릭터 구매
+                    //구매 요청 실행
+                    //* 여기서 동작을 안하는 이유는 데이터는 모두 UIPlayerPresenter가지고 있기 때문에.
+                    GameObject.FindObjectOfType<UIPlayerPresenter>().PurchaseCharacter();
+                    break;
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void OnEnable()
         {
-            string price = "[$" + data.Price.ToString() + "]";
+            string price = "$" + data.Price.ToString();
             //활성화시 바로 실행
             UpdateInfo(data.Description_1, price);
         }

@@ -78,6 +78,8 @@ namespace WoosanStudio.ZombieShooter
         private bool useAble = false;
         public bool UseAble { get => useAble; set {
                 cardData.UseAble = useAble = value;
+
+                Debug.Log("===========> 사용 가능 언락 및 저장");
                 Save();
             }
         }

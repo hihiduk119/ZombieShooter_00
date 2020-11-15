@@ -15,8 +15,6 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class UIPlayerPresenter : MonoBehaviour
     {
-        //[Header("[MVP 모델]")]
-        //public UIPlayerModel Model;
         [Header("[MVP 모델]")]
         public UICardModel Model;
         [Header("[돈이 없음 팝업 오프너]")]
@@ -85,7 +83,7 @@ namespace WoosanStudio.ZombieShooter
         [Header("[캐릭터 정보 이벤트]")]
         public UpdateInfoView UpdateInfoEvent = new UpdateInfoView();
 
-        [Header("[캐릭터 사용가능 이벤트]")]
+        [Header("[스타트 버튼 사용가능 이벤트]")]
         public UpdateUseAble UpdateUseAbleEvent = new UpdateUseAble();
 
         private void Start()
@@ -170,7 +168,7 @@ namespace WoosanStudio.ZombieShooter
             //현재 캐릭터의 구매 가격 알아오기
             CardSetting cardSetting = Model.cardSettings[GlobalDataController.Instance.SelectedCharacter];
 
-            Debug.Log("이 캐릭터의 가격은 요? Price = " + cardSetting.GemPrice);
+            //Debug.Log("이 캐릭터의 가격은 요? Price = " + cardSetting.GemPrice);
 
             //젬 프리젠트 가져오기
             GemPresenter gemPresenter = GameObject.FindObjectOfType<GemPresenter>();
@@ -180,29 +178,45 @@ namespace WoosanStudio.ZombieShooter
             //구매 가능한 수량 확인 -> 젬 부족
             if( gem < cardSetting.GemPrice)
             {
-                //해당 팝업 오픈
-                NotifyPopupOpener.OpenPopup();
                 //젬 부족 메시지 출력 셋업
                 NotifyPopupOpener.popupPrefab.GetComponent<UINotifyPopupPresenter>().Type = UINotifyPopupModel.Type.NotEnoughGem;
+                //해당 팝업 오픈
+                NotifyPopupOpener.OpenPopup();
             }
             else //있으면 구매 확인 팝업.
             {
+                //젬 부족 메시지 출력 셋업 -> set a message print 
+                NotifyYesOrNoPopupOpener.popupPrefab.GetComponent<UINotifyYesOrNoPopupPresenter>().Desicription = "Buy [" + cardSetting.Name + "] for $" + string.Format("{0:0,0}", cardSetting.GemPrice);
+                
                 //해당 팝업 오픈
                 NotifyYesOrNoPopupOpener.OpenPopup();
-                //젬 부족 메시지 출력 셋업 -> set a message print 
-                NotifyPopupOpener.popupPrefab.GetComponent<UINotifyYesOrNoPopupPresenter>().Desicription = "Buy ["+ cardSetting.name+"] for $" +string.Format("{0:0,0}", cardSetting.GemPrice);
-                //클릭에 이벤트에 연결된 액션에 연결 -> Connect to action to the connected event on click.
-                NotifyPopupOpener.popupPrefab.GetComponent<UINotifyYesOrNoPopupPresenter>().ClickYesAction = PurchaseCharacter;
             }
         }
 
         /// <summary>
         /// 실제 구매
+        /// * UINotifyYesOrNoPopupPresenter.ClickYes()에서 실행됨.
         /// </summary>
         public void PurchaseCharacter()
         {
             //구매 실행
             Debug.Log("==========> 구매실행");
+
+            //현재 캐릭터의 구매 가격 알아오기
+            CardSetting cardSetting = Model.cardSettings[GlobalDataController.Instance.SelectedCharacter];
+
+            //캐릭터 구매
+            GameObject.FindObjectOfType<GemPresenter>().AddGem(-cardSetting.GemPrice);
+
+            //카드 데이터 변경과 동시에 저장 됨.
+            cardSetting.UseAble = true;
+
+
+            //스타트 버튼 사용 가능 여부 발생
+            UpdateUseAbleEvent.Invoke(Model.cardSettings[GlobalDataController.Instance.SelectedCharacter].UseAble);
+
+            //구매 뷰 업데이트 통지
+            CharacterPurchaseActivationEvent.Invoke(Model.cardSettings[GlobalDataController.Instance.SelectedCharacter]);
         }
     }
 }

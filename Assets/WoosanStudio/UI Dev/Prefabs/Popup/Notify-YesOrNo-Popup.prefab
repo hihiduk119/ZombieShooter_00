@@ -218,6 +218,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4476646344118593810}
+        m_MethodName: ClickYes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4515071267891651361
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,8 +407,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   View: {fileID: 1353192545851950439}
   YesButton: {fileID: 6591743740268358946}
-  NoButton: {fileID: 6728603774491748630}
   Desicription: 
+  type: 0
 --- !u!114 &1353192545851950439
 MonoBehaviour:
   m_ObjectHideFlags: 0

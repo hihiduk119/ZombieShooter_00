@@ -8267,7 +8267,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1558913814}
   m_FillRect: {fileID: 1558913813}
   m_HandleRect: {fileID: 0}
@@ -35106,7 +35106,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4833012270368873228}
   m_FillRect: {fileID: 4727798532101817712}
   m_HandleRect: {fileID: 0}

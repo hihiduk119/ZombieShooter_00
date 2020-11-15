@@ -15,7 +15,7 @@ MonoBehaviour:
   isActivate: 0
   gemPrice: 400
   cardData:
-    UseAble: 1
+    UseAble: 0
     Level: 0
     Durability: 100
     SortIndex: 0
@@ -26,17 +26,17 @@ MonoBehaviour:
       totalSeconds: 0
       bUpgrading: 0
     IsUpgrading: 0
-  useAble: 1
+  useAble: 0
   level: 0
-  durability: 10
-  type: 302
-  name: Godfrey
-  value: -1
+  durability: 100
   upgradeTimeset:
     endDateTime: 0
     startDateTime: 0
     totalSeconds: 0
     bUpgrading: 0
+  type: 302
+  name: Godfrey
+  value: -1
   maxStack: 2
   stackCount: 0
   maxDurability: 10

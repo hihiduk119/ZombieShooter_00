@@ -146,54 +146,6 @@ namespace WoosanStudio.ZombieShooter
             return value;
         }
 
-        /// <summary>
-        /// 타임 스팬에서 #D ##:##:## 형식으로 시간 가져오기.
-        /// </summary>
-        /// <param name="time"></param>
-        /// <returns></returns>
-        /*static public string TimeToString(TimeSpan time)
-        {
-            String tmp, timeString;
-            string[] timeSpan = null;
-            StringBuilder stringBuilder = new StringBuilder();
-
-            tmp = time.ToString();
-
-            Debug.Log("tmp = " + tmp);
-
-            //timeSpan = tmp.Split(':');
-            timeSpan = tmp.Split('.');
-
-            Debug.Log("길이 = " + timeSpan.Length);
-
-            stringBuilder.Clear();
-
-            //Day 없고 시간만 존제
-            if (timeSpan.Length == 2)
-            {
-                stringBuilder.Append(timeSpan[0]);
-            } else if(timeSpan.Length == 3)
-            {
-                stringBuilder.Append(timeSpan[0]);
-                stringBuilder.Append("d ");
-                stringBuilder.Append(timeSpan[1]);
-            } else
-            {
-                Debug.Log("시간 파싱 에러 발생!!" + time.ToString());
-                stringBuilder.Append("E --:--:--");
-            }
-
-            //for(int index = 0; index < timeSpan.Length ;index++)
-            //{
-            //    Debug.Log(timeSpan[index]);
-            //}
-
-            //Debug.Log("원본 = " + time.ToString());
-            timeString = stringBuilder.ToString();
-            Debug.Log(timeString);
-            return timeString;
-        }*/
-
 
         /// <summary>
         /// 타임 스팬에서 #D ##:##:## 형식으로 시간 가져오기.
@@ -206,22 +158,35 @@ namespace WoosanStudio.ZombieShooter
             string[] timeSpan = null;
             StringBuilder stringBuilder = new StringBuilder();
 
+            //타임 스팬에서 남은 시간을 가져옴
+            //-> ex) 86400초(하루)+10초
+            //1.00:00:10.2934014
             tmp = time.ToString();
 
+            
             timeSpan = tmp.Split('.');
+
+            Debug.Log("tmp = " + tmp);
+            for (int i = 0; i < timeSpan.Length; i++)
+            {
+                Debug.Log("length = [" + i + "]  index = [" + i + "] = " + timeSpan[i]);
+            }
 
             stringBuilder.Clear();
 
             //Day 없고 시간만 존제
-            if (timeSpan.Length == 1)
+            if (timeSpan.Length == 2)
             {
                 stringBuilder.Append(timeSpan[0]);
             }
-            else if (timeSpan.Length == 2)
+            else if (timeSpan.Length == 3)
             {
                 stringBuilder.Append(timeSpan[0]);
                 stringBuilder.Append("d ");
                 stringBuilder.Append(timeSpan[1]);
+            } else if(timeSpan.Length == 1)//timespan에서 초 직접 변환의 경우 발생
+            {
+                stringBuilder.Append(time.ToString());
             }
             else
             {
@@ -257,18 +222,28 @@ namespace WoosanStudio.ZombieShooter
             
             timeSpan = tmp.Split('.');
 
+            Debug.Log("tmp = " + tmp);
+            for (int i = 0; i < timeSpan.Length; i++)
+            {
+                Debug.Log("length = [" + i + "]  index = [" + i + "] = " + timeSpan[i]);
+            }
+
             stringBuilder.Clear();
 
             //Day 없고 시간만 존제
-            if (timeSpan.Length == 1)
+            if (timeSpan.Length == 2)
             {
                 stringBuilder.Append(timeSpan[0]);
             }
-            else if (timeSpan.Length == 2)
+            else if (timeSpan.Length == 3)
             {
                 stringBuilder.Append(timeSpan[0]);
                 stringBuilder.Append("d ");
                 stringBuilder.Append(timeSpan[1]);
+            }
+            else if (timeSpan.Length == 1) //timespan에서 초 직접 변환의 경우 발생
+            {
+                stringBuilder.Append(time.ToString());
             }
             else
             {

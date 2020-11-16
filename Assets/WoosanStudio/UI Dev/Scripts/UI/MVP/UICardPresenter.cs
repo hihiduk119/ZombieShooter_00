@@ -46,9 +46,7 @@ namespace WoosanStudio.ZombieShooter
 
             //여기에 실제 저장 데이터가 있다
             //UICardModel.CardData cardData = Model.data.CardDatas[cardIndex];
-
             //NextValueCalculator.GetUpgradeTimeByLevel()
-
             //cardData.UpgardeTimeset = new Timeset();
         }
 

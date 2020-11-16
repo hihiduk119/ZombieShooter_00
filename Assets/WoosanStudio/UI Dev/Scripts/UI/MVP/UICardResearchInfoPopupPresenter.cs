@@ -24,6 +24,8 @@ namespace WoosanStudio.ZombieShooter
         public CardSetting cardSetting;
         public CardSetting CardSetting { get => cardSetting; set => cardSetting = value; }
 
+
+
         private void Awake()
         {
             //시작시 자동으로 뷰 찾아오기
@@ -48,42 +50,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void UpdateCardInfo()
         {
-            //카드 세팅에 계산 부분 다 넣어 버리자
-
-            //업그레이드 완료 레벨 -> 최고 레벨일때는 MAX 표시
-            /*int iUpgradeComplateLevel = cardSetting.Level + 1;//기본 연구는 +1 업글
-            string upgradeComplateLevel;
-            if (iUpgradeComplateLevel >= cardSetting.MaxLevel) { upgradeComplateLevel = "MAX"; }
-            else { upgradeComplateLevel = (iUpgradeComplateLevel + 1).ToString(); }//레벨은 표시상 +1
-
-            //도박 성공 목표 레벨
-            int iGambleSuccessLevel = cardSetting.Level + 2;//도박은 +2 업글
-            string gambleSuccessLevel;
-            if (iGambleSuccessLevel >= cardSetting.MaxLevel) { gambleSuccessLevel = "MAX"; }
-            else { gambleSuccessLevel = (iGambleSuccessLevel + 1).ToString(); }//레벨은 표시상 +1
-
-            //요구 코인 알아오기
-            int coin = NextValueCalculator.GetRequireCoinByLevel(cardSetting.MaxLevel, cardSetting.Level);
-            string strCoin = string.Format("{0:0,0}", coin);
-
-            //요구 젬 알아오기
-            int gem = NextValueCalculator.GetRequireGemByLevel(cardSetting.MaxLevel, cardSetting.Level);
-            string strGem = string.Format("{0:0,0}", gem);
-
-            //코인 사용 남은시간
-            string upgradeRemainTime = null;
-
-            //현재 업그레이드 중이라면
-            if (cardSetting.UpgradeTimeset.bUpgrading)
-            {
-                //업그레이드 시간 가져오김
-                upgradeRemainTime = cardSetting.UpgradeTimeset.GetRemainTimeToString();
-            } else {//업글중이 아니라면 다음 업글 예상 시간 가져오기
-
-                int seconds = NextValueCalculator.GetUpgradeTimeByLevel(cardSetting.MaxLevel, cardSetting.Level);
-                Debug.Log("!!!!!! seconds = " + seconds);
-                upgradeRemainTime = Timeset.SecondsToTimeToString(seconds);
-            }*/
+            
 
             //업그레이드 완료 레벨
             string upgradeComplateLevel = CardSetting.UpgradeComplateLevelToString(cardSetting);
@@ -101,6 +68,20 @@ namespace WoosanStudio.ZombieShooter
             View.UpdateCardInfo(cardSetting.Sprite,cardSetting.IconColor, cardSetting.Name, (cardSetting.Level + 1).ToString(),//레벨은 표시상 +1더해야함
                 cardSetting.AllDescription(), upgradeComplateLevel, gambleSuccessLevel, strCoin, upgradeRemainTime
                 , strGem, GlobalDataController.GambleGem.ToString(), GlobalDataController.Instance.data.GambleCurrentSuccessRate) ;
+
+            //뷰의 버튼 상태 변경
+            View.UpdateUpgradeInfoByState(cardSetting.IsUpgrading);
+
+            //업그레이드 중일때
+            if (cardSetting.IsUpgrading)
+            {
+                Debug.Log("업그레이드 중이기 때문에 코루틴 작동");
+                //업그레이드중 일때 시간업데이
+                UpdateUpgradeRemainTime();
+            }else
+            {
+                Debug.Log("업그레이드 중이기 아님 코루틴 작동 안함");
+            }
         }
 
         /// <summary>
@@ -124,44 +105,10 @@ namespace WoosanStudio.ZombieShooter
         {
             while (true)
             {
+                //남은 연구 시간만 0.33f단위로 업데이트
+                View.UpdateTime(cardSetting.UpgradeTimeset.GetRemainTimeToString());
                 yield return WFS;
             }
-        }
-
-        /// <summary>
-        /// 코인을 사용한 업그레이드 이벤트 리시버
-        /// </summary>
-        /// <param name="value"></param>
-        void UpgradeByCoinRecevier(int value)
-        {
-
-        }
-
-        /// <summary>
-        /// 젬을 사용한 업그레이드 이벤트 리시버
-        /// </summary>
-        /// <param name="value"></param>
-        void UpgradeByGemRecevier(int value)
-        {
-
-        }
-
-        /// <summary>
-        /// 겜블을 사용한 업그레이드 이벤트 리시버
-        /// </summary>
-        /// <param name="value"></param>
-        void UpgradeByGambleRecevier(int value)
-        {
-
-        }
-
-        /// <summary>
-        /// 업그레이드 취소 이벤트 리시버
-        /// </summary>
-        /// <param name="value"></param>
-        void CancelUpgradeRecevier()
-        {
-
         }
     }
 }

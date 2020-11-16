@@ -107,6 +107,15 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 남은 연구시간 시간만 업데이트
+        /// </summary>
+        /// <param name="upgradeRemainTime"></param>
+        public void UpdateTime(string upgradeRemainTime)
+        {
+            UpgradeRemainTime.text = upgradeRemainTime;
+        }
+
+        /// <summary>
         /// 업그레이드 상태에 따라 UI 변경
         /// *한번만 호출해도 됨
         /// </summary>
@@ -114,40 +123,61 @@ namespace WoosanStudio.ZombieShooter
         public void UpdateUpgradeInfoByState(bool isUpgrading = false)
         {
             //잠시 사용할 캔버스 그룹
-            CanvasGroup canvasGroup = null;
+            //CanvasGroup canvasGroup = null;
+            ///CanvasGroup canvasGroup = null;
 
             //업글 중이 아닌상태로 UI 변경
-            if(!isUpgrading)
+            if (isUpgrading)
             {
                 //코인 업그레이드 버튼 비활성화
                 BtnUpgradeByCoin.SetActive(false);
                 //취소버튼 활성화
                 BtnCancel.SetActive(true);
 
-                //젬사용 업그레이드 버튼 반투명 및 비활성화
-                canvasGroup = BtnUpgradeByGem.GetComponent<CanvasGroup>();
-                canvasGroup.alpha = 0.4f;
-                canvasGroup.interactable = false;
-
-                //겜블 사용 업그레이드 버튼 반투명 및 비활성화
-                canvasGroup = BtnUpgradeByGamble.GetComponent<CanvasGroup>();
-                canvasGroup.alpha = 0.4f;
-                canvasGroup.interactable = false;
+                //젬 버튼 비활성
+                SetButton(BtnUpgradeByGem.transform,false);
+                //겜블 버튼 비활성
+                SetButton(BtnUpgradeByGamble.transform,false);
             } else {//업글중인 상태로 UI 변경
                 //코인 업그레이드 버튼 활성
                 BtnUpgradeByCoin.SetActive(true);
                 //취소버튼 비활성화
                 BtnCancel.SetActive(false);
 
-                //젬사용 업그레이드 버튼 반투명 및 비활성화
-                canvasGroup = BtnUpgradeByGem.GetComponent<CanvasGroup>();
-                canvasGroup.alpha = 1f;
-                canvasGroup.interactable = true;
+                //젬 버튼 활성
+                SetButton(BtnUpgradeByGem.transform);
+                //겜블 버튼 활성
+                SetButton(BtnUpgradeByGamble.transform);
+            }
+        }
 
-                //겜블 사용 업그레이드 버튼 반투명 및 비활성화
-                canvasGroup = BtnUpgradeByGamble.GetComponent<CanvasGroup>();
-                canvasGroup.alpha = 1f;
-                canvasGroup.interactable = true;
+        /// <summary>
+        /// 버튼 활성 & 비활성
+        /// </summary>
+        /// <param name="transform"></param>
+        /// <param name="able"></param>
+        private void SetButton(Transform transform,bool able = true)
+        {
+            Color tmpColor;
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                Image image = transform.GetChild(i).GetComponent<Image>();
+
+                Debug.Log("name = " + transform.GetChild(i).ToString());
+
+                if (image == null) break; 
+                tmpColor = image.color;
+                //버튼 활성 비활성 작업
+                if(able)
+                {
+                    tmpColor.a = 1f;
+                    image.raycastTarget = true;
+                } else
+                {
+                    tmpColor.a = 0.4f;
+                    image.raycastTarget = false;
+                }
+                image.color = tmpColor;
             }
         }
 
@@ -161,20 +191,21 @@ namespace WoosanStudio.ZombieShooter
             UpgradeRemainTime.text = value;
         }
 
-        #region [-TestCode]
-        //void Update()
-        //{
-        //    if (Input.GetKeyDown(KeyCode.A))
-        //    {
-        //        UpdateUpgradeInfoByState(true);
-        //    }
+        /*#region [-TestCode]
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                UpdateUpgradeInfoByState(true);
+            }
 
-        //    if (Input.GetKeyDown(KeyCode.S))
-        //    {
-        //        UpdateUpgradeInfoByState(false);
-        //    }
-        //}
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                UpdateUpgradeInfoByState(false);
+            }
+        }
         #endregion
+        */
 
     }
 }

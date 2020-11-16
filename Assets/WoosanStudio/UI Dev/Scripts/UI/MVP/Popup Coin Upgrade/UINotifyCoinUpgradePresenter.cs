@@ -57,10 +57,14 @@ namespace WoosanStudio.ZombieShooter
             //코인 소비
             coinPresenter.AddCoin(-requireCoin);
 
-            //일반 업글방식
+            //일반 업글 시작
             this.CardSetting.StartTheUpgrade();
 
+            //카드 연구 정보 팝업 가져오기
+            UICardResearchInfoPopupPresenter cardResearchInfoPopupPresenter = GameObject.FindObjectOfType<UICardResearchInfoPopupPresenter>();
             //화면 다시 표시
+            cardResearchInfoPopupPresenter.UpdateCardInfo();
+
 
             //코인이 충분하면 UICardPresenter에서 해당 카드 업글 호출
             //카드 데이터 및 카드 레벨 및 업그레이드 시작알림

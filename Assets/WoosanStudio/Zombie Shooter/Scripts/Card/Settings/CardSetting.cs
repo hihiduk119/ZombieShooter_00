@@ -358,6 +358,8 @@ namespace WoosanStudio.ZombieShooter
             this.cardData = JsonUtility.FromJson<CardData>(PlayerPrefs.GetString("Card_" + Name));
             //로드한 데이터와 현재 데이터 싱크 마추기
             Synchronization();
+
+            CheckTheCardToUpgradeComplated();
         }
 
         /// <summary>
@@ -376,7 +378,26 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 업그레이드 완료된 카드 확인.
+        /// </summary>
+        void CheckTheCardToUpgradeComplated()
+        {
+            //만약 업그레이드 중이었다면
+            if(this.IsUpgrading)
+            {
+                //현재 시간이 업그레이드 끝난는지 아닌지 확인
+                if(this.upgradeTimeset.IsUpgrading())
+                {
+                    //카드 완료 큐에 넣기
+                    //업그레이드중 아닌상태로 변경
+                    Debug.Log("이거 업글 끝났다.!!");
+                }
+            }
+        }
+
+        /// <summary>
         /// 업그레이드 시작
+        /// *UINotifyCoinUpgradePresenter 에서 호출 됨.
         /// </summary>
         public void StartTheUpgrade(bool immediately = false)
         {

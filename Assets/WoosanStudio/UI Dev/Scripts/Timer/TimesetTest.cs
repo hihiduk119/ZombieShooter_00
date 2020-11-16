@@ -45,27 +45,23 @@ namespace WoosanStudio.ZombieShooter
             timeset = JsonUtility.FromJson<Timeset>(PlayerPrefs.GetString("TestTime"));
         }
 
-        #region [-TestCode]
-        //void Update()
-        //{
-        //    //업그레이드 연구 시간 저장 테스트
-        //    if (Input.GetKeyDown(KeyCode.A))
-        //    {
-        //        TimeSpan timeSpan = timeset.GetRemainTime();
-        //        if(timeSpan.TotalSeconds < 0)
-        //        {
-        //            Debug.Log("시간 초과");
-        //        } else
-        //        {
-        //            Debug.Log("남은 시간 = " + timeSpan.TotalSeconds);
-        //        }
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.S))
-        //    {
-                
-        //    }
-        //}
+        /*#region [-TestCode]
+        void Update()
+        {
+            //업그레이드 연구 시간 저장 테스트
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                Timeset timeset = new Timeset(30);
+
+                timeset.GetRemainTimeToString();
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+
+            }
+        }
         #endregion
+        */
 
     }
 }

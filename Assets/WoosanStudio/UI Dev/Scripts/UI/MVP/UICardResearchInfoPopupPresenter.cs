@@ -24,8 +24,6 @@ namespace WoosanStudio.ZombieShooter
         public CardSetting cardSetting;
         public CardSetting CardSetting { get => cardSetting; set => cardSetting = value; }
 
-
-
         private void Awake()
         {
             //시작시 자동으로 뷰 찾아오기
@@ -45,13 +43,17 @@ namespace WoosanStudio.ZombieShooter
             //Invoke("UpdateCardInfo", 0.1f);
         }
 
+        private void OnDisable()
+        {
+            //코루틴 동작 중이라면 즉시 제거 -> 코루틴 중복을 막기위해
+            if (updateUpgradeRemainTimeCoroutine != null) { StopCoroutine(updateUpgradeRemainTimeCoroutine); }
+        }
+
         /// <summary>
         /// 카드 정보를 업데이트 한다
         /// </summary>
         public void UpdateCardInfo()
         {
-            
-
             //업그레이드 완료 레벨
             string upgradeComplateLevel = CardSetting.UpgradeComplateLevelToString(cardSetting);
             //도박 성공 목표 레벨

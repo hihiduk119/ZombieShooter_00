@@ -45,7 +45,6 @@ namespace WoosanStudio.ZombieShooter
         public Text GambleSuccessRate;
 
         //=================== 버튼 모음 =================== 
-
         [Header("[코인 사용 업그레이드 버튼]")]
         public GameObject BtnUpgradeByCoin; 
         [Header("[업그레이드 취소 버튼]")]
@@ -54,19 +53,6 @@ namespace WoosanStudio.ZombieShooter
         public GameObject BtnUpgradeByGem;
         [Header("[겜블 사용 업그레이드 버튼]")]
         public GameObject BtnUpgradeByGamble;
-
-        //사용자 정의 이벤트
-        /*[System.Serializable]
-        public class UpgradeEvent : UnityEvent<int> { }
-        [Header("[코인 사용 업그레이드 이벤트]")]
-        public UpgradeEvent UpgradeByCoinEvent = new UpgradeEvent();
-        [Header("[젬 사용 업그레이드 이벤트]")]
-        public UpgradeEvent UpgradeByGemEvent = new UpgradeEvent();
-        [Header("[겜블 이벤트]")]
-        public UpgradeEvent UpgradeByGambleEvent = new UpgradeEvent();
-        [Header("[업그레이드중 취소 이벤트]")]
-        public UnityEvent CancelUpgradeEvent = new UnityEvent();
-        */
         
         /// <summary>
         /// 기본 모든 정보 업데이트

@@ -69,26 +69,40 @@ namespace WoosanStudio.ZombieShooter
             switch (state)
             {
                 case UICardSlotInfoPresenter.State.Empty://비어있음.
+                    Debug.Log("[0]");
                     //Empty slot 활성화
                     Slots[0].SetActive(true);
                     break;
                 case UICardSlotInfoPresenter.State.Select://선택됐고 업그레이드중
                     //카드 정보 slot 활성화
                     Slots[1].SetActive(true);
+                    Debug.Log("[1]");
                     //0번 업글레이드 버튼 활성화
                     Buttons[0].SetActive(true);
                     break;
                 case UICardSlotInfoPresenter.State.SelectAndUpgrading://선택만 됐음.
                     //카드 정보 slot 활성화
                     Slots[1].SetActive(true);
+                    Debug.Log("[2]");
                     //1번 업그레이드 취소 버튼 활성화
                     Buttons[1].SetActive(true);
                     break;
                 case UICardSlotInfoPresenter.State.Lock://모두 비홯성
+                    Debug.Log("[3]");
                     //카드 정보 slot 활성화
                     Slots[1].SetActive(true);
                     break;
             }
+        }
+
+        /// <summary>
+        /// 남은 연구시간 시간만 업데이트
+        /// </summary>
+        /// <param name="upgradeRemainTime"></param>
+        public void UpdateTime(string upgradeRemainTime,float upgradeRemainValue)
+        {
+            RemainTime.text = upgradeRemainTime;
+            Progress.fillAmount = upgradeRemainValue;
         }
     }
 }

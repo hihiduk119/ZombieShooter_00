@@ -24,7 +24,9 @@ namespace WoosanStudio.ZombieShooter
         //2.업글 중이 아니라면 업글버튼 활성화
         //3.슬롯이 비어 있다면 비어있다 표시
 
-        IEnumerator UpdateInfoCoroutine;
+        //캐쉬용
+        private WaitForSeconds WFS = new WaitForSeconds(0.33f);
+        private Coroutine updateUpgradeRemainTimeCoroutine;
 
         /// <summary>
         /// 카드의 정보 상태
@@ -41,6 +43,12 @@ namespace WoosanStudio.ZombieShooter
         {
             View = GameObject.FindObjectOfType<UICardSlotInfoView>();
             Model = GameObject.FindObjectOfType<UICardModel>();
+        }
+
+        private void OnDisable()
+        {
+            //코루틴 동작 중이라면 즉시 제거 -> 코루틴 중복을 막기위해
+            if (updateUpgradeRemainTimeCoroutine != null) { StopCoroutine(updateUpgradeRemainTimeCoroutine); }
         }
 
         /// <summary>
@@ -60,11 +68,13 @@ namespace WoosanStudio.ZombieShooter
             //현재 슬롯이 비어있는 상태
             if(cardSetting == null) { state = State.Empty;}
             else {//슬롯이 선택됐다면
-                isUpgrading = cardSetting.UpgradeTimeset.bUpgrading;
+                isUpgrading = cardSetting.IsUpgrading;
                 //Debug.Log("is Upgrade ?? => " + isUpgrading);
 
                 if (isUpgrading) {//업그레이드 중임
                     state = State.SelectAndUpgrading;
+                    //업그레이드 중이라면 남은시간 및 게이지 표시 코루틴 동작 실행
+                    UpdateUpgradeRemainTime();
                 } else {//업그레이드 중이 아님
                     state = State.Select;
                 }
@@ -75,6 +85,34 @@ namespace WoosanStudio.ZombieShooter
 
             //실제 뷰에서 보여줌
             View.UpdateInfoListener(cardSetting, state);
+        }
+
+
+        /// <summary>
+        /// 업그레이드 남은 정보 업데이트
+        /// *빠른 간격으로 표시해야함
+        /// </summary>
+        void UpdateUpgradeRemainTime()
+        {
+            //코루틴 동작 중이라면 즉시 제거 -> 코루틴 중복을 막기위해
+            if (updateUpgradeRemainTimeCoroutine != null) { StopCoroutine(updateUpgradeRemainTimeCoroutine); }
+            //코루틴 새로생성
+            updateUpgradeRemainTimeCoroutine = StartCoroutine(UpdateUpgradeRemainTimeCoroutine());
+        }
+
+        /// <summary>
+        /// 0.33f간격
+        /// 업그레이드 남은 정보 업데이트 코루틴
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator UpdateUpgradeRemainTimeCoroutine()
+        {
+            while (true)
+            {
+                //남은 연구 시간만 0.33f단위로 업데이트
+                View.UpdateTime(cardSetting.UpgradeTimeset.GetRemainTimeToString(),cardSetting.UpgradeTimeset.GetRemainValue());
+                yield return WFS;
+            }
         }
     }
 }

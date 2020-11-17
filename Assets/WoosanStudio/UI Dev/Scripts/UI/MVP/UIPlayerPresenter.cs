@@ -11,7 +11,7 @@ namespace WoosanStudio.ZombieShooter
     /// <summary>
     /// 플레이어의 선택 및 구매 컨트롤
     /// 
-    /// *MVC패턴
+    /// *MVP패턴
     /// </summary>
     public class UIPlayerPresenter : MonoBehaviour
     {
@@ -89,7 +89,8 @@ namespace WoosanStudio.ZombieShooter
         private void Start()
         {
             //저장된 모델 불러오기
-            Model.Load();
+            //*이거 원래 UICardPresenter 여기에서 호출하는게 맞는듯 하다.
+            //Model.Load();
             //실제 모델 변경
             CharacterChange(0);
         }

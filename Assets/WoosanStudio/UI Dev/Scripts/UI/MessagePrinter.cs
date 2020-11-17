@@ -111,14 +111,14 @@ namespace WoosanStudio.ZombieShooter
 
 
         #region [-TestCode]
-        void Update()
-        {
-            //메시지 정상 출력 되는지 테스트
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                OpenPopup();
-            }
-        }
+        //void Update()
+        //{
+        //    //메시지 정상 출력 되는지 테스트
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        OpenPopup();
+        //    }
+        //}
         #endregion
 
     }

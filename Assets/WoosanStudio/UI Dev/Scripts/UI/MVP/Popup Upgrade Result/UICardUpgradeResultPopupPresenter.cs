@@ -8,13 +8,18 @@ namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 카드 연구 완료 팝업
+    ///  *MVP패턴
     /// </summary>
-    public class UICardUpgradeResualtPopupView : MonoBehaviour
+    public class UICardUpgradeResultPopupPresenter : MonoBehaviour
     {
-        [Header("[업그레이드 결과 내용]")]
-        public Text Result;
-        [Header("[레벨]")]
-        public Text Level;
+        [Header("[MVP View]")]
+        public UICardUpgradeResultPopupView View;
+
+        //
+        [Header("[[전달 받음] MVP Model 역활]")]
+        public string strResult;
+        public string strLevel;
+        public bool bResult;
 
         //================> 성공 이펙트  <================
 
@@ -32,17 +37,13 @@ namespace WoosanStudio.ZombieShooter
         [Header("[꽂가루 발사 이펙트 포지션]")]
         public Transform[] ConfettiBlastPosition;
 
-        //================> 실패   이펙트  <================
+        //================> 실패 이펙트  <================
 
         [Header("[영혼 이펙트]")]
         public GameObject SoulEffect;
 
         [Header("[영혼 이펙트 포지션]")]
         public Transform[] SoulEPosition;
-
-        public string strResult;
-        public string strLevel;
-        public bool bResult;
 
         /// <summary>
         /// 활성화시 바로 내부 저정된 데이터 꺼내서 보여줌
@@ -58,16 +59,17 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="value"></param>
         public void UpdateResult(string value,string level,bool resultValue)
         {
-            Result.text = value;
-            Level.text = level;
-
+            //임시 컬러
+            Color tmpColor;
             //성골시 컬러 그린
             if (resultValue) {
-                Level.color = new Color32(0, 204, 20, 255);
+                tmpColor = new Color32(0, 204, 20, 255);
             } else {//실패시 컬러 레드
-                Level.color = new Color32(205, 0, 0, 255);
+                tmpColor = new Color32(205, 0, 0, 255);
             }
-                
+
+            //뷰에 업데이트
+            View.UpdateResult(value, level, tmpColor);
 
             //이펙트 연출
             ShowEffect(resultValue);

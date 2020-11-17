@@ -58,6 +58,8 @@ namespace WoosanStudio.ZombieShooter
         static public int GambleDefaultRate = 50;
         //카드 순서에 의해 발생한 캐릭터 카드 시작 인덱스
         static public int CharacterCardStartIndex = 16;
+        //알림 통지 기준이 되는 씬이름
+        static public string PresentSceneName = "1.ZombieShooter-Robby";
 
         //도박 성공률은 여기서 계산해서 data넣어 저장 시킨다
         //*계산은 아래 계산기 이용해서 결과 결고는 data.GambleCurrentSuccessRate 에 넣기

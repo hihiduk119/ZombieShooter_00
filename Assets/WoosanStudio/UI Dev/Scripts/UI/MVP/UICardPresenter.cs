@@ -13,22 +13,27 @@ namespace WoosanStudio.ZombieShooter
         [Header("[MVP Model]")]
         public UICardModel Model;
 
-        IEnumerator Start()
+        /*IEnumerator Start()
         {
             //0.1f초 대기 이유??
             //일단 에러 발생은 확인
             yield return new WaitForSeconds(0.1f);
             Initialize();
+        }*/
+
+        private void Awake()
+        {
+            Model.Load();
         }
 
         /// <summary>
         /// 최초 사용시 기존 데이터 모두 로드
         /// </summary>
-        public void Initialize()
+        /*public void Initialize()
         {
             //싱크로 호출하여 데이터 동기화
             //Model.Synchronization();
-        }
+        }*/
 
         /// <summary>
         /// 카드 업그레이드 시작시 카드 데이터 반영 및 싱크 마추기
@@ -51,11 +56,22 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
-        /// 카드 업그레이드 완료시 실제 카드 데이터 반영 및 싱크마추기
+        /// 완료 통지가 끝나고 업그레이드 데이터 실제 반영
         /// </summary>
-        public void CardUpgradeComplate()
+        public void CardUpgradeComplate(CardSetting cardSetting)
         {
+            
+        }
 
+
+        /// <summary>
+        /// Presenter에서 업그레이드 완료 통지시 부분
+        /// </summary>
+        /// <param name="cardSetting"></param>
+        public void UpdateCardUpgrade(CardSetting cardSetting)
+        {
+            //카드 완료 큐에 넣기
+            UIGlobalMesssageQueueVewModel.UpgradeComplateEvent.Invoke(cardSetting);
         }
     }
 }

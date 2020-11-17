@@ -338,7 +338,6 @@ namespace WoosanStudio.ZombieShooter
             Woman,              //캐릭터 변경 및 최대 체력 25% 증가 & 모든 타입의 탄약 데미지 10 감소                      lv 34 unlock
         }
 
-
         /// <summary>
         /// Json데이터 저장
         /// </summary>
@@ -358,9 +357,9 @@ namespace WoosanStudio.ZombieShooter
             this.cardData = JsonUtility.FromJson<CardData>(PlayerPrefs.GetString("Card_" + Name));
             //로드한 데이터와 현재 데이터 싱크 마추기
             Synchronization();
-
-            CheckTheCardToUpgradeComplated();
         }
+
+        
 
         /// <summary>
         /// 데이터 싱크 마추기
@@ -380,7 +379,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 업그레이드 완료된 카드 확인.
         /// </summary>
-        void CheckTheCardToUpgradeComplated()
+        public void CheckTheCardToUpgradeComplated()
         {
             //만약 업그레이드 중이었다면
             if(this.IsUpgrading)
@@ -388,9 +387,12 @@ namespace WoosanStudio.ZombieShooter
                 //현재 시간이 업그레이드 끝난는지 아닌지 확인
                 if(this.upgradeTimeset.IsUpgrading())
                 {
+                    //업그레이드중 아닌상태로 변경 -> 이건 메시지 큐에서 해야 할듯
+                    //Debug.Log("이거 업글 끝났다.!!");
+
                     //카드 완료 큐에 넣기
-                    //업그레이드중 아닌상태로 변경
-                    Debug.Log("이거 업글 끝났다.!!");
+                    UIGlobalMesssageQueueVewModel.UpgradeComplateEvent.Invoke(this);
+                    //UIGlobalMesssageQueueVewModel.UpgradeComplatedCardList.Add(this);
                 }
             }
         }

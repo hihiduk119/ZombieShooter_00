@@ -22,7 +22,7 @@ namespace WoosanStudio.ZombieShooter
         /// * 이때 언락 제한이 풀링는 레벨이 있다면 풀어야 함
         /// ?????
         /// </summary>
-        public void Synchronization()
+        /*public void Synchronization()
         {
             Debug.Log("================> 카드 데이터와 카드 세팅 데이터 동기화 진행 완료 <================");
 
@@ -49,7 +49,7 @@ namespace WoosanStudio.ZombieShooter
             }
 
             FirstStart();
-        }
+        }*/
 
         /// <summary>
         /// 카드 데이터의 불러오기
@@ -57,8 +57,12 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Load()
         {
-            Debug.Log("모든 카드 데이터 로드");
-            cardSettings.ForEach(value => value.Load());
+            cardSettings.ForEach(value => {
+                //카드데이터 로드
+                value.Load();
+                //카드 업글 완료 확인 및 완료 카드 큐에 넣기
+                value.CheckTheCardToUpgradeComplated();
+            });
         }
 
         /// <summary>
@@ -86,7 +90,7 @@ namespace WoosanStudio.ZombieShooter
 
 
         #region [-TestCode]
-        void Update()
+        /*void Update()
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
@@ -102,7 +106,7 @@ namespace WoosanStudio.ZombieShooter
             {
                 PlayerPrefs.DeleteAll();
             }
-        }
+        }*/
         #endregion
     }
 }

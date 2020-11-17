@@ -1726,6 +1726,7 @@ GameObject:
   - component: {fileID: 5311985407590864190}
   - component: {fileID: 3217527416614656221}
   - component: {fileID: 3617814061317735446}
+  - component: {fileID: 8194271810679404838}
   m_Layer: 5
   m_Name: Card-Upgrade-Resualt-Popup
   m_TagString: Untagged
@@ -1824,8 +1825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5cafacc342d441f99aadc0e17db048c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Result: {fileID: 4878478545826422603}
-  Level: {fileID: 4038590086202511211}
+  View: {fileID: 8194271810679404838}
   ConfettiShowerEffect: {fileID: 155770, guid: db55b37b612f2442b8171ebd5b88e0dc, type: 3}
   ItemSparkleEffect: {fileID: 177676, guid: a1edc07e5942342d98014a9533b0a600, type: 3}
   ConfettiBlastEffect: {fileID: 129898, guid: 2b2b2119525da4b81a2c9f2f41c4a813, type: 3}
@@ -1847,6 +1847,20 @@ MonoBehaviour:
   strResult: 
   strLevel: 
   bResult: 0
+--- !u!114 &8194271810679404838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3357983125341463753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2d98105c4574e0a92f76279d229b0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Result: {fileID: 4878478545826422603}
+  Level: {fileID: 4038590086202511211}
 --- !u!1 &3477894335961807577
 GameObject:
   m_ObjectHideFlags: 0
@@ -4221,7 +4235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

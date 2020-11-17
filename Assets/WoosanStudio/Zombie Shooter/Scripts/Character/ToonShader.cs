@@ -26,6 +26,8 @@ namespace WoosanStudio.ZombieShooter
         {
             //실행즉시 바로 아웃라인 두껍게 만들기
             SceneManager.sceneLoaded += OnLevelFinishedLoading;
+
+            DontDestroyOnLoad(this);
         }
 
         /// <summary>

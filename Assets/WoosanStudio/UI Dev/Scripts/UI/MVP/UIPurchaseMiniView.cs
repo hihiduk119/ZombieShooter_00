@@ -11,7 +11,7 @@ namespace WoosanStudio.ZombieShooter
     /// 플레이어 구매 뷰
     /// *MVP 모델
     /// </summary>
-    public class UIPlayerPurchaseView : MonoBehaviour
+    public class UIPurchaseMiniView : MonoBehaviour
     {
         [Header("[활성 뷰]")]
         public GameObject View;

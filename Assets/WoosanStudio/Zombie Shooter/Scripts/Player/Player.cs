@@ -50,7 +50,7 @@ namespace WoosanStudio.ZombieShooter
         //포지션 재배체
         public Positioner Positioner;
         //모델 변경
-        public Model Model;
+        public CharacterModelController Model;
         //실제 조준 및 조준 해제 컨트롤 함
         public LookAtAimedTarget LookAtAimedTarget;
 
@@ -82,7 +82,7 @@ namespace WoosanStudio.ZombieShooter
             //FireController = GetComponent<FireController>();
             AutoFireControlInputBasedOnGunSetting = GetComponent<AutoFireControlInputBasedOnGunSetting>();
             Positioner = GetComponent<Positioner>();
-            Model = GetComponentInChildren<Model>();
+            Model = GetComponentInChildren<CharacterModelController>();
             LookAtAimedTarget = GetComponent<LookAtAimedTarget>();
 
             //조준 및 조준 해제 이벤트 연결

@@ -74,8 +74,18 @@ namespace WoosanStudio.ZombieShooter
             }
             //합친 캐릭터 정보 넣기
             Description.text = stringBuilder.ToString();
-            //총의 value는 기본 데미지 이다.
-            Attack.text = cardSetting.Value.ToString();
+            
+            //샷건은 데미지 추가 설명 필요
+            if(cardSetting.Type == CardSetting.CardType.Shotgun)
+            {
+                //총의 value는 기본 데미지 이다.
+                Attack.text = cardSetting.Value.ToString() + "x6";
+            } else
+            {
+                //총의 value는 기본 데미지 이다.
+                Attack.text = cardSetting.Value.ToString();
+            }
+
             //모든 총의 기본 치명타율 2%
             Critical.text = GlobalDataController.DefaultCriticalChance.ToString();
             //해당 캐릭터 플레이 타임 넣기

@@ -13,7 +13,7 @@ namespace WoosanStudio.ZombieShooter
     /// 
     /// *MVP패턴
     /// </summary>
-    public class UIPlayerPresenter : MonoBehaviour
+    public class UIPlayerSelectPresenter : MonoBehaviour
     {
         [Header("[MVP 모델]")]
         public UICardModel Model;
@@ -67,7 +67,7 @@ namespace WoosanStudio.ZombieShooter
 
             //Debug.Log("currentIndex = " + currentIndex + " SelectedCharacter =  " + GlobalDataController.Instance.SelectedCharacter + "   value = " + value);
 
-            int maxIndex = System.Enum.GetValues(typeof(UIPlayerSelectModel.ModelType)).Length;
+            int maxIndex = System.Enum.GetValues(typeof(GlobalDataController.ModelType)).Length;
 
             //카드 간격 만큼 계산해서 더해주는 작업 필요
             if (currentIndex < 0 + characterIndexInterval) { currentIndex = 0 + characterIndexInterval; }

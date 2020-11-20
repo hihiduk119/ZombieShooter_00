@@ -70,7 +70,7 @@ namespace WoosanStudio.ZombieShooter
                 case Type.PurchaseCharacter://캐릭터 구매
                     //구매 요청 실행
                     //* 여기서 동작을 안하는 이유는 데이터는 모두 UIPlayerPresenter가지고 있기 때문에.
-                    GameObject.FindObjectOfType<UIPlayerPresenter>().PurchaseCharacter();
+                    GameObject.FindObjectOfType<UIPlayerSelectPresenter>().PurchaseCharacter();
                     break;
             }
         }

@@ -13,7 +13,7 @@ namespace WoosanStudio.ZombieShooter
     public class UIPlayerSelectView : MonoBehaviour
     {
         [Header("[MVP Presenter]")]
-        public UIPlayerPresenter Presenter;
+        public UIPlayerSelectPresenter Presenter;
 
         /// <summary>
         /// 왼쪽 이동 클릭

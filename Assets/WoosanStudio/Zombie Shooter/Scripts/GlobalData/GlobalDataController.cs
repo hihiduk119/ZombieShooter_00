@@ -13,6 +13,42 @@ namespace WoosanStudio.ZombieShooter
         //싱글톤 패턴
         static public GlobalDataController Instance;
 
+        //*CardSetting.CardType 이넘과 모델 리스트의 순서는 동일해야 한다.
+        public enum ModelType
+        {
+            BusinessMan = 0,
+            FireFighter,
+            Hobo,
+            Pimp,
+            Policeman,
+            Prostitute,
+            Punk,
+            RiotCop,
+            RoadWorker,
+            Robber,
+            Sheriff,
+            StreetMan,
+            Trucker,
+            Woman,
+        }
+
+        //*CardSetting.CardType 이넘과 모델 리스트의 순서는 동일해야 한다.
+        public enum GunType
+        {
+            Pistol = 0,             //무기를 권총으로 변경 및 해당 무기 데미지 25%증가
+            Shotgun,            //무기를 샷건으로 변경 및 해당 무기 데미지 25%증가   lv 4 unlock
+            AssaultRifle,       //무기를 돌격소총으로 변경 및 무기 데미지 25%증가    lv 8 unlock  
+            SniperRifle,        //무기를 스나이퍼소총으로 변경 및 무기 데미지 25%증가 lv 12 unlock
+        }
+
+        //*CardSetting.CardType 이넘과 모델 리스트의 순서는 동일해야 한다.
+        public enum AmmoType
+        {
+            BulletAmmo = 0,         //총알타입탄약 변경 및 총알타입탄약 데미지 25% 증가
+            LaserAmmo,          //레이저타입탄약 변경 및 레이저타입탄약 데미지 25% 증가        lv 10 unlock
+            PlasmaAmmo,         //플라즈마타입탄약 변경 및 플라즈마타입탄약 데미지 25% 증가       lv 14 unlock
+        }
+
         /// <summary>
         /// 저장 되어야 하는 데이터
         /// </summary>
@@ -21,8 +57,16 @@ namespace WoosanStudio.ZombieShooter
         {
             //현재 도박 성공률
             public int GambleCurrentSuccessRate = 50;
+            //기본 총알 선택됨
+            //*card 추가되면 모두 변경 되어야 한다
+            public int SelectedAmmo = 9;
+            //기본 권총 선택됨
+            //*card 추가되면 모두 변경 되어야 한다
+            public int SelectedGun = 13;
             //기본 비지니스맨 선택됨
+            //*card 추가되면 모두 변경 되어야 한다
             public int SelectedCharacter = 16;
+            
             public Data() { }
         }
 
@@ -46,6 +90,28 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
+        //기본 총알 선택됨
+        private int selectedAmmo;
+        public int SelectedAmmo
+        {
+            get => selectedAmmo; set
+            {
+                data.SelectedAmmo = selectedAmmo = value;
+                Save();
+            }
+        }
+
+        //기본 권총 선택됨
+        private int selectedGun;
+        public int SelectedGun
+        {
+            get => selectedGun; set
+            {
+                data.SelectedGun = selectedGun = value;
+                Save();
+            }
+        }
+
         public Data data = new Data();
 
         //겜블시 소모되는 젬
@@ -57,6 +123,13 @@ namespace WoosanStudio.ZombieShooter
         //겜블 기본 성공률
         static public int GambleDefaultRate = 50;
         //카드 순서에 의해 발생한 캐릭터 카드 시작 인덱스
+        //*card 추가되면 모두 변경 되어야 한다
+        static public int GunCardStartIndex = 9;
+        //카드 순서에 의해 발생한 캐릭터 카드 시작 인덱스
+        //*card 추가되면 모두 변경 되어야 한다
+        static public int AmmoCardStartIndex = 13;
+        //카드 순서에 의해 발생한 캐릭터 카드 시작 인덱스
+        //*card 추가되면 모두 변경 되어야 한다
         static public int CharacterCardStartIndex = 16;
         //모든 총의 기본 치명타율 2%
         static public int DefaultCriticalChance = 2;
@@ -109,6 +182,8 @@ namespace WoosanStudio.ZombieShooter
             //이떼 불필요한 Save발생을 피하기 위해 로컬 데이터 사용
             this.gambleCurrentSuccessRate = data.GambleCurrentSuccessRate;
             this.selectedCharacter = data.SelectedCharacter;
+            this.selectedAmmo = data.SelectedAmmo;
+            this.selectedGun = data.SelectedGun;
         }
     }
 }

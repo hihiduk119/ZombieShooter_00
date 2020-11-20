@@ -12,7 +12,7 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class UIPlayerSelectModel : MonoBehaviour
     {
-        //*모델 타입 이넘과 모델 리스트의 순서는 동일해야 한다.
+        /*//*모델 타입 이넘과 모델 리스트의 순서는 동일해야 한다.
         public enum ModelType
         {
             BusinessMan = 0,
@@ -50,6 +50,6 @@ namespace WoosanStudio.ZombieShooter
         public void Save()
         {
             PlayerPrefs.SetString("PlayerInRobby", JsonUtility.ToJson(data));
-        }
+        }*/
     }
 }

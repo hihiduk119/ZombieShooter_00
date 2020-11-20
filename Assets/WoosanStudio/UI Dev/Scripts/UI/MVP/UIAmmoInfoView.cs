@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
-    /// 플레이어 정보 표시
-    /// *플레이어 정보 창을 여는 역활도 함.
+    /// 탄약 정보 표시
+    /// *탄약 정보 창을 여는 역활도 함.
     /// *MVP 모델
     /// </summary>
-    public class UIPlayerInfoView : MonoBehaviour
+    public class UIAmmoInfoView : MonoBehaviour
     {
         public UnityEngine.UI.Image Image;
 

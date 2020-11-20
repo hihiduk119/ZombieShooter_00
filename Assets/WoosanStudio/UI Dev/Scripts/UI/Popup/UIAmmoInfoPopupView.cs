@@ -8,11 +8,11 @@ using System.Text;
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
-    /// UI 플레이어 인포 팝업
+    /// UI Ammo 인포 팝업
     /// 
     /// *MVC패턴
     /// </summary>
-    public class UIPlayerInfoPopupView : MonoBehaviour
+    public class UIAmmoInfoPopupView : MonoBehaviour
     {
         [Header("[이미지]")]
         public Image Image;
@@ -30,7 +30,7 @@ namespace WoosanStudio.ZombieShooter
         private void Start()
         {
             //시작시 씬에서 UIPlayerInfoView 찾아서 데이터 가져옴
-            UIPlayerInfoView infoView = GameObject.FindObjectOfType<UIPlayerInfoView>();
+            UIAmmoInfoView infoView = GameObject.FindObjectOfType<UIAmmoInfoView>();
             //가져온 데이터로 정보 업데이트
             UpdateInfo(infoView.cardSetting);
         }

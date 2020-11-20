@@ -11,6 +11,23 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class UIAmmoSelectView : MonoBehaviour
     {
-        //*UIPlayerPresenter와 공통으로 사용하기 때문에 하나로 작업
+        [Header("[MVP Presenter]")]
+        public UIAmmoSelectPresenter Presenter;
+
+        /// <summary>
+        /// 왼쪽 이동 클릭
+        /// </summary>
+        public void LeftClick()
+        {
+            Presenter.Change(-1);
+        }
+
+        /// <summary>
+        /// 오른쪽 이동 클릭
+        /// </summary>
+        public void RightClick()
+        {
+            Presenter.Change(1);
+        }
     }
 }

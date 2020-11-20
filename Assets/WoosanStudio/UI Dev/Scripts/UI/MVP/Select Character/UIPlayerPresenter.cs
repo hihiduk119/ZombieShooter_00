@@ -24,82 +24,35 @@ namespace WoosanStudio.ZombieShooter
 
         [System.Serializable]
         public class UpdateCharacter : UnityEvent<int> { }
-
-        [System.Serializable]
-        public class UpdateCharacterPurchaseView : UnityEvent<CardSetting> { }
-
-        [System.Serializable]
-        public class UpdateInfoView : UnityEvent<InfoViewData> { }
-
-        [System.Serializable]
-        public class UpdateUseAble : UnityEvent<bool> { }
-
-        [System.Serializable]
-        //캐릭터 인포 뷰 전용 데이터
-        public class InfoViewData
-        {
-            //캐릭터 이름
-            public string Name;
-            //캐릭터 이미지
-            public Sprite Image;
-            //설명 리스트
-            public List<string> Descripsions;
-            //캐릭터 플레이 시간
-            public long PlayTime = 0;
-            //사냥한 몬스터 수
-            public int HuntedMonster = 0;
-
-            public InfoViewData(string name, Sprite image , List<string> descripsions, long playTime, int huntedMonster)
-            {
-                Name = name;
-                Image = image;
-                Descripsions = descripsions;
-                PlayTime = playTime;
-                HuntedMonster = huntedMonster;
-            }
-
-            public void Print()
-            {
-                StringBuilder stringBuilder = new StringBuilder();
-                
-                for (int i = 0; i < Descripsions.Count; i++)
-                {
-                    stringBuilder.Append("[");
-                    stringBuilder.Append(Descripsions[i]);
-                    stringBuilder.Append("]");
-                }
-
-                //Debug.Log("이름 = " + Name + " 내용 = " + stringBuilder.ToString() + " 플레이 시간 = " + PlayTime + "  몬스터 킬수 = " + HuntedMonster);
-            }
-        }
-
-
         [Header("[캐릭터 업데이트 이벤트]")]
         public UpdateCharacter ChangeCharacterEvent = new UpdateCharacter();
 
-        [Header("[신 캐릭터 구매 창 이벤트]")]
-        public UpdateCharacterPurchaseView CharacterPurchaseActivationEvent = new UpdateCharacterPurchaseView();
+        [System.Serializable]
+        public class UpdateData : UnityEvent<CardSetting> { }
+        [Header("[캐릭터 가격 창 이벤트]")]
+        public UpdateData CharacterPurchaseActivationEvent = new UpdateData();
 
         [Header("[캐릭터 정보 이벤트]")]
-        public UpdateInfoView UpdateInfoEvent = new UpdateInfoView();
+        public UpdateData UpdateInfoEvent = new UpdateData();
 
+        [System.Serializable]
+        public class UpdateUseAble : UnityEvent<bool> { }
         [Header("[스타트 버튼 사용가능 이벤트]")]
         public UpdateUseAble UpdateUseAbleEvent = new UpdateUseAble();
 
         private void Start()
         {
-            //저장된 모델 불러오기
-            //*이거 원래 UICardPresenter 여기에서 호출하는게 맞는듯 하다.
-            //Model.Load();
-            //실제 모델 변경
-            CharacterChange(0);
+            //시작시 0번으로 최기화
+            Change(0);
         }
 
         /// <summary>
         /// 모델을 변경함
+        /// 데이터 Invoke
+        /// 인포메이션 뷰에 데이터 전달
         /// </summary>
         /// <param name="type"></param>
-        public void CharacterChange(int value)
+        public void Change(int value)
         {
             int currentIndex = GlobalDataController.CharacterCardStartIndex;
 
@@ -123,34 +76,11 @@ namespace WoosanStudio.ZombieShooter
             //Debug.Log("currentIndex = " + currentIndex + "   characterIndexInterval = " + characterIndexInterval);
 
             //캐릭터 변경 통지 => 변경시 필요한 인덱스는 -16뺀 0 부터 13까지임.
-            Debug.Log("Call !!! => " + (currentIndex - characterIndexInterval));
+            //Debug.Log("Call !!! => " + (currentIndex - characterIndexInterval));
             ChangeCharacterEvent.Invoke(currentIndex - characterIndexInterval);
 
-            //설명
-            List<string> desc = new List<string>();
-
-            //프로퍼티에서 설명들 가져옴
-            //1부터 시작
-            //0은 캐릭터 변경한다는 내용이 있음
-            for (int i = 1; i < Model.cardSettings[currentIndex].Properties.Count; i++)
-            {
-                //0레벨 적용된 완성된 설명 가져오기
-                //* [수정필요]카드 레벨을 적용 할지 말지 나중에 결정
-                desc.Add(Model.cardSettings[currentIndex].Properties[i].GetCompletedDescripsion(Model.cardSettings[currentIndex].Level));
-            }
-
-            InfoViewData infoViewData = new InfoViewData(
-                Model.cardSettings[currentIndex].Name,
-                Model.cardSettings[currentIndex].Sprite,
-                desc,
-                0,
-                0
-                );
-
-            infoViewData.Print();
-
             //* 죽인 몬스터 및 플레이타임 가져오는 부분 필요
-            UpdateInfoEvent.Invoke(infoViewData);
+            UpdateInfoEvent.Invoke(Model.cardSettings[currentIndex]);
 
             //캐릭터 사용 가능 여부 발생
             UpdateUseAbleEvent.Invoke(Model.cardSettings[currentIndex].UseAble);

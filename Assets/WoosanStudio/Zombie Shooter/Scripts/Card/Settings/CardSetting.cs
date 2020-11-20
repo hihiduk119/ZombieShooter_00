@@ -47,6 +47,12 @@ namespace WoosanStudio.ZombieShooter
             //연구 중이었다면 UI데이터의 순서
             public int ResearchSlotIndex = -1;
 
+            //해당 카드를 착용한 채로 플레이한 시간
+            public int PlayTime = 0;
+            
+            //해당 카드를 착용한 채로 사냥한 몬스터
+            public int HuntedMonster = 0;
+
             //남은 업글 시간
             //public long UpgradeStartedTime = 0;
             //업글중 이었는지 아닌지
@@ -117,6 +123,27 @@ namespace WoosanStudio.ZombieShooter
         private int researchSlotIndex = -1;
         public int ResearchSlotIndex { get => researchSlotIndex; set {
                 cardData.ResearchSlotIndex = researchSlotIndex = value;
+                Save();
+            }
+        }
+
+        
+        private int playTime = 0;
+        public int PlayTime
+        {
+            get => playTime; set
+            {
+                cardData.PlayTime = playTime = value;
+                Save();
+            }
+        }
+
+        private int huntedMonster = 0;
+        public int HuntedMonster
+        {
+            get => huntedMonster; set
+            {
+                cardData.HuntedMonster = huntedMonster = value;
                 Save();
             }
         }
@@ -374,6 +401,8 @@ namespace WoosanStudio.ZombieShooter
             this.researchSlotIndex = cardData.ResearchSlotIndex;
             this.upgradeTimeset = cardData.UpgardeTimeset;
             this.isUpgrading = cardData.IsUpgrading;
+            this.playTime = cardData.PlayTime;
+            this.huntedMonster = cardData.HuntedMonster;
         }
 
         /// <summary>

@@ -8,11 +8,11 @@ using System.Text;
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
-    /// UI 플레이어 인포 팝업
+    /// UI Gun 인포 팝업
     /// 
     /// *MVC패턴
     /// </summary>
-    public class UIPlayerInfoPopupView : MonoBehaviour
+    public class UIGunInfoPopupView : MonoBehaviour
     {
         [Header("[이미지]")]
         public Image Image;
@@ -20,6 +20,10 @@ namespace WoosanStudio.ZombieShooter
         public Text Name;
         [Header("[설멍]")]
         public Text Description;
+        [Header("[공격력]")]
+        public Text Attack;
+        [Header("[치명타율]")]
+        public Text Critical;
         [Header("[플레이타임]")]
         public Text PlayTime;
         [Header("[사냥한 몬스터 수]")]
@@ -30,7 +34,7 @@ namespace WoosanStudio.ZombieShooter
         private void Start()
         {
             //시작시 씬에서 UIPlayerInfoView 찾아서 데이터 가져옴
-            UIPlayerInfoView infoView = GameObject.FindObjectOfType<UIPlayerInfoView>();
+            UIGunInfoView infoView = GameObject.FindObjectOfType<UIGunInfoView>();
             //가져온 데이터로 정보 업데이트
             UpdateInfo(infoView.cardSetting);
         }
@@ -70,6 +74,10 @@ namespace WoosanStudio.ZombieShooter
             }
             //합친 캐릭터 정보 넣기
             Description.text = stringBuilder.ToString();
+            //총의 value는 기본 데미지 이다.
+            Attack.text = cardSetting.Value.ToString();
+            //모든 총의 기본 치명타율 2%
+            Critical.text = GlobalDataController.DefaultCriticalChance.ToString();
             //해당 캐릭터 플레이 타임 넣기
             PlayTime.text = cardSetting.PlayTime.ToString();
             //해당 캐릭터 사냥한 몬스터 숫자 넣기

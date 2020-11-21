@@ -14,20 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActivate: 0
   gemPrice: -1
-  useAble: 0
+  cardData:
+    UseAble: 1
+    Level: 0
+    Durability: 100
+    SortIndex: 0
+    ResearchSlotIndex: -1
+    PlayTime: 0
+    HuntedMonster: 0
+    UpgardeTimeset:
+      endDateTime: -8585960923108748728
+      startDateTime: -8585960923408748728
+      totalSeconds: 30
+      bUpgrading: 1
+    IsUpgrading: 0
+  useAble: 1
   level: 0
   durability: 100
-  SortIndex: 0
-  ResearchSlotIndex: -1
-  IsUpgrading: 0
+  upgradeTimeset:
+    endDateTime: -8585960923108748728
+    startDateTime: -8585960923408748728
+    totalSeconds: 30
+    bUpgrading: 1
   type: 3
   name: Critical Chance
   value: 10
-  upgradeTimeset:
-    endDateTime: 0
-    startDateTime: 0
-    totalSeconds: 0
-    bUpgrading: 0
   maxStack: 2
   stackCount: 0
   maxDurability: 10

@@ -47,6 +47,7 @@ namespace WoosanStudio.ZombieShooter
             //캐릭터 이름 넣기
             Name.text = cardSetting.Name;
 
+            /*
             //설명
             List<string> desc = new List<string>();
 
@@ -70,6 +71,9 @@ namespace WoosanStudio.ZombieShooter
             }
             //합친 캐릭터 정보 넣기
             Description.text = stringBuilder.ToString();
+            */
+            //합친 캐릭터 정보 넣기
+            Description.text = cardSetting.AllDescription();
             //해당 캐릭터 플레이 타임 넣기
             PlayTime.text = cardSetting.PlayTime.ToString();
             //해당 캐릭터 사냥한 몬스터 숫자 넣기

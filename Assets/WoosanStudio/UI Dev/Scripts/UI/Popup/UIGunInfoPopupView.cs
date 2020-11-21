@@ -51,6 +51,7 @@ namespace WoosanStudio.ZombieShooter
             //캐릭터 이름 넣기
             Name.text = cardSetting.Name;
 
+            /*
             //설명
             List<string> desc = new List<string>();
 
@@ -74,9 +75,12 @@ namespace WoosanStudio.ZombieShooter
             }
             //합친 캐릭터 정보 넣기
             Description.text = stringBuilder.ToString();
-            
+            */
+            //합친 캐릭터 정보 넣기
+            Description.text = cardSetting.AllDescription();
+
             //샷건은 데미지 추가 설명 필요
-            if(cardSetting.Type == CardSetting.CardType.Shotgun)
+            if (cardSetting.Type == CardSetting.CardType.Shotgun)
             {
                 //총의 value는 기본 데미지 이다.
                 Attack.text = cardSetting.Value.ToString() + "x6";

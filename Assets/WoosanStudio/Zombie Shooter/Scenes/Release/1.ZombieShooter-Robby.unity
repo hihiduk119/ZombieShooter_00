@@ -6390,6 +6390,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Presenter: {fileID: 336479144}
+  Btns:
+  - {fileID: 679116857}
+  - {fileID: 773700380}
 --- !u!114 &336479144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6403,8 +6406,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 3409127}
+  View: {fileID: 336479143}
   NotifyPopupOpener: {fileID: 1708538846}
   NotifyYesOrNoPopupOpener: {fileID: 327014184}
+  Btns:
+  - {fileID: 679116857}
+  - {fileID: 773700380}
   ChangeAmmoEvent:
     m_PersistentCalls:
       m_Calls:
@@ -11406,7 +11413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.92549026, g: 0.94117653, b: 0.95294124, a: 0.39215687}
+  m_Color: {r: 0.92549026, g: 0.94117653, b: 0.95294124, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -13317,7 +13324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.92549026, g: 0.94117653, b: 0.95294124, a: 0.39215687}
+  m_Color: {r: 0.92549026, g: 0.94117653, b: 0.95294124, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -20119,6 +20126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Presenter: {fileID: 968346858}
+  Btns:
+  - {fileID: 2109103239}
+  - {fileID: 1636537029}
 --- !u!114 &968346858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20132,6 +20142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 3409127}
+  View: {fileID: 968346857}
   NotifyPopupOpener: {fileID: 1708538846}
   NotifyYesOrNoPopupOpener: {fileID: 327014184}
   ChangeCharacterEvent:
@@ -25898,7 +25909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.92549026, g: 0.94117653, b: 0.95294124, a: 0.39215687}
+  m_Color: {r: 0.92549026, g: 0.94117653, b: 0.95294124, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -36436,7 +36447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.92549026, g: 0.94117653, b: 0.95294124, a: 0.39215687}
+  m_Color: {r: 0.92549026, g: 0.94117653, b: 0.95294124, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -38013,7 +38024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.92549026, g: 0.94117653, b: 0.95294124, a: 0.39215687}
+  m_Color: {r: 0.92549026, g: 0.94117653, b: 0.95294124, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -42810,6 +42821,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Presenter: {fileID: 1976438480}
+  Btns:
+  - {fileID: 1208086426}
+  - {fileID: 1605590470}
 --- !u!114 &1976438480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42823,8 +42837,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 3409127}
+  View: {fileID: 1976438479}
   NotifyPopupOpener: {fileID: 1708538846}
   NotifyYesOrNoPopupOpener: {fileID: 327014184}
+  Btns:
+  - {fileID: 1208086426}
+  - {fileID: 1605590470}
   ChangeGunEvent:
     m_PersistentCalls:
       m_Calls:
@@ -45195,7 +45213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.92549026, g: 0.94117653, b: 0.95294124, a: 0.39215687}
+  m_Color: {r: 0.92549026, g: 0.94117653, b: 0.95294124, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -51572,12 +51590,12 @@ PrefabInstance:
     - target: {fileID: 2776374015686805729, guid: 7382f3ec52cfc4737828f3b8e3361510,
         type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8789490931497344508, guid: 7382f3ec52cfc4737828f3b8e3361510,
         type: 3}
       propertyPath: m_Color.a
-      value: 0.39215687
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8712769319280228585, guid: 7382f3ec52cfc4737828f3b8e3361510,
         type: 3}

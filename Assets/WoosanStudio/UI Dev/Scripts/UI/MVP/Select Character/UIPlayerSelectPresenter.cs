@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Events;
-using System.Text;
 using Ricimi;
 
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
     /// 플레이어의 선택 및 구매 컨트롤
-    /// 
     /// *MVP패턴
     /// </summary>
     public class UIPlayerSelectPresenter : MonoBehaviour
     {
         [Header("[MVP 모델]")]
         public UICardModel Model;
+        [Header("[MVP 모델]")]
+        public UIPlayerSelectView View;
+
         [Header("[돈이 없음 팝업 오프너]")]
         public PopupOpener NotifyPopupOpener;
         [Header("[돈이 있고 최종 확인용 오프너]")]
@@ -87,6 +88,9 @@ namespace WoosanStudio.ZombieShooter
             //캐릭터 사용 가능 여부 발생
             UpdateUseAbleEvent.Invoke(Model.cardSettings[currentIndex].UseAble);
 
+            //캐릭터 사용 가능 여부에 따른 연출 이펙트 활성 여부
+            View.UpdateButton(Model.cardSettings[currentIndex].UseAble);
+
             //구매 뷰 업데이트 통지
             CharacterPurchaseActivationEvent.Invoke(Model.cardSettings[currentIndex]);
 
@@ -154,5 +158,37 @@ namespace WoosanStudio.ZombieShooter
             //구매 뷰 업데이트 통지
             CharacterPurchaseActivationEvent.Invoke(Model.cardSettings[GlobalDataController.Instance.SelectedCharacter]);
         }
+
+        /*
+        /// <summary>
+        /// 선택 버튼 연출 이팩트
+        /// </summary>
+        public void UpdateButton(bool value)
+        {
+            Color tempColor;
+            for (int i = 0; i < Btns.Length; i++)
+            {
+                //연출 중지
+                Btns[i].DOKill();
+                Btns[i].localScale = Vector3.one;
+
+                if (value)//투명화
+                {
+                    tempColor = Btns[i].GetComponent<Image>().color;
+                    tempColor.a = 0f;
+                    Btns[i].GetComponent<Image>().color = tempColor;
+                }
+                else //빨간색 연출
+                {
+                    tempColor = Btns[i].GetComponent<Image>().color;
+                    tempColor = new Color32(255, 255, 255, 100);
+                    Btns[i].GetComponent<Image>().color = tempColor;
+
+                    //스케일 트윈 연출
+                    Btns[i].DOScale(1.25f, 0.5f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+                }
+            }
+        }
+        */
     }
 }

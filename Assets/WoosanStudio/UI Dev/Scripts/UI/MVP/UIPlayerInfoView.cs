@@ -17,6 +17,7 @@ namespace WoosanStudio.ZombieShooter
 
         //인포 뷰어 열때 사용하기 위해 저장
         //public UIPlayerPresenter.InfoViewData infoViewData;
+        [Header("[[Auto] 전달받는 데이터]")]
         public CardSetting cardSetting;
 
         /// <summary>

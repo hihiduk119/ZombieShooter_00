@@ -13,13 +13,29 @@ MonoBehaviour:
   m_Name: 15.PlasmaAmmo
   m_EditorClassIdentifier: 
   isActivate: 0
-  gemPrice: -1
+  gemPrice: 1000
+  cardData:
+    UseAble: 0
+    Level: 0
+    Durability: 100
+    SortIndex: 0
+    ResearchSlotIndex: -1
+    PlayTime: 0
+    HuntedMonster: 0
+    UpgardeTimeset:
+      endDateTime: 0
+      startDateTime: 0
+      totalSeconds: 0
+      bUpgrading: 0
+    IsUpgrading: 0
   useAble: 0
   level: 0
   durability: 100
-  SortIndex: 0
-  ResearchSlotIndex: -1
-  IsUpgrading: 0
+  upgradeTimeset:
+    endDateTime: 0
+    startDateTime: 0
+    totalSeconds: 0
+    bUpgrading: 0
   type: 202
   name: Plasma Ammo
   value: 0
@@ -27,7 +43,7 @@ MonoBehaviour:
   stackCount: 0
   maxDurability: 10
   maxLevel: 25
-  unlockLevel: 20
+  unlockLevel: 25
   researchTimeFormula: ResearchTime
   coinFormula: Coin
   sprite: {fileID: 21300000, guid: c2b52f79421e7463693ca823b6bce6a6, type: 3}

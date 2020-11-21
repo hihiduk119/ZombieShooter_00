@@ -10,7 +10,7 @@ namespace WoosanStudio.ZombieShooter
     /// <summary>
     /// 버튼 활성 비활성 컨트롤
     /// </summary>
-    public class UIButtonActivator : MonoBehaviour
+    public class UIStartButtonView : MonoBehaviour
     {
         private CanvasGroup canvasGroup;
 
@@ -20,8 +20,9 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 버튼 활성화
         /// </summary>
-        public void Activate(bool value)
+        public void UpdateValue(bool value)
         {
+            Debug.Log("UIButtonActivator -> value = " + value);
             canvasGroup = GetComponent<CanvasGroup>();
             canvasGroup.blocksRaycasts = value;
 
@@ -40,5 +41,21 @@ namespace WoosanStudio.ZombieShooter
                 canvasGroup.alpha = Alpha;
             }
         }
+
+        /*#region [-TestCode]
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                value(true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                value(false);
+            }
+        }
+        #endregion*/
+
     }
 }

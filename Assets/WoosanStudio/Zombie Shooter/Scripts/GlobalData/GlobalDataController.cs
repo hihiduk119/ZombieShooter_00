@@ -49,27 +49,6 @@ namespace WoosanStudio.ZombieShooter
             PlasmaAmmo,         //플라즈마타입탄약 변경 및 플라즈마타입탄약 데미지 25% 증가       lv 14 unlock
         }
 
-        /// <summary>
-        /// 저장 되어야 하는 데이터
-        /// </summary>
-        [System.Serializable]
-        public class Data
-        {
-            //현재 도박 성공률
-            public int GambleCurrentSuccessRate = 50;
-            //기본 총알 선택됨
-            //*card 추가되면 모두 변경 되어야 한다
-            public int SelectedAmmo = 9;
-            //기본 권총 선택됨
-            //*card 추가되면 모두 변경 되어야 한다
-            public int SelectedGun = 13;
-            //기본 비지니스맨 선택됨
-            //*card 추가되면 모두 변경 되어야 한다
-            public int SelectedCharacter = 16;
-            
-            public Data() { }
-        }
-
         //현재 도박 성공률
         private int gambleCurrentSuccessRate;
         public int GambleCurrentSuccessRate
@@ -112,7 +91,7 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
-        public Data data = new Data();
+        
 
         //겜블시 소모되는 젬
         static public int GambleGem = 10;
@@ -131,8 +110,8 @@ namespace WoosanStudio.ZombieShooter
         //카드 순서에 의해 발생한 캐릭터 카드 시작 인덱스
         //*card 추가되면 모두 변경 되어야 한다
         static public int CharacterCardStartIndex = 16;
-        //모든 총의 기본 치명타율 2%
-        static public int DefaultCriticalChance = 2;
+        //모든 총의 기본 치명타율 5%
+        static public int DefaultCriticalChance = 5;
         //알림 통지 기준이 되는 씬이름
         static public string PresentSceneName = "1.ZombieShooter-Robby";
 
@@ -173,6 +152,30 @@ namespace WoosanStudio.ZombieShooter
             //로드후에 반드시 싱크 마춰야 함
             Synchronization();
         }
+
+        /// <summary>
+        /// 저장 되어야 하는 데이터
+        /// UICardModel.CardSetting 의 순서와 같다
+        /// CardSetting.CardType역시 같은 순서이다.
+        /// </summary>
+        [System.Serializable]
+        public class Data
+        {
+            //현재 도박 성공률
+            public int GambleCurrentSuccessRate = 50;
+            //기본 권총 선택됨
+            //*card 추가되면 모두 변경 되어야 한다
+            public int SelectedGun = 9;
+            //기본 총알 선택됨
+            //*card 추가되면 모두 변경 되어야 한다
+            public int SelectedAmmo = 13;
+            //기본 비지니스맨 선택됨
+            //*card 추가되면 모두 변경 되어야 한다
+            public int SelectedCharacter = 16;
+
+            public Data() { }
+        }
+        public Data data = new Data();
 
         /// <summary>
         /// 데이터와 싱크 마춤

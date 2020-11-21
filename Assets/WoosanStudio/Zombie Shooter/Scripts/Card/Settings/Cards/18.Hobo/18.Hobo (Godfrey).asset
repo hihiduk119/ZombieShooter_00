@@ -20,6 +20,8 @@ MonoBehaviour:
     Durability: 100
     SortIndex: 0
     ResearchSlotIndex: -1
+    PlayTime: 0
+    HuntedMonster: 0
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0

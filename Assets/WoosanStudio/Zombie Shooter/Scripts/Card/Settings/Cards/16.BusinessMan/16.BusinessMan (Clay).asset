@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: 16.BusinessMan (Clay)
   m_EditorClassIdentifier: 
   isActivate: 0
-  gemPrice: -1
+  gemPrice: 0
   cardData:
     UseAble: 1
     Level: 0
     Durability: 100
     SortIndex: 0
     ResearchSlotIndex: -1
+    PlayTime: 0
+    HuntedMonster: 0
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0

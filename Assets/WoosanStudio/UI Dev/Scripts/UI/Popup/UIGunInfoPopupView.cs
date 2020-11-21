@@ -86,8 +86,8 @@ namespace WoosanStudio.ZombieShooter
                 Attack.text = cardSetting.Value.ToString();
             }
 
-            //모든 총의 기본 치명타율 2%
-            Critical.text = GlobalDataController.DefaultCriticalChance.ToString();
+            //모든 총의 기본 치명타율 5%
+            Critical.text = GlobalDataController.DefaultCriticalChance.ToString() + "%";
             //해당 캐릭터 플레이 타임 넣기
             PlayTime.text = cardSetting.PlayTime.ToString();
             //해당 캐릭터 사냥한 몬스터 숫자 넣기

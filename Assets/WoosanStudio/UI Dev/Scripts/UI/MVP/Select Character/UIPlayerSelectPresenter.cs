@@ -82,6 +82,8 @@ namespace WoosanStudio.ZombieShooter
             //* 죽인 몬스터 및 플레이타임 가져오는 부분 필요
             UpdateInfoEvent.Invoke(Model.cardSettings[currentIndex]);
 
+            Debug.Log("모델 활성 상태 = " + Model.cardSettings[currentIndex].UseAble);
+
             //캐릭터 사용 가능 여부 발생
             UpdateUseAbleEvent.Invoke(Model.cardSettings[currentIndex].UseAble);
 
@@ -117,9 +119,11 @@ namespace WoosanStudio.ZombieShooter
             }
             else //있으면 구매 확인 팝업.
             {
+                UINotifyYesOrNoPopupPresenter popupPresenter = NotifyYesOrNoPopupOpener.popupPrefab.GetComponent<UINotifyYesOrNoPopupPresenter>();
                 //젬 부족 메시지 출력 셋업 -> set a message print 
-                NotifyYesOrNoPopupOpener.popupPrefab.GetComponent<UINotifyYesOrNoPopupPresenter>().Desicription = "Buy [" + cardSetting.Name + "] for $" + string.Format("{0:0,0}", cardSetting.GemPrice);
-                
+                popupPresenter.Desicription = "Buy [" + cardSetting.Name + "] for $" + string.Format("{0:0,0}" + ".", cardSetting.GemPrice);
+                popupPresenter.type = UINotifyYesOrNoPopupPresenter.Type.PurchaseCharacter;
+
                 //해당 팝업 오픈
                 NotifyYesOrNoPopupOpener.OpenPopup();
             }

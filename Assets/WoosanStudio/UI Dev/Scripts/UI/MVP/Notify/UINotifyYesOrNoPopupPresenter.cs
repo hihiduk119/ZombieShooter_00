@@ -26,7 +26,9 @@ namespace WoosanStudio.ZombieShooter
         //public UnityAction ClickYesAction;
         public enum Type
         {
-            PurchaseCharacter = 0, //캐릭터 구매
+            PurchaseCharacter = 0,  //캐릭터 구매
+            PurchaseAmmo,           //탄약 구매
+            PurchaseGun,            //총 구매
         }
 
         //구매 타입에 의해 어디로 Click Yes 결과를 보낼지 결정
@@ -71,6 +73,16 @@ namespace WoosanStudio.ZombieShooter
                     //구매 요청 실행
                     //* 여기서 동작을 안하는 이유는 데이터는 모두 UIPlayerPresenter가지고 있기 때문에.
                     GameObject.FindObjectOfType<UIPlayerSelectPresenter>().PurchaseCharacter();
+                    break;
+                case Type.PurchaseAmmo://탄약 구매
+                    //구매 요청 실행
+                    //* 여기서 동작을 안하는 이유는 데이터는 모두 UIPlayerPresenter가지고 있기 때문에.
+                    GameObject.FindObjectOfType<UIAmmoSelectPresenter>().PurchaseAmmo();
+                    break;
+                case Type.PurchaseGun://총 구매
+                    //구매 요청 실행
+                    //* 여기서 동작을 안하는 이유는 데이터는 모두 UIPlayerPresenter가지고 있기 때문에.
+                    GameObject.FindObjectOfType<UIGunSelectPresenter>().PurchaseGun();
                     break;
             }
         }

@@ -89,5 +89,69 @@ namespace WoosanStudio.ZombieShooter
             //변경 된 인덱스 모델 데이터에 넣음
             GlobalDataController.Instance.SelectedGun = currentIndex;
         }
+
+        /// <summary>
+        /// 탄약 구매 버튼 클릭
+        /// </summary>
+        public void ClickGunPurchaseButton()
+        {
+            //현재 캐릭터의 구매 가격 알아오기
+            CardSetting cardSetting = Model.cardSettings[GlobalDataController.Instance.SelectedGun];
+
+            //Debug.Log("이 캐릭터의 가격은 요? Price = " + cardSetting.GemPrice);
+
+            //젬 프리젠트 가져오기
+            GemPresenter gemPresenter = GameObject.FindObjectOfType<GemPresenter>();
+
+            //현재 젬 확인
+            int gem = gemPresenter.GetGem();
+            //구매 가능한 수량 확인 -> 젬 부족
+            if (gem < cardSetting.GemPrice)
+            {
+                //젬 부족 메시지 출력 셋업
+
+                NotifyPopupOpener.popupPrefab.GetComponent<UINotifyPopupPresenter>().Type = UINotifyPopupModel.Type.NotEnoughGem;
+                //해당 팝업 오픈
+                NotifyPopupOpener.OpenPopup();
+            }
+            else //있으면 구매 확인 팝업.
+            {
+                UINotifyYesOrNoPopupPresenter popupPresenter = NotifyYesOrNoPopupOpener.popupPrefab.GetComponent<UINotifyYesOrNoPopupPresenter>();
+                //젬 부족 메시지 출력 셋업 -> set a message print 
+                popupPresenter.Desicription = "Buy [" + cardSetting.Name + "] for $" + string.Format("{0:0,0}" + ".", cardSetting.GemPrice);
+                popupPresenter.type = UINotifyYesOrNoPopupPresenter.Type.PurchaseGun;
+
+                //해당 팝업 오픈
+                NotifyYesOrNoPopupOpener.OpenPopup();
+            }
+        }
+
+        /// <summary>
+        /// 실제 구매
+        /// * UINotifyYesOrNoPopupPresenter.ClickYes()에서 실행됨.
+        /// </summary>
+        public void PurchaseGun()
+        {
+            //구매 실행
+            Debug.Log("==========> 구매실행");
+
+            //현재 캐릭터의 구매 가격 알아오기
+            CardSetting cardSetting = Model.cardSettings[GlobalDataController.Instance.SelectedGun];
+
+            Debug.Log("젬 가격 = " + cardSetting.GemPrice);
+
+            //캐릭터 구매
+            GameObject.FindObjectOfType<GemPresenter>().AddGem(-cardSetting.GemPrice);
+
+            //카드 데이터 변경과 동시에 저장 됨.
+            cardSetting.UseAble = true;
+
+
+            //스타트 버튼 사용 가능 여부 발생
+            UpdateUseAbleEvent.Invoke(Model.cardSettings[GlobalDataController.Instance.SelectedGun].UseAble);
+
+            //구매 뷰 업데이트 통지
+            GunPurchaseActivationEvent.Invoke(Model.cardSettings[GlobalDataController.Instance.SelectedGun]);
+        }
     }
 }

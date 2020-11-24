@@ -11827,6 +11827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpgradeComplatedCardList: []
+  cardUpgradeResultPopupController: {fileID: 310766849}
 --- !u!4 &765453626
 Transform:
   m_ObjectHideFlags: 0

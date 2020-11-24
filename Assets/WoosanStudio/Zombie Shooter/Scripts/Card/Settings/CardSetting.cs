@@ -73,6 +73,27 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
+        /// <summary>
+        /// Test용 코드로 데이터 초기화
+        /// </summary>
+        public void Reset()
+        {
+            //언락 레벨에 의해 사용 가능 해제
+            if(this.unlockLevel <= this.level)
+            {
+                this.UseAble = cardData.UseAble = true;
+            }
+
+            this.level = cardData.Level = 0;
+            this.durability = cardData.Durability = 100;
+            this.sortIndex = cardData.SortIndex = 0;
+            this.researchSlotIndex = cardData.ResearchSlotIndex = -1;
+            this.playTime = cardData.PlayTime = 0;
+            this.huntedMonster = cardData.HuntedMonster = 0;
+            this.upgradeTimeset = cardData.UpgardeTimeset = null;
+            this.isUpgrading = cardData.IsUpgrading = false;
+        }
+
         [Header("[데이터 확인용으로 열어놓지만 나중에 막아야함]")]
         public CardData cardData = new CardData();
 
@@ -385,8 +406,6 @@ namespace WoosanStudio.ZombieShooter
             //로드한 데이터와 현재 데이터 싱크 마추기
             Synchronization();
         }
-
-        
 
         /// <summary>
         /// 데이터 싱크 마추기

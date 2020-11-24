@@ -88,6 +88,21 @@ namespace WoosanStudio.ZombieShooter
             //data.Print("[Save]");
         }
 
+        /// <summary>
+        /// Test용 이며 데이터 초기화 필요할때 호출
+        /// </summary>
+        public void Reset()
+        {
+            //저장 데이터 초기화
+            PlayerPrefs.DeleteAll();
+
+            //카드 세팅에 저장된 런타임 데이터 초기화
+            for (int i = 0; i < cardSettings.Count; i++)
+            {
+                cardSettings[i].Reset();
+            }
+        }
+
 
         #region [-TestCode]
         void Update()
@@ -104,7 +119,8 @@ namespace WoosanStudio.ZombieShooter
 
             if (Input.GetKeyDown(KeyCode.D))
             {
-                PlayerPrefs.DeleteAll();
+                //모든 데이터 초기화
+                Reset();
             }
         }
         #endregion

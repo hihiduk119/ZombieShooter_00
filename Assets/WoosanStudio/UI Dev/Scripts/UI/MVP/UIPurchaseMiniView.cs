@@ -37,7 +37,8 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="value"></param>
         public void UpdateLevel(int value)
         {
-            Level.text = value.ToString();
+            //레벨 표시할때 +1 더해서 표시
+            Level.text = (value+1).ToString();
         }
 
         /*

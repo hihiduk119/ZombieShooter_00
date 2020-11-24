@@ -28,6 +28,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[업그레이드 데이터 업데이트 완료 이벤트]")]
         static public ComplateEvent ComplatedToUpdatedTheUpgradeDataEvent = new ComplateEvent();
 
+        [Header("[카드 업그레이드 결과 팝업 컨트롤러]")]
+        public CardUpgradeResultPopupController cardUpgradeResultPopupController;
+
         //메시지가 찾는지 아닌 확인용
         private bool isQueueEmpty = true;
 
@@ -37,7 +40,16 @@ namespace WoosanStudio.ZombieShooter
             None,
         }
 
-        private State state = State.None;
+        public enum Action
+        {
+            Show,
+            Showing,
+            Done,
+        }
+
+
+        private State state = State.Seek;
+        private Action action = Action.Show;
 
         //메시지 표시 조건
         //1.로비에 왔을때 메시지 큐를 확인(이미 UICardPresenter에서 처리함) 하고 메시지 있으면 출력
@@ -49,6 +61,9 @@ namespace WoosanStudio.ZombieShooter
             UpgradeComplateEvent.AddListener(CheckMessagePop);
             
             DontDestroyOnLoad(this);
+
+            //FSM 실행
+            StartCoroutine(state.ToString());
         }
 
         /// <summary>
@@ -80,29 +95,63 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
-
-        IEnumerator FSM()
+        /// <summary>
+        /// 결과 표출
+        /// *겜블의 경우 실패가 존재 -> 이 부분 디테일하게 설정 필요. 
+        /// *그외 성공창 결과에 따라 다르게 표시 해야함. 
+        /// </summary>
+        public void PopCardUpgradeResult()
         {
-            while(true)
+            //cardUpgradeResultPopupController.OpenResult();
+            
+        }
+
+        /// <summary>
+        /// 대기 상태
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator None()
+        {
+            while (true)
             {
-                yield return StartCoroutine(state.ToString());
+                //완료된 카드가 리스트에 들어왔다
+                if (0 < UpgradeComplatedCardList.Count)
+                {
+                    //팝업으로 보여주기 상태로 변경
+                    state = State.Seek; StartCoroutine(state.ToString());
+                    yield break;
+                }
+                yield return new WaitForSeconds(1f);
             }
         }
 
+        /// <summary>
+        /// 대기 상태
+        /// </summary>
+        /// <returns></returns>
         IEnumerator Seek()
         {
             while(0 < UpgradeComplatedCardList.Count)
             {
-                yield return new WaitForSeconds(0.33f);
-            }
 
-            state = State.None;
-        }
+                switch (action)
+                {
+                    case Action.Show:
+                        //여기서 화면 보여주는 액션을 해야함.
+                        action = Action.Showing;
+                        break;
+                    case Action.Showing:
+                        //보여주는 부분에서 완료 통지를 받기위해 대기하는 부분.
+                        
+                        break;
+                    case Action.Done:
+                        //완료가 끝났다면 다음것 Show함.
+                        action = Action.Show;
+                        break;
+                    default:
+                        break;
+                }
 
-        IEnumerator None()
-        {
-            while(true)
-            {
                 yield return new WaitForSeconds(0.33f);
             }
         }

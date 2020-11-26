@@ -1826,6 +1826,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   View: {fileID: 8194271810679404838}
+  sprite: {fileID: 0}
+  spriteColor: {r: 0, g: 0, b: 0, a: 0}
+  cardName: 
+  strResult: 
+  strLevel: 
+  bResult: 0
   ConfettiShowerEffect: {fileID: 155770, guid: db55b37b612f2442b8171ebd5b88e0dc, type: 3}
   ItemSparkleEffect: {fileID: 177676, guid: a1edc07e5942342d98014a9533b0a600, type: 3}
   ConfettiBlastEffect: {fileID: 129898, guid: 2b2b2119525da4b81a2c9f2f41c4a813, type: 3}
@@ -1844,9 +1850,6 @@ MonoBehaviour:
   - {fileID: 9048468879396530914}
   - {fileID: 5245753888753404701}
   - {fileID: 546120498115283562}
-  strResult: 
-  strLevel: 
-  bResult: 0
 --- !u!114 &8194271810679404838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1859,6 +1862,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2d98105c4574e0a92f76279d229b0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Image: {fileID: 8792309526400877381}
+  Name: {fileID: 8114425655844163616}
   Result: {fileID: 4878478545826422603}
   Level: {fileID: 4038590086202511211}
 --- !u!1 &3477894335961807577
@@ -3784,7 +3789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3293426107049089531}
   m_Layer: 5
-  m_Name: Success
+  m_Name: Result
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5851,7 +5856,7 @@ GameObject:
   - component: {fileID: 8578690024065526237}
   - component: {fileID: 1403709250584203092}
   m_Layer: 5
-  m_Name: Buy Button
+  m_Name: Ok Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5899,6 +5904,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1762718429983114270}
         m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3617814061317735446}
+        m_MethodName: ClickOk
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

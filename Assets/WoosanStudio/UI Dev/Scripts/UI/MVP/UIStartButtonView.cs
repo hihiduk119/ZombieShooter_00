@@ -22,7 +22,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void UpdateValue(bool value)
         {
-            Debug.Log("UIButtonActivator -> value = " + value);
+            //Debug.Log("UIButtonActivator -> value = " + value);
             canvasGroup = GetComponent<CanvasGroup>();
             canvasGroup.blocksRaycasts = value;
 

@@ -80,7 +80,7 @@ namespace WoosanStudio.ZombieShooter
             //Debug.Log("currentIndex = " + currentIndex + "   characterIndexInterval = " + characterIndexInterval);
 
             //캐릭터 변경 통지 => 변경시 필요한 인덱스는 -16뺀 0 부터 13까지임.
-            Debug.Log("Call !!! => " + (currentIndex - gunIndexInterval));
+            //Debug.Log("Call !!! => " + (currentIndex - gunIndexInterval));
             ChangeGunEvent.Invoke(currentIndex - gunIndexInterval);
 
             //* 죽인 몬스터 및 플레이타임 가져오는 부분 필요

@@ -40,19 +40,23 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void CardUpgradeStart(CardSetting cardSetting)
         {
-            //바꾸려는 실제 저장 카드 인덱스
-            int index = -1;
-
-            for (int i = 0; i < Model.cardSettings.Count; i++)
+            switch (cardSetting.WhoCallToUpgrade)
             {
-                //찾으려는 카드 세팅 데이터와 모델이 가지고 있는 데이터의 인덱스 알아오기
-                if(Model.cardSettings[i].Name.Equals(cardSetting.Name)) { index = i; }
+                case CardSetting.CallToUpgrade.Coin:
+                    //업그레이드 중인 상태로 카드 등록시킴
+                    UIGlobalMesssageQueueVewModel.UpgradingEvent.Invoke(cardSetting);
+                    break;
+                case CardSetting.CallToUpgrade.Gem:
+                    //업그레이드 완료인 상태로 카드 등록시킴
+                    UIGlobalMesssageQueueVewModel.UpgradeComplateEvent.Invoke(cardSetting);
+                    break;
+                case CardSetting.CallToUpgrade.Gamble:
+                    //업그레이드 완료인 상태로 카드 등록시킴
+                    UIGlobalMesssageQueueVewModel.UpgradeComplateEvent.Invoke(cardSetting);
+                    break;
+                default:
+                    break;
             }
-
-            //여기에 실제 저장 데이터가 있다
-            //UICardModel.CardData cardData = Model.data.CardDatas[cardIndex];
-            //NextValueCalculator.GetUpgradeTimeByLevel()
-            //cardData.UpgardeTimeset = new Timeset();
         }
 
         /// <summary>
@@ -60,7 +64,10 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void CardUpgradeComplate(CardSetting cardSetting)
         {
-            
+            //카드 연구 정보 팝업 가져오기
+            UICardResearchInfoPopupPresenter cardResearchInfoPopupPresenter = GameObject.FindObjectOfType<UICardResearchInfoPopupPresenter>();
+            //화면 다시 표시
+            cardResearchInfoPopupPresenter.UpdateCardInfo();
         }
 
 
@@ -70,6 +77,8 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="cardSetting"></param>
         public void UpdateCardUpgrade(CardSetting cardSetting)
         {
+            //완료된 카드가 아닌 업글중인 카드라면 다른곳에 업데이트 해야함
+
             //카드 완료 큐에 넣기
             UIGlobalMesssageQueueVewModel.UpgradeComplateEvent.Invoke(cardSetting);
         }

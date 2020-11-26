@@ -55,9 +55,9 @@ namespace WoosanStudio.ZombieShooter
         public void UpdateCardInfo()
         {
             //업그레이드 완료 레벨
-            string upgradeComplateLevel = CardSetting.UpgradeComplateLevelToString(cardSetting);
+            string upgradeComplateLevel = CardSetting.PredictUpgradeComplateLevelToString(cardSetting);
             //도박 성공 목표 레벨
-            string gambleSuccessLevel = CardSetting.GambleSuccessLevelToString(cardSetting);
+            string gambleSuccessLevel = CardSetting.PredictGambleSuccessLevelToString(cardSetting);
             //요구 코인 알아오기
             string strCoin = CardSetting.RequireCoinToString(cardSetting);
             //요구 젬 알아오기
@@ -68,8 +68,8 @@ namespace WoosanStudio.ZombieShooter
 
             //뷰에 계산된 정보를 넣어줌
             View.UpdateCardInfo(cardSetting.Sprite,cardSetting.IconColor, cardSetting.Name, (cardSetting.Level + 1).ToString(),//레벨은 표시상 +1더해야함
-                cardSetting.AllDescription(), upgradeComplateLevel, gambleSuccessLevel, strCoin, upgradeRemainTime
-                , strGem, GlobalDataController.GambleGem.ToString(), GlobalDataController.Instance.data.GambleCurrentSuccessRate) ;
+                cardSetting.AllDescriptionForUpgradeInfo(), upgradeComplateLevel, gambleSuccessLevel, strCoin, upgradeRemainTime
+                , strGem, GlobalDataController.GambleGem.ToString(), GlobalDataController.Instance.GambleCurrentSuccessRate) ;
 
             //뷰의 버튼 상태 변경
             View.UpdateUpgradeInfoByState(cardSetting.IsUpgrading);

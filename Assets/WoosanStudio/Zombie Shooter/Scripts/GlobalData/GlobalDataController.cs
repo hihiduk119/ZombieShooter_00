@@ -50,11 +50,33 @@ namespace WoosanStudio.ZombieShooter
         }
 
         //현재 도박 성공률
+        //* 모든 계산된 값을 가져옴.
         private int gambleCurrentSuccessRate;
         public int GambleCurrentSuccessRate
         {
-            get => gambleCurrentSuccessRate; set {
-                data.GambleCurrentSuccessRate = gambleCurrentSuccessRate = value;
+            get {
+                //기본 갬블 40 + (콤보 카운트 * 콤보 값 )
+                int successRate = GlobalDataController.GambleDefaultRate
+                            + (GlobalDataController.Instance.GambleComboCount * GlobalDataController.GamblePerValue);
+
+                //혹시라도 최대 성공 값보다 크다면 최대 값으로 초기화
+                if (successRate > GlobalDataController.GambleMaxRate) { successRate = GlobalDataController.GambleMaxRate; }
+
+                return successRate;
+            }
+            //set {
+            //    data.GambleCurrentSuccessRate = gambleCurrentSuccessRate = value;
+            //    Save();
+            //}
+        }
+
+        //현재 도박 연속 성공 카운트
+        private int gambleComboCount;
+        public int GambleComboCount
+        {
+            get => gambleComboCount; set
+            {
+                data.GambleComboCount = gambleComboCount = value;
                 Save();
             }
         }
@@ -95,7 +117,7 @@ namespace WoosanStudio.ZombieShooter
 
         //겜블시 소모되는 젬
         static public int GambleGem = 10;
-        //겜블 성공시 추가되는 성공률
+        //겜블 코보 1당 추가되는 성공률
         static public int GamblePerValue = 5;
         //겜블 최대 성공률
         static public int GambleMaxRate = 80;
@@ -162,7 +184,9 @@ namespace WoosanStudio.ZombieShooter
         public class Data
         {
             //현재 도박 성공률
-            public int GambleCurrentSuccessRate = 50;
+            //public int GambleCurrentSuccessRate = 40;
+            //현재 도박 연속 성공 카운트
+            public int GambleComboCount = 0;
             //기본 권총 선택됨
             //*card 추가되면 모두 변경 되어야 한다
             public int SelectedGun = 9;
@@ -183,7 +207,8 @@ namespace WoosanStudio.ZombieShooter
         void Synchronization()
         {
             //이떼 불필요한 Save발생을 피하기 위해 로컬 데이터 사용
-            this.gambleCurrentSuccessRate = data.GambleCurrentSuccessRate;
+            //this.gambleCurrentSuccessRate = data.GambleCurrentSuccessRate;
+            this.gambleComboCount = data.GambleComboCount;
             this.selectedCharacter = data.SelectedCharacter;
             this.selectedAmmo = data.SelectedAmmo;
             this.selectedGun = data.SelectedGun;

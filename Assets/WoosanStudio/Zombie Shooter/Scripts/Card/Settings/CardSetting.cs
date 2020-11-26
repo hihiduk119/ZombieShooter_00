@@ -24,7 +24,37 @@ namespace WoosanStudio.ZombieShooter
         private int gemPrice = -1;
         public int GemPrice { get => gemPrice; set => gemPrice = value; }
 
+        /// <summary>
+        /// 업글레이드 성공 or 실패 리턴용 데이터
+        /// </summary>
+        public class UpgradeData
+        {
+            //업그레이드 성공한 레벨
+            public int SuccessLevel = -1;
+            //업그레이드 성공 여부
+            public bool IsSuccess = false;
+
+            public UpgradeData(int successLevel,bool isSuccess = false)
+            {
+                this.SuccessLevel = successLevel;
+                this.IsSuccess = isSuccess;
+            }
+        }
+
         //========================= [Moved CardData] =========================
+
+        /// <summary>
+        /// 어떤 방식으로 업그레이드 호출됬는지 확인용
+        /// </summary>
+        [System.Serializable]
+        public enum CallToUpgrade
+        {
+            Coin,   //돈으로 업글
+            Gem,    //보석으로 업글
+            Gamble, //도박으로 업글
+            None,   //아무것도 아님
+        }
+
 
         [System.Serializable]
         public class CardData
@@ -52,6 +82,9 @@ namespace WoosanStudio.ZombieShooter
             
             //해당 카드를 착용한 채로 사냥한 몬스터
             public int HuntedMonster = 0;
+
+            //어떤 방식으로 업그레이드 호출됬는지 확인용
+            public CallToUpgrade WhoCallToUpgrade = CallToUpgrade.None;
 
             //남은 업글 시간
             //public long UpgradeStartedTime = 0;
@@ -91,6 +124,7 @@ namespace WoosanStudio.ZombieShooter
             this.playTime = cardData.PlayTime = 0;
             this.huntedMonster = cardData.HuntedMonster = 0;
             this.upgradeTimeset = cardData.UpgardeTimeset = null;
+            this.whoCallToUpgrade = cardData.WhoCallToUpgrade;
             this.isUpgrading = cardData.IsUpgrading = false;
         }
 
@@ -169,6 +203,16 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
+        private CallToUpgrade whoCallToUpgrade = CallToUpgrade.None;
+        public CallToUpgrade WhoCallToUpgrade
+        {
+            get => whoCallToUpgrade; set
+            {
+                cardData.WhoCallToUpgrade = whoCallToUpgrade = value;
+                Save();
+            }
+        }
+
         //업글중 이었는지 아닌지
         private bool isUpgrading = false;
         public bool IsUpgrading { get => isUpgrading; set {
@@ -194,43 +238,17 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField] private CardType type;
         public CardType Type { get => type; }
 
-        //[Header("[해당 카드 무기 타입 ID]")]
-        //[SerializeField] private CardTypeByWeapon typeByWeapon;
-        //public CardTypeByWeapon TypeByWeapon { get => typeByWeapon; }
-
-        //[Header("[해당 카드 탄약 타입 ID]")]
-        //[SerializeField] private CardTypeByAmmo typeByAmmo;
-        //public CardTypeByAmmo TypeByAmmo { get => typeByAmmo; }
-
-        //[Header("[해당 카드 캐릭터 타입 ID]")]
-        //[SerializeField] private CardTypeByCharacter typeByCharacter;
-        //public CardTypeByCharacter TypeByCharacter { get => typeByCharacter; }
-
         [Header("[카드이름]")]
         [SerializeField]
         //저장 필요??
         private new string name = "";
         public string Name { get => name; }
 
-
         [Header("[기본 값이며 무기,탄약의 경우 기본 데미지]")]
         [SerializeField]
         //저장 필요
         private int value = -1;
         public int Value { get => value; }
-
-
-
-        //레벨 업그레이드 연구 중이라면 남은 시간 System.Data
-        //저장 불필요
-        //private long upgradeStartedTime = 0;
-        //public long UpgradeStartedTime => upgradeStartedTime;
-
-        [HideInInspector]//연구 중이었다면 해당 슬롯
-        //저장 필요
-        //private int researchSlot = -1;
-        //public int ResearchSlot => researchSlot;
-
 
         [Header("[최대 중첩 => 0부터 계산]")]
         [SerializeField]
@@ -268,7 +286,6 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField]
         private string coinFormula = "Coin";
         public string CoinFormula { get => coinFormula; }
-        
 
         [Header("[Icon Sprite]")]
         [SerializeField] private Sprite sprite;
@@ -286,55 +303,9 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField] private string title;
         public string Title { get => title; }
 
-        //[Header("[표시 설명]")]
-        //[TextArea(5,8)]
-        //[SerializeField] private string contents;
-        //public string Contents { get => contents; }
-
-        
-
         [Header("[프로퍼티 값 리스트[순서대로 넣음]]")]
         [SerializeField]
         public List<CardProperty> Properties = new List<CardProperty>();
-
-        /*[SerializeField]
-        public enum CardTypeByWeapon
-        {
-            None = 0,
-            Pistol,             //무기를 권총으로 변경 및 해당 무기 데미지 25%증가
-            Shotgun,            //무기를 샷건으로 변경 및 해당 무기 데미지 25%증가   lv 4 unlock
-            AssaultRifle,       //무기를 돌격소총으로 변경 및 무기 데미지 25%증가    lv 8 unlock  
-            SniperRifle,        //무기를 스나이퍼소총으로 변경 및 무기 데미지 25%증가 lv 12 unlock
-        }
-
-        [SerializeField]
-        public enum CardTypeByAmmo
-        {
-            None = 0,
-            BulletAmmo,         //총알타입탄약 변경 및 총알타입탄약 데미지 25% 증가
-            LaserAmmo,          //레이저타입탄약 변경 및 레이저타입탄약 데미지 25% 증가        lv 10 unlock
-            PlasmaAmmo,         //플라즈마타입탄약 변경 및 플라즈마타입탄약 데미지 25% 증가       lv 14 unlock
-        }
-
-        [SerializeField]
-        public enum CardTypeByCharacter
-        {
-            None = 0,
-            BusinessMan,        //캐릭터 변경 및 권총 데미지 10% 증가 & 레이저타입탄약 데미지 -10% 감소                      
-            FireFighter,        //캐릭터 변경 및 샷건 데미지 10% 증가 & 탄챵 용량 -10% 감소                                 lv 2 unlock
-            Hobo,               //캐릭터 변경 및 돌격소총 데미지 10% 증가 & 공격 속도 -10% 감소                             lv 3 unlock
-            Pimp,               //캐릭터 변경 및 치명 데미지 10% 증가 & 치명타 기회 -10% 감소                               lv 5 unlock
-            Policeman,          //캐릭터 변경 및 총알타입탄약 데미지 10% 증가 & 돌격소총 데미지 -10%감소 & & 스나이퍼 라이플 데미지 -10%감소 lv 6 unlock
-            Prostitute,         //캐릭터 변경 및 치명타 데미지 10% 증가 & 총알타입탄약 데미지 -10%감소                       lv 7 unlock
-            Punk,               //캐릭터 변경 및 레이저타입 탄약 데미지 10% 증가 & 모든타입탄약 데미지 -10%감소                 lv 9 unlock
-            RiotCop,            //캐릭터 변경 및 돌격소총 데미지 10% 증가 & 공습 데미지 -10% 감소                          lv 11 unlock
-            Roadworker,         //캐릭터 변경 및 네임드 좀비 데미지 10% 증가 & 일반 좀비 데미지 -20% 감소                     lv 12 unlock
-            Robber,             //캐릭터 변경 및 스나이퍼 소총 데미지 10% 증가 & 레이저타입탄약 데미지 -10% 감소                    lv 13 unlock
-            Sheriff,            //캐릭터 변경 및 플라즈마타입탄약 데미지 10% 증가 & 탄약 용량 -10% 감소                       lv 15 unlock
-            StreetMan,          //캐릭터 변경 및 모든 무기 데미지 5% 증가 & 최대 체력 -10%감소                            lv 20 unlock
-            Trucker,            //캐릭터 변경 및 공습 데미지 25% 증가 & 공습 체움 속도 25% 증가 & 모든 무기 데미지 -10% 감소     lv 22 unlock
-            Woman,              //캐릭터 변경 및 최대 체력 25% 증가 & 모든 타입의 탄약 데미지 10 감소                      lv 25 unlock
-        }*/
 
         [SerializeField]
         public enum CardType
@@ -435,31 +406,10 @@ namespace WoosanStudio.ZombieShooter
                 //현재 시간이 업그레이드 끝난는지 아닌지 확인
                 if(this.upgradeTimeset.IsUpgrading())
                 {
-                    //업그레이드중 아닌상태로 변경 -> 이건 메시지 큐에서 해야 할듯
-                    //Debug.Log("이거 업글 끝났다.!!");
-
                     //카드 완료 큐에 넣기
                     UIGlobalMesssageQueueVewModel.UpgradeComplateEvent.Invoke(this);
-                    //UIGlobalMesssageQueueVewModel.UpgradeComplatedCardList.Add(this);
                 }
             }
-        }
-
-        /// <summary>
-        /// 업그레이드 시작
-        /// *UINotifyCoinUpgradePresenter 에서 호출 됨.
-        /// </summary>
-        public void StartTheUpgrade(bool immediately = false)
-        {
-            //시간 데이터 업데이트
-            //세팅할 업글 시간 가져오기
-            int seconds = NextValueCalculator.GetUpgradeTimeByLevel(this.MaxLevel, this.Level);
-            //즉시 업글 활성화시 1초.
-            if (immediately) { seconds = 1; }
-            //시간 업데이트
-            this.UpgradeTimeset = new Timeset(seconds);
-            //현재 업글 중으로 변경
-            this.IsUpgrading = true;
         }
 
         /// <summary>
@@ -481,11 +431,29 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
-        /// 업그레이드 완료시 레벨을 스트링으로 가져옴
+        /// 프로퍼티의 모든 디스크립션 합쳐서 가져오기
+        /// </summary>
+        /// <returns></returns>
+        public string AllDescriptionForUpgradeInfo()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < this.Properties.Count; i++)
+            {
+                stringBuilder.Append(this.Properties[i].GetCompletedDescripsionForUpgradeInfo(this.Level));
+                //마지막 줄이 아니면 라인 개행 추가
+                if (i < this.Properties.Count) { stringBuilder.AppendLine(); }
+            }
+
+            return stringBuilder.ToString();
+        }
+
+        /// <summary>
+        /// 업그레이드 완료시 예측 레벨을 스트링으로 가져옴
         /// </summary>
         /// <param name="cardSetting">해당 카드 세팅</param>
         /// <returns></returns>
-        static public string UpgradeComplateLevelToString(CardSetting cardSetting)
+        static public string PredictUpgradeComplateLevelToString(CardSetting cardSetting)
         {
             //업그레이드 완료 레벨 -> 최고 레벨일때는 MAX 표시
             int iUpgradeComplateLevel = cardSetting.Level + 1;//기본 연구는 +1 업글
@@ -497,19 +465,161 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
-        /// 도박 성공시 레벨을 스트링으로 가져옴
+        /// 도박 성공시 예측된 레벨을 스트링으로 가져옴
         /// </summary>
         /// <param name="cardSetting"></param>
         /// <returns></returns>
-        static public string GambleSuccessLevelToString(CardSetting cardSetting)
+        static public string PredictGambleSuccessLevelToString(CardSetting cardSetting)
         {
             //도박 성공 목표 레벨
-            int iGambleSuccessLevel = cardSetting.Level + 2;//도박은 +2 업글
+            int iGambleSuccessLevel = cardSetting.Level + 1;//도박은 +1 업글
             string gambleSuccessLevel;
             if (iGambleSuccessLevel >= cardSetting.MaxLevel) { gambleSuccessLevel = "MAX"; }
             else { gambleSuccessLevel = (iGambleSuccessLevel + 1).ToString(); }//레벨은 표시상 +1
 
             return gambleSuccessLevel;
+        }
+
+        /*
+        /// <summary>
+        /// 업그레이드 시작
+        /// *UINotifyCoinUpgradePresenter 에서 호출 됨.
+        /// ???
+        /// </summary>
+        public void StartTheUpgrade(CallToUpgrade callTo)
+        {
+            switch (callTo)
+            {
+                case CallToUpgrade.Coin:
+                    break;
+                case CallToUpgrade.Gem:
+                    break;
+                case CallToUpgrade.Gamble:
+                    break;
+                default:
+                    break;
+            }
+        }*/
+
+        /// <summary>
+        /// 실제 업그레이드 결과를 만듬
+        /// *여기에서 실제 CardSetting데이터 변경 작업 다 함
+        /// *리턴된 데이터는 단순히 확인용임.
+        /// </summary>
+        /// <param name="cardSetting"></param>
+        /// <param name="successRate"></param>
+        /// <returns></returns>
+        static public UpgradeData GetUpgradeResult(CardSetting cardSetting)
+        {
+            UpgradeData upgradeData = null;
+
+            int iUpgradeComplateLevel;
+
+            switch (cardSetting.WhoCallToUpgrade)
+            {
+                case CardSetting.CallToUpgrade.Coin://업글세팅만 함
+
+                    //시간 데이터 업데이트
+                    //세팅할 업글 시간 가져오기
+                    int seconds = NextValueCalculator.GetUpgradeTimeByLevel(cardSetting.MaxLevel, cardSetting.Level);
+
+                    //시간 업데이트
+                    cardSetting.UpgradeTimeset = new Timeset(seconds);
+                    //현재 업글 중으로 변경
+                    cardSetting.IsUpgrading = true;
+
+                    break;
+                case CardSetting.CallToUpgrade.Gem://실제 결과 도출
+
+                    //업그레이드 완료 레벨 -> 최고 레벨일때는 증가 안함
+                    //실제 카드 레벨 증가 시킴
+                    iUpgradeComplateLevel = cardSetting.Level + 1;
+
+                    //어짜피 최고 레벨에서는 업글 안되게 막을거라 필없는 코드임
+                    if (iUpgradeComplateLevel >= cardSetting.MaxLevel)
+                    {
+                        cardSetting.Level = cardSetting.MaxLevel;
+                    }
+                    else
+                    {
+                        cardSetting.Level = cardSetting.Level + 1;
+                    }
+
+                    //무조건 성공
+                    upgradeData = new UpgradeData(cardSetting.Level, true);
+
+                    break;
+                case CardSetting.CallToUpgrade.Gamble://도박으로 업글. 작은 젬과 운 소비
+
+                    //기본 실패 상태
+                    bool isSuccess = false;
+
+                    //겜블 제외 그외 모든 업글은 성공률 100
+                    int successRate = 0;
+
+                    //겜블에 의한 업그레이드 일때만 사용
+                    if (cardSetting.WhoCallToUpgrade == CallToUpgrade.Gamble)
+                    {
+                        //기본 갬블 40 + (콤보 카운트 * 콤보 값 )
+                        //successRate = GlobalDataController.GambleDefaultRate
+                        //    + (GlobalDataController.Instance.GambleComboCount * GlobalDataController.GamblePerValue);
+
+                        //*연속 성공 모두 계산된 값임
+                        successRate = GlobalDataController.Instance.GambleCurrentSuccessRate;
+
+                        Debug.Log("기본 성공률 = [" + GlobalDataController.GambleDefaultRate +
+                            "] 연속 카운트 = [" + GlobalDataController.Instance.GambleComboCount +
+                            "] 겜블 성공1당 증가 값 = ["+ GlobalDataController.GamblePerValue+
+                            "] 최종 값 = ["+ successRate+"]");
+
+                        //혹시라도 최대 성공 값보다 크다면 최대 값으로 초기화
+                        //if (successRate > GlobalDataController.GambleMaxRate) { successRate = GlobalDataController.GambleMaxRate; }
+                    }
+
+                    //0-99까지 랜덤 int 값 생성
+                    int rand = Random.Range(0, 100);
+
+                    Debug.Log("랜덤값 = [" + rand + "] 계산된 성공 값 = [" + successRate + "]");
+
+                    //랜덤 값이 성공최대값에 포함됬다면 성공. 아니라면 실패
+                    if (rand < successRate) {
+                        isSuccess = true;
+                    }
+
+                    //업그레이드 완료 레벨 -> 최고 레벨일때는 증가 안함
+                    //실제 카드 레벨 증가 시킴
+                    iUpgradeComplateLevel = cardSetting.Level + 1;
+
+                    if(isSuccess)//도박 성공시
+                    {
+                        //연속 성공 수치 상승
+                        GlobalDataController.Instance.GambleComboCount++;
+                        if (iUpgradeComplateLevel >= cardSetting.MaxLevel)
+                        {
+                            cardSetting.Level = cardSetting.MaxLevel;
+                        }
+                        else
+                        {
+                            cardSetting.Level = cardSetting.Level + 1;
+                        }
+                    } else//도박 실패시
+                    {
+                        cardSetting.Level = 0;
+                        isSuccess = false;
+                        //연속 성공 카운트 0으로 변경
+                        GlobalDataController.Instance.GambleComboCount = 0;
+                    }
+
+                    //업그레이드의 성공 또는 실패 결과를 세팅
+                    upgradeData = new UpgradeData(cardSetting.Level, isSuccess);
+
+                    break;
+                default:
+                    break;
+            }
+            
+
+            return upgradeData;
         }
 
         /// <summary>

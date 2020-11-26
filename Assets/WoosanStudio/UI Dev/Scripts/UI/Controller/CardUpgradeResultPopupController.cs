@@ -19,9 +19,13 @@ namespace WoosanStudio.ZombieShooter
         /// 결과 출력 실행
         /// </summary>
         /// <param name="result"></param>
-        public void OpenResult(string strResult,string strLevel, bool bResult)
+        public void OpenResult(Sprite sprite, Color spriteColor, string name, string strResult,string strLevel, bool bResult)
         {
             UICardUpgradeResultPopupPresenter presenter = popupOpener.popupPrefab.GetComponent<UICardUpgradeResultPopupPresenter>();
+
+            presenter.sprite = sprite;
+            presenter.spriteColor = spriteColor;
+            presenter.cardName = name;
             presenter.strResult = strResult;
             presenter.strLevel = strLevel;
             presenter.bResult = bResult;

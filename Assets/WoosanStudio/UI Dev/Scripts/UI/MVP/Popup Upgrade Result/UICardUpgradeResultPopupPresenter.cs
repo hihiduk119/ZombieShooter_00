@@ -17,6 +17,9 @@ namespace WoosanStudio.ZombieShooter
 
         //
         [Header("[[전달 받음] MVP Model 역활]")]
+        public Sprite sprite;
+        public Color spriteColor;
+        public string cardName;
         public string strResult;
         public string strLevel;
         public bool bResult;
@@ -50,14 +53,14 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void OnEnable()
         {
-            UpdateResult(strResult, strLevel, bResult);
+            UpdateResult(sprite, spriteColor, cardName, strResult, strLevel, bResult);
         }
 
         /// <summary>
         /// 결과 정보 업데이트
         /// </summary>
         /// <param name="value"></param>
-        public void UpdateResult(string value,string level,bool resultValue)
+        public void UpdateResult(Sprite sprite, Color spriteColor, string name, string value,string level,bool resultValue)
         {
             //임시 컬러
             Color tmpColor;
@@ -69,7 +72,7 @@ namespace WoosanStudio.ZombieShooter
             }
 
             //뷰에 업데이트
-            View.UpdateResult(value, level, tmpColor);
+            View.UpdateResult(sprite,spriteColor,name,value, level, tmpColor);
 
             //이펙트 연출
             ShowEffect(resultValue);
@@ -128,6 +131,15 @@ namespace WoosanStudio.ZombieShooter
                 i++;
                 yield return new WaitForSeconds(0.15f);
             }
+        }
+
+        /// <summary>
+        /// 확인 버튼 누름
+        /// </summary>
+        public void ClickOk()
+        {
+            //메시지 큐에 확인 눌렸음을 알림
+            UIGlobalMesssageQueueVewModel.ConfirmUpgradeComplatedEvent.Invoke();
         }
     }
 }

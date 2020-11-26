@@ -191,7 +191,7 @@ namespace WoosanStudio.ZombieShooter
             //수평 계산
             if (mHorizontal)
             {
-                Debug.Log(" 수평계산 현재 갯수 = " + contentCount + "    행 갯수 = " + mConstraintCount + "    나머지 = " + odd);
+                //Debug.Log(" 수평계산 현재 갯수 = " + contentCount + "    행 갯수 = " + mConstraintCount + "    나머지 = " + odd);
                 if (odd == 0) //나머지가 0일때
                 {
                     gab = (mGridLayout.cellSize.x + mGridLayout.spacing.x) * (contentCount / mConstraintCount);
@@ -201,8 +201,8 @@ namespace WoosanStudio.ZombieShooter
                     gab = (mGridLayout.cellSize.x + mGridLayout.spacing.x) * ((contentCount / mConstraintCount) + 1);
                 }
 
-                Debug.Log("gab = " + gab + "  cell.x = " + mGridLayout.cellSize.x + "  space.x = " + mGridLayout.spacing.x
-                    + "   contentCount = " + contentCount + "  mConstraintCount = " + mConstraintCount);
+                //Debug.Log("gab = " + gab + "  cell.x = " + mGridLayout.cellSize.x + "  space.x = " + mGridLayout.spacing.x
+                //    + "   contentCount = " + contentCount + "  mConstraintCount = " + mConstraintCount);
 
                 //Debug.Log("defalutSizeDelta.x  = " + defalutSizeDelta.x + "  gab = " + gab);
                 //최종값에 spacing.x 마진을 붙여 끝부분이 딱맞아 떨어지는걸 방지한다.

@@ -30,7 +30,7 @@ namespace WoosanStudio.ZombieShooter
         private void UpdateView()
         {
             View.UpdateView(this.CardSetting.Sprite,this.CardSetting.IconColor
-                , CardSetting.UpgradeComplateLevelToString(CardSetting)
+                , CardSetting.PredictUpgradeComplateLevelToString(CardSetting)
                 , CardSetting.RequireCoinToString(CardSetting)
                 , CardSetting.UpgradeRemainTimeToString(CardSetting));
         }
@@ -57,18 +57,14 @@ namespace WoosanStudio.ZombieShooter
             //코인 소비
             coinPresenter.AddCoin(-requireCoin);
 
-            //일반 업글 시작
-            this.CardSetting.StartTheUpgrade();
+            //모든 카드 컨롤러
+            UICardPresenter cardPresenter = GameObject.FindObjectOfType<UICardPresenter>();
 
-            //카드 연구 정보 팝업 가져오기
-            UICardResearchInfoPopupPresenter cardResearchInfoPopupPresenter = GameObject.FindObjectOfType<UICardResearchInfoPopupPresenter>();
-            //화면 다시 표시
-            cardResearchInfoPopupPresenter.UpdateCardInfo();
+            //코인에 의한 업그레이드 호출로 세팅
+            CardSetting.WhoCallToUpgrade = CardSetting.CallToUpgrade.Coin;
 
-
-            //코인이 충분하면 UICardPresenter에서 해당 카드 업글 호출
-            //카드 데이터 및 카드 레벨 및 업그레이드 시작알림
-
+            //등록외 나머지 카드 컨트롤러 호출해서 처리 맏김
+            cardPresenter.CardUpgradeStart(this.CardSetting);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace WoosanStudio.ZombieShooter
     /// <summary>
     /// 카드 슬롯과 카드 정보 
     /// </summary>
-    public class UICardInfoLinker : MonoBehaviour
+    public class UICardSlotInfoLinkerAboutUpgradeBtn : MonoBehaviour
     {
         [Header("[모델 역활 프리젠트]")]
         public UICardSlotInfoPresenter ToModel;

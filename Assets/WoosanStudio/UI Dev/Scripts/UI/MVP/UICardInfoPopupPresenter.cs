@@ -13,35 +13,70 @@ namespace WoosanStudio.ZombieShooter
         [Header("[카드를 가져올 루트]")]
         public Transform CardItemRoot;
 
+        [Header("[카드 정보 팝업에 종속된 슬롯]")]
+        public UICardSlotInfoPresenter CardSlotInfoPresenter;
+
         [Header("[[Auto->Awake()] 카드아이템]")]
-        public List<UICardItemView> CardItems = new List<UICardItemView>();
+        public List<UICardItemPresenter> CardItems = new List<UICardItemPresenter>();
 
-        [Header("[[Auto->Awake()] 카드 정보를 가지고 있는 모델]")]
-        public UICardModel Model;
+        [Header("[[Auto->Awake()] 카드 정보를 가지고 있는 프리젠트]")]
+        public UICardPresenter Presenter;
 
+        [Header("[Auto->Awake()] 선택된 카드 아이템")]
+        //cardItem.ReturnMeEvent.AddListener()등록애 의해 호출
+        public UICardItemPresenter CardItemPresenter;
 
         //캐쉬용
-        private UICardItemView cardItem;
+        private UICardItemPresenter cardItem;
 
         private void Awake()
         {
             //모든 카드 정보를 가지고 있는 모델 가져오기
-            Model = GameObject.FindObjectOfType<UICardModel>();
+            Presenter = GameObject.FindObjectOfType<UICardPresenter>();
 
             //모든 카드 아이템 그릇 가져오기
             for (int i = 0; i < CardItemRoot.childCount; i++) {
-                cardItem = CardItemRoot.GetChild(i).GetComponent<UICardItemView>();
+                cardItem = CardItemRoot.GetChild(i).GetComponent<UICardItemPresenter>();
+                
                 CardItems.Add(cardItem);
 
                 //카드 선택시 이벤트발생 등록
                 cardItem.SelectEvent.AddListener(ReleaseCardItemListener);
 
-                //존제할수 있는 카드의 갯수 만큼만 활성화
-                if (Model.cardSettings.Count > i) { cardItem.gameObject.SetActive(true);}
+                //최초 존제할수 있는 카드의 갯수 만큼만 활성화
+                if (Presenter.Model.cardSettings.Count > i) { cardItem.gameObject.SetActive(true);}
                 else { cardItem.gameObject.SetActive(false); }
+
+                //빈 카드 제외한 활성화 카드에만 카드 데이터 넣기
+                if(cardItem.gameObject.activeSelf)
+                {
+                    //카드 데이터 각 카드마다 넣어주기
+                    cardItem.CardSetting = Presenter.Model.cardSettings[i];
+                    //카드 아이템 선택시 호출되게 리스너에 등록.
+                    cardItem.ReturnMeEvent.AddListener(SelectedCardItem);
+                }
             }
+            
 
             Initialize();
+        }
+
+        /// <summary>
+        /// 선택된 카드 아이템을 UICardInfoPopupPresenter가 가지고 있기 위해. 
+        /// </summary>
+        /// <param name="cardSetting"></param>
+        void SelectedCardItem(UICardItemPresenter cardItemPresenter)
+        {
+            //선택된 카드세팅에 저장
+            this.CardItemPresenter = cardItemPresenter;
+            //Debug.Log(cardSetting.Name + " 클릭됨");
+        }
+
+        private void OnDestroy()
+        {
+            Debug.Log("삭제 됨");
+            //등록된 모든 리스너 삭제
+            CardItems.ForEach(value => value.ClickEvent.RemoveAllListeners());
         }
 
         /// <summary>
@@ -68,9 +103,9 @@ namespace WoosanStudio.ZombieShooter
         public void UpdateCardItem()
         {
             //Debug.Log("UpdateCardItem 카드 갯수 = " + Model.cardSettings.Count);
-            for (int i = 0; i < Model.cardSettings.Count; i++)
+            for (int i = 0; i < Presenter.Model.cardSettings.Count; i++)
             {
-                CardItems[i].UpdateInfo(Model.cardSettings[i]);
+                CardItems[i].UpdateInfo(Presenter.Model.cardSettings[i]);
             }
         }
 

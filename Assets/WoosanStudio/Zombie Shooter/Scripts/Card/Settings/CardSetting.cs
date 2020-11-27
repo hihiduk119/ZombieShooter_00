@@ -508,7 +508,8 @@ namespace WoosanStudio.ZombieShooter
         static public void CancelToUpgrade(CardSetting cardSetting)
         {
             //시간 업데이트
-            cardSetting.UpgradeTimeset = null;
+            //*취소 처리가 되어야 함.
+            cardSetting.UpgradeTimeset.IsUpgrading();
             //현재 업글 중으로 변경
             cardSetting.IsUpgrading = false;
         }

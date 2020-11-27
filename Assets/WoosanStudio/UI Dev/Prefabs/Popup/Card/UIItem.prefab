@@ -423,6 +423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3068734244421216418}
   - component: {fileID: 2889227608274765624}
+  - component: {fileID: 2254472093897516101}
   - component: {fileID: 4716893808357774122}
   m_Layer: 5
   m_Name: UIItem
@@ -474,6 +475,24 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2254472093897516101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2994355930657517404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff646f084eae4f5a98e1ad4839d9b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Background: {fileID: 2889227643999300128}
+  Image: {fileID: 2889227609503389188}
+  Name: {fileID: 9020684445879353271}
+  Level: {fileID: 8093185681025971913}
+  Lock: {fileID: 3159613854160916180}
+  UnlockLevel: {fileID: 4892247079449495528}
 --- !u!114 &4716893808357774122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,6 +512,7 @@ MonoBehaviour:
   Lock: {fileID: 3159613854160916180}
   UnlockLevel: {fileID: 4892247079449495528}
   CardSetting: {fileID: 0}
+  View: {fileID: 2254472093897516101}
   Presenter: {fileID: 0}
 --- !u!1 &2994355931092643458
 GameObject:

@@ -77,14 +77,25 @@ namespace WoosanStudio.ZombieShooter
             CardSetting.CancelToUpgrade(cardSetting);
 
             //취소 호출은 2군대 호출 가능 및 3군대 업데이트 필요.
-            //*1. 카드 모든 인포창
-            //2. 카드 업그레이드 창
-            //*3. 카드 업그레이드 정보 슬롯 3개 있는 창.
+            //[1].모든 카드 인포창
+            //[2]. 카드 업그레이드 창
+            //*[3]. 카드 업그레이드 정보 슬롯 3개 있는 창.
+
+            //[1]모든 카드 인포창
+            UICardInfoPopupPresenter cardInfoPopupPresenter = GameObject.FindObjectOfType<UICardInfoPopupPresenter>();
+            if (cardInfoPopupPresenter != null)
+            {
+                //선택된 카드 아이템 강제 선택 이벤트 발생.
+                cardInfoPopupPresenter.CardItemPresenter.Selected();
+            }
 
             //[2]카드 연구 정보 팝업 가져오기
             UICardResearchInfoPopupPresenter cardResearchInfoPopupPresenter = GameObject.FindObjectOfType<UICardResearchInfoPopupPresenter>();
-            //[2]연구 화면 갱신
-            cardResearchInfoPopupPresenter.UpdateCardInfo();
+            if (cardResearchInfoPopupPresenter != null)
+            {
+                //[2]연구 화면 갱신
+                cardResearchInfoPopupPresenter.UpdateCardInfo();
+            }
         }
 
         /// <summary>

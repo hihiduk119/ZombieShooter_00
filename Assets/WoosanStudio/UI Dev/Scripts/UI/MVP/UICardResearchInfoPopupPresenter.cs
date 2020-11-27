@@ -123,11 +123,13 @@ namespace WoosanStudio.ZombieShooter
             //*Cancel 버튼에 위치
             UINotifyPopupCancelUpgradeLinker cancelToUpgradePopup = GameObject.FindObjectOfType<UINotifyPopupCancelUpgradeLinker>();
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append("Cancels the [");
-            stringBuilder.Append(cardSetting.Name);
-            stringBuilder.Append("] Lv ");
-            stringBuilder.Append(cardSetting.Level + 2);//업그레이드 할 레벨이기 때문에 +2.
-            stringBuilder.Append(" upgrade.");
+            //stringBuilder.Append("Cancels the [");
+            //stringBuilder.Append(cardSetting.Name);
+            //stringBuilder.Append("] Lv ");
+            //stringBuilder.Append(cardSetting.Level + 2);//업그레이드 할 레벨이기 때문에 +2.
+            //stringBuilder.Append(" upgrade.");
+
+            stringBuilder.Append("Cancel the upgrade.");
 
             //링커에 해당 정보로 업그레이드 취소할수있게 전달
             cancelToUpgradePopup.Send(UINotifyYesOrNoPopupPresenter.Type.CancelUpgrade, stringBuilder.ToString(),cardSetting);

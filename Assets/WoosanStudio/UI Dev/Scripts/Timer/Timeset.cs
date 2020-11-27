@@ -166,11 +166,11 @@ namespace WoosanStudio.ZombieShooter
             
             timeSpan = tmp.Split('.');
 
-            Debug.Log("tmp = " + tmp);
-            for (int i = 0; i < timeSpan.Length; i++)
-            {
-                Debug.Log("length = [" + i + "]  index = [" + i + "] = " + timeSpan[i]);
-            }
+            //Debug.Log("tmp = " + tmp);
+            //for (int i = 0; i < timeSpan.Length; i++)
+            //{
+            //    Debug.Log("length = [" + i + "]  index = [" + i + "] = " + timeSpan[i]);
+            //}
 
             stringBuilder.Clear();
 

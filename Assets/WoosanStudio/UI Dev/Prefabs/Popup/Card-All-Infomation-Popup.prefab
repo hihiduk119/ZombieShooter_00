@@ -1836,7 +1836,7 @@ GameObject:
   - component: {fileID: 7094422195977695922}
   - component: {fileID: 1336755406561938129}
   m_Layer: 5
-  m_Name: Card-Info-Popup
+  m_Name: Card-All-Infomation-Popup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

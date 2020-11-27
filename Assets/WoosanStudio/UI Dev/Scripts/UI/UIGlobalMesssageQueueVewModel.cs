@@ -94,8 +94,6 @@ namespace WoosanStudio.ZombieShooter
         {
             UpgradComplateCardList.Add(cardSetting);
 
-            //1.로비에 왔을때 메시지 큐를 확인하고 메시지 있으면 출력
-
         }
 
         /// <summary>
@@ -178,7 +176,7 @@ namespace WoosanStudio.ZombieShooter
 
             while (isComplatedCard)
             {
-                Debug.Log("[None]");
+                //Debug.Log("[Seek]");
                 yield return new WaitForSeconds(0.33f);
                 //업글중인 카드에서 완료 된 카드가 있는지 찾는 부분.
                 CheckComplatedCardInUpgradingCard();
@@ -210,7 +208,7 @@ namespace WoosanStudio.ZombieShooter
             //* 확인 버튼 눌렀다면
             while (action != Action.Done)
             {
-                Debug.Log("[Showing]");
+                //Debug.Log("[Showing]");
                 //무한 대기
                 yield return new WaitForSeconds(0.1f);
             }
@@ -225,7 +223,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void GoToSeek()
         {
-            Debug.Log("[GoToSeek]");
+            //Debug.Log("[GoToSeek]");
             //모든 확인 완료 리스너 제거
             ConfirmUpgradeComplatedEvent.RemoveAllListeners();
             //Seek로 이동

@@ -45,6 +45,14 @@ namespace WoosanStudio.ZombieShooter
                 case CardSetting.CallToUpgrade.Coin:
                     //업그레이드 중인 상태로 카드 등록시킴
                     UIGlobalMesssageQueueVewModel.UpgradingEvent.Invoke(cardSetting);
+
+                    //결과는 여기서 이미 만들고 반영
+                    //*Gem,Gamble의 경우 UIGlobalMesssageQueueVewModel.PopCardUpgradeResult()애서 호출
+                    //*업글 중으로 바꿈,어글 타이머 세팅
+                    CardSetting.UpgradeData upgradeDate = CardSetting.GetUpgradeResult(cardSetting);
+
+                    //코인의 경우 즉시 화면 갱신 필요.
+                    CardUpgradeComplate(cardSetting);
                     break;
                 case CardSetting.CallToUpgrade.Gem:
                     //업그레이드 완료인 상태로 카드 등록시킴
@@ -60,13 +68,34 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 카드 업그레이드 취소
+        /// </summary>
+        public void CancelCardUpgrade(CardSetting cardSetting)
+        {
+            //카드 취소
+            //*데이터 모두 변경
+            CardSetting.CancelToUpgrade(cardSetting);
+
+            //취소 호출은 2군대 호출 가능 및 3군대 업데이트 필요.
+            //*1. 카드 모든 인포창
+            //2. 카드 업그레이드 창
+            //*3. 카드 업그레이드 정보 슬롯 3개 있는 창.
+
+            //[2]카드 연구 정보 팝업 가져오기
+            UICardResearchInfoPopupPresenter cardResearchInfoPopupPresenter = GameObject.FindObjectOfType<UICardResearchInfoPopupPresenter>();
+            //[2]연구 화면 갱신
+            cardResearchInfoPopupPresenter.UpdateCardInfo();
+        }
+
+        /// <summary>
         /// 완료 통지가 끝나고 업그레이드 데이터 실제 반영
         /// </summary>
         public void CardUpgradeComplate(CardSetting cardSetting)
         {
             //카드 연구 정보 팝업 가져오기
             UICardResearchInfoPopupPresenter cardResearchInfoPopupPresenter = GameObject.FindObjectOfType<UICardResearchInfoPopupPresenter>();
-            //화면 다시 표시
+
+            //연구 화면 갱신
             cardResearchInfoPopupPresenter.UpdateCardInfo();
         }
 

@@ -5573,6 +5573,7 @@ GameObject:
   - component: {fileID: 5075681201943033875}
   - component: {fileID: 4411077052910127256}
   - component: {fileID: 2449635691645950046}
+  - component: {fileID: 7159272467764553359}
   m_Layer: 5
   m_Name: Button Cancel
   m_TagString: Untagged
@@ -5620,6 +5621,17 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 5653164250380542078}
+        m_MethodName: CancelToUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2449635691645950046}
         m_MethodName: OpenPopup
         m_Mode: 1
@@ -5645,6 +5657,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupPrefab: {fileID: 5182120765240050754, guid: 39ed288ece9174b00b34957217dd0bb7,
     type: 3}
+--- !u!114 &7159272467764553359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8732442078498491519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e02713fd2212f46929e5c67d20559794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ToModel: {fileID: 5653164250380542078}
+  openPopup: {fileID: 2449635691645950046}
+  FromPresenter: {fileID: 0}
 --- !u!1 &8789053527775720165
 GameObject:
   m_ObjectHideFlags: 0

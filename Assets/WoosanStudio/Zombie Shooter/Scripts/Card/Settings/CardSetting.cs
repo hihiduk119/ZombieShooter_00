@@ -502,6 +502,18 @@ namespace WoosanStudio.ZombieShooter
         }*/
 
         /// <summary>
+        /// 카드 업그레이드 취소
+        /// </summary>
+        /// <param name="cardSetting"></param>
+        static public void CancelToUpgrade(CardSetting cardSetting)
+        {
+            //시간 업데이트
+            cardSetting.UpgradeTimeset = null;
+            //현재 업글 중으로 변경
+            cardSetting.IsUpgrading = false;
+        }
+
+        /// <summary>
         /// 실제 업그레이드 결과를 만듬
         /// *여기에서 실제 CardSetting데이터 변경 작업 다 함
         /// *리턴된 데이터는 단순히 확인용임.

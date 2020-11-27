@@ -22,6 +22,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[[Auto => 전달받은 데이터]")]
         public string Desicription;
 
+        [Header("[[Auto => 카드 세팅 데이터]")]
+        public CardSetting cardSetting;
+
         //[Header("[버튼 클릭시 연결될 액션]")]
         //public UnityAction ClickYesAction;
         public enum Type
@@ -29,6 +32,7 @@ namespace WoosanStudio.ZombieShooter
             PurchaseCharacter = 0,  //캐릭터 구매
             PurchaseAmmo,           //탄약 구매
             PurchaseGun,            //총 구매
+            CancelUpgrade,          //업그레이드 취소
         }
 
         //구매 타입에 의해 어디로 Click Yes 결과를 보낼지 결정
@@ -83,6 +87,12 @@ namespace WoosanStudio.ZombieShooter
                     //구매 요청 실행
                     //* 여기서 동작을 안하는 이유는 데이터는 모두 UIPlayerPresenter가지고 있기 때문에.
                     GameObject.FindObjectOfType<UIGunSelectPresenter>().PurchaseGun();
+                    break;
+                case Type.CancelUpgrade://업그레이드 취소
+                    //3군대에 업데이트 명령을 수행 하기위해 카드 프리젠트로 호출
+                    GameObject.FindObjectOfType<UICardPresenter>().CancelCardUpgrade(cardSetting);
+
+                    Debug.Log("취소요청");
                     break;
             }
         }

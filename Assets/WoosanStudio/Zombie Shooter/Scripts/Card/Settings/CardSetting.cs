@@ -708,7 +708,7 @@ namespace WoosanStudio.ZombieShooter
             string upgradeRemainTime = null;
 
             //현재 업그레이드 중이라면
-            if (cardSetting.UpgradeTimeset.bUpgrading)
+            if (cardSetting.IsUpgrading)
             {
                 //업그레이드 시간 가져오김
                 upgradeRemainTime = cardSetting.UpgradeTimeset.GetRemainTimeToString();

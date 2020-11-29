@@ -83,6 +83,10 @@ namespace WoosanStudio.ZombieShooter
             }else
             {
                 Debug.Log("업그레이드 중이기 아님 코루틴 작동 안함");
+                //업그레이드 했을때 필요한 시간 표시
+                string aa = CardSetting.UpgradeRemainTimeToString(cardSetting);
+                Debug.Log("=="+aa);
+                View.UpdateTime(aa);
             }
         }
 
@@ -108,7 +112,8 @@ namespace WoosanStudio.ZombieShooter
             while (true)
             {
                 //남은 연구 시간만 0.33f단위로 업데이트
-                View.UpdateTime(cardSetting.UpgradeTimeset.GetRemainTimeToString());
+                //View.UpdateTime(cardSetting.UpgradeTimeset.GetRemainTimeToString());
+                View.UpdateTime(CardSetting.UpgradeRemainTimeToString(cardSetting));
                 yield return WFS;
             }
         }

@@ -112,7 +112,8 @@ namespace WoosanStudio.ZombieShooter
             while (true)
             {
                 //남은 연구 시간만 0.33f단위로 업데이트
-                View.UpdateTime(cardSetting.UpgradeTimeset.GetRemainTimeToString(),cardSetting.UpgradeTimeset.GetRemainValue());
+                //View.UpdateTime(cardSetting.UpgradeTimeset.GetRemainTimeToString(),cardSetting.UpgradeTimeset.GetRemainValue());
+                View.UpdateTime(CardSetting.UpgradeRemainTimeToString(cardSetting), cardSetting.UpgradeTimeset.GetRemainValue());
                 yield return WFS;
             }
         }

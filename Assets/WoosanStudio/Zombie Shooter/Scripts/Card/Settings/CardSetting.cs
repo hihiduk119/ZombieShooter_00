@@ -93,8 +93,12 @@ namespace WoosanStudio.ZombieShooter
             //남은 업글 시간 및 업글 중인지 아닌지 까지 모두 알수 있음
             public Timeset UpgardeTimeset;
 
-            //업글중 이었는지 아닌지
+            //현재 업글 상태
             public bool IsUpgrading = false;
+            //업글 완료 통지 완료 상태 (초기에는 모든 게 완료된 상태)
+            public bool ShownUpgradeComplate = true;
+            //코인 업그레이드 전용으로 완료 체크
+            //public bool DoneCoinUpgrade = false;
 
             public CardData(bool useAble = false) { UseAble = useAble; }
 
@@ -121,11 +125,38 @@ namespace WoosanStudio.ZombieShooter
             this.durability = cardData.Durability = 100;
             this.sortIndex = cardData.SortIndex = 0;
             this.researchSlotIndex = cardData.ResearchSlotIndex = -1;
+            this.upgradeTimeset = cardData.UpgardeTimeset = null;
+            this.whoCallToUpgrade = cardData.WhoCallToUpgrade = CallToUpgrade.None;
+            this.isUpgrading = cardData.IsUpgrading = false;
+            this.shownUpgradeComplate = cardData.ShownUpgradeComplate = true;
+            //this.doneCoinUpgrade = cardData.DoneCoinUpgrade = false;
+
             this.playTime = cardData.PlayTime = 0;
             this.huntedMonster = cardData.HuntedMonster = 0;
-            this.upgradeTimeset = cardData.UpgardeTimeset = null;
+
+            Save();
+        }
+
+        /// <summary>
+        /// 데이터 싱크 마추기
+        /// </summary>
+        public void Synchronization()
+        {
+            //이떼 불필요한 Save발생을 피하기 위해 로컬 데이터 사용
+            this.useAble = cardData.UseAble;
+
+            this.level = cardData.Level;
+            this.durability = cardData.Durability;
+            this.sortIndex = cardData.SortIndex;
+            this.researchSlotIndex = cardData.ResearchSlotIndex;
+            this.upgradeTimeset = cardData.UpgardeTimeset;
             this.whoCallToUpgrade = cardData.WhoCallToUpgrade;
-            this.isUpgrading = cardData.IsUpgrading = false;
+            this.isUpgrading = cardData.IsUpgrading;
+            this.shownUpgradeComplate = cardData.ShownUpgradeComplate;
+            //this.doneCoinUpgrade = cardData.DoneCoinUpgrade;
+
+            this.playTime = cardData.PlayTime;
+            this.huntedMonster = cardData.HuntedMonster;
         }
 
         [Header("[데이터 확인용으로 열어놓지만 나중에 막아야함]")]
@@ -221,6 +252,30 @@ namespace WoosanStudio.ZombieShooter
                 Save();
             }
         }
+
+        //업글확인 창 보여줫는지
+        private bool shownUpgradeComplate = false;
+        public bool ShownUpgradeComplate
+        {
+            get => shownUpgradeComplate; set
+            {
+                cardData.ShownUpgradeComplate = shownUpgradeComplate = value;
+                Debug.Log("===========> 업글 중인지 아닌지 저장 = [" + shownUpgradeComplate + "]");
+                Save();
+            }
+        }
+
+        //업글확인 창 보여줫는지
+        //private bool doneCoinUpgrade = false;
+        //public bool DoneCoinUpgrade
+        //{
+        //    get => doneCoinUpgrade; set
+        //    {
+        //        cardData.DoneCoinUpgrade = doneCoinUpgrade = value;
+        //        Debug.Log("===========> 업글 중인지 아닌지 저장 = [" + doneCoinUpgrade + "]");
+        //        Save();
+        //    }
+        //}
 
         [Header("[업글 시간을 가지고 있는 데이터]")]
         [SerializeField]
@@ -379,23 +434,6 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
-        /// 데이터 싱크 마추기
-        /// </summary>
-        public void Synchronization()
-        {
-            //이떼 불필요한 Save발생을 피하기 위해 로컬 데이터 사용
-            this.useAble = cardData.UseAble;
-            this.level = cardData.Level;
-            this.durability = cardData.Durability;
-            this.sortIndex = cardData.SortIndex;
-            this.researchSlotIndex = cardData.ResearchSlotIndex;
-            this.upgradeTimeset = cardData.UpgardeTimeset;
-            this.isUpgrading = cardData.IsUpgrading;
-            this.playTime = cardData.PlayTime;
-            this.huntedMonster = cardData.HuntedMonster;
-        }
-
-        /// <summary>
         /// 업그레이드 완료된 카드 확인.
         /// </summary>
         public void CheckTheCardToUpgradeComplated()
@@ -480,27 +518,6 @@ namespace WoosanStudio.ZombieShooter
             return gambleSuccessLevel;
         }
 
-        /*
-        /// <summary>
-        /// 업그레이드 시작
-        /// *UINotifyCoinUpgradePresenter 에서 호출 됨.
-        /// ???
-        /// </summary>
-        public void StartTheUpgrade(CallToUpgrade callTo)
-        {
-            switch (callTo)
-            {
-                case CallToUpgrade.Coin:
-                    break;
-                case CallToUpgrade.Gem:
-                    break;
-                case CallToUpgrade.Gamble:
-                    break;
-                default:
-                    break;
-            }
-        }*/
-
         /// <summary>
         /// 카드 업그레이드 취소
         /// </summary>
@@ -516,6 +533,7 @@ namespace WoosanStudio.ZombieShooter
 
         /// <summary>
         /// 실제 업그레이드 결과를 만듬
+        /// 카드 업글 최종 허가 팝업에서 호출.
         /// *여기에서 실제 CardSetting데이터 변경 작업 다 함
         /// *리턴된 데이터는 단순히 확인용임.
         /// </summary>
@@ -532,14 +550,22 @@ namespace WoosanStudio.ZombieShooter
             {
                 case CardSetting.CallToUpgrade.Coin://업글세팅만 함
 
-                    //시간 데이터 업데이트
-                    //세팅할 업글 시간 가져오기
-                    int seconds = NextValueCalculator.GetUpgradeTimeByLevel(cardSetting.MaxLevel, cardSetting.Level);
+                    //업그레이드 완료 레벨 -> 최고 레벨일때는 증가 안함
+                    //실제 카드 레벨 증가 시킴
+                    iUpgradeComplateLevel = cardSetting.Level + 1;
 
-                    //시간 업데이트
-                    cardSetting.UpgradeTimeset = new Timeset(seconds);
-                    //현재 업글 중으로 변경
-                    cardSetting.IsUpgrading = true;
+                    //어짜피 최고 레벨에서는 업글 안되게 막을거라 필없는 코드임
+                    if (iUpgradeComplateLevel >= cardSetting.MaxLevel)
+                    {
+                        cardSetting.Level = cardSetting.MaxLevel;
+                    }
+                    else
+                    {
+                        cardSetting.Level = cardSetting.Level + 1;
+                    }
+
+                    //무조건 성공
+                    upgradeData = new UpgradeData(cardSetting.Level, true);
 
                     break;
                 case CardSetting.CallToUpgrade.Gem://실제 결과 도출

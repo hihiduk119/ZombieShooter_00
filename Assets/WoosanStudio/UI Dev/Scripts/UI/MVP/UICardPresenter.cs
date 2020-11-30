@@ -46,19 +46,29 @@ namespace WoosanStudio.ZombieShooter
                     //업그레이드 중인 상태로 카드 등록시킴
                     UIGlobalMesssageQueueVewModel.UpgradingEvent.Invoke(cardSetting);
 
-                    //결과는 여기서 이미 만들고 반영
-                    //*Gem,Gamble의 경우 UIGlobalMesssageQueueVewModel.PopCardUpgradeResult()애서 호출
-                    //*업글 중으로 바꿈,어글 타이머 세팅
-                    CardSetting.UpgradeData upgradeDate = CardSetting.GetUpgradeResult(cardSetting);
+                    //아직 완료 통지 알림 안됨
+                    cardSetting.ShownUpgradeComplate = false;
+
+                    //시간 데이터 업데이트
+                    //세팅할 업글 시간 가져오기
+                    int seconds = NextValueCalculator.GetUpgradeTimeByLevel(cardSetting.MaxLevel, cardSetting.Level);
+                    //시간 업데이트
+                    cardSetting.UpgradeTimeset = new Timeset(seconds);
+                    //현재 업글 중으로 변경
+                    cardSetting.IsUpgrading = true;
 
                     //코인의 경우 즉시 화면 갱신 필요.
                     CardUpgradeComplate(cardSetting);
                     break;
                 case CardSetting.CallToUpgrade.Gem:
+                    //아직 완료 통지 알림 안됨
+                    cardSetting.ShownUpgradeComplate = false;
                     //업그레이드 완료인 상태로 카드 등록시킴
                     UIGlobalMesssageQueueVewModel.UpgradeComplateEvent.Invoke(cardSetting);
                     break;
                 case CardSetting.CallToUpgrade.Gamble:
+                    //아직 완료 통지 알림 안됨
+                    cardSetting.ShownUpgradeComplate = false;
                     //업그레이드 완료인 상태로 카드 등록시킴
                     UIGlobalMesssageQueueVewModel.UpgradeComplateEvent.Invoke(cardSetting);
                     break;
@@ -107,7 +117,7 @@ namespace WoosanStudio.ZombieShooter
             UICardResearchInfoPopupPresenter cardResearchInfoPopupPresenter = GameObject.FindObjectOfType<UICardResearchInfoPopupPresenter>();
 
             //연구 화면 갱신
-            cardResearchInfoPopupPresenter.UpdateCardInfo();
+            cardResearchInfoPopupPresenter.UpdateCardInfo(); 
         }
 
 

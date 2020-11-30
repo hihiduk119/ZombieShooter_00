@@ -25,6 +25,7 @@ namespace WoosanStudio.ZombieShooter
         //전체 몇초인지 미리 구해놓기
         public int totalSeconds = 0;
         //지금 업글 중인지 아닌지 확인 => GetRemainTime()호출시 자동 변경
+        //* 중복되서 사용되는 경향이 보임. CardStting.IsUpgradeing와 중복됨.삭제 해야할듯.
         public bool bUpgrading = false;
 
         //1.생성시 바로 데이터 저장
@@ -88,9 +89,9 @@ namespace WoosanStudio.ZombieShooter
             TimeSpan timeSpan = DateTime.FromBinary(endDateTime).Subtract(DateTime.Now);
 
             //전체 시간을 가져와서 0보다 크다면 아직 업그레이드중
-            if (timeSpan.TotalSeconds > 0) { bUpgrading = false; }
+            if (timeSpan.TotalSeconds > 0) { bUpgrading = true; }
             //0보다 작다면 업그레이드 끝
-            else { bUpgrading = true; }
+            else { bUpgrading = false; }
 
             return bUpgrading;
         }
@@ -201,7 +202,7 @@ namespace WoosanStudio.ZombieShooter
 
             //Debug.Log("원본 = " + time.ToString());
             timeString = stringBuilder.ToString();
-            Debug.Log(timeString);
+            //Debug.Log(timeString);
             return timeString;
         }
 

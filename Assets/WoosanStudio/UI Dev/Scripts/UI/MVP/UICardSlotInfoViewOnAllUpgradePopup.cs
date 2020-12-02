@@ -46,20 +46,25 @@ namespace WoosanStudio.ZombieShooter
             //슬롯 상태 저
             this.State = state;
 
-            //모든 뷰어에 데이터 입력
-            Image.sprite = cardSetting.Sprite;
-            Image.color = cardSetting.IconColor;
+            //카드 데이터가 존재 할때만 각종 이미지 및 설명 세팅
+            if(cardSetting != null)
+            {
+                //모든 뷰어에 데이터 입력
+                Image.sprite = cardSetting.Sprite;
+                Image.color = cardSetting.IconColor;
 
-            //이미지에 따라 사이즈 재정의
-            float width = Image.sprite.rect.width / 2.5f;
-            float height = Image.sprite.rect.height / 2.5f;
-            Image.rectTransform.sizeDelta = new Vector2(width, height);
+                //이미지에 따라 사이즈 재정의
+                float width = Image.sprite.rect.width / 2.5f;
+                float height = Image.sprite.rect.height / 2.5f;
+                Image.rectTransform.sizeDelta = new Vector2(width, height);
 
-            Name.text = cardSetting.Name;
+                Name.text = cardSetting.Name;
 
-            Description.text = cardSetting.AllDescription();
-            //1 더하는 이유는 레벨이 0부터 시작이라서
-            Level.text = (cardSetting.Level + 1).ToString();
+                Description.text = cardSetting.AllDescription();
+                //1 더하는 이유는 레벨이 0부터 시작이라서
+                Level.text = (cardSetting.Level + 1).ToString();
+            }
+            
 
             //일단 모든 슬롯 비활성화
             Slots.ForEach(value => value.SetActive(false));

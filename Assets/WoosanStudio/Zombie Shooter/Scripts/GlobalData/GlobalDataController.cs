@@ -113,27 +113,27 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
-        //연구 가능 최대 슬롯
-        private int maxUpgradeAbleSlotCount;
-        public int MaxUpgradeAbleSlotCount
+        //연구 가능 최대 슬롯 (구매되어 열린)
+        private int useUpgradeAbleSlotCount;
+        public int UseUpgradeAbleSlotCount
         {
-            get => maxUpgradeAbleSlotCount; set
+            get => useUpgradeAbleSlotCount; set
             {
-                data.MaxUpgradeAbleSlotCount = maxUpgradeAbleSlotCount = value;
+                data.UseUpgradeAbleSlotCount = useUpgradeAbleSlotCount = value;
                 Save();
             }
         }
 
         //현재 연구 가능한 슬롯
-        private int currentUpgradeAbleSlotCount;
-        public int CurrentUpgradeAbleSlotCount
-        {
-            get => currentUpgradeAbleSlotCount; set
-            {
-                data.CurrentUpgradeAbleSlotCount = currentUpgradeAbleSlotCount = value;
-                Save();
-            }
-        }
+        //private int currentUpgradeAbleSlotCount;
+        //public int CurrentUpgradeAbleSlotCount
+        //{
+        //    get => currentUpgradeAbleSlotCount; set
+        //    {
+        //        data.CurrentUpgradeAbleSlotCount = currentUpgradeAbleSlotCount = value;
+        //        Save();
+        //    }
+        //}
 
 
 
@@ -220,10 +220,10 @@ namespace WoosanStudio.ZombieShooter
             //기본 비지니스맨 선택됨
             //*card 추가되면 모두 변경 되어야 한다
             public int SelectedCharacter = 16;
-            //연구 가능 최대 슬롯
-            public int MaxUpgradeAbleSlotCount = 1;
+            //연구 가능 최대 슬롯 (구매되어 열린)
+            public int UseUpgradeAbleSlotCount = 1;
             //현재 연구 가능한 슬롯
-            public int CurrentUpgradeAbleSlotCount = 0;
+            //public int CurrentUpgradeAbleSlotCount = 0;
 
 
             public Data() { }
@@ -241,8 +241,8 @@ namespace WoosanStudio.ZombieShooter
             this.selectedCharacter = data.SelectedCharacter;
             this.selectedAmmo = data.SelectedAmmo;
             this.selectedGun = data.SelectedGun;
-            this.maxUpgradeAbleSlotCount = data.MaxUpgradeAbleSlotCount;
-            this.currentUpgradeAbleSlotCount = data.CurrentUpgradeAbleSlotCount;
+            this.useUpgradeAbleSlotCount = data.UseUpgradeAbleSlotCount;
+            //this.currentUpgradeAbleSlotCount = data.CurrentUpgradeAbleSlotCount;
         }
     }
 }

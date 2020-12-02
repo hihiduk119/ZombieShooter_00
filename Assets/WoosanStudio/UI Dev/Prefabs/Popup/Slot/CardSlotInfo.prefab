@@ -4488,6 +4488,7 @@ MonoBehaviour:
   Level: {fileID: 8064485078030605010}
   RemainTime: {fileID: 8818003104307277159}
   Progress: {fileID: 8818003105540271867}
+  State: 1
   Slots:
   - {fileID: 3873973861690740971}
   - {fileID: 4393187239349883783}
@@ -4505,6 +4506,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db1ffbd5ddfa744a08f9d679a63357d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  View: {fileID: 1879979641324306181}
+  cardSetting: {fileID: 0}
 --- !u!1 &8919758380595667163
 GameObject:
   m_ObjectHideFlags: 0

@@ -86,7 +86,7 @@ namespace WoosanStudio.ZombieShooter
             if(!cardSetting.UseAble) { state = State.Lock;}
 
             //실제 뷰에서 보여줌
-            View.UpdateInfoListener(cardSetting, state);
+            View.UpdateInfo(cardSetting, state);
         }
 
 

@@ -1901,8 +1901,11 @@ GameObject:
   - component: {fileID: 114000011129996882}
   - component: {fileID: 95000011101958468}
   - component: {fileID: 225000012049662502}
+  - component: {fileID: 6826162128568535172}
+  - component: {fileID: 6906315628513480303}
+  - component: {fileID: 669014078876522877}
   m_Layer: 5
-  m_Name: Reserach-Popup
+  m_Name: Card-Upgrade-Slot-Popup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1926,7 +1929,7 @@ RectTransform:
   - {fileID: 1971022048195595503}
   - {fileID: 224000010296262748}
   - {fileID: 224000011591416566}
-  - {fileID: 5683773929347982509}
+  - {fileID: 7668232879525355468}
   - {fileID: 224000014109075426}
   - {fileID: 4250759953625412837}
   m_Father: {fileID: 0}
@@ -1982,6 +1985,44 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &6826162128568535172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013971198074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63a0b6f4c6d640fa9baabec8e07573f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    Prices: 88130000e02e0000
+--- !u!114 &6906315628513480303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013971198074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f5323c1e0894e0e8db7ebd39bae420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &669014078876522877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013971198074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eaa3a8508feb4cd6b9278172a72de5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &546863589333607976
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,7 +2100,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 3/3
---- !u!1001 &3905124358503593128
+--- !u!1001 &1349411390811082697
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2178,11 +2219,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601dd8562d0d74c2eab820e262b8b5fb, type: 3}
---- !u!224 &5683773929347982509 stripped
+--- !u!224 &7668232879525355468 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8705769995973251077, guid: 601dd8562d0d74c2eab820e262b8b5fb,
     type: 3}
-  m_PrefabInstance: {fileID: 3905124358503593128}
+  m_PrefabInstance: {fileID: 1349411390811082697}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4768362060347155680
 PrefabInstance:

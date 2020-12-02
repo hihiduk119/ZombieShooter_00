@@ -7,10 +7,9 @@ using UnityEngine.UI;
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
-    /// 카드 슬롯 정보 뷰
-    /// *MVP 모델
+    /// 카드연구 팝업의 컨텐츠
     /// </summary>
-    public class UICardSlotInfoView : MonoBehaviour
+    public class UICardSlotInfoViewOnAllUpgradePopup : MonoBehaviour
     {
         [Header("[카드 이미지]")]
         public Image Image;
@@ -31,22 +30,29 @@ namespace WoosanStudio.ZombieShooter
         public Image Progress;
 
         [Header("[슬롯 상태]")]
+        public UICardSlotInfoPresenterOnAllUpgradePopup.SlotState State = UICardSlotInfoPresenterOnAllUpgradePopup.SlotState.Lock;
+
+        [Header("[슬롯 루트]")]
         public List<GameObject> Slots = new List<GameObject>();
 
-        [Header("[카드 활성 가능 버튼들]")]
-        public List<GameObject> Buttons = new List<GameObject>();
-
         /// <summary>
-        /// InfoData는 나중에 변경 될수 있기에 일단 대신 InfoData
+        /// 화면 업데이트
         /// </summary>
-        public void UpdateInfo(CardSetting cardSetting , UICardSlotInfoPresenter.State state)
+        /// <param name="cardSetting">카드정보</param>
+        /// <param name="state">카드 슬롯 상태</param>
+        /// <param name="price">슬롯 가격</param>
+        public void UpdateInfo(CardSetting cardSetting,UICardSlotInfoPresenterOnAllUpgradePopup.SlotState state,int price)
         {
+            //슬롯 상태 저
+            this.State = state;
+
             //모든 뷰어에 데이터 입력
             Image.sprite = cardSetting.Sprite;
             Image.color = cardSetting.IconColor;
+
             //이미지에 따라 사이즈 재정의
-            float width = Image.sprite.rect.width/2.5f;
-            float height = Image.sprite.rect.height/2.5f;
+            float width = Image.sprite.rect.width / 2.5f;
+            float height = Image.sprite.rect.height / 2.5f;
             Image.rectTransform.sizeDelta = new Vector2(width, height);
 
             Name.text = cardSetting.Name;
@@ -55,42 +61,32 @@ namespace WoosanStudio.ZombieShooter
             //1 더하는 이유는 레벨이 0부터 시작이라서
             Level.text = (cardSetting.Level + 1).ToString();
 
-            //RemainTime.text = cardSetting.GetRemainUpgradeTimeByString();
-            //*일단 대기-> 타임 셋을 제대로 정리하고 가야 함.안그러면 문제 생김
-            //Progress.fillAmount = infoData.progressValue;
-
             //일단 모든 슬롯 비활성화
             Slots.ForEach(value => value.SetActive(false));
-            //일단 모든 버튼 비활성화
-            Buttons.ForEach(value => value.SetActive(false));
-
-            //Debug.Log("state = " + state.ToString());
 
             switch (state)
             {
-                case UICardSlotInfoPresenter.State.Empty://비어있음.
+                case UICardSlotInfoPresenterOnAllUpgradePopup.SlotState.Empty://비어있음.
                     Debug.Log("[0]");
                     //Empty slot 활성화
                     Slots[0].SetActive(true);
                     break;
-                case UICardSlotInfoPresenter.State.Select://선택됐고 업그레이드중
-                    //카드 정보 slot 활성화
+                case UICardSlotInfoPresenterOnAllUpgradePopup.SlotState.Lock://선택됐고 업그레이드중
+                    //Lock 정보 slot 활성화
                     Slots[1].SetActive(true);
                     Debug.Log("[1]");
-                    //0번 업글레이드 버튼 활성화
-                    Buttons[0].SetActive(true);
+                    
                     break;
-                case UICardSlotInfoPresenter.State.SelectAndUpgrading://선택만 됐음.
-                    //카드 정보 slot 활성화
-                    Slots[1].SetActive(true);
+                case UICardSlotInfoPresenterOnAllUpgradePopup.SlotState.PurchaseAble://선택만 됐음.
+                    //구매 정보 slot 활성화
+                    Slots[2].SetActive(true);
                     Debug.Log("[2]");
-                    //1번 업그레이드 취소 버튼 활성화
-                    Buttons[1].SetActive(true);
+                    
                     break;
-                case UICardSlotInfoPresenter.State.Lock://모두 비홯성
+                case UICardSlotInfoPresenterOnAllUpgradePopup.SlotState.Upgrading://모두 비홯성
                     Debug.Log("[3]");
                     //카드 정보 slot 활성화
-                    Slots[1].SetActive(true);
+                    Slots[3].SetActive(true);
                     break;
             }
         }
@@ -99,7 +95,7 @@ namespace WoosanStudio.ZombieShooter
         /// 남은 연구시간 시간만 업데이트
         /// </summary>
         /// <param name="upgradeRemainTime"></param>
-        public void UpdateTime(string upgradeRemainTime,float upgradeRemainValue)
+        public void UpdateTime(string upgradeRemainTime, float upgradeRemainValue)
         {
             RemainTime.text = upgradeRemainTime;
             Progress.fillAmount = upgradeRemainValue;

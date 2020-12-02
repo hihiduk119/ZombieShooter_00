@@ -113,7 +113,29 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
-        
+        //연구 가능 최대 슬롯
+        private int maxUpgradeAbleSlotCount;
+        public int MaxUpgradeAbleSlotCount
+        {
+            get => maxUpgradeAbleSlotCount; set
+            {
+                data.MaxUpgradeAbleSlotCount = maxUpgradeAbleSlotCount = value;
+                Save();
+            }
+        }
+
+        //현재 연구 가능한 슬롯
+        private int currentUpgradeAbleSlotCount;
+        public int CurrentUpgradeAbleSlotCount
+        {
+            get => currentUpgradeAbleSlotCount; set
+            {
+                data.CurrentUpgradeAbleSlotCount = currentUpgradeAbleSlotCount = value;
+                Save();
+            }
+        }
+
+
 
         //겜블시 소모되는 젬
         static public int GambleGem = 10;
@@ -136,6 +158,8 @@ namespace WoosanStudio.ZombieShooter
         static public int DefaultCriticalChance = 5;
         //알림 통지 기준이 되는 씬이름
         static public string PresentSceneName = "1.ZombieShooter-Robby";
+        //업그레이드 가능한 연구 가능 최대 슬롯
+        static public int MaxUpgradeSlotCount = 3;
 
         //도박 성공률은 여기서 계산해서 data넣어 저장 시킨다
         //*계산은 아래 계산기 이용해서 결과 결고는 data.GambleCurrentSuccessRate 에 넣기
@@ -196,6 +220,11 @@ namespace WoosanStudio.ZombieShooter
             //기본 비지니스맨 선택됨
             //*card 추가되면 모두 변경 되어야 한다
             public int SelectedCharacter = 16;
+            //연구 가능 최대 슬롯
+            public int MaxUpgradeAbleSlotCount = 1;
+            //현재 연구 가능한 슬롯
+            public int CurrentUpgradeAbleSlotCount = 0;
+
 
             public Data() { }
         }
@@ -212,6 +241,8 @@ namespace WoosanStudio.ZombieShooter
             this.selectedCharacter = data.SelectedCharacter;
             this.selectedAmmo = data.SelectedAmmo;
             this.selectedGun = data.SelectedGun;
+            this.maxUpgradeAbleSlotCount = data.MaxUpgradeAbleSlotCount;
+            this.currentUpgradeAbleSlotCount = data.CurrentUpgradeAbleSlotCount;
         }
     }
 }

@@ -149,7 +149,7 @@ namespace WoosanStudio.ZombieShooter
             {
                 Image image = transform.GetChild(i).GetComponent<Image>();
 
-                Debug.Log("name = " + transform.GetChild(i).ToString());
+                //Debug.Log("name = " + transform.GetChild(i).ToString());
 
                 if (image == null) break; 
                 tmpColor = image.color;

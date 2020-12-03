@@ -15462,56 +15462,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849906679}
   m_CullTransparentMesh: 0
---- !u!1 &851397626
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 851397627}
-  - component: {fileID: 851397628}
-  m_Layer: 5
-  m_Name: PopupOpenrForNotify
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &851397627
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851397626}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2093237393}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &851397628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851397626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 606828f3686ee4f0289cece909531556, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popupPrefab: {fileID: 1000010087709644, guid: b7ed1e6a9bf8c433eb2fc015a0d79050,
-    type: 3}
 --- !u!1 &855147848 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 144828, guid: fed947e09c49e4a2b9fefae7b38619d6,
@@ -44193,7 +44143,6 @@ RectTransform:
   - {fileID: 841485583}
   - {fileID: 1632751197}
   - {fileID: 803036011}
-  - {fileID: 851397627}
   m_Father: {fileID: 1494626953}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45641,7 +45590,6 @@ MonoBehaviour:
   Model: {fileID: 2093237400}
   View: {fileID: 2093237398}
   openPopupForAddUpgradeSlot: {fileID: 803036012}
-  openPopupForNotify: {fileID: 851397628}
 --- !u!114 &2093237400
 MonoBehaviour:
   m_ObjectHideFlags: 0

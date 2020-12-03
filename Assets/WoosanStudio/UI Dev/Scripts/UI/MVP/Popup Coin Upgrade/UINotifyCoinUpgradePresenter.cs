@@ -43,6 +43,19 @@ namespace WoosanStudio.ZombieShooter
             //코인 소비
             CoinPresenter coinPresenter = GameObject.FindObjectOfType<CoinPresenter>();
 
+            //사용 가능 슬롯 갯수
+            int useAbleSlotCount = GlobalDataController.Instance.UseUpgradeAbleSlotCount;
+            //사용 중인 슬롯 갯수
+            int usingSlotCount = GameObject.FindObjectOfType<UIGlobalMesssageQueueVewModel>().UpgradingCardList.Count;
+
+            //사용 중인 슬롯이 사용가능 슬롯 보다 같거나 크다
+            if(usingSlotCount >= useAbleSlotCount)
+            {
+                //슬롯이 다 찾다는 메시지 보내기
+                NotifyPopupController.Instance.OpenResult(UINotifyPopupModel.Type.SlotIsFull);
+                return;
+            }
+
             //업그레이드 하려는 레벨
             int upgradeLevel = CardSetting.Level + 1;
             int requireCoin = CardSetting.RequireCoin(this.CardSetting);

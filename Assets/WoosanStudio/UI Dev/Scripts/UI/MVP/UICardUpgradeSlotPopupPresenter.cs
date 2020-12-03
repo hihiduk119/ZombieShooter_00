@@ -28,8 +28,8 @@ namespace WoosanStudio.ZombieShooter
         [Header("[업그레이드 슬롯 추가 팝업]")]
         public PopupOpener openPopupForAddUpgradeSlot;
 
-        [Header("[알림 통지 팝업]")]
-        public PopupOpener openPopupForNotify;
+        //[Header("[알림 통지 팝업]")]
+        //public PopupOpener openPopupForNotify;
 
         //캐쉬용
         private WaitForSeconds WFS = new WaitForSeconds(1f);
@@ -54,9 +54,9 @@ namespace WoosanStudio.ZombieShooter
         public void UpdateInfo()
         {
             //현재 업글중인 슬롯 갯수
-            int upgradingSlot = messsageQueueVewModel.UpgradingCardList.Count;
+            int usingSlotCount = messsageQueueVewModel.UpgradingCardList.Count;
             //현재 정보 업데이트
-            View.UpdateInfo(upgradingSlot, GlobalDataController.Instance.UseUpgradeAbleSlotCount);
+            View.UpdateInfo(usingSlotCount, GlobalDataController.Instance.UseUpgradeAbleSlotCount);
         }
 
         /// <summary>
@@ -64,16 +64,11 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void OpenPopup()
         {
-            //사용 가능 슬롯이 최대 슬롯과 같거나 크다면
-            if(GlobalDataController.MaxUpgradeSlotCount <= GlobalDataController.Instance.UseUpgradeAbleSlotCount)
+            //사용가능한 슬롯이 없다.
+            if(GlobalDataController.CanSlot())
             {
-                UINotifyPopupPresenter notifyPopup = openPopupForNotify.popupPrefab.GetComponent<UINotifyPopupPresenter>();
-
-                //알림창의 메시지 타입 세팅
-                notifyPopup.Type = UINotifyPopupModel.Type.SlotIsMax;
-
-                //최대 임을 알리는 통지
-                openPopupForNotify.OpenPopup();
+                //슬롯이 최대 임을 알리는 메시지 보내기
+                NotifyPopupController.Instance.OpenResult(UINotifyPopupModel.Type.SlotIsMax);
             }
             else
             {
@@ -97,13 +92,8 @@ namespace WoosanStudio.ZombieShooter
             //돈 부족
             if (price > coinPresenter.GetCoin())
             {
-                UINotifyPopupPresenter notifyPopup = openPopupForNotify.popupPrefab.GetComponent<UINotifyPopupPresenter>();
-
-                //알림창의 메시지 타입 세팅
-                notifyPopup.Type = UINotifyPopupModel.Type.NotEnoughCoin;
-
-                //돈부족 통지
-                openPopupForNotify.OpenPopup();
+                //돈부족 알리는 메시지 보내기
+                NotifyPopupController.Instance.OpenResult(UINotifyPopupModel.Type.NotEnoughCoin);
 
                 return;
             }

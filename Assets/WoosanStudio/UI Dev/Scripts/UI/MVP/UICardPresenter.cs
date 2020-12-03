@@ -82,7 +82,16 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void CancelCardUpgrade(CardSetting cardSetting)
         {
-            //카드 취소
+
+            //강제로 업그레이드 중인 리스트에서 제거
+            UIGlobalMesssageQueueVewModel queue = GameObject.FindObjectOfType<UIGlobalMesssageQueueVewModel>();
+
+            //카드 제거
+            if(!queue.UpgradingCardList.Remove(cardSetting))
+            {
+                Debug.Log("취소에 의해 카드 제거 실패");
+            }
+
             //*데이터 모두 변경
             CardSetting.CancelToUpgrade(cardSetting);
 

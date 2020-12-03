@@ -525,10 +525,17 @@ namespace WoosanStudio.ZombieShooter
         static public void CancelToUpgrade(CardSetting cardSetting)
         {
             //시간 업데이트
-            //*취소 처리가 되어야 함.
-            cardSetting.UpgradeTimeset.IsUpgrading();
+            //->UpgradeTimeset.bUpgrading = false
+            cardSetting.UpgradeTimeset.Reset();
+            cardSetting.cardData.UpgardeTimeset.Reset();
             //현재 업글 중으로 변경
             cardSetting.IsUpgrading = false;
+            //보여주기 보여줌으로 초기화
+            cardSetting.ShownUpgradeComplate = true;
+
+            //UpgradeTimeset.bUpgrading = false
+            //IsUpgrading = false
+            //ShownUpgrade = true;
         }
 
         /// <summary>
@@ -743,7 +750,7 @@ namespace WoosanStudio.ZombieShooter
             {//업글중이 아니라면 다음 업글 예상 시간 가져오기
 
                 int seconds = NextValueCalculator.GetUpgradeTimeByLevel(cardSetting.MaxLevel, cardSetting.Level);
-                Debug.Log("!!!!!! seconds = " + seconds);
+                //Debug.Log("!!!!!! seconds = " + seconds);
                 upgradeRemainTime = Timeset.SecondsToTimeToString(seconds);
             }
 

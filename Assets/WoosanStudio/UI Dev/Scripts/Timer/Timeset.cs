@@ -32,6 +32,15 @@ namespace WoosanStudio.ZombieShooter
         //2.로드후 호출시 바로 데이터 반영
 
         /// <summary>
+        /// 초기화
+        /// </summary>
+        public void Reset()
+        {
+            endDateTime = startDateTime = totalSeconds = 0;
+            bUpgrading = false;
+        }
+
+        /// <summary>
         /// 내용 출력
         /// </summary>
         public void Print()

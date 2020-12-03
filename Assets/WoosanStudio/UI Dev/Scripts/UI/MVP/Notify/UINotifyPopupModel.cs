@@ -15,9 +15,8 @@ namespace WoosanStudio.ZombieShooter
             NotEnoughCoin = 0,  //코인 부족
             NotEnoughGem,       //보석 부족
             NotEnoughEnergy,    //에너지 부족
-
-            //중복 카드 존제
-            SlotIsMax,     //모든 연구 슬롯이 꽉차서 선택 불가.
+            SlotIsMax,          //슬롯 추가 불가.슬롯이 최대 상태임.
+            SlotIsFull,         //모든 연구 슬롯이 꽉차서 연구 불가
         }
 
         /// <summary>
@@ -27,11 +26,13 @@ namespace WoosanStudio.ZombieShooter
         [System.Serializable]
         public class Data {
             [Header("[설명 내용]")]
+            [SerializeField][TextArea(3, 8)]
             public string[] Descriptions = {
                 "Not enough coin."
                ,"Not enough gem."
                ,"Not enough energy."
-               ,"The slot is maximum."
+               ,"The research slot is maximum."
+               ,"The research slot is full.\nAdd slots or wait for the research to finish."
             };
         }
 

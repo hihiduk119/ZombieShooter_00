@@ -17,9 +17,13 @@ namespace WoosanStudio.ZombieShooter
             NotEnoughEnergy,    //에너지 부족
 
             //중복 카드 존제
-            SlotIsFull,     //모든 연구 슬롯이 꽉차서 선택 불가.
+            SlotIsMax,     //모든 연구 슬롯이 꽉차서 선택 불가.
         }
 
+        /// <summary>
+        /// 추가 시마다 인스펙터에서 추가해 줘야함.
+        /// *
+        /// </summary>
         [System.Serializable]
         public class Data {
             [Header("[설명 내용]")]
@@ -27,7 +31,7 @@ namespace WoosanStudio.ZombieShooter
                 "Not enough coin."
                ,"Not enough gem."
                ,"Not enough energy."
-               ,"Reasearch slot is full."
+               ,"The slot is maximum."
             };
         }
 

@@ -43,9 +43,10 @@ namespace WoosanStudio.ZombieShooter
                 case UINotifyPopupModel.Type.NotEnoughEnergy://에너지 부족 상태 메시지 업데이트
                     UpdateInfo(Model.data.Descriptions[2]);
                     break;
+                case UINotifyPopupModel.Type.SlotIsMax:     //슬롯 최대수치 메시지 업데이트
+                    UpdateInfo(Model.data.Descriptions[3]);
+                    break;
             }
-
-            
 
             //2초 대기후 자동 닫기
             Invoke("Close", 2f);

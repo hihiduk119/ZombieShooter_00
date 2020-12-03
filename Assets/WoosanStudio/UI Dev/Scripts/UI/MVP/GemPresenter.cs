@@ -40,6 +40,13 @@ namespace WoosanStudio.ZombieShooter
         {
             Model.data.Gem += value;
 
+            //0보다 작을수는 없다.
+            if (Model.data.Gem < 0)
+            {
+                Model.data.Gem = 0;
+                Debug.Log("Gem 0 보다 작은 값 발생");
+            }
+
             //업데이트 이벤트
             UpdateEvent.Invoke(Model.data.Gem);
 

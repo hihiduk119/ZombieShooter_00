@@ -40,6 +40,13 @@ namespace WoosanStudio.ZombieShooter
         {
             Model.data.Coin += value;
 
+            //0보다 작을수는 없다.
+            if(Model.data.Coin < 0 )
+            {
+                Model.data.Coin = 0;
+                Debug.Log("Coin 0 보다 작은 값 발생");
+            }
+
             //업데이트 이벤트
             UpdateEvent.Invoke(Model.data.Coin);
 

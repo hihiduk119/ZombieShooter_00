@@ -107,6 +107,7 @@ MonoBehaviour:
     - Not enough coin.
     - Not enough gem.
     - Not enough energy.
+    - The slot is maximum.
 --- !u!114 &8890415280790744378
 MonoBehaviour:
   m_ObjectHideFlags: 0

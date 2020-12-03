@@ -31,5 +31,13 @@ namespace WoosanStudio.ZombieShooter
         {
             View.UpdateView(price.ToString());
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ClickYes()
+        {
+            GameObject.FindObjectOfType<UICardUpgradeSlotPopupPresenter>().ClickYes(price);
+        }
     }
 }

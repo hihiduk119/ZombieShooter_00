@@ -103,7 +103,7 @@ namespace WoosanStudio.ZombieShooter
             //캐시로 찾은 플레이어가 없을때 한번 찾음
             if (player == null)
             {
-                player = GameObject.FindObjectOfType<Player>().gameObject;
+                player = GameObject.FindObjectOfType<PlayerController>().gameObject;
             }            
 
             //아이템 컨트로러에 거리체크 세팅

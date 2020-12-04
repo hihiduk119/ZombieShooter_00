@@ -2309,6 +2309,9 @@ GameObject:
   - component: {fileID: 519284015428072839}
   - component: {fileID: 1006808107}
   - component: {fileID: 7348214225103667043}
+  - component: {fileID: 6621317152539058541}
+  - component: {fileID: 4316980997804972830}
+  - component: {fileID: 3882362437031370328}
   m_Layer: 8
   m_Name: Player [New]
   m_TagString: Player
@@ -2805,6 +2808,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TriggerName: Reload
+--- !u!114 &6621317152539058541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836758714628244879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ceef9a3cb15f4b37950001815493318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4316980997804972830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836758714628244879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdcb3505326b149758c74b46a32d31db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3882362437031370328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836758714628244879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6338b14c868964f5c88f3ffc89c5d8ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2809910139438166224
 GameObject:
   m_ObjectHideFlags: 0

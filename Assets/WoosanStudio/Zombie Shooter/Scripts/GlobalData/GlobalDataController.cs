@@ -124,19 +124,6 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
-        //현재 연구 가능한 슬롯
-        //private int currentUpgradeAbleSlotCount;
-        //public int CurrentUpgradeAbleSlotCount
-        //{
-        //    get => currentUpgradeAbleSlotCount; set
-        //    {
-        //        data.CurrentUpgradeAbleSlotCount = currentUpgradeAbleSlotCount = value;
-        //        Save();
-        //    }
-        //}
-
-
-
         //겜블시 소모되는 젬
         static public int GambleGem = 10;
         //겜블 코보 1당 추가되는 성공률
@@ -164,6 +151,12 @@ namespace WoosanStudio.ZombieShooter
         //도박 성공률은 여기서 계산해서 data넣어 저장 시킨다
         //*계산은 아래 계산기 이용해서 결과 결고는 data.GambleCurrentSuccessRate 에 넣기
         //NextValueCalculator.GetGambleSuccessRate(0)
+
+        //로비에서 선택된 캐릭터, 무기 , 탄약
+        //*여기에 있는게 맞는지 확인 요망
+        static public CardSetting SelectedCharacterCard;
+        static public CardSetting SelectedWeaponCard;
+        static public CardSetting SelectedAmmoCard;
 
         public void Awake()
         {

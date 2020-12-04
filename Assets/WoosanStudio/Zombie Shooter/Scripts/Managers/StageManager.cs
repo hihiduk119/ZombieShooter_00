@@ -80,7 +80,7 @@ namespace WoosanStudio.ZombieShooter
         private CameraMoveController CameraMoveController;
 
         //플레이어 팩토리에서 생성된 플레이어
-        private Player Player;
+        private PlayerController Player;
 
         //플레이어가 가지고 있는 무기 요청 스크립트
         private WeaponRequester WeaponRequester;
@@ -167,7 +167,7 @@ namespace WoosanStudio.ZombieShooter
         public void Initialize()
         {
             //플레이어 생성 - 생성된 플레이어 저장
-            Player = PlayerFactory.Initialize().GetComponent<Player>();
+            Player = PlayerFactory.Initialize().GetComponent<PlayerController>();
             //플레이어가 가지고 있는 무기 요청 가지고 옴
             WeaponRequester = Player.GetComponent<WeaponRequester>();
         }

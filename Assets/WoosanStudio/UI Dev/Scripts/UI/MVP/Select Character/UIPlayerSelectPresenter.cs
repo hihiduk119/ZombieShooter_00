@@ -94,6 +94,9 @@ namespace WoosanStudio.ZombieShooter
             //구매 뷰 업데이트 통지
             CharacterPurchaseActivationEvent.Invoke(Model.cardSettings[currentIndex]);
 
+            //현재 선택된 캐릭터 카드 글로벌데이터에 저장 
+            GlobalDataController.SelectedCharacterCard = Model.cardSettings[currentIndex];
+
             //변경 된 인덱스 모델 데이터에 넣음
             GlobalDataController.Instance.SelectedCharacter = currentIndex;
         }

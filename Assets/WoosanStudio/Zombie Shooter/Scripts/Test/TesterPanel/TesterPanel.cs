@@ -23,7 +23,7 @@ namespace WoosanStudio.ZombieShooter.Test
         //생성된 플레이어의 체력바 관련 제어를 위해
 
         
-        private Player[] players = null;
+        private PlayerController[] players = null;
 
         private void Awake()
         {

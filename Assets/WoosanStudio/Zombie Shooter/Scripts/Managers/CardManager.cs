@@ -87,6 +87,7 @@ namespace WoosanStudio.ZombieShooter
         {
             //싱글톤 패턴
             Instance = this;
+
             //복제해서 사용
             CardSettingsReference.ForEach(value => CardsPlayerOnClicked.Add((CardSetting)Instantiate<CardSetting>(value)));
         }

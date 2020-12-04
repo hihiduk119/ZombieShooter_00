@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 11
   value: 1
+  valueByLevel: 0
+  fomula: 
   increasedValuePerLevelUp: 0
-  descripsion: Changes to laser type ammunition.
+  descripsion: Use the laser type ammunition.

@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 11
   value: 0
+  valueByLevel: 0
+  fomula: 
   increasedValuePerLevelUp: 0
-  descripsion: Changes to bullet type ammunition.
+  descripsion: Use the bullet type ammunition.

@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 9
   value: 9
+  valueByLevel: 0
+  fomula: 
   increasedValuePerLevelUp: 0
-  descripsion: Changes the character to the robber.
+  descripsion: Use Vincent.

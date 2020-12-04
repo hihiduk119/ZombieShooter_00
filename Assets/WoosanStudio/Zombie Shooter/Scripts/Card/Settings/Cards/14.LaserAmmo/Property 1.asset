@@ -17,4 +17,4 @@ MonoBehaviour:
   valueByLevel: 0
   fomula: LaserAmmoDamage
   increasedValuePerLevelUp: 1
-  descripsion: Increase laser type ammunition damage by /d%.
+  descripsion: Increase the laser type ammunition damage by /d%.

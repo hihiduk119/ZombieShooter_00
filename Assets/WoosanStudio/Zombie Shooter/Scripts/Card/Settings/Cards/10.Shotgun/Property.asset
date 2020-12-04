@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 10
   value: 1
+  valueByLevel: 0
+  fomula: 
   increasedValuePerLevelUp: 0
-  descripsion: Changes weapon to the shotgun.
+  descripsion: Use the shotgun.

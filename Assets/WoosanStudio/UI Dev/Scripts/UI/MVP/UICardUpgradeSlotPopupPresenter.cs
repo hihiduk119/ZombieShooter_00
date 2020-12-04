@@ -65,7 +65,7 @@ namespace WoosanStudio.ZombieShooter
         public void OpenPopup()
         {
             //사용가능한 슬롯이 없다.
-            if(GlobalDataController.CanSlot())
+            if(!GlobalDataController.CanSlot())
             {
                 //슬롯이 최대 임을 알리는 메시지 보내기
                 NotifyPopupController.Instance.OpenResult(UINotifyPopupModel.Type.SlotIsMax);

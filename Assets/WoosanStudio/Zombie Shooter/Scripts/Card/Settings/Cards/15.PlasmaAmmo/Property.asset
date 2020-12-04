@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 11
   value: 2
+  valueByLevel: 0
+  fomula: 
   increasedValuePerLevelUp: 0
-  descripsion: Changes to plasma type ammunition.
+  descripsion: Use the plasma type ammunition.

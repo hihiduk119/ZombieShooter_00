@@ -29,7 +29,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void UpdateView()
         {
-            View.UpdateView(price.ToString());
+            View.UpdateView(string.Format("{0:0,0}", price));
         }
 
         /// <summary>

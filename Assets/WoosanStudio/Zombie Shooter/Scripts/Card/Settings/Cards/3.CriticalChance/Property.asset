@@ -17,4 +17,4 @@ MonoBehaviour:
   valueByLevel: 0
   fomula: CriticalChance
   increasedValuePerLevelUp: 0.5
-  descripsion: Increase critical chance by /d%.
+  descripsion: Increase the critical chance by /d%.

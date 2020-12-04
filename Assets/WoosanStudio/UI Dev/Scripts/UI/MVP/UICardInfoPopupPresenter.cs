@@ -35,20 +35,21 @@ namespace WoosanStudio.ZombieShooter
             Presenter = GameObject.FindObjectOfType<UICardPresenter>();
 
             //모든 카드 아이템 그릇 가져오기
-            for (int i = 0; i < CardItemRoot.childCount; i++) {
+            for (int i = 0; i < CardItemRoot.childCount; i++)
+            {
                 cardItem = CardItemRoot.GetChild(i).GetComponent<UICardItemPresenter>();
-                
+
                 CardItems.Add(cardItem);
 
                 //카드 선택시 이벤트발생 등록
                 cardItem.SelectEvent.AddListener(ReleaseCardItemListener);
 
                 //최초 존제할수 있는 카드의 갯수 만큼만 활성화
-                if (Presenter.Model.cardSettings.Count > i) { cardItem.gameObject.SetActive(true);}
+                if (Presenter.Model.cardSettings.Count > i) { cardItem.gameObject.SetActive(true); }
                 else { cardItem.gameObject.SetActive(false); }
 
                 //빈 카드 제외한 활성화 카드에만 카드 데이터 넣기
-                if(cardItem.gameObject.activeSelf)
+                if (cardItem.gameObject.activeSelf)
                 {
                     //카드 데이터 각 카드마다 넣어주기
                     cardItem.CardSetting = Presenter.Model.cardSettings[i];
@@ -56,7 +57,6 @@ namespace WoosanStudio.ZombieShooter
                     cardItem.ReturnMeEvent.AddListener(SelectedCardItem);
                 }
             }
-            
 
             Initialize();
         }
@@ -129,7 +129,7 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
-        #region [-TestCode]
+        //#region [-TestCode]
         //void Update()
         //{
         //    if (Input.GetKeyDown(KeyCode.A))
@@ -141,7 +141,7 @@ namespace WoosanStudio.ZombieShooter
         //    {
         //    }
         //}
-        #endregion
+        //#endregion
 
     }
 }

@@ -306,9 +306,12 @@ namespace WoosanStudio.ZombieShooter
             {
                 //선택된 버튼을 강제로 클릭해 슬롯 정보 업데이트
                 cardInfoPopupPresenter.CardItemPresenter.Selected();
+                //모든 카드 정보 슬롯의 각 카드 업데이트 명령
+                cardInfoPopupPresenter.UpdateCardItem();
             }
+            
 
-            //연구 카드 슬롯 최대 3개 화면 업데이트
+            
         }
 
         //#region [-TestCode]

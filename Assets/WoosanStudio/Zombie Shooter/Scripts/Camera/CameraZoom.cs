@@ -100,22 +100,22 @@ namespace WoosanStudio.ZombieShooter
             });
         }
 
-        #region [-TestCode]
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                //Y축으로 15정도 Up카메라 연출
-                ZoomOut(0);
-            }
+        //#region [-TestCode]
+        //void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Q))
+        //    {
+        //        //Y축으로 15정도 Up카메라 연출
+        //        ZoomOut(0);
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                //Up 카메라 연출 회복
-                ZoomIn();
-            }
-        }
-        #endregion
+        //    if (Input.GetKeyDown(KeyCode.W))
+        //    {
+        //        //Up 카메라 연출 회복
+        //        ZoomIn();
+        //    }
+        //}
+        //#endregion
 
     }
 }

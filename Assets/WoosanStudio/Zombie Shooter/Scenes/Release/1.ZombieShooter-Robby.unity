@@ -7687,51 +7687,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1949190598727963287, guid: 25fa5d48486a841eaaa03f35e72c132d,
-        type: 3}
-      propertyPath: customEvents.Array.data[22].IsEditing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1949190598727963287, guid: 25fa5d48486a841eaaa03f35e72c132d,
-        type: 3}
-      propertyPath: _masterAudioVolume
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1949190598727963287, guid: 25fa5d48486a841eaaa03f35e72c132d,
-        type: 3}
-      propertyPath: _masterPlaylistVolume
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3761186376963968450, guid: 25fa5d48486a841eaaa03f35e72c132d,
-        type: 3}
-      propertyPath: frames
-      value: 1584
-      objectReference: {fileID: 0}
-    - target: {fileID: 3761186376963968450, guid: 25fa5d48486a841eaaa03f35e72c132d,
-        type: 3}
-      propertyPath: groupMasterVolume
-      value: 0.34615383
-      objectReference: {fileID: 0}
-    - target: {fileID: 3878115943805412982, guid: 25fa5d48486a841eaaa03f35e72c132d,
-        type: 3}
-      propertyPath: groupMasterVolume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6018251588580466902, guid: 25fa5d48486a841eaaa03f35e72c132d,
-        type: 3}
-      propertyPath: frames
-      value: 522
-      objectReference: {fileID: 0}
-    - target: {fileID: 6018251588580466902, guid: 25fa5d48486a841eaaa03f35e72c132d,
-        type: 3}
-      propertyPath: groupMasterVolume
-      value: 0.3653846
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124609721472227952, guid: 25fa5d48486a841eaaa03f35e72c132d,
-        type: 3}
-      propertyPath: frames
-      value: 1435
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25fa5d48486a841eaaa03f35e72c132d, type: 3}
 --- !u!1 &506014967
@@ -11933,16 +11888,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 267137818816372512, guid: fdefbd82322cc4b50bff97d74c60eaa6,
-        type: 3}
-      propertyPath: userDefinedSounds.Array.data[0].SoundEvents.Array.data[0].soundType
-      value: GUI Negative
-      objectReference: {fileID: 0}
-    - target: {fileID: 267137818816372512, guid: fdefbd82322cc4b50bff97d74c60eaa6,
-        type: 3}
-      propertyPath: userDefinedSounds.Array.data[0].customEventName
-      value: GUI_Negative
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdefbd82322cc4b50bff97d74c60eaa6, type: 3}

@@ -147,7 +147,7 @@ MonoBehaviour:
   spatialBlend: 1
   isSelected: 0
   isExpanded: 1
-  groupMasterVolume: 1
+  groupMasterVolume: 0.3653846
   retriggerPercentage: 100
   curVariationMode: 0
   alwaysHighestPriority: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 404
+  frames: 522
 --- !u!1 &1949190597986419823
 GameObject:
   m_ObjectHideFlags: 0
@@ -3208,7 +3208,7 @@ MonoBehaviour:
     newMetadataPropType: 1
     newMetadataPropRequired: 1
     newMetadataPropCanHaveMult: 0
-  _masterAudioVolume: 1
+  _masterAudioVolume: 0
   vrSettingsExpanded: 0
   useSpatializer: 0
   useSpatializerPostFX: 0
@@ -3260,7 +3260,7 @@ MonoBehaviour:
   defaultUnduckTime: 1
   defaultDuckedVolumeCut: -6
   crossFadeTime: 0.5
-  _masterPlaylistVolume: 1
+  _masterPlaylistVolume: 0
   showGroupSelect: 0
   hideGroupsWithNoActiveVars: 0
   logPerfExpanded: 1
@@ -3514,7 +3514,7 @@ MonoBehaviour:
     categoryName: GUI Sounds
   - EventName: GUI_Negative
     ProspectiveName: GUI_Negative
-    IsEditing: 0
+    IsEditing: 1
     eventExpanded: 1
     eventReceiveMode: 0
     distanceThreshold: 1
@@ -6972,7 +6972,7 @@ MonoBehaviour:
   spatialBlend: 1
   isSelected: 0
   isExpanded: 1
-  groupMasterVolume: 1
+  groupMasterVolume: 0.34615383
   retriggerPercentage: 100
   curVariationMode: 0
   alwaysHighestPriority: 0
@@ -7016,7 +7016,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 1534
+  frames: 1584
 --- !u!1 &3476801165564728521
 GameObject:
   m_ObjectHideFlags: 0
@@ -35434,7 +35434,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 1286
+  frames: 1435
 --- !u!1 &5521604583010849052
 GameObject:
   m_ObjectHideFlags: 0

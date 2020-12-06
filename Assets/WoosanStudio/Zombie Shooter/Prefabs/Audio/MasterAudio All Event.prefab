@@ -1324,7 +1324,7 @@ MonoBehaviour:
     - Default
     customSoundActive: 1
     isCustomEvent: 1
-    customEventName: GUI_Positive
+    customEventName: GUI_Negative
     mechanimEventActive: 0
     isMechanimStateCheckEvent: 0
     mechanimStateName: 

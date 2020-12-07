@@ -106,6 +106,10 @@ namespace WoosanStudio.ZombieShooter
             //*죽자 마자 생성 되게 바꾸는 중 
             MonsterGoHeavenActions?.ForEach(value => clone.GetComponent<DoDie>().GoHeavenEvent.AddListener(value));
             //clone.GetComponent<DoDie>().HeavenEvent.AddListener(ItemRequester.Requester);
+
+            //죽을때 슬로우 모션액션을 이벤트에 넣음
+            MonsterOnDieActions.Add(SlowMotionTimeManager.Instance.DoSlow);
+
             MonsterOnDieActions?.ForEach(value => clone.GetComponent<DoDie>().OnDieEvent.AddListener(value));
 
             //몬스터 레벨에 맞는 성장 수치 가져오기

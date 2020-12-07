@@ -147,7 +147,12 @@ namespace WoosanStudio.ZombieShooter
                 if (ammoEmpty != null) _iGun.EmptyEvent.AddListener(ammoEmpty);
 
                 //해당 런처에서 발사시 화면 흔들림 액션 등록
-                if (cameraShaker != null) { _iGun.ProjectileLauncher.TriggerEvent.AddListener(cameraShaker.Shake); }                    
+                if (cameraShaker != null) { _iGun.ProjectileLauncher.TriggerEvent.AddListener(cameraShaker.Shake); }
+
+                //총 발사시 반동에니메이션 등록
+                //Weapon.GunAnimation gunRecoil = GameObject.FindObjectOfType<Weapon.GunAnimation>();
+                //if (gunRecoil != null) { _iGun.ProjectileLauncher.TriggerEvent.AddListener(gunRecoil.Action); }
+
 
                 //탄 초기화
                 _iGun.Initialize();

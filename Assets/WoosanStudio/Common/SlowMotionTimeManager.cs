@@ -22,6 +22,8 @@ namespace WoosanStudio.Common
 
         private bool isSlow = false;
 
+        IEnumerator doSlowMotionCoroutine;
+
         private void Awake()
         {
             //defaultFixedDeltaTime = Time.fixedDeltaTime;
@@ -30,6 +32,26 @@ namespace WoosanStudio.Common
             Instance = this;
 
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        }
+
+        /// <summary>
+        /// 슬로우 시작 1초후 원복
+        /// </summary>
+        public void DoSlow(Vector3 position)
+        {
+            Debug.Log("===============슬로우 발생");
+            if (doSlowMotionCoroutine != null) { StopCoroutine(doSlowMotionCoroutine); }
+            StartCoroutine(doSlowMotionCoroutine = DoSlowMotionCoroutine(0.5f));
+        }
+
+        /// <summary>
+        /// 슬로우 시작 1초후 원복
+        /// </summary>
+        IEnumerator DoSlowMotionCoroutine(float second)
+        {
+            DoSlowMotion();
+            yield return new WaitForSeconds(second);
+            Rollback();
         }
 
         /// <summary>

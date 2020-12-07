@@ -4133,7 +4133,7 @@ MonoBehaviour:
     newMetadataPropType: 1
     newMetadataPropRequired: 1
     newMetadataPropCanHaveMult: 0
-  _masterAudioVolume: 1
+  _masterAudioVolume: 0
   vrSettingsExpanded: 0
   useSpatializer: 0
   useSpatializerPostFX: 0
@@ -4185,7 +4185,7 @@ MonoBehaviour:
   defaultUnduckTime: 1
   defaultDuckedVolumeCut: -6
   crossFadeTime: 0.5
-  _masterPlaylistVolume: 1
+  _masterPlaylistVolume: 0
   showGroupSelect: 0
   hideGroupsWithNoActiveVars: 0
   logPerfExpanded: 1

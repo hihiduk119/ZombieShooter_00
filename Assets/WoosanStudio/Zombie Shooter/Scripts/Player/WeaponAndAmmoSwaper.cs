@@ -37,7 +37,14 @@ namespace WoosanStudio.ZombieShooter.Player
             {
                 //캐릭터 세팅
                 WeaponRequester.Remove();
-                WeaponRequester.Anchor(1, 1);
+                WeaponRequester.Anchor(2, 2);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                //캐릭터 세팅
+                WeaponRequester.Remove();
+                WeaponRequester.Anchor(0, 0);
             }
         }
         #endregion

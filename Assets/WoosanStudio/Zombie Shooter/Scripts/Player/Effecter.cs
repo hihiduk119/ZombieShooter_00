@@ -103,6 +103,7 @@ namespace WoosanStudio.ZombieShooter.Player
         }
 
 
+        /*
         #region [-TestCode]
         void Update()
         {
@@ -117,7 +118,7 @@ namespace WoosanStudio.ZombieShooter.Player
             }
         }
         #endregion
-
+        */
 
         /*private void FixedUpdate()
         {

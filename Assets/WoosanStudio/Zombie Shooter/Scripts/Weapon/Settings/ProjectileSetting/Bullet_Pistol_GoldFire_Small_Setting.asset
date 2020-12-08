@@ -20,6 +20,7 @@ MonoBehaviour:
     type: 3}
   muzzleflare: {fileID: 1000012903210382, guid: 01e91ba42e028824b86d47ee5f416589,
     type: 3}
+  muzzleflareExtra: {fileID: 114476, guid: 089dd124d4d03475282913e47d9827af, type: 3}
   min: 2500
   max: 3000
   shellPrefab: {fileID: 1467181274829480, guid: 41e86fd3ee46b76448791422f9949474,

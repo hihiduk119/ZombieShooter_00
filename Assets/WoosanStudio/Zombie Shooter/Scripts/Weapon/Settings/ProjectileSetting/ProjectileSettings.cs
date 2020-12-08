@@ -42,12 +42,16 @@ namespace WoosanStudio.ZombieShooter
 
         [Header("[이름]")]
         public new string name;
-        //탄
+        [Header("[탄 이펙트]")]
         public Rigidbody bombPrefab;
-        //총구 화염
+        [Header("[총구 화염 이펙트]")]
         public GameObject muzzleflare;
-        //발사체의 최소, 최대 속도
-        public float min, max;
+        [Header("[총구 화염 이펙트 2]")]
+        public GameObject muzzleflareExtra;
+        [Header("[발사체의 최소 속도]")]
+        public float min;
+        [Header("[발사체의 최대 속도]")]
+        public float max;
 
 
         //=> 이동
@@ -64,14 +68,18 @@ namespace WoosanStudio.ZombieShooter
 
 
         //탄피
+        [Header("[탄피]")]
         public GameObject shellPrefab;
         //머즐 플레어 사용 할지 말지 결정.
         //몬스터가 공격시는 사용 안함.
+        [Header("[머즐 플레어 사용 여부]")]
         public bool hasMuzzleFlare = true;
         //탄피 사용할지 말지 결정.
+        [Header("[탄피 사용할지 말지 여부]")]
         public bool hasShells = true;
 
         //플레이어가 쏜건지 몬스터가 쏜건지 알기 위한 용도.
+        [Header("[플레이어가 쏜건지 몬스터가 쏜건지 여부]")]
         public bool playerShoted = true;
     }
 }

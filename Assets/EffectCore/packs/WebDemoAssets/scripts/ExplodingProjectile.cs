@@ -11,6 +11,8 @@ using WoosanStudio.ZombieShooter;
 public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
 {
     public GameObject impactPrefab;
+    [Header("[피 튀김 이팩트")]
+    public GameObject bloodImpactPrefab;
     public Rigidbody thisRigidbody;
 
     //Add Force에 사용될 파워
@@ -189,6 +191,20 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             Destroy(gameObject);
             //임팩트 생성/
             Instantiate(impactPrefab, pos, rot);
+
+            //피튀김 이펙트 생성
+            //*체력이 있다는건 몬스터를 의미
+            if(haveHealth != null)
+            {
+                //피 임팩트가 있음
+                if (bloodImpactPrefab != null)
+                {
+                    Vector3 rotation = rot.eulerAngles;
+                    rotation.y += 30*Random.Range(0,12);
+                    rot = Quaternion.Euler(rotation);
+                    Instantiate(bloodImpactPrefab, pos, rot);
+                }
+            }
         }
     }
 

@@ -60,6 +60,8 @@ namespace WoosanStudio.ZombieShooter
         //
         Vector3 forceValue;
 
+        GameObject clone;
+
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IProjectileLauncherActions Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         private UnityEvent _triggerEvent = new UnityEvent();
@@ -221,6 +223,14 @@ namespace WoosanStudio.ZombieShooter
             if (projectileSetting.hasMuzzleFlare)
             {
                 Instantiate(projectileSetting.muzzleflare, spawnLocatorMuzzleFlare.position, spawnLocatorMuzzleFlare.rotation, spawnLocatorMuzzleFlare);
+
+                //머즐 플레어 추가 이펙트 사용
+                if(projectileSetting.muzzleflareExtra != null)
+                {
+                    Vector3 rotation = spawnLocatorMuzzleFlare.rotation.eulerAngles;
+                    rotation.y += 90;
+                    clone = Instantiate(projectileSetting.muzzleflareExtra, spawnLocatorMuzzleFlare.position, Quaternion.Euler(rotation));
+                }
             }
             //bombList[bombType].muzzleflare.Play(); //????
             

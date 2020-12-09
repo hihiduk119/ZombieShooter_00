@@ -9557,6 +9557,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactPrefab: {fileID: 1879272669879180, guid: 0cf32b22f2c4334418b1fb6adb7aa75f,
     type: 3}
+  bloodImpactPrefab: {fileID: 4208543738662503720, guid: 05ab92c70504b4f35bcd50104022dc3d,
+    type: 3}
   thisRigidbody: {fileID: 54453457801900860}
   Force: {x: 0, y: 0, z: 0}
   playerShoted: 1

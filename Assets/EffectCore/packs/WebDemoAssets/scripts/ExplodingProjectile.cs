@@ -200,7 +200,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
                 if (bloodImpactPrefab != null)
                 {
                     Vector3 rotation = rot.eulerAngles;
-                    rotation.y += 30*Random.Range(0,12);
+                    rotation.y += 15*Random.Range(-1,5);
                     rot = Quaternion.Euler(rotation);
                     Instantiate(bloodImpactPrefab, pos, rot);
                 }

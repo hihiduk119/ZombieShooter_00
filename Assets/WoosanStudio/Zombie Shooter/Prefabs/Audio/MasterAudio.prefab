@@ -10861,7 +10861,7 @@ MonoBehaviour:
   spatialBlend: 1
   isSelected: 0
   isExpanded: 1
-  groupMasterVolume: 0.80769235
+  groupMasterVolume: 0.8846154
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
@@ -12298,7 +12298,7 @@ MonoBehaviour:
   spatialBlend: 1
   isSelected: 0
   isExpanded: 1
-  groupMasterVolume: 0.7307692
+  groupMasterVolume: 0.63461536
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0

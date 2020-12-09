@@ -313,7 +313,7 @@ namespace WoosanStudio.ZombieShooter
             stringBuilder.Append(suffix);
             stringBuilder.Append(ammo);
 
-            Debug.Log("완성된 이름 = " + stringBuilder.ToString());
+            //Debug.Log("사운드 완성된 이름 = [" + stringBuilder.ToString() + "] 무기 타입 = ["+weaponType.ToString()+"] 탄약 타입 = ["+ ammoType.ToString()+ "]");
 
             MasterAudio.FireCustomEvent(stringBuilder.ToString(), this.transform);
 

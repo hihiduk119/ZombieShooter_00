@@ -9712,7 +9712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactPrefab: {fileID: 1879272669879180, guid: 52baafc6c69151e418a228e14e1bd356,
     type: 3}
-  bloodImpactPrefab: {fileID: 4208543738662503720, guid: 5cddeb06c80bc4dfeac8c333e2cd5122,
+  bloodImpactPrefab: {fileID: 4208543738662503720, guid: 05ab92c70504b4f35bcd50104022dc3d,
     type: 3}
   thisRigidbody: {fileID: 54212628334827884}
   Force: {x: 0, y: 0, z: 0}

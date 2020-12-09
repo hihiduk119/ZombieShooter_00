@@ -15,10 +15,16 @@ namespace WoosanStudio.ZombieShooter
         //Gun 세팅값 
         public List<GunSettings> _gunSettings;
 
-        //총알 세팅값 
-        public List<ProjectileSettings> _projectileSettings;
+        //총알 세팅값
+        //public ProjectileSettings[][] _projectileSettings;
+        public List<ProjectileData> projectileDatas;
 
-
+        [System.Serializable]
+        public class ProjectileData
+        {
+            public List<ProjectileSettings> _projectileSettings;
+        }
+        
 
         //**Player는 이미 IGun과 IWeapon을 가지고 있다는걸 명심하자.
         //**WeaponFactory에서 가져오는 행위는 독립성을 해칠수 있다.
@@ -84,14 +90,14 @@ namespace WoosanStudio.ZombieShooter
                     _iWeapon = (IWeapon)_weapon.GetComponent<Pistol>();
                     break;
                 case 1:
-                    _weapon.AddComponent<AssaultRifle>();
-                    iGun = _iGun = (IGun)_weapon.GetComponent<AssaultRifle>();
-                    _iWeapon = (IWeapon)_weapon.GetComponent<AssaultRifle>();
-                    break;
-                case 2:
                     _weapon.AddComponent<Shotgun>();
                     iGun = _iGun = (IGun)_weapon.GetComponent<Shotgun>();
                     _iWeapon = (IWeapon)_weapon.GetComponent<Shotgun>();
+                    break;
+                case 2:
+                    _weapon.AddComponent<AssaultRifle>();
+                    iGun = _iGun = (IGun)_weapon.GetComponent<AssaultRifle>();
+                    _iWeapon = (IWeapon)_weapon.GetComponent<AssaultRifle>();
                     break;
                 case 3:
                     _weapon.AddComponent<LaserRifle>();
@@ -125,15 +131,12 @@ namespace WoosanStudio.ZombieShooter
                 //*직관성 부족으로 리팩토링 필요함.
                 _iGun.GunSettings = _gunSettings[gunType];
 
-                //총알 세팅
-                //* 이거 어디에 쓰는지 모르겠음
-                //_iGun.ProjectileSettings = _projectileSettings[ammoType];
-
                 //실제 (ProjectileLauncher에) 발사기관에 총 세팅
                 _iGun.ProjectileLauncher.gunSetting = _gunSettings[gunType];
 
                 //실제 (ProjectileLauncher에) 발사기관에 탄환 세팅
-                _iGun.ProjectileLauncher.projectileSetting = _projectileSettings[ammoType];
+                //_iGun.ProjectileLauncher.projectileSetting = _projectileSettings[ammoType][gunType];
+                _iGun.ProjectileLauncher.projectileSetting = projectileDatas[ammoType]._projectileSettings[gunType];
 
                 //에벤트 없을을 통지함.
                 if (start == null) Debug.Log("start event null");

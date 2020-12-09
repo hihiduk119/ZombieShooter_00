@@ -25,7 +25,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 무기 타입 - 추가 될 경우를 대비해 int로 만듬
         /// </summary>
-        [Header("[무기 타입 - 추가 될 경우를 대비해 int로 만듬]")]
+        [Header("[무기 타입 - 순서는 CardType과 같게 마추기,MakeSound에서 사용]")]
         [SerializeField] private int _index = 0;
         public int Index { get => _index; }
 

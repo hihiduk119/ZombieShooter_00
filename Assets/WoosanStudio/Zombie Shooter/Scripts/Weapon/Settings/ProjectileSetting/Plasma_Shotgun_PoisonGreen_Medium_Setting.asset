@@ -16,7 +16,7 @@ MonoBehaviour:
   gunType: 1
   Damage: 2
   name: PoisonGreen Medium
-  bombPrefab: {fileID: 54453457801900860, guid: 918ff3ea946d5bc42920f6a004bca98a,
+  bombPrefab: {fileID: 54344322164163910, guid: 53969f535551323489f9059fbe5ca740,
     type: 3}
   muzzleflare: {fileID: 1000012903210382, guid: 333af583f4c104e4bae5f88877d2cebb,
     type: 3}

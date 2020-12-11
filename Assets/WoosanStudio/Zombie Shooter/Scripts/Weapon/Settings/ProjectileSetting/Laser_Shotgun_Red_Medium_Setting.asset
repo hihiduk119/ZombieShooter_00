@@ -16,7 +16,7 @@ MonoBehaviour:
   gunType: 1
   Damage: 2
   name: Red Medium
-  bombPrefab: {fileID: 54929995699331496, guid: 5e486dbaa8aaffb458af02f5b8d83621,
+  bombPrefab: {fileID: 54929995699331496, guid: 46283029775b07e41bcee10d380c6f0d,
     type: 3}
   muzzleflare: {fileID: 1000012903210382, guid: 3a4fa769c1e617d41829520cb23b7919,
     type: 3}

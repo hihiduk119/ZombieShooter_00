@@ -16,7 +16,7 @@ MonoBehaviour:
   gunType: 1
   Damage: 2
   name: Goldfire Medium
-  bombPrefab: {fileID: 54212628334827884, guid: 6c6c2a3bbf7c85449b8e9515d0c6f273,
+  bombPrefab: {fileID: 54453457801900860, guid: edc555170136714468e06ae43a7e0c86,
     type: 3}
   muzzleflare: {fileID: 1584403288528622, guid: c0f719210fc9a4e4aa5ac190a6eb184e,
     type: 3}

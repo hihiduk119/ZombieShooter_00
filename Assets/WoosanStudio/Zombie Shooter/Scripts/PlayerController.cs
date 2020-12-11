@@ -36,7 +36,7 @@ namespace WoosanStudio.ZombieShooter
         //데미지,리로드 UI바 
         public List<HealthBar> PlayerBars;
         //실제 체력
-        public HaveHit HaveHit;
+        public PlayerHit HaveHit;
         //조준시 팔다리몸 IK
         public AimIK AimIK;
         //조준시 헤드 IK
@@ -75,7 +75,7 @@ namespace WoosanStudio.ZombieShooter
             TextDamageBridge = GetComponent<TextDamageBridge>();
             HealthBar = GetComponent<HealthBar>();
             PlayerBars = new List<HealthBar>(GetComponents<HealthBar>());
-            HaveHit = GetComponent<HaveHit>();
+            HaveHit = GetComponent<PlayerHit>();
             AimIK = GetComponent<AimIK>();
             LookAtIK = GetComponent<LookAtIK>();
             PlayerAimSwaper = GetComponent<PlayerAimSwaper>();

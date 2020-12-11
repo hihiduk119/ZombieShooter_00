@@ -17,9 +17,27 @@ namespace WoosanStudio.ZombieShooter.Camera
         }
 
         /// <summary>
+        /// 수평 수직 2개중 랜덤 발생
+        /// </summary>
+        public void RandomShake()
+        {
+            int rand = Random.Range(0,2);
+
+            switch(rand)
+            {
+                case 0:
+                    VerticalShake();
+                    break;
+                case 1:
+                    HorizontalShake();
+                    break;
+            }
+        }
+
+        /// <summary>
         /// 수평으로 흔들기
         /// </summary>
-        public void VerticalShake()
+        void VerticalShake()
         {
             animator.SetTrigger("Vertical");
         }
@@ -27,25 +45,24 @@ namespace WoosanStudio.ZombieShooter.Camera
         /// <summary>
         /// 수직으로 흔들기
         /// </summary>
-        public void HorizontalShake()
+        void HorizontalShake()
         {
             animator.SetTrigger("Horizontal");
         }
 
-        #region [-TestCode]
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                VerticalShake();
-            }
+        //#region [-TestCode]
+        //void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Alpha1))
+        //    {
+        //        VerticalShake();
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                HorizontalShake();
-            }
-        }
-        #endregion
-
+        //    if (Input.GetKeyDown(KeyCode.Alpha2))
+        //    {
+        //        HorizontalShake();
+        //    }
+        //}
+        //#endregion
     }
 }

@@ -9,7 +9,7 @@ namespace WoosanStudio.ZombieShooter.Player
     /// <summary>
     /// 플레이어 이펙트 담당
     /// </summary>
-    public class Effecter : MonoBehaviour
+    public class MoveEffect : MonoBehaviour
     {
         ///캐슁용 변수들
         //버티컬

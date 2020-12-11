@@ -41,7 +41,7 @@ namespace WoosanStudio.Common
         {
             Debug.Log("===============슬로우 발생");
             if (doSlowMotionCoroutine != null) { StopCoroutine(doSlowMotionCoroutine); }
-            StartCoroutine(doSlowMotionCoroutine = DoSlowMotionCoroutine(0.5f));
+            StartCoroutine(doSlowMotionCoroutine = DoSlowMotionCoroutine(0.65f));
         }
 
         /// <summary>

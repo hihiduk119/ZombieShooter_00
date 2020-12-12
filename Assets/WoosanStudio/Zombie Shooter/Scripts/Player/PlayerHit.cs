@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using DarkTonic.MasterAudio;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -11,12 +12,12 @@ namespace WoosanStudio.ZombieShooter
     public class PlayerHit : MonoBehaviour, IHaveHit
     {
         private Camera.CameraHit cameraHit;
-        private UI.DamageEffect damageEffect;
+        private UI.DamageEffect[] damageEffects;
 
         void Awake()
         {
             cameraHit = GameObject.FindObjectOfType<Camera.CameraHit>();
-            damageEffect = GameObject.FindObjectOfType<UI.DamageEffect>();
+            damageEffects = GameObject.FindObjectsOfType<UI.DamageEffect>();
         }
 
         /// <summary>
@@ -29,7 +30,10 @@ namespace WoosanStudio.ZombieShooter
             //카메라 쉐이킹
             cameraHit.RandomShake();
             //스크린 데미지 이펙트
-            damageEffect.Show();
+            foreach (var damageEffect in damageEffects) { damageEffect.Show(); }
+            //사운드 플레이
+            //*남녀 구분 필요
+            MasterAudio.FireCustomEvent("MaleHurt", this.transform);
         }
     }
 }

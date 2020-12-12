@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using DarkTonic.MasterAudio;
+
 namespace WoosanStudio.ZombieShooter
 {
     [RequireComponent(typeof(Animator))]
@@ -20,6 +22,8 @@ namespace WoosanStudio.ZombieShooter
         {
             animator.Play("Empty");
             animator.SetTrigger("Pong");
+            //총맞은 사운드
+            MasterAudio.FireCustomEvent("ObjectsHit", this.transform);
         }
 
         //void Update()

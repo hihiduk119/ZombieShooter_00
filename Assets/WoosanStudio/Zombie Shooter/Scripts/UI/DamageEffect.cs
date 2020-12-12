@@ -18,6 +18,15 @@ namespace WoosanStudio.ZombieShooter.UI
         [Header("[스크린 컬러]")]
         public Color Color;
 
+        [Header("[Fade End 값]")]
+        public float endValue = 0.8f;
+
+        [Header("[지속시간]")]
+        public float duration = 0.2f;
+
+        [Header("[반복 횟수]")]
+        public int loops = 4;
+
         /// <summary>
         /// 인터페이스 구현
         ///  - 이펙트 보여줌
@@ -31,7 +40,7 @@ namespace WoosanStudio.ZombieShooter.UI
             //색깔 세팅
             Screen.color = this.Color;
             //0.5f초 , 알파 0.8f로 한번 요요 트윈
-            Screen.DOFade(0.8f, 0.2f).SetEase(Ease.InOutSine).SetLoops(4, LoopType.Yoyo).OnComplete(() => {
+            Screen.DOFade(endValue, duration).SetEase(Ease.InOutSine).SetLoops(loops, LoopType.Yoyo).OnComplete(() => {
                 //완료후 비활성화
                 Screen.enabled = false;
             }

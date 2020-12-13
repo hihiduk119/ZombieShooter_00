@@ -70,7 +70,7 @@ namespace WoosanStudio.ZombieShooter
             haveHealth.DamagedEvent.RemoveAllListeners();
 
             //죽는 사운드 발생
-            MasterAudio.FireCustomEvent("MonsterDead", this.transform);
+            //MasterAudio.FireCustomEvent("MonsterDead", this.transform);
 
             //죽음 이벤트 시작
             //* 원래는 모든 체력, 블릭크초기화 몬스터 죽음호출 정지 등 모든 부분이 이벤트의

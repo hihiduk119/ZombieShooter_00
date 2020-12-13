@@ -16,16 +16,16 @@ namespace WoosanStudio.ZombieShooter.Weapon
         private Vector3 InitPosition;
 
         //반동 회복 시간
-        private float recoverTime = 0.2f;
+        private float recoverTime = 0.1f;
         
         //수직 반동
-        private float verticalRecoil = 45f;
+        private float verticalRecoil = 10f;
 
         //수직 반동
-        private Vector2 horizontalRecoil = new Vector2(-10,20);//-10 ~ 10 -> 램덤에 넣을때는 -10,20넣어야horizontalRecoil
+        private Vector2 horizontalRecoil = new Vector2(-5,10);//-10 ~ 10 -> 램덤에 넣을때는 -10,20넣어야horizontalRecoil
 
         //총기 밀림 반동
-        private float backRecoil = 0.25f;
+        private float backRecoil = 0.15f;
 
         private IGun iGun;
 

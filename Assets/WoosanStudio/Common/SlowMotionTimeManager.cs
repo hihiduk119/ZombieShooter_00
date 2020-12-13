@@ -23,6 +23,7 @@ namespace WoosanStudio.Common
         private bool isSlow = false;
 
         IEnumerator doSlowMotionCoroutine;
+        IEnumerator doSlowMotionByShortCoroutine;
 
         private void Awake()
         {
@@ -39,10 +40,28 @@ namespace WoosanStudio.Common
         /// </summary>
         public void DoSlow(Vector3 position)
         {
-            Debug.Log("===============슬로우 발생");
             if (doSlowMotionCoroutine != null) { StopCoroutine(doSlowMotionCoroutine); }
             StartCoroutine(doSlowMotionCoroutine = DoSlowMotionCoroutine(0.65f));
         }
+
+        /// <summary>
+        /// 슬로우 시작 1초후 원복
+        /// </summary>
+        public void DoSlowByShort()
+        {
+            if (doSlowMotionByShortCoroutine != null) { StopCoroutine(doSlowMotionByShortCoroutine); }
+            StartCoroutine(doSlowMotionByShortCoroutine = DoSlowMotionCoroutine(0.02f));
+        }
+
+        /// <summary>
+        /// 슬로우 시작 1초후 원복
+        /// </summary>
+        //IEnumerator DoSlowMotionCoroutine2(float second)
+        //{
+        //    DoSlowMotion();
+        //    yield return new WaitForSeconds(second);
+        //    Rollback();
+        //}
 
         /// <summary>
         /// 슬로우 시작 1초후 원복

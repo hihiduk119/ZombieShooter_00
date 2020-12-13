@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 using WoosanStudio.Extension;
 using WoosanStudio.ZombieShooter;
+using WoosanStudio.ZombieShooter.UI;
 /* THIS CODE IS JUST FOR PREVIEW AND TESTING */
 // Feel free to use any code and picking on it, I cannot guaratnee it will fit into your project
 
@@ -57,7 +58,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     Ray ray;
     Coroutine dieTimer;
     int layerMask = 0;
-    CardManager cardList;
+    //CardManager cardList;
 
     //=====================>   IHaveHitDamage 시작    <=====================
     private int _damage = 40;
@@ -168,9 +169,20 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
                 ///카드의 정보와 몬스터의 정보를 가지고 계산해서 실제 받을 데미지를 계산
                 calculatorInfo = DamageCalculator(monsterSettings);
 
+                //몬스터에 데미지 전달
                 //keyValue 는 다음과 같다
                 //{{0,"default"},{1,"critical"},{2,"status"} };
                 haveHealth.DamagedEvent.Invoke(calculatorInfo.Damage, hit.point, calculatorInfo.KeyValue);
+
+                //히트 메시지 출력
+                //* 크리티컬시 주황색 및 사이즈 크게 트윈
+                if (calculatorInfo.KeyValue.Equals("critical"))
+                {
+                    HitMessage.Instance.Show(calculatorInfo.Damage, 1, 2f);
+                } else
+                {
+                    HitMessage.Instance.Show(calculatorInfo.Damage, 0);
+                }
             }
 
             //부딫힌 오브젝트가 IHaveHit 가지고 있다.

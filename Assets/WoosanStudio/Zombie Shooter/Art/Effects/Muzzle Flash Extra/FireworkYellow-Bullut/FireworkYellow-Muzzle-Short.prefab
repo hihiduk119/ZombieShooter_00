@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 19980290}
   - component: {fileID: 384439835502306720}
   m_Layer: 0
-  m_Name: FireworkYellow-Muzzle
+  m_Name: FireworkYellow-Muzzle-Short
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 4586856298679178}
-  - {fileID: 979796331193176154}
+  - {fileID: 8434470703250343316}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -153,8 +153,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 6
-      minScalar: 2
+      scalar: 3
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -531,7 +531,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 4
+    maxNumParticles: 3
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -9611,7 +9611,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!1001 &4127525955818487336
+--- !u!1001 &4742931441077119974
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9695,9 +9695,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8df5029a377344d2da1e256caeb2988a, type: 3}
---- !u!4 &979796331193176154 stripped
+--- !u!4 &8434470703250343316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3809769782144921202, guid: 8df5029a377344d2da1e256caeb2988a,
     type: 3}
-  m_PrefabInstance: {fileID: 4127525955818487336}
+  m_PrefabInstance: {fileID: 4742931441077119974}
   m_PrefabAsset: {fileID: 0}

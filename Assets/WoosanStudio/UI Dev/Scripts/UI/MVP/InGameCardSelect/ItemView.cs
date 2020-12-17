@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
 {
@@ -12,20 +13,17 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
     /// </summary>
     public class ItemView : MonoBehaviour
     {
-        [Header("[선택됨")]
-        public GameObject Selected;
-
-        [Header("[안 선택됨]")]
-        public GameObject UnSelected;
-
         [Header("[사용 가능]")]
-        public GameObject Able;
+        public GameObject ObjSelect;
+
+        [Header("[선택됐을때 이펙트]")]
+        public GameObject FocusEffect;
 
         [Header("[추가]")]
-        public GameObject Add;
+        public GameObject ObjAdd;
 
         [Header("[비었음]")]
-        public GameObject Empty;
+        public GameObject ObjEmpty;
 
         [Header("[카드 이미지]")]
         public Image Icon;
@@ -36,15 +34,11 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         [Header("[추가 가격]")]
         public Text Price;
 
-        /// <summary>
-        /// 아이템 상태
-        /// </summary>
-        public enum ItemState
-        {
-            Able,       //선택 가능 상태
-            Add,        //추가 가능 상태
-            Empty,      //비어있는 상태
-        }
+        //버튼 클릭에 의한 이벤트 발생
+        public UnityEvent SelectEvent = new UnityEvent();
+        public UnityEvent AddEvent = new UnityEvent();
+
+        
 
         /// <summary>
         /// 화면 업데이트
@@ -52,41 +46,65 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         /// <param name="sprite">카드 이미지</param>
         /// <param name="level">카드 레벨</param>
         /// <param name="price">추가 가격</param>
-        public void UpdateView(Sprite sprite,string level,string price)
+        public void UpdateView(Sprite sprite,Color color,string level,string price)
         {
+            //아이콘 설정
             Icon.sprite = sprite;
+            //이미지에 따라 사이즈 재정의
+            float width = sprite.rect.width * 0.2f;
+            float height = sprite.rect.height * 0.2f;
+            Icon.rectTransform.sizeDelta = new Vector2(width, height);
+            //이미지 컬러 세팅
+            Icon.color = color;
+            //레벨 세팅
             Level.text = level;
+            //가격 세팅
             Price.text = price;
         }
 
         /// <summary>
         /// 선택 비선택 상태 변경
+        /// *선택된 상황에서만 작동됨
         /// </summary>
         /// <param name="value"></param>
-        public void SetSelective(bool select)
+        public void SetFocus(bool select)
         {
-            //일단 모두 비활성화
-            Selected.SetActive(false); UnSelected.SetActive(false);
-            //선택
-            if (select) { Selected.SetActive(true); } else { UnSelected.SetActive(true); }
+            //선택 이펙트 활성화
+            FocusEffect.SetActive(select);
         }
 
         /// <summary>
         /// 아이템 상태 설정
         /// </summary>
         /// <param name="state"></param>
-        public void SetItemState(ItemState state)
+        public void SetItemState(ItemPresenter.ItemState state)
         {
             //모든 아이템 셋 비활성
-            Able.SetActive(false); Add.SetActive(false); Empty.SetActive(false);
+            ObjSelect.SetActive(false); ObjAdd.SetActive(false); ObjEmpty.SetActive(false);
             //해당 셋 활성화
             switch (state)
             {
-                case ItemState.Able: Able.SetActive(true); break;
-                case ItemState.Add: Add.SetActive(true); break;
-                case ItemState.Empty: Empty.SetActive(true); break;
+                case ItemPresenter.ItemState.SelectAble: ObjSelect.SetActive(true); break;
+                case ItemPresenter.ItemState.Add: ObjAdd.SetActive(true); break;
+                case ItemPresenter.ItemState.Empty: ObjEmpty.SetActive(true); break;
                 default: break;
             }
+        }
+
+        /// <summary>
+        /// 클릭
+        /// </summary>
+        public void Select()
+        {
+            SelectEvent.Invoke();
+        }
+
+        /// <summary>
+        /// 추가 클릭
+        /// </summary>
+        public void Add()
+        {
+            AddEvent.Invoke();
         }
     }
 }

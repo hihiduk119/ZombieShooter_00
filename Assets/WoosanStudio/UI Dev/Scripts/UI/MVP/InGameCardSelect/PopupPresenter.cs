@@ -16,7 +16,80 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         [Header("[[현재 임시로 넣어둠]변경하려는 카드 => 반듯이 3개이상 있어야 함]")]
         public List<CardSetting> cardSettings = new List<CardSetting>();
 
+        [Header("[카드 아이템들")]
+        public List<ItemPresenter> itemPresenters = new List<ItemPresenter>(); 
+
         [Header("[현재 선택된 카드 인덱스]")]
         public int CardIndex = 0;
+
+        //데이터 부분
+        //최초 3개=> 언락에 의해 6개까지 풀림
+        private int CurrentMaxCardCount = 3;
+
+        private void Awake()
+        {
+            //처음 시작시 카드 세팅
+            CardsUpdate();
+        }
+
+        private void Start()
+        {
+            //0번 카드 포커스 상태로 맡들기
+            itemPresenters[0].Focus();
+        }
+
+        //최초 카드들을 각 아이템에 세팅
+        private void CardsUpdate()
+        {
+            //카드버튼 카드데이터 만큼 세팅
+            for (int i = 0; i < cardSettings.Count; i++)
+            {
+                int addPriceCount = 0;
+                //3개 이후부터 Add Price 세팅
+                if (2 < i)
+                {
+                    itemPresenters[i].AddPrice = GlobalDataController.CardAddPrices[addPriceCount];
+                    addPriceCount++;
+                }
+
+                if (i < CurrentMaxCardCount)         //현재 최대 카운트 만큼 활성화
+                {
+                    itemPresenters[i].Initialize(cardSettings[i], ItemPresenter.ItemState.SelectAble);
+                }
+                else if(i == CurrentMaxCardCount)   //최대 카운트와 같다면 Add활성화
+                {
+                    itemPresenters[i].Initialize(cardSettings[i], ItemPresenter.ItemState.Add);
+                }
+                else                                //나머지는 Empty상태
+                {
+                    itemPresenters[i].Initialize(cardSettings[i], ItemPresenter.ItemState.Empty);
+                }
+
+                //포커스시 언포커스 시킴
+                //itemPresenters[i].FocusedEvent.AddListener(AllUnfocus);
+                //포커스 리스너 등록
+                itemPresenters[i].FocusedEvent.AddListener(UpdateView);
+            }
+        }
+
+        /// <summary>
+        /// 모든 포커스 언포커스 시킴
+        /// </summary>
+        private void AllUnfocus(CardSetting cardSetting)
+        {
+            itemPresenters.ForEach(value => value.Unfocus());
+        }
+
+        /// <summary>
+        /// 포커스에 선택한 카드 정보 활성화
+        /// </summary>
+        /// <param name="cardSetting"></param>
+        private void UpdateView(CardSetting cardSetting)
+        {
+            string stackCount = cardSetting.StackCount + "/"+cardSetting.MaxStack;
+            View.UpdateView(cardSetting.Name, stackCount, cardSetting.AllDescription());
+
+            itemPresenters.ForEach(value => value.Unfocus());
+        }
     }
 }

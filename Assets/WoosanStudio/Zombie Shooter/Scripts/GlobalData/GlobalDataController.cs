@@ -147,6 +147,9 @@ namespace WoosanStudio.ZombieShooter
         static public string PresentSceneName = "1.ZombieShooter-Robby";
         //업그레이드 가능한 연구 가능 최대 슬롯
         static public int MaxUpgradeSlotCount = 3;
+        //In-Game 에서 라운드 종료후 카드 선택 화면에서 카드 추가 가격
+        static public int[] CardAddPrices = {1000,1500,3000};
+
 
         //도박 성공률은 여기서 계산해서 data넣어 저장 시킨다
         //*계산은 아래 계산기 이용해서 결과 결고는 data.GambleCurrentSuccessRate 에 넣기

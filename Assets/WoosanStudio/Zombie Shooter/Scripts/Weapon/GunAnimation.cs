@@ -40,7 +40,8 @@ namespace WoosanStudio.ZombieShooter.Weapon
             //IGun인터페이스 찾아서 총 발사시 액션 등록
             //모든 총은 IGun인터페이스 가지고 있음-> 부모가 총
             iGun = transform.parent.GetComponent<IGun>();
-            iGun.ProjectileLauncher.TriggerEvent.AddListener(Action);
+            //iGun이 로비 상태에서는 없음
+            if(iGun != null) { iGun.ProjectileLauncher.TriggerEvent.AddListener(Action); }
         }
 
         public void Action()

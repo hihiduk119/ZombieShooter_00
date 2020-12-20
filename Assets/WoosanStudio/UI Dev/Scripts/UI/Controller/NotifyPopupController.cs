@@ -21,7 +21,7 @@ namespace WoosanStudio.ZombieShooter
             //싱글톤 패턴
             Instance = this;
             //다른씬에서도 사용??
-            //DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
 
         /// <summary>

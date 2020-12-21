@@ -4649,7 +4649,7 @@ MonoBehaviour:
   persistBetweenScenes: 1
   shouldLogDestroys: 0
   showBusColors: 0
-  areGroupsExpanded: 1
+  areGroupsExpanded: 0
   soundGroupTemplate: {fileID: 400008, guid: 877a3a4bf0a4abf43aba41125e1d3101, type: 3}
   soundGroupVariationTemplate: {fileID: 400000, guid: 08eea2d8c4572c7479da53cfbc14bde6,
     type: 3}
@@ -4726,7 +4726,7 @@ MonoBehaviour:
   selectedRangeGizmoColor: {r: 0, g: 1, b: 1, a: 1}
   showAdvancedSettings: 0
   showLocalization: 0
-  playListExpanded: 0
+  playListExpanded: 1
   playlistsExpanded: 1
   musicSpatialBlendType: 0
   musicSpatialBlend: 0
@@ -4777,35 +4777,10 @@ MonoBehaviour:
     newMetadataPropType: 1
     newMetadataPropRequired: 1
     newMetadataPropCanHaveMult: 0
-  - isExpanded: 0
+  - isExpanded: 1
     playlistName: Loading playlist
     songTransitionType: 1
     MusicSettings:
-    - alias: 
-      audLocation: 1
-      clip: {fileID: 0}
-      songName: 'Logo #10 (Looped)'
-      resourceFileName: 'Logo #10 (Looped)'
-      volume: 1
-      pitch: 1
-      isExpanded: 0
-      isLoop: 0
-      isChecked: 1
-      metadataStringValues: []
-      metadataBoolValues: []
-      metadataIntValues: []
-      metadataFloatValues: []
-      metadataExpanded: 1
-      songStartTimeMode: 0
-      customStartTime: 0
-      customStartTimeMax: 0
-      lastKnownTimePoint: 0
-      wasLastKnownTimePointSet: 0
-      songIndex: 0
-      songStartedEventExpanded: 0
-      songStartedCustomEvent: 
-      songChangedEventExpanded: 0
-      songChangedCustomEvent: 
     - alias: 
       audLocation: 1
       clip: {fileID: 0}
@@ -4813,7 +4788,7 @@ MonoBehaviour:
       resourceFileName: 'Loading/Logo #10 (Looped)'
       volume: 1
       pitch: 1
-      isExpanded: 1
+      isExpanded: 0
       isLoop: 0
       isChecked: 1
       metadataStringValues: []
@@ -4844,7 +4819,7 @@ MonoBehaviour:
     newMetadataPropType: 1
     newMetadataPropRequired: 1
     newMetadataPropCanHaveMult: 0
-  - isExpanded: 0
+  - isExpanded: 1
     playlistName: Battle playlist
     songTransitionType: 1
     MusicSettings:
@@ -5211,7 +5186,7 @@ MonoBehaviour:
   logPerfExpanded: 1
   willWarm: 1
   newEventName: MonsterDead
-  showCustomEvents: 1
+  showCustomEvents: 0
   newCustomEventCategoryName: SFX
   addToCustomEventCategoryName: New Category
   customEvents:

@@ -33,7 +33,8 @@ namespace WoosanStudio.ZombieShooter
 
         IEnumerator Start()
         {
-            //ScrollRect = GetComponent<ScrollRect>();
+            //0으로 초기화
+            MoveScroll(0);
 
             yield return new WaitForSeconds(0.2f);
 

@@ -10,6 +10,9 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class ToonShader : MonoBehaviour
     {
+        //싱글톤 패턴
+        static public ToonShader Instance;
+
         [Header("[로비 씬]")]
         public string RobbyScene = "1.ZombieShooter-Robby";
 
@@ -24,10 +27,18 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void Awake()
         {
-            //실행즉시 바로 아웃라인 두껍게 만들기
-            SceneManager.sceneLoaded += OnLevelFinishedLoading;
+            if(null == Instance)
+            {
+                //실행즉시 바로 아웃라인 두껍게 만들기
+                SceneManager.sceneLoaded += OnLevelFinishedLoading;
+                //싱글톤 패턴
+                Instance = this;
 
-            DontDestroyOnLoad(this);
+                DontDestroyOnLoad(this);
+            } else
+            {
+                Destroy(this.gameObject);
+            }
         }
 
         /// <summary>

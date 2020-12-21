@@ -32,6 +32,9 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         public FocusEvent FocusedEvent = new FocusEvent();
         public class FocusEvent : UnityEvent<CardSetting> { }
 
+        [Header("[카드 추가 이벤트]")]
+        public UnityEvent AddSucceededEvent = new UnityEvent();
+
         //[Header("[Model의 역활 PupupPresenter애서 세팅해줌]")]
         //캐쉬용
         private CardSetting cardSetting;
@@ -104,7 +107,15 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
             if(!GameObject.FindObjectOfType<CoinPresenter>().SubtractCoin(AddPrice))
             {
                 //돈없으면 코인 부족 표시
-                NotifyPopupController.Instance.OpenResult(UINotifyPopupModel.Type.NotEnoughCoin);
+                //NotifyPopupController.Instance.OpenResult(UINotifyPopupModel.Type.NotEnoughCoin);
+                //돈없으면 코인 부족 표시
+                GameObject.FindObjectOfType<NotifyPopupController>().OpenResult(UINotifyPopupModel.Type.NotEnoughCoin);
+            } else
+            {
+                Debug.Log("[Invoke] = " + AddSucceededEvent.GetPersistentEventCount());
+
+                //카드 추가 성공 이벤트
+                AddSucceededEvent.Invoke();
             }
         }
     }

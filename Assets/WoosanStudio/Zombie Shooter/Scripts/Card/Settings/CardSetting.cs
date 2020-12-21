@@ -469,7 +469,7 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
-        /// 프로퍼티의 모든 디스크립션 합쳐서 가져오기
+        /// 업그레이드 정보용 프로퍼티의 디스크립션 합쳐서 가져오기
         /// </summary>
         /// <returns></returns>
         public string AllDescriptionForUpgradeInfo()

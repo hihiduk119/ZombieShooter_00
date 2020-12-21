@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/1.ZombieShooter-Robby.unity
     guid: 5254705d9c84c4dcbb2f6919a5cb54a6
   - enabled: 1
+    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/Chapter/Test Scene/Test-Scene.unity
+    guid: 977fb64d45bfd41398978fe96a359c6e
+  - enabled: 1
     path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/Chapter/Town-A hours after
       the incident.unity
     guid: d1feb4e21a24e4e3a908c42bb9d986f0

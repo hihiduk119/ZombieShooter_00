@@ -18,10 +18,19 @@ namespace WoosanStudio.ZombieShooter
 
         private void Awake()
         {
-            //싱글톤 패턴
             Instance = this;
-            //다른씬에서도 사용??
-            DontDestroyOnLoad(this.gameObject);
+
+            //if (null == Instance)
+            //{
+            //    //싱글톤 패턴
+            //    Instance = this;
+
+            //    DontDestroyOnLoad(this);
+            //}
+            //else
+            //{
+            //    Destroy(this.gameObject);
+            //}
         }
 
         /// <summary>

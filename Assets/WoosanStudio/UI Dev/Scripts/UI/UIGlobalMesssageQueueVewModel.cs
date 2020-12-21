@@ -73,12 +73,16 @@ namespace WoosanStudio.ZombieShooter
             //업그레이드 완료 등록
             UpgradeComplateEvent.AddListener(CheckMessagePop);
 
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
 
             //FSM 실행
             StartCoroutine(FSM());
+        }
 
-            
+        private void OnDestroy()
+        {
+            //씬로드 호출 제거
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         /// <summary>

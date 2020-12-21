@@ -29,7 +29,7 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         private void Awake()
         {
             //처음 시작시 카드 세팅
-            CardsUpdate();
+            CardsUpdate(true);
         }
 
         private void Start()
@@ -38,17 +38,23 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
             itemPresenters[0].Focus();
         }
 
-        //최초 카드들을 각 아이템에 세팅
-        private void CardsUpdate()
+        /// <summary>
+        /// 카드들을 각 업데이트
+        /// </summary>
+        /// <param name="isFirst">첫 시작시 리스너 등록</param>
+        private void CardsUpdate(bool isFirst = false)
         {
+            int addPriceCount = 0;
             //카드버튼 카드데이터 만큼 세팅
             for (int i = 0; i < cardSettings.Count; i++)
             {
-                int addPriceCount = 0;
                 //3개 이후부터 Add Price 세팅
                 if (2 < i)
                 {
                     itemPresenters[i].AddPrice = GlobalDataController.CardAddPrices[addPriceCount];
+
+                    //Debug.Log( "["+ addPriceCount + "]  price = " + GlobalDataController.CardAddPrices[addPriceCount]);
+
                     addPriceCount++;
                 }
 
@@ -67,8 +73,16 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
 
                 //포커스시 언포커스 시킴
                 //itemPresenters[i].FocusedEvent.AddListener(AllUnfocus);
-                //포커스 리스너 등록
-                itemPresenters[i].FocusedEvent.AddListener(UpdateView);
+
+                //최초 한번 실행
+                if(isFirst)
+                {
+                    //포커스 리스너 등록
+                    itemPresenters[i].FocusedEvent.AddListener(UpdateView);
+
+                    //카드 추가 성공 리스너 등록
+                    itemPresenters[i].AddSucceededEvent.AddListener(AddCard);
+                }
             }
         }
 
@@ -87,9 +101,29 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         private void UpdateView(CardSetting cardSetting)
         {
             string stackCount = cardSetting.StackCount + "/"+cardSetting.MaxStack;
-            View.UpdateView(cardSetting.Name, stackCount, cardSetting.AllDescription());
+            View.UpdateView(cardSetting.Name, stackCount, cardSetting.AllDescriptionForUpgradeInfo());
 
             itemPresenters.ForEach(value => value.Unfocus());
+        }
+
+        /// <summary>
+        /// 카드 추가하기
+        /// </summary>
+        private void AddCard()
+        {
+            //카드 카운트 증가
+            CurrentMaxCardCount++;
+
+            //itemPresenters[CurrentMaxCardCount - 1].AddSucceededEvent.RemoveListener(AddCard);
+
+            Debug.Log("CurrentMaxCardCount  = " + CurrentMaxCardCount);
+
+            //카드 카운트는 카드 갯수보다 클수 없다.
+            //ex)카드 갯수가 4개라면 CurrentMaxCardCount 는 4가 최대.
+            //if (CurrentMaxCardCount > cardSettings.Count) { CurrentMaxCardCount = cardSettings.Count; }
+
+            //증가한 카드 반영하여 업데이트
+            CardsUpdate();
         }
     }
 }

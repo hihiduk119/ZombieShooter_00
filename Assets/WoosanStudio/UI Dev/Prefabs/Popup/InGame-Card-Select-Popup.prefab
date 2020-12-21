@@ -2365,6 +2365,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Select Item (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3330559831016113996, guid: 82ab7e4143d2645ccb020f4771f23ad7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3251816461905654638, guid: 82ab7e4143d2645ccb020f4771f23ad7,
         type: 3}
       propertyPath: m_LocalPosition.x

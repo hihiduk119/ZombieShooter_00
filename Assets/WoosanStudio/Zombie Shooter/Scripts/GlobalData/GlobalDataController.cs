@@ -163,12 +163,20 @@ namespace WoosanStudio.ZombieShooter
 
         public void Awake()
         {
-            //싱글톤 패턴
-            Instance = this;
             //데이터 로드
             Load();
-            //삭제 안함
-            DontDestroyOnLoad(this.gameObject);
+
+            if (null == Instance)
+            {
+                //싱글톤 패턴
+                Instance = this;
+
+                DontDestroyOnLoad(this);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
 
         /// <summary>

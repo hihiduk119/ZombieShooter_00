@@ -124,6 +124,29 @@ namespace WoosanStudio.ZombieShooter
             }
         }
 
+        //선택된 맵
+        private int selectedMap;
+        public int SelectedMap
+        {
+            get => selectedMap; set
+            {
+                data.SelectedMap = selectedMap = value;
+                Save();
+            }
+        }
+
+        //선택된 스테이지
+        private int selectedStage;
+        public int SelectedStage
+        {
+            get => selectedStage; set
+            {
+                data.SelectedStage = selectedStage = value;
+                Save();
+            }
+        }
+
+
         //겜블시 소모되는 젬
         static public int GambleGem = 10;
         //겜블 코보 1당 추가되는 성공률
@@ -150,10 +173,14 @@ namespace WoosanStudio.ZombieShooter
         //In-Game 에서 라운드 종료후 카드 선택 화면에서 카드 추가 가격
         static public int[] CardAddPrices = {1000,1500,3000};
 
-
-        //도박 성공률은 여기서 계산해서 data넣어 저장 시킨다
-        //*계산은 아래 계산기 이용해서 결과 결고는 data.GambleCurrentSuccessRate 에 넣기
-        //NextValueCalculator.GetGambleSuccessRate(0)
+        [Header("[중간 카드 선택시 선택 가능한 모든 카드]")]
+        public List<CardSetting> SelectAbleAllCard = new List<CardSetting>();
+        [Header("[중간 카드 선택시 선택 가능한 캐릭터 카드]")]
+        public List<CardSetting> SelectAbleCharacterCard = new List<CardSetting>();
+        [Header("[중간 카드 선택시 선택 가능한 무기 카드]")]
+        public List<CardSetting> SelectAbleWeaponCard = new List<CardSetting>();
+        [Header("[중간 카드 선택시 선택 가능한 탄약 카드]")]
+        public List<CardSetting> SelectAbleAmmoCard = new List<CardSetting>();
 
         //로비에서 선택된 캐릭터, 무기 , 탄약
         //*여기에 있는게 맞는지 확인 요망
@@ -228,6 +255,10 @@ namespace WoosanStudio.ZombieShooter
             public int UseUpgradeAbleSlotCount = 1;
             //현재 연구 가능한 슬롯
             //public int CurrentUpgradeAbleSlotCount = 0;
+            //기본 타운 맵 선택됨
+            public int SelectedMap = 0;
+            //기본 0 스테이지 선택됨
+            public int SelectedStage = 0;
 
 
             public Data() { }
@@ -247,6 +278,8 @@ namespace WoosanStudio.ZombieShooter
             this.selectedGun = data.SelectedGun;
             this.useUpgradeAbleSlotCount = data.UseUpgradeAbleSlotCount;
             //this.currentUpgradeAbleSlotCount = data.CurrentUpgradeAbleSlotCount;
+            this.selectedMap = data.SelectedMap;
+            this.selectedStage = data.SelectedStage;
         }
 
         /// <summary>

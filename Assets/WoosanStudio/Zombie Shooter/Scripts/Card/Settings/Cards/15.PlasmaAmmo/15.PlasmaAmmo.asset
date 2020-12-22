@@ -22,12 +22,14 @@ MonoBehaviour:
     ResearchSlotIndex: -1
     PlayTime: 0
     HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0
       totalSeconds: 0
       bUpgrading: 0
     IsUpgrading: 0
+    ShownUpgradeComplate: 1
   useAble: 0
   level: 0
   durability: 100
@@ -51,5 +53,4 @@ MonoBehaviour:
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Plasma Ammo
   Properties:
-  - {fileID: 11400000, guid: 45b0fce1fb8b443e9806cf30efa0e25a, type: 2}
   - {fileID: 11400000, guid: 88d455c6d27aa4b90b4feb4c928887d9, type: 2}

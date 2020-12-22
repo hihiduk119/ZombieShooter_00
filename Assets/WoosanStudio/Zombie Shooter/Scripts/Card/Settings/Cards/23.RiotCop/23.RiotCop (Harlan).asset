@@ -20,12 +20,16 @@ MonoBehaviour:
     Durability: 100
     SortIndex: 0
     ResearchSlotIndex: -1
+    PlayTime: 0
+    HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0
       totalSeconds: 0
       bUpgrading: 0
     IsUpgrading: 0
+    ShownUpgradeComplate: 1
   useAble: 0
   level: 0
   durability: 100
@@ -49,6 +53,5 @@ MonoBehaviour:
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Harlan
   Properties:
-  - {fileID: 11400000, guid: 3933f42809238465582df38ee2a288c4, type: 2}
   - {fileID: 11400000, guid: 706fce2279bae4ba594ccc66ec6e4001, type: 2}
   - {fileID: 11400000, guid: 125195d9df1d64f1383f2c61efbd5d33, type: 2}

@@ -141,5 +141,20 @@ namespace WoosanStudio.ZombieShooter
             //카드 완료 큐에 넣기
             UIGlobalMesssageQueueVewModel.UpgradeComplateEvent.Invoke(cardSetting);
         }
+
+        /// <summary>
+        /// 글로벌 데이터에 현재 카드중 언락된 카드 모두 선택 가능 카드로 세팅
+        /// </summary>
+        public void SetSelectAbleAllCard()
+        {
+            Model.cardSettings.ForEach(value => {
+                //언락이 풀린 카드 인지 확인
+                if (value.UseAble)
+                {
+                    //언락 됬다면 카드 세팅
+                    GlobalDataController.Instance.SelectAbleAllCard.Add(value);
+                }
+            });
+        }
     }
 }

@@ -9,15 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 739dbe89440094954add54899e2bdc73, type: 3}
   m_Name: LevelData
   m_EditorClassIdentifier: Assembly-CSharp:WoosanStudio.ZombieShooter:LevelConfig
-  _level: 1
-  _prefabList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  spotConfigList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _level: 0
+  _prefabList: []
+  spotConfigList: []

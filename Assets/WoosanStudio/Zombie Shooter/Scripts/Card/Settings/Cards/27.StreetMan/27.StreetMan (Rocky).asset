@@ -20,12 +20,16 @@ MonoBehaviour:
     Durability: 100
     SortIndex: 0
     ResearchSlotIndex: -1
+    PlayTime: 0
+    HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0
       totalSeconds: 0
       bUpgrading: 0
     IsUpgrading: 0
+    ShownUpgradeComplate: 1
   useAble: 0
   level: 0
   durability: 100
@@ -49,6 +53,5 @@ MonoBehaviour:
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Rocky
   Properties:
-  - {fileID: 11400000, guid: 35340ad18357e4746822e74ad2736cfd, type: 2}
-  - {fileID: 11400000, guid: 26979460e172c4e3592c5e92d64eda99, type: 2}
   - {fileID: 11400000, guid: f0f212212031647abbcd2078105b3393, type: 2}
+  - {fileID: 11400000, guid: 26979460e172c4e3592c5e92d64eda99, type: 2}

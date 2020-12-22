@@ -20,12 +20,16 @@ MonoBehaviour:
     Durability: 100
     SortIndex: 0
     ResearchSlotIndex: -1
+    PlayTime: 0
+    HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0
       totalSeconds: 0
       bUpgrading: 0
     IsUpgrading: 0
+    ShownUpgradeComplate: 1
   useAble: 0
   level: 0
   durability: 100
@@ -49,6 +53,5 @@ MonoBehaviour:
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Brad
   Properties:
-  - {fileID: 11400000, guid: ccd48e96f62474a4597c2cb2aed0c1cd, type: 2}
   - {fileID: 11400000, guid: af129b0e019c74e14a39edb76e99a572, type: 2}
   - {fileID: 11400000, guid: c645dc927b55b419db90190c5c84d53f, type: 2}

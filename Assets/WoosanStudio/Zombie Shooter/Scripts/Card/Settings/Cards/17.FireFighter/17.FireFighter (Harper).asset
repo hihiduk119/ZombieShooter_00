@@ -15,20 +15,22 @@ MonoBehaviour:
   isActivate: 0
   gemPrice: 300
   cardData:
-    UseAble: 0
+    UseAble: 1
     Level: 0
     Durability: 100
     SortIndex: 0
     ResearchSlotIndex: -1
     PlayTime: 0
     HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0
       totalSeconds: 0
       bUpgrading: 0
     IsUpgrading: 0
-  useAble: 0
+    ShownUpgradeComplate: 1
+  useAble: 1
   level: 0
   durability: 100
   upgradeTimeset:
@@ -51,6 +53,5 @@ MonoBehaviour:
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Harper
   Properties:
-  - {fileID: 11400000, guid: aeb5d5b622d5d4a228b89d2a268013f4, type: 2}
   - {fileID: 11400000, guid: 52c90435090d04ac18f7ed0ee81a7db5, type: 2}
   - {fileID: 11400000, guid: 8aad304d82b384ca9836c763b7717fc3, type: 2}

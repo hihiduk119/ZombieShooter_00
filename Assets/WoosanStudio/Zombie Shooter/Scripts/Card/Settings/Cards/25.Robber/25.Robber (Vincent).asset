@@ -20,12 +20,16 @@ MonoBehaviour:
     Durability: 100
     SortIndex: 0
     ResearchSlotIndex: -1
+    PlayTime: 0
+    HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0
       totalSeconds: 0
       bUpgrading: 0
     IsUpgrading: 0
+    ShownUpgradeComplate: 1
   useAble: 0
   level: 0
   durability: 100
@@ -49,6 +53,5 @@ MonoBehaviour:
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Vincent
   Properties:
-  - {fileID: 11400000, guid: e4d859441ca844693a27f532f98499d3, type: 2}
   - {fileID: 11400000, guid: 97651b63739a94521b65599db9a0b1e7, type: 2}
   - {fileID: 11400000, guid: be4718b1318d14e049c8413f7942f277, type: 2}

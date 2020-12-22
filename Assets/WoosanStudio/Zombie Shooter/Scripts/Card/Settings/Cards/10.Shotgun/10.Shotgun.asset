@@ -22,12 +22,14 @@ MonoBehaviour:
     ResearchSlotIndex: -1
     PlayTime: 0
     HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0
       totalSeconds: 0
       bUpgrading: 0
     IsUpgrading: 0
+    ShownUpgradeComplate: 1
   useAble: 0
   level: 0
   durability: 100
@@ -51,5 +53,4 @@ MonoBehaviour:
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Shotgun
   Properties:
-  - {fileID: 11400000, guid: 2c181fef1e8994298aea39ed77496408, type: 2}
   - {fileID: 11400000, guid: 4bbc1a932cc6b44ada4dff4dd7c0d978, type: 2}

@@ -22,12 +22,14 @@ MonoBehaviour:
     ResearchSlotIndex: -1
     PlayTime: 0
     HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0
       totalSeconds: 0
       bUpgrading: 0
     IsUpgrading: 0
+    ShownUpgradeComplate: 1
   useAble: 0
   level: 0
   durability: 100
@@ -51,6 +53,5 @@ MonoBehaviour:
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Godfrey
   Properties:
-  - {fileID: 11400000, guid: 358e0fa08dc52430dbc9efe6c7592631, type: 2}
   - {fileID: 11400000, guid: f66cc5763284d4e41a95d7a2e35c2c06, type: 2}
   - {fileID: 11400000, guid: 0f9c37087c2324e2db0fa65d1dca852b, type: 2}

@@ -20,12 +20,16 @@ MonoBehaviour:
     Durability: 100
     SortIndex: 0
     ResearchSlotIndex: -1
+    PlayTime: 0
+    HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0
       totalSeconds: 0
       bUpgrading: 0
     IsUpgrading: 0
+    ShownUpgradeComplate: 1
   useAble: 0
   level: 0
   durability: 100
@@ -49,6 +53,5 @@ MonoBehaviour:
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Teddy
   Properties:
-  - {fileID: 11400000, guid: 8134fe50212e1490d89ba5736886d2e1, type: 2}
   - {fileID: 11400000, guid: 45f2eca6794fb4cc8b3c648f003a696f, type: 2}
   - {fileID: 11400000, guid: 3357bf3a6a46e4786892b7151af6e21e, type: 2}

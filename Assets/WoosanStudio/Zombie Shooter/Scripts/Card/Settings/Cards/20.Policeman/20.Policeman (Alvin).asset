@@ -20,12 +20,16 @@ MonoBehaviour:
     Durability: 100
     SortIndex: 0
     ResearchSlotIndex: -1
+    PlayTime: 0
+    HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0
       totalSeconds: 0
       bUpgrading: 0
     IsUpgrading: 0
+    ShownUpgradeComplate: 1
   useAble: 0
   level: 0
   durability: 100
@@ -49,7 +53,6 @@ MonoBehaviour:
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Alvin
   Properties:
-  - {fileID: 11400000, guid: 25963df39aacd4600a4334ec911bdec2, type: 2}
   - {fileID: 11400000, guid: effd652e657664a1b9776dd9f694614f, type: 2}
   - {fileID: 11400000, guid: c4e6a523115a64516846f8801602abac, type: 2}
   - {fileID: 11400000, guid: 4c1950f7c616048e592304f7c8b1cbf8, type: 2}

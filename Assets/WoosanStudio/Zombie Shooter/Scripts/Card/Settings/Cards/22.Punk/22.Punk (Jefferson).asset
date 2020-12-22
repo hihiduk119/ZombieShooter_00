@@ -20,12 +20,16 @@ MonoBehaviour:
     Durability: 100
     SortIndex: 0
     ResearchSlotIndex: -1
+    PlayTime: 0
+    HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0
       totalSeconds: 0
       bUpgrading: 0
     IsUpgrading: 0
+    ShownUpgradeComplate: 1
   useAble: 0
   level: 0
   durability: 100
@@ -49,6 +53,5 @@ MonoBehaviour:
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Jefferson
   Properties:
-  - {fileID: 11400000, guid: d02f6fe54dd204636a0436b5e1875933, type: 2}
   - {fileID: 11400000, guid: c5c27c09354934ed9ac798cc70ce3e4a, type: 2}
   - {fileID: 11400000, guid: 9830d3596e697481e8b4f9cc14d6b2e8, type: 2}

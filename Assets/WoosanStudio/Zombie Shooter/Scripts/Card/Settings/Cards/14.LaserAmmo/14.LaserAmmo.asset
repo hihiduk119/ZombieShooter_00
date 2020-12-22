@@ -22,12 +22,14 @@ MonoBehaviour:
     ResearchSlotIndex: -1
     PlayTime: 0
     HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0
       totalSeconds: 0
       bUpgrading: 0
     IsUpgrading: 0
+    ShownUpgradeComplate: 1
   useAble: 0
   level: 0
   durability: 100
@@ -51,5 +53,4 @@ MonoBehaviour:
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Laser Ammo
   Properties:
-  - {fileID: 11400000, guid: 12d8c3dde65c04d139fbb99101ef72e0, type: 2}
   - {fileID: 11400000, guid: 39d606cdda1134d75b3442b3851eceb0, type: 2}

@@ -122,6 +122,7 @@ namespace WoosanStudio.ZombieShooter
             {
                 //젬 부족 메시지 출력 셋업
                 NotifyPopupOpener.popupPrefab.GetComponent<UINotifyPopupPresenter>().Type = UINotifyPopupModel.Type.NotEnoughGem;
+
                 //해당 팝업 오픈
                 NotifyPopupOpener.OpenPopup();
             }

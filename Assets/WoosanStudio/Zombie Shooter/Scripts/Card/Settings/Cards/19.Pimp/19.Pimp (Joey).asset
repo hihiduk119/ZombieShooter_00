@@ -22,12 +22,14 @@ MonoBehaviour:
     ResearchSlotIndex: -1
     PlayTime: 0
     HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0
       totalSeconds: 0
       bUpgrading: 0
     IsUpgrading: 0
+    ShownUpgradeComplate: 1
   useAble: 0
   level: 0
   durability: 100
@@ -51,6 +53,5 @@ MonoBehaviour:
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Joey
   Properties:
-  - {fileID: 11400000, guid: 7877d2295a3bf41228b4e538bc5c4f4a, type: 2}
   - {fileID: 11400000, guid: b1c56e6ff9ed647888877f27394774ea, type: 2}
   - {fileID: 11400000, guid: 6f58d2b5421304efa97f0e9f76fd0b6c, type: 2}

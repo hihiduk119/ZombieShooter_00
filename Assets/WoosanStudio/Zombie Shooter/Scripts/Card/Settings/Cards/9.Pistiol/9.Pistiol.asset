@@ -22,12 +22,14 @@ MonoBehaviour:
     ResearchSlotIndex: -1
     PlayTime: 0
     HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
       endDateTime: 0
       startDateTime: 0
       totalSeconds: 0
       bUpgrading: 0
     IsUpgrading: 0
+    ShownUpgradeComplate: 1
   useAble: 1
   level: 0
   durability: 100
@@ -51,5 +53,4 @@ MonoBehaviour:
   iconColor: {r: 1, g: 1, b: 1, a: 1}
   title: Pistol
   Properties:
-  - {fileID: 11400000, guid: f1dd167ab3bff400baed9728f6a7ed67, type: 2}
   - {fileID: 11400000, guid: c5d907430739e485b91c82682573c2bb, type: 2}

@@ -2,18 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
+
 namespace WoosanStudio.ZombieShooter.Map
 {
     /// <summary>
     /// 스테이지 구성을 위한 세팅
     /// </summary>
-    [CreateAssetMenu(menuName = "ZombieShooter/Stage/Make", fileName = "StageData")]
+    [CreateAssetMenu(menuName = "ZombieShooter/Map/Make", fileName = "[Map ]")]
     public class Setting : ScriptableObject
     {
         [Header("[맵 이름]")]
         [SerializeField]
         private new string name = "";
         public string Name { get => name; }
+
+        [Header("[맵 아이콘]")]
+        [SerializeField]
+        private Sprite icon;
+        public Sprite Icon { get => icon; }
 
         [Header("[스테이지 이름->호출되는 씬 이름과 같아야 함]")]
         [SerializeField]
@@ -28,19 +35,26 @@ namespace WoosanStudio.ZombieShooter.Map
         [System.Serializable]
         public class Stage
         {
-            [Header("[스코어에 의해 계산된 별 계산]")]
+            [Header("[별 갯수 [-1:스테이지 미완료]]")]
             [SerializeField]
-            int StarCount = -1;
+            public int StarCount = -1;
 
-            [Header("[클리어 시간으로 별점 계산]")]
+            [Header("[저장된 스코어]")]
             //*완료시마다 갱신
-            [SerializeField]
-            int Score = -1;
+            [SerializeField]//스코어는 스테이지 공략 시간으로 계산예정
+            public int Score = -1;
 
             [Header("[클리어 시간별 등급값]")]
             //*칼큘레이터가 등급값 넣어줘야함
             [SerializeField]
-            int[] ScoreValue = { -1, -1, -1 };
+            public int[] StarRankValue = { -1, -1 }; //{[별 2개 커트], [별 3개 커트]}, 별 1개는 완료만 하면 받음,
+
+            //public Stage()
+            //{
+            //    StarCount = -1;
+            //    Score = -1;
+            //    StarRankValue = new int[] { -1, -1 };
+            //}
         }
 
         [System.Serializable]
@@ -48,7 +62,37 @@ namespace WoosanStudio.ZombieShooter.Map
         {
             [Header("[스테이지 데이터들]")]
             [SerializeField]
+            //*변경시 세이브 반드시 필요.
             public List<Stage> StageDatas = new List<Stage>();
+
+            public int StageCount = 100;
+
+            /// <summary>
+            /// 세이브 확인용
+            /// </summary>
+            //public void Print()
+            //{
+            //    int cnt = 0;
+            //    StageDatas.ForEach(value => {
+            //        Debug.Log("[" + cnt + "] star [" + value.StarCount + "] score [" + value.Score + "] star2 [" + value.StarRankValue[0] + "] star3 [" + value.StarRankValue[0] + "]");
+            //    });
+            //}
+
+            public Data()
+            {
+                Initialize();
+            }
+
+            /// <summary>
+            /// 최초 생성시 스테이지 갯수만큼 생성
+            /// </summary>
+            void Initialize()
+            {
+                for (int i = 0; i < StageCount; i++)
+                {
+                    StageDatas.Add(new Stage());
+                }
+            }
         }
 
         [Header("[데이터 확인용으로 열어놓지만 나중에 막아야함]")]
@@ -78,7 +122,7 @@ namespace WoosanStudio.ZombieShooter.Map
         /// <summary>
         /// Json데이터 저장
         /// </summary>
-        void Save()
+        public void Save()
         {
             string strJson = JsonUtility.ToJson(this.data);
             PlayerPrefs.SetString("Map_" + Name, strJson);
@@ -89,20 +133,38 @@ namespace WoosanStudio.ZombieShooter.Map
         /// </summary>
         public void Load()
         {
-            if (!PlayerPrefs.HasKey("Map_" + Name)) { Save(); }
+            if (!PlayerPrefs.HasKey("Map_" + Name))
+            {
+                //아무것도 없으면 최초 초기화 실행
+                Initialize();
+                Save();
+            }
 
             this.data = JsonUtility.FromJson<Data>(PlayerPrefs.GetString("Map_" + Name));
             //로드한 데이터와 현재 데이터 싱크 마추기
-            Synchronization();
+            //Synchronization();
+        }
+
+        void Initialize()
+        {
+            data = new Data();
+        }
+
+        /// <summary>
+        /// 해당 맵 데이터 리셋
+        /// </summary>
+        public void Reset()
+        {
+            PlayerPrefs.DeleteKey("Map_" + Name);
+            Initialize();
         }
 
         /// <summary>
         /// 데이터 싱크 마추기
         /// </summary>
-        public void Synchronization()
-        {
-            //이떼 불필요한 Save발생을 피하기 위해 로컬 데이터 사용
-            //this.st = cardData.UseAble;
-        }
+        //public void Synchronization()
+        //{
+            
+        //}
     }
 }

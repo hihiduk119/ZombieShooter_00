@@ -12,19 +12,15 @@ EditorBuildSettings:
     path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/1.ZombieShooter-Robby.unity
     guid: 5254705d9c84c4dcbb2f6919a5cb54a6
   - enabled: 1
-    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/Chapter/Test Scene/Test-Scene.unity
-    guid: 977fb64d45bfd41398978fe96a359c6e
-  - enabled: 1
-    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/Chapter/Town-A hours after
-      the incident.unity
+    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/Chapter/Town.unity
     guid: d1feb4e21a24e4e3a908c42bb9d986f0
-  - enabled: 0
-    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Audio/MasterAudioTest 0.unity
-    guid: 046f873cf0f334aa4b657aa761235263
-  - enabled: 0
-    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Audio/MasterAudioTest 1.unity
-    guid: 4d0aa4d742a6c4a0ba2020c548a596fb
-  - enabled: 0
-    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Audio/MasterAudioTest 2.unity
-    guid: 4b7a5a9e011b74fedada333f6a6636e2
+  - enabled: 1
+    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/Chapter/Farm.unity
+    guid: 1227bea7ec64947769d65ad7ed708db0
+  - enabled: 1
+    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/Chapter/Port.unity
+    guid: b894543867fda4ee8a2634f8bf582b93
+  - enabled: 1
+    path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/Chapter/Military Base.unity
+    guid: b396cec37ccf64a428900346541e4e1e
   m_configObjects: {}

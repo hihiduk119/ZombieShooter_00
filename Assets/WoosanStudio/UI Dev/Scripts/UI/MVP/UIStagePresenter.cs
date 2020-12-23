@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIStagePresenter : MonoBehaviour
+namespace WoosanStudio.ZombieShooter
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// 모든 맵 데이터
+    /// 모든 맵 데이터와 동기화도 진행
+    /// *일단 대기
+    /// *MVP 모델
+    /// </summary>
+    public class UIStagePresenter : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [Header("[MVP Model]")]
+        public UIStageModel Model;
     }
 }

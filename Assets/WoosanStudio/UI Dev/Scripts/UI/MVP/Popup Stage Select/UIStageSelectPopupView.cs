@@ -20,7 +20,7 @@ namespace WoosanStudio.ZombieShooter
         public Transform ContentRoot;
         [Header("[맵 갯수]")]
         public Text TextAmount;
-        [Header("[현재 선택된 맵 인덱스]")]
+        [Header("[현재 선택된 맵 인덱스 => 글로벌 데이터에서 가져와야함]")]
         public int CurrentIndex = 0;
         [Header("[별점 루트]")]
         public Transform StarRoot;
@@ -44,8 +44,10 @@ namespace WoosanStudio.ZombieShooter
 
         IEnumerator Start()
         {
-            //0으로 초기화
-            MoveScroll(0);
+            //저장된 마지막 맵으로 초기화
+            int mapIndex = GlobalDataController.Instance.SelectedMap;
+
+            MoveScroll(mapIndex);
 
             yield return new WaitForSeconds(0.05f);
 

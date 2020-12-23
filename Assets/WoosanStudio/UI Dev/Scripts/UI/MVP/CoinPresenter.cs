@@ -93,21 +93,21 @@ namespace WoosanStudio.ZombieShooter
              return Model.data.Coin;
         }
 
-        #region [-TestCode]
-        void Update()
-        {
-            //경험치 추가
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                AddCoin(100000);
-            }
+        //#region [-TestCode]
+        //void Update()
+        //{
+        //    //경험치 추가
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        AddCoin(100000);
+        //    }
 
-            //경험치 추가
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                SubtractCoin(500);
-            }
-        }
-        #endregion
+        //    //경험치 추가
+        //    if (Input.GetKeyDown(KeyCode.S))
+        //    {
+        //        SubtractCoin(500);
+        //    }
+        //}
+        //#endregion
     }
 }

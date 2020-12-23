@@ -104,9 +104,10 @@ namespace WoosanStudio.ZombieShooter
         }
 
         
-        #region [-TestCode]
-        void Update()
-        {
+        
+        //#region [-TestCode]
+        //void Update()
+        //{
             //if (Input.GetKeyDown(KeyCode.A))
             //{
             //    Load();
@@ -115,13 +116,13 @@ namespace WoosanStudio.ZombieShooter
             //{
             //    Save();
             //}
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                //모든 데이터 초기화
-                Reset();
-            }
-        }
-        #endregion
+            //if (Input.GetKeyDown(KeyCode.D))
+            //{
+            //    //모든 데이터 초기화
+            //    Reset();
+            //}
+        //}
+        //#endregion
         
     }
 }

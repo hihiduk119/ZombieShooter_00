@@ -10,6 +10,12 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class UIStageSelectPopupPresenter : MonoBehaviour
     {
+        [Header("[MVP View]")]
+        public UIStageSelectPopupView View;
+
+        [Header("[MVP Model]")]
+        public UIStageModel Model;
+
 
     }
 }

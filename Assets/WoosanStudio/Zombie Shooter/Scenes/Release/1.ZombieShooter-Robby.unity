@@ -35194,6 +35194,8 @@ MonoBehaviour:
     SelectedAmmo: 13
     SelectedCharacter: 16
     UseUpgradeAbleSlotCount: 1
+    SelectedMap: 0
+    SelectedStage: 0
 --- !u!4 &1880474793
 Transform:
   m_ObjectHideFlags: 0
@@ -43747,7 +43749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe329cf26bfc433b8374ebbf9aed181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: Town-A hours after the incident
+  scene: Town
   duration: 0.3
   color: {r: 0.8000001, g: 0.85098046, b: 0.8705883, a: 1}
 --- !u!114 &3104315454811956607
@@ -44120,6 +44122,29 @@ PrefabInstance:
       propertyPath: AddEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 756914649739042670, guid: 7382f3ec52cfc4737828f3b8e3361510,
+        type: 3}
+      propertyPath: mapSettings.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 756914649739042670, guid: 7382f3ec52cfc4737828f3b8e3361510,
+        type: 3}
+      propertyPath: mapSettings.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b680519f208ad4f649c44a30293e6224,
+        type: 2}
+    - target: {fileID: 756914649739042670, guid: 7382f3ec52cfc4737828f3b8e3361510,
+        type: 3}
+      propertyPath: mapSettings.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: b680519f208ad4f649c44a30293e6224,
+        type: 2}
+    - target: {fileID: 756914649739042670, guid: 7382f3ec52cfc4737828f3b8e3361510,
+        type: 3}
+      propertyPath: mapSettings.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: b680519f208ad4f649c44a30293e6224,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7382f3ec52cfc4737828f3b8e3361510, type: 3}
 --- !u!224 &4355641465129361166

@@ -8422,6 +8422,8 @@ GameObject:
   - component: {fileID: 8932089796231413371}
   - component: {fileID: 5990762198096620363}
   - component: {fileID: 2195732393560436578}
+  - component: {fileID: 756914649739042670}
+  - component: {fileID: 8640137720112170638}
   m_Layer: 5
   m_Name: StageSelect-Popup
   m_TagString: Untagged
@@ -8477,6 +8479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e80a3b25edc47ddb2f6aa252b8815c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  View: {fileID: 0}
+  Model: {fileID: 0}
 --- !u!114 &2195732393560436578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8501,6 +8505,36 @@ MonoBehaviour:
   - {fileID: 6841749389310621662}
   gainColor: {r: 1, g: 0.7921569, b: 0, a: 1}
   noneColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+--- !u!114 &756914649739042670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8712769316666425899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6399cf94edea347d8a3b4b04a74b77c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapSettings:
+  - {fileID: 11400000, guid: b680519f208ad4f649c44a30293e6224, type: 2}
+  - {fileID: 11400000, guid: edac855ffe6634df1a4f1d28edb9bda6, type: 2}
+  - {fileID: 11400000, guid: 7bdceb9326d274d3699da806f790ee98, type: 2}
+  - {fileID: 11400000, guid: 32e40f36067b34634bf622ac521c6aa4, type: 2}
+--- !u!114 &8640137720112170638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8712769316666425899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2469eeceadcb6477e95133512c686673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 756914649739042670}
 --- !u!1 &8712769317474032915
 GameObject:
   m_ObjectHideFlags: 0

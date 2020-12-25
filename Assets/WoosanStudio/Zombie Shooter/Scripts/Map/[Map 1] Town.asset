@@ -35,304 +35,304 @@ MonoBehaviour:
     - {fileID: 11400000, guid: bbd9c2901651e4b838a9c8f3285f4942, type: 2}
   data:
     StageDatas:
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    - StarCount: -1
-      Score: -1
-      StarRankValue: ffffffffffffffff
-    StageCount: 100
+    - StarCount: 2
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    - StarCount: 0
+      Score: 0
+      StarRankValue: 
+    StageCount: 0

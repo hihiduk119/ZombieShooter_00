@@ -167,6 +167,22 @@ namespace WoosanStudio.ZombieShooter
             return 10;
         }
 
+
+        /// <summary>
+        /// 스테이지 결과 랭크 등급 기준표
+        /// *4가지 변수로 별3,별2 클리어 시간 표시
+        /// </summary>
+        /// <param name="cardLevelAverage">예상되는 모든 카드 평균 레벨</param>
+        /// <param name="monsterCount">등장 몬스터 수</param>
+        /// <param name="roundCount">라운드 수</param>
+        /// <param name="bossCount">등장 보스 수</param>
+        /// <returns></returns>
+        static public int[] GetAllRankTable(int cardLevelAverage,int monsterCount,int roundCount,int bossCount)
+        {
+
+            return new int[]{ 0, 0 };
+        }
+
         /// <summary>
         /// 겜블시 젬 비용
         /// </summary>

@@ -10,6 +10,11 @@ namespace WoosanStudio.ZombieShooter
     {
         Timeset timeset;
 
+        //끝나는 시간
+        public long endDateTime;
+        //시작했던 시간
+        public long startDateTime;
+
         private void Start()
         {
             //LoadTime();
@@ -27,41 +32,36 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="seconds"></param>
         void SaveTime(int seconds)
         {
-            timeset = new Timeset(seconds);
-            PlayerPrefs.SetString("TestTime", JsonUtility.ToJson(this.timeset));
+            //미래시간
+            TimeSpan nextSpan = DateTime.Now.AddSeconds(seconds).TimeOfDay;
+            //현재 시간
+            TimeSpan nowSpan = DateTime.Now.TimeOfDay;
+
+            //현재에서 미래뺌
+            nowSpan = nowSpan.Subtract(nextSpan);
+
+            //변경 시간 나옴 -> Score로 사용
+            Debug.Log("total = " + nowSpan.TotalSeconds);
+
+            //현재시간 과 지난 시간 계산 -> 초(s) 계산
+            //해당 시간이 스코아
+
+            //DateTime.FromBinary(endDateTime).Se;
         }
 
-        /// <summary>
-        /// 시간을 로드하며 로드 이후 GetRemainTime()호출하여 남은 시간 알아올수 있음.
-        /// </summary>
-        void LoadTime()
-        {
-            //데이터 없으면 저장
-            if (!PlayerPrefs.HasKey("TestTime"))
-            {
-                SaveTime(15);
-                Debug.Log("데이터가 없어요");
-            }
-            timeset = JsonUtility.FromJson<Timeset>(PlayerPrefs.GetString("TestTime"));
-        }
+        //#region [-TestCode]
+        //void Update()
+        //{
+        //    //업그레이드 연구 시간 저장 테스트
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        SaveTime(180);
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.S))
+        //    {
 
-        /*#region [-TestCode]
-        void Update()
-        {
-            //업그레이드 연구 시간 저장 테스트
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                Timeset timeset = new Timeset(30);
-
-                timeset.GetRemainTimeToString();
-            }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-
-            }
-        }
-        #endregion
-        */
-
+        //    }
+        //}
+        //#endregion
     }
 }

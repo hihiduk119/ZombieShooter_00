@@ -43,7 +43,7 @@ namespace WoosanStudio.ZombieShooter
         private void Awake()
         {
             //맵 갯수 만큼 아이콘 세팅
-            MapContent.SetMap(Model.mapSettings.Count);
+            //MapContent.SetMap(Model.mapSettings.Count);
         }
     }
 }

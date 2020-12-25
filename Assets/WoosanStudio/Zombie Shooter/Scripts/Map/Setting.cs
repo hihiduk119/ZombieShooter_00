@@ -12,6 +12,16 @@ namespace WoosanStudio.ZombieShooter.Map
     [CreateAssetMenu(menuName = "ZombieShooter/Map/Make", fileName = "[Map ]")]
     public class Setting : ScriptableObject
     {
+        [Header("[맵 사용 유무]")]
+        [SerializeField]
+        private bool canUse = false;
+        public bool CanUse { get => canUse; }
+
+        [Header("[맵 초기화 유뮤-> Stage할당을 위해 사용]")]
+        [SerializeField]
+        private bool hasInitialized = false;
+        public bool HasInitialized { get => hasInitialized; }
+
         [Header("[맵 이름]")]
         [SerializeField]
         private new string name = "";
@@ -35,37 +45,37 @@ namespace WoosanStudio.ZombieShooter.Map
         [System.Serializable]
         public class Stage
         {
-            [Header("[별 갯수 [-1:스테이지 미완료]]")]
+            [Header("[별 갯수 [0:스테이지 미완료]]")]
             [SerializeField]
-            public int StarCount = -1;
+            public int RankCount = 0;//[0:스테이지 미완료][1,2,3:스테이지 완료 랭크]
 
             [Header("[저장된 스코어]")]
             //*완료시마다 갱신
-            [SerializeField]//스코어는 스테이지 공략 시간으로 계산예정
-            public int Score = -1;
+            [SerializeField]//스코어는 스테이지 공략 완료 시간.
+            public int RankScore = 0;
 
             [Header("[클리어 시간별 등급값]")]
             //*칼큘레이터가 등급값 넣어줘야함
             [SerializeField]
-            public int[] StarRankValue = { -1, -1 }; //{[별 2개 커트], [별 3개 커트]}, 별 1개는 완료만 하면 받음,
+            public int[] AllRankTable = { 0, 0 }; //{[별 2개 커트], [별 3개 커트]}, 별 1개는 완료만 하면 받음,
 
-            //public Stage()
-            //{
-            //    StarCount = -1;
-            //    Score = -1;
-            //    StarRankValue = new int[] { -1, -1 };
-            //}
+            public Stage(int[] allRankTable)
+            {
+                AllRankTable = allRankTable;
+            }
         }
 
         [System.Serializable]
         public class Data
         {
+            [Header("[플레이할 스테이지]")]
+            [SerializeField]
+            public int StageCount = 0;
+
             [Header("[스테이지 데이터들]")]
             [SerializeField]
             //*변경시 세이브 반드시 필요.
             public List<Stage> StageDatas = new List<Stage>();
-
-            public int StageCount = 100;
 
             /// <summary>
             /// 세이브 확인용
@@ -78,19 +88,29 @@ namespace WoosanStudio.ZombieShooter.Map
             //    });
             //}
 
-            public Data()
+            //public Data()
+            //{
+            //    Initialize();
+            //}
+
+            /// <summary>
+            /// 모든 아이템 0으로 만들기
+            /// </summary>
+            public void Reset()
             {
-                Initialize();
+                StageDatas = new List<Stage>();
+                StageCount = 0;
             }
 
             /// <summary>
             /// 최초 생성시 스테이지 갯수만큼 생성
             /// </summary>
-            void Initialize()
+            public void Initialize()
             {
                 for (int i = 0; i < StageCount; i++)
                 {
-                    StageDatas.Add(new Stage());
+                    
+                    //StageDatas.Add(new Stage());
                 }
             }
         }
@@ -136,7 +156,7 @@ namespace WoosanStudio.ZombieShooter.Map
             if (!PlayerPrefs.HasKey("Map_" + Name))
             {
                 //아무것도 없으면 최초 초기화 실행
-                Initialize();
+                //Initialize();
                 Save();
             }
 
@@ -145,9 +165,21 @@ namespace WoosanStudio.ZombieShooter.Map
             //Synchronization();
         }
 
+        
+        /// <summary>
+        /// 
+        /// </summary>
         void Initialize()
         {
-            data = new Data();
+            //사용가능 상태 체크
+            if (!canUse) return;
+            //초기화 안됐으면 한번만 실행
+            //*초기화 됐으면 실행 안함
+            if(hasInitialized) { return; }
+            hasInitialized = true;
+
+            //스테이지 100개 만들기
+            this.data.Initialize();
         }
 
         /// <summary>
@@ -159,12 +191,6 @@ namespace WoosanStudio.ZombieShooter.Map
             Initialize();
         }
 
-        /// <summary>
-        /// 데이터 싱크 마추기
-        /// </summary>
-        //public void Synchronization()
-        //{
-            
-        //}
+        
     }
 }

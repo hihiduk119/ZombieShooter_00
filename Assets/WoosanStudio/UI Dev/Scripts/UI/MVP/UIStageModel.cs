@@ -31,7 +31,9 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void TestSave()
         {
-            mapSettings[0].data.StageDatas[0].StarCount = 2;
+            //mapSettings.ForEach(value => value.data.StageDatas[0].StarCount = 2);
+            //mapSettings.ForEach(value => value.Save());
+            mapSettings[0].data.StageDatas[0].RankCount = 2;
             mapSettings[0].Save();
         }
 
@@ -40,27 +42,28 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void TestRemove()
         {
-            mapSettings[0].Reset();
+            mapSettings.ForEach(value => value.Reset());
+            //mapSettings[0].Reset();
         }
 
 
-        //#region [-TestCode]
-        //void Update()
-        //{
-        //    if (Input.GetKeyDown(KeyCode.A))
-        //    {
-        //        Load();
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.S))
-        //    {
-        //        TestSave();
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.D))
-        //    {
-        //        //모든 데이터 초기화
-        //        TestRemove();
-        //    }
-        //}
-        //#endregion
+        #region [-TestCode]
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                Load();
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                TestSave();
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                //모든 데이터 초기화
+                TestRemove();
+            }
+        }
+        #endregion
     }
 }

@@ -21,18 +21,25 @@ namespace WoosanStudio.ZombieShooter.UI
         //캐쉬
         private RectTransform rectTransform;
 
-        private void Awake()
+        /// <summary>
+        /// 갯수만큼 맵 세팅
+        /// </summary>
+        /// <param name="count"></param>
+        public void SetMap(int count)
         {
+            Count = count;
+
             rectTransform = this.GetComponent<RectTransform>();
 
             //하위 자식 가져오기
             for (int i = 0; i < transform.childCount; i++)
             {
                 //사용할 아이템 갯수 만큼만 활성화
-                if(i < Count)
+                if (i < Count)
                 {
                     transform.GetChild(i).gameObject.SetActive(true);
-                } else
+                }
+                else
                 {
                     transform.GetChild(i).gameObject.SetActive(false);
                 }

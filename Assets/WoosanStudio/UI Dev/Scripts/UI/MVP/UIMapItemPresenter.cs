@@ -18,5 +18,13 @@ namespace WoosanStudio.ZombieShooter
             //나의 트랜스폼에서 찾는다
             View = this.GetComponent<UIMapItemView>();
         }
+
+        /// <summary>
+        /// 맵 뷰 업데이트
+        /// </summary>
+        public void UpdateInfo(Sprite sprite, string name, UIMapItemView.State state)
+        {
+            View.UpdateInfo(sprite, name, state);
+        }
     }
 }

@@ -84,6 +84,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9eeec20a9f65486cbd33cf5ccbf54ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Image: {fileID: 346687783432811285}
+  Title: {fileID: 291887271621181140}
+  Lock: {fileID: 8285425563591646395}
 --- !u!114 &4121996621732722520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0100c48acc126474c974a1dbd0bf2a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  View: {fileID: 0}
+  View: {fileID: 6382367971372804947}
 --- !u!1 &385375895915987783
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +260,7 @@ GameObject:
   - component: {fileID: 4668806306112250284}
   - component: {fileID: 6486454782419266007}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

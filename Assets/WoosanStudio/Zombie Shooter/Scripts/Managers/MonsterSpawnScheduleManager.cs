@@ -13,7 +13,7 @@ namespace WoosanStudio.ZombieShooter
     public class MonsterSpawnScheduleManager : MonoBehaviour
     {
         [Header("[스테이지별 몬스터의 해당 스캐줄 리스트]")]
-        public List<MonsterScheduleSetting> MonsterScheduleList = new List<MonsterScheduleSetting>();
+        public List<Map.Stage.Setting> MonsterScheduleList = new List<Map.Stage.Setting>();
 
         [Header("[현재 스폰된 몬스터 수]")]
         public int CurrentSpawnedMonster = 0;
@@ -36,7 +36,7 @@ namespace WoosanStudio.ZombieShooter
         public UnityEvent EndSpawnByAllRoundEvent = new UnityEvent();
 
         //캐쉬용
-        private MonsterScheduleSetting monsterSchedule;
+        private Map.Stage.Setting monsterSchedule;
         private Coroutine autoSpawnCallCoroutine;
         private WaitForSeconds WFS;
         private bool bSpawnedNamedMonster = false;
@@ -111,7 +111,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="maxSameTimeSpawn">최대 동시 스폰 갯수</param>
         /// <param name="waitForSeconds">스폰과 스폰사이 interval</param>
         /// <returns></returns>
-        IEnumerator AutoSpawnCallCoroutine(int stage,int round, MonsterScheduleSetting monsterSchedule, WaitForSeconds waitForSeconds)
+        IEnumerator AutoSpawnCallCoroutine(int stage,int round, Map.Stage.Setting monsterSchedule, WaitForSeconds waitForSeconds)
         {
             //현재 스폰 몬스터 0으로 초기화
             CurrentSpawnedMonster = 0;
@@ -132,7 +132,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="round">해당 라운드</param>
         /// <param name="monsterSchedule"></param>
         /// <param name="isFirst"></param>
-        void Spawn(int stage, int round, MonsterScheduleSetting monsterSchedule,bool isFirst = false)
+        void Spawn(int stage, int round, Map.Stage.Setting monsterSchedule,bool isFirst = false)
         {
             
             //맵에 최대 몬스터 생성 제한게 걸렸는으면 생성 중지
@@ -171,7 +171,8 @@ namespace WoosanStudio.ZombieShooter
                 if (monsterSchedule.SpawnRoundIndexByNamedMonster.Exists(value => value.Equals(round)))
                 {
                     //보스 몬스터 생성 요청
-                    MonsterRequester.RequesterBySetting(stage,monsterSchedule.NamedMonster);
+                    //*0번째 생성
+                    MonsterRequester.RequesterBySetting(stage,monsterSchedule.NamedMonsters[0]);
                     Debug.Log("============= 보스 생성 OK =============");
                 }
             }

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e2a4b345a7db4783afc208f805ea018, type: 3}
+  m_Name: Stage 1
+  m_EditorClassIdentifier: 
+  Monsters:
+  - {fileID: 11400000, guid: 082487ad1c0eb4266b93948689172df6, type: 2}
+  NamedMonsters: []
+  MaxSpawnByRound: 030000000500000007000000
+  SpawnRoundIndexByNamedMonster: 
+  MaxSpawnLimit: 10
+  MaxSameTimeSpawn: 1
+  SpawnInterval: 2.5
+  CardSetSettings:
+  - {fileID: 11400000, guid: 0095b7b7d2ec4437cb70935a6724f2f8, type: 2}

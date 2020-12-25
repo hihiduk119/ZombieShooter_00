@@ -97,10 +97,14 @@ namespace WoosanStudio.ZombieShooter
             MonsterRequester = GameObject.FindObjectOfType<MonsterRequester>();
             MonsterSpawnScheduleManager = GameObject.FindObjectOfType<MonsterSpawnScheduleManager>();
 
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+
             //스테이지 네임 자동 세팅 => 해당 씬 이름과 같음
             for (int i = 0; i < MonsterSpawnScheduleManager.MonsterScheduleList.Count; i++)
             {
-                StageNames.Add(MonsterSpawnScheduleManager.MonsterScheduleList[i].StageName);
+                stringBuilder.Append("Stage ").Append(i);
+                StageNames.Add(stringBuilder.ToString());
+                stringBuilder.Clear();
             }
 
             CameraMoveController = GameObject.FindObjectOfType<CameraMoveController>();

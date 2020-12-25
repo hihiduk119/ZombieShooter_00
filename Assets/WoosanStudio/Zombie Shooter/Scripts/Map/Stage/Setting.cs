@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace WoosanStudio.ZombieShooter
+namespace WoosanStudio.ZombieShooter.Map.Stage
 {
     /// <summary>
     /// 맵당 13개 존재하는 하나의 스테이지 스케줄
     /// 맵당 스테이지에서 몬스터 생성 스케줄을 설정함
     /// 
     /// </summary>
-    [CreateAssetMenu(menuName = "ZombieShooter/MonsterSchedule/Make", fileName = "MonsterSchedule")]
-    public class MonsterScheduleSetting : ScriptableObject
+    [CreateAssetMenu(menuName = "ZombieShooter/Stage/Make", fileName = "Stage 1")]
+    public class Setting : ScriptableObject
     {
         /// <summary>
         /// 기본 룰
@@ -18,14 +18,13 @@ namespace WoosanStudio.ZombieShooter
         /// 매 5라운드 마다 보스 출현
         /// </summary>
 
-        [Header("[생성 몬스터 리스트]")]
-        public string StageName = "";
-
+        //[Header("[생성 몬스터 리스트]")]
+        //public string StageName = "";
         [Header("[생성 몬스터 세팅 리스트]")]
         public List<MonsterSettings> Monsters = new List<MonsterSettings>();
 
         [Header("[생성 네임드 몬스터 세팅 (보스몹)]")]
-        public MonsterSettings NamedMonster;
+        public List<MonsterSettings> NamedMonsters = new List<MonsterSettings>();
 
         [Header("[라운드 별 최대 스폰 갯수 => 한 라운드에 최대 몇명까지 스폰 되는]")]
         public List<int> MaxSpawnByRound = new List<int>();
@@ -41,5 +40,8 @@ namespace WoosanStudio.ZombieShooter
 
         [Header("[스폰과 스폰사이의 시간]")]
         public float SpawnInterval = 2.5f;
+
+        [Header("[기본 제공 카드 세트]")]
+        public List<Card.Set.Setting> CardSetSettings;
     }
 }

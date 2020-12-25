@@ -37,13 +37,13 @@ namespace WoosanStudio.ZombieShooter.Map
         private string scene = "";
         public string Scene { get => scene; }
 
-        [Header("[해당 맵의 세팅값]")]
-        [SerializeField]
-        private List<Map> stepDatas = new List<Map>();
-        public List<Map> StepDatas { get => stepDatas; }
+        //[Header("[해당 맵의 세팅값]")]
+        //[SerializeField]
+        //private List<DefaultCard> defaultCardDatas = new List<DefaultCard>();
+        //public List<DefaultCard> DefaultCardDatas { get => defaultCardDatas; }
 
         [System.Serializable]
-        public class Stage
+        public class Rank
         {
             [Header("[별 갯수 [0:스테이지 미완료]]")]
             [SerializeField]
@@ -59,7 +59,7 @@ namespace WoosanStudio.ZombieShooter.Map
             [SerializeField]
             public int[] AllRankTable = { 0, 0 }; //{[별 2개 커트], [별 3개 커트]}, 별 1개는 완료만 하면 받음,
 
-            public Stage(int[] allRankTable)
+            public Rank(int[] allRankTable)
             {
                 AllRankTable = allRankTable;
             }
@@ -75,7 +75,7 @@ namespace WoosanStudio.ZombieShooter.Map
             [Header("[스테이지 데이터들]")]
             [SerializeField]
             //*변경시 세이브 반드시 필요.
-            public List<Stage> StageDatas = new List<Stage>();
+            public List<Rank> StageDatas = new List<Rank>();
 
             /// <summary>
             /// 세이브 확인용
@@ -98,7 +98,7 @@ namespace WoosanStudio.ZombieShooter.Map
             /// </summary>
             public void Reset()
             {
-                StageDatas = new List<Stage>();
+                StageDatas = new List<Rank>();
                 StageCount = 0;
             }
 
@@ -115,28 +115,34 @@ namespace WoosanStudio.ZombieShooter.Map
             }
         }
 
+        [Header("[스테이지 세팅들]")]
+        [SerializeField]
+        private List<Stage.Setting> stageSetting = new List<Stage.Setting>();
+        public List<Stage.Setting> StageSetting { get => stageSetting; }
+
+
         [Header("[데이터 확인용으로 열어놓지만 나중에 막아야함]")]
         public Data data = new Data();
 
         /// <summary>
         /// 스테이지 구간별 데이터
-        /// *라운드 모음
+        /// *기본 선택 할수있는 카드
         /// </summary>
-        [System.Serializable]
-        public class Map
-        {
-            [Header("[라운드 범위]")]
-            public int[] StageRange = {0,1};
+        //[System.Serializable]
+        //public class DefaultCard
+        //{
+        //    [Header("[스테이지 범위]")]
+        //    public int[] StageRange = {0,1};
 
-            [Header("[스테이지에서 기본 선택 캐릭터 카드]")]
-            public List<CardSetting> SelectAbleCharacterCard = new List<CardSetting>();
+        //    [Header("[스테이지에서 기본 선택 캐릭터 카드]")]
+        //    public List<CardSetting> SelectAbleCharacterCard = new List<CardSetting>();
 
-            [Header("[스테이지에서 기본 선택 무기 카드]")]
-            public List<CardSetting> SelectAbleWeaponCard = new List<CardSetting>();
+        //    [Header("[스테이지에서 기본 선택 무기 카드]")]
+        //    public List<CardSetting> SelectAbleWeaponCard = new List<CardSetting>();
 
-            [Header("[스테이지에서 기본 선택 탄약 카드]")]
-            public List<CardSetting> SelectAbleAmmoCard = new List<CardSetting>();
-        }
+        //    [Header("[스테이지에서 기본 선택 탄약 카드]")]
+        //    public List<CardSetting> SelectAbleAmmoCard = new List<CardSetting>();
+        //}
 
 
         /// <summary>

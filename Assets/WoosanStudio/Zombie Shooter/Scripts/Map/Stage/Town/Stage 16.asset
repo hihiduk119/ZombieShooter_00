@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e2a4b345a7db4783afc208f805ea018, type: 3}
-  m_Name: Town-A hours after the incident
+  m_Name: Stage 16
   m_EditorClassIdentifier: 
-  StageName: Town-A hours after the incident
   Monsters:
   - {fileID: 11400000, guid: 082487ad1c0eb4266b93948689172df6, type: 2}
-  - {fileID: 11400000, guid: 36a1dc6c1965d4e6f8cf7e0dddd5ee34, type: 2}
   - {fileID: 11400000, guid: ca01d1053f21340969645b423800308e, type: 2}
-  NamedMonster: {fileID: 11400000, guid: 202bf3d6f72ae43f7a1bcd61d1731cd7, type: 2}
-  MaxSpawnByRound: 0500000007000000090000000b0000000e0000001100000014000000180000001c0000002000000024000000280000002d0000003200000037000000
-  SpawnRoundIndexByNamedMonster: 00000000090000000e000000
+  NamedMonsters: []
+  MaxSpawnByRound: 1400000016000000180000001a0000001c0000001e0000001e0000001e0000001e0000001e000000
+  SpawnRoundIndexByNamedMonster: 
   MaxSpawnLimit: 10
   MaxSameTimeSpawn: 1
-  SpawnInterval: 2
+  SpawnInterval: 2.5
+  CardSetSettings:
+  - {fileID: 11400000, guid: 0095b7b7d2ec4437cb70935a6724f2f8, type: 2}

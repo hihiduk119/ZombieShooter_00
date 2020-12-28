@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38faf29e033c04f31886dc38d5a2f304, type: 3}
   m_Name: '[Map 2] Farm'
   m_EditorClassIdentifier: 
+  canUse: 0
+  hasInitialized: 0
   name: Farm
   icon: {fileID: 21300000, guid: d6fdc6ea81bd64deaade7cc38e9896a9, type: 3}
+  unlockLevel: 5
   scene: Farm
-  stepDatas: []
-  data:
-    StageDatas: []
-    StageCount: 0
+  stageSetting: []

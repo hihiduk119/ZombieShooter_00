@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.UI;
+using UnityEngine.Events;
+using DG.Tweening;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -18,18 +20,29 @@ namespace WoosanStudio.ZombieShooter
         public GridLayoutGroup GridLayoutGroup;
         [Header("[콘텐츠 갯수을 알기위해 사용]")]
         public Transform ContentRoot;
-        [Header("[맵 갯수]")]
-        public Text TextAmount;
+        //[Header("[맵 갯수]")]
+        //public Text TextAmount;
         [Header("[현재 선택된 맵 인덱스 => 글로벌 데이터에서 가져와야함]")]
         public int CurrentIndex = 0;
-        [Header("[별점 루트]")]
-        public Transform StarRoot;
-        [Header("[별점]")]
-        public List<Image> Stars = new List<Image>();
-        [Header("[별점 획득 컬러]")]
-        public Color gainColor;
-        [Header("[별점 비획득 컬러]")]
-        public Color noneColor;
+
+        [Header("[맵 이름]")]
+        public Text Name;
+
+        [Header("[선택 버튼]")]
+        public Transform[] Btns;
+
+        public class ChangeEvent : UnityEvent<int> { }
+        [Header("[클릭으로 인한 맵 변경 이벤트]")]
+        public ChangeEvent MapChangeEvent = new ChangeEvent();
+
+        //[Header("[별점 루트]")]
+        //public Transform StarRoot;
+        //[Header("[별점]")]
+        //public List<Image> Stars = new List<Image>();
+        //[Header("[별점 획득 컬러]")]
+        //public Color gainColor;
+        //[Header("[별점 비획득 컬러]")]
+        //public Color noneColor;
 
         //캐슁용
         int contentCount = 0;
@@ -42,14 +55,14 @@ namespace WoosanStudio.ZombieShooter
         //콘텐츠 사이의 간격
         Vector2 spacing;
 
-        IEnumerator Start()
+        void Start()
         {
             //저장된 마지막 맵으로 초기화
             int mapIndex = GlobalDataController.Instance.SelectedMap;
 
-            MoveScroll(mapIndex);
+            //MoveScroll(mapIndex);
 
-            yield return new WaitForSeconds(0.05f);
+            //yield return new WaitForSeconds(0.05f);
 
             //이동간격 계산
             CalculateSnapMargin();
@@ -57,14 +70,15 @@ namespace WoosanStudio.ZombieShooter
             //UpdateText();
         }
 
+        
         /// <summary>
         /// 맵 글자표시 업데이트
         /// </summary>
-        public void UpdateText(int stage,int maxStage)
+        public void UpdateInfo(string name)
         {
-            TextAmount.text = stage.ToString() + " / " + maxStage;
+            Name.text = name;
         }
-
+        
         /// <summary>
         /// 이동 간격을 계산합니다.
         ///
@@ -165,6 +179,9 @@ namespace WoosanStudio.ZombieShooter
 
             //Debug.Log("count = " + count + "    snapMargin = " + snapMargin + "     value=" + (count * snapMargin));
             MoveScroll(CurrentIndex);
+
+            //맵변경 이벤트 발생
+            MapChangeEvent.Invoke(CurrentIndex);
         }
 
         /// <summary>
@@ -177,8 +194,43 @@ namespace WoosanStudio.ZombieShooter
 
             //Debug.Log("count = " + count + "    snapMargin = " + snapMargin + "     value=" + (count * snapMargin));
             MoveScroll(CurrentIndex);
+
+            //맵변경 이벤트 발생
+            MapChangeEvent.Invoke(CurrentIndex);
         }
 
+        /// <summary>
+        /// 선택 버튼 연출 이팩트
+        /// </summary>
+        public void UpdateButton(bool value)
+        {
+            Color tempColor;
+            for (int i = 0; i < Btns.Length; i++)
+            {
+                //연출 중지
+                Btns[i].DOKill();
+                Btns[i].localScale = Vector3.one;
+
+                if (value)//투명화
+                {
+                    tempColor = Btns[i].GetComponent<Image>().color;
+                    tempColor.a = 0f;
+                    Btns[i].GetComponent<Image>().color = tempColor;
+                }
+                else //빨간색 연출
+                {
+                    tempColor = Btns[i].GetComponent<Image>().color;
+                    tempColor = new Color32(255, 255, 255, 100);
+                    Btns[i].GetComponent<Image>().color = tempColor;
+
+                    //스케일 트윈 연출
+                    Btns[i].DOScale(1.25f, 0.5f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+                }
+            }
+        }
+
+
+        /*
         /// <summary>
         /// 별점 세팅
         /// </summary>
@@ -206,7 +258,7 @@ namespace WoosanStudio.ZombieShooter
                     }
                 }
             }
-        }
+        }*/
 
         #region [-TestCode]
         //private void Update()

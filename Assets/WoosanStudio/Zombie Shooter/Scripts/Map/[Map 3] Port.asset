@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38faf29e033c04f31886dc38d5a2f304, type: 3}
   m_Name: '[Map 3] Port'
   m_EditorClassIdentifier: 
+  canUse: 0
+  hasInitialized: 0
   name: Port
   icon: {fileID: 21300000, guid: 47ae12029387d4b31a7ee8e175c06d4d, type: 3}
+  unlockLevel: 10
   scene: Port
-  stepDatas: []
-  data:
-    StageDatas: []
-    StageCount: 0
+  stageSetting: []

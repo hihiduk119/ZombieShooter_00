@@ -38,7 +38,7 @@ namespace WoosanStudio.ZombieShooter
 
         [System.Serializable]
         public class UpdateUseAble : UnityEvent<bool> { }
-        [Header("[스타트 버튼 사용가능 이벤트]")]
+        [Header("[선택 아이템 사용 불가 이벤트]")]
         public UpdateUseAble UpdateUseAbleEvent = new UpdateUseAble();
 
         private void Start()

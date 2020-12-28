@@ -14,8 +14,8 @@ namespace WoosanStudio.ZombieShooter.Map
     {
         [Header("[맵 사용 유무]")]
         [SerializeField]
-        private bool canUse = false;
-        public bool CanUse { get => canUse; }
+        public bool CanUse = false;
+        //public bool CanUse { get => canUse; }
 
         [Header("[맵 초기화 유뮤-> Stage할당을 위해 사용]")]
         [SerializeField]
@@ -31,6 +31,11 @@ namespace WoosanStudio.ZombieShooter.Map
         [SerializeField]
         private Sprite icon;
         public Sprite Icon { get => icon; }
+
+        [Header("[언락 레벨]")]
+        [SerializeField]
+        private int unlockLevel;
+        public int UnlockLevel { get => unlockLevel; }
 
         [Header("[스테이지 이름->호출되는 씬 이름과 같아야 함]")]
         [SerializeField]
@@ -65,6 +70,7 @@ namespace WoosanStudio.ZombieShooter.Map
             }
         }
 
+        /*
         [System.Serializable]
         public class Data
         {
@@ -113,7 +119,7 @@ namespace WoosanStudio.ZombieShooter.Map
                     //StageDatas.Add(new Stage());
                 }
             }
-        }
+        }*/
 
         [Header("[스테이지 세팅들]")]
         [SerializeField]
@@ -121,8 +127,8 @@ namespace WoosanStudio.ZombieShooter.Map
         public List<Stage.Setting> StageSetting { get => stageSetting; }
 
 
-        [Header("[데이터 확인용으로 열어놓지만 나중에 막아야함]")]
-        public Data data = new Data();
+        //[Header("[데이터 확인용으로 열어놓지만 나중에 막아야함]")]
+        //public Data data = new Data();
 
         /// <summary>
         /// 스테이지 구간별 데이터
@@ -144,7 +150,7 @@ namespace WoosanStudio.ZombieShooter.Map
         //    public List<CardSetting> SelectAbleAmmoCard = new List<CardSetting>();
         //}
 
-
+        /*
         /// <summary>
         /// Json데이터 저장
         /// </summary>
@@ -170,7 +176,7 @@ namespace WoosanStudio.ZombieShooter.Map
             //로드한 데이터와 현재 데이터 싱크 마추기
             //Synchronization();
         }
-
+        
         
         /// <summary>
         /// 
@@ -194,9 +200,8 @@ namespace WoosanStudio.ZombieShooter.Map
         public void Reset()
         {
             PlayerPrefs.DeleteKey("Map_" + Name);
-            Initialize();
+            //Initialize();
         }
-
-        
+        */
     }
 }

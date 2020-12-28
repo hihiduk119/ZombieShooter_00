@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -19,6 +20,13 @@ namespace WoosanStudio.ZombieShooter
         bool useAbleAmmo = false;
         //총 사용 가능
         bool useAbleGun = false;
+        //맵 사용 가능
+        bool useAbleMap = false;
+
+        [System.Serializable]
+        public class UpdateUseAble : UnityEvent<bool> { }
+        [Header("[사용 불가 이벤트]")]
+        public UpdateUseAble UpdateUseAbleEvent = new UpdateUseAble();
 
         /// <summary>
         /// 캐릭터 사용 가능 여부 업데이트
@@ -54,17 +62,34 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 맵 사용 가능 여부 업데이트
+        /// </summary>
+        /// <param name="value"></param>
+        public void UpdateValueFromMap(bool value)
+        {
+            useAbleMap = value;
+            //실제 뷰를 업데이트
+            UpdateValue();
+        }
+
+        /// <summary>
         /// 실제 뷰 업데이트
         /// </summary>
         private void UpdateValue()
         {
             //캐릭터 , 탄약, 총 3개 모두 true 일때만 최종 true전달
-            if(useAbleCharacter && useAbleAmmo && useAbleGun)
+            if(useAbleCharacter && useAbleAmmo && useAbleGun && useAbleMap)
             {
                 View.UpdateValue(true);
+
+                //사용 가능 이벤트
+                UpdateUseAbleEvent.Invoke(true);
             } else//아니면 false
             {
                 View.UpdateValue(false);
+
+                //사용 불가 이벤트
+                UpdateUseAbleEvent.Invoke(false);
             }
         }
     }

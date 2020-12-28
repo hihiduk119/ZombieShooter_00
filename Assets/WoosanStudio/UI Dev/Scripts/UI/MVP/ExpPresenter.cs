@@ -41,6 +41,15 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 현재 레벨 알아옴
+        /// </summary>
+        /// <returns></returns>
+        public int Level()
+        {
+            return Model.data.Level;
+        }
+
+        /// <summary>
         /// 슬라이더 값 가져오기
         /// </summary>
         public float GetExpSliderValue()

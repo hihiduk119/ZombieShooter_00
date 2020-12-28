@@ -13,6 +13,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[[Auto->Awake()] MVP View]")]
         public UIMapItemView View;
 
+        [Header("[[Auto] 현재 맵 잠김 확인용 UIStageSelectPopupPresenter에서 세티됨]")]
+        public bool Lock = true;
+
         private void Awake()
         {
             //나의 트랜스폼에서 찾는다
@@ -22,9 +25,12 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 맵 뷰 업데이트
         /// </summary>
-        public void UpdateInfo(Sprite sprite, string name, UIMapItemView.State state)
+        public void UpdateInfo(bool isLock, Sprite sprite, string name, UIMapItemView.State state, string level)
         {
-            View.UpdateInfo(sprite, name, state);
+            Lock = isLock;
+
+            
+            View.UpdateInfo(sprite, name, state, level);
         }
     }
 }

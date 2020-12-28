@@ -15,6 +15,7 @@ namespace WoosanStudio.ZombieShooter
         /// *Data변경시 마다 세이브 해야함.
         public List<Map.Setting> mapSettings = new List<Map.Setting>();
 
+        /*
         /// <summary>
         /// 카드 데이터의 불러오기
         /// Map.Setting의 Load 호출
@@ -65,5 +66,6 @@ namespace WoosanStudio.ZombieShooter
             }
         }
         #endregion
+        */
     }
 }

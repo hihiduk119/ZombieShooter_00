@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38faf29e033c04f31886dc38d5a2f304, type: 3}
   m_Name: '[Map 4] Military Base'
   m_EditorClassIdentifier: 
+  canUse: 0
+  hasInitialized: 0
   name: Military Base
   icon: {fileID: 21300000, guid: eb059152c4b434aa988f650c83dcb609, type: 3}
+  unlockLevel: 20
   scene: Military Base
-  stepDatas: []
-  data:
-    StageDatas: []
-    StageCount: 0
+  stageSetting: []

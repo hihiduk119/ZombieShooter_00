@@ -29,7 +29,7 @@ namespace WoosanStudio.ZombieShooter.Map.Stage
         [Header("[라운드 별 최대 스폰 갯수 => 한 라운드에 최대 몇명까지 스폰 되는]")]
         public List<int> MaxSpawnByRound = new List<int>();
 
-        [Header("[네이드 몬스터가 스폰할 라운드 인덱스]")]
+        [Header("[네이드 몬스터가 스폰할 라운드 인덱스 -> 무한모드에서는 매턴 마다]")]
         public List<int> SpawnRoundIndexByNamedMonster = new List<int>();
 
         [Header("[최대 스폰 제한 => 성능 때문에 맵에 최대 생성 할수 있는 몬수터 수]")]

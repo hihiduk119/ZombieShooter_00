@@ -23,37 +23,41 @@ namespace WoosanStudio.ZombieShooter
         [Header("[맵 이미지]")]
         public Image Image;
 
-        [Header("[맵 이름")]
-        public Text Title;
+        //[Header("[맵 이름")]
+        //public Text Title;
 
         [Header("[락 아이콘]")]
         public GameObject Lock;
 
+        [Header("[락 레벨]")]
+        public Text Level;
 
         /// <summary>
         /// 맵 뷰 업데이트
         /// </summary>
         /// <param name="cardSetting"></param>
-        public void UpdateInfo(Sprite sprite,string name,State state)
+        public void UpdateInfo(Sprite sprite,string name,State state,string level)
         {
             Image.sprite = sprite;
+            Level.text = level;
 
             //락 비활성화
             Lock.SetActive(false);
 
-            StringBuilder stringBuilder = new StringBuilder();
+            //StringBuilder stringBuilder = new StringBuilder();
 
             switch (state)
             {
                 case State.Able:
-                    Title.text = name;
+                    //Title.text = name;
                     break;
                 case State.ComingSoon:
                     //coming soon 넣기
-                    stringBuilder.Append("Coming").AppendLine().Append("Soon");
-                    Title.text = stringBuilder.ToString();
+                    //stringBuilder.Append("Coming").AppendLine().Append("Soon");
+                    //Title.text = stringBuilder.ToString();
                     break;
                 case State.Lock:
+                    //Title.text = name;
                     //락 활성화
                     Lock.SetActive(true);
                     break;

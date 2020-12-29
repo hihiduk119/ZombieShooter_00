@@ -83,7 +83,7 @@ namespace WoosanStudio.ZombieShooter
             //* 죽인 몬스터 및 플레이타임 가져오는 부분 필요
             UpdateInfoEvent.Invoke(Model.cardSettings[currentIndex]);
 
-            Debug.Log("모델 활성 상태 = " + Model.cardSettings[currentIndex].UseAble);
+            //Debug.Log("모델 활성 상태 = " + Model.cardSettings[currentIndex].UseAble);
 
             //캐릭터 사용 가능 여부 발생
             UpdateUseAbleEvent.Invoke(Model.cardSettings[currentIndex].UseAble);

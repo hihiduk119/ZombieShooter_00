@@ -10,6 +10,9 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class UICanStartGuiderView : MonoBehaviour
     {
+        [Header("[에너지 가이드]")]
+        public GameObject Energy;
+
         [Header("[캐릭터 가이드]")]
         public GameObject Character;
 
@@ -30,12 +33,22 @@ namespace WoosanStudio.ZombieShooter
         public enum Type
         {
             None        = 0,
-            Character   = 1 << 0,
-            Gun         = 1 << 1,
-            Ammo        = 1 << 2,
-            Map         = 1 << 3,
-            Start       = 1 << 4,
+            Energy      = 1 << 0,
+            Character   = 1 << 1,
+            Gun         = 1 << 2,
+            Ammo        = 1 << 3,
+            Map         = 1 << 4,
+            Start       = 1 << 5,
             All         = int.MaxValue,
+        }
+
+        /// <summary>
+        /// 에너지 사용 가능 여부 업데이트
+        /// </summary>
+        /// <param name="value"></param>
+        public void UpdateValueFromEnergy(bool value)
+        {
+            SetActive(Type.Energy, !value);
         }
 
         /// <summary>
@@ -92,7 +105,9 @@ namespace WoosanStudio.ZombieShooter
         public void SetActive(Type type,bool value)
         {
             //해당 플래그에 해당되는 가이드 활성 or 비활성
-            if((type & Type.Character) != 0) { Character.SetActive(value); }
+            if ((type & Type.Energy) != 0) { Energy.SetActive(value); }
+
+            if ((type & Type.Character) != 0) { Character.SetActive(value); }
 
             if ((type & Type.Gun) != 0) { Gun.SetActive(value); }
 

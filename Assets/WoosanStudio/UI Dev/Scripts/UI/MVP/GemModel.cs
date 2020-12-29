@@ -43,8 +43,8 @@ namespace WoosanStudio.ZombieShooter
             data = null;
             data = JsonUtility.FromJson<GemModel.Data>(PlayerPrefs.GetString("Gem"));
 
-            Debug.Log("Gem 로드 완료");
-            data.Print();
+            //Debug.Log("Gem 로드 완료");
+            //data.Print();
         }
 
         /// <summary>
@@ -54,8 +54,8 @@ namespace WoosanStudio.ZombieShooter
         {
             PlayerPrefs.SetString("Gem", JsonUtility.ToJson(data));
 
-            Debug.Log("Gem 저장 완료");
-            data.Print();
+            //Debug.Log("Gem 저장 완료");
+            //data.Print();
         }
     }
 }

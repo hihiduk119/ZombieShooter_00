@@ -4,6 +4,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -16,6 +17,9 @@ namespace WoosanStudio.ZombieShooter
 
         [Header("[비활성화 알파값]")]
         public float Alpha = 0.25f;
+
+        [Header("[시작 버튼 클릭]")]
+        public UnityEvent StartClickEvent = new UnityEvent();
 
         /// <summary>
         /// 버튼 활성화
@@ -40,6 +44,14 @@ namespace WoosanStudio.ZombieShooter
             {
                 canvasGroup.alpha = Alpha;
             }
+        }
+
+        /// <summary>
+        /// 시작 버튼 눌림
+        /// </summary>
+        public void StartClick()
+        {
+            StartClickEvent.Invoke();
         }
 
         /*#region [-TestCode]

@@ -54,7 +54,7 @@ namespace WoosanStudio.ZombieShooter
         {
             for (int i = 0; i < Model.mapSettings.Count; i++)
             {
-                Debug.Log(expPresenter.Level() + "   --  " + Model.mapSettings[i].UnlockLevel);
+                //Debug.Log(expPresenter.Level() + "   --  " + Model.mapSettings[i].UnlockLevel);
                 //현재 레벨 과 맵 언락레벨 비교
                 if(expPresenter.Level() >= Model.mapSettings[i].UnlockLevel)
                 {
@@ -89,7 +89,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="mapIndex"></param>
         private void UpdateInfo(int mapIndex)
         {
-            Debug.Log("index = " + mapIndex);
+            //Debug.Log("index = " + mapIndex);
             View.UpdateInfo(Model.mapSettings[mapIndex].Name);
 
             //스타트 버튼 사용 가능 여부 통지

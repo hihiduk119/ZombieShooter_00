@@ -119,9 +119,9 @@ namespace WoosanStudio.ZombieShooter
             Model.UpdateEnergy(value);
         }
 
-
+        /*
         #region [-TestCode]
-        /*void Update()
+        void Update()
         {
             //에너지 소비
             if (Input.GetKeyDown(KeyCode.A))
@@ -130,18 +130,24 @@ namespace WoosanStudio.ZombieShooter
             }
 
             //현재 데이터 출력
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.S))
             {
-                UpdateEnergy(-25);
+                UpdateEnergy(+25);
             }
 
             //현재 데이터 출력
             if (Input.GetKeyDown(KeyCode.D))
             {
+                Model.Load();
+            }
+
+            //현재 데이터 출력
+            if (Input.GetKeyDown(KeyCode.F))
+            {
                 PlayerPrefs.DeleteAll();
             }
-        }*/
+        }
         #endregion
-
+        */
     }
 }

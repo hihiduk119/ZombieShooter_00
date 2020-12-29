@@ -18,11 +18,11 @@ namespace WoosanStudio.ZombieShooter
         {
             //최대 에너지
             //로드해서 가져옴
-            public int MaxEnergy = 100;
+            public int MaxEnergy = 50;
 
             //현재 에너지
             //로드해서 가져옴
-            public int CurrentEnergy = 0;
+            public int CurrentEnergy = 50;
 
             //회복 하는 시간
             //로드해서 가져옴
@@ -41,6 +41,15 @@ namespace WoosanStudio.ZombieShooter
 
             public Data(){}
 
+            public void Init()
+            {
+                this.MaxEnergy = 50;
+                this.CurrentEnergy = 50;
+                this.MaxRechargingTime = 45;
+                this.RemainRechargingTime = 0;
+
+            }
+
             //내부 데이터 출력
             public void Print()
             {
@@ -54,7 +63,8 @@ namespace WoosanStudio.ZombieShooter
         }
 
         [SerializeField]
-        private Data data = new Data();
+        [Header("[단순 확인용-> 데이터 세팅은 Init()에서 세팅]")]
+        private Data data;
         public Data GetData() => data;
 
         //캐쉬용
@@ -93,6 +103,8 @@ namespace WoosanStudio.ZombieShooter
                         //업데이트
                         UpdateEnergy(data.RechargingPoint);
                     }
+
+                    Save();
                 }
                 
                 yield return WFF;
@@ -121,45 +133,41 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 최소 실행시 플레이어 이전 데이터를 로드해서 실행
         /// </summary>
-        private void Load()
+        public void Load()
         {
             //첫 시작이라면 세이브 부터
-            if(!PlayerPrefs.HasKey("Energy")){ Save(); Debug.Log("처음이야!!"); }
+            if(!PlayerPrefs.HasKey("Energy")){ data = new Data(); data.Init(); Save(); Debug.Log("처음이야!!"); }
 
             string energyByJson = PlayerPrefs.GetString("Energy");
 
-            //테스트 출력
+            data = JsonUtility.FromJson<EnergyModel.Data>(energyByJson);
+
+            //data.MaxRechargingTime = loadData.MaxRechargingTime;
+            //data.RechargingPoint = loadData.RechargingPoint;
+            //data.MaxEnergy = loadData.MaxEnergy;
+
             //data.Print();
 
-            EnergyModel.Data loadData = JsonUtility.FromJson<EnergyModel.Data>(energyByJson);
-
-            data.MaxRechargingTime = loadData.MaxRechargingTime;
-            data.RechargingPoint = loadData.RechargingPoint;
-            data.MaxEnergy = loadData.MaxEnergy;
-
             //지난 시간 가져오기
-            TimeSpan timeSpan = DateTime.Now.Subtract(DateTime.FromBinary(loadData.dateTimeByBinary));
+            TimeSpan timeSpan = DateTime.Now.Subtract(DateTime.FromBinary(data.dateTimeByBinary));
 
             double seconds = timeSpan.TotalSeconds;
-            //Debug.Log("seconds = " + seconds);
+            int addEnergy = System.Convert.ToInt32( seconds / data.MaxRechargingTime);
+            int addRechargingTime = System.Convert.ToInt32(seconds % data.MaxRechargingTime);
 
-            double addEnergy = seconds / data.MaxRechargingTime;
-
-            //Debug.Log("addEnergy = " + addEnergy + " seconds  = " + seconds + " MaxRechargingTime = " + data.MaxRechargingTime);
-
-            double addRechargingTime = seconds % data.MaxRechargingTime;
-
-            //Debug.Log("addRechargingTime = " + addRechargingTime + " seconds  = " + seconds + " MaxRechargingTime = " + data.MaxRechargingTime);
-
-            //Debug.Log("지난 시간 = " + timeSpan.ToString() + "   에너지 = " + loadData.CurrentEnergy + "/" + addEnergy);
+            Debug.Log("전체 지난 시간s = " + seconds);
+            Debug.Log("추가할 에너지 = " + addEnergy + " 변경 초  = " + seconds + " 1회복 몇초 = " + data.MaxRechargingTime);
+            Debug.Log("추가할 초 = " + addRechargingTime + " 변경 초  = " + seconds + " 1회복 몇초 = " + data.MaxRechargingTime);
+            Debug.Log("지난 시간 = " + timeSpan.ToString() + " 기존 에너지 = " + data.CurrentEnergy + "/  추가될 에너지 =" + addEnergy);
 
             //에너지 추가
             //에너지 추가
-            UpdateEnergy(loadData.CurrentEnergy + Convert.ToInt32(addEnergy));
+            UpdateEnergy(Convert.ToInt32(addEnergy));
 
             //충전 현재 시간 감소
-            data.RemainRechargingTime = data.MaxRechargingTime - Convert.ToInt32(addRechargingTime);
+            data.RemainRechargingTime  -= Convert.ToInt32(addRechargingTime);
 
+            data.dateTimeByBinary = DateTime.Now.ToBinary();
         }
 
         /// <summary>
@@ -169,6 +177,8 @@ namespace WoosanStudio.ZombieShooter
         {
             //세이브 시간 저장
             data.dateTimeByBinary = DateTime.Now.ToBinary();
+
+            //data.Print();
 
             //제이슨 변환
             string energyByJson  = JsonUtility.ToJson(data);

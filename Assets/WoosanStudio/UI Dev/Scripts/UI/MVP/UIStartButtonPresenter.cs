@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Events;
+using Ricimi;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -14,6 +15,12 @@ namespace WoosanStudio.ZombieShooter
         [Header("[MVP 뷰]")]
         public UIStartButtonView View;
 
+        [Header("[Energy 프레젠트]")]
+        public EnergyPresenter energyPresenter;
+
+        [Header("[씬 전환]")]
+        public SceneTransition sceneTransition;
+
         //캐릭터 사용 가능
         bool useAbleCharacter = false;
         //탄야 사용 가능
@@ -22,6 +29,8 @@ namespace WoosanStudio.ZombieShooter
         bool useAbleGun = false;
         //맵 사용 가능
         bool useAbleMap = false;
+
+        
 
         [System.Serializable]
         public class UpdateUseAble : UnityEvent<bool> { }
@@ -91,6 +100,37 @@ namespace WoosanStudio.ZombieShooter
                 //사용 불가 이벤트
                 UpdateUseAbleEvent.Invoke(false);
             }
+        }
+
+        /// <summary>
+        /// 시작 버튼 눌림
+        /// </summary>
+        public void StartClick()
+        {
+            //현재 에너지 가 충분하면 사용
+            if(energyPresenter.Model.GetData().CurrentEnergy >= GlobalDataController.EnergyUseAtStartup)
+            {
+                energyPresenter.UpdateEnergy(-GlobalDataController.EnergyUseAtStartup);
+                /// 해당 씬으로 이동
+                GoToScene();
+            } else
+            {
+                //에너지 부족 메시지 출력
+                NotifyPopupController.Instance.OpenResult(UINotifyPopupModel.Type.NotEnoughEnergy);
+            }
+        }
+
+        /// <summary>
+        /// 해당 씬으로 이동
+        /// *씬 이동전 필요한 데이터 취합 및 이동 통지.
+        /// *선택된 카드, 무기 , 탄약
+        /// </summary>
+        public void GoToScene()
+        {
+            //씬이름
+            sceneTransition.scene = "Town";
+            //씬이동
+            sceneTransition.PerformTransition();
         }
     }
 }

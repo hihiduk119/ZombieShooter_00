@@ -81,7 +81,7 @@ namespace WoosanStudio.ZombieShooter
             if (!Time.text.Equals(Presenter.RechargeTimeText))
             {
                 //트윈 연출
-                Time.transform.DOScale(1.5f, 0.1f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
+                Time.transform.DOScale(1.05f, 0.1f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
             }
 
             Time.text = Presenter.RechargeTimeText;

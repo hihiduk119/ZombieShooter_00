@@ -172,6 +172,8 @@ namespace WoosanStudio.ZombieShooter
         static public int MaxUpgradeSlotCount = 3;
         //In-Game 에서 라운드 종료후 카드 선택 화면에서 카드 추가 가격
         static public int[] CardAddPrices = {1000,1500,3000};
+        //시작시 에너지 소모 값
+        static public int EnergyUseAtStartup = 10;
 
         [Header("[중간 카드 선택시 선택 가능한 모든 카드]")]
         public List<CardSetting> SelectAbleAllCard = new List<CardSetting>();

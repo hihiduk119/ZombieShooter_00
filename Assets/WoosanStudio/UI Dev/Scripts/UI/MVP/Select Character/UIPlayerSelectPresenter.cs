@@ -43,7 +43,7 @@ namespace WoosanStudio.ZombieShooter
 
         private void Start()
         {
-            //시작시 0번으로 최기화
+            //시작시 0번으로 초기화
             Change(0);
         }
 

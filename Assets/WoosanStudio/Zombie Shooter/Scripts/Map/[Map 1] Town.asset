@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38faf29e033c04f31886dc38d5a2f304, type: 3}
   m_Name: '[Map 1] Town'
   m_EditorClassIdentifier: 
-  canUse: 0
+  CanUse: 1
   hasInitialized: 0
   name: TOWN
   icon: {fileID: 21300000, guid: caca1d919d71a40d68cc0dcaeedd2d85, type: 3}
+  unlockLevel: 0
   scene: Town
+  roundEndCardSetting: {fileID: 11400000, guid: 0095b7b7d2ec4437cb70935a6724f2f8,
+    type: 2}
   stageSetting:
   - {fileID: 11400000, guid: 32d07fb78866444d0ba4e672fb833f34, type: 2}
-  data:
-    StageCount: 0
-    StageDatas: []

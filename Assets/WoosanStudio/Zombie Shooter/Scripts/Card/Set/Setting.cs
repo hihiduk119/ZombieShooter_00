@@ -17,12 +17,12 @@ namespace WoosanStudio.ZombieShooter.Card.Set
 
         [Header("[무기 카드]")]
         [SerializeField]
-        public List<CardSetting> weapon = new List<CardSetting>();
+        private List<CardSetting> weapon = new List<CardSetting>();
         public List<CardSetting> Weapon { get => weapon; }
 
         [Header("[탄약 카드]")]
         [SerializeField]
-        public List<CardSetting> ammo = new List<CardSetting>();
+        private List<CardSetting> ammo = new List<CardSetting>();
         public List<CardSetting> Ammo { get => ammo; }
     }
 }

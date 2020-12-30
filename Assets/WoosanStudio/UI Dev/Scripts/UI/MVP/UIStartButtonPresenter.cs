@@ -26,6 +26,10 @@ namespace WoosanStudio.ZombieShooter
         [Header("[사용 불가 이벤트]")]
         public UpdateUseAble UpdateUseAbleEvent = new UpdateUseAble();
 
+        [Header("[스테이지 시작됨을 알림]")]
+        public UnityEvent StageStartEvent = new UnityEvent();
+
+
         //캐릭터 사용 가능
         bool useAbleCharacter = false;
         //탄야 사용 가능
@@ -147,6 +151,9 @@ namespace WoosanStudio.ZombieShooter
             sceneTransition.scene = "Town";
             //씬이동
             sceneTransition.PerformTransition();
+
+            //스테이지 시작 이벤트
+            StageStartEvent.Invoke();
         }
     }
 }

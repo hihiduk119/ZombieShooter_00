@@ -78,9 +78,9 @@ namespace WoosanStudio.ZombieShooter
 
             //맵 0으로 초기화
             //*나중에 현재 선택 맵 로드시 변경 되어야 함
-            View.MoveScroll(0);
+            View.MoveScroll(GlobalDataController.Instance.SelectedMap);
             //맵 0으로 화면 업데이트
-            UpdateInfo(0);
+            UpdateInfo(GlobalDataController.Instance.SelectedMap);
         }
 
         /// <summary>
@@ -92,6 +92,10 @@ namespace WoosanStudio.ZombieShooter
             //Debug.Log("index = " + mapIndex);
             View.UpdateInfo(Model.mapSettings[mapIndex].Name);
 
+            //글로벌 데이터에 현재 맵 저장
+            GlobalDataController.Instance.SelectedMap = mapIndex;
+            //맵 세팅 캐쉬에 담기
+            GlobalDataController.MapSetting = Model.mapSettings[mapIndex];
             //스타트 버튼 사용 가능 여부 통지
             UpdateUseAbleEvent.Invoke(Model.mapSettings[mapIndex].CanUse);
         }

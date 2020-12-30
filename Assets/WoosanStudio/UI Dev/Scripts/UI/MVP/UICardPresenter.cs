@@ -143,6 +143,56 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 카드 저장 사용하기 위해 맵위에
+        /// </summary>
+        public void CardSaveToUseOnMap()
+        {
+            //카드 초기화
+            GlobalDataController.Instance.SelectAbleAllCard.Clear();
+
+            //맵에서 사용될 카드 세팅
+            Model.cardSettings.ForEach(value => {
+                //사용될 언락된 일반 카드 저장
+                if (value.UseAble && ((0 <= (int)value.Type) && ((int)value.Type < 100)))
+                {
+                    GlobalDataController.Instance.SelectAbleAllCard.Add(value);
+                }
+
+                //캐릭터 카드 저장
+                //*300 - 399사이 값
+                if (value.UseAble && ((300 <= (int)value.Type) && ((int)value.Type < 400))) {
+                    //Map세팅에 라운드끝의 카드 세팅 넣기
+                    GlobalDataController.Instance.SelectAbleCharacterCard = new List<CardSetting>(GlobalDataController.MapSetting.RoundEndCardSetting.Character);
+                    //현재 선택 캐릭터 카드가 없다면 추가
+                    CardSetting characterCard = GlobalDataController.Instance.SelectAbleCharacterCard.Find(card => card.Equals(GlobalDataController.SelectedCharacterCard));
+                    if (characterCard == null) { GlobalDataController.Instance.SelectAbleCharacterCard.Add(GlobalDataController.SelectedCharacterCard); }
+                }
+
+                //무기 카드 저장
+                //*100 - 199사이 값
+                if (value.UseAble && ((100 <= (int)value.Type) && ((int)value.Type < 200)))
+                {
+                    //Map세팅에 라운드끝의 카드 세팅 넣기
+                    GlobalDataController.Instance.SelectAbleWeaponCard = new List<CardSetting>(GlobalDataController.MapSetting.RoundEndCardSetting.Weapon);
+                    //현재 선택 캐릭터 카드가 없다면 추가
+                    CardSetting weaponCard = GlobalDataController.Instance.SelectAbleWeaponCard.Find(card => card.Equals(GlobalDataController.SelectedWeaponCard));
+                    if (weaponCard == null) { GlobalDataController.Instance.SelectAbleWeaponCard.Add(GlobalDataController.SelectedWeaponCard); }
+                }
+
+                //탄약 카드 저장
+                //*200 - 299사이 값
+                if (value.UseAble && ((200 <= (int)value.Type) && ((int)value.Type < 300)))
+                {
+                    //Map세팅에 라운드끝의 카드 세팅 넣기
+                    GlobalDataController.Instance.SelectAbleAmmoCard = new List<CardSetting>(GlobalDataController.MapSetting.RoundEndCardSetting.Ammo);
+                    //현재 선택 캐릭터 카드가 없다면 추가
+                    CardSetting ammoCard = GlobalDataController.Instance.SelectAbleAmmoCard.Find(card => card.Equals(GlobalDataController.SelectedAmmoCard));
+                    if (ammoCard == null) { GlobalDataController.Instance.SelectAbleAmmoCard.Add(GlobalDataController.SelectedAmmoCard); }
+                }
+            });
+        }
+
+        /// <summary>
         /// 글로벌 데이터에 현재 카드중 언락된 카드 모두 선택 가능 카드로 세팅
         /// </summary>
         public void SetSelectAbleAllCard()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System.Text;
+using System;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -11,7 +12,7 @@ namespace WoosanStudio.ZombieShooter
     /// *그대로 사용하면 안돼고 Instantiate해서 사용해야함.
     /// </summary>
     [CreateAssetMenu(menuName = "ZombieShooter/CardSettings/Make Setting", fileName = "CardData")]
-    public class CardSetting : ScriptableObject// , ICard , ICardData
+    public class CardSetting : ScriptableObject , IEquatable<CardSetting>// , ICard , ICardData
     {
         [Header("[카드 활성상태 => 무기,탄약,캐릭터는 활성상태에 따라 활서]")]
         [SerializeField]
@@ -623,7 +624,7 @@ namespace WoosanStudio.ZombieShooter
                     }
 
                     //0-99까지 랜덤 int 값 생성
-                    int rand = Random.Range(0, 100);
+                    int rand = UnityEngine.Random.Range(0, 100);
 
                     Debug.Log("랜덤값 = [" + rand + "] 계산된 성공 값 = [" + successRate + "]");
 
@@ -755,6 +756,14 @@ namespace WoosanStudio.ZombieShooter
             }
 
             return upgradeRemainTime;
+        }
+
+
+
+        public bool Equals(CardSetting other)
+        {
+            if (type == other.type) return true;
+            else { return false; }
         }
     }
 }

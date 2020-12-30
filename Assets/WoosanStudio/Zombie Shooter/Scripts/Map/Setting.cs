@@ -42,6 +42,11 @@ namespace WoosanStudio.ZombieShooter.Map
         private string scene = "";
         public string Scene { get => scene; }
 
+        [Header("[사용되는 카드셋 -> 라운드 끝날때 선택 하는 캐릭터,탄약,무기]")]
+        [SerializeField]
+        private Card.Set.Setting roundEndCardSetting;
+        public Card.Set.Setting RoundEndCardSetting { get => roundEndCardSetting; }
+
         //[Header("[해당 맵의 세팅값]")]
         //[SerializeField]
         //private List<DefaultCard> defaultCardDatas = new List<DefaultCard>();

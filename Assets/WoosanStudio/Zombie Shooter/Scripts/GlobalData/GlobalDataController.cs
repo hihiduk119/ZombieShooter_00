@@ -136,6 +136,7 @@ namespace WoosanStudio.ZombieShooter
         }
 
         //선택된 스테이지
+        //*지금 사용 안함
         private int selectedStage;
         public int SelectedStage
         {
@@ -189,6 +190,8 @@ namespace WoosanStudio.ZombieShooter
         static public CardSetting SelectedCharacterCard;
         static public CardSetting SelectedWeaponCard;
         static public CardSetting SelectedAmmoCard;
+        //선택된 맵 세팅 데이터
+        static public Map.Setting MapSetting;
 
         public void Awake()
         {
@@ -302,5 +305,35 @@ namespace WoosanStudio.ZombieShooter
                 return true;
             }
         }
+
+        /// <summary>
+        /// 가지고 있는 카드 확인용
+        /// </summary>
+        public void HasCardsPrint()
+        {
+            Debug.Log("=========== Common Cards =========");
+            SelectAbleAllCard.ForEach(value => Debug.Log("[" + value.Type.ToString() + "]"));
+
+            Debug.Log("=========== Character Cards =========");
+            SelectAbleCharacterCard.ForEach(value => Debug.Log("[" + value.Type.ToString() + "]"));
+
+            Debug.Log("=========== Weapon Cards =========");
+            SelectAbleWeaponCard.ForEach(value => Debug.Log("[" + value.Type.ToString() + "]"));
+
+            Debug.Log("=========== Ammo Cards =========");
+            SelectAbleAmmoCard.ForEach(value => Debug.Log("[" + value.Type.ToString() + "]"));
+
+            Debug.Log("=========== Map =========");
+
+            Debug.Log("선택된 맵이름 = "+ GlobalDataController.MapSetting.Name);
+        }
+
+        //void OnGUI()
+        //{
+        //    if (GUI.Button(new Rect(100, 1300, 200, 100), "맵 데이터 확인"))
+        //    {
+        //        HasCardsPrint();
+        //    }
+        //}
     }
 }

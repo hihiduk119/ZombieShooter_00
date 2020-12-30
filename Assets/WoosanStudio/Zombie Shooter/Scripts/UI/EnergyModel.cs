@@ -26,7 +26,7 @@ namespace WoosanStudio.ZombieShooter
 
             //회복 하는 시간
             //로드해서 가져옴
-            public int MaxRechargingTime = 45;
+            public int MaxRechargingTime = 30;
 
             //회복 하는 시간
             //로드해서 가져옴
@@ -45,9 +45,10 @@ namespace WoosanStudio.ZombieShooter
             {
                 this.MaxEnergy = 50;
                 this.CurrentEnergy = 50;
-                this.MaxRechargingTime = 45;
+                this.MaxRechargingTime = 30;
                 this.RemainRechargingTime = 0;
 
+                Debug.Log("[Init] 됨");
             }
 
             //내부 데이터 출력

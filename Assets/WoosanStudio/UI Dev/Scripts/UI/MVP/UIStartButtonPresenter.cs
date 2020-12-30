@@ -21,6 +21,11 @@ namespace WoosanStudio.ZombieShooter
         [Header("[씬 전환]")]
         public SceneTransition sceneTransition;
 
+        [System.Serializable]
+        public class UpdateUseAble : UnityEvent<bool> { }
+        [Header("[사용 불가 이벤트]")]
+        public UpdateUseAble UpdateUseAbleEvent = new UpdateUseAble();
+
         //캐릭터 사용 가능
         bool useAbleCharacter = false;
         //탄야 사용 가능
@@ -29,13 +34,8 @@ namespace WoosanStudio.ZombieShooter
         bool useAbleGun = false;
         //맵 사용 가능
         bool useAbleMap = false;
-
-        
-
-        [System.Serializable]
-        public class UpdateUseAble : UnityEvent<bool> { }
-        [Header("[사용 불가 이벤트]")]
-        public UpdateUseAble UpdateUseAbleEvent = new UpdateUseAble();
+        //버튼 애니메이션용 코루틴
+        Coroutine buttonAnimaitonCoroutine;
 
         /// <summary>
         /// 캐릭터 사용 가능 여부 업데이트
@@ -117,7 +117,23 @@ namespace WoosanStudio.ZombieShooter
             {
                 //에너지 부족 메시지 출력
                 NotifyPopupController.Instance.OpenResult(UINotifyPopupModel.Type.NotEnoughEnergy);
+
+                //가이드 잠시 표시후 닫음
+                if (buttonAnimaitonCoroutine != null) { StopCoroutine(buttonAnimaitonCoroutine); } 
+                buttonAnimaitonCoroutine = StartCoroutine(ButtonAnimaitonCoroutine());
             }
+        }
+
+        /// <summary>
+        /// 가이드 잠시 표시후 닫음
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator ButtonAnimaitonCoroutine()
+        {
+            UICanStartGuiderView canStartGuiderView = GameObject.FindObjectOfType<UICanStartGuiderView>();
+            canStartGuiderView.Energy.SetActive(true);
+            yield return new WaitForSeconds(3f);
+            canStartGuiderView.Energy.SetActive(false);
         }
 
         /// <summary>

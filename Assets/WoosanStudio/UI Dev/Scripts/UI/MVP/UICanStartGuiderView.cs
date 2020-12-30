@@ -96,7 +96,6 @@ namespace WoosanStudio.ZombieShooter
             SetActive(Type.Start, !value);
         }
 
-
         /// <summary>
         /// 해당 가이드 활성 or 비활성
         /// </summary>

@@ -9,7 +9,7 @@ namespace WoosanStudio.ZombieShooter
     /// 모든 맵 데이터와 동기화도 진행
     /// *MVP 모델
     /// </summary>
-    public class UIStageModel : MonoBehaviour
+    public class UIMapModel : MonoBehaviour
     {
         [Header("[모든 맵 세팅 => 세이브 로드시 반드시 동기화 해야함]")]
         /// *Data변경시 마다 세이브 해야함.

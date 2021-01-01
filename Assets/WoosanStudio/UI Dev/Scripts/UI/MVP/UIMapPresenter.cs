@@ -10,9 +10,9 @@ namespace WoosanStudio.ZombieShooter
     /// *일단 대기
     /// *MVP 모델
     /// </summary>
-    public class UIStagePresenter : MonoBehaviour
+    public class UIMapPresenter : MonoBehaviour
     {
         [Header("[MVP Model]")]
-        public UIStageModel Model;
+        public UIMapModel Model;
     }
 }

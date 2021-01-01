@@ -10,13 +10,13 @@ namespace WoosanStudio.ZombieShooter
     /// 스테이지 선택 팝업
     ///  *MVP패턴
     /// </summary>
-    public class UIStageSelectPopupPresenter : MonoBehaviour
+    public class UIMapSelectPopupPresenter : MonoBehaviour
     {
         [Header("[MVP View]")]
-        public UIStageSelectPopupView View;
+        public UIMapSelectPopupView View;
 
         [Header("[MVP Model]")]
-        public UIStageModel Model;
+        public UIMapModel Model;
 
         [Header("[Map Content]")]
         public UI.MapContent MapContent;

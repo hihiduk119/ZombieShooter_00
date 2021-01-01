@@ -12,8 +12,11 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class MonsterSpawnScheduleManager : MonoBehaviour
     {
-        [Header("[스테이지별 몬스터의 해당 스캐줄 리스트]")]
-        public List<Map.Stage.Setting> MonsterScheduleList = new List<Map.Stage.Setting>();
+        //[Header("[스테이지별 몬스터의 해당 스캐줄 리스트]")]
+        //public List<Map.Stage.Setting> MonsterScheduleList = new List<Map.Stage.Setting>();
+
+        [Header("[[Auto->GlobalDataManager] 몬스터의 스폰 스캐줄]")]
+        public Map.Stage.Setting MonsterSchedule;
 
         [Header("[현재 스폰된 몬스터 수]")]
         public int CurrentSpawnedMonster = 0;
@@ -36,19 +39,23 @@ namespace WoosanStudio.ZombieShooter
         public UnityEvent EndSpawnByAllRoundEvent = new UnityEvent();
 
         //캐쉬용
-        private Map.Stage.Setting monsterSchedule;
+        //private Map.Stage.Setting monsterSchedule;
         private Coroutine autoSpawnCallCoroutine;
         private WaitForSeconds WFS;
         private bool bSpawnedNamedMonster = false;
 
         //현재 라운드
         private int currentRound = 0;
-        private int currentStage = 0;
+        //맵마다 스테이지 갯수가 다르기때문에 저장된 Map.Setting데이터에서 자장된 걸 가져와야할듯.
+        private int startStage = 0;
 
         private void Awake()
         {
             //자동으로 찾아서 넣어줌
             MonsterRequester = GameObject.FindObjectOfType<MonsterRequester>();
+
+            //글로벌 데이터 스테이지 세팅에서 데이터 가져와서 세팅
+            MonsterSchedule = GlobalDataController.MapSetting.StageSetting[0];
         }
 
         /// <summary>
@@ -56,17 +63,35 @@ namespace WoosanStudio.ZombieShooter
         /// 라운드의 첫 시작
         /// </summary>
         /// <param name="round">해당 스테이지</param>
-        public void SpawnByStage(int stage)
+        //public void SpawnByStage(int stage)
+        //{
+        //    //현재 스테이지 저장
+        //    currentStage = stage;
+
+        //    //현재 라운드 0으로 초기화
+        //    currentRound = 0;
+            
+        //    //라운드 별 몬스터 스폰 실행
+        //    SpawnByRound(stage,currentRound);
+        //}
+
+        /// <summary>
+        /// 몬스터 스폰 첫 시작
+        /// </summary>
+        /// <param name="round">해당 스테이지</param>
+        public void SpawnStart()
         {
             //현재 스테이지 저장
-            currentStage = stage;
+            //currentStage = stage;
 
             //현재 라운드 0으로 초기화
             currentRound = 0;
-            
+
             //라운드 별 몬스터 스폰 실행
-            SpawnByRound(stage,currentRound);
+            SpawnByRound(currentRound);
         }
+
+
 
         /// <summary>
         /// 라운드 별 몬스터 스폰 실행.
@@ -74,16 +99,16 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="stage">해당 스테이지</param>
         /// <param name="round">해당 라운드</param>
-        public void SpawnByRound(int stage,int round)
+        public void SpawnByRound(int round)
         {
-            //미리 캐쉬에 받아 놓기
-            monsterSchedule = MonsterScheduleList[stage];
+            Debug.Log("스폰 0-0");
+
             //코루틴 스폰 호출 간격 세팅
-            WFS = new WaitForSeconds(monsterSchedule.SpawnInterval);
+            WFS = new WaitForSeconds(MonsterSchedule.SpawnInterval);
             //코루틴이 이미 실행 중이라면 중지
             if (autoSpawnCallCoroutine != null) StopCoroutine(autoSpawnCallCoroutine);
             //코루틴이 시작
-            autoSpawnCallCoroutine = StartCoroutine(AutoSpawnCallCoroutine(stage, round, monsterSchedule, WFS));
+            autoSpawnCallCoroutine = StartCoroutine(AutoSpawnCallCoroutine( round, MonsterSchedule, WFS));
         }
 
         /// <summary>
@@ -92,16 +117,17 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void SpawnByNextRound()
         {
+            Debug.Log("스폰 0-1");
             //현재 라운드 자동 증가
             currentRound++;
             //미리 캐쉬에 받아 놓기
-            monsterSchedule = MonsterScheduleList[currentStage];
+            //monsterSchedule = MonsterScheduleList[currentStage];
             //코루틴 스폰 호출 간격 세팅
-            WFS = new WaitForSeconds(monsterSchedule.SpawnInterval);
+            WFS = new WaitForSeconds(MonsterSchedule.SpawnInterval);
             //코루틴이 이미 실행 중이라면 중지
             if (autoSpawnCallCoroutine != null) StopCoroutine(autoSpawnCallCoroutine);
             //코루틴이 시작
-            autoSpawnCallCoroutine = StartCoroutine(AutoSpawnCallCoroutine(currentStage, currentRound, monsterSchedule, WFS));
+            autoSpawnCallCoroutine = StartCoroutine(AutoSpawnCallCoroutine(currentRound, MonsterSchedule, WFS));
         }
 
         /// <summary>
@@ -111,7 +137,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="maxSameTimeSpawn">최대 동시 스폰 갯수</param>
         /// <param name="waitForSeconds">스폰과 스폰사이 interval</param>
         /// <returns></returns>
-        IEnumerator AutoSpawnCallCoroutine(int stage,int round, Map.Stage.Setting monsterSchedule, WaitForSeconds waitForSeconds)
+        IEnumerator AutoSpawnCallCoroutine(int round, Map.Stage.Setting monsterSchedule, WaitForSeconds waitForSeconds)
         {
             //현재 스폰 몬스터 0으로 초기화
             CurrentSpawnedMonster = 0;
@@ -120,8 +146,9 @@ namespace WoosanStudio.ZombieShooter
 
             while (true)
             {
+                Debug.Log("스폰 1");
                 //몬스터 스폰
-                Spawn(stage, round, monsterSchedule);
+                Spawn( round, monsterSchedule);
                 yield return waitForSeconds;
             } 
         }
@@ -132,9 +159,9 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="round">해당 라운드</param>
         /// <param name="monsterSchedule"></param>
         /// <param name="isFirst"></param>
-        void Spawn(int stage, int round, Map.Stage.Setting monsterSchedule,bool isFirst = false)
+        void Spawn( int round, Map.Stage.Setting monsterSchedule,bool isFirst = false)
         {
-            
+            Debug.Log("스폰 2");
             //맵에 최대 몬스터 생성 제한게 걸렸는으면 생성 중지
             if (MonsterList.Instance.Items.Count >= monsterSchedule.MaxSpawnLimit)
             {
@@ -159,6 +186,10 @@ namespace WoosanStudio.ZombieShooter
             Debug.Log("현재 스폰 상태 =>  Total 스폰 [" + TotalSpawnedMonster + "]   round [" + round + "]  한라운드 당 최대 Max 스폰 [" + monsterSchedule.MaxSpawnByRound[round] + "]  맵에 최대 스폰 = [" + monsterSchedule.MaxSpawnLimit + "]");
 
 
+            //맵마다 생성되는 스테이지의 인덱스
+            
+            int startStage = 0;
+
             //첫번째 라운드에 네임드 몬스터 확인
             //*이거 테스트 코드임
             //*원래는 마지막 라운드에 출현 시켜야 함
@@ -172,7 +203,8 @@ namespace WoosanStudio.ZombieShooter
                 {
                     //보스 몬스터 생성 요청
                     //*0번째 생성
-                    MonsterRequester.RequesterBySetting(stage,monsterSchedule.NamedMonsters[0]);
+                    
+                    MonsterRequester.RequesterBySetting(startStage, monsterSchedule.NamedMonsters[0]);
                     Debug.Log("============= 보스 생성 OK =============");
                 }
             }
@@ -185,7 +217,7 @@ namespace WoosanStudio.ZombieShooter
                 //실제 스폰이 일어남.
                 //몬스터 리퀘스트 호출.
                 //*실제 몬스터 호출 부이며 index 부분은 좀더 생각해서 작업할 필요가 있음
-                MonsterRequester.RequesterBySettings(stage, monsterIndex, monsterSchedule.Monsters);
+                MonsterRequester.RequesterBySettings(startStage, monsterIndex, monsterSchedule.Monsters);
                 //현재 몬스터 카운트 증가
                 CurrentSpawnedMonster++;
                 //전체 생성된 몬스터 카운트 증가
@@ -197,6 +229,7 @@ namespace WoosanStudio.ZombieShooter
 
         /// <summary>
         /// 라운드의 끝인지 알려줌.
+        /// *무한 라운드 이기 때문에 죽었을 때만 호출
         /// </summary>
         /// <returns></returns>
         public bool IsEndRound()
@@ -204,9 +237,9 @@ namespace WoosanStudio.ZombieShooter
             bool value = false;
 
             //현재 스테이지의 마지막 라운드 인지 확인
-            if (MonsterScheduleList[currentStage].MaxSpawnByRound.Count <= currentRound) { value = true;}
+            //if (MonsterScheduleList[currentStage].MaxSpawnByRound.Count <= currentRound) { value = true; }
 
-            Debug.Log("현재 라운드는 ["+ currentStage + "] 입니다 끝 라운드["+ value + "]");
+            //Debug.Log("현재 라운드는 [" + currentStage + "] 입니다 끝 라운드[" + value + "]");
 
             return value;
         }

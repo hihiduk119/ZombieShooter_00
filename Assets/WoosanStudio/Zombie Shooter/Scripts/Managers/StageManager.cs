@@ -97,15 +97,17 @@ namespace WoosanStudio.ZombieShooter
             MonsterRequester = GameObject.FindObjectOfType<MonsterRequester>();
             MonsterSpawnScheduleManager = GameObject.FindObjectOfType<MonsterSpawnScheduleManager>();
 
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            //System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+
+            StageNames.Add("Ready!");
 
             //스테이지 네임 자동 세팅 => 해당 씬 이름과 같음
-            for (int i = 0; i < MonsterSpawnScheduleManager.MonsterScheduleList.Count; i++)
-            {
-                stringBuilder.Append("Stage ").Append(i);
-                StageNames.Add(stringBuilder.ToString());
-                stringBuilder.Clear();
-            }
+            //for (int i = 0; i < MonsterSpawnScheduleManager.MonsterScheduleList.Count; i++)
+            //{
+            //    stringBuilder.Append("Stage ").Append(i);
+            //    StageNames.Add(stringBuilder.ToString());
+            //    stringBuilder.Clear();
+            //}
 
             CameraMoveController = GameObject.FindObjectOfType<CameraMoveController>();
             //playersController = GameObject.FindObjectOfType<PlayersController>();
@@ -249,11 +251,12 @@ namespace WoosanStudio.ZombieShooter
                 Debug.Log("[" + i + "] = " + StageNames[i]);
 
                 //현재 씬 이름과 씬 이름 리스트에서 같은 이름 찾아서 인덱스 가져오기
-                if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals(StageNames[i]))
-                {
+                //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals(StageNames[i]))
+                //{
                     //현재 씬과 같은 이름을 찾았다면 해당 인덱스로 스테이지로 스폰시작
-                    MonsterSpawnScheduleManager.SpawnByStage(i);
-                }
+                    //MonsterSpawnScheduleManager.SpawnByStage(i);
+                    MonsterSpawnScheduleManager.SpawnStart();
+                //}
             }
         }
 
@@ -344,21 +347,31 @@ namespace WoosanStudio.ZombieShooter
             {
                 CardSelectPopupOpener.OpenPopupAndReturn();
             }
-            else //아니라면 카드 선택하는 팝업 호출
+            else//아니라면 카드 선택하는 팝업 호출
             {
-                GameObject clone  = CardSelectPopupOpener.OpenPopupAndReturn();
+                //해당 팝업의 Ok Click 이벤트를 가져오기
+                GameObject clone = CardSelectPopupOpener.OpenPopupAndReturn();
 
                 //popup ok 버튼 클릭 이벤트에 몬스터 스케줄 다음으로 넘어가게 연결
                 Ricimi.BasicButton.ButtonClickedEvent clickedEvent;
 
-                clickedEvent = clone.GetComponent<CardRewardSelectPopupController>().BasicButton.OnClicked;
+                clickedEvent = clone.GetComponent<UI.MVP.InGameCardSelect.PopupPresenter>().View.BasicButton.OnClicked;
 
-                //다음 라운드 실행
-                //*만약 팝업 재사용 코드일때는 등록시 매번 중복 체크해서 지워줘야 함.
+                //다음 라운드 실행-> Ok Click과 연결
                 clickedEvent.AddListener(MonsterSpawnScheduleManager.SpawnByNextRound);
+                //팝업에서 선택한 카드의 실제 데이터 적용-> Ok Click과 연결
+                clickedEvent.AddListener(ApplySelectedCards);
             }
 
             Debug.Log("aa");
+        }
+
+        /// <summary>
+        /// 팝업에서 선택한 카드의 실제 데이터 적용
+        /// </summary>
+        private void ApplySelectedCards()
+        {
+
         }
 
         /// <summary>

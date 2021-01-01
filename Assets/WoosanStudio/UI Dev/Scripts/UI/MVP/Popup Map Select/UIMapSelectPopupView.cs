@@ -12,7 +12,7 @@ namespace WoosanStudio.ZombieShooter
     /// 스테이지 선택 팝업
     ///  *MVP패턴
     /// </summary>
-    public class UIStageSelectPopupView : MonoBehaviour
+    public class UIMapSelectPopupView : MonoBehaviour
     {
         [Header("[스크롤을 제어하는 컨트롤러]")]
         public ScrollRect ScrollRect;

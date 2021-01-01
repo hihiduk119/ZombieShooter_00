@@ -13,14 +13,21 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         [Header("[MVP View]")]
         public PopupView View;
 
-        [Header("[[현재 임시로 넣어둠]변경하려는 카드 => 반듯이 3개이상 있어야 함]")]
+        [Header("[[Auto-> GlobalDataController]변경하려는 카드 => 반듯이 3개이상 있어야 함]")]
         public List<CardSetting> cardSettings = new List<CardSetting>();
 
         [Header("[카드 아이템들")]
-        public List<ItemPresenter> itemPresenters = new List<ItemPresenter>(); 
+        public List<ItemPresenter> itemPresenters = new List<ItemPresenter>();
 
         [Header("[현재 선택된 카드 인덱스]")]
         public int CardIndex = 0;
+
+        [Header("[플레이어 카드중 캐릭터")]
+        public PlayerItemPresenter characterItemPresenter;
+        [Header("[플레이어 카드중 무기")]
+        public PlayerItemPresenter weaponItemPresenter;
+        [Header("[플레이어 카드중 탄약")]
+        public PlayerItemPresenter ammoItemPresenter;
 
         //데이터 부분
         //최초 3개=> 언락에 의해 6개까지 풀림
@@ -28,6 +35,9 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
 
         private void Awake()
         {
+            //로비에서 가져온 카드 넣기
+            cardSettings = GlobalDataController.Instance.SelectAbleAllCard;
+
             //처음 시작시 카드 세팅
             CardsUpdate(true);
         }

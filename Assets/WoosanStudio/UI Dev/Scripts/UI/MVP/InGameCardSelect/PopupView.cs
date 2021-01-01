@@ -21,6 +21,10 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         [Header("[카드 설명]")]
         public Text Description;
 
+        [Header("[Ok 버튼 click 컨트롤")]
+        //클릭 이벤트를 제어하기 위해 사용
+        public Ricimi.BasicButton BasicButton;
+
         public void UpdateView(string name,string stackCount,string description)
         {
             Name.text = name;

@@ -176,17 +176,16 @@ namespace WoosanStudio.ZombieShooter
         //시작시 에너지 소모 값
         static public int EnergyUseAtStartup = 10;
 
-        [Header("[중간 카드 선택시 선택 가능한 모든 카드]")]
+        [Header("[[씬에서 쓰고 버리는 데이터] 중간 카드 선택시 선택 가능한 모든 카드]")]
         public List<CardSetting> SelectAbleAllCard = new List<CardSetting>();
-        [Header("[중간 카드 선택시 선택 가능한 캐릭터 카드]")]
+        [Header("[[씬에서 쓰고 버리는 데이터] 중간 카드 선택시 선택 가능한 캐릭터 카드]")]
         public List<CardSetting> SelectAbleCharacterCard = new List<CardSetting>();
-        [Header("[중간 카드 선택시 선택 가능한 무기 카드]")]
+        [Header("[[씬에서 쓰고 버리는 데이터] 중간 카드 선택시 선택 가능한 무기 카드]")]
         public List<CardSetting> SelectAbleWeaponCard = new List<CardSetting>();
-        [Header("[중간 카드 선택시 선택 가능한 탄약 카드]")]
+        [Header("[[씬에서 쓰고 버리는 데이터] 중간 카드 선택시 선택 가능한 탄약 카드]")]
         public List<CardSetting> SelectAbleAmmoCard = new List<CardSetting>();
 
         //로비에서 선택된 캐릭터, 무기 , 탄약
-        //*여기에 있는게 맞는지 확인 요망
         static public CardSetting SelectedCharacterCard;
         static public CardSetting SelectedWeaponCard;
         static public CardSetting SelectedAmmoCard;

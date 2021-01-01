@@ -61,13 +61,13 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 몬스터 요청
         /// </summary>
-        /// <param name="stage">스테이지 레벨</param>
+        /// <param name="startStage">스테이지 레벨</param>
         /// <param name="index">몬스터 종류</param>
         /// <param name="monsterSettings">생성할 몬스터 세팅 리스트</param>
-        public void RequesterBySettings(int stage, int index , List<MonsterSettings> monsterSettings)
+        public void RequesterBySettings(int startStage, int index , List<MonsterSettings> monsterSettings)
         {
             //스폰 리스트에서 스폰위치 현재 레벨에 맞는 스폰위치 가져옴
-            spawnPoints = SpawnPositionController.GetSpawnPoints(stage);
+            spawnPoints = SpawnPositionController.GetSpawnPoints(startStage);
 
             //출현 몬스터 세팅 리스트를 해당 세팅으로 교체
             MonsterFactory.monsterSettings = monsterSettings;
@@ -86,12 +86,12 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 몬스터 요청 => 네임드
         /// </summary>
-        /// <param name="stage">스테이지 레벨</param>
+        /// <param name="startStage">스테이지 레벨</param>
         /// <param name="monsterSettings">몬스터 종류</param>
-        public void RequesterBySetting(int stage, MonsterSettings monsterSettings) 
+        public void RequesterBySetting(int startStage, MonsterSettings monsterSettings) 
         {
             //스폰 리스트에서 스폰위치 현재 레벨에 맞는 스폰위치 가져옴
-            spawnPoints = SpawnPositionController.GetSpawnPoints(stage);
+            spawnPoints = SpawnPositionController.GetSpawnPoints(startStage);
 
             //몬스터 천국 이동시 아이템 생성 요청.
             //MonsterFactory.MonsterGoHeavenActions.Add(ItemRequester.Requester);

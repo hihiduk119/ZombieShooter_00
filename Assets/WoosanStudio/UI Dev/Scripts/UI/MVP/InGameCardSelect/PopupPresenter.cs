@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events;
+
 namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
 {
     /// <summary>
@@ -36,10 +38,25 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         private void Awake()
         {
             //로비에서 가져온 카드 넣기
-            cardSettings = GlobalDataController.Instance.SelectAbleAllCard;
+            //*이때 6개만,최대중첩 제외,셔플
+            cardSettings = GlobalDataController.Instance.GetSixCardExcludingNotMaxStack();
 
             //처음 시작시 카드 세팅
             CardsUpdate(true);
+
+            //아이템 플레젠터에 캐릭터 카드 세팅
+            characterItemPresenter.cardSettings = GlobalDataController.Instance.SelectAbleCharacterCard;
+            //아이템 플레젠터에 무기 카드 세팅
+            weaponItemPresenter.cardSettings = GlobalDataController.Instance.SelectAbleWeaponCard;
+            //아이템 플레젠터에 탄약 카드 세팅
+            ammoItemPresenter.cardSettings = GlobalDataController.Instance.SelectAbleAmmoCard;
+
+            //카드 업데이트 이벤트 연결
+            characterItemPresenter.UpdateCardEvent.AddListener(UpdateCharacterCard);
+            //카드 업데이트 이벤트 연결
+            weaponItemPresenter.UpdateCardEvent.AddListener(UpdateWeaponCard);
+            //카드 업데이트 이벤트 연결
+            ammoItemPresenter.UpdateCardEvent.AddListener(UpdateAmmoCard);
         }
 
         private void Start()
@@ -134,6 +151,36 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
 
             //증가한 카드 반영하여 업데이트
             CardsUpdate();
+        }
+
+        /// <summary>
+        /// 캐릭터 카드 업데이트
+        /// *PlayerItemPresenter.CardChange()에서 이벤트 호출
+        /// </summary>
+        private void UpdateCharacterCard(CardSetting cardSetting)
+        {
+            //*참조 클론 형태인지 확인
+            GlobalDataController.SelectedCharacterCard = cardSetting;
+        }
+
+        /// <summary>
+        /// 무기 카드 업데이트
+        /// *PlayerItemPresenter.CardChange()에서 이벤트 호출
+        /// </summary>
+        private void UpdateWeaponCard(CardSetting cardSetting)
+        {
+            //*참조 클론 형태인지 확인
+            GlobalDataController.SelectedWeaponCard = cardSetting;
+        }
+
+        /// <summary>
+        /// 탄약 카드 업데이트
+        /// *PlayerItemPresenter.CardChange()에서 이벤트 호출
+        /// </summary>
+        private void UpdateAmmoCard(CardSetting cardSetting)
+        {
+            //*참조 클론 형태인지 확인
+            GlobalDataController.SelectedAmmoCard = cardSetting;
         }
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events;
+
 namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
 {
     /// <summary>
@@ -18,6 +20,9 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
 
         [Header("[현재 선택된 카드 인덱스]")]
         public int CardIndex = 0;
+
+        public class UpdateCard : UnityEvent<CardSetting> { }
+        public UpdateCard UpdateCardEvent = new UpdateCard();
 
         private void Awake()
         {
@@ -65,6 +70,9 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
 
             //뷰에 정보 업데이트
             View.UpdateView(cardSettings[CardIndex].Sprite, cardSettings[CardIndex].IconColor, cardSettings[CardIndex].Name);
+
+            //해당 카드 업데이트 호출
+            UpdateCardEvent.Invoke(cardSettings[CardIndex]);
         }
     }
 }

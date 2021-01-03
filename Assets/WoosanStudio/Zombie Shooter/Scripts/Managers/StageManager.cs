@@ -80,7 +80,7 @@ namespace WoosanStudio.ZombieShooter
         private CameraMoveController CameraMoveController;
 
         //플레이어 팩토리에서 생성된 플레이어
-        private PlayerController Player;
+        private PlayerController playerController;
 
         //플레이어가 가지고 있는 무기 요청 스크립트
         private WeaponRequester WeaponRequester;
@@ -99,6 +99,7 @@ namespace WoosanStudio.ZombieShooter
 
             //System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
 
+            //이거 어따 쓰는 거임??
             StageNames.Add("Ready!");
 
             //스테이지 네임 자동 세팅 => 해당 씬 이름과 같음
@@ -127,9 +128,6 @@ namespace WoosanStudio.ZombieShooter
             //매 라운드 종료시마다 Popup 호출하는 메서드 리스너에 등록
             //*매 라운드 몬스터 생성이 끝났을때 모든 몬스터가 죽으면 호출 되는 이벤트
             MonsterList.Instance.ListEmptyEvent.AddListener(CallPopup);
-
-            
-            
         }
 
         /// <summary>
@@ -173,9 +171,12 @@ namespace WoosanStudio.ZombieShooter
         public void Initialize()
         {
             //플레이어 생성 - 생성된 플레이어 저장
-            Player = PlayerFactory.Initialize().GetComponent<PlayerController>();
+            playerController = PlayerFactory.Initialize().GetComponent<PlayerController>();
             //플레이어가 가지고 있는 무기 요청 가지고 옴
-            WeaponRequester = Player.GetComponent<WeaponRequester>();
+            WeaponRequester = playerController.GetComponent<WeaponRequester>();
+
+            //카드 데이터 플레이어에 적용
+            ApplyCardsSelectedRobby(playerController);
         }
 
         /// <summary>
@@ -299,7 +300,7 @@ namespace WoosanStudio.ZombieShooter
             CameraNativeWalk.Stop();
 
             //플레이어 비활성화
-            Player.Deactive();
+            playerController.Deactive();
 
             //FollowCamTarget 비활성화
             FollowCameraTarget.enabled = false;
@@ -323,7 +324,7 @@ namespace WoosanStudio.ZombieShooter
             VirtualCamera.enabled = false;
 
             //플레이어 비활성화
-            Player.Active();
+            playerController.Active();
 
             //FollowCamTarget 비활성화
             FollowCameraTarget.enabled = true;
@@ -360,18 +361,38 @@ namespace WoosanStudio.ZombieShooter
                 //다음 라운드 실행-> Ok Click과 연결
                 clickedEvent.AddListener(MonsterSpawnScheduleManager.SpawnByNextRound);
                 //팝업에서 선택한 카드의 실제 데이터 적용-> Ok Click과 연결
-                clickedEvent.AddListener(ApplySelectedCards);
+                clickedEvent.AddListener(ApplyCardsSelectedPopup);
             }
 
-            Debug.Log("aa");
+            //Debug.Log("aa");
         }
 
         /// <summary>
-        /// 팝업에서 선택한 카드의 실제 데이터 적용
+        /// 팝업에서 선택한 카드의 데이터 적용
         /// </summary>
-        private void ApplySelectedCards()
+        private void ApplyCardsSelectedPopup()
         {
+            ApplyCardsSelectedRobby(this.playerController);
+        }
 
+        /// <summary>
+        /// 로비에서 선택한 카드의 데이터 적용
+        /// </summary>
+        public void ApplyCardsSelectedRobby(PlayerController playerController)
+        {
+            //무기 와 탄약 적용
+            Player.WeaponAndAmmoSwaper weaponAndAmmoSwaper = GameObject.FindObjectOfType<Player.WeaponAndAmmoSwaper>();
+
+            //글로벌 데이터의 선택 무기, 선택 탄약 적용
+            //*모델만 바꿈 데이터 미적용
+            weaponAndAmmoSwaper.Swap(GlobalDataController.SelectedWeaponCard, GlobalDataController.SelectedAmmoCard);
+
+            //캐릭터는 300번대 부터 시작 -300해서 가져옴
+            int characterIndex = (int)GlobalDataController.SelectedCharacterCard.Type - 300;
+
+            //플레이어 캐릭터 변경
+            //*모델만 바꿈 데이터 미적용
+            playerController.Model.ChangedCharacter(characterIndex);
         }
 
         /// <summary>

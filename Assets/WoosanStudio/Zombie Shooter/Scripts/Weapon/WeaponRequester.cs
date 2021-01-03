@@ -139,6 +139,23 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 무기 실제 연결
+        /// </summary>
+        /// <param name="weaponCard">무기카드</param>
+        /// <param name="ammoCard">탄약카드</param>
+        public void Anchor(CardSetting weaponCard, CardSetting ammoCard)
+        {
+            //무기는 100번대 부터라서 -100
+            int weaponIndex = ((int)weaponCard.Type) - 100;
+
+            //탄약은 200번대 부터라서 -200
+            int ammoIndex = ((int)ammoCard.Type) - 200;
+
+            //무기 연결
+            this.Anchor(weaponIndex, ammoIndex);
+        }
+
+        /// <summary>
         /// 연결된 무기 삭제
         /// </summary>
         public void Remove()

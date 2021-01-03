@@ -24,9 +24,9 @@ namespace WoosanStudio.ZombieShooter.Player
         public void Swap(CardSetting weanponCardSetting, CardSetting ammoCardSetting)
         {
             //기존 무기 제거
-            //WeaponRequester.Remove();
-            //무기, 탄약 세
-            //WeaponRequester.Anchor(0, 0);
+            WeaponRequester.Remove();
+            //무기, 탄약 새로 할당
+            WeaponRequester.Anchor(weanponCardSetting, ammoCardSetting);
         }
 
 

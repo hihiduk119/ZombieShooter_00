@@ -148,10 +148,10 @@ namespace WoosanStudio.ZombieShooter
         public void CardSaveToUseOnMap()
         {
             //Destory 삭제
-            //if (GlobalDataController.Instance.SelectAbleAllCard != null) { GlobalDataController.Instance.SelectAbleAllCard.ForEach(card => Destroy(card)); }
-            //if (GlobalDataController.Instance.SelectAbleAmmoCard != null) { GlobalDataController.Instance.SelectAbleAmmoCard.ForEach(card => Destroy(card)); }
-            //if (GlobalDataController.Instance.SelectAbleCharacterCard != null) { GlobalDataController.Instance.SelectAbleCharacterCard.ForEach(card => Destroy(card)); }
-            //if (GlobalDataController.Instance.SelectAbleWeaponCard != null) { GlobalDataController.Instance.SelectAbleWeaponCard.ForEach(card => Destroy(card)); }
+            if (GlobalDataController.Instance.SelectAbleAllCard != null) { GlobalDataController.Instance.SelectAbleAllCard.ForEach(card => Destroy(card)); }
+            if (GlobalDataController.Instance.SelectAbleAmmoCard != null) { GlobalDataController.Instance.SelectAbleAmmoCard.ForEach(card => Destroy(card)); }
+            if (GlobalDataController.Instance.SelectAbleCharacterCard != null) { GlobalDataController.Instance.SelectAbleCharacterCard.ForEach(card => Destroy(card)); }
+            if (GlobalDataController.Instance.SelectAbleWeaponCard != null) { GlobalDataController.Instance.SelectAbleWeaponCard.ForEach(card => Destroy(card)); }
 
             //카드 초기화
             GlobalDataController.Instance.SelectAbleAllCard.Clear();
@@ -198,38 +198,6 @@ namespace WoosanStudio.ZombieShooter
 
             //맵에서 사용될 카드 세팅
             Model.cardSettings.ForEach(value => {
-                //캐릭터 카드 저장
-                //*300 - 399사이 값
-                //if (value.UseAble && ((300 <= (int)value.Type) && ((int)value.Type < 400))) {
-                //    //Map세팅에 라운드끝의 카드 세팅 넣기
-                //    GlobalDataController.Instance.SelectAbleCharacterCard = new List<CardSetting>(GlobalDataController.MapSetting.RoundEndCardSetting.Character);
-                //    //현재 선택 캐릭터 카드가 없다면 추가
-                //    CardSetting characterCard = GlobalDataController.Instance.SelectAbleCharacterCard.Find(card => card.Equals(GlobalDataController.SelectedCharacterCard));
-                //    if (characterCard == null) { GlobalDataController.Instance.SelectAbleCharacterCard.Add(GlobalDataController.SelectedCharacterCard); }
-                //}
-
-                //무기 카드 저장
-                //*100 - 199사이 값
-                //if (value.UseAble && ((100 <= (int)value.Type) && ((int)value.Type < 200)))
-                //{
-                //    //Map세팅에 라운드끝의 카드 세팅 넣기
-                //    GlobalDataController.Instance.SelectAbleWeaponCard = new List<CardSetting>(GlobalDataController.MapSetting.RoundEndCardSetting.Weapon);
-                //    //현재 선택 캐릭터 카드가 없다면 추가
-                //    CardSetting weaponCard = GlobalDataController.Instance.SelectAbleWeaponCard.Find(card => card.Equals(GlobalDataController.SelectedWeaponCard));
-                //    if (weaponCard == null) { GlobalDataController.Instance.SelectAbleWeaponCard.Add(GlobalDataController.SelectedWeaponCard); }
-                //}
-
-                //탄약 카드 저장
-                //*200 - 299사이 값
-                //if (value.UseAble && ((200 <= (int)value.Type) && ((int)value.Type < 300)))
-                //{
-                //    //Map세팅에 라운드끝의 카드 세팅 넣기
-                //    GlobalDataController.Instance.SelectAbleAmmoCard = new List<CardSetting>(GlobalDataController.MapSetting.RoundEndCardSetting.Ammo);
-                //    //현재 선택 캐릭터 카드가 없다면 추가
-                //    CardSetting ammoCard = GlobalDataController.Instance.SelectAbleAmmoCard.Find(card => card.Equals(GlobalDataController.SelectedAmmoCard));
-                //    if (ammoCard == null) { GlobalDataController.Instance.SelectAbleAmmoCard.Add(GlobalDataController.SelectedAmmoCard); }
-                //}
-
                 //사용될 언락된 일반 카드 저장
                 if (value.UseAble && ((0 <= (int)value.Type) && ((int)value.Type < 100)))
                 {
@@ -243,6 +211,32 @@ namespace WoosanStudio.ZombieShooter
             GlobalDataController.Instance.SelectAbleCharacterCard.ForEach(card => GlobalDataController.Instance.SelectAbleAllCard.Add(card));
             GlobalDataController.Instance.SelectAbleWeaponCard.ForEach(card => GlobalDataController.Instance.SelectAbleAllCard.Add(card));
             GlobalDataController.Instance.SelectAbleAmmoCard.ForEach(card => GlobalDataController.Instance.SelectAbleAllCard.Add(card));
+
+            //SelectAbleCharacterCard 안의 같은 카드로 교체
+            //*원본 카드를 복제 카드로 모두 교체-> SelectAble카드의 참조로 교체
+            GlobalDataController.SelectedCharacterCard = GlobalDataController.Instance.SelectAbleCharacterCard.Find(delegate(CardSetting card) {
+                return card.Type.Equals(GlobalDataController.SelectedCharacterCard.Type);
+	        });
+
+            GlobalDataController.SelectedWeaponCard = GlobalDataController.Instance.SelectAbleWeaponCard.Find(delegate (CardSetting card) {
+                return card.Type.Equals(GlobalDataController.SelectedWeaponCard.Type);
+            });
+
+            GlobalDataController.SelectedAmmoCard = GlobalDataController.Instance.SelectAbleAmmoCard.Find(delegate (CardSetting card) {
+                return card.Type.Equals(GlobalDataController.SelectedAmmoCard.Type);
+            });
+
+
+        }
+
+        bool FindCard(CardSetting target,CardSetting compare)
+        {
+            if(target.Type.Equals(compare.Type))
+            {
+                return true;
+            }   
+
+            return false;
         }
 
         /// <summary>

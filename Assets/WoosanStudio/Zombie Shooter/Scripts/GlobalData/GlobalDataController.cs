@@ -327,6 +327,38 @@ namespace WoosanStudio.ZombieShooter
             Debug.Log("선택된 맵이름 = "+ GlobalDataController.MapSetting.Name);
         }
 
+
+
+        /// <summary>
+        /// 최대 스택이 아닌 6장의 카드 가져오기
+        /// </summary>
+        public List<CardSetting> GetSixCardExcludingNotMaxStack()
+        {
+            //일단 참조 복제
+            List<CardSetting> cardSettings = new List<CardSetting>();
+
+            //최대 스택은 제외함
+            GlobalDataController.Instance.SelectAbleAllCard.ForEach(value =>
+            {
+                if (value.StackCount < value.MaxStack)
+                {
+                    cardSettings.Add(value);
+                }
+            });
+            //Debug.Log("1 갯수 = " + cardSettings.Count);
+
+            //랜덤하게 섞기
+            cardSettings.Shuffle<CardSetting>();
+            //Debug.Log("2 갯수 = " + cardSettings.Count);
+
+            //카드 6개만 남기고 모두 버림
+            cardSettings.RemoveRange(6, cardSettings.Count-6);
+
+            //Debug.Log("3 갯수 = " + cardSettings.Count);
+
+            return cardSettings;
+        }
+
         //void OnGUI()
         //{
         //    if (GUI.Button(new Rect(100, 1300, 200, 100), "맵 데이터 확인"))
@@ -334,5 +366,41 @@ namespace WoosanStudio.ZombieShooter
         //        HasCardsPrint();
         //    }
         //}
+
+        /*#region [-TestCode]
+        void Update()
+        {
+            //6개 카드 가져오기 테스트
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                GetSixCardExcludingNotMaxStack();
+            }
+        }
+        #endregion*/
+    }
+
+    /// <summary>
+    /// 확장 메서드
+    /// </summary>
+    public static class ListExtention
+    {
+        /// <summary>
+        /// 리스트 랜덤 섞기
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        static public void Shuffle<T>(this IList<T> list)
+        {
+            System.Random rng = new System.Random();
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
     }
 }

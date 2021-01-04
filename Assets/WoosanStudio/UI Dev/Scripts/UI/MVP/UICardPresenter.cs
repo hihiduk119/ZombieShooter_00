@@ -227,6 +227,10 @@ namespace WoosanStudio.ZombieShooter
             });
 
 
+            //맵 이동 전에 선택된 캐릭터, 무기, 탄약 스택 +1 증가
+            GlobalDataController.SelectedCharacterCard.StackCount = 1;
+            GlobalDataController.SelectedWeaponCard.StackCount = 1;
+            GlobalDataController.SelectedAmmoCard.StackCount = 1;
         }
 
         bool FindCard(CardSetting target,CardSetting compare)

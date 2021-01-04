@@ -34,13 +34,13 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         private void Start()
         {
             //처음 시작시 0으로 세팅
-            ChangeCard(0);
+            //ChangeCard(0);
         }
 
         /// <summary>
         /// 카드 변경
         /// </summary>
-        void ChangeCard(int value)
+        public void ChangeCard(int value)
         {
             //현재카드 인덱스에 반영 
             CardIndex += value;

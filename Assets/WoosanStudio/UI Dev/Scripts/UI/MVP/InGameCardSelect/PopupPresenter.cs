@@ -63,6 +63,13 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         {
             //0번 카드 포커스 상태로 맡들기
             itemPresenters[0].Focus();
+
+            //팝업 생성시 선택된 카드 아이템 설정
+            characterItemPresenter.ChangeCard((int)GlobalDataController.SelectedCharacterCard.Type - 300);
+            //팝업 생성시 선택된 카드 아이템 설정
+            weaponItemPresenter.ChangeCard((int)GlobalDataController.SelectedCharacterCard.Type - 100);
+            //팝업 생성시 선택된 카드 아이템 설정
+            ammoItemPresenter.ChangeCard((int)GlobalDataController.SelectedCharacterCard.Type - 200);
         }
 
         /// <summary>

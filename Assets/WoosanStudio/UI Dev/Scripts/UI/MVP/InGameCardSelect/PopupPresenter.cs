@@ -135,7 +135,7 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         private void UpdateView(CardSetting cardSetting)
         {
             string stackCount = cardSetting.StackCount + "/"+cardSetting.MaxStack;
-            View.UpdateView(cardSetting.Name, stackCount, cardSetting.AllDescriptionForUpgradeInfo());
+            View.UpdateView(cardSetting.Name, stackCount, cardSetting.AllDescriptionForSelectedCardInfo());
 
             itemPresenters.ForEach(value => value.Unfocus());
         }

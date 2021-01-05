@@ -167,10 +167,84 @@ namespace WoosanStudio.ZombieShooter
             if (valueIsCanBeChanged)
             {
                 //다음 레벨 증가 수치 추가
-                stringBuilder.Append(" -> (");
+                stringBuilder.Append(" -> ");
                 value = ((cardLevel + 1) * IncreasedValuePerLevelUp) + Value;
                 stringBuilder.Append(value);
-                stringBuilder.Append("%)");
+                stringBuilder.Append("%");
+            }
+
+            return stringBuilder.ToString();
+        }
+
+
+        /// <summary>
+        /// 업그레이드 정보용 완성된 설명 가져오기
+        /// *CardRewardSelectPopupController -> ChangeCardInformation() 부분 변경가능
+        /// </summary>
+        /// <param name="cardLevel"></param>
+        /// <returns></returns>
+        public string GetSelectedCardDescripsion(int cardLevel,int stack)
+        {
+            //계산 시에는 스택 +1로 계산 -> 증가 수치 표시용 
+            stack += 1;
+
+            //일단 초기화하고 시작
+            stringBuilder.Clear();
+
+            string desc = descripsion;
+
+            //"/d"의 첫번째 /를 알아옴
+            int index = desc.IndexOf('/');
+
+            //'d'와 같은 수치 값이 존재하는 설명이라면
+            bool valueIsCanBeChanged = false;
+
+            float value;
+            if (desc[index + 1].Equals('d'))
+            {
+                valueIsCanBeChanged = true;
+
+                //Value가 (-)일 경우 감소 프로퍼티임.
+                //*이때는 스택 계산 안함
+                if (this.Value < 0)
+                {
+                    value = (cardLevel * IncreasedValuePerLevelUp) + Value;
+                }
+                else
+                {
+                    //기본 값 + 카드 1레벨당 상승 값 * 카드 레벨 
+                    value = ((cardLevel * IncreasedValuePerLevelUp) + Value) * stack;
+                }
+
+                //'/d'를 삭제
+                desc = desc.Remove(index, 2);
+                //삭제된 위치에 계산됨 값 넣기 => 소수점 1자리만 표기
+                desc = desc.Insert(index, string.Format("{0:0.0}", value.ToString()));
+            }
+
+            //계산 완료후 완성된 문장 한줄을 더함.
+            stringBuilder.Append(desc);
+
+            //'d'와 같은 수치 값이 존재하는 설명이라면
+            //증가 수치 추가로 붙이기
+            //Value가 (-)일 경우 변경 표시 안함
+            if (valueIsCanBeChanged && (0 <= this.Value ))
+            {
+                //다음 레벨 증가 수치 추가
+                stringBuilder.Append(" -> ");
+
+                //Value가 (-)일 경우 감소 프로퍼티임.
+                //*이때는 스택 계산 안함
+                //if (this.Value < 0)
+                //{
+                //    value = (cardLevel * IncreasedValuePerLevelUp) + Value;
+                //} else
+                //{
+                    value = ((cardLevel * IncreasedValuePerLevelUp) + Value) * (stack + 1);
+                //}
+                
+                stringBuilder.Append(value);
+                stringBuilder.Append("%");
             }
 
             return stringBuilder.ToString();

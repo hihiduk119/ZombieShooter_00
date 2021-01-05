@@ -488,6 +488,24 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 라운드 끝 팝업 카드 선택 정보용 프로퍼티의 디스크립션 합쳐서 가져오기
+        /// </summary>
+        /// <returns></returns>
+        public string AllDescriptionForSelectedCardInfo()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < this.Properties.Count; i++)
+            {
+                stringBuilder.Append(this.Properties[i].GetSelectedCardDescripsion(this.Level,this.StackCount));
+                //마지막 줄이 아니면 라인 개행 추가
+                if (i < this.Properties.Count) { stringBuilder.AppendLine(); }
+            }
+
+            return stringBuilder.ToString();
+        }
+
+        /// <summary>
         /// 업그레이드 완료시 예측 레벨을 스트링으로 가져옴
         /// </summary>
         /// <param name="cardSetting">해당 카드 세팅</param>

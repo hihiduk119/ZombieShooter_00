@@ -5,6 +5,7 @@ using UnityEngine;
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
+    /// *삭제 요망
     /// 해당 스테이지에서 보여줄수 있는 카드 및 선택된 카드를 메니징
     /// 1. 로비에서 선택한 카드를 가지고 있음
     /// 2. 매 라운드 끝마다 보여줄 카드 결정
@@ -310,48 +311,6 @@ namespace WoosanStudio.ZombieShooter
             float percent = (property.IncreasedValuePerLevelUp * level) + property.Value + percentage;
             return percent;
         }
-
-        //같은 종류의 카드는 중첩 되지 않지만 다른 종류는 중첩된다
-        /*public float DecreaseDamage(float damage, int level, CardProperty property)
-        {
-            //100을 기준으로 감소 퍼센트 계산
-            //100기준값 - ((1 레벨당 추가 갑소 값 * level) + 기본 감소 수치)
-            int percent = 100 - ((property.IncreasedValuePerLevelUp * level) + property.Value);
-
-            //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
-            float returnValue = damage * percent * 0.01f;
-
-            return returnValue;
-        }*/
-
-        /// <summary>
-        /// 같은 프로퍼티를 추출
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        /*public List<CardProperty> GetSameProperties(ref List<CardProperty> value)
-        {
-            List<CardProperty> returnValue = new List<CardProperty>();
-
-            //returnValue 첫번째 프로퍼티가 기준
-            returnValue.Add(value[0]);
-            //기준을 잡은 후 리스트에서 제거
-            value.RemoveAt(0);
-
-            for (int i = 0; i < value.Count; i++)
-            {
-                //기준과 같은 타입 찾음 => 기준 returnValue[0]
-                if (returnValue[0].Type == value[i].Type)
-                {
-                    returnValue.Add(value[i]);
-                    value.RemoveAt(i);
-                    //삭제 되었으니 i-1
-                    i--;
-                }
-            }
-
-            return returnValue;
-        }*/
 
         /// <summary>
         //좀비가 영향을 받는 모든 데미지 계산
@@ -780,7 +739,7 @@ namespace WoosanStudio.ZombieShooter
 
 
 
-        
+        /*
         #region [-TestCode]
         void Update()
         {
@@ -807,19 +766,9 @@ namespace WoosanStudio.ZombieShooter
 
                 Debug.Log("===============> 몬스터가 받는 크리티컬 데미지 계산 <===============");
                 DamageCalculationByCritical(total);
-
-                //몬스터의 저항에 의한 데미지 테스트
-                //Debug.Log("===============> 몬스터 저항 계산 <===============");
-                //DamageCalculationReflectingMonsterResistance(total,monstersProperties, 0);
-
-                //스피드 테스트 -> TestGunSetting필요.
-                //GetAttackSpeed(TestGunSetting.rapidFireCooldown);
-
-                //크리티컬 테스트
-                //IsCriticalDamage();
             }
         }
         #endregion
-        
+        */
     }
 }

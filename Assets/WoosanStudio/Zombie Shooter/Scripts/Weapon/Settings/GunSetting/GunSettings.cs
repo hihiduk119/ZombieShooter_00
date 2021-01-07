@@ -96,9 +96,7 @@ namespace WoosanStudio.ZombieShooter
 
         [Header("[무기 데미지 - [IWeaponStat]]")]
         [SerializeField] private int _damage;
-        public int Damage { get => _damage = DamageCalculator.GetDamage(this); }
-        public DamageCalculator DamageCalculator { get; }
-
+        public int Damage { get => _damage; }
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGunStat Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 

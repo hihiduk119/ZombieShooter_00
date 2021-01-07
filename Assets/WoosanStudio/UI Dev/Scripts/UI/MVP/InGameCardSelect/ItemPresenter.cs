@@ -109,7 +109,10 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
                 //돈없으면 코인 부족 표시
                 //NotifyPopupController.Instance.OpenResult(UINotifyPopupModel.Type.NotEnoughCoin);
                 //돈없으면 코인 부족 표시
-                GameObject.FindObjectOfType<NotifyPopupController>().OpenResult(UINotifyPopupModel.Type.NotEnoughCoin);
+                //GameObject.FindObjectOfType<NotifyPopupController>().OpenResult(UINotifyPopupModel.Type.NotEnoughCoin);
+
+                //코인 팝업 여는 버튼 이벤트 발생
+                GameObject.Find("Coins Button").GetComponent<Ricimi.BasicButton>().OnClicked.Invoke();
             } else
             {
                 Debug.Log("[Invoke] = " + AddSucceededEvent.GetPersistentEventCount());

@@ -16,26 +16,28 @@ MonoBehaviour:
   gemPrice: -1
   cardData:
     UseAble: 1
-    Level: 0
+    Level: 6
     Durability: 100
     SortIndex: 0
     ResearchSlotIndex: -1
     PlayTime: 0
     HuntedMonster: 0
+    WhoCallToUpgrade: 0
     UpgardeTimeset:
-      endDateTime: -8585961007639686158
-      startDateTime: -8585961007939686158
-      totalSeconds: 30
-      bUpgrading: 1
+      endDateTime: -8585946017651640148
+      startDateTime: -8585946092951640148
+      totalSeconds: 7530
+      bUpgrading: 0
     IsUpgrading: 0
-  useAble: 1
-  level: 0
+    ShownUpgradeComplate: 1
+  useAble: 0
+  level: 6
   durability: 100
   upgradeTimeset:
-    endDateTime: -8585961007639686158
-    startDateTime: -8585961007939686158
-    totalSeconds: 30
-    bUpgrading: 1
+    endDateTime: -8585946017651640148
+    startDateTime: -8585946092951640148
+    totalSeconds: 7530
+    bUpgrading: 0
   type: 0
   name: Attack Speed
   value: -1
@@ -46,7 +48,7 @@ MonoBehaviour:
   unlockLevel: 0
   researchTimeFormula: ResearchTime
   coinFormula: Coin
-  sprite: {fileID: 21300000, guid: 63475a85768da4dcebf0f835d4e2a613, type: 3}
+  sprite: {fileID: 21300000, guid: 684049ff2f7f645109fc4df4b58a7121, type: 3}
   scale: 0.25
   iconColor: {r: 0.27058825, g: 0.3647059, b: 0.4509804, a: 1}
   title: Attack Speed

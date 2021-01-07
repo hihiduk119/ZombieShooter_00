@@ -23,7 +23,7 @@ namespace WoosanStudio.ZombieShooter
             RunnerZombie,
 
             //네임드 몬스터
-            Jeff       = 100,
+            Jeff       = 1000,
             Diogo,
             Atlas,
         }

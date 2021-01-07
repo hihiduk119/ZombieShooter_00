@@ -15,7 +15,7 @@ MonoBehaviour:
   isActivate: 0
   gemPrice: 1200
   cardData:
-    UseAble: 0
+    UseAble: 1
     Level: 0
     Durability: 100
     SortIndex: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
       bUpgrading: 0
     IsUpgrading: 0
     ShownUpgradeComplate: 1
-  useAble: 0
+  useAble: 1
   level: 0
   durability: 100
   upgradeTimeset:
@@ -40,7 +40,7 @@ MonoBehaviour:
     bUpgrading: 0
   type: 102
   name: Assault Rifle
-  value: 6
+  value: 5
   maxStack: 2
   stackCount: 0
   maxDurability: 10

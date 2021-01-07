@@ -166,7 +166,9 @@ namespace WoosanStudio.ZombieShooter
         //*card 추가되면 모두 변경 되어야 한다
         static public int CharacterCardStartIndex = 16;
         //모든 총의 기본 치명타율 5%
-        static public int DefaultCriticalChance = 5;
+        static public float DefaultCriticalChance = 0;
+        //모든 총의 기본 치명타율 데미지 110%
+        static public int DefaultCriticalDamage = 110;
         //알림 통지 기준이 되는 씬이름
         static public string PresentSceneName = "1.ZombieShooter-Robby";
         //업그레이드 가능한 연구 가능 최대 슬롯
@@ -184,6 +186,8 @@ namespace WoosanStudio.ZombieShooter
         public List<CardSetting> SelectAbleWeaponCard = new List<CardSetting>();
         [Header("[[씬에서 쓰고 버리는 데이터] 중간 카드 선택시 선택 가능한 탄약 카드]")]
         public List<CardSetting> SelectAbleAmmoCard = new List<CardSetting>();
+        //[Header("[[씬에서 쓰고 버리는 데이터] 중간 카드 선택시 선택된 모든 카드]")]
+        //public List<CardSetting> SelectedCard = new List<CardSetting>();
 
         //로비에서 선택된 캐릭터, 무기 , 탄약
         static public CardSetting SelectedCharacterCard;
@@ -351,8 +355,11 @@ namespace WoosanStudio.ZombieShooter
             cardSettings.Shuffle<CardSetting>();
             //Debug.Log("2 갯수 = " + cardSettings.Count);
 
-            //카드 6개만 남기고 모두 버림
-            cardSettings.RemoveRange(6, cardSettings.Count-6);
+            //카드가 6장 이상일때 6개만 남기고 모두 버림
+            if (6 < cardSettings.Count)
+            { 
+                cardSettings.RemoveRange(6, cardSettings.Count - 6);
+            }
 
             //Debug.Log("3 갯수 = " + cardSettings.Count);
 

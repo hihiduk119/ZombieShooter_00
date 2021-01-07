@@ -30,7 +30,7 @@ MonoBehaviour:
       bUpgrading: 0
     IsUpgrading: 0
     ShownUpgradeComplate: 1
-  useAble: 1
+  useAble: 0
   level: 0
   durability: 100
   upgradeTimeset:
@@ -40,7 +40,7 @@ MonoBehaviour:
     bUpgrading: 0
   type: 100
   name: Pistol
-  value: 10
+  value: 6
   maxStack: 2
   stackCount: 0
   maxDurability: 10

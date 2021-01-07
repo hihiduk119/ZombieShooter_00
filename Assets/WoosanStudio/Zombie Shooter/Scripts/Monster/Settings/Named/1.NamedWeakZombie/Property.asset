@@ -16,5 +16,5 @@ MonoBehaviour:
   value: -50
   valueByLevel: 0
   fomula: 
-  increasedValuePerLevelUp: -8
+  increasedValuePerLevelUp: -10
   descripsion: Resistance by the pistol damage by /d%.

@@ -16,9 +16,5 @@
         /// 무기 데이지
         /// </summary>
         int Damage { get; }
-        /// <summary>
-        /// 데미지 계산기
-        /// </summary>
-        DamageCalculator DamageCalculator { get; }
     }
 }

@@ -156,10 +156,10 @@ namespace WoosanStudio.ZombieShooter
             int addEnergy = System.Convert.ToInt32( seconds / data.MaxRechargingTime);
             int addRechargingTime = System.Convert.ToInt32(seconds % data.MaxRechargingTime);
 
-            Debug.Log("전체 지난 시간s = " + seconds);
-            Debug.Log("추가할 에너지 = " + addEnergy + " 변경 초  = " + seconds + " 1회복 몇초 = " + data.MaxRechargingTime);
-            Debug.Log("추가할 초 = " + addRechargingTime + " 변경 초  = " + seconds + " 1회복 몇초 = " + data.MaxRechargingTime);
-            Debug.Log("지난 시간 = " + timeSpan.ToString() + " 기존 에너지 = " + data.CurrentEnergy + "/  추가될 에너지 =" + addEnergy);
+            //Debug.Log("전체 지난 시간s = " + seconds);
+            //Debug.Log("추가할 에너지 = " + addEnergy + " 변경 초  = " + seconds + " 1회복 몇초 = " + data.MaxRechargingTime);
+            //Debug.Log("추가할 초 = " + addRechargingTime + " 변경 초  = " + seconds + " 1회복 몇초 = " + data.MaxRechargingTime);
+            //Debug.Log("지난 시간 = " + timeSpan.ToString() + " 기존 에너지 = " + data.CurrentEnergy + "/  추가될 에너지 =" + addEnergy);
 
             //에너지 추가
             //에너지 추가

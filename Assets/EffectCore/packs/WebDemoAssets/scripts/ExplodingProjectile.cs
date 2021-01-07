@@ -232,25 +232,25 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
     CalculatorInfo DamageCalculator(MonsterSettings monsterSettings)
     {
         //몬스터 아이디가 100이상이면 네임드 몬스터
-        bool isNamedZombie = false;
+        //bool isNamedZombie = false;
         bool isCriticalDamage = false;
         float damage = 0;
-        if(100 <= (int)monsterSettings.MonsterId) { isNamedZombie = true; }
-
+        
         //카드 메니저에 데미지 계산요청
         //*건 타입 및 탄약 타입 ,네임드 ,일반 몬스터 특성에 의한 계산
-        damage = CardManager.Instance.DamageCalculationTakenFromPlayer(isNamedZombie);
+        //*hasCards반복 사용이 퍼포먼스에 영향을 줄수도 있음
+        damage = WoosanStudio.ZombieShooter.DamageCalculator.Instance.GetHitDamageFromPlayer(monsterSettings);
 
-        //카드 메니저에 크리티컬 인지 아닌지 확인
-        if (isCriticalDamage = CardManager.Instance.IsCriticalDamage())
+        //크리티컬 판정인지 확률 계산
+        if (isCriticalDamage = WoosanStudio.ZombieShooter.DamageCalculator.Instance.IsCriticalDamage())
         {
-            //크리데미지 비율 계산해서 크리 반영한 데미지 가져오기
-            damage = CardManager.Instance.DamageCalculationByCritical(damage);
+            //크리티컬 판정시 데미지 가져오기
+            damage = WoosanStudio.ZombieShooter.DamageCalculator.Instance.GetCriticalDamage(damage);
         }
 
-        //몬스터에 저항이 존재 한다면 계산해서 저항받은 데미지 계산
-        damage = CardManager.Instance.DamageCalculationReflectingMonsterResistance(damage, monsterSettings.Propertys, monsterSettings.Level);
-        //데미지가 1보다 작다면 최소 데미지 1로 마춤
+        ////몬스터에 저항이 존재 한다면 계산해서 저항받은 데미지 계산
+        damage = WoosanStudio.ZombieShooter.DamageCalculator.Instance.GetDamageThatReflectsMonsterResistance(damage, monsterSettings.Propertys, monsterSettings.Level);
+        ////데미지가 1보다 작다면 최소 데미지 1로 마춤
         if (damage < 1f) damage = 1f;
 
         //keyValue 는 다음과 같다

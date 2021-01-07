@@ -16,26 +16,28 @@ MonoBehaviour:
   gemPrice: -1
   cardData:
     UseAble: 1
-    Level: 0
+    Level: 1
     Durability: 100
     SortIndex: 0
     ResearchSlotIndex: -1
     PlayTime: 0
     HuntedMonster: 0
+    WhoCallToUpgrade: 0
     UpgardeTimeset:
-      endDateTime: -8585960923108748728
-      startDateTime: -8585960923408748728
+      endDateTime: -8585945395949447188
+      startDateTime: -8585945396249447188
       totalSeconds: 30
-      bUpgrading: 1
+      bUpgrading: 0
     IsUpgrading: 0
+    ShownUpgradeComplate: 1
   useAble: 1
-  level: 0
+  level: 1
   durability: 100
   upgradeTimeset:
-    endDateTime: -8585960923108748728
-    startDateTime: -8585960923408748728
+    endDateTime: -8585945395949447188
+    startDateTime: -8585945396249447188
     totalSeconds: 30
-    bUpgrading: 1
+    bUpgrading: 0
   type: 3
   name: Critical Chance
   value: 10

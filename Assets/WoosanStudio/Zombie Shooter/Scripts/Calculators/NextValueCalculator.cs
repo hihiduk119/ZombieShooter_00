@@ -549,14 +549,14 @@ namespace WoosanStudio.ZombieShooter
             Debug.Log("===================[테스트 끝]===================");
         }
 
-        void Update()
-        {
-            //순차적으로 모든 레벨업 요구 시간 보여주기
-            if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                StartCoroutine(SequenceRun());
-            }
-        }
+        //void Update()
+        //{
+        //    //순차적으로 모든 레벨업 요구 시간 보여주기
+        //    if (Input.GetKeyDown(KeyCode.Alpha4))
+        //    {
+        //        StartCoroutine(SequenceRun());
+        //    }
+        //}
         #endregion
 
     }

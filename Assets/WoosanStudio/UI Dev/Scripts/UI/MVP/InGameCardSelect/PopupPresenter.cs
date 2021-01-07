@@ -21,8 +21,8 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         [Header("[카드 아이템들")]
         public List<ItemPresenter> itemPresenters = new List<ItemPresenter>();
 
-        [Header("[현재 선택된 카드 인덱스]")]
-        public int CardIndex = 0;
+        //[Header("[현재 선택된 카드 인덱스]")]
+        //public int CardIndex = 0;
 
         [Header("[플레이어 카드중 캐릭터")]
         public PlayerItemPresenter characterItemPresenter;
@@ -30,6 +30,9 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         public PlayerItemPresenter weaponItemPresenter;
         [Header("[플레이어 카드중 탄약")]
         public PlayerItemPresenter ammoItemPresenter;
+
+        [Header("[[확인용] 선택된 카드")]
+        public CardSetting SelectedCard;
 
         //데이터 부분
         //최초 3개=> 언락에 의해 6개까지 풀림
@@ -138,6 +141,9 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
             View.UpdateView(cardSetting.Name, stackCount, cardSetting.AllDescriptionForSelectedCardInfo());
 
             itemPresenters.ForEach(value => value.Unfocus());
+
+            //카드 선택됨
+            SelectedCard = cardSetting;
         }
 
         /// <summary>
@@ -188,6 +194,15 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         {
             //*참조 클론 형태인지 확인
             GlobalDataController.SelectedAmmoCard = cardSetting;
+        }
+
+        public void ClickedOk()
+        {
+            //선택된 카드 스택 증가
+            //*스택 증가는 해당 카드 데이터 반영을 의미
+            SelectedCard.StackCount++;
+
+            //카드 데이터를 캐릭터에 적용하는 코드 필요
         }
     }
 }

@@ -22,20 +22,22 @@ MonoBehaviour:
     ResearchSlotIndex: -1
     PlayTime: 0
     HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
-      endDateTime: -8585960909655624858
-      startDateTime: -8585960909955624858
-      totalSeconds: 30
-      bUpgrading: 1
+      endDateTime: 0
+      startDateTime: 0
+      totalSeconds: 0
+      bUpgrading: 0
     IsUpgrading: 0
-  useAble: 1
+    ShownUpgradeComplate: 1
+  useAble: 0
   level: 0
   durability: 100
   upgradeTimeset:
-    endDateTime: -8585960909655624858
-    startDateTime: -8585960909955624858
-    totalSeconds: 30
-    bUpgrading: 1
+    endDateTime: 0
+    startDateTime: 0
+    totalSeconds: 0
+    bUpgrading: 0
   type: 5
   name: Air Strike Damage
   value: 250

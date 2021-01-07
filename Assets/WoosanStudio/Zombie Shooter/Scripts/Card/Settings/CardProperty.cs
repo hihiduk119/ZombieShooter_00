@@ -185,8 +185,9 @@ namespace WoosanStudio.ZombieShooter
         /// <returns></returns>
         public string GetSelectedCardDescripsion(int cardLevel,int stack)
         {
-            //계산 시에는 스택 +1로 계산 -> 증가 수치 표시용 
-            stack += 1;
+            //계산 시에는 스택 +1로 계산 -> 증가 수치 표시용
+            //*이거 문제 발생
+            //stack += 1;
 
             //일단 초기화하고 시작
             stringBuilder.Clear();

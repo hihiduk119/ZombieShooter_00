@@ -16,27 +16,27 @@ MonoBehaviour:
   gemPrice: -1
   cardData:
     UseAble: 1
-    Level: 0
+    Level: 1
     Durability: 100
     SortIndex: 0
     ResearchSlotIndex: -1
     PlayTime: 0
     HuntedMonster: 0
-    WhoCallToUpgrade: 3
+    WhoCallToUpgrade: 0
     UpgardeTimeset:
-      endDateTime: 0
-      startDateTime: 0
-      totalSeconds: 0
+      endDateTime: -8585946068389432858
+      startDateTime: -8585946068689432858
+      totalSeconds: 30
       bUpgrading: 0
     IsUpgrading: 0
-    ShownUpgradeComplate: 0
-  useAble: 1
-  level: 0
+    ShownUpgradeComplate: 1
+  useAble: 0
+  level: 1
   durability: 100
   upgradeTimeset:
-    endDateTime: 0
-    startDateTime: 0
-    totalSeconds: 0
+    endDateTime: -8585946068389432858
+    startDateTime: -8585946068689432858
+    totalSeconds: 30
     bUpgrading: 0
   type: 2
   name: Critical Damage

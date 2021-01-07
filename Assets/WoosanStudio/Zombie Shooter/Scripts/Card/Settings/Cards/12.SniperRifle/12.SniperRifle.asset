@@ -40,7 +40,7 @@ MonoBehaviour:
     bUpgrading: 0
   type: 103
   name: Sniper Rifle
-  value: 30
+  value: 50
   maxStack: 2
   stackCount: 0
   maxDurability: 10

@@ -136,17 +136,12 @@ namespace WoosanStudio.ZombieShooter
         public void FirstStage()
         {
             //플레이어 생성
+            //*테스트 위해 임시로 막음
             Initialize();
-            //카메라 락 해제
-            //**해당 부분은 나중에 이벤트 호출로 변경 되어야 함
-            //CM_카메라 활성화. CM 카메라가 활성화되면 카메라 피봇이 강제 조정됨.
-            //On();
-
-            //자동으로 스테이지 카운팅하면서 스테이지 스왑
-            //CameraMoveController.AutoChange();
 
             //Popup 테스트를 위해서 잠시 제거
-            NextStage();
+            //*테스트 위해 임시로 막음
+            //NextStage();
         }
 
 

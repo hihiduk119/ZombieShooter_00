@@ -22,20 +22,22 @@ MonoBehaviour:
     ResearchSlotIndex: -1
     PlayTime: 0
     HuntedMonster: 0
+    WhoCallToUpgrade: 3
     UpgardeTimeset:
-      endDateTime: -8585960830555245168
-      startDateTime: -8585960830855245168
-      totalSeconds: 30
-      bUpgrading: 1
+      endDateTime: 0
+      startDateTime: 0
+      totalSeconds: 0
+      bUpgrading: 0
     IsUpgrading: 0
-  useAble: 1
+    ShownUpgradeComplate: 1
+  useAble: 0
   level: 0
   durability: 100
   upgradeTimeset:
-    endDateTime: -8585960830555245168
-    startDateTime: -8585960830855245168
-    totalSeconds: 30
-    bUpgrading: 1
+    endDateTime: 0
+    startDateTime: 0
+    totalSeconds: 0
+    bUpgrading: 0
   type: 6
   name: Air Strike Gauge
   value: 1000
@@ -46,7 +48,7 @@ MonoBehaviour:
   unlockLevel: 0
   researchTimeFormula: ResearchTime
   coinFormula: Coin
-  sprite: {fileID: 21300000, guid: 684049ff2f7f645109fc4df4b58a7121, type: 3}
+  sprite: {fileID: 21300000, guid: c9b8f7ef740ff4de591d66ebd87b6683, type: 3}
   scale: 0.25
   iconColor: {r: 0.27058825, g: 0.3647059, b: 0.4509804, a: 1}
   title: Air Strike Gauge

@@ -484,8 +484,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: This is TEST Description. This is TEST Description.This is TEST Description.This
-    is TEST Description.This is TEST Description.
+  m_Text: 
 --- !u!1 &2787721624066886022
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,12 +849,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 9210534737163176536}
-        m_MethodName: 
+      - m_Target: {fileID: 3397059712407116179}
+        m_MethodName: ClickedOk
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1014,7 +1013,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 1/3
+  m_Text: 0
 --- !u!1 &9210534736124698656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,7 +1127,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: TITLE
+  m_Text: 
 --- !u!1 &9210534737163176536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,10 +1259,10 @@ MonoBehaviour:
   - {fileID: 4962135891441327236}
   - {fileID: 9046966130362481320}
   - {fileID: 6506728755124336535}
-  CardIndex: 0
   characterItemPresenter: {fileID: 4297958318180423229}
   weaponItemPresenter: {fileID: 7452552666278199842}
   ammoItemPresenter: {fileID: 3359068948131435226}
+  SelectedCard: {fileID: 0}
 --- !u!1 &9210534737822918060
 GameObject:
   m_ObjectHideFlags: 0

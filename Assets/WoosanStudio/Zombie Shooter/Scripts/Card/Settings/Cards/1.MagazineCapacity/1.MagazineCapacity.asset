@@ -16,26 +16,28 @@ MonoBehaviour:
   gemPrice: -1
   cardData:
     UseAble: 1
-    Level: 0
+    Level: 3
     Durability: 100
     SortIndex: 0
     ResearchSlotIndex: -1
     PlayTime: 0
     HuntedMonster: 0
+    WhoCallToUpgrade: 0
     UpgardeTimeset:
-      endDateTime: -8585960981325640738
-      startDateTime: -8585960981625640738
-      totalSeconds: 30
-      bUpgrading: 1
+      endDateTime: 0
+      startDateTime: 0
+      totalSeconds: 0
+      bUpgrading: 0
     IsUpgrading: 0
-  useAble: 1
-  level: 0
+    ShownUpgradeComplate: 1
+  useAble: 0
+  level: 3
   durability: 100
   upgradeTimeset:
-    endDateTime: -8585960981325640738
-    startDateTime: -8585960981625640738
-    totalSeconds: 30
-    bUpgrading: 1
+    endDateTime: 0
+    startDateTime: 0
+    totalSeconds: 0
+    bUpgrading: 0
   type: 1
   name: Magazine Capacity
   value: -1

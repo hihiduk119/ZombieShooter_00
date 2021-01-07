@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c124f92e2f8c6416cbfd1549d284fd89, type: 3}
-  m_Name: Property 1
+  m_Name: Property6 Laser
   m_EditorClassIdentifier: 
-  type: 500
-  value: -50
+  type: 501
+  value: -40
   valueByLevel: 0
   fomula: 
   increasedValuePerLevelUp: -10
-  descripsion: Resistance by bullet type ammunition damage by /d%.
+  descripsion: 

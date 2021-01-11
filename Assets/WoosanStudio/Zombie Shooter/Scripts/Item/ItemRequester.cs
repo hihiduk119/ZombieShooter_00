@@ -57,6 +57,16 @@ namespace WoosanStudio.ZombieShooter
             return 0;
         }
 
+        /// <summary>
+        /// 코인 아이템 만들기
+        /// </summary>
+        /// <param name="coinValue"></param>
+        /// <param name="index"></param>
+        private void MakeCoin(int coinValue , int index)
+        {
+
+        }
+
 
         /// <summary>
         /// 생성 요청 및 생성된 아이템에 필요한 컨퍼넌트 추가 및 세 

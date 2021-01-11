@@ -19,6 +19,7 @@ namespace WoosanStudio.ZombieShooter
         //몬스터의 네비메쉬 및 공격력 이동 관련등의 세팅 값.
         [SerializeField] public MonsterSettings monsterSettings;
 
+        [Header("[(Auto)]")]
         public Transform target;
 
         //캐릭터 조증을 위한 유한상태기게

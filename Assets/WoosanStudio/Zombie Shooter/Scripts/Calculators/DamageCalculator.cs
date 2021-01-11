@@ -191,17 +191,23 @@ namespace WoosanStudio.ZombieShooter
 
         /// <summary>
         /// 공습 채움 속도
-        /// 1~ 그이상 1이 기본 
+        /// 1~ 그이상 1이 기본
+        /// *증가되는 값은 100을 넘을수 없다
         /// </summary>
         /// <param name="level"></param>
         /// <param name="property"></param>
         /// <param name="percentage"></param>
         /// <returns></returns>
-        public float CalculateValue5(float value, int level, int stack, CardProperty property)
+        public float CalculateValue5(int level, int stack, CardProperty property)
         {
-            float percent = 0;
+            //기본 값 = 1 , 레벨 = 0-25 ,스택 = 1-5,프로퍼티 기본 값 = 2 ,프로퍼티 기본 값 = 10
+
             //카드 레벨에 의해 증감된 수치
-            //float percent = ((property.IncreasedValuePerLevelUp * level) + property.Value) * stack + value;
+            //ex) 45% 증가 라면 100-45 = 55
+            float percent = 100 - ((property.IncreasedValuePerLevelUp * level) + property.Value) * stack;
+
+            //1이 Max 임으로 50이면 0.5로 변경
+            percent *= 0.01f;
 
             return percent;
         }
@@ -282,10 +288,8 @@ namespace WoosanStudio.ZombieShooter
             CardProperty.PropertyType type;
             int level = 0;
             int stackCount = 0;
-
-            //공습 채움 값 기본 1f 
-            //*작을수록 빨리 참
-            float recharge = 1f;
+            //기본 1로 계산 -> 0-1사이 값
+            float recharge = 1;
 
             //적용된 모든 카드
             //*중첩 된 카드 가져오기 -> 데미지에 영향을 미치는 모든 카드
@@ -308,24 +312,18 @@ namespace WoosanStudio.ZombieShooter
                         stackCount = hasCards[i].StackCount;
                         //프로퍼티 값이 음수이면 스택없이 1번만 계산
                         if (hasCards[i].Properties[j].Value < 0) { stackCount = 1; }
-
-                        //테스트용 -> 나중에 삭제
-                        float origin = recharge;
                         //레벨,스택 반영 데미지 계산
-                        recharge = CalculateValue(recharge, level, hasCards[i].Properties[j], stackCount);
+                        recharge = CalculateValue5( level, stackCount, hasCards[i].Properties[j]);
 
                         //테스트용 -> 나중에 삭제
                         int totalRate = (((int)hasCards[i].Properties[j].IncreasedValuePerLevelUp * level) + hasCards[i].Properties[j].Value);
-                        Debug.Log("최초 데미지 = [" + origin + "] 중간 계산 데미지 = [" + recharge + "]  Total Rate = [" + totalRate + "] level = [" + level + "] Stack = [" + stackCount + "]  card = [" + hasCards[i].Type.ToString() + "] type = [" + type.ToString() + "]");
+                        Debug.Log("최종 리차징 값 = [" + recharge + "]  Total Rate = [" + totalRate + "] level = [" + level + "] Stack = [" + stackCount + "]  card = [" + hasCards[i].Type.ToString() + "] type = [" + type.ToString() + "]");
                     }
                 }
             }
 
-            
-
             //테스트 조건 모두 통과
-            //1. 스택 증가 데미지 확인
-            //2. 저항에 의한 데미지 감소 확인
+            //1. 증가 할수록 리차징 값이 감소 여부 확인
 
             return recharge;
         } 
@@ -684,6 +682,7 @@ namespace WoosanStudio.ZombieShooter
         #region [-TestCode]
         void Update()
         {
+            /*
             //테스트용 데미지 반영
             if (Input.GetKeyDown(KeyCode.Alpha5))
             {
@@ -702,12 +701,19 @@ namespace WoosanStudio.ZombieShooter
                 //    GetDamageThatReflectsMonsterResistance(damage, TestMonsterSettings.Propertys, TestMonsterSettings.Level);
                 //}
             }
+            */
 
             //공습 데미지 계산
             //if (Input.GetKeyDown(KeyCode.Alpha4))
             //{
             //    GetAirStrikeDamage(TestMonsterSettings);
             //}
+
+            //공습 채움 값 가져오기
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                GetAirStrikeRechargeValue();
+            }
         }
         #endregion
 

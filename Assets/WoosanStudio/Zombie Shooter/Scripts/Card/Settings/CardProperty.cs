@@ -55,7 +55,7 @@ namespace WoosanStudio.ZombieShooter
             CriticalChance,                 //치명 기회
             MaxHP,                          //최대 체력
             AirStrikeDamage,                //공습 데미지
-            AirStrikeRecharge,              //공습 체움 속도
+            AngerRecharge,                  //분노 체움 속도
             Coin,                           //획득 돈
             Exp,                            //획득 경험치
 

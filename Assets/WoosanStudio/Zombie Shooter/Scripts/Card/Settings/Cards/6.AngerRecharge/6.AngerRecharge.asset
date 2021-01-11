@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29d1cca12b5d42feb0e82fbdfeaefec, type: 3}
+  m_Name: 6.AngerRecharge
+  m_EditorClassIdentifier: 
+  isActivate: 0
+  gemPrice: -1
+  cardData:
+    UseAble: 1
+    Level: 0
+    Durability: 100
+    SortIndex: 0
+    ResearchSlotIndex: -1
+    PlayTime: 0
+    HuntedMonster: 0
+    WhoCallToUpgrade: 3
+    UpgardeTimeset:
+      endDateTime: 0
+      startDateTime: 0
+      totalSeconds: 0
+      bUpgrading: 0
+    IsUpgrading: 0
+    ShownUpgradeComplate: 1
+  useAble: 0
+  level: 0
+  durability: 100
+  upgradeTimeset:
+    endDateTime: 0
+    startDateTime: 0
+    totalSeconds: 0
+    bUpgrading: 0
+  type: 6
+  name: Anger Recharge
+  value: 1000
+  maxStack: 2
+  stackCount: 0
+  maxDurability: 10
+  maxLevel: 25
+  unlockLevel: 0
+  researchTimeFormula: ResearchTime
+  coinFormula: Coin
+  sprite: {fileID: 21300000, guid: c9b8f7ef740ff4de591d66ebd87b6683, type: 3}
+  scale: 0.25
+  iconColor: {r: 0.27058825, g: 0.3647059, b: 0.4509804, a: 1}
+  title: Anger Recharge
+  Properties:
+  - {fileID: 11400000, guid: f83f375cc8aa94736a38c7ad7b277c8d, type: 2}

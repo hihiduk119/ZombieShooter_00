@@ -304,7 +304,7 @@ namespace WoosanStudio.ZombieShooter
                     //현재 카드의 타입
                     type = hasCards[i].Properties[j].Type;
 
-                    if (type == CardProperty.PropertyType.AirStrikeRecharge)
+                    if (type == CardProperty.PropertyType.AngerRecharge)
                     {
                         //카드 레벨 가져옴
                         level = hasCards[i].Level;

@@ -364,7 +364,7 @@ namespace WoosanStudio.ZombieShooter
         public List<CardProperty> Properties = new List<CardProperty>();
 
         [SerializeField]
-        public enum CardType
+        public enum CardType   //PropertyType와 같게 마춰야 한다
         {
             AttackSpeed = 0,    //공격 속도 25% 증가
             MagazineCapacity,   //탄창 용량 25% 증가
@@ -372,7 +372,7 @@ namespace WoosanStudio.ZombieShooter
             CriticalChance,     //치명 기회 10% 증가
             MaxHP,              //최대 체력 25% 증가
             AirStrikeDamage,    //공습 데미지 25% 증가
-            AirStrikeRecharge,     //공습 체움 속도 25% 증가
+            AngerRecharge,     //공습 체움 속도 25% 증가
 
             Coin,               //획득 돈 25% 증가
             Exp,                //획득 경험치 25% 증가

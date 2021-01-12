@@ -25,5 +25,8 @@ namespace WoosanStudio.ZombieShooter
         [Header("[서브 이펙트 프리팹]")]
         [SerializeField] private GameObject subEffect;
         public GameObject SubEffect { get => subEffect; }
+
+        [Header("[아이템 가치]")]
+        public int Value;
     }
 }

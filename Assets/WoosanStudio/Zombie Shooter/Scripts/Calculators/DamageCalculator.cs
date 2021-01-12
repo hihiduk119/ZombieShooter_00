@@ -680,8 +680,8 @@ namespace WoosanStudio.ZombieShooter
         }
 
         #region [-TestCode]
-        void Update()
-        {
+        //void Update()
+        //{
             /*
             //테스트용 데미지 반영
             if (Input.GetKeyDown(KeyCode.Alpha5))
@@ -710,11 +710,11 @@ namespace WoosanStudio.ZombieShooter
             //}
 
             //공습 채움 값 가져오기
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                GetAirStrikeRechargeValue();
-            }
-        }
+            //if (Input.GetKeyDown(KeyCode.Alpha3))
+            //{
+            //    GetAirStrikeRechargeValue();
+            //}
+        //}
         #endregion
 
     }

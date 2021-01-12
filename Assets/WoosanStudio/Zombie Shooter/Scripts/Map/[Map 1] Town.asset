@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38faf29e033c04f31886dc38d5a2f304, type: 3}
   m_Name: '[Map 1] Town'
   m_EditorClassIdentifier: 
+  MapType: 1
   CanUse: 1
   hasInitialized: 0
   name: TOWN

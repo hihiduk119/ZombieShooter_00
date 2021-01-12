@@ -41,7 +41,7 @@ MonoBehaviour:
   type: 7
   name: Coin
   value: 10
-  maxStack: 2
+  maxStack: 5
   stackCount: 0
   maxDurability: 10
   maxLevel: 25

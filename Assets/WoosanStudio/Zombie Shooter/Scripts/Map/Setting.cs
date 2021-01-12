@@ -12,6 +12,17 @@ namespace WoosanStudio.ZombieShooter.Map
     [CreateAssetMenu(menuName = "ZombieShooter/Map/Make", fileName = "[Map ]")]
     public class Setting : ScriptableObject
     {
+        //public enum Type
+        //{
+        //    Town = 1,
+        //    Farm,
+        //    Port,
+        //    MilitaryBase,
+        //}
+
+        //[Header("[맵 타입]")]
+        //public Type MapType;
+
         [Header("[맵 사용 유무]")]
         [SerializeField]
         public bool CanUse = false;

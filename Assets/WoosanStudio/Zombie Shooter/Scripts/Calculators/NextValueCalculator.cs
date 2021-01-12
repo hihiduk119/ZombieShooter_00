@@ -19,6 +19,12 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class NextValueCalculator : MonoBehaviour
     {
+        [Header("[테스트를 위해 사용하는 임시 라운드 => 테스트 후 삭제 필요]")]
+        public int TestRound;
+        [Header("[테스트를 위해 사용하는 임시 플레이어 레벨 => 테스트 후 삭제 필요]")]
+        public int TestPlayerLevel;
+
+
         //공식의 호출부 이며 Invoke를 통해서 해당 공식 사용함
         [System.Serializable]
         public class FormulaStartEvent : UnityEvent<string, object> { }
@@ -98,6 +104,86 @@ namespace WoosanStudio.ZombieShooter
             //EndEvent.AddListener(ResearchTimeCallback);
             //디버그용 리스너 등록 => TestCode 삭제시 삭제 요망.
             //EndEvent.AddListener(CoinCallback);
+        }
+
+        /// <summary>
+        /// 최종 코인 아이템의 값을 가져옴
+        /// </summary>
+        /// <param name="mapSetting">해당 되는 맵</param>
+        /// <param name="round">몇 라운드</param>
+        /// <param name="cardSettings">카드들</param>
+        int GetItemCoinValue(int round,int playerLevel,List<CardSetting> cardSettings)
+        {
+            CardProperty property;
+            //라운드와 레벨에 의해 계산된 기본 코인 값
+            float defaultCoinValue;
+            //카드 스택
+            int stack = 0;
+            //증가 퍼센트
+            float percent;
+            //반환 값
+            int returnValue = 0;
+
+            //라운드와 레벨에 의해 계산된 기본 코인 값 가져오기
+            defaultCoinValue = GetDefalutItemCoinValue(round, playerLevel);
+
+            Debug.Log("defaultCoinValue = " + defaultCoinValue);
+            //코인증가 카드 없을수도 있어서 
+            returnValue = Mathf.CeilToInt(defaultCoinValue);
+
+            Debug.Log("0 returnValue = " + returnValue);
+
+            //코인증가 카드 찾기
+            //모든 카드 검색 
+            for (int i = 0; i < cardSettings.Count; i++)
+            {
+                //카드의 모든 프로퍼티 검색
+                for (int j = 0; j < cardSettings[i].Properties.Count; j++)
+                {
+                    //코인 값 증가 프로퍼티 찾음
+                    property = cardSettings[i].Properties[j];
+                    stack = cardSettings[i].StackCount;
+
+                    if (property.Type == CardProperty.PropertyType.Coin)
+                    {
+                        //증가 퍼센트 계산
+                        percent = (((property.IncreasedValuePerLevelUp * playerLevel) + property.Value) * stack + 100f) * 0.01f;
+                        Debug.Log("Total Rate = [" + percent + "] level = [" + playerLevel + "] Stack = [" + stack + "]  card = [" + cardSettings[i].Type.ToString() + "] type = [" + property.Type.ToString() + "]");
+                        //올림 계산
+                        returnValue = Mathf.CeilToInt(defaultCoinValue * percent);
+                    }
+                }
+            }
+
+            Debug.Log("1 returnValue = " + returnValue);
+            return returnValue;
+        }
+
+        /// <summary>
+        /// 기본이 되는 아이템 코인 값 가져오기
+        /// *카드에 의한 증가분은 계산 되지 않음
+        /// </summary>
+        /// <param name="mapSetting"></param>
+        /// <param name="round"></param>
+        /// <param name="playerLevel"></param>
+        /// <param name="cardSettings"></param>
+        float GetDefalutItemCoinValue(int round, int playerLevel)
+        {
+            float roundValue;
+            float playerlevelValue;
+            float factorValue = 5;
+            //최소 값
+            float baseValue = 2;
+            float value;
+
+            //맵과 라운드에 의한 코인 상승 구함
+            roundValue =  factorValue * round * 0.2f;
+            //플레이어 레벨에 의한 코인 상승 구함
+            playerlevelValue = factorValue * playerLevel * 0.2f;
+            //최소 값에 맵&라운드 + 플레이어 가치 더함
+            value = baseValue + roundValue + playerlevelValue;
+
+            return value;
         }
 
         /// <summary>
@@ -549,14 +635,36 @@ namespace WoosanStudio.ZombieShooter
             Debug.Log("===================[테스트 끝]===================");
         }
 
-        //void Update()
-        //{
-        //    //순차적으로 모든 레벨업 요구 시간 보여주기
-        //    if (Input.GetKeyDown(KeyCode.Alpha4))
-        //    {
-        //        StartCoroutine(SequenceRun());
-        //    }
-        //}
+        /*void Update()
+        {
+            //맵과 라운드 플레이어 레벨에 의한 코인 값 측정
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                float value = GetDefalutItemCoinValue(TestRound, TestPlayerLevel);
+                Debug.Log( "결과 = ["+value+"] 플레이어 레벨 = [" + TestPlayerLevel + "] 라운드 = [" + TestRound + "]");
+            }
+
+            //라운드 증가
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                TestRound++;
+                Debug.Log("라운드 증가 = ["+ TestRound + "]");
+            }
+
+            //플레이어 레벨 증가
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                TestPlayerLevel++;
+                Debug.Log("라운드 증가 = [" + TestPlayerLevel + "]");
+            }
+
+            //라운드 증가
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+               float value  = GetItemCoinValue(TestRound, TestPlayerLevel,null);
+                Debug.Log("최종 값 = " + value);
+            }
+        }*/
         #endregion
 
     }

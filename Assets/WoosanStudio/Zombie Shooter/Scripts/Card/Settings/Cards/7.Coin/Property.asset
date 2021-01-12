@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Property
   m_EditorClassIdentifier: 
   type: 7
-  value: 100
+  value: 25
   valueByLevel: 0
   fomula: Coin
-  increasedValuePerLevelUp: 25
+  increasedValuePerLevelUp: 1
   descripsion: Increase a coin gain by /d%.

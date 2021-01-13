@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events;
+
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
@@ -16,13 +18,18 @@ namespace WoosanStudio.ZombieShooter
         /// 아이템 모델 및 컨트롤러 생성
         /// </summary>
         /// <param name="index">만드려는 아이템 인덱스</param>
-        public GameObject Make(int index)
+        public GameObject Make(int index,Transform spawnTransform,UnityAction<Transform> unityAction)
         {
             //아이템 생성
             GameObject item = new GameObject(ItemSettings[index].Model.name);
             //아이템 컨트롤러 추가
             ItemController itemController = item.AddComponent<ItemController>();
-            
+            //스폰 트랜스폼 넣어줌
+            itemController.spawmTransform = spawnTransform;
+            //이벤트 핸들러 연결
+            itemController.ItemDestoryEvent.AddListener(unityAction);
+
+
             item.transform.parent = this.transform;
             item.transform.localPosition = Vector3.zero;
 

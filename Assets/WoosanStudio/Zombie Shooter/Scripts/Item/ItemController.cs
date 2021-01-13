@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -24,6 +25,14 @@ namespace WoosanStudio.ZombieShooter
 
         [Header("해당 타겟으로 이동 [(Auto->ItemFactory.Make())]")]
         public MoveToUITarget MoveToUITarget;
+
+        [Header("스폰용 트렌스폼 [(Auto->ItemFactory.Make())]")]
+        //삭제시 ItemManager.cs에 제거 알림
+        public Transform spawmTransform;
+
+        //삭제 이벤트
+        public class DestoryEvent : UnityEvent<Transform> { }
+        public DestoryEvent ItemDestoryEvent = new DestoryEvent();
 
         /// <summary>
         /// 비활성화 시킴
@@ -69,19 +78,22 @@ namespace WoosanStudio.ZombieShooter
             //모델 비활성화
             Model.SetActive(false);
 
+            //아이템 삭제 이벤트 발생->스폰했던 트렌스폼 돌려줌
+            ItemDestoryEvent.Invoke(spawmTransform);
+
             //오브젝트 풀 쓸지 말지 고민중..
             Destroy(this.gameObject);
         }
 
-        #region [-TestCode]
-        void Update()
-        {
-            //아이템 획득 테스트
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                GetItem();
-            }
-        }
-        #endregion
+        //#region [-TestCode]
+        //void Update()
+        //{
+        //    //아이템 획득 테스트
+        //    if (Input.GetKeyDown(KeyCode.H))
+        //    {
+        //        GetItem();
+        //    }
+        //}
+        //#endregion
     }
 }

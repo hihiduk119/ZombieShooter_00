@@ -9,7 +9,7 @@ namespace WoosanStudio.ZombieShooter
     /// <summary>
     /// 아이템 팩토리에서 아이템을 요청 및 셋업 시켜줌
     /// </summary>
-    public class ItemRequester : MonoBehaviour
+    public class ItemManager : MonoBehaviour
     {
         //싱글톤 패턴
         //static public ItemRequester Instance;
@@ -39,16 +39,23 @@ namespace WoosanStudio.ZombieShooter
         //아이템 획득시 해당 아이템 위치 제거되어야 함
         public List<Transform> spawnedItemPositionList = new List<Transform>();
 
+        //캐쉬용
+        Coroutine schedulerForMakingCoinCoroutine;
+
+        //맵에 최대 아이템 최대 생성 제한
+        //*글로벌 데이터에서 가져올 필요가 있음
+        int maxItemCount = 5;
+
         //캐시
         private GameObject player;
 
         /// <summary>
         /// 외부에서 생성요청 
         /// </summary>
-        public void Requester(Vector3 targetPosition)
+        public void Requester(Transform spawnTransform)
         {
             Debug.Log("!!!!!=======> Requester");
-            MakeItem(Calculate(), targetPosition);
+            MakeItem(Calculate(), spawnTransform);
         }
 
         /// <summary>
@@ -60,6 +67,55 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 코인 메이킹 스케줄러 실행
+        /// </summary>
+        void RunSchedulerForMakingCoin()
+        {
+            //코인 메이킹 스케줄러 정지
+            StopSchedulerForMakingCoin();
+            //코루틴 시작
+            schedulerForMakingCoinCoroutine = StartCoroutine(SchedulerForMakingCoinCoroutine());
+        }
+
+        /// <summary>
+        /// 코인 메이킹 스케줄러 정지
+        /// </summary>
+        void StopSchedulerForMakingCoin()
+        {
+            if (schedulerForMakingCoinCoroutine != null)
+            {
+                StopCoroutine(schedulerForMakingCoinCoroutine);
+            }
+        }
+
+        /// <summary>
+        /// 코인 메이킹 스케줄러 구현부
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator SchedulerForMakingCoinCoroutine()
+        {
+            while(true)
+            {
+                //코인 만들기
+                MakeCoin();
+                //10-15초 사이 랜덤
+                yield return new WaitForSeconds(Random.Range(2,4));
+            }
+        }
+
+        /// <summary>
+        /// 아이템 삭제시 호출되는 이벤트 연결
+        /// *ItemController.GetItemComplete()에서 호출
+        /// </summary>
+        /// <param name="spawnTransform"></param>
+        public void ItemDestoryEventHandler(Transform spawnTransform)
+        {
+            int removeIndex = spawnedItemPositionList.FindIndex(value => value.Equals(spawnTransform));
+            spawnedItemPositionList.RemoveAt(removeIndex);
+             
+        }
+
+        /// <summary>
         /// 코인 아이템 만들기
         /// </summary>
         /// <param name="coinValue"></param>
@@ -68,6 +124,8 @@ namespace WoosanStudio.ZombieShooter
         {
             //스테이지 가져와야 함
             int stage = 0;
+            //코인 생성 가능확인용
+            bool makeAble = false;
 
             //해당 스테이지의 스폰 포인트 가져옴
             SpawnPoints spawnPoints = ItemSpawnPositionController.GetSpawnPoints(stage);
@@ -75,8 +133,12 @@ namespace WoosanStudio.ZombieShooter
             int maxSpawn = spawnPoints.Points.Count;
             Transform spawnTransform = null;
 
-            //현재 스폰된 아이템이 0보다 크거나 최대 아이템 스폰 보다 현재 스폰된 아이템이 작을때 수행
-            if (0 < spawnedItemPositionList.Count && spawnedItemPositionList.Count < maxSpawn)
+
+            Debug.Log("생성된 값 = [" + spawnedItemPositionList.Count + "] 최대 스폰피봇 = [" + maxSpawn + "] 맵 최대 스폰 제한 = ["+ maxItemCount +"]");
+            //*현재 스폰된 아이템이 0보다 커야함.
+            //*최대 아이템 스폰 위치갯수 보다 현재 스폰된 아이템이 작을때 수행
+            //*최대 아이템 스폰 보다 현재 스폰된 아이템이 작을때 수행
+            if (0 < spawnedItemPositionList.Count && spawnedItemPositionList.Count < maxSpawn && spawnedItemPositionList.Count < maxItemCount)
             {
                 bool loop = true;
                 //중복 스폰 위치가 안나올때 까지 루프.
@@ -88,10 +150,10 @@ namespace WoosanStudio.ZombieShooter
                     //일단 루프 정지할수 있게 만듬
                     loop = false;
 
-                    //중복 체크용 스폰위치 루프 돌기
+                    //중복 체크용 같은게 있는지 찾기
                     for (int i = 0; i < spawnedItemPositionList.Count; i++)
                     {
-                        if(spawnedItemPositionList.Equals(spawnTransform))
+                        if(spawnedItemPositionList[i].Equals(spawnTransform))
                         {
                             //같은 스폰 장소를 가져 왔다면 루프 또 돔.
                             loop = true;
@@ -99,17 +161,29 @@ namespace WoosanStudio.ZombieShooter
                     }
                 }
 
-                //코인 생성
-                MakeItem(0, spawnTransform.position);
+                //만들기 가능
+                makeAble = true;
             } else if(spawnedItemPositionList.Count == 0)//현재 스폰된 아이템이 0이라면
             {
                 //새로운 스폰 장소 가져오기
                 spawnTransform = spawnPoints.GetSpawnPositionByRandom();
+
+                //만들기 가능
+                makeAble = true;
+            }
+
+            //코인 만들기
+            if (makeAble)
+            {
                 //중복 체크용 리스트에 저장
                 spawnedItemPositionList.Add(spawnTransform);
 
                 //코인 생성
-                MakeItem(0, spawnTransform.position);
+                MakeItem(0, spawnTransform);
+                Debug.Log("아이템 생성 성공");
+            } else
+            {
+                Debug.Log("아이템 생성 실패");
             }
         }
 
@@ -118,10 +192,12 @@ namespace WoosanStudio.ZombieShooter
         /// 생성 요청 및 생성된 아이템에 필요한 컨퍼넌트 추가 및 세 
         /// </summary>
         /// <param name="index"></param>
-        private void MakeItem(int index,Vector3 targetPosition)
+        private void MakeItem(int index,Transform spawnTransform)
         {
             //아이템 생성 -> ItemController 생성.
-            Item = ItemFactory.Make(index);
+            Item = ItemFactory.Make(index, spawnTransform, ItemDestoryEventHandler);
+
+            Vector3 targetPosition = spawnTransform.position;
 
             //높이 0.01f으로 초기화.
             //*바닦에서 살짝 띄움 -> 그래야 바닦에 생김
@@ -176,14 +252,14 @@ namespace WoosanStudio.ZombieShooter
 
 
         #region [-TestCode]
-        //void Update()
-        //{
-        //    //아이템 요
-        //    if (Input.GetKeyDown(KeyCode.G))
-        //    {
-        //        Make(0,Vector3.zero);
-        //    }
-        //}
+        void Update()
+        {
+            //코인 자동 생성기 실행
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                RunSchedulerForMakingCoin();
+            }
+        }
         #endregion
     }
 }

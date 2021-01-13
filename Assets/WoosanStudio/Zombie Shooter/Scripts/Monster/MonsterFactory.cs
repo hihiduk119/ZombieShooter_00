@@ -31,7 +31,7 @@ namespace WoosanStudio.ZombieShooter
 
         //몬스터 리퀘스터 에서 넣어주기 때문에 숨겨둘 필요가 있음
         [HideInInspector]
-        public ItemRequester ItemRequester;
+        public ItemManager ItemManager;
 
         [Header("몬스터 하늘로 뜰때 행동 액션]")]
         public List<UnityAction<Vector3>> MonsterGoHeavenActions = new List<UnityAction<Vector3>>();
@@ -52,7 +52,7 @@ namespace WoosanStudio.ZombieShooter
             //Transforms.FindChildInFirstLayer(ref SpawnPointList, parent.transform);
 
             //땅에 떨어진 아이템 만드는 리퀘스터 가져오기
-            ItemRequester = GameObject.FindObjectOfType<ItemRequester>();
+            ItemManager = GameObject.FindObjectOfType<ItemManager>();
         }
 
         /// <summary>

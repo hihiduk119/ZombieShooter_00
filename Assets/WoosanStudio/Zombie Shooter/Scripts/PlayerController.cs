@@ -22,37 +22,55 @@ namespace WoosanStudio.ZombieShooter
         static public PlayerController Instance;
         //[Auto-Awake()]
         //움직임
+        [Header("[(Auto->Awake())]")]
         public WoosanStudio.Player.Move Move;
         //에니메이션 -> 이건 따로 스크립트 만들어야 할듯
+        [Header("[(Auto->Awake())]")]
         public Animator Animator;
         //PlayerMoveActor 와 연결된 실제 회전 움직임
+        [Header("[(Auto->Awake())]")]
         public MyThirdPersonCharacter MyThirdPersonCharacter;
         //회전 및 조준
+        [Header("[(Auto->Awake())]")]
         public PlayerMoveActor PlayerMoveActor;
-        //데미지 UI텍스트 
+        //데미지 UI텍스트
+        [Header("[(Auto->Awake())]")]
         public TextDamageBridge TextDamageBridge;
-        //데미지 UI체력바 
+        //데미지 UI체력바
+        [Header("[(Auto->Awake())]")]
         public HealthBar HealthBar;
-        //데미지,리로드 UI바 
+        //데미지,리로드 UI바
+        [Header("[(Auto->Awake())]")]
         public List<HealthBar> PlayerBars;
         //실제 체력
+        [Header("[(Auto->Awake())]")]
         public PlayerHit HaveHit;
         //조준시 팔다리몸 IK
+        [Header("[(Auto->Awake())]")]
         public AimIK AimIK;
         //조준시 헤드 IK
+        [Header("[(Auto->Awake())]")]
         public LookAtIK LookAtIK;
         //조준 IK들을 더부드럽게 움직이게 만들어주는 Aim컨트롤
+        [Header("[(Auto->Awake())]")]
         public PlayerAimSwaper PlayerAimSwaper;
         //실제 사격 컨트롤
         //public FireController FireController;
         //교체 하려는 사격 컨트롤러
+        [Header("[(Auto->Awake())]")]
         public AutoFireControlInputBasedOnGunSetting AutoFireControlInputBasedOnGunSetting;
         //포지션 재배체
+        [Header("[(Auto->Awake())]")]
         public Positioner Positioner;
         //모델 변경
+        [Header("[(Auto->Awake())]")]
         public CharacterModelController Model;
         //실제 조준 및 조준 해제 컨트롤 함
+        [Header("[(Auto->Awake())]")]
         public LookAtAimedTarget LookAtAimedTarget;
+        //hud 표시 메니저
+        [Header("[(Auto->Awake())]")]
+        public bl_HudManager hudManager; 
 
         [Header("[타겟과 조준선이 정렬 됐는지 판별(Auto->Awake())]")]
         public RayCheck RayCheck;
@@ -84,6 +102,9 @@ namespace WoosanStudio.ZombieShooter
             Positioner = GetComponent<Positioner>();
             Model = GetComponentInChildren<CharacterModelController>();
             LookAtAimedTarget = GetComponent<LookAtAimedTarget>();
+            hudManager = GameObject.FindObjectOfType<bl_HudManager>();
+            //hud를 사용하기 위해 플레이어 셋업
+            hudManager.LocalPlayer = this.transform;
 
             //조준 및 조준 해제 이벤트 연결
             //* LookAtAimedTarget.cs 조준 이벤트 발생시 사격 시작

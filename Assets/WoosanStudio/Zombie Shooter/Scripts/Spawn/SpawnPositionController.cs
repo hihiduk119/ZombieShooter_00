@@ -10,7 +10,7 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class SpawnPositionController : MonoBehaviour
     {
-        [Header("스테이지 모음 리스트")]
+        [Header("스폰 포인트 모음 리스트")]
         public List<Transform> SpawnPointList = new List<Transform>();
 
         [Header("스폰 위치 인덱스 = ")]

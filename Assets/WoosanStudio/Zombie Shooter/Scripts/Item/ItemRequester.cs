@@ -32,13 +32,15 @@ namespace WoosanStudio.ZombieShooter
         [Header("[Ray에 맞은 포지션 타겟 -> [눈으로 보기위한 테스트용]")]
         public GameObject RayHitTarget;
 
+        [Header("스폰 위치")]
+        public SpawnPositionController ItemSpawnPositionController;
+
+        [Header("아이템 스폰위치 중복을 막기위한 저장소")]
+        //아이템 획득시 해당 아이템 위치 제거되어야 함
+        public List<Transform> spawnedItemPositionList = new List<Transform>();
+
         //캐시
         private GameObject player;
-
-        //private void Awake()
-        //{
-        //    Instance = this;
-        //}
 
         /// <summary>
         /// 외부에서 생성요청 
@@ -46,7 +48,7 @@ namespace WoosanStudio.ZombieShooter
         public void Requester(Vector3 targetPosition)
         {
             Debug.Log("!!!!!=======> Requester");
-            Make(Calculate(), targetPosition);
+            MakeItem(Calculate(), targetPosition);
         }
 
         /// <summary>
@@ -62,9 +64,53 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="coinValue"></param>
         /// <param name="index"></param>
-        private void MakeCoin(int coinValue , int index)
+        private void MakeCoin()
         {
+            //스테이지 가져와야 함
+            int stage = 0;
 
+            //해당 스테이지의 스폰 포인트 가져옴
+            SpawnPoints spawnPoints = ItemSpawnPositionController.GetSpawnPoints(stage);
+            //최대 아이템 스폰 
+            int maxSpawn = spawnPoints.Points.Count;
+            Transform spawnTransform = null;
+
+            //현재 스폰된 아이템이 0보다 크거나 최대 아이템 스폰 보다 현재 스폰된 아이템이 작을때 수행
+            if (0 < spawnedItemPositionList.Count && spawnedItemPositionList.Count < maxSpawn)
+            {
+                bool loop = true;
+                //중복 스폰 위치가 안나올때 까지 루프.
+                while(loop)
+                {
+                    //새로운 스폰 장소 가져오기
+                    spawnTransform = spawnPoints.GetSpawnPositionByRandom();
+
+                    //일단 루프 정지할수 있게 만듬
+                    loop = false;
+
+                    //중복 체크용 스폰위치 루프 돌기
+                    for (int i = 0; i < spawnedItemPositionList.Count; i++)
+                    {
+                        if(spawnedItemPositionList.Equals(spawnTransform))
+                        {
+                            //같은 스폰 장소를 가져 왔다면 루프 또 돔.
+                            loop = true;
+                        }
+                    }
+                }
+
+                //코인 생성
+                MakeItem(0, spawnTransform.position);
+            } else if(spawnedItemPositionList.Count == 0)//현재 스폰된 아이템이 0이라면
+            {
+                //새로운 스폰 장소 가져오기
+                spawnTransform = spawnPoints.GetSpawnPositionByRandom();
+                //중복 체크용 리스트에 저장
+                spawnedItemPositionList.Add(spawnTransform);
+
+                //코인 생성
+                MakeItem(0, spawnTransform.position);
+            }
         }
 
 
@@ -72,7 +118,7 @@ namespace WoosanStudio.ZombieShooter
         /// 생성 요청 및 생성된 아이템에 필요한 컨퍼넌트 추가 및 세 
         /// </summary>
         /// <param name="index"></param>
-        private void Make(int index,Vector3 targetPosition)
+        private void MakeItem(int index,Vector3 targetPosition)
         {
             //아이템 생성 -> ItemController 생성.
             Item = ItemFactory.Make(index);

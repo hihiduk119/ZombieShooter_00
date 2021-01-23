@@ -44,7 +44,7 @@ namespace WoosanStudio.ZombieShooter
 
         //맵에 최대 아이템 최대 생성 제한
         //*글로벌 데이터에서 가져올 필요가 있음
-        int maxItemCount = 5;
+        int maxItemCount = 2;
 
         //캐시
         private GameObject player;

@@ -141,7 +141,7 @@ namespace WoosanStudio.ZombieShooter
 
             //Popup 테스트를 위해서 잠시 제거
             //*테스트 위해 임시로 막음
-            NextStage();
+            //NextStage();
         }
 
 

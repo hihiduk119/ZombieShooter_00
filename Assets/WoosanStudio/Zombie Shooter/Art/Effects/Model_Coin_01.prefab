@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
   - component: {fileID: 8057269878237787230}
-  - component: {fileID: -1616040355309908728}
   m_Layer: 0
   m_Name: Model_Coin_01
   m_TagString: Untagged
@@ -185,37 +184,3 @@ MonoBehaviour:
   optionalRotationMode: 0
   optionalScrambleMode: 0
   optionalString: 
---- !u!114 &-1616040355309908728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c65d7a17e217e84a97ccd660c4ff2ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HudInfo:
-    m_Text: 
-    m_Target: {fileID: 0}
-    m_Icon: {fileID: 2800000, guid: 43641970597da2d45a7ddd1e57f19f28, type: 3}
-    m_Color: {r: 1, g: 0.5899981, b: 0, a: 1}
-    Offset: {x: 0, y: 0, z: 0}
-    ReachSound: {fileID: 0}
-    m_TypeHud: 2
-    m_MaxSize: 50
-    HideOnCloseDistance: 8
-    HideOnLargeDistance: 0
-    ShowDistance: 1
-    isOnPath: 0
-    ShowDynamically: 0
-    isPalpitin: 1
-    Arrow:
-      ShowArrow: 1
-      ArrowIcon: {fileID: 2800000, guid: 3a92750af26bc49478ea4bc2423965a0, type: 3}
-      ArrowOffset: {x: 0, y: 0, z: 0}
-      ArrowSize: 50
-    tip: 0
-    Hide: 0

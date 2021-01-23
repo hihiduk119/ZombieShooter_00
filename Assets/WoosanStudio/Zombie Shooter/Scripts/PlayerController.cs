@@ -68,9 +68,6 @@ namespace WoosanStudio.ZombieShooter
         //실제 조준 및 조준 해제 컨트롤 함
         [Header("[(Auto->Awake())]")]
         public LookAtAimedTarget LookAtAimedTarget;
-        //hud 표시 메니저
-        [Header("[(Auto->Awake())]")]
-        public bl_HudManager hudManager; 
 
         [Header("[타겟과 조준선이 정렬 됐는지 판별(Auto->Awake())]")]
         public RayCheck RayCheck;
@@ -78,7 +75,7 @@ namespace WoosanStudio.ZombieShooter
 
         //LookAtAimedTarget 에서 가져온 Aim,Release 이벤트 인터페이스
         private IAim aim;
-
+            
 
         void Awake()
         {
@@ -102,9 +99,6 @@ namespace WoosanStudio.ZombieShooter
             Positioner = GetComponent<Positioner>();
             Model = GetComponentInChildren<CharacterModelController>();
             LookAtAimedTarget = GetComponent<LookAtAimedTarget>();
-            hudManager = GameObject.FindObjectOfType<bl_HudManager>();
-            //hud를 사용하기 위해 플레이어 셋업
-            hudManager.LocalPlayer = this.transform;
 
             //조준 및 조준 해제 이벤트 연결
             //* LookAtAimedTarget.cs 조준 이벤트 발생시 사격 시작

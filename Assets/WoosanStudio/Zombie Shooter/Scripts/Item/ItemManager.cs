@@ -17,20 +17,23 @@ namespace WoosanStudio.ZombieShooter
         [Header("[아이템 팩토리]")]
         public ItemFactory ItemFactory;
 
-        [Header("[연출시 이동 목표 타겟]")]
+        [Header("[연출시 이동할 목표 타겟]")]
         public GameObject Target;
 
         [Header("[Item 자동 생성 (Auto->Awake())]")]
         public GameObject Item;
 
-        [Header("[타겟 UI 세팅 ]")]
-        public RectTransform TargetUI;
+        //[Header("[타겟 UI 세팅 ]")]
+        //public RectTransform TargetUI;
+
+        //[Header("[아이템 획득시 움직일 타겟 세팅]")]
+        //public Transform Target;
 
         [Header("[UI 연출용 에니메이션 ]")]
         public PlayAnimation PlayAnimation;
 
-        [Header("[Ray에 맞은 포지션 타겟 -> [눈으로 보기위한 테스트용]")]
-        public GameObject RayHitTarget;
+        //[Header("[Ray에 맞은 포지션 타겟 -> [눈으로 보기위한 테스트용]")]
+        //public GameObject RayHitTarget;
 
         [Header("스폰 위치")]
         public SpawnPositionController ItemSpawnPositionController;
@@ -223,11 +226,11 @@ namespace WoosanStudio.ZombieShooter
             //아이템 컨트롤러에 무브 투 타겟 세팅
             itemController.MoveToUITarget = moveToUITarget;
 
-            //타겟 UI 세팅
-            moveToUITarget.TargetUI = TargetUI;
+            //연출시 이동할 타겟 UI 세팅
+            moveToUITarget.Target = Target.transform;
 
             //Ray Hit 타겟 세팅
-            moveToUITarget.RayHitTarget = RayHitTarget;
+            //moveToUITarget.RayHitTarget = RayHitTarget;
 
             //거리 체크 스크립트 추가
             DistanceCheck distanceCheck = Item.AddComponent<DistanceCheck>();

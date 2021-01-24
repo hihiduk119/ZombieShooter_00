@@ -15,6 +15,7 @@ TagManager:
   - Monster
   - Point
   - PopupBackground
+  - Missile
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - 
   - Player
   - AI
-  - Barrier
+  - Lamp
   - Player Projectile
   - UI Health
   - Level Design Ground

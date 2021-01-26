@@ -965,13 +965,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: bcbf0d73dd5f44579b48b2c25e265931, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb13de3ce6b404862978bc43a9933bda, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e8d881563a5c449c7b539816ca3fd378, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1

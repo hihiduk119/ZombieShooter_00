@@ -45,6 +45,7 @@ namespace WoosanStudio.ZombieShooter
 
         //캐쉬
         Coroutine coroutineInfiniteMakeMonster;
+        private MonsterSpawnScheduleManager monsterSpawnScheduleManager;
 
         private void Awake()
         {
@@ -53,6 +54,14 @@ namespace WoosanStudio.ZombieShooter
 
             //땅에 떨어진 아이템 만드는 리퀘스터 가져오기
             ItemManager = GameObject.FindObjectOfType<ItemManager>();
+
+            
+        }
+
+        private void Start()
+        {
+            //몬스터 스폰 및 제거 카운팅.
+            monsterSpawnScheduleManager = GameObject.FindObjectOfType<MonsterSpawnScheduleManager>();
         }
 
         /// <summary>
@@ -109,6 +118,9 @@ namespace WoosanStudio.ZombieShooter
 
             //죽을때 슬로우 모션액션을 이벤트에 넣음
             MonsterOnDieActions.Add(SlowMotionTimeManager.Instance.DoSlow);
+
+            //죽을때 몬스터 스폰 스케줄에 죽음 카운팅 시키기
+            MonsterOnDieActions.Add(monsterSpawnScheduleManager.MonsterDeadEventReceiver);
 
             MonsterOnDieActions?.ForEach(value => clone.GetComponent<DoDie>().OnDieEvent.AddListener(value));
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+using UnityEngine.SceneManagement;
+
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
@@ -12,6 +14,7 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class MonsterSpawnScheduleManager : MonoBehaviour
     {
+
         //[Header("[스테이지별 몬스터의 해당 스캐줄 리스트]")]
         //public List<Map.Stage.Setting> MonsterScheduleList = new List<Map.Stage.Setting>();
 
@@ -23,6 +26,9 @@ namespace WoosanStudio.ZombieShooter
 
         [Header("[전체 스폰된 몬스터 수]")]
         public int TotalSpawnedMonster = 0;
+
+        [Header("[죽은 몬스터 수]")]
+        public int DeadMonster = 0;
 
         [Header("[실제 몬스터를 호출하는 부분 [Auto->Awake()]]")]
         public MonsterRequester MonsterRequester;
@@ -43,6 +49,8 @@ namespace WoosanStudio.ZombieShooter
         private Coroutine autoSpawnCallCoroutine;
         private WaitForSeconds WFS;
         private bool bSpawnedNamedMonster = false;
+        //UI 몬스터 웨이브 카운팅용
+        private UI.MVP.UIWaveCountPresent waveCountPresent;
 
         //현재 라운드
         private int currentRound = 0;
@@ -58,6 +66,12 @@ namespace WoosanStudio.ZombieShooter
             MonsterSchedule = GlobalDataController.MapSetting.StageSetting[0];
         }
 
+        private void Start()
+        {
+            //UI 몬스터 웨이브 카운팅용 세팅
+            waveCountPresent = GameObject.FindObjectOfType<UI.MVP.UIWaveCountPresent>();
+        }
+
         /// <summary>
         /// 해당 스테이지의 몬스터 스폰을 실행.
         /// 라운드의 첫 시작
@@ -70,7 +84,7 @@ namespace WoosanStudio.ZombieShooter
 
         //    //현재 라운드 0으로 초기화
         //    currentRound = 0;
-            
+
         //    //라운드 별 몬스터 스폰 실행
         //    SpawnByRound(stage,currentRound);
         //}
@@ -101,7 +115,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="round">해당 라운드</param>
         public void SpawnByRound(int round)
         {
-            Debug.Log("스폰 0-0");
+            //Debug.Log("스폰 0-0");
 
             //코루틴 스폰 호출 간격 세팅
             WFS = new WaitForSeconds(MonsterSchedule.SpawnInterval);
@@ -117,7 +131,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void SpawnByNextRound()
         {
-            Debug.Log("스폰 0-1");
+            //Debug.Log("스폰 0-1");
             //현재 라운드 자동 증가
             currentRound++;
             //미리 캐쉬에 받아 놓기
@@ -146,7 +160,7 @@ namespace WoosanStudio.ZombieShooter
 
             while (true)
             {
-                Debug.Log("스폰 1");
+                //Debug.Log("스폰 1");
                 //몬스터 스폰
                 Spawn( round, monsterSchedule);
                 yield return waitForSeconds;
@@ -161,7 +175,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="isFirst"></param>
         void Spawn( int round, Map.Stage.Setting monsterSchedule,bool isFirst = false)
         {
-            Debug.Log("스폰 2");
+            //Debug.Log("스폰 2");
             //맵에 최대 몬스터 생성 제한게 걸렸는으면 생성 중지
             if (MonsterList.Instance.Items.Count >= monsterSchedule.MaxSpawnLimit)
             {
@@ -225,6 +239,20 @@ namespace WoosanStudio.ZombieShooter
 
                 Debug.Log("[몬스터 호출] 현재 스폰카운트 = " + CurrentSpawnedMonster + "    전체 생성 몬스터 카운트 = " + TotalSpawnedMonster);
             }
+        }
+
+        /// <summary>
+        /// 몬스터의 죽음 이벤트 리시버
+        /// </summary>
+        public void MonsterDeadEventReceiver(Vector3 hit)
+        {
+            //죽은 몬스터 카운팅
+            DeadMonster++;
+
+            Debug.Log("===================[" + DeadMonster + "]===================");
+
+            //웨이브 표시에 업데이트
+            waveCountPresent.UpdateInfo(DeadMonster, TotalSpawnedMonster);
         }
 
         /// <summary>

@@ -28,8 +28,14 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         [Header("[카드 이미지]")]
         public Image Icon;
 
-        [Header("[카드 레벨]")]
-        public Text Level;
+        [Header("[카드 레벨 슬라이더]")]
+        public Image Slider;
+
+        [Header("[카드 퍼센트")]
+        public Text Percent;
+
+        //[Header("[카드 레벨]")]
+        //public Text Level;
 
         [Header("[추가 가격]")]
         public Text Price;
@@ -46,7 +52,7 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         /// <param name="sprite">카드 이미지</param>
         /// <param name="level">카드 레벨</param>
         /// <param name="price">추가 가격</param>
-        public void UpdateView(Sprite sprite,Color color,string level,string price)
+        public void UpdateView(Sprite sprite,Color color,string level,string price ,string percent, float fillAmount)
         {
             //아이콘 설정
             Icon.sprite = sprite;
@@ -56,10 +62,16 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
             Icon.rectTransform.sizeDelta = new Vector2(width, height);
             //이미지 컬러 세팅
             Icon.color = color;
-            //레벨 세팅
-            Level.text = level;
+            ////레벨 세팅
+            //Level.text = level;
             //가격 세팅
             Price.text = price;
+
+            //카드 레벨 슬라이더 세팅
+            Slider.fillAmount = fillAmount;
+
+            //카드 퍼센트 세팅
+            Percent.text = percent;
         }
 
         /// <summary>

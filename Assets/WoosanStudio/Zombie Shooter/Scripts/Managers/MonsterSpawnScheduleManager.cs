@@ -49,6 +49,7 @@ namespace WoosanStudio.ZombieShooter
         private Coroutine autoSpawnCallCoroutine;
         private WaitForSeconds WFS;
         private bool bSpawnedNamedMonster = false;
+
         //UI 몬스터 웨이브 카운팅용
         private UI.MVP.UIWaveCountPresent waveCountPresent;
 
@@ -108,8 +109,9 @@ namespace WoosanStudio.ZombieShooter
 
 
         /// <summary>
-        /// 라운드 별 몬스터 스폰 실행.
+        /// 특정 라운드 스폰 실행.
         /// *현재 라운드 수동으로 증가 필요
+        /// *SpawnByNextRound와 중복된 코드 통합이 필요함.
         /// </summary>
         /// <param name="stage">해당 스테이지</param>
         /// <param name="round">해당 라운드</param>
@@ -117,16 +119,12 @@ namespace WoosanStudio.ZombieShooter
         {
             //Debug.Log("스폰 0-0");
 
-            //코루틴 스폰 호출 간격 세팅
-            WFS = new WaitForSeconds(MonsterSchedule.SpawnInterval);
-            //코루틴이 이미 실행 중이라면 중지
-            if (autoSpawnCallCoroutine != null) StopCoroutine(autoSpawnCallCoroutine);
-            //코루틴이 시작
-            autoSpawnCallCoroutine = StartCoroutine(AutoSpawnCallCoroutine( round, MonsterSchedule, WFS));
+            //스폰 실행
+            DoSpawnCall(currentRound);
         }
 
         /// <summary>
-        /// 다음 라운드 스폰 실행
+        /// 순차적으로 다음 라운드 스폰 실행
         ///  SpawnByRound같으나 자동으로 라운드 증가
         /// </summary>
         public void SpawnByNextRound()
@@ -134,6 +132,16 @@ namespace WoosanStudio.ZombieShooter
             //Debug.Log("스폰 0-1");
             //현재 라운드 자동 증가
             currentRound++;
+
+            //스폰 실행
+            DoSpawnCall(currentRound);
+        }
+
+        /// <summary>
+        /// 스폰 실행
+        /// </summary>
+        public void DoSpawnCall(int round)
+        {
             //미리 캐쉬에 받아 놓기
             //monsterSchedule = MonsterScheduleList[currentStage];
             //코루틴 스폰 호출 간격 세팅
@@ -141,8 +149,19 @@ namespace WoosanStudio.ZombieShooter
             //코루틴이 이미 실행 중이라면 중지
             if (autoSpawnCallCoroutine != null) StopCoroutine(autoSpawnCallCoroutine);
             //코루틴이 시작
-            autoSpawnCallCoroutine = StartCoroutine(AutoSpawnCallCoroutine(currentRound, MonsterSchedule, WFS));
+            autoSpawnCallCoroutine = StartCoroutine(AutoSpawnCallCoroutine(round, MonsterSchedule, WFS));
+
+
+
+            //라운드의 시작이기 때문에 죽은 몬스터 0으로 초기화
+            DeadMonster = 0;
+
+            //웨이브 활성화
+            waveCountPresent.SetActivate(true);
+            //라운드 시작시 웨이브 카운트 초기화 및 화면 업데이트
+            waveCountPresent.UpdateInfo(DeadMonster, MonsterSchedule.MaxSpawnByRound[round]);
         }
+
 
         /// <summary>
         /// 한 라운드 에서 자동으로 스폰 시키는 코루틴
@@ -162,7 +181,7 @@ namespace WoosanStudio.ZombieShooter
             {
                 //Debug.Log("스폰 1");
                 //몬스터 스폰
-                Spawn( round, monsterSchedule);
+                DoSpawn( round, monsterSchedule);
                 yield return waitForSeconds;
             } 
         }
@@ -173,7 +192,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="round">해당 라운드</param>
         /// <param name="monsterSchedule"></param>
         /// <param name="isFirst"></param>
-        void Spawn( int round, Map.Stage.Setting monsterSchedule,bool isFirst = false)
+        void DoSpawn( int round, Map.Stage.Setting monsterSchedule,bool isFirst = false)
         {
             //Debug.Log("스폰 2");
             //맵에 최대 몬스터 생성 제한게 걸렸는으면 생성 중지
@@ -194,7 +213,10 @@ namespace WoosanStudio.ZombieShooter
 
                 //현재 코루틴을 중지 시킨다
                 if (autoSpawnCallCoroutine != null){ StopCoroutine(autoSpawnCallCoroutine);}
+
                 Debug.Log("코루틴Null 이 아니면 을 중지 합니다");
+
+                return;
             }
 
             Debug.Log("현재 스폰 상태 =>  Total 스폰 [" + TotalSpawnedMonster + "]   round [" + round + "]  한라운드 당 최대 Max 스폰 [" + monsterSchedule.MaxSpawnByRound[round] + "]  맵에 최대 스폰 = [" + monsterSchedule.MaxSpawnLimit + "]");
@@ -252,7 +274,7 @@ namespace WoosanStudio.ZombieShooter
             Debug.Log("===================[" + DeadMonster + "]===================");
 
             //웨이브 표시에 업데이트
-            waveCountPresent.UpdateInfo(DeadMonster, TotalSpawnedMonster);
+            waveCountPresent.UpdateInfo(DeadMonster);
         }
 
         /// <summary>

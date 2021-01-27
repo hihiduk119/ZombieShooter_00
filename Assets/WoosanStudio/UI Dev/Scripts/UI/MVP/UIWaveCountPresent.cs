@@ -30,6 +30,8 @@ namespace WoosanStudio.ZombieShooter.UI.MVP
 
             //카운트 하려는 값 업데이트
             View.UpdateView(CurrentCount.ToString() + "/"+ MaxCount.ToString());
+            //바운스 연출
+            //View.BounceCount();
         }
 
         /// <summary>
@@ -40,6 +42,16 @@ namespace WoosanStudio.ZombieShooter.UI.MVP
             CurrentCount = currentCount;
             //카운트 하려는 값 업데이트
             View.UpdateView(CurrentCount.ToString() + "/" + MaxCount.ToString());
+            //바운스 연출
+            View.BounceCount();
+        }
+
+        /// <summary>
+        /// 활성 비활성
+        /// </summary>
+        public void SetActivate(bool value)
+        {
+            View.SetActivate(value);
         }
     }
 }

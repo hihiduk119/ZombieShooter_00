@@ -127,7 +127,7 @@ namespace WoosanStudio.ZombieShooter
         {
             //매 라운드 종료시마다 Popup 호출하는 메서드 리스너에 등록
             //*매 라운드 몬스터 생성이 끝났을때 모든 몬스터가 죽으면 호출 되는 이벤트
-            MonsterList.Instance.ListEmptyEvent.AddListener(CallPopup);
+            MonsterList.Instance.ListEmptyEvent.AddListener(DoDelayCallPopup);
         }
 
         /// <summary>
@@ -243,8 +243,8 @@ namespace WoosanStudio.ZombieShooter
             //해당 레벨에 맞는 몬스터 생성
             for (int i = 0; i < StageNames.Count; i++)
             {
-                Debug.Log("현재 스테이지 이름 = " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-                Debug.Log("[" + i + "] = " + StageNames[i]);
+                //Debug.Log("현재 스테이지 이름 = " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+                //Debug.Log("[" + i + "] = " + StageNames[i]);
 
                 //현재 씬 이름과 씬 이름 리스트에서 같은 이름 찾아서 인덱스 가져오기
                 //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals(StageNames[i]))
@@ -329,6 +329,15 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 콜팝업을 딜레이 시킴
+        /// </summary>
+        public void DoDelayCallPopup()
+        {
+            //1초 지연후 CallPopup실행
+            Invoke("CallPopup", 2f);
+        }
+
+        /// <summary>
         /// 카드를 선택하는 팝업을 호출할지 스테이지가 결과 팝업을 호출할지 결정
         /// * 몬스터가 클리어 된 상황에 호출
         /// * MonsterList.Instance.ListEmptyEvent 에 리스너로 등록
@@ -351,6 +360,7 @@ namespace WoosanStudio.ZombieShooter
                 //popup ok 버튼 클릭 이벤트에 몬스터 스케줄 다음으로 넘어가게 연결
                 Ricimi.BasicButton.ButtonClickedEvent clickedEvent;
 
+
                 clickedEvent = clone.GetComponent<UI.MVP.InGameCardSelect.PopupPresenter>().View.BasicButton.OnClicked;
 
                 //다음 라운드 실행-> Ok Click과 연결
@@ -359,7 +369,8 @@ namespace WoosanStudio.ZombieShooter
                 clickedEvent.AddListener(ApplyCardsSelectedPopup);
             }
 
-            //Debug.Log("aa");
+            //팝업이 콜될때 웨이브 카운트 비활성화
+            GameObject.FindObjectOfType<UI.MVP.UIWaveCountPresent>().SetActivate(false);
         }
 
         /// <summary>

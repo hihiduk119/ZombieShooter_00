@@ -67,8 +67,7 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
         /// </summary>
         public void UpdateInfo()
         {
-            //표시 상에서는 +1해야함
-            float fillAmount = (float)(cardSetting.StackCount+1) / (float)cardSetting.MaxStack;
+            float fillAmount = (float)cardSetting.StackCount / (float)cardSetting.MaxStack;
 
             string percent = Mathf.FloorToInt(fillAmount*100).ToString() + "%";
             View.UpdateView(this.cardSetting.Sprite,this.cardSetting.IconColor,(this.cardSetting.Level+1).ToString(),string.Format("{0:0,0}", this.AddPrice),percent,fillAmount);

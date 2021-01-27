@@ -127,7 +127,7 @@ namespace WoosanStudio.ZombieShooter
             //(1레벨당 증가 값 * 레벨) + 기본벨류+[퍼센트 100 (200이면 크리티컬)]
             float percent = ((property.IncreasedValuePerLevelUp * level) + property.Value) * stack + percentage;
 
-            Debug.Log("증가 퍼센트 = [" + percent + "]");
+            //Debug.Log("증가 퍼센트 = [" + percent + "]");
             
             //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
             float returnValue = value * percent * 0.01f;
@@ -402,8 +402,8 @@ namespace WoosanStudio.ZombieShooter
                         damage = CalculateValue(damage, level, hasCards[i].Properties[j], stackCount);
 
                         //테스트용 -> 나중에 삭제
-                        int totalRate = (((int)hasCards[i].Properties[j].IncreasedValuePerLevelUp * level) + hasCards[i].Properties[j].Value);
-                        Debug.Log("최초 데미지 = ["+ origin + "] 중간 계산 데미지 = [" + damage + "]  Total Rate = ["+ totalRate + "] level = [" + level + "] Stack = [" + stackCount + "]  card = ["+ hasCards[i].Type.ToString()+ "] type = [" + type.ToString()+"]");
+                        //int totalRate = (((int)hasCards[i].Properties[j].IncreasedValuePerLevelUp * level) + hasCards[i].Properties[j].Value);
+                        //Debug.Log("최초 데미지 = ["+ origin + "] 중간 계산 데미지 = [" + damage + "]  Total Rate = ["+ totalRate + "] level = [" + level + "] Stack = [" + stackCount + "]  card = ["+ hasCards[i].Type.ToString()+ "] type = [" + type.ToString()+"]");
 
                         //테스트 조건 모두 통과
                         //1. 스택 증가
@@ -469,7 +469,7 @@ namespace WoosanStudio.ZombieShooter
             //랜덤값이 크리 확률값에 포함 된다면 크리 발생.            
             if (rand <= defaultCriticalRate) { isCriticalDamage = true; }
 
-            Debug.Log("(1-1000)크리 발생 비율 = " + defaultCriticalRate + " 랜덤값 = " + rand + " 크리발생 " + isCriticalDamage.ToString());
+            //Debug.Log("(1-1000)크리 발생 비율 = " + defaultCriticalRate + " 랜덤값 = " + rand + " 크리발생 " + isCriticalDamage.ToString());
 
             //테스트 조건
             //1 스택 증가에 따른 크리 발생률 증가 테스트
@@ -577,7 +577,8 @@ namespace WoosanStudio.ZombieShooter
             //4.각 탄약 저항 확인.
             //5.몬스터 레벨에 영향 확인
 
-            if (count == 0) { Debug.Log("반영할 몬스터 저항이 없습니다."); }
+            //저항 계산 확인용
+            //if (count == 0) { Debug.Log("반영할 몬스터 저항이 없습니다."); }
 
             return damage;
         }

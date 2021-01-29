@@ -2489,7 +2489,7 @@ MonoBehaviour:
   sizeOffsets: {x: 0, y: -200}
   DrawOFFDistance: 0
   drawDistance: 10
-  showHealthInfo: 0
+  showHealthInfo: 1
   healthInfoAlignment: 1
   healthInfoSize: 10
   alphaSettings:
@@ -2527,7 +2527,7 @@ MonoBehaviour:
   sizeOffsets: {x: 0, y: -200}
   DrawOFFDistance: 0
   drawDistance: 10
-  showHealthInfo: 0
+  showHealthInfo: 1
   healthInfoAlignment: 1
   healthInfoSize: 10
   alphaSettings:

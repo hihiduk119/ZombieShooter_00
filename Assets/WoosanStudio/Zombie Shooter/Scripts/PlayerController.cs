@@ -37,11 +37,11 @@ namespace WoosanStudio.ZombieShooter
         [Header("[(Auto->Awake())]")]
         public TextDamageBridge TextDamageBridge;
         //데미지 UI체력바
-        [Header("[(Auto->Awake())]")]
-        public HealthBar HealthBar;
+        //[Header("[(Auto->Awake())]")]
+        //public HealthBar HealthBar;
         //데미지,리로드 UI바
-        [Header("[(Auto->Awake())]")]
-        public List<HealthBar> PlayerBars;
+        //[Header("[(Auto->Awake())]")]
+        //public List<HealthBar> PlayerBars;
         //실제 체력
         [Header("[(Auto->Awake())]")]
         public PlayerHit HaveHit;
@@ -88,8 +88,8 @@ namespace WoosanStudio.ZombieShooter
             MyThirdPersonCharacter = GetComponent<MyThirdPersonCharacter>();
             PlayerMoveActor = GetComponent<PlayerMoveActor>();
             TextDamageBridge = GetComponent<TextDamageBridge>();
-            HealthBar = GetComponent<HealthBar>();
-            PlayerBars = new List<HealthBar>(GetComponents<HealthBar>());
+            //HealthBar = GetComponent<HealthBar>();
+            //PlayerBars = new List<HealthBar>(GetComponents<HealthBar>());
             HaveHit = GetComponent<PlayerHit>();
             AimIK = GetComponent<AimIK>();
             LookAtIK = GetComponent<LookAtIK>();
@@ -129,8 +129,8 @@ namespace WoosanStudio.ZombieShooter
             MyThirdPersonCharacter.enabled = true;
             PlayerMoveActor.enabled = true;
             //UI Health Bar 비활성화
-            HealthBar.HealthbarPrefab.gameObject.SetActive(true);
-            PlayerBars.ForEach(value => value.HealthbarPrefab.gameObject.SetActive(true));
+            //HealthBar.HealthbarPrefab.gameObject.SetActive(true);
+            //PlayerBars.ForEach(value => value.HealthbarPrefab.gameObject.SetActive(true));
             //FireController.enabled = true;
 
             Debug.Log("==[" + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name + "]==");
@@ -145,8 +145,8 @@ namespace WoosanStudio.ZombieShooter
             MyThirdPersonCharacter.enabled = false;
             PlayerMoveActor.enabled = false;
             //UI Health Bar 비활성화
-            HealthBar.HealthbarPrefab.gameObject.SetActive(false);
-            PlayerBars.ForEach(value => value.HealthbarPrefab.gameObject.SetActive(false));
+            //HealthBar.HealthbarPrefab.gameObject.SetActive(false);
+            //PlayerBars.ForEach(value => value.HealthbarPrefab.gameObject.SetActive(false));
             AimIK.enabled = false;
             LookAtIK.enabled = false;
             //FireController.enabled = false;

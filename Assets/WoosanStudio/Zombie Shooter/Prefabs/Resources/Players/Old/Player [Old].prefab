@@ -1341,13 +1341,12 @@ GameObject:
   - component: {fileID: 693523368202195721}
   - component: {fileID: 1468132599036376319}
   - component: {fileID: 6234998091437232388}
-  - component: {fileID: 4119960748692672975}
   - component: {fileID: 2108877320924109981}
   - component: {fileID: 6170117026442716332}
   - component: {fileID: 1381390842232316586}
   - component: {fileID: 4578334170255671730}
   m_Layer: 8
-  m_Name: Player [New]
+  m_Name: Player [Old]
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1382,7 +1381,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934835eeaeb904512a696a3bc41a3e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 200
   health: 200
+  reload: 30
 --- !u!54 &4345199285596953428
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1520,6 +1521,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e573ec2f57d2949698e62b8b270f29c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseName: 0
+  Name: FindName
   Target: {fileID: 0}
   ExtraValue: {x: 0, y: 0, z: 0}
 --- !u!114 &6234998091437232388
@@ -1536,44 +1539,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textManager: {fileID: 0}
   overrideTransform: {fileID: 3653068946033043275}
---- !u!114 &4119960748692672975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3207188502995189610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37b67d8750d564547b048e7c973b12c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthLink:
-    targetScript: {fileID: 2243974160251128829}
-    fieldName: health
-  HealthbarPrefab: {fileID: 22400004, guid: f3cbc3b42afbd42bd9685a5feda5da2f, type: 3}
-  yOffset: 3.5
-  keepSize: 1
-  scale: 1.25
-  sizeOffsets: {x: 0, y: -200}
-  DrawOFFDistance: 0
-  drawDistance: 10
-  showHealthInfo: 0
-  healthInfoAlignment: 1
-  healthInfoSize: 10
-  alphaSettings:
-    defaultAlpha: 1
-    defaultFadeSpeed: 0.05
-    fullAplpha: 1
-    fullFadeSpeed: 0
-    nullAlpha: 0
-    nullFadeSpeed: 0.05
-    onHit:
-      fadeSpeed: 0.2
-      onHitAlpha: 1
-      duration: 2
-  canvas: {fileID: 0}
-  keyTag: HealthBarCanvas
 --- !u!114 &2108877320924109981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1701,8 +1666,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d9554f35e15434097e8033b21ff90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mAimIKTarget: {fileID: 0}
   AimTarget: {fileID: 0}
   Speed: 0.1
+  FindAimTarget: {fileID: 0}
+  ExtraValue: {x: 0, y: 0, z: 0}
 --- !u!1 &3249898521074542641
 GameObject:
   m_ObjectHideFlags: 0

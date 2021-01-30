@@ -2296,8 +2296,6 @@ GameObject:
   - component: {fileID: 1836758714628244881}
   - component: {fileID: 1836758714628244880}
   - component: {fileID: 1836758714628244886}
-  - component: {fileID: 1836758714628244885}
-  - component: {fileID: -65078603633272145}
   - component: {fileID: 1836758714628244884}
   - component: {fileID: 1836758714628244875}
   - component: {fileID: 1836758714628244874}
@@ -2468,82 +2466,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textManager: {fileID: 0}
   overrideTransform: {fileID: 2998971303812360708}
---- !u!114 &1836758714628244885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836758714628244879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37b67d8750d564547b048e7c973b12c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthLink:
-    targetScript: {fileID: 7357141380531015483}
-    fieldName: health
-  HealthbarPrefab: {fileID: 22400004, guid: 536ed075150b84897aee4dad99bd2b7d, type: 3}
-  yOffset: 3.5
-  keepSize: 1
-  scale: 1.25
-  sizeOffsets: {x: 0, y: -200}
-  DrawOFFDistance: 0
-  drawDistance: 10
-  showHealthInfo: 1
-  healthInfoAlignment: 1
-  healthInfoSize: 10
-  alphaSettings:
-    defaultAlpha: 1
-    defaultFadeSpeed: 0.1
-    fullAplpha: 1
-    fullFadeSpeed: 0.1
-    nullAlpha: 0
-    nullFadeSpeed: 0.1
-    onHit:
-      fadeSpeed: 0.2
-      onHitAlpha: 1
-      duration: 2
-  canvas: {fileID: 0}
-  keyTag: HealthBarCanvas
---- !u!114 &-65078603633272145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836758714628244879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37b67d8750d564547b048e7c973b12c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthLink:
-    targetScript: {fileID: 7357141380531015483}
-    fieldName: reload
-  HealthbarPrefab: {fileID: 22400004, guid: f3cbc3b42afbd42bd9685a5feda5da2f, type: 3}
-  yOffset: 3.25
-  keepSize: 1
-  scale: 1.25
-  sizeOffsets: {x: 0, y: -200}
-  DrawOFFDistance: 0
-  drawDistance: 10
-  showHealthInfo: 1
-  healthInfoAlignment: 1
-  healthInfoSize: 10
-  alphaSettings:
-    defaultAlpha: 1
-    defaultFadeSpeed: 0.1
-    fullAplpha: 1
-    fullFadeSpeed: 0.1
-    nullAlpha: 0
-    nullFadeSpeed: 0.1
-    onHit:
-      fadeSpeed: 0.2
-      onHitAlpha: 1
-      duration: 2
-  canvas: {fileID: 0}
-  keyTag: HealthBarCanvas
 --- !u!114 &1836758714628244884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2744,8 +2666,6 @@ MonoBehaviour:
   MyThirdPersonCharacter: {fileID: 0}
   PlayerMoveActor: {fileID: 0}
   TextDamageBridge: {fileID: 0}
-  HealthBar: {fileID: 0}
-  PlayerBars: []
   HaveHit: {fileID: 0}
   AimIK: {fileID: 0}
   LookAtIK: {fileID: 0}
@@ -3095,8 +3015,8 @@ MonoBehaviour:
   outlineParameters:
     enabled: 1
     color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    dilateShift: 1
-    blurShift: 1
+    dilateShift: 0
+    blurShift: 0
     fillPass:
       shader: {fileID: 0}
       serializedProperties: []

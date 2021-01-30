@@ -76,6 +76,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[카드 셀렉트 팝업 오프너]")]
         public Ricimi.PopupOpener CardSelectPopupOpener;
 
+        [Header("[플레이어의 체력 및 탄약 UI 컨트롤]")]
+        public UI.UIPlayerCanvasPresenter UIPlayerCanvasPresenter;
+
         //카메라를 움직이는 컨트롤
         private CameraMoveController CameraMoveController;
 
@@ -227,6 +230,11 @@ namespace WoosanStudio.ZombieShooter
             //카운팅 시작
             StartCounter.Count();
             #endregion
+
+            //체력과 탄약 UI 활성
+            UIPlayerCanvasPresenter.SetActivate(true);
+            //따라다닐 플레이어 세팅
+            UIPlayerCanvasPresenter.FollowPlayer(playerController.gameObject);
         }
 
         /// <summary>

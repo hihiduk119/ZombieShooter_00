@@ -34,7 +34,6 @@ namespace WoosanStudio.ZombieShooter
         //캐쉬용
         IGunStat _gunStat;
 
-
         void Awake()
         {
             //생성시 런쳐 자동으로 생성

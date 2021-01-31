@@ -173,6 +173,9 @@ namespace WoosanStudio.ZombieShooter
             //플레이어가 가지고 있는 무기 요청 가지고 옴
             WeaponRequester = playerController.GetComponent<WeaponRequester>();
 
+            //플레이어 비활성화
+            playerController.Deactive();
+
             //카드 데이터 플레이어에 적용
             ApplyCardsSelectedRobby(playerController);
         }
@@ -195,7 +198,7 @@ namespace WoosanStudio.ZombieShooter
         public void Load()
         {
             Debug.Log("!!!!!!!!!! => Load");
-            LoadAllProps();
+            //LoadAllProps();
 
             //카메라 느리게 좌우로 흔듬 시작
             CameraNativeWalk.Run();
@@ -231,10 +234,27 @@ namespace WoosanStudio.ZombieShooter
             StartCounter.Count();
             #endregion
 
+            //??플레이어가 해야하는게 아닌지 의문이듬
+            //*여기 있어야 하는게 맞아???
+            //*플레이어가 생성시에 스스로 연결해야 하는거 아님?
             //체력과 탄약 UI 활성
             UIPlayerCanvasPresenter.SetActivate(true);
+
+            //플레이어와 플레이어 캔버스 연결
+            ConnectPlayerAndUIPlayerCanvas();
+        }
+
+        /// <summary>
+        /// 플레이어와 플레이어 캔버스 연결
+        /// </summary>
+        void ConnectPlayerAndUIPlayerCanvas()
+        {
             //따라다닐 플레이어 세팅
             UIPlayerCanvasPresenter.FollowPlayer(playerController.gameObject);
+            //몬스터에게 받은 데미지 이벤트 체력바와 연결
+            UIPlayerCanvasPresenter.ConnectDemagedListener(playerController.GetComponent(typeof(IHaveHealth)) as IHaveHealth);
+            //탄약 사용 이벤트 탄약바와 연결
+            UIPlayerCanvasPresenter.ConnectUsedAmmoListener(playerController.GetComponent(typeof(IHaveAmmo)) as IHaveAmmo);
         }
 
         /// <summary>

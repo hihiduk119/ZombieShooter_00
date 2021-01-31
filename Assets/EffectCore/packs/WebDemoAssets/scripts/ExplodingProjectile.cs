@@ -155,6 +155,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
 
             //부딫힌 오브젝트에 IHaveHealth를 가지고 있으면 데미지를 준다
             IHaveHealth haveHealth = hit.transform.GetComponent(typeof(IHaveHealth)) as IHaveHealth;
+
             if (haveHealth != null) {
 
                 //몬스터 저항도 생각 해야한다.

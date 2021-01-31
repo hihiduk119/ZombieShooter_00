@@ -130,7 +130,7 @@ namespace WoosanStudio.ZombieShooter
             //*(ICameraShaker)CameraShakeProjectile => 화면 흔들림 연출 이벤트 연결
             //생성 후 삭제를 위해 미리 받아놓음
             currentWeapon = WeaponFactory.MakeWeapon(fireStartEvent, fireEndEvent, (ICameraShaker)CameraShakeProjectile,
-                AutoFireControlInputBasedOnGunSetting.ReloadAction, ref gun, WeaponAnchor, weaponIndex , ammoIndex, false, currentMuzzleFlash);
+                AutoFireControlInputBasedOnGunSetting.ReloadAction, ref gun, WeaponAnchor, weaponIndex , ammoIndex, false, currentMuzzleFlash,this.gameObject);
             //레이저 포인터 생성전에 로컬좌표 설정 & 엔커 설정
             LaserPointerFactory.Anchor = WeaponAnchor;
             LaserPointerFactory.InitPosition = WeaponFactory._gunSettings[weaponIndex].InitLaserPointerPosition;

@@ -59,6 +59,19 @@ namespace WoosanStudio.ZombieShooter.UI
         }
 
         /// <summary>
+        /// 체력 업데이트 2
+        /// *이벤트 연결용 
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <param name="hit"></param>
+        /// <param name="keyValue"></param>
+        private void UpdateHP(int damage, Vector3 hit, string keyValue)
+        {
+            //이벤트로 들어오는 값은 +이기에 -으로 변경.
+            this.UpdateHP(-damage);
+        }
+
+        /// <summary>
         /// 최대 체력 업데이트
         /// </summary>
         /// <param name="value"></param>
@@ -89,6 +102,14 @@ namespace WoosanStudio.ZombieShooter.UI
         }
 
         /// <summary>
+        /// 탄약 업데이트 -1
+        /// </summary>
+        public void UseAmmo()
+        {
+            UpdateAmmo(-1);
+        }
+
+        /// <summary>
         /// 최대 탄약 업데이트
         /// </summary>
         /// <param name="value"></param>
@@ -103,6 +124,28 @@ namespace WoosanStudio.ZombieShooter.UI
         public void ResetAmmo()
         {
             AmmoBar.valueCurrent = AmmoBar.valueMax;
+        }
+
+
+        /// <summary>
+        /// 플레이어가 데미지 이벤트를 연결
+        /// Player -> HealthBar.cs와 연결
+        /// </summary>
+        /// <param name="haveHealth"></param>
+        public void ConnectDemagedListener(IHaveHealth haveHealth)
+        {
+            haveHealth.DamagedEvent.AddListener(UpdateHP);
+        }
+
+
+        /// <summary>
+        /// 플레이어가 탄약 이벤트를 연결
+        /// Player -> AmmoBar.cs와 연결
+        /// </summary>
+        /// <param name="haveHealth"></param>
+        public void ConnectUsedAmmoListener(IHaveAmmo haveAmmo)
+        {
+            haveAmmo.FireEvent.AddListener(UseAmmo);
         }
 
 

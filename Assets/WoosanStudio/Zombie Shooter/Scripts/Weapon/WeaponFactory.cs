@@ -65,7 +65,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="type">생성할 무기의 인덱스</param>
         /// <param name="useLaserPoint">생성할 무기의 인덱스</param>
         /// <returns></returns>
-        public IWeapon MakeWeapon(IStart start,IEnd end,ICameraShaker cameraShaker,UnityAction ammoEmpty, ref IGun iGun , Transform joint,int gunType ,int ammoType,bool useLaserPointer, GameObject muzzleFlashProjector)
+        public IWeapon MakeWeapon(IStart start,IEnd end,ICameraShaker cameraShaker,UnityAction ammoEmpty, ref IGun iGun , Transform joint,int gunType ,int ammoType,bool useLaserPointer, GameObject muzzleFlashProjector,GameObject player)
         {
             //어떤 무기는 모델을 가지고 있으면 IHaveModel인터페이스를 상속 받기에 해당 인터페이스 호출.
             IHaveModel haveModel = _gunSettings[gunType];
@@ -115,10 +115,7 @@ namespace WoosanStudio.ZombieShooter
             if (muzzleFlashProjector != null)
             {
                 MuzzleFlash muzzleFlash = muzzleFlashProjector.GetComponent<MuzzleFlash>();
-
-                Debug.Log("hellow = " + muzzleFlashProjector.name);
-               
-
+                //Debug.Log("hellow = " + muzzleFlashProjector.name);
                 //발사시 플레어 블링크 등록
                 _iGun.ProjectileLauncher.TriggerEvent.AddListener(((IMuzzleFlare)muzzleFlash).Blink);
             }
@@ -137,6 +134,12 @@ namespace WoosanStudio.ZombieShooter
                 //실제 (ProjectileLauncher에) 발사기관에 탄환 세팅
                 //_iGun.ProjectileLauncher.projectileSetting = _projectileSettings[ammoType][gunType];
                 _iGun.ProjectileLauncher.projectileSetting = projectileDatas[ammoType]._projectileSettings[gunType];
+
+                //탄 발사시 AmmoBar UI와 연결
+                IHaveAmmo haveAmmo = player.GetComponent(typeof(IHaveAmmo)) as IHaveAmmo;
+                //IhaveAmmo 이벤트와 건 트리거 이벤트 같게 만들기
+                //*쏘는 행위는 총이 하는 행위이기 때무에. have탄약은 탄약이 0인지 아닌지 확인함.
+                haveAmmo.FireEvent = _iGun.ProjectileLauncher.TriggerEvent;
 
                 //에벤트 없을을 통지함.
                 if (start == null) Debug.Log("start event null");

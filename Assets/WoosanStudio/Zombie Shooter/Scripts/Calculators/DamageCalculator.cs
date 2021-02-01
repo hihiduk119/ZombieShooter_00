@@ -370,7 +370,7 @@ namespace WoosanStudio.ZombieShooter
             //*1000 번 이상은 네임드 
             if (1000 <= (int)monster.MonsterId) { isNamedZombie = true; }
 
-            Debug.Log("=> 현재 선택된 무기 = [" + weaponType.ToString()+ "]  탄약 = [" + ammoType.ToString()+"]");
+            //Debug.Log("=> 현재 선택된 무기 = [" + weaponType.ToString()+ "]  탄약 = [" + ammoType.ToString()+"]");
 
             //카드 검사
             for (int i = 0; i < hasCards.Count; i++)

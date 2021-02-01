@@ -196,6 +196,42 @@ namespace WoosanStudio.ZombieShooter
         //선택된 맵 세팅 데이터
         static public Map.Setting MapSetting;
 
+        //게임중 선택한 건세팅의 베이스 [퓨어상태]
+        static public GunSettings SelectedBaseGunSetting;
+        //게임중에 사용하는 건세팅 [총 교체시 같이 교체됨]
+        //*생성 세팅시 카드 데이터를 반영해야함.
+        private GunSettings selectedGunSetting;
+        public GunSettings SelectedGunSetting
+        {
+            //값을 가져올때마다 카드에의한 건데이터 업데이트
+            get {
+                return UpdateGunSettingByCards(GlobalDataController.SelectedBaseGunSetting, selectedGunSetting, GlobalDataController.SelectedAmmoCard, GlobalDataController.Instance.SelectAbleAllCard);
+            }
+            set => selectedGunSetting = value;
+        }
+
+        /// <summary>
+        /// 카드에 의한 건 데이터 업데이트 반영
+        /// *변수 1.공속 2.최대 탄약수
+        /// </summary>
+        /// <param name="origin"></param>
+        /// <param name="target"></param>
+        /// <param name="ammoCard"></param>
+        /// <param name="allCard"></param>
+        /// <returns></returns>
+        private GunSettings UpdateGunSettingByCards(GunSettings origin,GunSettings target,CardSetting ammoCard,List<CardSetting> allCard)
+        {
+            //*카드의 프로퍼티를 찾아서 적용해야한다.
+            //1. all card에서 공속프로퍼티 찾기.
+            //DamageCalculator에서 가져오는게 맞아?
+            float rapidFireCooldown = DamageCalculator.Instance.GetAttackSpeed(origin.rapidFireCooldown);
+            //새로운 공속 적용.
+            target.rapidFireCooldown = rapidFireCooldown;
+            //2. 공속 카드 오리진 세팅값에 비교해서 타겟 세팅에 적용
+            //3. 탄약 카드 값을 반영하여 타겟 카드 세팅에 적용.
+            return target;
+        }
+
         public void Awake()
         {
             //데이터 로드

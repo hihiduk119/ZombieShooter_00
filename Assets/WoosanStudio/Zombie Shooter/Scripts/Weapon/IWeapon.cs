@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public interface IWeapon : IAttackAction
+    public interface IWeapon //: IAttackAction
     {
         //void Attack();
         //void Stop();

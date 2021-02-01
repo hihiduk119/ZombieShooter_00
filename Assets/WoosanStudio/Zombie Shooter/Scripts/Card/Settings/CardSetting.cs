@@ -776,8 +776,6 @@ namespace WoosanStudio.ZombieShooter
             return upgradeRemainTime;
         }
 
-
-
         public bool Equals(CardSetting other)
         {
             if (type == other.type) return true;

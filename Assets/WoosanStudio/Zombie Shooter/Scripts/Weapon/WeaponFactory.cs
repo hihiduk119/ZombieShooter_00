@@ -67,8 +67,16 @@ namespace WoosanStudio.ZombieShooter
         /// <returns></returns>
         public IWeapon MakeWeapon(IStart start,IEnd end,ICameraShaker cameraShaker,UnityAction ammoEmpty, ref IGun iGun , Transform joint,int gunType ,int ammoType,bool useLaserPointer, GameObject muzzleFlashProjector,GameObject player)
         {
+            //건세팅 카드에 의해 데이터 값의 수정을 위해 인스턴으로 생성
+            GunSettings gunSettings = Instantiate(_gunSettings[gunType]) as GunSettings;
+
+            //글로벌 데이터에 넣기 [변경불가 건세팅]
+            GlobalDataController.SelectedBaseGunSetting = _gunSettings[gunType];
+            //글로벌 데이터에 넣기 [변경되는 건세팅]
+            GlobalDataController.Instance.SelectedGunSetting = gunSettings;
+
             //어떤 무기는 모델을 가지고 있으면 IHaveModel인터페이스를 상속 받기에 해당 인터페이스 호출.
-            IHaveModel haveModel = _gunSettings[gunType];
+            IHaveModel haveModel = gunSettings;
 
             //모델 인스턴스 생성 및 가져오기
             _weapon = haveModel.MakeModel();
@@ -76,7 +84,7 @@ namespace WoosanStudio.ZombieShooter
             _weapon.transform.parent = joint;
 
             //초기 위치 설정
-            _weapon.transform.localPosition = _gunSettings[gunType].InitPosition;
+            _weapon.transform.localPosition = gunSettings.InitPosition;
             _weapon.transform.localRotation = Quaternion.identity;
 
             //Debug.Log("_weapon parent = " + _weapon.transform.parent.ToString());
@@ -126,10 +134,10 @@ namespace WoosanStudio.ZombieShooter
                 //총 세팅값 설정
                 //*AssaultRifle,Pistol,등 실제 클래스에서 사용은 함.
                 //*직관성 부족으로 리팩토링 필요함.
-                _iGun.GunSettings = _gunSettings[gunType];
+                _iGun.GunSettings = gunSettings;
 
                 //실제 (ProjectileLauncher에) 발사기관에 총 세팅
-                _iGun.ProjectileLauncher.gunSetting = _gunSettings[gunType];
+                _iGun.ProjectileLauncher.gunSetting = gunSettings;
 
                 //실제 (ProjectileLauncher에) 발사기관에 탄환 세팅
                 //_iGun.ProjectileLauncher.projectileSetting = _projectileSettings[ammoType][gunType];

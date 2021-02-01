@@ -28,23 +28,16 @@ namespace WoosanStudio.ZombieShooter
         public UnityEvent EmptyEvent => emptyEvent;
         private UnityEvent emptyEvent = new UnityEvent();
 
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeapon.IAttackAction Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        public UnityAction AttackAction { get; set; }
-
-
         //캐쉬용
         IGunStat _gunStat;
-
 
         void Awake()
         {
             //생성시 런쳐 자동으로 생성
             _projectileLauncher = gameObject.AddComponent<ProjectileLauncher>();
 
-            //액션 등록
-            AttackAction += FireControl;
             //발사 런처에 발사할때 마다 AttackAction 호출하게 등록
-            ProjectileLauncher.TriggerEvent.AddListener(AttackAction);
+            ProjectileLauncher.TriggerEvent.AddListener(FireControl);
         }
 
         /// <summary>

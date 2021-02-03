@@ -433,7 +433,7 @@ namespace WoosanStudio.ZombieShooter
         /// 스테이지 변경을 위한 테스트 코드
         /// </summary>
         #region [-TestCode]
-        /*void Update()
+        void Update()
         {
             //if (Input.GetKeyDown(KeyCode.A))
             //{
@@ -451,30 +451,39 @@ namespace WoosanStudio.ZombieShooter
             //}
 
             //씬이 첫 로딩이 되고 실행되는 메서 
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                FirstStage();
-            }
+            //if (Input.GetKeyDown(KeyCode.F))
+            //{
+            //    FirstStage();
+            //}
 
             //스테이지 이동을 자동으로 함 -> StageManager가 할일을 하고있음.
-            if (Input.GetKeyDown(KeyCode.Alpha0))
-            {
-                NextStage();
-            }
+            //if (Input.GetKeyDown(KeyCode.Alpha0))
+            //{
+            //    NextStage();
+            //}
 
             //카드 셀렉터를 오픈한다.
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                CardSelectPopupOpener.OpenPopup();
-            }
+            //if (Input.GetKeyDown(KeyCode.Alpha1))
+            //{
+            //    CardSelectPopupOpener.OpenPopup();
+            //}
 
             //펠로우 캠 포지셔너만 해당위치로 이동
             //스테이지 이동시 카메라 이상행동 때문에 
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                FollowCameraPositioner.Move();
-            }
-        }*/
+            //if (Input.GetKeyDown(KeyCode.K))
+            //{
+            //    FollowCameraPositioner.Move();
+            //}
+
+            //if (Input.GetKeyDown(KeyCode.A))
+            //{
+            //    GlobalDataController.Instance.UpdateGunSettingByCards(
+            //        GlobalDataController.SelectedBaseGunSetting,
+            //        GlobalDataController.Instance.SelectedGunSetting,
+            //        GlobalDataController.SelectedAmmoCard,
+            //        GlobalDataController.Instance.SelectAbleAllCard);
+            //}
+        }
         #endregion
     }
 }

@@ -60,7 +60,7 @@ namespace WoosanStudio.ZombieShooter
         //
         public void CheckHealth(int damage,Vector3 hit,string keyValue)
         {
-            if(haveHealth.Health < 0) { Die(hit); }
+            if(haveHealth.Health <= 0) { Die(hit); }
         }
 
         public void Die(Vector3 hit)

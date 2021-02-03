@@ -147,10 +147,13 @@ namespace WoosanStudio.ZombieShooter
         {
             //카드 레벨에 의해 증감된 수치
             //(1레벨당 증가 값 * 레벨) + 기본벨류+[퍼센트 100 (200이면 크리티컬)]
+
+            Debug.Log("((" + property.IncreasedValuePerLevelUp + "*" + level + ") + " + property.Value + ") * " + stack + "+" + percentage);
             float percent = ((property.IncreasedValuePerLevelUp * level) + property.Value) * stack + percentage;
-            //Debug.Log("증가 퍼센트 = " + percent);
+            Debug.Log("증가 퍼센트 = " + percent);
             //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
             float returnValue = value / (percent * 0.01f);
+            Debug.Log("리턴 값 = " + returnValue);
 
             return returnValue;
         }
@@ -651,6 +654,8 @@ namespace WoosanStudio.ZombieShooter
             //선택된 카드 가져오기
             hasCards = GetHasCards(GlobalDataController.Instance.SelectAbleAllCard);
 
+            Debug.Log("카드수  = " + hasCards.Count);
+
             //가진 카드에서 루프
             for (int i = 0; i < hasCards.Count; i++)
             {
@@ -663,6 +668,8 @@ namespace WoosanStudio.ZombieShooter
                         //카드레벨 가져오기
                         level = hasCards[i].Level;
 
+                        //카드 스택 가져옴
+                        stackCount = hasCards[i].StackCount;
                         //프로퍼티 값이 음수이면 스택없이 1번만 계산
                         if (hasCards[i].Properties[j].Value < 0) { stackCount = 1; }
 
@@ -671,7 +678,7 @@ namespace WoosanStudio.ZombieShooter
                         //{
                         //레벨 반영 데미지 계산
                         speed = CalculateValue2(speed, level ,hasCards[i].Properties[j], stackCount);
-                        Debug.Log("중간 계산 토탈 = " + speed + "  level = " + level + " type = " + hasCards[i].Properties[j].Type.ToString());
+                        //Debug.Log("중간 계산 토탈 = " + speed + "  level = " + level + " type = " + hasCards[i].Properties[j].Type.ToString());
                         //}
                     }
                 }

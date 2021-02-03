@@ -966,6 +966,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 246062895614678435}
+  - component: {fileID: 739802513191175067}
   - component: {fileID: 246062895614678437}
   - component: {fileID: 246062895614678436}
   - component: {fileID: 246062895614678439}
@@ -977,7 +978,6 @@ GameObject:
   - component: {fileID: 4213669199024862083}
   - component: {fileID: 2439673250786027446}
   - component: {fileID: 2484837578329848400}
-  - component: {fileID: 739802513191175067}
   m_Layer: 16
   m_Name: AirportSecurity
   m_TagString: Monster
@@ -1002,6 +1002,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &739802513191175067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246062895614678432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 934835eeaeb904512a696a3bc41a3e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  health: 200
+  reload: 30
 --- !u!195 &246062895614678437
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1220,21 +1235,6 @@ MonoBehaviour:
     fillPass:
       shader: {fileID: 0}
       serializedProperties: []
---- !u!114 &739802513191175067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246062895614678432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 934835eeaeb904512a696a3bc41a3e89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 200
-  health: 200
-  reload: 30
 --- !u!1 &604080447609638911
 GameObject:
   m_ObjectHideFlags: 0

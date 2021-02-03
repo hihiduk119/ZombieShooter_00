@@ -204,10 +204,12 @@ namespace WoosanStudio.ZombieShooter
         public GunSettings SelectedGunSetting
         {
             //값을 가져올때마다 카드에의한 건데이터 업데이트
-            get {
-                return UpdateGunSettingByCards(GlobalDataController.SelectedBaseGunSetting, selectedGunSetting, GlobalDataController.SelectedAmmoCard, GlobalDataController.Instance.SelectAbleAllCard);
+            get => selectedGunSetting;
+            set {
+                selectedGunSetting = UpdateGunSettingByCards(GlobalDataController.SelectedBaseGunSetting, value, GlobalDataController.SelectedAmmoCard, GlobalDataController.Instance.SelectAbleAllCard);
             }
-            set => selectedGunSetting = value;
+
+            //UpdateGunSettingByCards(GlobalDataController.SelectedBaseGunSetting, selectedGunSetting, GlobalDataController.SelectedAmmoCard, GlobalDataController.Instance.SelectAbleAllCard);
         }
 
         /// <summary>
@@ -219,12 +221,14 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="ammoCard"></param>
         /// <param name="allCard"></param>
         /// <returns></returns>
-        private GunSettings UpdateGunSettingByCards(GunSettings origin,GunSettings target,CardSetting ammoCard,List<CardSetting> allCard)
+        public GunSettings UpdateGunSettingByCards(GunSettings origin,GunSettings target,CardSetting ammoCard,List<CardSetting> allCard)
         {
             //*카드의 프로퍼티를 찾아서 적용해야한다.
             //1. all card에서 공속프로퍼티 찾기.
+            Debug.Log(">>>>>>>>>>>>>>>>>>>>>>>> 기본 공속 = " + origin.rapidFireCooldown);
             //DamageCalculator에서 가져오는게 맞아?
             float rapidFireCooldown = DamageCalculator.Instance.GetAttackSpeed(origin.rapidFireCooldown);
+            Debug.Log(">>>>>>>>>>>>>>>>>>>>>>>> 변경 공속 = " + rapidFireCooldown);
             //새로운 공속 적용.
             target.rapidFireCooldown = rapidFireCooldown;
             //2. 공속 카드 오리진 세팅값에 비교해서 타겟 세팅에 적용

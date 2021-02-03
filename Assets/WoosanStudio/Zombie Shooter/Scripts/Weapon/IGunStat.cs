@@ -23,7 +23,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 재장전 시간 계산기
         /// </summary>
-        ReloadTimeCalculator ReloadTimeCalculator { get; }
+        //ReloadTimeCalculator ReloadTimeCalculator { get; }
 
         /// <summary>
         /// 총 발사 속도

@@ -96,7 +96,7 @@ namespace WoosanStudio.ZombieShooter
             //재장전 시작시 작동할 액션 리스트
             //List<UnityAction> startReloadActionList = new List<UnityAction>();
 
-            startReloadActionList.Add(()=> { Debug.Log("Start Reload");});
+            startReloadActionList.Add(()=> { Debug.Log("재장전 시작");});
             //자동 사격 시스템의 리로드 액션 넣기
             //startReloadActionList.Add(AutoFireControlInputBasedOnGunSetting.ReloadAction);
             //리로드시 에니메이션 플레이
@@ -172,7 +172,7 @@ namespace WoosanStudio.ZombieShooter
             }
             else
             {
-                Debug.Log("===============================> 무기 삭제 안됨");
+                //Debug.Log("===============================> 무기 삭제 안됨");
             }
 
             //레이저 포인터 삭제
@@ -181,7 +181,7 @@ namespace WoosanStudio.ZombieShooter
             }
             else
             {
-                Debug.Log("===============================> 레이저 포인터 삭제 안됨");
+                //Debug.Log("===============================> 레이저 포인터 삭제 안됨");
             }
 
             //머즐 플레쉬 삭제
@@ -190,7 +190,7 @@ namespace WoosanStudio.ZombieShooter
             }
             else
             {
-                Debug.Log("===============================> 머즐 플레쉬 삭제 안됨");
+                //Debug.Log("===============================> 머즐 플레쉬 삭제 안됨");
             }
         }
 

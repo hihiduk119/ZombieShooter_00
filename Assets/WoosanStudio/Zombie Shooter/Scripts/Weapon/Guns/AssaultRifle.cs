@@ -136,7 +136,7 @@ namespace WoosanStudio.ZombieShooter
 
         public void Initialize()
         {
-            Debug.Log("Gun Initialize");
+            //Debug.Log("Gun Initialize");
             FullOfAmmo();
         }
     }

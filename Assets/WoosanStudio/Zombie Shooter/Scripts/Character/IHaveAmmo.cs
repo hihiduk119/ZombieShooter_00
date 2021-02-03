@@ -7,6 +7,8 @@ namespace WoosanStudio.ZombieShooter
     {
         int Ammo { get; set; }
         int MaxAmmo { get; set; }
+
+        void SetMaxAmmo(int maxAmmo);
         //void UsedListener();
         /// <summary>
         /// 탄약이 사용될때 이벤트

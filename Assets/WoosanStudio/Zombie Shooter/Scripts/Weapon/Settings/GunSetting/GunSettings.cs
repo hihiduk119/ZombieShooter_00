@@ -88,13 +88,13 @@ namespace WoosanStudio.ZombieShooter
         public GameObject PrefabInstance { get => _prefabInstance; }
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IWeaponStat Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        [Header("[무기 레벨 - [IWeaponStat]]")]
+        [Header("[[사용X]무기 레벨 - [IWeaponStat]]")]
         [SerializeField] private int _level = 1;
         public int Level { get => _level; }
 
         public int Type { get => _index; }
 
-        [Header("[무기 데미지 - [IWeaponStat]]")]
+        [Header("[[사용X]무기 데미지 - [IWeaponStat]]")]
         [SerializeField] private int _damage;
         public int Damage { get => _damage; }
 
@@ -102,16 +102,16 @@ namespace WoosanStudio.ZombieShooter
 
         [Header("[최대 탄약 수 - [IGunStat]]")]
         [SerializeField] private int _maxAmmo = 10;
-        public int MaxAmmo { get => _maxAmmo; }
+        public int MaxAmmo { get => _maxAmmo; set => _maxAmmo = value; }
 
         //현재 탄약은 외부에 노출하지 않음
         private int _currentAmmo = 0;
         public int CurrentAmmo { get => _currentAmmo; set => _currentAmmo = value; }
 
         //ProjectileSetting 에 구현되어 있어서 일단 외부 노출하지 않음
-        private float _reloadTime = 2f;
-        public float ReloadTime { get => _reloadTime = ReloadTimeCalculator.GetReloadTime(this); }
-        public ReloadTimeCalculator ReloadTimeCalculator { get; }
+        [Header("[재장전 시간 - [IGunStat]]")]
+        [SerializeField] private float _reloadTime = 2f;
+        public float ReloadTime { get => _reloadTime; }
 
         //ProjectileSetting 에 구현되어 있어서 일단 외부 노출하지 않음
         private float _fireSpeed;

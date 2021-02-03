@@ -51,7 +51,7 @@ namespace WoosanStudio.ZombieShooter
         {
             //시작 이벤트 발생
             StartEvent.Invoke();
-            Debug.Log("카운트 시작 이벤트");
+            //Debug.Log("카운트 시작 이벤트");
 
             //재귀 호출
             Swap(null);
@@ -100,7 +100,7 @@ namespace WoosanStudio.ZombieShooter
                 {
                     //종료 이벤트 발생
                     EndEvent.Invoke();
-                    Debug.Log("카운트 종료 이벤트");
+                    //Debug.Log("카운트 종료 이벤트");
                 }
             });
         }

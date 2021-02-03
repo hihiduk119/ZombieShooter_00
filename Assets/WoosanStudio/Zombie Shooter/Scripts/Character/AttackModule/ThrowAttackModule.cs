@@ -96,7 +96,7 @@ namespace WoosanStudio.ZombieShooter
 
             if (attackDeltaTime > attackDelay)
             {
-                Debug.Log("공격 에니메이션 실행");
+                //Debug.Log("공격 에니메이션 실행");
                 //공격 에니메이션 실행
                 characterAnimatorModule.Attack();
 

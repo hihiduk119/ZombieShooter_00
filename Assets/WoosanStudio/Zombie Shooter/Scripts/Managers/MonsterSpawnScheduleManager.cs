@@ -198,14 +198,14 @@ namespace WoosanStudio.ZombieShooter
             //맵에 최대 몬스터 생성 제한게 걸렸는으면 생성 중지
             if (MonsterList.Instance.Items.Count >= monsterSchedule.MaxSpawnLimit)
             {
-                Debug.Log("몬스터 스폰이 정지 됐습니다. 맵에 최대 스폰 [" + monsterSchedule.MaxSpawnLimit + "]   현재 스폰 [" + MonsterList.Instance.Items.Count + "]");
+                //Debug.Log("몬스터 스폰이 정지 됐습니다. 맵에 최대 스폰 [" + monsterSchedule.MaxSpawnLimit + "]   현재 스폰 [" + MonsterList.Instance.Items.Count + "]");
                 return;
             }
 
             //전체 생성된 몬스터의 숫자가 해당 라운드 최대 스폰 수에 도달 했으면 스폰 코루틴정지
             if(TotalSpawnedMonster >= monsterSchedule.MaxSpawnByRound[round])
             {
-                Debug.Log("몬스터 스폰이 정지 됐습니다. Total 스폰 [" + TotalSpawnedMonster + "]   round ["+ round + "] 한라운드 당 최대 Max 스폰 [" + monsterSchedule.MaxSpawnByRound[round] + "]");
+                //Debug.Log("몬스터 스폰이 정지 됐습니다. Total 스폰 [" + TotalSpawnedMonster + "]   round ["+ round + "] 한라운드 당 최대 Max 스폰 [" + monsterSchedule.MaxSpawnByRound[round] + "]");
 
                 //몬스터 생성이 모두 끝났으니 몬스터 리스트에서 모든 몬스터가 모두 사라지면 이벤트 보낸는 메서드 실행.
                 //* popup의 실행은 스테이지 메이저가 관리
@@ -214,12 +214,12 @@ namespace WoosanStudio.ZombieShooter
                 //현재 코루틴을 중지 시킨다
                 if (autoSpawnCallCoroutine != null){ StopCoroutine(autoSpawnCallCoroutine);}
 
-                Debug.Log("코루틴Null 이 아니면 을 중지 합니다");
+                //Debug.Log("코루틴Null 이 아니면 을 중지 합니다");
 
                 return;
             }
 
-            Debug.Log("현재 스폰 상태 =>  Total 스폰 [" + TotalSpawnedMonster + "]   round [" + round + "]  한라운드 당 최대 Max 스폰 [" + monsterSchedule.MaxSpawnByRound[round] + "]  맵에 최대 스폰 = [" + monsterSchedule.MaxSpawnLimit + "]");
+            //Debug.Log("현재 스폰 상태 =>  Total 스폰 [" + TotalSpawnedMonster + "]   round [" + round + "]  한라운드 당 최대 Max 스폰 [" + monsterSchedule.MaxSpawnByRound[round] + "]  맵에 최대 스폰 = [" + monsterSchedule.MaxSpawnLimit + "]");
 
 
             //맵마다 생성되는 스테이지의 인덱스
@@ -241,7 +241,7 @@ namespace WoosanStudio.ZombieShooter
                     //*0번째 생성
                     
                     MonsterRequester.RequesterBySetting(startStage, monsterSchedule.NamedMonsters[0]);
-                    Debug.Log("============= 보스 생성 OK =============");
+                    //Debug.Log("============= 보스 생성 OK =============");
                 }
             }
 
@@ -259,7 +259,7 @@ namespace WoosanStudio.ZombieShooter
                 //전체 생성된 몬스터 카운트 증가
                 TotalSpawnedMonster++;
 
-                Debug.Log("[몬스터 호출] 현재 스폰카운트 = " + CurrentSpawnedMonster + "    전체 생성 몬스터 카운트 = " + TotalSpawnedMonster);
+                //Debug.Log("[몬스터 호출] 현재 스폰카운트 = " + CurrentSpawnedMonster + "    전체 생성 몬스터 카운트 = " + TotalSpawnedMonster);
             }
         }
 
@@ -271,7 +271,7 @@ namespace WoosanStudio.ZombieShooter
             //죽은 몬스터 카운팅
             DeadMonster++;
 
-            Debug.Log("===================[" + DeadMonster + "]===================");
+            //Debug.Log("===================[" + DeadMonster + "]===================");
 
             //웨이브 표시에 업데이트
             waveCountPresent.UpdateInfo(DeadMonster);

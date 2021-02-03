@@ -133,7 +133,7 @@ namespace WoosanStudio.ZombieShooter
             //PlayerBars.ForEach(value => value.HealthbarPrefab.gameObject.SetActive(true));
             //FireController.enabled = true;
 
-            Debug.Log("==[" + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name + "]==");
+            //Debug.Log("==[" + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name + "]==");
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace WoosanStudio.ZombieShooter
             LookAtIK.enabled = false;
             //FireController.enabled = false;
 
-            Debug.Log("==["+this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name+ "]==");
+            //Debug.Log("==["+this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name+ "]==");
         }
 
         /// <summary>

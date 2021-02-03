@@ -53,7 +53,7 @@ namespace WoosanStudio.ZombieShooter
             //*랜덤한 위치에 생성되게 하기위해 제거
             //MonsterFactory.MonsterOnDieActions.Add(ItemRequester.Requester);
 
-            Debug.Log("=======>요청 "+ requestCount);
+            //Debug.Log("=======>요청 "+ requestCount);
 
             //몬스터 생성
             GameObject clone = MonsterFactory.Make(index, spawnPoints);
@@ -79,7 +79,7 @@ namespace WoosanStudio.ZombieShooter
             //*랜덤한 위치에 생성되게 하기위해 제거
             //MonsterFactory.MonsterOnDieActions.Add(ItemRequester.Requester);
 
-            Debug.Log("=======>요청 " + requestCount);
+            //Debug.Log("=======>요청 " + requestCount);
 
             //몬스터 생성
             GameObject clone = MonsterFactory.Make(index, spawnPoints);
@@ -102,7 +102,7 @@ namespace WoosanStudio.ZombieShooter
             //*랜덤한 위치에 생성되게 하기위해 제거
             //MonsterFactory.MonsterOnDieActions.Add(ItemRequester.Requester);
 
-            Debug.Log("=======>요청 " + requestCount);
+            //Debug.Log("=======>요청 " + requestCount);
             //몬스터 생성 => 몬스터 데이터 직접 넣기
             GameObject clone = MonsterFactory.Make(monsterSettings, spawnPoints);
         }
@@ -117,7 +117,7 @@ namespace WoosanStudio.ZombieShooter
         {
             while (true)
             {
-                Debug.Log("생성!!");
+                //Debug.Log("생성!!");
                 //몬스터 랜덤 생성
                 int index = Random.Range(0, 3);
                 //요청
@@ -149,7 +149,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Stop()
         {
-            Debug.Log("정지");
+            //Debug.Log("정지");
             if (infiniteMonsterRequestCoroutine != null) StopCoroutine(infiniteMonsterRequestCoroutine);
         }
         

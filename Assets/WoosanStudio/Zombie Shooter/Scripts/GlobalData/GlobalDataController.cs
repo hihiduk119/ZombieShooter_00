@@ -225,14 +225,19 @@ namespace WoosanStudio.ZombieShooter
         {
             //*카드의 프로퍼티를 찾아서 적용해야한다.
             //1. all card에서 공속프로퍼티 찾기.
-            Debug.Log(">>>>>>>>>>>>>>>>>>>>>>>> 기본 공속 = " + origin.rapidFireCooldown);
-            //DamageCalculator에서 가져오는게 맞아?
+            //Debug.Log(">>>>>>>>>>>>>>>>>>>>>>>> 기본 공속 = " + origin.rapidFireCooldown);
+            //2. 공속 카드 오리진 세팅값에 비교해서 타겟 세팅에 적용
             float rapidFireCooldown = DamageCalculator.Instance.GetAttackSpeed(origin.rapidFireCooldown);
-            Debug.Log(">>>>>>>>>>>>>>>>>>>>>>>> 변경 공속 = " + rapidFireCooldown);
+            //Debug.Log(">>>>>>>>>>>>>>>>>>>>>>>> 변경 공속 = " + rapidFireCooldown);
             //새로운 공속 적용.
             target.rapidFireCooldown = rapidFireCooldown;
-            //2. 공속 카드 오리진 세팅값에 비교해서 타겟 세팅에 적용
             //3. 탄약 카드 값을 반영하여 타겟 카드 세팅에 적용.
+            Debug.Log(">>>>>>>>>>>>>>>>>>>>>>>> 기본 최대 탄약 = " + origin.MaxAmmo);
+            int maxAmmo = DamageCalculator.Instance.GetMaxAmmo(origin.MaxAmmo);
+            Debug.Log(">>>>>>>>>>>>>>>>>>>>>>>> 변경 최대 탄약 = " + maxAmmo);
+            //최데 탄약 새로 새팅
+            target.MaxAmmo = maxAmmo;
+
             return target;
         }
 

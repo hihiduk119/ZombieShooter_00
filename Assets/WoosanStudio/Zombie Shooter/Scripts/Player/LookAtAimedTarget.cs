@@ -103,7 +103,8 @@ namespace WoosanStudio.ZombieShooter
             CurrentState = State.Aim;
             //이전 상태가 aim가 아니라면 이벤트 발생
             if (PriviousState != State.Aim) {
-                AimEvent.Invoke(); Debug.Log("조준 이벤트 발생");
+                AimEvent.Invoke();
+                //Debug.Log("조준 이벤트 발생");
             }
             //현재 상태와 이전 상태 동일하게 마춤
             PriviousState = CurrentState;
@@ -127,7 +128,9 @@ namespace WoosanStudio.ZombieShooter
             //현재 상태 release으로 변경
             CurrentState = State.Release;
             //이전 상태가 Release가 아니라면 이벤트 발생
-            if(PriviousState != State.Release) { ReleaseEvent.Invoke(); Debug.Log("조준해제 이벤트 발생"); }
+            if(PriviousState != State.Release) { ReleaseEvent.Invoke();
+                //Debug.Log("조준해제 이벤트 발생");
+            }
             //현재 상태와 이전 상태 동일하게 마춤
             PriviousState = CurrentState;
             //Debug.Log("LookAtAimedTarget.Release()");

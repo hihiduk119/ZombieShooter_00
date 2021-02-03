@@ -63,7 +63,7 @@ namespace WoosanStudio.ZombieShooter
         /// 플레이어 생성
         public GameObject Make(Transform parent, PlayerConfig playerConfig)
         {
-            Debug.Log("====================[플레이어 생성]====================");
+            //Debug.Log("====================[플레이어 생성]====================");
 
             clone = Instantiate(playerConfig.prefab) as GameObject;
 

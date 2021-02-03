@@ -197,7 +197,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Load()
         {
-            Debug.Log("!!!!!!!!!! => Load");
+            //Debug.Log("!!!!!!!!!! => Load");
             //LoadAllProps();
 
             //카메라 느리게 좌우로 흔듬 시작
@@ -246,6 +246,8 @@ namespace WoosanStudio.ZombieShooter
 
         /// <summary>
         /// 플레이어와 플레이어 캔버스 연결
+        /// *체력바만 연결
+        /// *탄약바는 WeaponFactory.MakeWeapon에서 연결
         /// </summary>
         void ConnectPlayerAndUIPlayerCanvas()
         {
@@ -254,7 +256,8 @@ namespace WoosanStudio.ZombieShooter
             //몬스터에게 받은 데미지 이벤트 체력바와 연결
             UIPlayerCanvasPresenter.ConnectDemagedListener(playerController.GetComponent(typeof(IHaveHealth)) as IHaveHealth);
             //탄약 사용 이벤트 탄약바와 연결
-            UIPlayerCanvasPresenter.ConnectUsedAmmoListener(playerController.GetComponent(typeof(IHaveAmmo)) as IHaveAmmo);
+            //*탄약 바는 총이 바뀌면 그때 마다 바뀌기에 여기 있으면 안됨.
+            //UIPlayerCanvasPresenter.ConnectUsedAmmoListener(playerController.GetComponent(typeof(IHaveAmmo)) as IHaveAmmo);
         }
 
         /// <summary>
@@ -312,7 +315,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void On()
         {
-            Debug.Log("On");
+            //Debug.Log("On");
             //조이스틱으로 화면 따라다니는 카메라 포지션 비활성화
             CustomCamFollow.enabled = false;
             //조이스틱으로 화면 따라다니는 카메라 포지션 초기화
@@ -341,7 +344,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Off()
         {
-            Debug.Log("Off");
+            //Debug.Log("Off");
 
             //연출 카메라 비활성화
             VirtualCamera.enabled = false;

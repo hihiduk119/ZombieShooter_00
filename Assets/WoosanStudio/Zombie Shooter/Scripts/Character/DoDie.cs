@@ -79,7 +79,7 @@ namespace WoosanStudio.ZombieShooter
 
             //ItemRequester.Instance.Requester(hit);
 
-            Debug.Log("=============" + this.gameObject.name + " 죽음 호출!!");
+            //Debug.Log("=============" + this.gameObject.name + " 죽음 호출!!");
 
             blink.Initialize();
 

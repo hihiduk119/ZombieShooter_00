@@ -26,7 +26,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public GameObject Make()
         {
-            Debug.Log("Anchor name = " + Anchor.name);
+            //Debug.Log("Anchor name = " + Anchor.name);
 
             GameObject clone = Instantiate(Prefab) as GameObject;
             clone.transform.parent = Anchor;

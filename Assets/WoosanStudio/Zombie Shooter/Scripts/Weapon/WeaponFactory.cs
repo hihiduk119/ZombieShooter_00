@@ -73,7 +73,12 @@ namespace WoosanStudio.ZombieShooter
             //글로벌 데이터에 넣기 [변경불가 건세팅]
             GlobalDataController.SelectedBaseGunSetting = _gunSettings[gunType];
             //글로벌 데이터에 넣기 [변경되는 건세팅]
+            //*카드 세팅 반영 시킴
             GlobalDataController.Instance.SelectedGunSetting = gunSettings;
+
+            //최대 탄약 UI 업데이트
+            UI.UIPlayerCanvasPresenter playerCanvasPresenter = GameObject.FindObjectOfType<UI.UIPlayerCanvasPresenter>();
+            playerCanvasPresenter.UpdateMaxAmmo(GlobalDataController.Instance.SelectedGunSetting.MaxAmmo);
 
             //어떤 무기는 모델을 가지고 있으면 IHaveModel인터페이스를 상속 받기에 해당 인터페이스 호출.
             IHaveModel haveModel = gunSettings;
@@ -145,9 +150,28 @@ namespace WoosanStudio.ZombieShooter
 
                 //탄 발사시 AmmoBar UI와 연결
                 IHaveAmmo haveAmmo = player.GetComponent(typeof(IHaveAmmo)) as IHaveAmmo;
-                //IhaveAmmo 이벤트와 건 트리거 이벤트 같게 만들기
+                //haveAmmo.FireEvent를 프로젝타일 런쳐이 트리거 이벤트를 로 교체.
                 //*쏘는 행위는 총이 하는 행위이기 때무에. have탄약은 탄약이 0인지 아닌지 확인함.
+                //*실질적 UI와는 무관하다 -> 값의 감소로 0일때 Zero 이벤트 호출용
                 haveAmmo.FireEvent = _iGun.ProjectileLauncher.TriggerEvent;
+
+                //UI바와 실제 탄약 변수가 동기화 되어 있지 않다.
+                //*데이터가 2개임 하나로 합쳐야 함.
+                //*한녀셕은 데이터 받기만 하고 실제 데이터는 반영은 한곳에서 해야함
+                haveAmmo.SetMaxAmmo(GlobalDataController.Instance.SelectedGunSetting.MaxAmmo);
+
+                //탄약 사용 이벤트 탄약UI바와 연결
+                //실제 탄약 UI 감소 부분
+                haveAmmo.FireEvent.AddListener(playerCanvasPresenter.UseAmmo);
+
+                //실제 사격을 통제하는 스크립트에 실제 재장전 시간 적용.
+                //*테스트 해야함
+                player.GetComponent<AutoFireControlInputBasedOnGunSetting>().ReloadTime = _iGun.GunSettings.ReloadTime; 
+
+                //탄약이 0일때 재장전
+                //haveAmmo.ZeroEvent.AddListener(playerCanvasPresenter.ResetAmmo);
+
+                //Debug.Log("탄약에 연결된 이벤트 갯수 = " + haveAmmo.FireEvent.GetPersistentEventCount());
 
                 //에벤트 없을을 통지함.
                 if (start == null) Debug.Log("start event null");

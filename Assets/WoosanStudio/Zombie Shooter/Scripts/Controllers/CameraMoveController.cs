@@ -106,7 +106,7 @@ namespace WoosanStudio.ZombieShooter
 
         IEnumerator CoroutineFocusCamera(float delay)
         {
-            Debug.Log("포커스 카메라 실행");
+            //Debug.Log("포커스 카메라 실행");
             yield return new WaitForSeconds(delay);
 
             //시네머신 해제
@@ -122,7 +122,7 @@ namespace WoosanStudio.ZombieShooter
             CameraPositionAxis.position = pos;
             CameraRotationAxis.localPosition = Vector3.zero;
 
-            Debug.Log("실행 OFF");
+            //Debug.Log("실행 OFF");
 
             //화면 포커스 실
             FocusCamera();
@@ -177,14 +177,14 @@ namespace WoosanStudio.ZombieShooter
         public void AutoChange()
         {
             // * level up 카운팅을 여기서 하는게 맞는지 확인 필요.
-            Debug.Log("CurrentLevel = " + CurrentLevel + "   MaxLevel = " + MaxLevel);
+            //Debug.Log("CurrentLevel = " + CurrentLevel + "   MaxLevel = " + MaxLevel);
 
             //최대 레벨 초과시 0으로 초기화
             if (CurrentLevel >= MaxLevel) { CurrentLevel = 0; }
             if (NextLevel >= MaxLevel) { NextLevel = 0; }
 
 
-            Debug.Log("현재 레벨 = " + CurrentLevel + "    다음 레벨 = " + NextLevel);
+            //Debug.Log("현재 레벨 = " + CurrentLevel + "    다음 레벨 = " + NextLevel);
 
             //몬스터,플레이어 스폰 위치 스왑
             MonsterFactory.Level = CurrentLevel;

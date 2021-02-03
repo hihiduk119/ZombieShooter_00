@@ -148,12 +148,12 @@ namespace WoosanStudio.ZombieShooter
             //카드 레벨에 의해 증감된 수치
             //(1레벨당 증가 값 * 레벨) + 기본벨류+[퍼센트 100 (200이면 크리티컬)]
 
-            Debug.Log("((" + property.IncreasedValuePerLevelUp + "*" + level + ") + " + property.Value + ") * " + stack + "+" + percentage);
+            //Debug.Log("((" + property.IncreasedValuePerLevelUp + "*" + level + ") + " + property.Value + ") * " + stack + "+" + percentage);
             float percent = ((property.IncreasedValuePerLevelUp * level) + property.Value) * stack + percentage;
-            Debug.Log("증가 퍼센트 = " + percent);
+            //Debug.Log("증가 퍼센트 = " + percent);
             //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
             float returnValue = value / (percent * 0.01f);
-            Debug.Log("리턴 값 = " + returnValue);
+            //Debug.Log("리턴 값 = " + returnValue);
 
             return returnValue;
         }
@@ -213,6 +213,29 @@ namespace WoosanStudio.ZombieShooter
             percent *= 0.01f;
 
             return percent;
+        }
+
+        /// <summary>
+        /// 최대 탄약 공식
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="level"></param>
+        /// <param name="property"></param>
+        /// <param name="percentage"></param>
+        /// <returns></returns>
+        public int CalculateValue6(int value, int level, CardProperty property, int stack, int percentage = 100)
+        {
+            //카드 레벨에 의해 증감된 수치
+            //(1레벨당 증가 값 * 레벨) + 기본벨류+[퍼센트 100 (200이면 크리티컬)]
+
+            Debug.Log("((" + property.IncreasedValuePerLevelUp + "*" + level + ") + " + property.Value + ") * " + stack + "+" + percentage);
+            float percent = ((property.IncreasedValuePerLevelUp * level) + property.Value) * stack + percentage;
+            Debug.Log("증가 퍼센트 = " + percent);
+            //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
+            int returnValue = Mathf.FloorToInt(value * (percent * 0.01f));
+            Debug.Log("리턴 값 = " + returnValue);
+
+            return returnValue;
         }
 
         /// <summary>
@@ -637,7 +660,6 @@ namespace WoosanStudio.ZombieShooter
 
 
         /// <summary>
-        ///*테스트 필요
         /// 공격속도
         /// 사격간 딜레이 수치로
         /// GunSetting.cs RapidFireCooldown이며 0.4 - 1.5로 낮을수로 빨리 사격
@@ -654,7 +676,7 @@ namespace WoosanStudio.ZombieShooter
             //선택된 카드 가져오기
             hasCards = GetHasCards(GlobalDataController.Instance.SelectAbleAllCard);
 
-            Debug.Log("카드수  = " + hasCards.Count);
+            //Debug.Log("카드수  = " + hasCards.Count);
 
             //가진 카드에서 루프
             for (int i = 0; i < hasCards.Count; i++)
@@ -687,41 +709,88 @@ namespace WoosanStudio.ZombieShooter
             return speed;
         }
 
+        /// <summary>
+        /// 카드 반영된 최대 탄약값 가져오기
+        /// </summary>
+        /// <param name="defaultSpeed">선택된 총의 기본 스피드</param>
+        /// <returns></returns>
+        public int GetMaxAmmo(int defaultAmmo)
+        {
+            int maxAmmo = defaultAmmo;
+            int level = 0;
+            int stackCount = 0;
+
+            //선택된 카드 가져오기
+            hasCards = GetHasCards(GlobalDataController.Instance.SelectAbleAllCard);
+
+            //Debug.Log("카드수  = " + hasCards.Count);
+
+            //가진 카드에서 루프
+            for (int i = 0; i < hasCards.Count; i++)
+            {
+                //활성 상태 카드만 검사 && MaxHp타입인가
+                if (hasCards[i].Type == CardSetting.CardType.MagazineCapacity)
+                {
+                    //프로퍼티 검사
+                    for (int j = 0; j < hasCards[i].Properties.Count; j++)
+                    {
+                        //카드레벨 가져오기
+                        level = hasCards[i].Level;
+
+                        //카드 스택 가져옴
+                        stackCount = hasCards[i].StackCount;
+                        //프로퍼티 값이 음수이면 스택없이 1번만 계산
+                        if (hasCards[i].Properties[j].Value < 0) { stackCount = 1; }
+
+                        //스택 카운트 만큼 추가
+                        //for (int n = 0; n < stackCount; n++)
+                        //{
+                        //레벨 반영 데미지 계산
+                        maxAmmo = CalculateValue6(maxAmmo, level, hasCards[i].Properties[j], stackCount);
+                        //Debug.Log("중간 계산 토탈 = " + maxAmmo + "  level = " + level + " type = " + hasCards[i].Properties[j].Type.ToString());
+                        //}
+                    }
+                }
+            }
+
+            return maxAmmo;
+        }
+
         #region [-TestCode]
         //void Update()
         //{
-            /*
-            //테스트용 데미지 반영
-            if (Input.GetKeyDown(KeyCode.Alpha5))
+        /*
+        //테스트용 데미지 반영
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            //몬스터에게 주는 데미지
+            float damage = GetHitDamageFromPlayer(TestMonsterSettings);
+            //크리 인가?
+            if (IsCriticalDamage())
             {
-                //몬스터에게 주는 데미지
-                float damage = GetHitDamageFromPlayer(TestMonsterSettings);
-                //크리 인가?
-                if (IsCriticalDamage())
-                {
-                    //크리이면 크리계산
-                    damage = GetCriticalDamage(damage);
-                }
-
-                //저항이 존제하면 저항 계산
-                //if(0 < TestMonsterSettings.Propertys.Count)
-                //{
-                //    GetDamageThatReflectsMonsterResistance(damage, TestMonsterSettings.Propertys, TestMonsterSettings.Level);
-                //}
+                //크리이면 크리계산
+                damage = GetCriticalDamage(damage);
             }
-            */
 
-            //공습 데미지 계산
-            //if (Input.GetKeyDown(KeyCode.Alpha4))
+            //저항이 존제하면 저항 계산
+            //if(0 < TestMonsterSettings.Propertys.Count)
             //{
-            //    GetAirStrikeDamage(TestMonsterSettings);
+            //    GetDamageThatReflectsMonsterResistance(damage, TestMonsterSettings.Propertys, TestMonsterSettings.Level);
             //}
+        }
+        */
 
-            //공습 채움 값 가져오기
-            //if (Input.GetKeyDown(KeyCode.Alpha3))
-            //{
-            //    GetAirStrikeRechargeValue();
-            //}
+        //공습 데미지 계산
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    GetAirStrikeDamage(TestMonsterSettings);
+        //}
+
+        //공습 채움 값 가져오기
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    GetAirStrikeRechargeValue();
+        //}
         //}
         #endregion
 

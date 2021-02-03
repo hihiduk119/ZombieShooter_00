@@ -143,10 +143,10 @@ namespace WoosanStudio.ZombieShooter.UI
         /// Player -> AmmoBar.cs와 연결
         /// </summary>
         /// <param name="haveHealth"></param>
-        public void ConnectUsedAmmoListener(IHaveAmmo haveAmmo)
-        {
-            haveAmmo.FireEvent.AddListener(UseAmmo);
-        }
+        //public void ConnectUsedAmmoListener(IHaveAmmo haveAmmo)
+        //{
+        //    haveAmmo.FireEvent.AddListener(UseAmmo);
+        //}
 
 
         //#region [-TestCode]

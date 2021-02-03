@@ -49,7 +49,8 @@ namespace WoosanStudio.ZombieShooter
         private FireState fireState = FireState.Stoped;
 
         //재장전 대기 시간
-        private float reloadTime = 2.0f;
+        [Header("[무기의 재장전 시간]")]
+        public float ReloadTime = 2.0f;
 
         //조준선이 정렬됬다
         [HideInInspector]
@@ -88,13 +89,13 @@ namespace WoosanStudio.ZombieShooter
             switch(fireState)
             {
                 case FireState.Reloading:
-                    Debug.Log("재장전 중!! 기다리세요");
+                    //Debug.Log("재장전 중!! 기다리세요");
                     break;
                 case FireState.Firing:
-                    Debug.Log("이미 사격중!!");
+                    //Debug.Log("이미 사격중!!");
                     break;
                 case FireState.Stoped:
-                    Debug.Log("사격을 시작 합니다.");
+                    //Debug.Log("사격을 시작 합니다.");
                     //StartEvent.Invoke();
 
                     //조준선이 정렬 됐는지 확인 후 사격 시작
@@ -132,7 +133,7 @@ namespace WoosanStudio.ZombieShooter
         {
             //사격을 중지 합니다.
             EndEvent.Invoke();
-            Debug.Log("사격을 중지 합니다.");
+            //Debug.Log("사격을 중지 합니다.");
         }
 
         /// <summary>
@@ -143,10 +144,10 @@ namespace WoosanStudio.ZombieShooter
             //재장전 시작 이벤트 호출
             StartReloadEvent.Invoke();
 
-            Debug.Log("=>>>>>>>>>>>>>>>>. 재장전 시작");
+            //Debug.Log("=>>>>>>>>>>>>>>>>. 재장전 시작");
 
             if (refireCheckCoroutine != null) StopCoroutine(refireCheckCoroutine);
-            refireCheckCoroutine = StartCoroutine(RefireCheckCoroutine(reloadTime));
+            refireCheckCoroutine = StartCoroutine(RefireCheckCoroutine(ReloadTime));
         }
 
         /// <summary>
@@ -155,7 +156,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void ReloadEnd()
         {
-            Debug.Log("재장전 완료");
+            //Debug.Log("재장전 완료");
             //사격 재호출
             FireControl();
         }

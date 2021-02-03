@@ -24,8 +24,13 @@ namespace WoosanStudio.ZombieShooter
             get { return fireEvent; }
             set {
                 fireEvent = value;
+
+                //Debug.Log(">>>>>>>>>> 탄약 감소 이벤트 변경 프로젝타일 이벤트로 변경!! = ");
                 //탄약 사용시 탄약 1 씩 감소
-                fireEvent.AddListener(DecreaseAmmo); }
+                fireEvent.AddListener(DecreaseAmmo);
+
+                //Debug.Log(">>>>>>>>>> 이벤트 갯수 = " + fireEvent.GetPersistentEventCount());
+            }
         }
 
         //탄약 0 이벤트
@@ -51,7 +56,7 @@ namespace WoosanStudio.ZombieShooter
         /// 새로운 체력을 세팅합니다
         /// </summary>
         /// <param name="health"></param>
-        public void ResetAmmo(int maxAmmo)
+        public void SetMaxAmmo(int maxAmmo)
         {
             //최대 탄약 세로 세팅
             this.maxAmmo = maxAmmo;
@@ -66,10 +71,14 @@ namespace WoosanStudio.ZombieShooter
         {
             ammo -= 1;
 
+            Debug.Log("남은 탄약 = " + ammo);
+
             //탄약이 0 이하면 호출
             if (ammo <= 0)
             {
                 zeroEvent.Invoke();
+
+                Debug.Log("탄약 0임!!");
 
                 ammo = 0;
             }

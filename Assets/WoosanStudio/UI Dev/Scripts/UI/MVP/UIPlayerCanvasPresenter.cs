@@ -27,6 +27,9 @@ namespace WoosanStudio.ZombieShooter.UI
         [Header("[탄약바 컨트롤]")]
         public EnergyBar AmmoBar;
 
+        [Header("[MVP Model]")]
+        public IGunStat Model;
+
         /// <summary>
         /// 따라다닐 플레이어 세팅
         /// </summary>
@@ -89,45 +92,6 @@ namespace WoosanStudio.ZombieShooter.UI
         }
 
         /// <summary>
-        /// 탄약 업데이트
-        /// *현재 탄약에서 -+한다
-        /// </summary>
-        /// <param name="value"></param>
-        public void UpdateAmmo(int value)
-        {
-            AmmoBar.valueCurrent += value;
-
-            //0보다 작으면 0으로초기화
-            if (AmmoBar.valueCurrent < 0) { AmmoBar.valueCurrent = 0; }
-        }
-
-        /// <summary>
-        /// 탄약 업데이트 -1
-        /// </summary>
-        public void UseAmmo()
-        {
-            UpdateAmmo(-1);
-        }
-
-        /// <summary>
-        /// 최대 탄약 업데이트
-        /// </summary>
-        /// <param name="value"></param>
-        public void UpdateMaxAmmo(int value)
-        {
-            AmmoBar.SetValueMax(value);
-        }
-
-        /// <summary>
-        /// 체력 초기화
-        /// </summary>
-        public void ResetAmmo()
-        {
-            AmmoBar.valueCurrent = AmmoBar.valueMax;
-        }
-
-
-        /// <summary>
         /// 플레이어가 데미지 이벤트를 연결
         /// Player -> HealthBar.cs와 연결
         /// </summary>
@@ -135,6 +99,40 @@ namespace WoosanStudio.ZombieShooter.UI
         public void ConnectDemagedListener(IHaveHealth haveHealth)
         {
             haveHealth.DamagedEvent.AddListener(UpdateHP);
+        }
+
+        /// <summary>
+        /// 탄약 업데이트
+        /// *현재 탄약에서 -+한다
+        /// </summary>
+        /// <param name="value"></param>
+        public void UpdateAmmo()
+        {
+            AmmoBar.valueCurrent = Model.CurrentAmmo;
+        }
+
+        /// <summary>
+        /// 최대 탄약 업데이트
+        /// </summary>
+        /// <param name="value"></param>
+        public void UpdateMaxAmmo()
+        {
+            AmmoBar.SetValueMax(Model.MaxAmmo);
+            //현재 값까지 초기화.
+            //*문제가 있을수 있음.
+            //ResetAmmo();
+        }
+
+        /// <summary>
+        /// 체력 초기화
+        /// </summary>
+        public void ResetAmmo()
+        {
+            UpdateAmmo();
+
+            UpdateMaxAmmo();
+
+            //Debug.Log("탄약바 최대 값 = " + AmmoBar.valueCurrent);.
         }
 
 

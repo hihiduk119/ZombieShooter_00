@@ -228,12 +228,12 @@ namespace WoosanStudio.ZombieShooter
             //카드 레벨에 의해 증감된 수치
             //(1레벨당 증가 값 * 레벨) + 기본벨류+[퍼센트 100 (200이면 크리티컬)]
 
-            Debug.Log("((" + property.IncreasedValuePerLevelUp + "*" + level + ") + " + property.Value + ") * " + stack + "+" + percentage);
+            //Debug.Log("((" + property.IncreasedValuePerLevelUp + "*" + level + ") + " + property.Value + ") * " + stack + "+" + percentage);
             float percent = ((property.IncreasedValuePerLevelUp * level) + property.Value) * stack + percentage;
-            Debug.Log("증가 퍼센트 = " + percent);
+            //Debug.Log("증가 퍼센트 = " + percent);
             //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
             int returnValue = Mathf.FloorToInt(value * (percent * 0.01f));
-            Debug.Log("리턴 값 = " + returnValue);
+            //Debug.Log("리턴 값 = " + returnValue);
 
             return returnValue;
         }
@@ -281,7 +281,7 @@ namespace WoosanStudio.ZombieShooter
 
                         //테스트용 -> 나중에 삭제
                         int totalRate = (((int)hasCards[i].Properties[j].IncreasedValuePerLevelUp * level) + hasCards[i].Properties[j].Value);
-                        Debug.Log("최초 데미지 = [" + origin + "] 중간 계산 데미지 = [" + damage + "]  Total Rate = [" + totalRate + "] level = [" + level + "] Stack = [" + stackCount + "]  card = [" + hasCards[i].Type.ToString() + "] type = [" + type.ToString() + "]");
+                        //Debug.Log("최초 데미지 = [" + origin + "] 중간 계산 데미지 = [" + damage + "]  Total Rate = [" + totalRate + "] level = [" + level + "] Stack = [" + stackCount + "]  card = [" + hasCards[i].Type.ToString() + "] type = [" + type.ToString() + "]");
                     }
                 }
             }
@@ -294,7 +294,7 @@ namespace WoosanStudio.ZombieShooter
                 {
                     //레벨 반영 데미지 계산
                     damage = CalculateValue(damage, monster.Level, monster.Propertys[i], 1);
-                    Debug.Log("저항 타입 = " + monster.Propertys[i].Type.ToString() + " 중간 계산 토탈 = " + damage + "  level = " + monster.Level);
+                    //Debug.Log("저항 타입 = " + monster.Propertys[i].Type.ToString() + " 중간 계산 토탈 = " + damage + "  level = " + monster.Level);
                 }
             }
 
@@ -342,8 +342,8 @@ namespace WoosanStudio.ZombieShooter
                         recharge = CalculateValue5( level, stackCount, hasCards[i].Properties[j]);
 
                         //테스트용 -> 나중에 삭제
-                        int totalRate = (((int)hasCards[i].Properties[j].IncreasedValuePerLevelUp * level) + hasCards[i].Properties[j].Value);
-                        Debug.Log("최종 리차징 값 = [" + recharge + "]  Total Rate = [" + totalRate + "] level = [" + level + "] Stack = [" + stackCount + "]  card = [" + hasCards[i].Type.ToString() + "] type = [" + type.ToString() + "]");
+                        //int totalRate = (((int)hasCards[i].Properties[j].IncreasedValuePerLevelUp * level) + hasCards[i].Properties[j].Value);
+                        //Debug.Log("최종 리차징 값 = [" + recharge + "]  Total Rate = [" + totalRate + "] level = [" + level + "] Stack = [" + stackCount + "]  card = [" + hasCards[i].Type.ToString() + "] type = [" + type.ToString() + "]");
                     }
                 }
             }
@@ -481,7 +481,7 @@ namespace WoosanStudio.ZombieShooter
                         //{
                         //레벨 반영 데미지 계산
                         defaultCriticalRate = CalculateValue3(defaultCriticalRate, level, stackCount, hasCards[i].Properties[j]);
-                        Debug.Log("크리 중간 비율 = [" + defaultCriticalRate + "]  level = [" + level + "] Stack Count = [" + stackCount + "] type = [" + hasCards[i].Properties[j].Type.ToString()+"]");
+                        //Debug.Log("크리 중간 비율 = [" + defaultCriticalRate + "]  level = [" + level + "] Stack Count = [" + stackCount + "] type = [" + hasCards[i].Properties[j].Type.ToString()+"]");
                         //}
                     }
                 }
@@ -541,7 +541,7 @@ namespace WoosanStudio.ZombieShooter
                         //{
                             //레벨 반영 크리데미지 향상 비율만 계산
                         rate = CalculateValue4(rate, level, stackCount, hasCards[i].Properties[j]);
-                        Debug.Log("중간 계산 토탈 = " + rate + "  level = " + level + " type = " + type.ToString());
+                        //Debug.Log("중간 계산 토탈 = " + rate + "  level = " + level + " type = " + type.ToString());
                         //}
                     }
                 }
@@ -550,7 +550,7 @@ namespace WoosanStudio.ZombieShooter
             //최종 데미지에 향상된 크리데미지를 더해서 값을 돌려줌
             damage = damage * rate * 0.01f;
 
-            Debug.Log("크리티컬 데미지 최종 = [" + damage +"] 적용 비율 = ["+rate+"]");
+            //Debug.Log("크리티컬 데미지 최종 = [" + damage +"] 적용 비율 = ["+rate+"]");
 
             //테스트 조건
             //1 스택 증가에 따른 크리 데미지 증가 테스트
@@ -590,7 +590,7 @@ namespace WoosanStudio.ZombieShooter
                 {
                     //레벨 반영 데미지 계산
                     damage = CalculateValue(damage, monsterLevel, properties[i],1);
-                    Debug.Log("저항 타입 = " + properties[i].Type.ToString() + " 중간 계산 토탈 = " + damage + "  level = " + monsterLevel);
+                    //Debug.Log("저항 타입 = " + properties[i].Type.ToString() + " 중간 계산 토탈 = " + damage + "  level = " + monsterLevel);
                     //반영된 프로퍼티가 있는지 확인용 카운트
                     count++;
                 }
@@ -649,7 +649,7 @@ namespace WoosanStudio.ZombieShooter
                         {
                             //레벨 반영 데미지 계산
                             total = CalculateValue(total, level, hasCards[i].Properties[j],1);
-                            Debug.Log("중간 계산 토탈 = " + total + "  level = " + level + " type = " + hasCards[i].Properties[j].Type.ToString());
+                            //Debug.Log("중간 계산 토탈 = " + total + "  level = " + level + " type = " + hasCards[i].Properties[j].Type.ToString());
                         }
                     }
                 }

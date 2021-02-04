@@ -10,5 +10,5 @@ namespace WoosanStudio.ZombieShooter
         UnityEvent TriggerEvent { get; set; }
     }
 
-    //public class FireEvent : UnityEvent<IGunStat> { }
+    //public class FireEvent : UnityEvent<IModel> { }
 }

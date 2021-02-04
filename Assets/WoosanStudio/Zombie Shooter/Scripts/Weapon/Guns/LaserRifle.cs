@@ -29,7 +29,7 @@ namespace WoosanStudio.ZombieShooter
         private UnityEvent emptyEvent = new UnityEvent();
 
         //캐쉬용
-        IGunStat _gunStat;
+        IGunStat gunStat;
 
         void Awake()
         {
@@ -48,11 +48,11 @@ namespace WoosanStudio.ZombieShooter
             //호출시 이미 탄이 발사 되었기 때문에 탄사용 먼저 호출.
             UseAmmo();
 
-            if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
+            if (gunStat == null) { gunStat = (IGunStat)GunSettings; }
 
-            //Debug.Log("Max [" + _gunStat.MaxAmmo + "]   CurrentAmmo [" + _gunStat.CurrentAmmo + "]");
+            //Debug.Log("Max [" + _Model.MaxAmmo + "]   CurrentAmmo [" + _Model.CurrentAmmo + "]");
 
-            if (_gunStat.CurrentAmmo == 0)
+            if (gunStat.CurrentAmmo == 0)
             {
                 //사격 중지
                 ProjectileLauncher.StopFiring();
@@ -67,7 +67,7 @@ namespace WoosanStudio.ZombieShooter
 
                 Debug.Log("Reload!!");
             }
-            //Debug.Log("Pistol.Fire() ammo => " + _gunStat.CurrentAmmo);
+            //Debug.Log("Pistol.Fire() ammo => " + _Model.CurrentAmmo);
         }
 
         /// <summary>
@@ -75,8 +75,8 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void FullOfAmmo()
         {
-            if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
-            _gunStat.CurrentAmmo = _gunStat.MaxAmmo;
+            if (gunStat == null) { gunStat = (IGunStat)GunSettings; }
+            gunStat.CurrentAmmo = gunStat.MaxAmmo;
         }
 
         /// <summary>
@@ -85,8 +85,8 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="value">해당 값에 의해 탄소모 값 증가</param>
         public void UseAmmo(int value = 1)
         {
-            if (_gunStat == null) { _gunStat = (IGunStat)GunSettings; }
-            _gunStat.CurrentAmmo -= value;
+            if (gunStat == null) { gunStat = (IGunStat)GunSettings; }
+            gunStat.CurrentAmmo -= value;
         }
 
         /// <summary>

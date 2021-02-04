@@ -14,7 +14,7 @@ namespace WoosanStudio.ZombieShooter
             return -1f;
         }
 
-        static public float GetFireSpeed(IGunStat gunStat)
+        static public float GetFireSpeed(IGunStat Model)
         {
             return -1f;
         }

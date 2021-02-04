@@ -201,16 +201,7 @@ namespace WoosanStudio.ZombieShooter
         //게임중에 사용하는 건세팅 [총 교체시 같이 교체됨]
         //*생성 세팅시 카드 데이터를 반영해야함.
         private GunSettings selectedGunSetting;
-        public GunSettings SelectedGunSetting
-        {
-            //값을 가져올때마다 카드에의한 건데이터 업데이트
-            get => selectedGunSetting;
-            set {
-                selectedGunSetting = UpdateGunSettingByCards(GlobalDataController.SelectedBaseGunSetting, value, GlobalDataController.SelectedAmmoCard, GlobalDataController.Instance.SelectAbleAllCard);
-            }
-
-            //UpdateGunSettingByCards(GlobalDataController.SelectedBaseGunSetting, selectedGunSetting, GlobalDataController.SelectedAmmoCard, GlobalDataController.Instance.SelectAbleAllCard);
-        }
+        public GunSettings SelectedGunSetting { get => selectedGunSetting; set => selectedGunSetting = value; }
 
         /// <summary>
         /// 카드에 의한 건 데이터 업데이트 반영

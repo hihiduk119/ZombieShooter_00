@@ -111,7 +111,7 @@ namespace WoosanStudio.ZombieShooter
         //ProjectileSetting 에 구현되어 있어서 일단 외부 노출하지 않음
         [Header("[재장전 시간 - [IGunStat]]")]
         [SerializeField] private float _reloadTime = 2f;
-        public float ReloadTime { get => _reloadTime; }
+        public float ReloadTime { get => _reloadTime; set => _reloadTime = value; }
 
         //ProjectileSetting 에 구현되어 있어서 일단 외부 노출하지 않음
         private float _fireSpeed;

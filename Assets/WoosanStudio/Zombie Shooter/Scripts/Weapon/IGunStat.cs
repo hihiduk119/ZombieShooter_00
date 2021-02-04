@@ -9,7 +9,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 최대 탄약
         /// </summary>
-        int MaxAmmo { get; }
+        int MaxAmmo { get; set; }
 
         /// <summary>
         /// 현재 잔탄수
@@ -19,7 +19,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 재장전 시간
         /// </summary>
-        float ReloadTime { get; }
+        float ReloadTime { get; set; }
         /// <summary>
         /// 재장전 시간 계산기
         /// </summary>
@@ -27,6 +27,7 @@ namespace WoosanStudio.ZombieShooter
 
         /// <summary>
         /// 총 발사 속도
+        /// *이거 어디서 사용함??
         /// </summary>
         float FireSpeed { get; }
         /// <summary>

@@ -7,6 +7,7 @@ namespace DarkTonic.MasterAudio.EditorScripts
     [InitializeOnLoad]
     public class MasterAudioWelcomeWindow : EditorWindow
     {
+        private const string Disable3DSoundSymbol = "DISABLE_3D_SOUND";
         private const string Physics2DSymbol = "PHY2D_ENABLED";
         private const string Physics3DSymbol = "PHY3D_ENABLED";
         private const string AddresablesSymbol = "ADDRESSABLES_ENABLED";
@@ -26,10 +27,13 @@ namespace DarkTonic.MasterAudio.EditorScripts
         public static MasterAudioWelcomeWindow ShowWindow()
         {
             var window = GetWindow<MasterAudioWelcomeWindow>(false, "Welcome");
-            var height = 278;
+            var height = 320;
 
 #if UNITY_2018_2_OR_NEWER
-        height += 12;
+    #if UNITY_2019_3_OR_NEWER
+    #else
+            height += 12;
+    #endif
 #endif
 
             window.minSize = new Vector2(482, height);
@@ -96,7 +100,35 @@ namespace DarkTonic.MasterAudio.EditorScripts
             EditorGUILayout.EndHorizontal();
             DTGUIHelper.DrawUILine(DTGUIHelper.DividerColor);
 
+#if UNITY_2019_3_OR_NEWER
+            DTGUIHelper.VerticalSpace(1);
+#endif
+            GUILayout.Label("Feature toggle", EditorStyles.boldLabel);
+#if UNITY_2019_3_OR_NEWER
+            DTGUIHelper.VerticalSpace(1);
+#endif
+            // physics 2D
+            var disable3DSound = DTDefineHelper.DoesScriptingDefineSymbolExist(Disable3DSoundSymbol);
+            var newDisable3DSound = GUILayout.Toggle(disable3DSound, " Disable 3D Sound (" + Disable3DSoundSymbol + ")");
+            if (newDisable3DSound != disable3DSound)
+            {
+                if (newDisable3DSound)
+                {
+                    DTDefineHelper.TryAddScriptingDefineSymbols(Disable3DSoundSymbol);
+                }
+                else
+                {
+                    DTDefineHelper.TryRemoveScriptingDefineSymbols(Disable3DSoundSymbol);
+                }
+            }
+
+#if UNITY_2019_3_OR_NEWER
+            DTGUIHelper.VerticalSpace(1);
+#endif
             GUILayout.Label("Optional package support", EditorStyles.boldLabel);
+#if UNITY_2019_3_OR_NEWER
+            DTGUIHelper.VerticalSpace(1);
+#endif
             GUILayout.Label("Enable support for:");
 
             // physics 2D

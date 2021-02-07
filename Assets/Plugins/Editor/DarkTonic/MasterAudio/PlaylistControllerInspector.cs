@@ -163,6 +163,8 @@ namespace DarkTonic.MasterAudio.EditorScripts
                 }
             }
 
+#if DISABLE_3D_SOUND
+#else
             if (!maInScene || ma.musicSpatialBlendType == MasterAudio.AllMusicSpatialBlendType.AllowDifferentPerController)
             {
                 var newMusicSpatialType = (MasterAudio.ItemSpatialBlendType)EditorGUILayout.EnumPopup("Spatial Blend Rule", controller.spatialBlendType);
@@ -200,7 +202,7 @@ namespace DarkTonic.MasterAudio.EditorScripts
             {
                 DTGUIHelper.ShowLargeBarAlert("Spatial Blend is currently controlled globally in the Master Audio prefab.");
             }
-
+#endif
 
             if (maInScene && Application.isPlaying)
             {

@@ -597,7 +597,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9028091869112129700}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -613,6 +613,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f706b7b8dcc864d0b927b328913ad3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PrefabItems:
+  - {fileID: 425018009133460151, guid: 02dfa8c61eefc44808001f9bc3b714fd, type: 3}
+  GuideItems: []
+  View: {fileID: 7477001888827155517}
 --- !u!114 &7477001888827155517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,6 +629,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd12a5da8f605439d91ce923a2c990dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pivots:
+  - {fileID: 3374742378841596903}
+  - {fileID: 1336760659758365009}
+  - {fileID: 5120580664451861242}
 --- !u!1 &9028091869699938859
 GameObject:
   m_ObjectHideFlags: 0

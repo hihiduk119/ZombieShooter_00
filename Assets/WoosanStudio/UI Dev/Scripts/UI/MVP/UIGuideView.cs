@@ -19,7 +19,6 @@ namespace WoosanStudio.ZombieShooter.UI
         public Transform[] Pivots;
 
         //public 
-
         private void Awake()
         {
             canvasGroup = GetComponent<CanvasGroup>();
@@ -40,6 +39,26 @@ namespace WoosanStudio.ZombieShooter.UI
                 canvasGroup.alpha = 1f;
                 canvasGroup.DOFade(0f, 0.25f);
             }
+        }
+
+        /// <summary>
+        /// 아이템 이동
+        /// </summary>
+        /// <param name="pivotNumber"></param>
+        /// <param name="item"></param>
+        public void MoveItem(int pivotNumber,GameObject item )
+        {
+            //해당 아이템 이동
+            item.transform.DOMove(this.Pivots[pivotNumber].position, 0.3f);
+        }
+
+        /// <summary>
+        /// 최초 생성시  아이템 위치 조정
+        /// </summary>
+        /// <param name="item"></param>
+        public void Anchor(GameObject item)
+        {
+            item.transform.position = Pivots[0].position;
         }
     }
 }

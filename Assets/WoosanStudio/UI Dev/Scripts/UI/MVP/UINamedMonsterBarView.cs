@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using DG.Tweening;
+
 namespace WoosanStudio.ZombieShooter.UI
 {
     /// <summary>

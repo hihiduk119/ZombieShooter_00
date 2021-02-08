@@ -24,6 +24,16 @@ namespace WoosanStudio.ZombieShooter
         private int value;
         public int Value => value;
 
+        [Header("[타이틀]")]
+        [SerializeField]
+        private string title;
+        public string Title => title;
+
+        [Header("[사용 아이콘]")]
+        [SerializeField]
+        private Sprite icon;
+        public Sprite Icon => icon;
+
         [Header("카드 레벨이 반영된 값 => 프로퍼티 계산에 사용]")]
         [SerializeField]
         private int valueByLevel;
@@ -174,6 +184,17 @@ namespace WoosanStudio.ZombieShooter
             }
 
             return stringBuilder.ToString();
+        }
+
+        /// <summary>
+        /// 레벨이 반영된 값 가져오기
+        /// *테스트 필요
+        /// </summary>
+        /// <param name="cardLevel"></param>
+        /// <returns></returns>
+        public int GetValueByUpdatedLevel(int cardLevel)
+        {
+            return Mathf.RoundToInt(cardLevel * IncreasedValuePerLevelUp) + Value;
         }
 
 

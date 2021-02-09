@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c124f92e2f8c6416cbfd1549d284fd89, type: 3}
   m_Name: Property
   m_EditorClassIdentifier: 
-  type: 0
+  type: 600
   value: 0
+  title: Air Strike
+  icon: {fileID: 21300000, guid: 090319b2c2eae48ec9be7815465a7dec, type: 3}
+  valueByLevel: 0
+  fomula: 
   increasedValuePerLevelUp: 0
   descripsion: 

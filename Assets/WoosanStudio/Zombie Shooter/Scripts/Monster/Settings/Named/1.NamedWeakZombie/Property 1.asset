@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 500
   value: -50
+  title: Bullet Ammo
+  icon: {fileID: 21300000, guid: ac19a2ecaf48e4d7facda271cfda01f7, type: 3}
   valueByLevel: 0
   fomula: 
   increasedValuePerLevelUp: -10

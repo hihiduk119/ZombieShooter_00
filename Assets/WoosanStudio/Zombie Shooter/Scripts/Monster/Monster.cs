@@ -12,12 +12,16 @@ namespace WoosanStudio.ZombieShooter
     /// 모든 플레이어 공용으로 사용하려 하였으나 정의가 재대로 안돼서 일단
     /// 몬스터용으로만 사용
     /// </summary>
-    public class Monster : MonoBehaviour , IHaveHit , ICanDestory , ISpawnHandler
+    public class Monster : MonoBehaviour , IHaveHit , ICanDestory , ISpawnHandler , IMonsterSettings
     {
         //캐릭터의 네비메쉬 관련 이동 및 정지거리 등의 셋업 값.
         //[SerializeField] public CharacterSettings characterSettings;
         //몬스터의 네비메쉬 및 공격력 이동 관련등의 세팅 값.
-        [SerializeField] public MonsterSettings monsterSettings;
+
+        [Header("[(Auto)몬스터 팩토리에서 자동 세팅]")]
+        [SerializeField]
+        private MonsterSettings monsterSettings;
+        public MonsterSettings MonsterSettings { get => monsterSettings; set => monsterSettings = value; }
 
         [Header("[(Auto)]")]
         public Transform target;
@@ -109,7 +113,7 @@ namespace WoosanStudio.ZombieShooter
                         new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>(), ref animationEvent.AttackEndEvent)//공격 모듈 생성.
                     );
                     break;
-                case MonsterSettings.MonsterID.Jeff:   //네임드 몬스터 생성
+                case MonsterSettings.MonsterID.Jeff:   //*네임드 이름 마다 설정 필요.
                     //생성은 클래스로 하지만 인수는 인터페이스를 받는다.
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅

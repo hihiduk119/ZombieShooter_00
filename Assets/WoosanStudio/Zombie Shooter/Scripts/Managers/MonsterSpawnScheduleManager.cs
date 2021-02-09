@@ -235,6 +235,7 @@ namespace WoosanStudio.ZombieShooter
             {
                 //현재 라운드가 네임드 몬스터 출현 라운드 인가?
                 //네임드 스폰 인덱스에 현재 라운드가 존재 한다
+                //*무한 모드 에서는 나누기 해서 나머지가 0일때 조건으로 계산 해야함.
                 if (monsterSchedule.SpawnRoundIndexByNamedMonster.Exists(value => value.Equals(round)))
                 {
                     //보스 몬스터 생성 요청

@@ -15,6 +15,8 @@ namespace WoosanStudio.ZombieShooter
         private IHaveHealth haveHealth;
         //Monster.cs 가져오며 스폰시 이벤트 발생
         private ISpawnHandler spawnHandler;
+        //Monster.cs 가져오며 스폰시 몬스터 값 세팅
+        private IMonsterSettings monsterSettings;
         //죽음 발생 이벤트를 가지고 있음
         private DoDie doDie;
 
@@ -24,8 +26,12 @@ namespace WoosanStudio.ZombieShooter
             haveHealth = transform.GetComponent<IHaveHealth>();
             //생성시 UI 활성 필요
             spawnHandler = transform.GetComponent<ISpawnHandler>();
+            //스폰시 몬스터 값 세팅
+            monsterSettings = transform.GetComponent<IMonsterSettings>();
             //스폰 이벤트 연결
             spawnHandler.SpawnEvent.AddListener(OnSpawn);
+            //스폰 이벤트 연결
+            
             //죽음시 UI 비활성 필요
             doDie = transform.GetComponent<DoDie>();
             //죽음 이벤트 연결
@@ -39,7 +45,14 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         void OnSpawn()
         {
-            NamedMonsterHealthBarController.Instance.SetActivate(true);
+            //몬스터 값 세팅
+            UI.UINamedMonsterBarPresenter.Instance.monsterSetting = monsterSettings.MonsterSettings;
+            //세팅 값 기준으로 저항 아이템 생성
+            UI.UINamedMonsterBarPresenter.Instance.MakeItems();
+            //아이템 보여주는 연출
+            UI.UINamedMonsterBarPresenter.Instance.RunShowingItem();
+            //체려 UI 활성화
+            UI.UINamedMonsterBarPresenter.Instance.SetActivate(true);
         }
 
         /// <summary>
@@ -48,7 +61,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="pos"></param>
         void OnDie(Vector3 pos)
         {
-            NamedMonsterHealthBarController.Instance.SetActivate(false);
+            UI.UINamedMonsterBarPresenter.Instance.SetActivate(false);
         }
 
         /// <summary>
@@ -69,10 +82,11 @@ namespace WoosanStudio.ZombieShooter
             //0-1 사이값으로 변경
             float amount = (float)haveHealth.Health / (float)haveHealth.MaxHealth;
 
-            Debug.Log("========>   amount = " + amount + "  health = " + haveHealth.Health + "Max health = " + haveHealth.MaxHealth);
+            //Debug.Log("========>   amount = " + amount + "  health = " + haveHealth.Health + "Max health = " + haveHealth.MaxHealth);
 
             //네임드 몬스터 체력바에 체력 적용
-            NamedMonsterHealthBarController.Instance.SetAmount(amount);
+            //NamedMonsterHealthBarController.Instance.SetAmount(amount);
+            UI.UINamedMonsterBarPresenter.Instance.SetAmount(amount);
         }
     }
 }

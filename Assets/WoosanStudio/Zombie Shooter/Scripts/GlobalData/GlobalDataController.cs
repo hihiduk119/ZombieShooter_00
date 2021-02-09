@@ -223,9 +223,9 @@ namespace WoosanStudio.ZombieShooter
             //새로운 공속 적용.
             target.rapidFireCooldown = rapidFireCooldown;
             //3. 탄약 카드 값을 반영하여 타겟 카드 세팅에 적용.
-            Debug.Log(">>>>>>>>>>>>>>>>>>>>>>>> 기본 최대 탄약 = " + origin.MaxAmmo);
+            //Debug.Log(">>>>>>>>>>>>>>>>>>>>>>>> 기본 최대 탄약 = " + origin.MaxAmmo);
             int maxAmmo = DamageCalculator.Instance.GetMaxAmmo(origin.MaxAmmo);
-            Debug.Log(">>>>>>>>>>>>>>>>>>>>>>>> 변경 최대 탄약 = " + maxAmmo);
+            //Debug.Log(">>>>>>>>>>>>>>>>>>>>>>>> 변경 최대 탄약 = " + maxAmmo);
             //최데 탄약 새로 새팅
             target.MaxAmmo = maxAmmo;
 

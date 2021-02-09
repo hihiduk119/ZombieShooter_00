@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9181cc1333b844137891b64b7d82e2fb, type: 3}
   m_Name: 1.NamedWeakZombie
   m_EditorClassIdentifier: 
-  _monsterID: 100
+  _monsterID: 1000
   _name: Jeff
   _prefab: {fileID: 4927290373326563121, guid: 8746bc753857e48b5932be247f878a7c, type: 3}
   _level: 0
-  _health: 0
+  _health: 300
   _damage: 10
   damageFormula: MonsterDamage
   _propertys:

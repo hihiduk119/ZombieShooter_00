@@ -60,8 +60,8 @@ namespace WoosanStudio.ZombieShooter
             //움직임 모듈 호출
             characterDrivingModule?.Tick();
 
-            if (characterAnimatorModule == null) Debug.Log("null 0");
-            if (characterDrivingModule == null) Debug.Log("null 1");
+            if (characterAnimatorModule == null) Debug.Log("CharacterAnimatorModule null 0");
+            if (characterDrivingModule == null) Debug.Log("CharacterDrivingModule null 1");
 
             //에니메이션 모듈 호출
             //드라이빙 모듈에서 움직임 상태일 때만 움직임 에니메이션 호출

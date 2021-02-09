@@ -29,5 +29,14 @@ namespace WoosanStudio.ZombieShooter.UI
 
             View.UpdateInfo(cardProperty.Title, description, cardProperty.Icon);
         }
+
+        /// <summary>
+        /// 아이템 활성화
+        /// </summary>
+        /// <param name="value"></param>
+        public void SetActivate(bool value)
+        {
+            View.SetActivate(value);
+        }
     }
 }

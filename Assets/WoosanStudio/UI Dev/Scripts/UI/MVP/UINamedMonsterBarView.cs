@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using DG.Tweening;
+using UnityEngine.UI;
 
 namespace WoosanStudio.ZombieShooter.UI
 {
@@ -12,11 +13,11 @@ namespace WoosanStudio.ZombieShooter.UI
     /// </summary>
     public class UINamedMonsterBarView : MonoBehaviour
     {
+        [Header("[저항 텍스트]")]
+        public CanvasGroup ResistanceCanvasGroup;
+
         //캐쉬용
         private CanvasGroup canvasGroup;
-
-        [Header("[아이템이 이동할 피벗]")]
-        public Transform[] Pivots;
 
         //public 
         private void Awake()
@@ -39,6 +40,25 @@ namespace WoosanStudio.ZombieShooter.UI
                 canvasGroup.alpha = 1f;
                 canvasGroup.DOFade(0f, 0.25f);
             }
+        }
+
+        /// <summary>
+        /// 저항 글자 활성 또는 비활성
+        /// </summary>
+        /// <param name="value"></param>
+        public void SetActivateByResistanceText(bool value)
+        {
+            if (value)
+            {
+                ResistanceCanvasGroup.alpha = 0f;
+                ResistanceCanvasGroup.DOFade(1f, 0.25f);
+            }
+            else
+            {
+                ResistanceCanvasGroup.alpha = 1f;
+                ResistanceCanvasGroup.DOFade(0f, 0.25f);
+            }
+
         }
     }
 }

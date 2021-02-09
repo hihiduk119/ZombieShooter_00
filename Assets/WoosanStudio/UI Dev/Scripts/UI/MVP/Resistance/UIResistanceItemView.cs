@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace WoosanStudio.ZombieShooter.UI
 {
@@ -21,6 +22,32 @@ namespace WoosanStudio.ZombieShooter.UI
         [Header("[아이템 설명]")]
         public Text Description;
 
+        //캐쉬용
+        private CanvasGroup canvasGroup;
+
+        //public 
+        private void Awake()
+        {
+            canvasGroup = GetComponent<CanvasGroup>();
+        }
+
+        /// <summary>
+        /// 활성 또는 비활성
+        /// </summary>
+        public void SetActivate(bool value)
+        {
+            if (value)
+            {
+                canvasGroup.alpha = 0f;
+                canvasGroup.DOFade(1f, 0.25f);
+            }
+            else
+            {
+                canvasGroup.alpha = 1f;
+                canvasGroup.DOFade(0f, 0.25f);
+            }
+        }
+
         /// <summary>
         /// 정보 업데이트
         /// </summary>
@@ -33,5 +60,7 @@ namespace WoosanStudio.ZombieShooter.UI
             Description.text = description;
             Icon.sprite = icon;
         }
+
+
     }
 }

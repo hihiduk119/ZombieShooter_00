@@ -160,7 +160,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
 
                 //몬스터 저항도 생각 해야한다.
                 //몬스터 데이터 가져와서 저항에 따른 데미지 감소도 여기서 계산
-                MonsterSettings monsterSettings = hit.transform.GetComponent<Monster>().monsterSettings;
+                MonsterSettings monsterSettings = hit.transform.GetComponent<Monster>().MonsterSettings;
 
                 //카드를 통해 계산된 데미지를 주어야 한다.
                 //*현재 총알에 세팅된 카드 리스트 받아오기

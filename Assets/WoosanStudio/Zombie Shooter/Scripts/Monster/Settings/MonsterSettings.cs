@@ -84,10 +84,12 @@ namespace WoosanStudio.ZombieShooter
         [SerializeField] private int _health;
         public int Health { get => _health = GetHealth(); }
 
-        //[Header("[레벨에 따른 체력 공식]")]
-        //[SerializeField]
-        //private string healthFormula = "MonsterHealth";
-        //public string HealthFormula { get => healthFormula; }
+        /// <summary>
+        /// 죽을때 이팩트
+        /// </summary>
+        [Header("[죽을때 이팩트]")]
+        [SerializeField] GameObject deadEffect;
+        public GameObject DeadEffect { get => deadEffect; set => deadEffect = value; }
 
         /// <summary>
         /// 공격 데미지

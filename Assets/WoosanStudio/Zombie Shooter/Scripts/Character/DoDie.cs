@@ -28,6 +28,8 @@ namespace WoosanStudio.ZombieShooter
         private IBlink blink;
         //죽을 오브젝트를 세팅
         private ICanDestory canDestory;
+        //몬스터 세팅 가져오기
+        private IMonsterSettings monsterSettings;
 
         //Test Code
         //public GameObject testDummy;
@@ -51,6 +53,7 @@ namespace WoosanStudio.ZombieShooter
             doZeroGravity = GetComponent<DoZeroGravity>();
             blink = transform.GetComponentInChildren<IBlink>();
             canDestory = GetComponent<ICanDestory>();
+            monsterSettings = GetComponent<IMonsterSettings>();
 
             //IHaveHealth 에 체력 체크 등록.
             haveHealth.DamagedEvent.AddListener(CheckHealth);
@@ -63,6 +66,10 @@ namespace WoosanStudio.ZombieShooter
             if(haveHealth.Health <= 0) { Die(hit); }
         }
 
+        /// <summary>
+        /// 죽음
+        /// </summary>
+        /// <param name="hit"></param>
         public void Die(Vector3 hit)
         {
             //데미지 이벤트 등록된 모든 리스너 등록해제
@@ -89,6 +96,14 @@ namespace WoosanStudio.ZombieShooter
             NavMeshModel.SetActive(false);
 
             regdollController.SetActive(true);
+
+            //죽을때 이펙트 생성
+            if(monsterSettings.MonsterSettings.DeadEffect != null)
+            {
+                GameObject deadEffect = Instantiate(monsterSettings.MonsterSettings.DeadEffect) as GameObject;
+                deadEffect.transform.position = transform.position;
+                deadEffect.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            }
 
             //Add Force
             boom = new Boom(hit);

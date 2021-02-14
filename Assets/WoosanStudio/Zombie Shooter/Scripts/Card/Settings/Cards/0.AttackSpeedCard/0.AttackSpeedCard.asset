@@ -48,9 +48,9 @@ MonoBehaviour:
   unlockLevel: 0
   researchTimeFormula: ResearchTime
   coinFormula: Coin
-  sprite: {fileID: 21300000, guid: 684049ff2f7f645109fc4df4b58a7121, type: 3}
+  sprite: {fileID: 21300000, guid: cc4d7fe89a6dc41aeb55973d4a29fdf1, type: 3}
   scale: 0.25
-  iconColor: {r: 0.27058825, g: 0.3647059, b: 0.4509804, a: 1}
+  iconColor: {r: 0.23529412, g: 0.33333334, b: 0.43137255, a: 1}
   title: Attack Speed
   Properties:
   - {fileID: 11400000, guid: 05a520c61315342f0b493cc3b1e61688, type: 2}

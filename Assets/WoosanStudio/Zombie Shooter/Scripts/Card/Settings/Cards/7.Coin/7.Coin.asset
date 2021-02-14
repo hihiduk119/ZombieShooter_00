@@ -48,9 +48,9 @@ MonoBehaviour:
   unlockLevel: 0
   researchTimeFormula: ResearchTime
   coinFormula: Coin
-  sprite: {fileID: 21300000, guid: b909ca66d9858415ab18513c45a79ff8, type: 3}
+  sprite: {fileID: 21300000, guid: 7b2d096c480074f7588a7e10fc0075cd, type: 3}
   scale: 0.25
-  iconColor: {r: 0.27058825, g: 0.3647059, b: 0.4509804, a: 1}
+  iconColor: {r: 0.23529412, g: 0.33333334, b: 0.43137255, a: 1}
   title: Coin
   Properties:
   - {fileID: 11400000, guid: 6769c610297cc48278c14837e2ecdc28, type: 2}

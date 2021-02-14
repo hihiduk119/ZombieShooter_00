@@ -48,9 +48,9 @@ MonoBehaviour:
   unlockLevel: 0
   researchTimeFormula: ResearchTime
   coinFormula: Coin
-  sprite: {fileID: 21300000, guid: aeb10ba34e09a4bb4a83efbb24781fe7, type: 3}
+  sprite: {fileID: 21300000, guid: 2f47ad6a2af8e407aa01166a48f9de76, type: 3}
   scale: 0.25
-  iconColor: {r: 0.27058825, g: 0.3647059, b: 0.4509804, a: 1}
+  iconColor: {r: 0.23529412, g: 0.33333334, b: 0.43137255, a: 1}
   title: Critical Chance
   Properties:
   - {fileID: 11400000, guid: c2669e8d3a79f44ff8826824876383ff, type: 2}

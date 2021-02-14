@@ -17,7 +17,7 @@ MonoBehaviour:
   _prefab: {fileID: 1399632576231276088, guid: 312eff290b5b046c59890fda45aec7f5, type: 3}
   _level: 0
   _health: 10
-  deadEffect: {fileID: 100008, guid: 233956b4ed08c7542be22d9342cb3595, type: 3}
+  deadEffect: {fileID: 100008, guid: 0d4f34254e9a8440babbb20db0145e72, type: 3}
   _damage: 8
   damageFormula: MonsterDamage
   _propertys: []

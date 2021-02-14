@@ -45,8 +45,8 @@ namespace WoosanStudio.ZombieShooter
 
             Image.sprite = cardSetting.Sprite;
             //이미지에 따라 사이즈 재정의
-            float width = Image.sprite.rect.width / 6;
-            float height = Image.sprite.rect.height / 6;
+            float width = Image.sprite.rect.width * 0.7f;
+            float height = Image.sprite.rect.height * 0.7f;
             Image.rectTransform.sizeDelta = new Vector2(width, height);
             //1 더하는 이유는 레벨이 0부터 시작이라서
             Level.text = (cardSetting.Level + 1).ToString();

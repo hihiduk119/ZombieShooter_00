@@ -30,7 +30,7 @@ namespace WoosanStudio.ZombieShooter
         [Header("[카드 연구 프로그레스]")]
         public Image Progress;
 
-        [Header("[슬롯 상태]")]
+        [Header("[슬롯 상태]")] 
         public List<GameObject> Slots = new List<GameObject>();
 
         [Header("[카드 활성 가능 버튼들]")]
@@ -45,8 +45,8 @@ namespace WoosanStudio.ZombieShooter
             Image.sprite = cardSetting.Sprite;
             Image.color = cardSetting.IconColor;
             //이미지에 따라 사이즈 재정의
-            float width = Image.sprite.rect.width/2.5f;
-            float height = Image.sprite.rect.height/2.5f;
+            float width = Image.sprite.rect.width * 1.75f;
+            float height = Image.sprite.rect.height * 1.75f;
             Image.rectTransform.sizeDelta = new Vector2(width, height);
 
             Name.text = cardSetting.Name;

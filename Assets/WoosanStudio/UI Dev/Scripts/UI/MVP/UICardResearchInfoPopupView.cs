@@ -64,8 +64,8 @@ namespace WoosanStudio.ZombieShooter
 
             Image.sprite = sprite;
             //이미지에 따라 사이즈 재정의
-            float width = sprite.rect.width * 0.6f;
-            float height = sprite.rect.height * 0.6f;
+            float width = sprite.rect.width * 2.5f;
+            float height = sprite.rect.height * 2.5f;
             Image.rectTransform.sizeDelta = new Vector2(width, height);
             //이미지 컬러 세팅
             Image.color = color;

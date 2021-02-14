@@ -79,6 +79,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[플레이어의 체력 및 탄약 UI 컨트롤]")]
         public UI.UIPlayerCanvasPresenter UIPlayerCanvasPresenter;
 
+        [Header("[플레이어 연출용 이펙트")]
+        public GameObject BoomEffectPrefab;
+
         //카메라를 움직이는 컨트롤
         private CameraMoveController CameraMoveController;
 
@@ -242,6 +245,9 @@ namespace WoosanStudio.ZombieShooter
 
             //플레이어와 플레이어 캔버스 연결
             ConnectPlayerAndUIPlayerCanvas();
+
+            //플레이어 생성 연출
+            DoBoomEffect();
         }
 
         /// <summary>
@@ -285,6 +291,16 @@ namespace WoosanStudio.ZombieShooter
                     MonsterSpawnScheduleManager.SpawnStart();
                 //}
             }
+        }
+
+        /// <summary>
+        /// 플레이어 생성시 폭파 연출
+        /// </summary>
+        public void DoBoomEffect()
+        {
+            GameObject clone = Instantiate(BoomEffectPrefab) as GameObject;
+            clone.transform.position = this.playerController.transform.position;
+            //clone.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         }
 
         /// <summary>

@@ -28,6 +28,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[무기&레이저 포인터를 생성시킬 앵커]")]
         public Transform WeaponAnchor;
 
+        [Header("[온오프용 레이저 포인터 인터페이스]")]
+        public ILaserPointer LaserPointer;
+
         IStart start;
         IEnd end;
         //List<IReloadAction> reloadActionList;
@@ -134,8 +137,9 @@ namespace WoosanStudio.ZombieShooter
             //레이저 포인터 생성전에 로컬좌표 설정 & 엔커 설정
             LaserPointerFactory.Anchor = WeaponAnchor;
             LaserPointerFactory.InitPosition = WeaponFactory._gunSettings[weaponIndex].InitLaserPointerPosition;
+            Debug.Log("Anchor");
             //생성 후 삭제를 위해 미리 받아놓음
-            currentLaserPointer = LaserPointerFactory.Make();
+            currentLaserPointer = LaserPointerFactory.Make(ref LaserPointer);
         }
 
         /// <summary>

@@ -181,6 +181,9 @@ namespace WoosanStudio.ZombieShooter
 
             //카드 데이터 플레이어에 적용
             ApplyCardsSelectedRobby(playerController);
+
+            //첫 시작시 레이저 포인터 끄기
+            WeaponRequester.LaserPointer.SetActivate(false);
         }
 
         /// <summary>
@@ -248,6 +251,9 @@ namespace WoosanStudio.ZombieShooter
 
             //플레이어 생성 연출
             DoBoomEffect();
+
+            //연출 완료후 레이저 포인터 켜기
+            WeaponRequester.LaserPointer.SetActivate(true);
         }
 
         /// <summary>

@@ -72,6 +72,8 @@ namespace WoosanStudio.ZombieShooter
         [Header("[타겟과 조준선이 정렬 됐는지 판별(Auto->Awake())]")]
         public RayCheck RayCheck;
 
+        //[Header("[무기 요청 클래스(Auto->Awake())]")]
+        //public WeaponRequester WeaponRequester;
 
         //LookAtAimedTarget 에서 가져온 Aim,Release 이벤트 인터페이스
         private IAim aim;
@@ -118,6 +120,9 @@ namespace WoosanStudio.ZombieShooter
             RayCheck = GetComponentInChildren<RayCheck>();
             //자동 사격 시스템의 조준선 정렬 플레그 와 레이 체커 Hit 플레그 연결
             RayCheck.RayHitEvent.AddListener(value => AutoFireControlInputBasedOnGunSetting.IsSightAlimentComplete = value);
+
+            ////무기 요청 클래스
+            //WeaponRequester = GetComponentInChildren<WeaponRequester>();
         }
 
         /// <summary>

@@ -21,10 +21,13 @@ namespace WoosanStudio.ZombieShooter
         [Header("[초기화 로컬 rotation]")]
         public Vector3 InitRotation;
 
+        //온오프용 레이저 포인터 인터페이스
+        private ILaserPointer iLaserPointer;
+
         /// <summary>
         /// 해당 레이저 포인터 생성
         /// </summary>
-        public GameObject Make()
+        public GameObject Make(ref ILaserPointer laserPointer)
         {
             //Debug.Log("Anchor name = " + Anchor.name);
 
@@ -32,6 +35,11 @@ namespace WoosanStudio.ZombieShooter
             clone.transform.parent = Anchor;
             clone.transform.localPosition = InitPosition;
             clone.transform.localRotation = Quaternion.Euler(InitRotation);
+
+            //온오프용 레이저 포인터 인터페이스
+            iLaserPointer = clone.GetComponent(typeof(ILaserPointer)) as ILaserPointer;
+            //레퍼런스 연결
+            laserPointer = this.iLaserPointer;
 
             return clone;
         }

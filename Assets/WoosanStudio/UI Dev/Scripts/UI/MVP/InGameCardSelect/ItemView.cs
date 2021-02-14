@@ -57,8 +57,8 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
             //아이콘 설정
             Icon.sprite = sprite;
             //이미지에 따라 사이즈 재정의
-            float width = sprite.rect.width * 0.2f;
-            float height = sprite.rect.height * 0.2f;
+            float width = sprite.rect.width;
+            float height = sprite.rect.height;
             Icon.rectTransform.sizeDelta = new Vector2(width, height);
             //이미지 컬러 세팅
             Icon.color = color;

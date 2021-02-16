@@ -18,7 +18,7 @@ namespace WoosanStudio.ZombieShooter
 
         [Header("[레이저 포인터 사용 플레그]")]
         [SerializeField]
-        private bool isAble = false;
+        private bool isAble = true;
         public bool IsAble { get => isAble; set => isAble = value; }
 
         //캐슁

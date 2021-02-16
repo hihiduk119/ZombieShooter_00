@@ -7,7 +7,7 @@ namespace WoosanStudio.ZombieShooter
     /// <summary>
     /// 베리어 구현
     /// </summary>
-    public class Barrier : MonoBehaviour, IHaveHit
+    public class Barrier : MonoBehaviour
     {
         //cashe
         private Animator animator;

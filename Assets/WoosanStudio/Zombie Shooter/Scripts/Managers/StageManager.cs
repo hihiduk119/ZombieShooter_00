@@ -184,6 +184,8 @@ namespace WoosanStudio.ZombieShooter
 
             //첫 시작시 레이저 포인터 끄기
             WeaponRequester.LaserPointer.SetActivate(false);
+
+            //Debug.Log("레이저 포인터 끄기");
         }
 
         /// <summary>

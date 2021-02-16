@@ -35,5 +35,13 @@ namespace WoosanStudio.ZombieShooter
             //*남녀 구분 필요
             MasterAudio.FireCustomEvent("MaleHurt", this.transform);
         }
+
+        /// <summary>
+        /// 현재 플레이어는 글로벌 히트에 반응하지 않음
+        /// </summary>
+        public void HitByGlobalDamage()
+        {
+
+        }
     }
 }

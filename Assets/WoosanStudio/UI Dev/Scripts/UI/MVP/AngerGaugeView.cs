@@ -43,6 +43,12 @@ namespace WoosanStudio.ZombieShooter.UI
             ProgressBarRoot.localScale = Vector3.one;
 
             ProgressBarRoot.DOScale(1.1f, 0.1f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
+
+            //파워바 초기화
+            Effects[0].DOKill();
+            Effects[0].alpha = 0;
+            //파워 바 컬러 트윈
+            Effects[0].DOFade(1,0.1f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine);
         }
 
         /// <summary>

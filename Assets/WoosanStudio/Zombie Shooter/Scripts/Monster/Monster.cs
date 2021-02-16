@@ -38,6 +38,12 @@ namespace WoosanStudio.ZombieShooter
         //데미지 UI 텍스트 연결용 인터페이스
         IConnect connect;
 
+        //체력바 UI 가져오기
+        IHaveHealth haveHealth;
+
+        //분노 게이지 컨트롤러
+        private UI.AngerGaugePresenter angerGaugePresenter;
+
         private UnityEvent spawnEvent = new UnityEvent();
         public UnityEvent SpawnEvent => spawnEvent;
 
@@ -45,6 +51,15 @@ namespace WoosanStudio.ZombieShooter
         {
             yield return new WaitForSeconds(time);
             callback();
+        }
+
+        void Awake()
+        {
+            //분노 게이지 컨트롤러
+            angerGaugePresenter = GameObject.FindObjectOfType<UI.AngerGaugePresenter>();
+
+            //체력바 가져오기
+            haveHealth = this.GetComponent(typeof(IHaveHealth)) as IHaveHealth;
         }
 
         [System.Obsolete]
@@ -215,6 +230,24 @@ namespace WoosanStudio.ZombieShooter
             //Debug.Log("hi");
             //빨갛게 깜빡임.
             if (blink != null && blink.myGameObject.activeSelf) { blink.Blink(); }
+
+            //공습 게이지 채움
+            float angerValue = DamageCalculator.Instance.GetAirStrikeRechargeValue(GlobalDataController.AirStrikeRechargingValue);
+            //분노 값 추가
+            angerGaugePresenter.AddProgressValue(angerValue);
+        }
+
+        /// <summary>
+        /// 글로벌 데이미 받음 
+        /// </summary>
+        public void HitByGlobalDamage()
+        {
+            Debug.Log(this.gameObject.name + " = HitByGlobalDamage()");
+
+            //계산된 데미지 얻기
+            float damage = DamageCalculator.Instance.GetAirStrikeDamage(monsterSettings,GlobalDataController.AirStrikeDamge);
+            //데미지 넣기
+            haveHealth.DamagedEvent.Invoke(Mathf.RoundToInt(damage), Vector3.zero, "default");
         }
 
         /// <summary>

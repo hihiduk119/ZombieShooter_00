@@ -63,15 +63,18 @@ namespace WoosanStudio.ZombieShooter.UI
         }
 
 
+        /*
         #region [-TestCode]
         void Update()
         {
             //프로그래스 업데이트
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                AddProgressValue(0.1f);
+                AddProgressValue(0.2f);
             }
         }
         #endregion
+        */
+        
     }
 }

@@ -118,7 +118,7 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
                 GameObject.Find("Coins Button").GetComponent<Ricimi.BasicButton>().OnClicked.Invoke();
             } else
             {
-                Debug.Log("[Invoke] = " + AddSucceededEvent.GetPersistentEventCount());
+                //Debug.Log("[Invoke] = " + AddSucceededEvent.GetPersistentEventCount());
 
                 //카드 추가 성공 이벤트
                 AddSucceededEvent.Invoke();

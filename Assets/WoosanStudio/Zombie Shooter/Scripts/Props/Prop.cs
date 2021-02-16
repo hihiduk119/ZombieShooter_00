@@ -26,6 +26,14 @@ namespace WoosanStudio.ZombieShooter
             MasterAudio.FireCustomEvent("ObjectsHit", this.transform);
         }
 
+        /// <summary>
+        /// 일반 히트와 동일
+        /// </summary>
+        public void HitByGlobalDamage()
+        {
+            Hit();
+        }
+
         //void Update()
         //{
         //    if(Input.GetKeyDown(KeyCode.A))

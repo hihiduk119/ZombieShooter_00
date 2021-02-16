@@ -203,6 +203,12 @@ namespace WoosanStudio.ZombieShooter
         private GunSettings selectedGunSetting;
         public GunSettings SelectedGunSetting { get => selectedGunSetting; set => selectedGunSetting = value; }
 
+        //공습 채움 기본 값
+        static public float AirStrikeRechargingValue = 1f;
+
+        //공습 기본 데미지
+        static public int AirStrikeDamge = 300;
+
         /// <summary>
         /// 카드에 의한 건 데이터 업데이트 반영
         /// *변수 1.공속 2.최대 탄약수

@@ -144,10 +144,12 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
 
         if (Physics.Raycast(ray, out hit, dist , layerMask))
         {
+            /*
             #region - [Test]
             GameObject testDummy = GameObject.FindGameObjectWithTag("TestDummy");
             testDummy.transform.position = hit.point;
             #endregion
+            */
 
             transform.position = hit.point;
             Quaternion rot = Quaternion.FromToRotation(Vector3.forward, hit.normal);
@@ -156,8 +158,8 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             //부딫힌 오브젝트에 IHaveHealth를 가지고 있으면 데미지를 준다
             IHaveHealth haveHealth = hit.transform.GetComponent(typeof(IHaveHealth)) as IHaveHealth;
 
-            if (haveHealth != null) {
-
+            if (haveHealth != null)
+            {
                 //몬스터 저항도 생각 해야한다.
                 //몬스터 데이터 가져와서 저항에 따른 데미지 감소도 여기서 계산
                 MonsterSettings monsterSettings = hit.transform.GetComponent<Monster>().MonsterSettings;
@@ -192,6 +194,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             IHaveHit haveHit = hit.transform.GetComponent<IHaveHit>();
             if (haveHit != null) { haveHit.Hit(); }
 
+            /*
             //test code start
             #region - [Test]
             if (TestPrefabs.instance != null)
@@ -200,6 +203,7 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
             }
             //test code end
             #endregion
+            */
 
             Destroy(gameObject);
             //임팩트 생성/

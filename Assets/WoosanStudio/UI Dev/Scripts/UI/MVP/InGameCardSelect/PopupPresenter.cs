@@ -156,7 +156,7 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
 
             //itemPresenters[CurrentMaxCardCount - 1].AddSucceededEvent.RemoveListener(AddCard);
 
-            Debug.Log("CurrentMaxCardCount  = " + CurrentMaxCardCount);
+            //Debug.Log("CurrentMaxCardCount  = " + CurrentMaxCardCount);
 
             //카드 카운트는 카드 갯수보다 클수 없다.
             //ex)카드 갯수가 4개라면 CurrentMaxCardCount 는 4가 최대.

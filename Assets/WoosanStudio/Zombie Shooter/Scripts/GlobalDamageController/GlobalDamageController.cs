@@ -24,8 +24,8 @@ namespace WoosanStudio.ZombieShooter
         public List<IHaveHealth> haveHealths = new List<IHaveHealth>();
 
         //캐쉬용
-        //GameObject[] barriers;
-        //List<IHaveHit> compareHaveHits = new List<IHaveHit>();
+        GameObject[] players;
+        List<IHaveHit> compareHaveHits = new List<IHaveHit>();
         //List<IHaveHealth> compareHaveHealths = new List<IHaveHealth>();
 
         private void Awake()
@@ -49,13 +49,13 @@ namespace WoosanStudio.ZombieShooter
             //compareHaveHits.Clear();
             //compareHaveHealths.Clear();
 
-            //barrier 는 제외하기 위해 해당 리스트 가져오기
-            //this.barriers = GameObject.FindGameObjectsWithTag("Barrier");
+            //player 는 제외하기 위해 해당 리스트 가져오기
+            this.players = GameObject.FindGameObjectsWithTag("Player");
 
             //barrier 에서 IHaveHit를 가져오기
             //this.compareHaveHits = new List<IHaveHit>();
             //foreach (GameObject barrier in barriers) { this.compareHaveHits.Add(barrier.GetComponent<IHaveHit>());}
-            
+
 
             //barrier 에서 IHaveHealth 가져오기
             //this.compareHaveHealths = new List<IHaveHealth>();
@@ -69,14 +69,14 @@ namespace WoosanStudio.ZombieShooter
             var list2 = FindObjectsOfType<MonoBehaviour>().OfType<IHaveHealth>();
             foreach (IHaveHealth item in list2) { this.haveHealths.Add(item); }
 
-            //씬 전체에서 가져온 IHaveHit에서 Barrier부분 제거
-            //ListUtililty.RemoveList<IHaveHit>(this.haveHits, this.compareHaveHits);
+            //씬 전체에서 가져온 IHaveHit에서 players부분 제거
+            ListUtililty.RemoveList<IHaveHit>(this.haveHits, this.compareHaveHits);
 
             //씬 전체에서 가져온 IHaveHealth Barrier부분 제거
             //ListUtililty.RemoveList<IHaveHealth>(this.haveHealths, this.compareHaveHealths);
 
 
-            Debug.Log("haveHit = " + haveHits.Count + "   haveHealths = " + haveHealths.Count);
+            //Debug.Log("haveHit = " + haveHits.Count + "   haveHealths = " + haveHealths.Count);
         }
 
         /// <summary>
@@ -113,13 +113,13 @@ namespace WoosanStudio.ZombieShooter
         {
             //데미지 1000줌
             //테스트용임 따로 작업 해야함
-            int damage = 1000;
+            int damage = GlobalDataController.AirStrikeDamge;
 
             Initialize();
 
-            haveHits.ForEach(value => value.Hit());
-            haveHealths.ForEach(value => value.DamagedEvent.Invoke(damage, Vector3.zero,"default"));
-            Debug.Log("공격받음 3");
+            haveHits.ForEach(value => value.HitByGlobalDamage());
+            //haveHealths.ForEach(value => value.DamagedEvent.Invoke(damage, Vector3.zero,"default"));
+            //Debug.Log("공격받음 3");
         }
 
 

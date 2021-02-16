@@ -12,53 +12,12 @@ namespace WoosanStudio.ZombieShooter
     {
         static public DamageCalculator Instance;
 
-        //[Header("[[테스트용 삭제예정] 로비 선택 카드 => 테스트 용이며 직접 사용하지 않는다]")]
-        //public List<CardSetting> CardSettingsReference = new List<CardSetting>();
-
-        //[Header("[테스트용을 복사한 카드 => [삭제예정]]")]
-        //public List<CardSetting> CardsPlayerOnClicked;
-
-        //[Header("[로비에서 선택한 카드]")]
-        //public List<CardSetting> CardsSelectedInRobby;
-
-        //[Header("[[테스트용]몬스터의 프로퍼티]")]
-        //public List<CardProperty> monstersProperties;
-
-        //[Header("[[테스트용]건데이터")]
-        //public GunSettings TestGunSetting;
-
-        //[Header("[선택되어 가지고 있는 카드]")]
-        //public List<CardSetting> HasCards;
-
-        //[Header("[활성화된 카드의 프로퍼티 리스트]")]
-        ////카드 스택 카운터에 따라 추가 프로퍼티 생성됨
-        //public List<CardProperty> ActivatedCardProperties = new List<CardProperty>();
-
-        //[Header("[활성화된 카드의 긍정 갑 프로퍼티 리스트]")]
-        ////카드 스택 카운터에 따라 추가 프로퍼티 생성됨
-        //public List<CardProperty> ActivatedCardPositiveProperties = new List<CardProperty>();
-
-        //[Header("[활성화된 카드의 부정 갑 프로퍼티 리스트]")]
-        //public List<CardProperty> ActivatedCardNegativeProperties = new List<CardProperty>();
-
-        //[Header("[같은 값으로 정렬된 긍정 값]")]
-        //public List<List<CardProperty>> sameProperties;
-
-        //[Header("[현재 플레이어의 무기]")]
-        //public CardProperty.PropertyType PlayerWeapon = CardProperty.PropertyType.PistolDamage;
-        //[Header("[현재 플레이어의 탄약]")]
-        //public CardProperty.PropertyType PlayerAmmo = CardProperty.PropertyType.BulletAmmoDamage;
         [Header("[현재 플레이어의 무기 데미지 => 계산용]")]
         public float WeaponDamage = 0;
         [Header("[현재 플레이어의 탄약 데미지 => 계산용]")]
         public float AmmoDamage = 0;
         [Header("[현재 플레이어의 체력 => 계산용]")]
         public float HealthPoint = 0;
-
-        //[Header("[기본 크리티컬 데미지 비율 => 총괄하는 하나의 데이터로 리팩토링 필요]")]
-        //public int DefaultCriticalDamageRate = GlobalDataController.DefaultCriticalDamage;
-        //[Header("[기본 크리티컬 확률 비율 => 총괄하는 하나의 데이터로 리팩토링 필요]")]
-        //public float DefaultCriticalProbabilityRate = GlobalDataController.DefaultCriticalChance;
 
         //실제 사용은 이걸로 해야함.
         //*테스트할 때는 눈으로 봐야하기 때문에 CardSettings 사용
@@ -127,10 +86,37 @@ namespace WoosanStudio.ZombieShooter
             //(1레벨당 증가 값 * 레벨) + 기본벨류+[퍼센트 100 (200이면 크리티컬)]
             float percent = ((property.IncreasedValuePerLevelUp * level) + property.Value) * stack + percentage;
 
-            //Debug.Log("증가 퍼센트 = [" + percent + "]");
-            
+            //Debug.Log(percent + " = ((" + property.IncreasedValuePerLevelUp + "*" + level + ") + " + property.Value + ") * " + stack + "+" + percentage);
+
             //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
             float returnValue = value * percent * 0.01f;
+
+            //Debug.Log(returnValue + " = " + value + " * " + percent + " * 0.01f");
+
+            return returnValue;
+        }
+
+
+        /// <summary>
+        /// 데미지, 체력, 치명데미지 공식
+        /// </summary>
+        /// <param name="value">무기와 탄약을 더한 값</param>
+        /// <param name="level">카드 레밸</param>
+        /// <param name="property">카드 프로퍼티 값</param>
+        /// <param name="percentage">기본 100% 이며 크리티컬 값을 구할시 200%으로 변경</param>
+        /// <returns></returns>
+        public float CalculateValue7(float value, int level, CardProperty property, int stack, int percentage = 100)
+        {
+            //카드 레벨에 의해 증감된 수치
+            //(1레벨당 증가 값 * 레벨) + 기본벨류+[퍼센트 100 (200이면 크리티컬)]
+            float percent = ((property.IncreasedValuePerLevelUp * level) + property.Value) * stack + percentage;
+
+            Debug.Log(percent + " = ((" + property.IncreasedValuePerLevelUp + "*" + level + ") + " + property.Value + ") * " + stack + "+" + percentage);
+
+            //퍼센트 값을 정상 값으로 바꾸려면 0.01f 곱해야함.
+            float returnValue = value * percent * 0.01f;
+
+            Debug.Log(returnValue + " = " + value + " * " + percent + " * 0.01f");
 
             return returnValue;
         }
@@ -193,26 +179,29 @@ namespace WoosanStudio.ZombieShooter
 
 
         /// <summary>
-        /// 공습 채움 속도
+        /// 공습 채움 속도 틱당 증가 값
         /// 1~ 그이상 1이 기본
         /// *증가되는 값은 100을 넘을수 없다
         /// </summary>
         /// <param name="level"></param>
         /// <param name="property"></param>
         /// <param name="percentage"></param>
+		/// <param name="value"></param>
         /// <returns></returns>
-        public float CalculateValue5(int level, int stack, CardProperty property)
+        public float CalculateValue5(int level, int stack, CardProperty property ,float value)
         {
             //기본 값 = 1 , 레벨 = 0-25 ,스택 = 1-5,프로퍼티 기본 값 = 2 ,프로퍼티 기본 값 = 10
 
             //카드 레벨에 의해 증감된 수치
-            //ex) 45% 증가 라면 100-45 = 55
-            float percent = 100 - ((property.IncreasedValuePerLevelUp * level) + property.Value) * stack;
+            //ex) 45% 증가 라면 100+45 = 145
+            float percent = 100 + ((property.IncreasedValuePerLevelUp * level) + property.Value) * stack;
 
-            //1이 Max 임으로 50이면 0.5로 변경
-            percent *= 0.01f;
+            //Debug.Log("100 + ((" + property.IncreasedValuePerLevelUp + "*" + level + ") + " + property.Value + ") * " + stack );
 
-            return percent;
+            //ex) 기본값 0.01 에 * 150% => 
+            value *= (percent)*0.01f;
+
+            return value;
         }
 
         /// <summary>
@@ -240,8 +229,9 @@ namespace WoosanStudio.ZombieShooter
 
         /// <summary>
         /// 공습 데미지 가져오기
+        /// *테스트 안함
         /// </summary>
-        public float GetAirStrikeDamage(MonsterSettings monster)
+        public float GetAirStrikeDamage(MonsterSettings monster,int defaultDamage)
         {
             //임시 저장용
             CardProperty.PropertyType type;
@@ -250,7 +240,9 @@ namespace WoosanStudio.ZombieShooter
 
             //공습 기본 데미지
             //*나중에 바꿔야함
-            float damage = 1000f;
+            float damage = (float)defaultDamage;
+
+            Debug.Log("[0] damage = " + damage);
 
             //적용된 모든 카드
             //*중첩 된 카드 가져오기 -> 데미지에 영향을 미치는 모든 카드
@@ -277,11 +269,11 @@ namespace WoosanStudio.ZombieShooter
                         //테스트용 -> 나중에 삭제
                         float origin = damage;
                         //레벨,스택 반영 데미지 계산
-                        damage = CalculateValue(damage, level, hasCards[i].Properties[j], stackCount);
+                        damage = CalculateValue7(damage, level, hasCards[i].Properties[j], stackCount);
 
                         //테스트용 -> 나중에 삭제
                         int totalRate = (((int)hasCards[i].Properties[j].IncreasedValuePerLevelUp * level) + hasCards[i].Properties[j].Value);
-                        //Debug.Log("최초 데미지 = [" + origin + "] 중간 계산 데미지 = [" + damage + "]  Total Rate = [" + totalRate + "] level = [" + level + "] Stack = [" + stackCount + "]  card = [" + hasCards[i].Type.ToString() + "] type = [" + type.ToString() + "]");
+                        Debug.Log("최초 데미지 = [" + origin + "] 중간 계산 데미지 = [" + damage + "]  Total Rate = [" + totalRate + "] level = [" + level + "] Stack = [" + stackCount + "]  card = [" + hasCards[i].Type.ToString() + "] type = [" + type.ToString() + "]");
                     }
                 }
             }
@@ -301,21 +293,27 @@ namespace WoosanStudio.ZombieShooter
             //테스트 조건 모두 통과
             //1. 스택 증가 데미지 확인
             //2. 저항에 의한 데미지 감소 확인
+            Debug.Log("[1] damage = " + damage);
 
             return damage;
         }
 
         /// <summary>
         /// 공습 채움 값 가져오기
+		/// 0-1 사이의 값중 1틱의 체움값 
+        /// *테스트 안함
         /// </summary>
-        public float GetAirStrikeRechargeValue()
+        public float GetAirStrikeRechargeValue(float defalutValue)
         {
             //임시 저장용
             CardProperty.PropertyType type;
             int level = 0;
             int stackCount = 0;
-            //기본 1로 계산 -> 0-1사이 값
-            float recharge = 1;
+            //틱당 기본 증가 값
+            float recharge = defalutValue;
+
+            //Debug.Log("Recharge = " + recharge);
+
 
             //적용된 모든 카드
             //*중첩 된 카드 가져오기 -> 데미지에 영향을 미치는 모든 카드
@@ -339,7 +337,7 @@ namespace WoosanStudio.ZombieShooter
                         //프로퍼티 값이 음수이면 스택없이 1번만 계산
                         if (hasCards[i].Properties[j].Value < 0) { stackCount = 1; }
                         //레벨,스택 반영 데미지 계산
-                        recharge = CalculateValue5( level, stackCount, hasCards[i].Properties[j]);
+                        recharge = CalculateValue5( level, stackCount, hasCards[i].Properties[j] , defalutValue);
 
                         //테스트용 -> 나중에 삭제
                         //int totalRate = (((int)hasCards[i].Properties[j].IncreasedValuePerLevelUp * level) + hasCards[i].Properties[j].Value);
@@ -756,43 +754,20 @@ namespace WoosanStudio.ZombieShooter
             return maxAmmo;
         }
 
-        #region [-TestCode]
-        //void Update()
-        //{
         /*
-        //테스트용 데미지 반영
-        if (Input.GetKeyDown(KeyCode.Alpha5))
+        #region [-TestCode]
+        void Update()
         {
-            //몬스터에게 주는 데미지
-            float damage = GetHitDamageFromPlayer(TestMonsterSettings);
-            //크리 인가?
-            if (IsCriticalDamage())
+            //테스트용 데미지 반영
+            if (Input.GetKeyDown(KeyCode.A))
             {
-                //크리이면 크리계산
-                damage = GetCriticalDamage(damage);
+                //틱당 증가 수치
+                float value = GetAirStrikeRechargeValue(0.005f);
+                Debug.Log("틱 당 값 = " + value);
             }
-
-            //저항이 존제하면 저항 계산
-            //if(0 < TestMonsterSettings.Propertys.Count)
-            //{
-            //    GetDamageThatReflectsMonsterResistance(damage, TestMonsterSettings.Propertys, TestMonsterSettings.Level);
-            //}
         }
-        */
-
-        //공습 데미지 계산
-        //if (Input.GetKeyDown(KeyCode.Alpha4))
-        //{
-        //    GetAirStrikeDamage(TestMonsterSettings);
-        //}
-
-        //공습 채움 값 가져오기
-        //if (Input.GetKeyDown(KeyCode.Alpha3))
-        //{
-        //    GetAirStrikeRechargeValue();
-        //}
-        //}
         #endregion
+        */
 
     }
 }

@@ -215,5 +215,13 @@ namespace WoosanStudio.ZombieShooter
         {
             Debug.Log("do nothing!!");
         }
+
+        /// <summary>
+        ///강제 에니메이션 재시작[Gun Trigger 방식] 
+        /// </summary>
+        public void HitByGlobalDamage()
+        {
+            Debug.Log("do nothing!!");
+        }
     }
 }

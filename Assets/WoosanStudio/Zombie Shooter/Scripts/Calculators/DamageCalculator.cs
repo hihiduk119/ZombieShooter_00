@@ -242,7 +242,7 @@ namespace WoosanStudio.ZombieShooter
             //*나중에 바꿔야함
             float damage = (float)defaultDamage;
 
-            Debug.Log("[0] damage = " + damage);
+            //Debug.Log("[0] damage = " + damage);
 
             //적용된 모든 카드
             //*중첩 된 카드 가져오기 -> 데미지에 영향을 미치는 모든 카드

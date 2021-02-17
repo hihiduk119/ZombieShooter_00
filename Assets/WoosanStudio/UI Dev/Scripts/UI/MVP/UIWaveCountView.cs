@@ -53,6 +53,15 @@ namespace WoosanStudio.ZombieShooter.UI.MVP
         }
 
         /// <summary>
+        /// 웨이브 카운트
+        /// </summary>
+        /// <param name="count"></param>
+        public void WaveCount(int count)
+        {
+            Title.text = "WAVE " + count.ToString();
+        }
+
+        /// <summary>
         /// 웨이브 카운트 한번 튕김
         /// </summary>
         public void BounceCount()

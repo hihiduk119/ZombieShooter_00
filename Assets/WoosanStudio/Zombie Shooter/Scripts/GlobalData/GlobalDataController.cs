@@ -341,12 +341,12 @@ namespace WoosanStudio.ZombieShooter
             //사용가능한 슬롯이 없다.
             if (GlobalDataController.MaxUpgradeSlotCount <= GlobalDataController.Instance.UseUpgradeAbleSlotCount)
             {
-                Debug.Log("슬롯 없다");
+                //Debug.Log("슬롯 없다");
                 return false;
             }
             else
             {
-                Debug.Log("슬롯 있다 -> MaxUpgradeSlotCount = [" + GlobalDataController.MaxUpgradeSlotCount + "]  UseUpgradeAbleSlotCount = [" + GlobalDataController.Instance.UseUpgradeAbleSlotCount + "]");
+                //Debug.Log("슬롯 있다 -> MaxUpgradeSlotCount = [" + GlobalDataController.MaxUpgradeSlotCount + "]  UseUpgradeAbleSlotCount = [" + GlobalDataController.Instance.UseUpgradeAbleSlotCount + "]");
                 return true;
             }
         }

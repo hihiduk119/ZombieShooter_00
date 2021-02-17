@@ -159,7 +159,7 @@ namespace WoosanStudio.ZombieShooter
             //웨이브 활성화
             waveCountPresent.SetActivate(true);
             //라운드 시작시 웨이브 카운트 초기화 및 화면 업데이트
-            waveCountPresent.UpdateInfo(DeadMonster, MonsterSchedule.MaxSpawnByRound[round]);
+            waveCountPresent.UpdateInfo(DeadMonster, MonsterSchedule.MaxSpawnByRound[round],round+1);
         }
 
 

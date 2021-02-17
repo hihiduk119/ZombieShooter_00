@@ -23,15 +23,15 @@ namespace WoosanStudio.ZombieShooter.UI.MVP
         /// <summary>
         /// 정보 업데이트
         /// </summary>
-        public void UpdateInfo(int currentCount, int maxCount)
+        public void UpdateInfo(int currentCount, int maxCount,int round)
         {
             CurrentCount = currentCount;
             MaxCount = maxCount;
 
             //카운트 하려는 값 업데이트
             View.UpdateView(CurrentCount.ToString() + "/"+ MaxCount.ToString());
-            //바운스 연출
-            //View.BounceCount();
+            //웨이브 카운트 업데이트
+            View.WaveCount(round);
         }
 
         /// <summary>

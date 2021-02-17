@@ -242,7 +242,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void HitByGlobalDamage()
         {
-            Debug.Log(this.gameObject.name + " = HitByGlobalDamage()");
+            //Debug.Log(this.gameObject.name + " = HitByGlobalDamage()");
 
             //계산된 데미지 얻기
             float damage = DamageCalculator.Instance.GetAirStrikeDamage(monsterSettings,GlobalDataController.AirStrikeDamge);

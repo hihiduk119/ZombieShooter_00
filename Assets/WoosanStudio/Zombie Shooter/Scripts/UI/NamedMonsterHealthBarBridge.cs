@@ -53,6 +53,8 @@ namespace WoosanStudio.ZombieShooter
             UI.UINamedMonsterBarPresenter.Instance.RunShowingItem();
             //체려 UI 활성화
             UI.UINamedMonsterBarPresenter.Instance.SetActivate(true);
+            //값 초기화
+            UI.UINamedMonsterBarPresenter.Instance.Reset();
         }
 
         /// <summary>

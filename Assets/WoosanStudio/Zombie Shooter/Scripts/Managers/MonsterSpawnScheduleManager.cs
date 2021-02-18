@@ -45,7 +45,6 @@ namespace WoosanStudio.ZombieShooter
         public UnityEvent EndSpawnByAllRoundEvent = new UnityEvent();
 
         //캐쉬용
-        //private Map.Stage.Setting monsterSchedule;
         private Coroutine autoSpawnCallCoroutine;
         private WaitForSeconds WFS;
         private bool bSpawnedNamedMonster = false;
@@ -55,8 +54,13 @@ namespace WoosanStudio.ZombieShooter
 
         //현재 라운드
         private int currentRound = 0;
-        //맵마다 스테이지 갯수가 다르기때문에 저장된 Map.Setting데이터에서 자장된 걸 가져와야할듯.
-        private int startStage = 0;
+
+        //웨이브는 라운드와 다르게 계속 증가 가능
+        private int waveCount = 0;
+
+        //*스테이지 매니저가 세팅해줘야 함
+        [Header("[스테이지 메니저에서 스테이지 세팅 되어야함]")]
+        public int StageIndex = 0;
 
         private void Awake()
         {
@@ -99,14 +103,24 @@ namespace WoosanStudio.ZombieShooter
             //현재 스테이지 저장
             //currentStage = stage;
 
+            int startRound = 14;
+
             //현재 라운드 0으로 초기화
-            currentRound = 0;
+            //*시작시 라운드 값은 이걸로 변경 가능
+            currentRound = 0 + startRound;
+
+            //라운드는 몬스터 스케줄의 최대 값을 넘을수 없다.
+            if (currentRound >= MonsterSchedule.MaxSpawnByRound.Count)
+            {
+                currentRound = MonsterSchedule.MaxSpawnByRound.Count - 1;
+            }
+
+            //웨이브 카운트는 표시용 1부터 시작
+            waveCount = 1 + startRound;
 
             //라운드 별 몬스터 스폰 실행
             SpawnByRound(currentRound);
         }
-
-
 
         /// <summary>
         /// 특정 라운드 스폰 실행.
@@ -132,6 +146,14 @@ namespace WoosanStudio.ZombieShooter
             //Debug.Log("스폰 0-1");
             //현재 라운드 자동 증가
             currentRound++;
+            //웨이브 카운트는 라운드와 다르게 계속 증가 가능
+            waveCount++;
+
+            //라운드는 몬스터 스케줄의 최대 값을 넘을수 없다.
+            if (currentRound >= MonsterSchedule.MaxSpawnByRound.Count)
+            {
+                currentRound = MonsterSchedule.MaxSpawnByRound.Count - 1;
+            }
 
             //스폰 실행
             DoSpawnCall(currentRound);
@@ -151,15 +173,14 @@ namespace WoosanStudio.ZombieShooter
             //코루틴이 시작
             autoSpawnCallCoroutine = StartCoroutine(AutoSpawnCallCoroutine(round, MonsterSchedule, WFS));
 
-
-
             //라운드의 시작이기 때문에 죽은 몬스터 0으로 초기화
             DeadMonster = 0;
 
             //웨이브 활성화
             waveCountPresent.SetActivate(true);
+
             //라운드 시작시 웨이브 카운트 초기화 및 화면 업데이트
-            waveCountPresent.UpdateInfo(DeadMonster, MonsterSchedule.MaxSpawnByRound[round],round+1);
+            waveCountPresent.UpdateInfo(DeadMonster, MonsterSchedule.MaxSpawnByRound[round],waveCount);
         }
 
 
@@ -181,6 +202,8 @@ namespace WoosanStudio.ZombieShooter
             {
                 //Debug.Log("스폰 1");
                 //몬스터 스폰
+
+                //라운드가 몬스터 스케줄의 최대 값을 초과했다면 최대 라운드로 계속 몬스터 생성
                 DoSpawn( round, monsterSchedule);
                 yield return waitForSeconds;
             } 
@@ -198,15 +221,12 @@ namespace WoosanStudio.ZombieShooter
             //맵에 최대 몬스터 생성 제한게 걸렸는으면 생성 중지
             if (MonsterList.Instance.Items.Count >= monsterSchedule.MaxSpawnLimit)
             {
-                //Debug.Log("몬스터 스폰이 정지 됐습니다. 맵에 최대 스폰 [" + monsterSchedule.MaxSpawnLimit + "]   현재 스폰 [" + MonsterList.Instance.Items.Count + "]");
                 return;
             }
 
             //전체 생성된 몬스터의 숫자가 해당 라운드 최대 스폰 수에 도달 했으면 스폰 코루틴정지
             if(TotalSpawnedMonster >= monsterSchedule.MaxSpawnByRound[round])
             {
-                //Debug.Log("몬스터 스폰이 정지 됐습니다. Total 스폰 [" + TotalSpawnedMonster + "]   round ["+ round + "] 한라운드 당 최대 Max 스폰 [" + monsterSchedule.MaxSpawnByRound[round] + "]");
-
                 //몬스터 생성이 모두 끝났으니 몬스터 리스트에서 모든 몬스터가 모두 사라지면 이벤트 보낸는 메서드 실행.
                 //* popup의 실행은 스테이지 메이저가 관리
                 MonsterList.Instance.ActiveEmptyEvent();
@@ -219,33 +239,6 @@ namespace WoosanStudio.ZombieShooter
                 return;
             }
 
-            //Debug.Log("현재 스폰 상태 =>  Total 스폰 [" + TotalSpawnedMonster + "]   round [" + round + "]  한라운드 당 최대 Max 스폰 [" + monsterSchedule.MaxSpawnByRound[round] + "]  맵에 최대 스폰 = [" + monsterSchedule.MaxSpawnLimit + "]");
-
-
-            //맵마다 생성되는 스테이지의 인덱스
-            
-            int startStage = 0;
-
-            //첫번째 라운드에 네임드 몬스터 확인
-            //*이거 테스트 코드임
-            //*원래는 마지막 라운드에 출현 시켜야 함
-            //*현재 스폰 카운트가 0보다 크면
-            //** 지금은 0번째 라운드의 최 스폰 처음에 한번 출현으로 작성 
-            if (round == 0 && CurrentSpawnedMonster == 0)
-            {
-                //현재 라운드가 네임드 몬스터 출현 라운드 인가?
-                //네임드 스폰 인덱스에 현재 라운드가 존재 한다
-                //*무한 모드 에서는 나누기 해서 나머지가 0일때 조건으로 계산 해야함.
-                if (monsterSchedule.SpawnRoundIndexByNamedMonster.Exists(value => value.Equals(round)))
-                {
-                    //보스 몬스터 생성 요청
-                    //*0번째 생성
-                    
-                    MonsterRequester.RequesterBySetting(startStage, monsterSchedule.NamedMonsters[0]);
-                    //Debug.Log("============= 보스 생성 OK =============");
-                }
-            }
-
             //동시 스폰 갯수만큼 (일반)몬스터 스폰함
             for(int index = 0; index < monsterSchedule.MaxSameTimeSpawn;index++)
             {
@@ -254,13 +247,25 @@ namespace WoosanStudio.ZombieShooter
                 //실제 스폰이 일어남.
                 //몬스터 리퀘스트 호출.
                 //*실제 몬스터 호출 부이며 index 부분은 좀더 생각해서 작업할 필요가 있음
-                MonsterRequester.RequesterBySettings(startStage, monsterIndex, monsterSchedule.Monsters);
+                MonsterRequester.RequesterBySettings(this.StageIndex, monsterIndex, monsterSchedule.Monsters);
                 //현재 몬스터 카운트 증가
                 CurrentSpawnedMonster++;
                 //전체 생성된 몬스터 카운트 증가
                 TotalSpawnedMonster++;
 
                 //Debug.Log("[몬스터 호출] 현재 스폰카운트 = " + CurrentSpawnedMonster + "    전체 생성 몬스터 카운트 = " + TotalSpawnedMonster);
+            }
+
+            Debug.Log("네임드 몬스터 스폰 = " + (this.waveCount % monsterSchedule.SpawnRoundIndexByNamedMonster[0]));
+
+            //네이드 몬스터 생성
+            if((this.waveCount % monsterSchedule.SpawnRoundIndexByNamedMonster[0]) == 0)
+            {
+                //몬스터 랜덤 생성 => 몬스터 스캐줄의 생성몬스터 인덱스대로 생성
+                //*현재 0번 보스만 생성 가능
+                //int index = Random.Range(0, monsterSchedule.NamedMonsters.Count);
+
+                MonsterRequester.RequesterBySetting(this.StageIndex, monsterSchedule.NamedMonsters[0]);
             }
         }
 

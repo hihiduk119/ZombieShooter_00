@@ -19,8 +19,8 @@ MonoBehaviour:
   NamedMonsters:
   - {fileID: 11400000, guid: 202bf3d6f72ae43f7a1bcd61d1731cd7, type: 2}
   - {fileID: 11400000, guid: 69aece5bf1b0b4d4ba84fb64725751e8, type: 2}
-  MaxSpawnByRound: 03000000040000000500000007000000090000000b0000000d0000000f000000110000001300000016000000
-  SpawnRoundIndexByNamedMonster: 0a000000
+  MaxSpawnByRound: 010000000100000001000000
+  SpawnRoundIndexByNamedMonster: 02000000
   MaxSpawnLimit: 10
   MaxSameTimeSpawn: 1
   SpawnInterval: 2

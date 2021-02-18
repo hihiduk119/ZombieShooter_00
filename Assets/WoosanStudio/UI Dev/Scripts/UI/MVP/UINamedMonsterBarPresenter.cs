@@ -49,6 +49,8 @@ namespace WoosanStudio.ZombieShooter.UI
         private UIResistanceItemPresenter resistanceItemPresenter;
         private WaitForSeconds WFS = new WaitForSeconds(0.5f);
 
+        float amount = 1f;
+
         private void Awake()
         {
             Instance = this;
@@ -63,6 +65,15 @@ namespace WoosanStudio.ZombieShooter.UI
         public void SetAmount(float amount)
         {
             Health.fillAmount = amount;
+        }
+
+        /// <summary>
+        /// 초기화
+        /// </summary>
+        public void Reset()
+        {
+            Health.fillAmount = 1f;
+            Background.fillAmount = 1f;
         }
 
         /// <summary>
@@ -166,6 +177,13 @@ namespace WoosanStudio.ZombieShooter.UI
 
         private void Update()
         {
+            //테스트용
+            //if (Input.GetKeyDown(KeyCode.A))
+            //{
+            //    amount -= 0.1f;
+            //    this.SetAmount(amount);
+            //}
+
             //비활성 상태에선 동작 하지 않음
             if (!isActivate) return;
 
@@ -178,7 +196,8 @@ namespace WoosanStudio.ZombieShooter.UI
         /// </summary>
         void FollowGauge()
         {
-            Background.fillAmount = Mathf.Lerp(Health.fillAmount, Background.fillAmount, 0.9f);
+            //Debug.Log("health = " + Health.fillAmount + "  Background = " + Background.fillAmount);
+            Background.fillAmount = Mathf.Lerp(Health.fillAmount, Background.fillAmount, 0.95f);
         }
     }
 }

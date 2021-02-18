@@ -86,33 +86,19 @@ namespace WoosanStudio.ZombieShooter.Map
             }
         }
 
-        /*
+        
         [System.Serializable]
         public class Data
         {
-            [Header("[플레이할 스테이지]")]
+            [Header("[최대 도달했던 라운드]")]
             [SerializeField]
-            public int StageCount = 0;
-
-            [Header("[스테이지 데이터들]")]
-            [SerializeField]
-            //*변경시 세이브 반드시 필요.
-            public List<Rank> StageDatas = new List<Rank>();
+            public int ReachedRound = 0;
 
             /// <summary>
             /// 세이브 확인용
             /// </summary>
             //public void Print()
             //{
-            //    int cnt = 0;
-            //    StageDatas.ForEach(value => {
-            //        Debug.Log("[" + cnt + "] star [" + value.StarCount + "] score [" + value.Score + "] star2 [" + value.StarRankValue[0] + "] star3 [" + value.StarRankValue[0] + "]");
-            //    });
-            //}
-
-            //public Data()
-            //{
-            //    Initialize();
             //}
 
             /// <summary>
@@ -120,22 +106,9 @@ namespace WoosanStudio.ZombieShooter.Map
             /// </summary>
             public void Reset()
             {
-                StageDatas = new List<Rank>();
-                StageCount = 0;
+                ReachedRound = 0;
             }
-
-            /// <summary>
-            /// 최초 생성시 스테이지 갯수만큼 생성
-            /// </summary>
-            public void Initialize()
-            {
-                for (int i = 0; i < StageCount; i++)
-                {
-                    
-                    //StageDatas.Add(new Stage());
-                }
-            }
-        }*/
+        }
 
         [Header("[스테이지 세팅들]")]
         [SerializeField]
@@ -143,30 +116,10 @@ namespace WoosanStudio.ZombieShooter.Map
         public List<Stage.Setting> StageSetting { get => stageSetting; }
 
 
-        //[Header("[데이터 확인용으로 열어놓지만 나중에 막아야함]")]
-        //public Data data = new Data();
+        [Header("[데이터 확인용으로 열어놓지만 나중에 막아야함]")]
+        public Data data = new Data();
 
-        /// <summary>
-        /// 스테이지 구간별 데이터
-        /// *기본 선택 할수있는 카드
-        /// </summary>
-        //[System.Serializable]
-        //public class DefaultCard
-        //{
-        //    [Header("[스테이지 범위]")]
-        //    public int[] StageRange = {0,1};
 
-        //    [Header("[스테이지에서 기본 선택 캐릭터 카드]")]
-        //    public List<CardSetting> SelectAbleCharacterCard = new List<CardSetting>();
-
-        //    [Header("[스테이지에서 기본 선택 무기 카드]")]
-        //    public List<CardSetting> SelectAbleWeaponCard = new List<CardSetting>();
-
-        //    [Header("[스테이지에서 기본 선택 탄약 카드]")]
-        //    public List<CardSetting> SelectAbleAmmoCard = new List<CardSetting>();
-        //}
-
-        /*
         /// <summary>
         /// Json데이터 저장
         /// </summary>
@@ -197,18 +150,15 @@ namespace WoosanStudio.ZombieShooter.Map
         /// <summary>
         /// 
         /// </summary>
-        void Initialize()
-        {
-            //사용가능 상태 체크
-            if (!canUse) return;
-            //초기화 안됐으면 한번만 실행
-            //*초기화 됐으면 실행 안함
-            if(hasInitialized) { return; }
-            hasInitialized = true;
-
-            //스테이지 100개 만들기
-            this.data.Initialize();
-        }
+        //void Initialize()
+        //{
+        //    //사용가능 상태 체크
+        //    if (!CanUse) return;
+        //    //초기화 안됐으면 한번만 실행
+        //    //*초기화 됐으면 실행 안함
+        //    if(hasInitialized) { return; }
+        //    hasInitialized = true;
+        //}
 
         /// <summary>
         /// 해당 맵 데이터 리셋
@@ -218,6 +168,6 @@ namespace WoosanStudio.ZombieShooter.Map
             PlayerPrefs.DeleteKey("Map_" + Name);
             //Initialize();
         }
-        */
+        
     }
 }

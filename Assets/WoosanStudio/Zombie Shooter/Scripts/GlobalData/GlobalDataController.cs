@@ -209,6 +209,9 @@ namespace WoosanStudio.ZombieShooter
         //공습 기본 데미지
         static public int AirStrikeDamge = 300;
 
+        //로비에서 선택된 라운드 
+        static public int SelectRound = 0;
+
         /// <summary>
         /// 카드에 의한 건 데이터 업데이트 반영
         /// *변수 1.공속 2.최대 탄약수
@@ -309,7 +312,6 @@ namespace WoosanStudio.ZombieShooter
             public int SelectedMap = 0;
             //기본 0 스테이지 선택됨
             public int SelectedStage = 0;
-
 
             public Data() { }
         }

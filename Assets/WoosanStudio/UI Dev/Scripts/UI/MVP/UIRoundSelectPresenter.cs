@@ -47,6 +47,10 @@ namespace WoosanStudio.ZombieShooter
         {
             //글로벌 데이터와 싱크
             roundCount = GlobalDataController.SelectRound;
+
+            //버튼 활성 & 비활성
+            //*여기에 있는게 맞는가??
+            DoActvateButton();
         }
 
         /// <summary>
@@ -57,22 +61,11 @@ namespace WoosanStudio.ZombieShooter
             //임시 라운드 
             roundCount++;
 
-            //라운드 증가 가능 여부 확인
-            if(CanUpAndDown(roundCount, Setting.data.ReachedRound) )
-            {
-                //가능시 실제 글로벌데이터 적용
-                GlobalDataController.SelectRound = roundCount;
-            } else
-            {
-                //불가능시 글로벌데이터로 롤백
-                roundCount = GlobalDataController.SelectRound;
-            }
+            // 라운드 업다운 실행
+            DoUpAndDown();
 
-            //라운드 화면 적용
-            View.SetRound((roundCount + 1).ToString());
-
-            //에너지 적용
-            startButtonPresenter.UpdateEnergy(roundCount);
+            //버튼 활성 & 비활성
+            DoActvateButton();
         }
 
         /// <summary>
@@ -82,23 +75,11 @@ namespace WoosanStudio.ZombieShooter
         {
             roundCount--;
 
-            //라운드 증가 가능 여부 확인
-            if (CanUpAndDown(roundCount, Setting.data.ReachedRound))
-            {
-                //가능시 실제 글로벌데이터 적용
-                GlobalDataController.SelectRound = roundCount;
-            }
-            else
-            {
-                //불가능시 글로벌데이터로 롤백
-                roundCount = GlobalDataController.SelectRound;
-            }
+            // 라운드 업다운 실행
+            DoUpAndDown();
 
-            //라운드 화면 적용
-            View.SetRound((roundCount + 1).ToString());
-
-            //에너지 적용
-            startButtonPresenter.UpdateEnergy(roundCount);
+            //버튼 활성 & 비활성
+            DoActvateButton();
         }
 
         /// <summary>
@@ -108,23 +89,11 @@ namespace WoosanStudio.ZombieShooter
         {
             roundCount += strongValue;
 
-            //라운드 증가 가능 여부 확인
-            if (CanUpAndDown(roundCount, Setting.data.ReachedRound))
-            {
-                //가능시 실제 글로벌데이터 적용
-                GlobalDataController.SelectRound = roundCount;
-            }
-            else
-            {
-                //불가능시 글로벌데이터로 롤백
-                roundCount = GlobalDataController.SelectRound;
-            }
+            // 라운드 업다운 실행
+            DoUpAndDown();
 
-            //라운드 화면 적용
-            View.SetRound((roundCount + 1).ToString());
-
-            //에너지 적용
-            startButtonPresenter.UpdateEnergy(roundCount);
+            //버튼 활성 & 비활성
+            DoActvateButton();
         }
 
         /// <summary>
@@ -134,6 +103,35 @@ namespace WoosanStudio.ZombieShooter
         {
             roundCount -= strongValue;
 
+            // 라운드 업다운 실행
+            DoUpAndDown();
+
+            //버튼 활성 & 비활성
+            DoActvateButton();
+        }
+
+        /// <summary>
+        /// 버튼 사용 가능 여부 체크
+        /// * 여기서 Setting.data.ReachedRound값을 보고 버튼 활성 & 비활성
+        /// </summary>
+        void DoActvateButton()
+        {
+            //라운드 카운트가 0과 같다면 왼쪽 버튼 비활성
+            if (roundCount == 0) { View.SetLeftButtons(false); }
+            //라운드 카운트가 0과 같다면 왼쪽 버튼 활성
+            else { View.SetLeftButtons(true); }
+
+            //라운드 카운트가 맵 최대 도달 카운트와 같다면 오른쪽 버튼 비활성
+            if (roundCount ==  Setting.data.ReachedRound) { View.SetRightButtons(false); }
+            ////라운드 카운트가 맵 최대 도달 카운트와 같다면 오른쪽 버튼 활성
+            else { View.SetRightButtons(true); }
+        }
+
+        /// <summary>
+        /// 라운드 업다운 실행
+        /// </summary>
+        void DoUpAndDown()
+        {
             //라운드 증가 가능 여부 확인
             if (CanUpAndDown(roundCount, Setting.data.ReachedRound))
             {
@@ -151,6 +149,9 @@ namespace WoosanStudio.ZombieShooter
 
             //에너지 적용
             startButtonPresenter.UpdateEnergy(roundCount);
+
+            //에너지 트윈 연출
+            View.EffectRound();
         }
 
         /// <summary>
@@ -166,6 +167,11 @@ namespace WoosanStudio.ZombieShooter
                 return false;
             }
 
+            //0보다 큰지 확인
+            if(0 > value)
+            {
+                return false;
+            }
             return true;
         }
     }

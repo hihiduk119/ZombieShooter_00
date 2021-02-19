@@ -59,6 +59,16 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 에너지 연출
+        /// </summary>
+        public void EffectEnergy()
+        {
+            Energy.transform.DOKill();
+            Energy.transform.localScale = Vector3.one;
+            Energy.transform.DOScale(1.4f, 0.1f).SetLoops(2, LoopType.Yoyo);
+        }
+
+        /// <summary>
         /// 시작 버튼 눌림
         /// </summary>
         public void StartClick()

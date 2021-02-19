@@ -4378,6 +4378,7 @@ GameObject:
   - component: {fileID: 212435330}
   - component: {fileID: 212435329}
   - component: {fileID: 212435328}
+  - component: {fileID: 212435332}
   m_Layer: 5
   m_Name: Double Left Button
   m_TagString: Untagged
@@ -5923,6 +5924,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212435326}
   m_CullTransparentMesh: 0
+--- !u!225 &212435332
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212435326}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &217174781 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 863729631154490029, guid: 3897f9a3fadf048f387389ae71bf527c,
@@ -13967,6 +13980,7 @@ GameObject:
   - component: {fileID: 870993511}
   - component: {fileID: 870993510}
   - component: {fileID: 870993509}
+  - component: {fileID: 870993513}
   m_Layer: 5
   m_Name: Left Button
   m_TagString: Untagged
@@ -15512,6 +15526,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 870993507}
   m_CullTransparentMesh: 0
+--- !u!225 &870993513
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870993507}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &873569783
 GameObject:
   m_ObjectHideFlags: 0
@@ -42261,6 +42287,13 @@ MonoBehaviour:
   RoundStrongUpEvent:
     m_PersistentCalls:
       m_Calls: []
+  Title: {fileID: 1539976537}
+  Lefts:
+  - {fileID: 870993513}
+  - {fileID: 212435332}
+  Rights:
+  - {fileID: 2145334481}
+  - {fileID: 2127135304}
   Round: {fileID: 1866909116}
 --- !u!114 &2109080542
 MonoBehaviour:
@@ -43920,6 +43953,7 @@ GameObject:
   - component: {fileID: 2127135302}
   - component: {fileID: 2127135301}
   - component: {fileID: 2127135300}
+  - component: {fileID: 2127135304}
   m_Layer: 5
   m_Name: Double Right Button
   m_TagString: Untagged
@@ -45465,6 +45499,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127135298}
   m_CullTransparentMesh: 0
+--- !u!225 &2127135304
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127135298}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2132353305
 GameObject:
   m_ObjectHideFlags: 0
@@ -45707,6 +45753,7 @@ GameObject:
   - component: {fileID: 2145334479}
   - component: {fileID: 2145334478}
   - component: {fileID: 2145334477}
+  - component: {fileID: 2145334481}
   m_Layer: 5
   m_Name: Right Button
   m_TagString: Untagged
@@ -47252,6 +47299,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145334475}
   m_CullTransparentMesh: 0
+--- !u!225 &2145334481
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145334475}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1836758714617804088
 GameObject:
   m_ObjectHideFlags: 0
@@ -52867,7 +52926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Alpha: 0.25
-  Energy: {fileID: 0}
+  Energy: {fileID: 1827156090}
   StartClickEvent:
     m_PersistentCalls:
       m_Calls:

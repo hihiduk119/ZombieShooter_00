@@ -32,6 +32,9 @@ namespace WoosanStudio.ZombieShooter
         //경험치 컨트롤
         private ExpPresenter expPresenter;
 
+        //라운드 셀렉터 컨트롤
+        private UIRoundSelectPresenter roundSelectPresenter;
+
         private void Awake()
         {
             //MapContent애서 mapItems 세팅
@@ -48,6 +51,9 @@ namespace WoosanStudio.ZombieShooter
 
             //스타트버튼 사용 여부에따라 좌우 버튼 트윈
             UpdateUseAbleEvent.AddListener(View.UpdateButton);
+
+            //라운드 셀렉터 컨트롤 가져오기
+            roundSelectPresenter = GameObject.FindObjectOfType<UIRoundSelectPresenter>();
         }
 
         private void Start()
@@ -98,6 +104,9 @@ namespace WoosanStudio.ZombieShooter
             GlobalDataController.MapSetting = Model.mapSettings[mapIndex];
             //스타트 버튼 사용 가능 여부 통지
             UpdateUseAbleEvent.Invoke(Model.mapSettings[mapIndex].CanUse);
+
+            //라운드 셀렉터에 현재 맵 넣기
+            roundSelectPresenter.Setting = GlobalDataController.MapSetting;
         }
     }
 }

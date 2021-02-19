@@ -260,7 +260,7 @@ namespace WoosanStudio.ZombieShooter
             }
         }*/
 
-        #region [-TestCode]
+        //#region [-TestCode]
         //private void Update()
         //{
         //    if (Input.GetKeyDown(KeyCode.A))
@@ -289,6 +289,6 @@ namespace WoosanStudio.ZombieShooter
         //        UpdateText();
         //    }
         //}
-        #endregion 
+        //#endregion 
     }
 }

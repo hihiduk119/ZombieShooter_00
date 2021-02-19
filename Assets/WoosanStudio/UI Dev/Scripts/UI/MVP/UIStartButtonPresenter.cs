@@ -120,6 +120,9 @@ namespace WoosanStudio.ZombieShooter
 
             //사용할 에너지 업데이트
             View.UpdateEnergy(this.energy.ToString());
+
+            //에너지 트윈 연출
+            View.EffectEnergy();
         }
 
         /// <summary>

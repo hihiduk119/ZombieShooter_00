@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
@@ -14,6 +12,18 @@ namespace WoosanStudio.ZombieShooter
         [Header("[MVP View]")]
         public UIRoundSelectView View;
 
+        //라운드 카운트
+        private int roundCount = 0;
+
+        //라운드 강하게 올릴때 사용하는 값
+        private int strongValue = 10;
+
+        [Header("[[Auto] 해당되는 맵 가져오기]")]
+        public Map.Setting Setting;
+
+        //시작 버튼 컨트롤러
+        private UIStartButtonPresenter startButtonPresenter;
+
         //올리고 내릴때 최대 라운드는 플레이어가 플레이한 라운드
         //사용되는 에너지 값 변경
         //모든 맵마다 최대 언락된 라운드 저장 해야함.
@@ -23,6 +33,20 @@ namespace WoosanStudio.ZombieShooter
             this.View.RoundDownEvent.AddListener(RoundDown);
             this.View.RoundStrongUpEvent.AddListener(RoundStrongUp);
             this.View.RoundStrongDownEvent.AddListener(RoundStrongDown);
+
+            //시작 버튼 컨트롤러
+            startButtonPresenter = GameObject.FindObjectOfType<UIStartButtonPresenter>();
+        }
+
+        private void Start()
+        {
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            //글로벌 데이터와 싱크
+            roundCount = GlobalDataController.SelectRound;
         }
 
         /// <summary>
@@ -30,7 +54,25 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void RoundUp()
         {
+            //임시 라운드 
+            roundCount++;
 
+            //라운드 증가 가능 여부 확인
+            if(CanUpAndDown(roundCount, Setting.data.ReachedRound) )
+            {
+                //가능시 실제 글로벌데이터 적용
+                GlobalDataController.SelectRound = roundCount;
+            } else
+            {
+                //불가능시 글로벌데이터로 롤백
+                roundCount = GlobalDataController.SelectRound;
+            }
+
+            //라운드 화면 적용
+            View.SetRound((roundCount + 1).ToString());
+
+            //에너지 적용
+            startButtonPresenter.UpdateEnergy(roundCount);
         }
 
         /// <summary>
@@ -38,7 +80,25 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void RoundDown()
         {
+            roundCount--;
 
+            //라운드 증가 가능 여부 확인
+            if (CanUpAndDown(roundCount, Setting.data.ReachedRound))
+            {
+                //가능시 실제 글로벌데이터 적용
+                GlobalDataController.SelectRound = roundCount;
+            }
+            else
+            {
+                //불가능시 글로벌데이터로 롤백
+                roundCount = GlobalDataController.SelectRound;
+            }
+
+            //라운드 화면 적용
+            View.SetRound((roundCount + 1).ToString());
+
+            //에너지 적용
+            startButtonPresenter.UpdateEnergy(roundCount);
         }
 
         /// <summary>
@@ -46,7 +106,25 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void RoundStrongUp()
         {
+            roundCount += strongValue;
 
+            //라운드 증가 가능 여부 확인
+            if (CanUpAndDown(roundCount, Setting.data.ReachedRound))
+            {
+                //가능시 실제 글로벌데이터 적용
+                GlobalDataController.SelectRound = roundCount;
+            }
+            else
+            {
+                //불가능시 글로벌데이터로 롤백
+                roundCount = GlobalDataController.SelectRound;
+            }
+
+            //라운드 화면 적용
+            View.SetRound((roundCount + 1).ToString());
+
+            //에너지 적용
+            startButtonPresenter.UpdateEnergy(roundCount);
         }
 
         /// <summary>
@@ -54,7 +132,41 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         private void RoundStrongDown()
         {
+            roundCount -= strongValue;
 
+            //라운드 증가 가능 여부 확인
+            if (CanUpAndDown(roundCount, Setting.data.ReachedRound))
+            {
+                //가능시 실제 글로벌데이터 적용
+                GlobalDataController.SelectRound = roundCount;
+            }
+            else
+            {
+                //불가능시 글로벌데이터로 롤백
+                roundCount = GlobalDataController.SelectRound;
+            }
+
+            //라운드 화면 적용
+            View.SetRound((roundCount + 1).ToString());
+
+            //에너지 적용
+            startButtonPresenter.UpdateEnergy(roundCount);
+        }
+
+        /// <summary>
+        /// 라운드 업다운 가능 여부
+        /// </summary>
+        /// <param name="maxRound"></param>
+        /// <returns></returns>
+        bool CanUpAndDown(int value, int maxRound)
+        {
+            //최대 라운드 값보다 큰지 확인
+            if(maxRound < value)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

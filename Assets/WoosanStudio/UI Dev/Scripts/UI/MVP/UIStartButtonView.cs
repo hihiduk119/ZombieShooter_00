@@ -18,6 +18,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[비활성화 알파값]")]
         public float Alpha = 0.25f;
 
+        [Header("[에너지 값]")]
+        public Text Energy;
+
         [Header("[시작 버튼 클릭]")]
         public UnityEvent StartClickEvent = new UnityEvent();
 
@@ -44,6 +47,15 @@ namespace WoosanStudio.ZombieShooter
             {
                 canvasGroup.alpha = Alpha;
             }
+        }
+
+        /// <summary>
+        /// 사용 되는 에너지 업데이트
+        /// </summary>
+        /// <param name="text"></param>
+        public void UpdateEnergy(string text)
+        {
+            Energy.text = "x " + text;
         }
 
         /// <summary>

@@ -41,6 +41,8 @@ namespace WoosanStudio.ZombieShooter
         //버튼 애니메이션용 코루틴
         Coroutine buttonAnimaitonCoroutine;
 
+        private int energy = 0;
+
         /// <summary>
         /// 캐릭터 사용 가능 여부 업데이트
         /// </summary>
@@ -104,6 +106,20 @@ namespace WoosanStudio.ZombieShooter
                 //사용 불가 이벤트
                 UpdateUseAbleEvent.Invoke(false);
             }
+        }
+
+        /// <summary>
+        /// 에너지 업데이트
+        /// </summary>
+        /// <param name="roundCount">라운드 카운트</param>
+        public void UpdateEnergy(int roundCount)
+        {
+            //사용 에너지 계산식
+            //기본 에너지 10 + 라운드 1 * 라운드 1당 추가 되는 에너지
+            this.energy = GlobalDataController.DefaultConsumeEnergy + roundCount * GlobalDataController.ConsumeEnergyByRound;
+
+            //사용할 에너지 업데이트
+            View.UpdateEnergy(this.energy.ToString());
         }
 
         /// <summary>

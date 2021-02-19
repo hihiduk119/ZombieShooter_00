@@ -212,6 +212,12 @@ namespace WoosanStudio.ZombieShooter
         //로비에서 선택된 라운드 
         static public int SelectRound = 0;
 
+        //스테이지 시작시 기본으로 소모되는 에너지
+        static public int DefaultConsumeEnergy = 10;
+
+        //라운드당 추가 소모되는 에너지
+        static public int ConsumeEnergyByRound = 1;
+
         /// <summary>
         /// 카드에 의한 건 데이터 업데이트 반영
         /// *변수 1.공속 2.최대 탄약수

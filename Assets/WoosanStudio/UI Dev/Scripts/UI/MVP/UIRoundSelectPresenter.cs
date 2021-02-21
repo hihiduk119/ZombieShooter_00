@@ -122,7 +122,7 @@ namespace WoosanStudio.ZombieShooter
             else { View.SetLeftButtons(true); }
 
             //라운드 카운트가 맵 최대 도달 카운트와 같다면 오른쪽 버튼 비활성
-            if (roundCount ==  Setting.data.ReachedRound) { View.SetRightButtons(false); }
+            if (roundCount ==  Setting.ReachedRound) { View.SetRightButtons(false); }
             ////라운드 카운트가 맵 최대 도달 카운트와 같다면 오른쪽 버튼 활성
             else { View.SetRightButtons(true); }
         }
@@ -133,7 +133,7 @@ namespace WoosanStudio.ZombieShooter
         void DoUpAndDown()
         {
             //라운드 증가 가능 여부 확인
-            if (CanUpAndDown(roundCount, Setting.data.ReachedRound))
+            if (CanUpAndDown(roundCount, Setting.ReachedRound))
             {
                 //가능시 실제 글로벌데이터 적용
                 GlobalDataController.SelectRound = roundCount;

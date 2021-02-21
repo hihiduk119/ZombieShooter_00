@@ -63,6 +63,7 @@ namespace WoosanStudio.ZombieShooter.Map
         //private List<DefaultCard> defaultCardDatas = new List<DefaultCard>();
         //public List<DefaultCard> DefaultCardDatas { get => defaultCardDatas; }
 
+        /*
         [System.Serializable]
         public class Rank
         {
@@ -85,8 +86,20 @@ namespace WoosanStudio.ZombieShooter.Map
                 AllRankTable = allRankTable;
             }
         }
+        */
 
-        
+        //최대 도달했던 라운드
+        private int reachedRound;
+        public int ReachedRound
+        {
+            get => reachedRound; set
+            {
+                data.ReachedRound = reachedRound = value;
+                Save();
+            }
+        }
+
+
         [System.Serializable]
         public class Data
         {
@@ -143,10 +156,18 @@ namespace WoosanStudio.ZombieShooter.Map
 
             this.data = JsonUtility.FromJson<Data>(PlayerPrefs.GetString("Map_" + Name));
             //로드한 데이터와 현재 데이터 싱크 마추기
-            //Synchronization();
+            Synchronization();
         }
-        
-        
+
+        /// <summary>
+        /// 데이터와 싱크 마춤
+        /// </summary>
+        void Synchronization()
+        {
+            this.reachedRound = data.ReachedRound;
+        }
+
+
         /// <summary>
         /// 
         /// </summary>

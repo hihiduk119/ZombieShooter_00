@@ -100,8 +100,10 @@ namespace WoosanStudio.ZombieShooter
 
             //글로벌 데이터에 현재 맵 저장
             GlobalDataController.Instance.SelectedMap = mapIndex;
+
             //맵 세팅 캐쉬에 담기
             GlobalDataController.MapSetting = Model.mapSettings[mapIndex];
+
             //스타트 버튼 사용 가능 여부 통지
             UpdateUseAbleEvent.Invoke(Model.mapSettings[mapIndex].CanUse);
 

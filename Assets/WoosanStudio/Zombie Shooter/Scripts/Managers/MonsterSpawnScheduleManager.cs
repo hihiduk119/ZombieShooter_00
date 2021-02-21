@@ -102,8 +102,7 @@ namespace WoosanStudio.ZombieShooter
         {
             //현재 스테이지 저장
             //currentStage = stage;
-
-            int startRound = 14;
+            int startRound = GlobalDataController.SelectRound;
 
             //현재 라운드 0으로 초기화
             //*시작시 라운드 값은 이걸로 변경 가능
@@ -143,6 +142,9 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void SpawnByNextRound()
         {
+            //스폰 전에 맵의 현재 도달한 최고 라운드 저장.
+            GlobalDataController.MapSetting.ReachedRound = currentRound;
+
             //Debug.Log("스폰 0-1");
             //현재 라운드 자동 증가
             currentRound++;
@@ -181,6 +183,8 @@ namespace WoosanStudio.ZombieShooter
 
             //라운드 시작시 웨이브 카운트 초기화 및 화면 업데이트
             waveCountPresent.UpdateInfo(DeadMonster, MonsterSchedule.MaxSpawnByRound[round],waveCount);
+
+
         }
 
 

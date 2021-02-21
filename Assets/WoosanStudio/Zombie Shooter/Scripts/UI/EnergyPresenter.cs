@@ -119,7 +119,8 @@ namespace WoosanStudio.ZombieShooter
             Model.UpdateEnergy(value);
         }
 
-        
+
+        /*
         #region [-TestCode]
         void Update()
         {
@@ -148,5 +149,6 @@ namespace WoosanStudio.ZombieShooter
             }
         }
         #endregion
+        */
     }
 }

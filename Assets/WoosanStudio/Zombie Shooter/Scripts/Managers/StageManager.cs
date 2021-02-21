@@ -185,6 +185,18 @@ namespace WoosanStudio.ZombieShooter
             //첫 시작시 레이저 포인터 끄기
             WeaponRequester.LaserPointer.SetActivate(false);
 
+            //생성된 플레이어에 체력 세팅을 위해 IHaveHealth가져옴
+            IHaveHealth haveHealth = playerController.GetComponent(typeof(IHaveHealth)) as IHaveHealth;
+            haveHealth.ResetHealth(GlobalDataController.PlayerHealth);
+            //에너지 부족으로 시작했다면 체력 감소
+            if(GlobalDataController.NoEnergyStart)
+            {
+                //새 체력 5 = [기본 체력 50] * [감소 비율 10] * 0.01
+                int newHealth = Mathf.RoundToInt( GlobalDataController.PlayerHealth * GlobalDataController.NoEnergyStartHealthPointRate * 0.01f);
+                //감소한 새로운 체력 적용
+                haveHealth.SetHealth(newHealth);
+            }
+
             //Debug.Log("레이저 포인터 끄기");
         }
 

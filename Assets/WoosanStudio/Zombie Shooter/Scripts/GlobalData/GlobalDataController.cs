@@ -216,8 +216,14 @@ namespace WoosanStudio.ZombieShooter
         //라운드당 추가 소모되는 에너지
         static public int ConsumeEnergyByRound = 1;
 
-        //시작시 에너지 소모 값
-        //static public int EnergyUseAtStartup = 10;
+        //에너지 부족 상태로 시작
+        static public bool NoEnergyStart = false;
+
+        //에너지 부족 시작시 기본 비율 -> %임
+        static public int NoEnergyStartHealthPointRate = 10;
+
+        //플레이어의 기본 체력
+        static public int PlayerHealth = 50;
 
         /// <summary>
         /// 소모되는 에너지 계산해서 가져오기

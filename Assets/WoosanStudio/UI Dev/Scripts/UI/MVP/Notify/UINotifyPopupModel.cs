@@ -14,7 +14,7 @@ namespace WoosanStudio.ZombieShooter
         public enum Type {
             NotEnoughCoin = 0,  //코인 부족
             NotEnoughGem,       //보석 부족
-            NotEnoughEnergy,    //에너지 부족
+            NotEnoughEnergy,    //*에너지 부족 -> 시스템 변경으로 사용 안함
             SlotIsMax,          //슬롯 추가 불가.슬롯이 최대 상태임.
             SlotIsFull,         //모든 연구 슬롯이 꽉차서 연구 불가
         }

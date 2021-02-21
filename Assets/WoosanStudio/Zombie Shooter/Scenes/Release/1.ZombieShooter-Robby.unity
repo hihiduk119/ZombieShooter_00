@@ -51413,6 +51413,7 @@ GameObject:
   - component: {fileID: 3104315454811956606}
   - component: {fileID: 3104315454811956605}
   - component: {fileID: 3104315454811956607}
+  - component: {fileID: 3104315454811956608}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -52988,6 +52989,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  PopupOpener: {fileID: 3104315454811956608}
+--- !u!114 &3104315454811956608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3104315454811956602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 606828f3686ee4f0289cece909531556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupPrefab: {fileID: 5182120765240050754, guid: ba93aca179d964a879f3c1880eb131bd,
+    type: 3}
 --- !u!1 &3104315454911303425
 GameObject:
   m_ObjectHideFlags: 0

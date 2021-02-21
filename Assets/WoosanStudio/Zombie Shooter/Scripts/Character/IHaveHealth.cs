@@ -8,6 +8,9 @@ namespace WoosanStudio.ZombieShooter
         int Health { get; set; }
         int MaxHealth { get; set; }
         void DamagedListener(int damage,Vector3 hit,string keyValue);
+        void ResetHealth(int health);
+        void SetHealth(int health);
+
         DamagedEvent DamagedEvent { get; set; }
         UnityEvent ZeroHealthEvent { get; set; }
     }

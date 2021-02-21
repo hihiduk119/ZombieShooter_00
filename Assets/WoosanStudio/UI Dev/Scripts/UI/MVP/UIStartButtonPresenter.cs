@@ -29,6 +29,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[스테이지 시작됨을 알림]")]
         public UnityEvent StageStartEvent = new UnityEvent();
 
+        [Header("[No Energy 팝업 오프너]")]
+        public Ricimi.PopupOpener PopupOpener;
+
 
         //캐릭터 사용 가능
         bool useAbleCharacter = false;
@@ -144,7 +147,9 @@ namespace WoosanStudio.ZombieShooter
             } else
             {
                 //에너지 부족 메시지 출력
-                NotifyPopupController.Instance.OpenResult(UINotifyPopupModel.Type.NotEnoughEnergy);
+                //NotifyPopupController.Instance.OpenResult(UINotifyPopupModel.Type.NotEnoughEnergy);
+                //에너지 부족 팝업 출력
+                PopupOpener.OpenPopup();
 
                 //가이드 잠시 표시후 닫음
                 if (buttonAnimaitonCoroutine != null) { StopCoroutine(buttonAnimaitonCoroutine); } 

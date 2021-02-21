@@ -41,7 +41,8 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
-        /// 새로운 체력을 세팅합니다
+        /// 새로운 체력을 세팅합니다.
+        /// 최대 체력도 같이 세팅.
         /// </summary>
         /// <param name="health"></param>
         public void ResetHealth(int health)
@@ -50,6 +51,15 @@ namespace WoosanStudio.ZombieShooter
             maxHealth = health;
             //현재 체력 초기화
             Initialize();
+        }
+
+        /// <summary>
+        /// 현재 체력만 세팅
+        /// </summary>
+        /// <param name="health"></param>
+        public void SetHealth(int health)
+        {
+            this.health = health;
         }
 
         public void DamagedListener(int damage,Vector3 hit,string keyValue)

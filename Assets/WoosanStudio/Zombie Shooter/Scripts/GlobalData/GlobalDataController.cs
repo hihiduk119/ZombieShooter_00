@@ -175,8 +175,6 @@ namespace WoosanStudio.ZombieShooter
         static public int MaxUpgradeSlotCount = 3;
         //In-Game 에서 라운드 종료후 카드 선택 화면에서 카드 추가 가격
         static public int[] CardAddPrices = {1000,1500,3000};
-        //시작시 에너지 소모 값
-        static public int EnergyUseAtStartup = 10;
 
         [Header("[[씬에서 쓰고 버리는 데이터] 중간 카드 선택시 선택 가능한 모든 카드]")]
         public List<CardSetting> SelectAbleAllCard = new List<CardSetting>();
@@ -217,6 +215,20 @@ namespace WoosanStudio.ZombieShooter
 
         //라운드당 추가 소모되는 에너지
         static public int ConsumeEnergyByRound = 1;
+
+        //시작시 에너지 소모 값
+        //static public int EnergyUseAtStartup = 10;
+
+        /// <summary>
+        /// 소모되는 에너지 계산해서 가져오기
+        /// </summary>
+        /// <returns></returns>
+        static public int GetConsumeEnergy(int baseVaue,int waveValue,int waveCount)
+        {
+            int value = baseVaue + (waveValue * waveCount);
+
+            return value;
+        }
 
         /// <summary>
         /// 카드에 의한 건 데이터 업데이트 반영

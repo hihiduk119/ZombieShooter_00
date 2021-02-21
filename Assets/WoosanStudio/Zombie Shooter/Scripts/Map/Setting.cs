@@ -168,17 +168,12 @@ namespace WoosanStudio.ZombieShooter.Map
         }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
+        // <summary>
+        // 
+        // </summary>
         //void Initialize()
         //{
-        //    //사용가능 상태 체크
-        //    if (!CanUse) return;
-        //    //초기화 안됐으면 한번만 실행
-        //    //*초기화 됐으면 실행 안함
-        //    if(hasInitialized) { return; }
-        //    hasInitialized = true;
+        //    this.reachedRound = 0;
         //}
 
         /// <summary>
@@ -187,7 +182,8 @@ namespace WoosanStudio.ZombieShooter.Map
         public void Reset()
         {
             PlayerPrefs.DeleteKey("Map_" + Name);
-            //Initialize();
+
+            this.reachedRound = this.data.ReachedRound = 0;
         }
         
     }

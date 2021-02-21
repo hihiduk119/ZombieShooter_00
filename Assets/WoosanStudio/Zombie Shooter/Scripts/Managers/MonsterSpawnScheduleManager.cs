@@ -260,7 +260,7 @@ namespace WoosanStudio.ZombieShooter
                 //Debug.Log("[몬스터 호출] 현재 스폰카운트 = " + CurrentSpawnedMonster + "    전체 생성 몬스터 카운트 = " + TotalSpawnedMonster);
             }
 
-            Debug.Log("네임드 몬스터 스폰 = " + (this.waveCount % monsterSchedule.SpawnRoundIndexByNamedMonster[0]));
+            //Debug.Log("네임드 몬스터 스폰 = " + (this.waveCount % monsterSchedule.SpawnRoundIndexByNamedMonster[0]));
 
             //네이드 몬스터 생성
             if((this.waveCount % monsterSchedule.SpawnRoundIndexByNamedMonster[0]) == 0)

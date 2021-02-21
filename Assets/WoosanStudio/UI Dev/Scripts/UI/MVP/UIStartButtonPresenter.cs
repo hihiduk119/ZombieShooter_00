@@ -130,12 +130,17 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void StartClick()
         {
+            //웨이브(라운드)를 계산한 소모되는 에너지
+            int consumeEnergy = GlobalDataController.GetConsumeEnergy(GlobalDataController.DefaultConsumeEnergy, GlobalDataController.ConsumeEnergyByRound, GlobalDataController.SelectRound);
+
             //현재 에너지 가 충분하면 사용
-            if(energyPresenter.Model.GetData().CurrentEnergy >= GlobalDataController.EnergyUseAtStartup)
+            if (energyPresenter.Model.GetData().CurrentEnergy >= consumeEnergy)
             {
-                energyPresenter.UpdateEnergy(-GlobalDataController.EnergyUseAtStartup);
+                energyPresenter.UpdateEnergy(-consumeEnergy);
                 /// 해당 씬으로 이동
                 GoToScene();
+
+                Debug.Log("남은 에너지 = " + energyPresenter.Model.GetData().CurrentEnergy + " 사용한 에너지 = " + consumeEnergy);
             } else
             {
                 //에너지 부족 메시지 출력

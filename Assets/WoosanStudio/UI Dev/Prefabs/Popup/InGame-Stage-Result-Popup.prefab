@@ -2721,6 +2721,58 @@ MonoBehaviour:
     triggerStayForTime: 0
     doesTriggerStayRepeat: 1
     sliderValue: 0
+  codeTriggeredEvent1Sound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  codeTriggeredEvent2Sound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
   unitySliderChangedSound:
     isExpanded: 1
     allPlayersShouldHear: 0
@@ -3287,6 +3339,8 @@ MonoBehaviour:
   useNguiMouseUpSound: 0
   useNguiMouseEnterSound: 0
   useNguiMouseExitSound: 0
+  useCodeTriggeredEvent1Sound: 0
+  useCodeTriggeredEvent2Sound: 0
   useUnitySliderChangedSound: 0
   useUnityButtonClickedSound: 0
   useUnityPointerDownSound: 1
@@ -4716,6 +4770,58 @@ MonoBehaviour:
     triggerStayForTime: 0
     doesTriggerStayRepeat: 1
     sliderValue: 0
+  codeTriggeredEvent1Sound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  codeTriggeredEvent2Sound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
   unitySliderChangedSound:
     isExpanded: 1
     allPlayersShouldHear: 0
@@ -5282,6 +5388,8 @@ MonoBehaviour:
   useNguiMouseUpSound: 0
   useNguiMouseEnterSound: 0
   useNguiMouseExitSound: 0
+  useCodeTriggeredEvent1Sound: 0
+  useCodeTriggeredEvent2Sound: 0
   useUnitySliderChangedSound: 0
   useUnityButtonClickedSound: 0
   useUnityPointerDownSound: 1

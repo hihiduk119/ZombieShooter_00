@@ -23,7 +23,7 @@ namespace WoosanStudio.ZombieShooter
         private void Awake()
         {
             //설명 넣기
-            Description.text = "Start at < color =#ff9911ff>" + GlobalDataController.NoEnergyStartHealthPointRate.ToString() + "%</color>HP.";
+            Description.text = "Start at <color=#ff9911ff>" + GlobalDataController.NoEnergyStartHealthPointRate.ToString() + "%</color> HP.";
         }
 
         /// <summary>

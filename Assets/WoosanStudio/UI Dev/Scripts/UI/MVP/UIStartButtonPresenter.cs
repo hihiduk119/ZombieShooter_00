@@ -143,6 +143,9 @@ namespace WoosanStudio.ZombieShooter
                 /// 해당 씬으로 이동
                 GoToScene();
 
+                //에너지 부족 시작 아님
+                GlobalDataController.NoEnergyStart = false;
+
                 Debug.Log("남은 에너지 = " + energyPresenter.Model.GetData().CurrentEnergy + " 사용한 에너지 = " + consumeEnergy);
             } else
             {

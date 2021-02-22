@@ -77,7 +77,7 @@ namespace WoosanStudio.ZombieShooter
         public Ricimi.PopupOpener CardSelectPopupOpener;
 
         [Header("[플레이어의 체력 및 탄약 UI 컨트롤]")]
-        public UI.UIPlayerCanvasPresenter UIPlayerCanvasPresenter;
+        public UI.UIPlayerCanvasPresenter PlayerCanvasPresenter;
 
         [Header("[플레이어 연출용 이펙트")]
         public GameObject BoomEffectPrefab;
@@ -185,16 +185,29 @@ namespace WoosanStudio.ZombieShooter
             //첫 시작시 레이저 포인터 끄기
             WeaponRequester.LaserPointer.SetActivate(false);
 
-            //생성된 플레이어에 체력 세팅을 위해 IHaveHealth가져옴
+            //실제 플레이어에 체력 세팅을 위해 IHaveHealth가져옴
             IHaveHealth haveHealth = playerController.GetComponent(typeof(IHaveHealth)) as IHaveHealth;
+            //체력 세팅
             haveHealth.ResetHealth(GlobalDataController.PlayerHealth);
+            /// UI 체력 바에 설정
+            //최대 체력 업데이트
+            PlayerCanvasPresenter.UpdateMaxHP(GlobalDataController.PlayerHealth);
+            //현재 체력 과 최대 체력 동기화
+            PlayerCanvasPresenter.ResetHP();
+
+            Debug.Log("체력 리셋 !! = [" + GlobalDataController.PlayerHealth + "]");
+
             //에너지 부족으로 시작했다면 체력 감소
             if(GlobalDataController.NoEnergyStart)
             {
                 //새 체력 5 = [기본 체력 50] * [감소 비율 10] * 0.01
                 int newHealth = Mathf.RoundToInt( GlobalDataController.PlayerHealth * GlobalDataController.NoEnergyStartHealthPointRate * 0.01f);
+
                 //감소한 새로운 체력 적용
                 haveHealth.SetHealth(newHealth);
+
+                //UI 체력 설정
+                PlayerCanvasPresenter.UpdateCurrentHP(newHealth);
             }
 
             //Debug.Log("레이저 포인터 끄기");
@@ -258,7 +271,7 @@ namespace WoosanStudio.ZombieShooter
             //*여기 있어야 하는게 맞아???
             //*플레이어가 생성시에 스스로 연결해야 하는거 아님?
             //체력과 탄약 UI 활성
-            UIPlayerCanvasPresenter.SetActivate(true);
+            PlayerCanvasPresenter.SetActivate(true);
 
             //플레이어와 플레이어 캔버스 연결
             ConnectPlayerAndUIPlayerCanvas();
@@ -278,9 +291,9 @@ namespace WoosanStudio.ZombieShooter
         void ConnectPlayerAndUIPlayerCanvas()
         {
             //따라다닐 플레이어 세팅
-            UIPlayerCanvasPresenter.FollowPlayer(playerController.gameObject);
+            PlayerCanvasPresenter.FollowPlayer(playerController.gameObject);
             //몬스터에게 받은 데미지 이벤트 체력바와 연결
-            UIPlayerCanvasPresenter.ConnectDemagedListener(playerController.GetComponent(typeof(IHaveHealth)) as IHaveHealth);
+            PlayerCanvasPresenter.ConnectDemagedListener(playerController.GetComponent(typeof(IHaveHealth)) as IHaveHealth);
             //탄약 사용 이벤트 탄약바와 연결
             //*탄약 바는 총이 바뀌면 그때 마다 바뀌기에 여기 있으면 안됨.
             //UIPlayerCanvasPresenter.ConnectUsedAmmoListener(playerController.GetComponent(typeof(IHaveAmmo)) as IHaveAmmo);

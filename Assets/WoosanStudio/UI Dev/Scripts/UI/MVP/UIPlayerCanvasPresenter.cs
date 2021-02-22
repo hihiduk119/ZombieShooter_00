@@ -62,6 +62,15 @@ namespace WoosanStudio.ZombieShooter.UI
         }
 
         /// <summary>
+        /// 현재 체력 업데이트
+        /// </summary>
+        /// <param name="value"></param>
+        public void UpdateCurrentHP(int value)
+        {
+            HP_Bar.valueCurrent = value;
+        }
+
+        /// <summary>
         /// 체력 업데이트 2
         /// *이벤트 연결용 
         /// </summary>

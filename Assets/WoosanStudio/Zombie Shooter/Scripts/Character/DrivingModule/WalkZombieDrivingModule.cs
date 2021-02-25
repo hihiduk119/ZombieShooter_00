@@ -10,6 +10,7 @@ namespace WoosanStudio.ZombieShooter
     {
         private Transform _transform;
         private Transform _destination;
+        public Transform Destination { get => _destination; set => _destination = value; }
         private MonsterSettings _monsterSettings;
         //private CharacterSettings _characterSettings;
         private NavMeshAgent _agent;

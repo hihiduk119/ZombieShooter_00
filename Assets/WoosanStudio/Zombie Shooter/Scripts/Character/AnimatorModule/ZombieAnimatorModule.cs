@@ -33,5 +33,13 @@ namespace WoosanStudio.ZombieShooter
             //에니메이션 세팅상 1이 최고 스피
             _animator.SetFloat("Speed", 1);
         }
+
+        public void Idle()
+        {
+            if (_animator == null) return;
+            _animator.SetFloat("Speed", 0);
+
+            _animator.Play("Idle");
+        }
     }
 }

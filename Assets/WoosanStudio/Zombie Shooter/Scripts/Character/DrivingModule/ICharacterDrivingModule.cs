@@ -1,4 +1,5 @@
 ﻿using UnityEngine.Events;
+using UnityEngine;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -13,6 +14,7 @@ namespace WoosanStudio.ZombieShooter
         DrivingState State { get; }
         void Tick();
         float Speed { get; }
+        Transform Destination { get; set; }
 
         UnityEvent ReachDestinationEvent { get; }
     }

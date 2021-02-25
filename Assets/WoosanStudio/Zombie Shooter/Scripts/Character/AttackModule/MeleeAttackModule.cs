@@ -12,6 +12,9 @@ namespace WoosanStudio.ZombieShooter
         private bool attackStart = false;
         public bool AttackStart { get => attackStart; set => attackStart = value; }
 
+        //현재 공격중인이 아닌지
+        bool IsAttacking = false;
+
         public void Attack(ICharacterAnimatorModule characterAnimatorModule)
         {
             //공격이 시작되면 호출

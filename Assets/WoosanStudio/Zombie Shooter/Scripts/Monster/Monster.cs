@@ -47,6 +47,11 @@ namespace WoosanStudio.ZombieShooter
         private UnityEvent spawnEvent = new UnityEvent();
         public UnityEvent SpawnEvent => spawnEvent;
 
+        //타겟 찾기
+        private WaitForSeconds WFS = new WaitForSeconds(0.2f);
+
+        private Coroutine findTargetCoroutine;
+
         private IEnumerator waitThenCallback(float time, System.Action callback)
         {
             yield return new WaitForSeconds(time);
@@ -62,13 +67,50 @@ namespace WoosanStudio.ZombieShooter
             haveHealth = this.GetComponent(typeof(IHaveHealth)) as IHaveHealth;
         }
 
+        /// <summary>
+        /// 플레이어 타겟 찾기
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator FindTargetCoroutine(string tag)
+        {
+            //임시 타겟
+            GameObject findTarget;
+            
+            while(true)
+            {
+                //0.25초 단위로 타겟 찾기.
+                findTarget = GameObject.FindGameObjectWithTag(tag);
+
+                //태그를 못찾았으면 타겟 및 목표 null
+                if(findTarget == null)
+                {
+                    //Debug.Log("타겟 없음...");
+                    //강제로 FSM 타겟에 null 넣음
+                    this.FSM.GetCharacterDrivingModule().Destination = null;
+                    this.target = null;
+                }
+                else //태그를 찾았으면 타겟 및 목표 재설정
+                {
+                    //Debug.Log("타겟 찾음!!!");
+                    this.target = findTarget.transform;
+                    //FSM 새팅이 되어야만 설정
+                    if(FSM != null)
+                    {
+                        this.FSM.GetCharacterDrivingModule().Destination = this.target;
+                    }
+                }
+
+                yield return WFS;
+            }
+        }
+
         [System.Obsolete]
         private void Start()
         {
-            //최소거리의 바리케이트 오브젝트를 찾음
-            //target = FindNearestTarget("Barrier");
-            //랜덤한 바리케이트 오브젝트 찾음
-            target = FindRandomTarget("Player");
+            //생성시 플레이어 찾음
+            //target = FindRandomTarget("Player");
+            //&플레이어 찾는 부분 코루틴으로 대체
+            findTargetCoroutine = StartCoroutine(FindTargetCoroutine("Player"));
 
             if (target == null)
             {
@@ -76,8 +118,8 @@ namespace WoosanStudio.ZombieShooter
                 return;
             }
 
-            if(monsterSettings == null)
-            Debug.Log("monsterSettings null ");
+            if (monsterSettings == null) { Debug.Log("monsterSettings null "); }
+            
 
             //에니메이션에 이벤트 발생 부분을 가져오기
             AnimationEvent animationEvent = GetComponentInChildren<AnimationEvent>();
@@ -183,7 +225,15 @@ namespace WoosanStudio.ZombieShooter
             if (target == null)
             {
                 Debug.Log("[Player Tag is null] ");
+
                 return;
+            } else
+            {
+                //타겟이 사라지고 새로운 타갯이 나타나면 타겟 재설정
+                if (this.FSM.GetCharacterDrivingModule().Destination == null) {
+                    //Debug.Log("새로운 타겟으로 변경 완료");
+                    this.FSM.GetCharacterDrivingModule().Destination = this.target;
+                }
             }
 
             FSM.Tick();

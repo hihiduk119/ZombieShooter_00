@@ -16,6 +16,8 @@ TagManager:
   - Point
   - PopupBackground
   - Missile
+  - FxTemporaire
+  - DeadPlayer
   layers:
   - Default
   - TransparentFX

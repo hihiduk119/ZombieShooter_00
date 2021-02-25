@@ -75,6 +75,26 @@ namespace WoosanStudio.ZombieShooter
         {
             throw new System.NotImplementedException();
         }
+
+        public ICharacterInput GetCharacterInput()
+        {
+            return this.characterInput;
+        }
+
+        public ICharacterDrivingModule GetCharacterDrivingModule()
+        {
+            return this.characterDrivingModule;
+        }
+
+        public ICharacterAnimatorModule GetCharacterAnimatorModule()
+        {
+            return this.characterAnimatorModule;
+        }
+
+        public ICharacterAttackModule GetCharacterAttackModule()
+        {
+            return this.characterAttackModule;
+        }
         #endregion
     }
 }

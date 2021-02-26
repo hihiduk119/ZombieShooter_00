@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using WoosanStudio.Extension;
 
+using WoosanStudio.ZombieShooter.Character;
+
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
@@ -126,7 +128,8 @@ namespace WoosanStudio.ZombieShooter
 
             //FSM 세팅 생성 [MonsterFSM 하나로 통합할지 말지 결정 해야함]
             //*일단 통합
-            FSM = new ZombieFSM();
+            //FSM = new ZombieFSM();
+            FSM = gameObject.AddComponent<ZombieFSM>();
 
             //유한상태기계 세팅
             //character는 순수 하게 FSM의 Tick호출만 할 뿐 모든 작업은 FSM 에서 진행한다.
@@ -137,7 +140,7 @@ namespace WoosanStudio.ZombieShooter
                     //생성은 클래스로 하지만 인수는 인터페이스를 받는다.
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅
-                        new AiInput(), //입력부분 생성
+                        //new AiInput(), //입력부분 생성
                         new WalkZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
                         new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
                         new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>(), ref animationEvent.AttackEndEvent)//공격 모듈 생성.
@@ -153,7 +156,7 @@ namespace WoosanStudio.ZombieShooter
                     //생성은 클래스로 하지만 인수는 인터페이스를 받는다.
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅
-                        new AiInput(), //입력부분 생성
+                        //new AiInput(), //입력부분 생성
                         new ThrowZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
                         new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
                         new ThrowAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>(), projectileLauncherTransform ,ref animationEvent.AttackEndEvent)//공격 모듈 생성.
@@ -164,7 +167,7 @@ namespace WoosanStudio.ZombieShooter
                     //생성은 클래스로 하지만 인수는 인터페이스를 받는다.
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅
-                        new AiInput(), //입력부분 생성
+                        //new AiInput(), //입력부분 생성
                         new WalkZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
                         new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
                         new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>(), ref animationEvent.AttackEndEvent)//공격 모듈 생성.
@@ -174,7 +177,7 @@ namespace WoosanStudio.ZombieShooter
                     //생성은 클래스로 하지만 인수는 인터페이스를 받는다.
                     FSM.SetFSM(
                         target,//어떤 타겟을 목표로 움직이는 세팅
-                        new AiInput(), //입력부분 생성
+                        //new AiInput(), //입력부분 생성
                         new WalkZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
                         new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
                         new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>(), ref animationEvent.AttackEndEvent)//공격 모듈 생성.

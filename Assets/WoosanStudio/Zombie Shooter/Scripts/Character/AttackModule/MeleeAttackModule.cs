@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace WoosanStudio.ZombieShooter
+namespace WoosanStudio.ZombieShooter.Character
 {
     public class MeleeAttackModule : ICharacterAttackModule
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine.Events;
 using UnityEngine;
 
-namespace WoosanStudio.ZombieShooter
+namespace WoosanStudio.ZombieShooter.Character
 {
     public enum DrivingState
     {

@@ -4,6 +4,8 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
+using WoosanStudio.ZombieShooter.Character;
+
 namespace WoosanStudio.ZombieShooter
 {
     public class ThrowAttackModule : ICharacterAttackModule

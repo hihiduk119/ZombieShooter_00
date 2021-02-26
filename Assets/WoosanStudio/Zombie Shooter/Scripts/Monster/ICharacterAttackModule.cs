@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Events;
 
-namespace WoosanStudio.ZombieShooter
+namespace WoosanStudio.ZombieShooter.Character
 {
     public interface ICharacterAttackModule
     {

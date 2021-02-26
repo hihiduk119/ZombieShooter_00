@@ -26,13 +26,13 @@ namespace WoosanStudio.ZombieShooter
         public MonsterSettings MonsterSettings { get => monsterSettings; set => monsterSettings = value; }
 
         [Header("[(Auto)]")]
-        public Transform target;
+        public GameObject Target;
 
         //캐릭터 조증을 위한 유한상태기게
         private IFiniteStateMachine FSM;
 
         //죽었는지 살았는지 확인용
-        public bool isDead = false;
+        //public bool isDead = false;
 
         //데이지 연출용
         IBlink blink;
@@ -52,8 +52,6 @@ namespace WoosanStudio.ZombieShooter
         //타겟 찾기
         private WaitForSeconds WFS = new WaitForSeconds(0.2f);
 
-        private Coroutine findTargetCoroutine;
-
         private IEnumerator waitThenCallback(float time, System.Action callback)
         {
             yield return new WaitForSeconds(time);
@@ -69,52 +67,14 @@ namespace WoosanStudio.ZombieShooter
             haveHealth = this.GetComponent(typeof(IHaveHealth)) as IHaveHealth;
         }
 
-        /// <summary>
-        /// 플레이어 타겟 찾기
-        /// </summary>
-        /// <returns></returns>
-        IEnumerator FindTargetCoroutine(string tag)
-        {
-            //임시 타겟
-            GameObject findTarget;
-            
-            while(true)
-            {
-                //0.25초 단위로 타겟 찾기.
-                findTarget = GameObject.FindGameObjectWithTag(tag);
-
-                //태그를 못찾았으면 타겟 및 목표 null
-                if(findTarget == null)
-                {
-                    //Debug.Log("타겟 없음...");
-                    //강제로 FSM 타겟에 null 넣음
-                    this.FSM.GetCharacterDrivingModule().Destination = null;
-                    this.target = null;
-                }
-                else //태그를 찾았으면 타겟 및 목표 재설정
-                {
-                    //Debug.Log("타겟 찾음!!!");
-                    this.target = findTarget.transform;
-                    //FSM 새팅이 되어야만 설정
-                    if(FSM != null)
-                    {
-                        this.FSM.GetCharacterDrivingModule().Destination = this.target;
-                    }
-                }
-
-                yield return WFS;
-            }
-        }
 
         [System.Obsolete]
         private void Start()
         {
-            //생성시 플레이어 찾음
-            //target = FindRandomTarget("Player");
-            //&플레이어 찾는 부분 코루틴으로 대체
-            findTargetCoroutine = StartCoroutine(FindTargetCoroutine("Player"));
+            //최초 한번은 플레이어 찾아야 함 -> 세팅시 필요
+            Target = GameObject.FindGameObjectWithTag("Player");
 
-            if (target == null)
+            if (Target == null)
             {
                 Debug.Log("[error] Player Tag is null!! ");
                 return;
@@ -139,11 +99,11 @@ namespace WoosanStudio.ZombieShooter
                 case MonsterSettings.MonsterID.WeakZombie:
                     //생성은 클래스로 하지만 인수는 인터페이스를 받는다.
                     FSM.SetFSM(
-                        target,//어떤 타겟을 목표로 움직이는 세팅
+                        "Player",//어떤 타겟을 목표로 움직이는 테그 세팅
                         //new AiInput(), //입력부분 생성
-                        new WalkZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
+                        new WalkZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, Target.transform, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
                         new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
-                        new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>(), ref animationEvent.AttackEndEvent)//공격 모듈 생성.
+                        new MeleeAttackModule(monsterSettings, Target.transform.GetComponent<IHaveHit>(), Target.transform.GetComponent<IHaveHealth>(), ref animationEvent.AttackEndEvent)//공격 모듈 생성.
                     );
                     break;
                 case MonsterSettings.MonsterID.ThrowZombie:
@@ -155,32 +115,32 @@ namespace WoosanStudio.ZombieShooter
 
                     //생성은 클래스로 하지만 인수는 인터페이스를 받는다.
                     FSM.SetFSM(
-                        target,//어떤 타겟을 목표로 움직이는 세팅
-                        //new AiInput(), //입력부분 생성
-                        new ThrowZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
+                        "Player",//어떤 타겟을 목표로 움직이는 테그 세팅
+                                 //new AiInput(), //입력부분 생성
+                        new ThrowZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, Target.transform, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
                         new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
-                        new ThrowAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>(), projectileLauncherTransform ,ref animationEvent.AttackEndEvent)//공격 모듈 생성.
+                        new ThrowAttackModule(monsterSettings, Target.transform.GetComponent<IHaveHit>(), Target.transform.GetComponent<IHaveHealth>(), projectileLauncherTransform ,ref animationEvent.AttackEndEvent)//공격 모듈 생성.
                     );
 
                     break;
                 case MonsterSettings.MonsterID.RunnerZombie:
                     //생성은 클래스로 하지만 인수는 인터페이스를 받는다.
                     FSM.SetFSM(
-                        target,//어떤 타겟을 목표로 움직이는 세팅
-                        //new AiInput(), //입력부분 생성
-                        new WalkZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
+                        "Player",//어떤 타겟을 목표로 움직이는 테그 세팅
+                                 //new AiInput(), //입력부분 생성
+                        new WalkZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, Target.transform, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
                         new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
-                        new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>(), ref animationEvent.AttackEndEvent)//공격 모듈 생성.
+                        new MeleeAttackModule(monsterSettings, Target.transform.GetComponent<IHaveHit>(), Target.transform.GetComponent<IHaveHealth>(), ref animationEvent.AttackEndEvent)//공격 모듈 생성.
                     );
                     break;
                 case MonsterSettings.MonsterID.Jeff:   //*네임드 이름 마다 설정 필요.
                     //생성은 클래스로 하지만 인수는 인터페이스를 받는다.
                     FSM.SetFSM(
-                        target,//어떤 타겟을 목표로 움직이는 세팅
-                        //new AiInput(), //입력부분 생성
-                        new WalkZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, target, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
+                        "Player",//어떤 타겟을 목표로 움직이는 테그 세팅
+                                 //new AiInput(), //입력부분 생성
+                        new WalkZombieDrivingModule(GetComponent<UnityEngine.AI.NavMeshAgent>(), transform, Target.transform, monsterSettings) as ICharacterDrivingModule,//움직임부분 생성
                         new ZombieAnimatorModule(GetComponentInChildren<Animator>()) as ICharacterAnimatorModule,// 에니메이션부분 생성
-                        new MeleeAttackModule(monsterSettings, target.GetComponent<IHaveHit>(), target.GetComponent<IHaveHealth>(), ref animationEvent.AttackEndEvent)//공격 모듈 생성.
+                        new MeleeAttackModule(monsterSettings, Target.transform.GetComponent<IHaveHit>(), Target.transform.GetComponent<IHaveHealth>(), ref animationEvent.AttackEndEvent)//공격 모듈 생성.
                     );
                     break;
             }
@@ -221,11 +181,13 @@ namespace WoosanStudio.ZombieShooter
             return clone.transform;
         }
 
+        /*
         private void Update()
         {
             if (isDead) return;
 
-            if (target == null)
+            
+            if (Target == null)
             {
                 Debug.Log("[Player Tag is null] ");
 
@@ -235,13 +197,14 @@ namespace WoosanStudio.ZombieShooter
                 //타겟이 사라지고 새로운 타갯이 나타나면 타겟 재설정
                 if (this.FSM.GetCharacterDrivingModule().Destination == null) {
                     //Debug.Log("새로운 타겟으로 변경 완료");
-                    this.FSM.GetCharacterDrivingModule().Destination = this.target;
+                    this.FSM.GetCharacterDrivingModule().Destination = this.Target.transform;
                 }
             }
+            
 
-            FSM.Tick();
+            //FSM.Tick();
         }
-
+        */
 
         /// <summary>
         /// 가장 가까운 거리의 타겟을 찾는다.
@@ -309,7 +272,9 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Die()
         {
-            this.isDead = true;
+            //this.isDead = true;
+            //FSM 정지
+            this.FSM.Shotdown();
 
             //몬스터 메니저 등록에서 제거
             MonsterList.Instance.Items.Remove(this.transform);

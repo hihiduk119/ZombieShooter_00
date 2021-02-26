@@ -13,6 +13,8 @@ namespace WoosanStudio.ZombieShooter.Character
     {
         DrivingState State { get; }
         void Tick();
+        void Stop();
+        void Run();
         float Speed { get; }
         Transform Destination { get; set; }
 

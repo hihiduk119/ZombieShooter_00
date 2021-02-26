@@ -43,6 +43,22 @@ namespace WoosanStudio.ZombieShooter.Character
         }
 
         /// <summary>
+        /// 안멈추면 계속 이동하는문제 있음
+        /// </summary>
+        public void Stop()
+        {
+            _agent.enabled = false;
+        }
+
+        /// <summary>
+        /// 실행
+        /// </summary>
+        public void Run()
+        {
+            _agent.enabled = true;
+        }
+
+        /// <summary>
         /// NavMeshAgent.remainingDistance 오동작으로 재 작성.
         /// 목표와 나의 거리 가져옴
         /// </summary>

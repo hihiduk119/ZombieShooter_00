@@ -13,13 +13,14 @@ namespace WoosanStudio.ZombieShooter.Character
         public bool AttackStart { get => attackStart; set => attackStart = value; }
 
         //현재 공격중인이 아닌지
-        bool IsAttacking = false;
+        //bool IsAttacking = false;
 
         public void Attack(ICharacterAnimatorModule characterAnimatorModule)
         {
             //공격이 시작되면 호출
             if (attackStart)
             {
+                //AttackStart = false;
                 //공격을 바로 할려고 값을 일부러 넣어줌
                 DoAttack(characterAnimatorModule);
                 //Debug.Log("attackDelay = " + this.attackDelay + "  this.hitDelay = " + this.hitDelay + "    this.damage = " + this.damage);
@@ -73,7 +74,7 @@ namespace WoosanStudio.ZombieShooter.Character
         {
             attackDeltaTime += Time.deltaTime;
             hitDeltaTime += Time.deltaTime;
-            //Debug.Log("attackDeltaTime = " + attackDeltaTime + "         attackDelay = " + attackDelay);
+            //Debug.Log("attackDeltaTime = " + attackDeltaTime + "         attackDelay = " + attackDelay + "      AttackStart = [" + AttackStart + "]");
 
             if (attackDeltaTime > attackDelay)
             {
@@ -82,7 +83,8 @@ namespace WoosanStudio.ZombieShooter.Character
 
                 attackDeltaTime = 0;
                 hitDeltaTime = 0;
-                
+
+                //AttackStart = true;
             }
         }
 
@@ -91,6 +93,9 @@ namespace WoosanStudio.ZombieShooter.Character
         /// </summary>
         public void Hit()
         {
+            Debug.Log("[실제 공격 실행]");
+            if (haveHit == null) { return; }
+
             haveHit.Hit();
 
             //베리어에 데미지 이벤트 호출

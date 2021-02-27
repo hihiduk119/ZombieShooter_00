@@ -27,9 +27,14 @@ namespace WoosanStudio.ZombieShooter
         public CameraZoom CameraZoom;
         [Header("[무기&레이저 포인터를 생성시킬 앵커]")]
         public Transform WeaponAnchor;
+        [Header("[무기&레이저 포인터를 생성시킬 앵커 레그돌용]")]
+        public Transform WeaponAnchorForRagdoll;
 
         [Header("[온오프용 레이저 포인터 인터페이스]")]
         public ILaserPointer LaserPointer;
+
+        [Header("[온오프용 레이저 포인터 인터페이스 [Ragdoll]]")]
+        public ILaserPointer LaserPointerForRagdoll;
 
         IStart start;
         IEnd end;
@@ -57,14 +62,20 @@ namespace WoosanStudio.ZombieShooter
         //* 무기가 변경 될때마다 삭제
         List<UnityAction> endReloadActionList = new List<UnityAction>();
 
-        //현재 무기
+        //현재 무기 -> 삭제를 위해 필요
         IWeapon currentWeapon;
+        //현재 무기 [레그돌] -> 삭제를 위해 필요
+        GameObject currentWeaponForRagdoll;
 
         //현재 무기의 레이저 포인터
         GameObject currentLaserPointer;
+        //현재 무기의 레이저 포인터 [레그돌]
+        GameObject currentLaserPointerForRagdoll;
 
         //현재 머즐 플레쉬
         GameObject currentMuzzleFlash;
+        //현재 머즐 플레쉬 [레그돌]
+        GameObject currentMuzzleFlashForRagdoll;
 
         private void Awake()
         {
@@ -91,11 +102,6 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Anchor(int weaponIndex,int ammoIndex)
         {
-            //제대로 넣기
-            //WeaponFactory.MakeWeapon(start, end, cameraShaker, reloadActionList,ref gun, WeaponAnchor, 0, false, null);
-            //야매로 넣기
-            // * MuzzleFlashFactory에서 생성 및 앵커에 연결하고 초기화까지 함
-
             //재장전 시작시 작동할 액션 리스트
             //List<UnityAction> startReloadActionList = new List<UnityAction>();
 
@@ -143,6 +149,23 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 가짜 무기 레그돌에 연결
+        /// </summary>
+        public void AnchorForRagdoll(int weaponIndex, int ammoIndex)
+        {
+            //머즐 플레쉬 생성 -> 삭제을 위해 GameObject받음
+            currentMuzzleFlashForRagdoll = MuzzleFlashFactory.Make(WeaponAnchorForRagdoll);
+
+            //무기 생성 -> 삭제을 위해 GameObject받음
+            currentWeaponForRagdoll = WeaponFactory.MakeWeaponForRagdoll(WeaponAnchorForRagdoll, weaponIndex);
+
+            LaserPointerFactory.Anchor = WeaponAnchorForRagdoll;
+            LaserPointerFactory.InitPosition = WeaponFactory._gunSettings[weaponIndex].InitLaserPointerPosition;
+            //온오프용 레이저 포인터 인터페이스 -> 삭제을 위해 GameObject받음
+            currentLaserPointerForRagdoll = LaserPointerFactory.Make(ref LaserPointerForRagdoll);
+        }
+
+        /// <summary>
         /// 무기 실제 연결
         /// </summary>
         /// <param name="weaponCard">무기카드</param>
@@ -157,6 +180,9 @@ namespace WoosanStudio.ZombieShooter
 
             //무기 연결
             this.Anchor(weaponIndex, ammoIndex);
+
+            //레그돌 무기 연결
+            this.AnchorForRagdoll(weaponIndex, ammoIndex);
         }
 
         /// <summary>
@@ -179,6 +205,16 @@ namespace WoosanStudio.ZombieShooter
                 //Debug.Log("===============================> 무기 삭제 안됨");
             }
 
+            //무기 삭제 [레그돌]
+            if (currentWeaponForRagdoll != null)
+            {
+                Destroy(currentWeaponForRagdoll);
+            }
+            else
+            {
+                //Debug.Log("===============================> 무기 삭제 안됨 [레그돌]");
+            }
+
             //레이저 포인터 삭제
             if (currentLaserPointer != null) {
                 Destroy(currentLaserPointer);
@@ -188,18 +224,38 @@ namespace WoosanStudio.ZombieShooter
                 //Debug.Log("===============================> 레이저 포인터 삭제 안됨");
             }
 
+            //레이저 포인터 삭제[레그돌]
+            if (currentLaserPointerForRagdoll != null)
+            {
+                Destroy(currentLaserPointerForRagdoll);
+            }
+            else
+            {
+                //Debug.Log("===============================> 레이저 포인터 삭제 안됨 [레그돌]");
+            }
+
             //머즐 플레쉬 삭제
-            if(currentMuzzleFlash != null) {
+            if (currentMuzzleFlash != null) {
                 Destroy(currentMuzzleFlash);
             }
             else
             {
                 //Debug.Log("===============================> 머즐 플레쉬 삭제 안됨");
             }
+
+            //머즐 플레쉬 [레그돌]
+            if (currentMuzzleFlashForRagdoll != null)
+            {
+                Destroy(currentMuzzleFlashForRagdoll);
+            }
+            else
+            {
+                //Debug.Log("===============================> 머즐 플레쉬 삭제 안됨 [레그돌]");
+            }
         }
 
-        #region [-TestCode]
         
+        #region [-TestCode]
         void Update()
         {
             //웨폰 기존 무기 삭제
@@ -207,6 +263,8 @@ namespace WoosanStudio.ZombieShooter
             {
                 Remove();
                 Anchor(0,0);
+                //레그돌 무기 연결
+                AnchorForRagdoll(0,0);
             }
 
             //웨폰 팩토리에서 만든 무기와 인터페이스 연결
@@ -214,6 +272,8 @@ namespace WoosanStudio.ZombieShooter
             {
                 Remove();
                 Anchor(1, 1);
+                //레그돌 무기 연결
+                AnchorForRagdoll(1, 1);
             }
 
             //웨폰 팩토리에서 만든 무기와 인터페이스 연결
@@ -221,6 +281,8 @@ namespace WoosanStudio.ZombieShooter
             {
                 Remove();
                 Anchor(2, 2);
+                //레그돌 무기 연결
+                AnchorForRagdoll(2, 2);
             }
 
             //웨폰 팩토리에서 만든 무기와 인터페이스 연결
@@ -228,8 +290,11 @@ namespace WoosanStudio.ZombieShooter
             {
                 Remove();
                 Anchor(3, 0);
+                //레그돌 무기 연결
+                AnchorForRagdoll(3, 0);
             }
         }
         #endregion
+        
     }
 }

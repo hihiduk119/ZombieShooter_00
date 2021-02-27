@@ -215,5 +215,31 @@ namespace WoosanStudio.ZombieShooter
             }
             return _iWeapon;
         }
+
+        /// <summary>
+        /// 레그돌용 무기 생성 -> 모델만 생성
+        /// </summary>
+        /// <param name="joint"></param>
+        /// <param name="gunType"></param>
+        /// <returns>삭제를 위해 필요</returns>
+        public GameObject MakeWeaponForRagdoll(Transform joint,int gunType)
+        {
+            //건세팅 카드에 의해 데이터 값의 수정을 위해 인스턴으로 생성
+            GunSettings gunSettings = Instantiate(_gunSettings[gunType]) as GunSettings;
+
+            //어떤 무기는 모델을 가지고 있으면 IHaveModel인터페이스를 상속 받기에 해당 인터페이스 호출.
+            IHaveModel haveModel = gunSettings;
+
+            //모델 인스턴스 생성 및 가져오기
+            _weapon = haveModel.MakeModel();
+            //인스턴스 부모 설정
+            _weapon.transform.parent = joint;
+
+            //초기 위치 설정
+            _weapon.transform.localPosition = gunSettings.InitPosition;
+            _weapon.transform.localRotation = Quaternion.identity;
+
+            return _weapon;
+        }
     }
 }

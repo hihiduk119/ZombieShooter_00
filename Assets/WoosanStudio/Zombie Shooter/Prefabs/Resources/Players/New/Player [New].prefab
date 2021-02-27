@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 893558332932393935}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Toe_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8816394774812681720}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Target Transform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7178491607605139508}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Spine_jnt 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6024227925554550302}
   - component: {fileID: 2678212557959509746}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CH_Woman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4594259569221794912}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Hand_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6992187986259621984}
   - component: {fileID: 4030295648382630771}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CH_Punk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3398113833381423998}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3053,6 +3053,7 @@ MonoBehaviour:
   PlayAnimation: {fileID: 0}
   CameraZoom: {fileID: 0}
   WeaponAnchor: {fileID: 1836758713930583949}
+  WeaponAnchorForRagdoll: {fileID: 3398113833381423998}
   AutoFireControlInputBasedOnGunSetting: {fileID: 0}
 --- !u!114 &2314736967032967840
 MonoBehaviour:
@@ -3095,6 +3096,7 @@ MonoBehaviour:
   Positioner: {fileID: 0}
   Model: {fileID: 0}
   LookAtAimedTarget: {fileID: 0}
+  Projector: {fileID: 4550007880075362563}
   RayCheck: {fileID: 0}
 --- !u!114 &519284015428072839
 MonoBehaviour:
@@ -3482,7 +3484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1082668597156068201}
   - component: {fileID: 3489747340845275321}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CH_Roadworker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3585,7 +3587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4385279276553089381}
   - component: {fileID: 1606814748128213926}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SimplePeople_Sheriff_Black [Regdoll]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3642,7 +3644,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2017849738283680870}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Foot_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3673,7 +3675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3635527775860852798}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Foot_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3923,7 +3925,7 @@ GameObject:
   - component: {fileID: 9044834151866626256}
   - component: {fileID: 6421548769405037277}
   - component: {fileID: 7839519809148300930}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: TestAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4000,7 +4002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 310199329494234693}
   - component: {fileID: 1712126552268000455}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CH_Sheriff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4105,7 +4107,7 @@ GameObject:
   - component: {fileID: 3687469102461628142}
   - component: {fileID: 3704627060151419579}
   - component: {fileID: 4537229799168487448}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: UpperLeg_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4212,7 +4214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8224191707270820915}
   - component: {fileID: 3257876543662911814}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CH_Pimp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4315,7 +4317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 966215056733968893}
   - component: {fileID: 3927967691628715348}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CH_Robber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4417,7 +4419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3339301642267916714}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Toe_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4448,7 +4450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7279355334416445867}
   - component: {fileID: 1899468649841467500}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CH_Prostitute
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4550,7 +4552,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 550039940029110586}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Shoulder_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4583,7 +4585,7 @@ GameObject:
   - component: {fileID: 9183726654504927878}
   - component: {fileID: 9085415866899655314}
   - component: {fileID: 4711026894819642648}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Hips_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4648,7 +4650,7 @@ GameObject:
   - component: {fileID: 6170768637543726967}
   - component: {fileID: 4459825373545412596}
   - component: {fileID: 925813711769084353}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: UpperLeg_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4757,7 +4759,7 @@ GameObject:
   - component: {fileID: 8804532189425864213}
   - component: {fileID: 5199811627610242908}
   - component: {fileID: 2870609990960680538}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Chest_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4865,7 +4867,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8346749921691716734}
   - component: {fileID: 3330121113360640298}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CH_RiotCop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4968,7 +4970,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3120888043878714351}
   - component: {fileID: 6140012759777350604}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CH_Hobo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5073,7 +5075,7 @@ GameObject:
   - component: {fileID: 1932322437886957391}
   - component: {fileID: 8799972324711746199}
   - component: {fileID: 7067168953243430170}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Head_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5271,7 +5273,7 @@ GameObject:
   - component: {fileID: 4027358739714050977}
   - component: {fileID: 2252718117007596288}
   - component: {fileID: 3480127959853798875}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Arm_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5377,7 +5379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6492078783442846384}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Hand_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5408,7 +5410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 827338323286854692}
   - component: {fileID: 2910186189951580180}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CH_Trucker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5511,7 +5513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6906802101594425378}
   - component: {fileID: 6005563034301570687}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CH_StreetMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5613,7 +5615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5901856689394342875}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Neck_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5644,7 +5646,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 155206513655122769}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Spine_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5678,7 +5680,7 @@ GameObject:
   - component: {fileID: 5753078033938919050}
   - component: {fileID: 8700665116556368681}
   - component: {fileID: 4221820680138260012}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Forearm_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5787,7 +5789,7 @@ GameObject:
   - component: {fileID: 2875001655858281629}
   - component: {fileID: 487294133125648783}
   - component: {fileID: 4436514252728375886}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Forearm_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5896,7 +5898,7 @@ GameObject:
   - component: {fileID: 5640794415851565631}
   - component: {fileID: 268426636607657572}
   - component: {fileID: 2054478837655123771}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Arm_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6003,7 +6005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3977216788994679699}
   - component: {fileID: 1580739676333043404}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CH_BusinessMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6105,7 +6107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6623584034955253977}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Shoulder_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6184,7 +6186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 943186035927127507}
   - component: {fileID: 2282914422725537271}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CH_FireFighter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6289,7 +6291,7 @@ GameObject:
   - component: {fileID: 4818753682867031969}
   - component: {fileID: 5231959989960691155}
   - component: {fileID: 4034673418801054528}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: LowerLeg_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6398,7 +6400,7 @@ GameObject:
   - component: {fileID: 5028332504785893342}
   - component: {fileID: 5481326317073712908}
   - component: {fileID: 9200818570447612241}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: LowerLeg_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6505,7 +6507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7078548378851759103}
   - component: {fileID: 4582521887894465507}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CH_Policeman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6610,6 +6612,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterShadowProjector
       objectReference: {fileID: 0}
+    - target: {fileID: 5194339502216924784, guid: eaad130044b2747ef9b15d3b0c6d7fb6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5194339502217024080, guid: eaad130044b2747ef9b15d3b0c6d7fb6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6670,6 +6677,12 @@ PrefabInstance:
 --- !u!4 &4550007880084705249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5194339502217024080, guid: eaad130044b2747ef9b15d3b0c6d7fb6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8589174069017025969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!119 &4550007880075362563 stripped
+Projector:
+  m_CorrespondingSourceObject: {fileID: 5194339502224530610, guid: eaad130044b2747ef9b15d3b0c6d7fb6,
     type: 3}
   m_PrefabInstance: {fileID: 8589174069017025969}
   m_PrefabAsset: {fileID: 0}

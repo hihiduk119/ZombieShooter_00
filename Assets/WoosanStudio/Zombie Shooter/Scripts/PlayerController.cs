@@ -68,6 +68,8 @@ namespace WoosanStudio.ZombieShooter
         //실제 조준 및 조준 해제 컨트롤 함
         [Header("[(Auto->Awake())]")]
         public LookAtAimedTarget LookAtAimedTarget;
+        [Header("[그림자 프로젝터]")]
+        public Projector Projector;
 
         [Header("[타겟과 조준선이 정렬 됐는지 판별(Auto->Awake())]")]
         public RayCheck RayCheck;

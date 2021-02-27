@@ -32,9 +32,8 @@ namespace WoosanStudio.ZombieShooter
         //몬스터 세팅 가져오기
         //private IMonsterSettings monsterSettings;
 
-        //Test Code
-        //public GameObject testDummy;
-        //Boom boom;
+        //죽음 연출용 강제 Force발생
+        Boom boom;
 
         [Header("[죽음 이벤트 => 인터페이스로 바꿀지 말지 결정해야함]")]
         public PositionEvent OnDieEvent = new PositionEvent();
@@ -109,8 +108,12 @@ namespace WoosanStudio.ZombieShooter
             //    deadEffect.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             //}
 
-            //Add Force
-            //boom = new Boom(hit);
+            Vector3 pos = transform.position;
+            pos.x += Random.Range(-1, 3);
+            pos.y += Random.Range(0, 2);
+            pos.z += Random.Range(-1, 3);
+            //죽음 연출용 강제 포스
+            boom = new Boom(pos);
             //testDummy.transform.position = hit;
 
             //Invoke("GoToHeaven", 3f);

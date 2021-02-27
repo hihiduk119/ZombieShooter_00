@@ -487,9 +487,15 @@ namespace WoosanStudio.ZombieShooter
         public void PlayerDeadTest()
         {
             GameObject playerObj = playerController.gameObject;
+            //콜라이더 비활성화
+            playerObj.GetComponent<Collider>().enabled = false;
+
             //DoDieForPlayer.cs 가져오기
             DoDieForPlayer doDieForPlayer = playerObj.GetComponent<DoDieForPlayer>();
             doDieForPlayer.Die();
+
+            //그림자 비활성
+            playerController.Projector.enabled = false;
 
             //테그 교체
             playerObj.tag = "DeadPlayer";
@@ -501,9 +507,16 @@ namespace WoosanStudio.ZombieShooter
         public void PlayerResurrectionTest()
         {
             GameObject playerObj = playerController.gameObject;
+
+            //콜라이더 활성화
+            playerObj.GetComponent<Collider>().enabled = true;
+
             //DoDieForPlayer.cs 가져오기
             DoDieForPlayer doDieForPlayer = playerObj.GetComponent<DoDieForPlayer>();
             doDieForPlayer.Resurrection();
+
+            //그림자 활성
+            playerController.Projector.enabled = true;
 
             //테그 교체
             playerObj.tag = "Player";
@@ -523,7 +536,7 @@ namespace WoosanStudio.ZombieShooter
             //플레이어 죽음을 위한 임시 메서드
             if (Input.GetKeyDown(KeyCode.S))
             {
-                PlayerDeadTest();
+                PlayerResurrectionTest();
             }
         }
         /*

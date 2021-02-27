@@ -32,6 +32,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[모델 리스트]")]
         public List<GameObject> Models = new List<GameObject>();
 
+        [Header("[모델 리스트 for regdoll]")]
+        public List<GameObject> Models2 = new List<GameObject>();
+
         //테스트용
         //int testIndex = 0;
 
@@ -42,10 +45,12 @@ namespace WoosanStudio.ZombieShooter
         public void Swap( ModelType type)
         {
             Models.ForEach(value => value.SetActive(false));
+            if (Models2.Count > 0)  Models2.ForEach(value => value.SetActive(false));
 
             //해당 모델을 활성화.
             //*모델 타입 이넘과 모델 리스트의 순서는 동일해야 한다.
             Models[(int)type].SetActive(true);
+            if (Models2.Count > 0) Models2[(int)type].SetActive(true);
         }
 
         /// <summary>
@@ -58,10 +63,12 @@ namespace WoosanStudio.ZombieShooter
             //Debug.Log("idx = " + index);
             //모두 비활성화
             Models.ForEach(modelObject => modelObject.SetActive(false));
+            if (Models2.Count > 0) Models2.ForEach(modelObject => modelObject.SetActive(false));
 
             //해당 모델을 활성화.
             //*모델 타입 이넘과 모델 리스트의 순서는 동일해야 한다.
             Models[index].SetActive(true);
+            if (Models2.Count > 0) Models2[index].SetActive(true);
         }
 
         /*

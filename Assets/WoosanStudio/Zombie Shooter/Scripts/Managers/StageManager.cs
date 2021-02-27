@@ -482,60 +482,107 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 플레이어 죽음을 위한 임시 메서드
+        /// </summary>
+        public void PlayerDeadTest()
+        {
+            GameObject playerObj = playerController.gameObject;
+            //DoDieForPlayer.cs 가져오기
+            DoDieForPlayer doDieForPlayer = playerObj.GetComponent<DoDieForPlayer>();
+            doDieForPlayer.Die();
+
+            //테그 교체
+            playerObj.tag = "DeadPlayer";
+        }
+
+        /// <summary>
+        /// 플레이어 죽음을 위한 임시 메서드
+        /// </summary>
+        public void PlayerResurrectionTest()
+        {
+            GameObject playerObj = playerController.gameObject;
+            //DoDieForPlayer.cs 가져오기
+            DoDieForPlayer doDieForPlayer = playerObj.GetComponent<DoDieForPlayer>();
+            doDieForPlayer.Resurrection();
+
+            //테그 교체
+            playerObj.tag = "Player";
+        }
+
+        /// <summary>
+        /// 테스트코드
+        /// </summary>
+        void Update()
+        {
+            //플레이어 죽음을 위한 임시 메서드
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                PlayerDeadTest();
+            }
+
+            //플레이어 죽음을 위한 임시 메서드
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                PlayerDeadTest();
+            }
+        }
+        /*
+        /// <summary>
         /// 스테이지 변경을 위한 테스트 코드
         /// </summary>
         #region [-TestCode]
         void Update()
         {
-            //if (Input.GetKeyDown(KeyCode.A))
-            //{
-            //    Initialize(0);
-            //}
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                Initialize(0);
+            }
 
-            //if (Input.GetKeyDown(KeyCode.S))
-            //{
-            //    Initialize(1);
-            //}
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                Initialize(1);
+            }
 
-            //if (Input.GetKeyDown(KeyCode.D))
-            //{
-            //    Load();
-            //}
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                Load();
+            }
 
-            //씬이 첫 로딩이 되고 실행되는 메서 
-            //if (Input.GetKeyDown(KeyCode.F))
-            //{
-            //    FirstStage();
-            //}
+            //씬이 첫 로딩이 되고 실행되는 메서
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                FirstStage();
+            }
 
             //스테이지 이동을 자동으로 함 -> StageManager가 할일을 하고있음.
-            //if (Input.GetKeyDown(KeyCode.Alpha0))
-            //{
-            //    NextStage();
-            //}
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                NextStage();
+            }
 
             //카드 셀렉터를 오픈한다.
-            //if (Input.GetKeyDown(KeyCode.Alpha1))
-            //{
-            //    CardSelectPopupOpener.OpenPopup();
-            //}
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                CardSelectPopupOpener.OpenPopup();
+            }
 
             //펠로우 캠 포지셔너만 해당위치로 이동
-            //스테이지 이동시 카메라 이상행동 때문에 
-            //if (Input.GetKeyDown(KeyCode.K))
-            //{
-            //    FollowCameraPositioner.Move();
-            //}
+            //스테이지 이동시 카메라 이상행동 때문에
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                FollowCameraPositioner.Move();
+            }
 
-            //if (Input.GetKeyDown(KeyCode.A))
-            //{
-            //    GlobalDataController.Instance.UpdateGunSettingByCards(
-            //        GlobalDataController.SelectedBaseGunSetting,
-            //        GlobalDataController.Instance.SelectedGunSetting,
-            //        GlobalDataController.SelectedAmmoCard,
-            //        GlobalDataController.Instance.SelectAbleAllCard);
-            //}
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                GlobalDataController.Instance.UpdateGunSettingByCards(
+                    GlobalDataController.SelectedBaseGunSetting,
+                    GlobalDataController.Instance.SelectedGunSetting,
+                    GlobalDataController.SelectedAmmoCard,
+                    GlobalDataController.Instance.SelectAbleAllCard);
+            }
         }
         #endregion
+        */
     }
 }

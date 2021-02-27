@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Events;
-using DarkTonic.MasterAudio;
 
 namespace WoosanStudio.ZombieShooter
 {
-    [RequireComponent(typeof(RegdollController))]
-    [RequireComponent(typeof(NavMeshController))]
-    public class DoDie : MonoBehaviour
+
+    public class DoDieForPlayer : MonoBehaviour
     {
+        //컨트롤 모델
+        public GameObject ControlModel;
+        //레그돌 모델
+        public GameObject RagdollModel;
         
-        public GameObject NavMeshModel;
         public CopyComponets CopyComponets;
 
         //cache
-        private RegdollController regdollController;
-        private NavMeshController navMeshController;
+        //private RegdollController regdollController;
+        //private NavMeshController navMeshController;
         //캐릭터에 죽음 체크용
-        private Monster monster;
+        //private Monster monster;
         //체력 계산용
         private IHaveHealth haveHealth;
         //죽었을때 무중력으로 떠오르게 하기 위해
@@ -29,7 +30,7 @@ namespace WoosanStudio.ZombieShooter
         //죽을 오브젝트를 세팅
         private ICanDestory canDestory;
         //몬스터 세팅 가져오기
-        private IMonsterSettings monsterSettings;
+        //private IMonsterSettings monsterSettings;
 
         //Test Code
         //public GameObject testDummy;
@@ -46,14 +47,14 @@ namespace WoosanStudio.ZombieShooter
 
         private void Awake()
         {
-            regdollController = GetComponent<RegdollController>();
-            navMeshController = GetComponent<NavMeshController>();
-            monster = GetComponent<Monster>();
+            //regdollController = GetComponent<RegdollController>();
+            //navMeshController = GetComponent<NavMeshController>();
+            //monster = GetComponent<Monster>();
             haveHealth = GetComponent<IHaveHealth>();
             doZeroGravity = GetComponent<DoZeroGravity>();
             blink = transform.GetComponentInChildren<IBlink>();
             canDestory = GetComponent<ICanDestory>();
-            monsterSettings = GetComponent<IMonsterSettings>();
+            //monsterSettings = GetComponent<IMonsterSettings>();
 
             //IHaveHealth 에 체력 체크 등록.
             haveHealth.DamagedEvent.AddListener(CheckHealth);
@@ -61,16 +62,18 @@ namespace WoosanStudio.ZombieShooter
 
         //체력 체크용 콜백 함수
         //
-        public void CheckHealth(int damage,Vector3 hit,string keyValue)
+        public void CheckHealth(int damage, Vector3 hit, string keyValue)
         {
-            if(haveHealth.Health <= 0) { Die(hit); }
+            //if (haveHealth.Health <= 0) { Die(hit); }
+            if (haveHealth.Health <= 0) { Die(); }
         }
 
         /// <summary>
         /// 죽음
         /// </summary>
         /// <param name="hit"></param>
-        public void Die(Vector3 hit)
+        //public void Die(Vector3 hit)
+        public void Die()
         {
             //데미지 이벤트 등록된 모든 리스너 등록해제
             //해제를 안하면 데미지 받는데로 행동 실행.
@@ -82,35 +85,47 @@ namespace WoosanStudio.ZombieShooter
             //죽음 이벤트 시작
             //* 원래는 모든 체력, 블릭크초기화 몬스터 죽음호출 정지 등 모든 부분이 이벤트의
             //* 리스너로 넣어야 한다. -> 리팩토링 필요한 부분
-            OnDieEvent.Invoke(hit);
-
-            //ItemRequester.Instance.Requester(hit);
+            //OnDieEvent.Invoke(hit);
 
             //Debug.Log("=============" + this.gameObject.name + " 죽음 호출!!");
 
-            blink.Initialize();
+            //blink.Initialize();
 
-            monster.Die();
-            navMeshController.Stop();
+            //monster.Die();
+            //navMeshController.Stop();
             CopyComponets.Copy();
-            NavMeshModel.SetActive(false);
+            //컨트롤 모델 비활성
+            ControlModel.SetActive(false);
+            //레그돌 모델 활성
+            RagdollModel.SetActive(true);
 
-            regdollController.SetActive(true);
+            //regdollController.SetActive(true);
 
             //죽을때 이펙트 생성
-            if(monsterSettings.MonsterSettings.DeadEffect != null)
-            {
-                GameObject deadEffect = Instantiate(monsterSettings.MonsterSettings.DeadEffect) as GameObject;
-                deadEffect.transform.position = transform.position;
-                deadEffect.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            }
+            //if (monsterSettings.MonsterSettings.DeadEffect != null)
+            //{
+            //    GameObject deadEffect = Instantiate(monsterSettings.MonsterSettings.DeadEffect) as GameObject;
+            //    deadEffect.transform.position = transform.position;
+            //    deadEffect.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            //}
 
             //Add Force
             //boom = new Boom(hit);
             //testDummy.transform.position = hit;
 
-            Invoke("GoToHeaven", 3f);
+            //Invoke("GoToHeaven", 3f);
             //Debug.Log("=================>    GoToHeaven");
+        }
+
+        /// <summary>
+        /// 부활
+        /// </summary>
+        public void Resurrection()
+        {
+            //컨트롤 모델 비활성
+            ControlModel.SetActive(true);
+            //레그돌 모델 활성
+            RagdollModel.SetActive(false);
         }
 
         /// <summary>
@@ -135,32 +150,8 @@ namespace WoosanStudio.ZombieShooter
             {
                 Debug.Log("ICanDestory Null!!. 해당 오브젝트를 세팅 해주세요.");
             }
-                
+
             //Debug.Log("=================>    Go       ToHeaven");
         }
-
-        //Test Code
-        //void MakeObject(Vector3 position)
-        //{   
-        //    Transform tf = (Instantiate(Prefab) as GameObject).transform;
-        //    tf.position = position;
-        //}
-
-        //Test Code
-        //void Update()
-        //{
-        //    if (Input.GetButtonDown("Fire1"))
-        //    {
-        //        Debug.Log("Click left");
-        //        Die();
-        //    }
-
-        //    if (Input.GetButtonDown("Fire2"))
-        //    {
-        //        Debug.Log("Click right");
-        //        regdollController.SetActive(true);
-        //        boom = new Boom(transform.position);
-        //    }
-        //}
     }
 }

@@ -41,6 +41,7 @@ namespace WoosanStudio.ZombieShooter
             transform.position = pos;
         }
 
+        /*
         #region [-TestCode]
         void Update()
         {
@@ -51,6 +52,7 @@ namespace WoosanStudio.ZombieShooter
             }
         }
         #endregion
+        */
 
     }
 }

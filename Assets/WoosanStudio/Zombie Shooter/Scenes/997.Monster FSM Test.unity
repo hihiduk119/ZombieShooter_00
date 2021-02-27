@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AirportSecurity
       objectReference: {fileID: 0}
+    - target: {fileID: 246062895614678432, guid: a19c0560bc7914ea8bf07e9bb412dadf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 246062895614678435, guid: a19c0560bc7914ea8bf07e9bb412dadf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -186,6 +191,61 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604080447609664549, guid: a19c0560bc7914ea8bf07e9bb412dadf,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.01786375
+      objectReference: {fileID: 0}
+    - target: {fileID: 604080447609850169, guid: a19c0560bc7914ea8bf07e9bb412dadf,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.01786375
+      objectReference: {fileID: 0}
+    - target: {fileID: 604080447609657760, guid: a19c0560bc7914ea8bf07e9bb412dadf,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.000000040221494
+      objectReference: {fileID: 0}
+    - target: {fileID: 604080447609657760, guid: a19c0560bc7914ea8bf07e9bb412dadf,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.00000007113454
+      objectReference: {fileID: 0}
+    - target: {fileID: 604080447609658628, guid: a19c0560bc7914ea8bf07e9bb412dadf,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.000000056403223
+      objectReference: {fileID: 0}
+    - target: {fileID: 604080447609658628, guid: a19c0560bc7914ea8bf07e9bb412dadf,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.00000022351742
+      objectReference: {fileID: 0}
+    - target: {fileID: 604080447609836984, guid: a19c0560bc7914ea8bf07e9bb412dadf,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -6.9192624e-20
+      objectReference: {fileID: 0}
+    - target: {fileID: 604080447609865869, guid: a19c0560bc7914ea8bf07e9bb412dadf,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 2.3469677e-17
+      objectReference: {fileID: 0}
+    - target: {fileID: 604080447609873997, guid: a19c0560bc7914ea8bf07e9bb412dadf,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -2.3595152e-17
+      objectReference: {fileID: 0}
+    - target: {fileID: 604080447609808086, guid: a19c0560bc7914ea8bf07e9bb412dadf,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.0000000018626451
+      objectReference: {fileID: 0}
+    - target: {fileID: 604080447609870002, guid: a19c0560bc7914ea8bf07e9bb412dadf,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.0000000018626451
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a19c0560bc7914ea8bf07e9bb412dadf, type: 3}
@@ -451,7 +511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1532286949
 BoxCollider:
   m_ObjectHideFlags: 0

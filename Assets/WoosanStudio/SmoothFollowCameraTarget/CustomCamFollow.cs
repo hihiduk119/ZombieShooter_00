@@ -12,16 +12,22 @@ namespace WoosanStudio.Camera
     {
         //기본 Cam Follow 의 target오브젝트에 믹스 시킬 오브젝트
         //public Transform mixTarget;
-        //기본 타겟
+        [Header("[따라다닐 타겟]")]
         public Transform aheadTarget;
-        protected Vector3 gab;
+
+        [Header("[타겟 리스트]")]
+        public List<Transform> Targets = new List<Transform>();
 
         [Header("[X축 을 고정]")]
         public bool fixX = false;
+
         [Header("[Y축 을 고정]")]
         public bool fixY = false;
+
         [Header("[Z축 을 고정]")]
         public bool fixZ = false;
+
+        protected Vector3 gab;
 
         //캐쉬 변수
         Vector3 pos;
@@ -31,7 +37,19 @@ namespace WoosanStudio.Camera
             gab = aheadTarget.position - transform.position;
         }
 
-        public void FixedUpdate()
+        /// <summary>
+        /// 타겟 변경
+        /// </summary>
+        /// <param name="targetIndex">변경할 타겟 인덱스</param>
+        public void Swap(int targetIndex)
+        {
+            this.aheadTarget = this.Targets[targetIndex];
+        }
+
+        /// <summary>
+        /// AheadTarget 따라다님
+        /// </summary>
+        void Follow()
         {
             pos = aheadTarget.position - gab;
             if (fixX) { pos.x = transform.position.x; }
@@ -42,6 +60,15 @@ namespace WoosanStudio.Camera
             //pos.x = mixTarget.position.x;
 
             transform.position = pos;
+        }
+
+        /// <summary>
+        /// 타겟 업데이트
+        /// </summary>
+        public void FixedUpdate()
+        {
+            //AheadTarget 따라다님
+            Follow();
         }
     }
 }

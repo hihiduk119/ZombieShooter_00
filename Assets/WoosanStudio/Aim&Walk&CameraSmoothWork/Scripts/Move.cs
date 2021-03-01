@@ -12,12 +12,15 @@ namespace WoosanStudio.Player
     /// 캠 트랜스 폼을 받아서 화면 이동 보간 기능
     /// 
     /// </summary>
-    public class Move : MonoBehaviour
+    public class Move : MonoBehaviour , ZombieShooter.Common.IActive
     {
         [Header("[움지임 파워 조절]")]
         public float power = 5f;
         [Header("[해당 방향으로 움직임 보간]")]
         public new Transform camera;
+        [Header("[활성 및 비활성]")]
+        private bool activate = true;
+        public bool Activate { get => activate; set => activate = value; }
 
         ///캐슁용 변수들
         //버티컬
@@ -45,9 +48,14 @@ namespace WoosanStudio.Player
 
         void FixedUpdate()
         {
+            //비활성 상태라면 업데이트 중지
+            if (!this.activate) { return;}
+
             //조이스틱 방향 가져오기
             h = UltimateJoystick.GetHorizontalAxis("Move");
             v = UltimateJoystick.GetVerticalAxis("Move");
+
+            //Debug.Log("H = [" + h + "] V = [" + v + "]");
 
             if (camera != null)
             {

@@ -8,7 +8,7 @@ namespace WoosanStudio.ZombieShooter
     /// <summary>
     /// 캠이 따라 다니는 해당 타겟을 조정하는 컨트롤러.
     /// </summary>
-    public class FollowCameraTarget : MonoBehaviour
+    public class FollowCameraTarget : MonoBehaviour , Common.IActive
     {
         //static public FollowCameraTarget Instance;
         [Header("[따라다닐 타겟]")]
@@ -40,7 +40,10 @@ namespace WoosanStudio.ZombieShooter
         public GameObject Between;
         [Header("[[0-1]Look At 타겟과 사이 타겟 간격 설정]")]
         public float margin = 0.55f;
-        
+
+        [Header("[조이스틱 비활성화시 값이 계속 있는 문제 해결용]")]
+        private bool activate = true;
+        public bool Activate { get => activate; set => activate = value; }
 
         //캐슁을 위해 
         private Vector3 camForward;
@@ -50,6 +53,8 @@ namespace WoosanStudio.ZombieShooter
         //private SkinnedMeshRenderer skinnedMeshRenderer;
         //더미 좌표에 플레이어 좌료를 집어 넣기용. 범위를 벗어났을때 한번씩만 가능a
         private bool setAbleDummy = true;
+
+        
 
         private void Awake()
         {
@@ -98,6 +103,11 @@ namespace WoosanStudio.ZombieShooter
             //전방을 확인하기 위해 조이스틱 값을 가져옴
             h = UltimateJoystick.GetHorizontalAxis("Move");
             v = UltimateJoystick.GetVerticalAxis("Move");
+
+            //비활성 명령시 강제 플레이어 포지션으로 변경
+            if (!activate) { pos = player.transform.position; return pos; }
+
+            //Debug.Log("H = " + h + "  V = " + v);
 
             //카메라와 조이스틱 포지션간의 왜곡을 보정하기 위해 방향 다시 계산.
             camForward = Vector3.Scale(cam.forward, new Vector3(1, 0, 1)).normalized;

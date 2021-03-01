@@ -5,6 +5,7 @@ using UnityEngine;
 using Cinemachine;
 using WoosanStudio.Camera;
 using WoosanStudio.Common;
+using UnityEngine.UI;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -82,6 +83,12 @@ namespace WoosanStudio.ZombieShooter
         [Header("[플레이어 연출용 이펙트")]
         public GameObject BoomEffectPrefab;
 
+        //[Header("[조이스틱")]
+        //public GameObject Joystick;
+
+        [Header("[조이스틱 캔버스]")]
+        public CanvasGroup JoystickCanvas;
+
         //카메라를 움직이는 컨트롤
         private CameraMoveController CameraMoveController;
 
@@ -91,8 +98,8 @@ namespace WoosanStudio.ZombieShooter
         //플레이어가 가지고 있는 무기 요청 스크립트
         private WeaponRequester WeaponRequester;
 
-        //생성된 플레이어 활성 비활성 제어
-        //private PlayersController playersController;        
+        //PlayerController.cs에서 가져온 Move.cs 의 IActive
+        private Common.IActive Move;
 
         private void Awake()
         {
@@ -134,6 +141,10 @@ namespace WoosanStudio.ZombieShooter
             //매 라운드 종료시마다 Popup 호출하는 메서드 리스너에 등록
             //*매 라운드 몬스터 생성이 끝났을때 모든 몬스터가 죽으면 호출 되는 이벤트
             MonsterList.Instance.ListEmptyEvent.AddListener(DoDelayCallPopup);
+
+            //시작시 조이스틱 비활성 => Awake()시작시 문제 발생.초기화가 안되서 인듯
+            UltimateJoystick.DisableJoystick("Move");
+            //Joystick.SetActive(false);
         }
 
         /// <summary>
@@ -175,6 +186,9 @@ namespace WoosanStudio.ZombieShooter
             playerController = PlayerFactory.Initialize().GetComponent<PlayerController>();
             //플레이어가 가지고 있는 무기 요청 가지고 옴
             WeaponRequester = playerController.GetComponent<WeaponRequester>();
+
+            //PlayerController.cs에서 가져온 Move.cs 의 IActive
+            Move = playerController.GetComponent(typeof(Common.IActive)) as Common.IActive;
 
             //플레이어 비활성화
             playerController.Deactive();
@@ -313,16 +327,12 @@ namespace WoosanStudio.ZombieShooter
             //해당 레벨에 맞는 몬스터 생성
             for (int i = 0; i < StageNames.Count; i++)
             {
-                //Debug.Log("현재 스테이지 이름 = " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-                //Debug.Log("[" + i + "] = " + StageNames[i]);
+                //현재 씬과 같은 이름을 찾았다면 해당 인덱스로 스테이지로 스폰시작
+                MonsterSpawnScheduleManager.SpawnStart();
 
-                //현재 씬 이름과 씬 이름 리스트에서 같은 이름 찾아서 인덱스 가져오기
-                //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals(StageNames[i]))
-                //{
-                    //현재 씬과 같은 이름을 찾았다면 해당 인덱스로 스테이지로 스폰시작
-                    //MonsterSpawnScheduleManager.SpawnByStage(i);
-                    MonsterSpawnScheduleManager.SpawnStart();
-                //}
+                //조이스틱 활성
+                UltimateJoystick.EnableJoystick("Move");
+                //Joystick.SetActive(true);
             }
         }
 
@@ -486,6 +496,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void PlayerDeadTest()
         {
+            //================= [플레이어와 연결 해제] =================
             GameObject playerObj = playerController.gameObject;
             //콜라이더 비활성화
             playerObj.GetComponent<Collider>().enabled = false;
@@ -499,6 +510,27 @@ namespace WoosanStudio.ZombieShooter
 
             //테그 교체
             playerObj.tag = "DeadPlayer";
+            //================= [카메라 타겟 변경] =================
+            //카메라 타겟 시체 중심변경
+            //this.CustomCamFollow.Swap(1);
+            //플레이어 포지션으로 활성화
+            ((Common.IActive)this.FollowCameraTarget).Activate = false;
+
+            //================= [조이스틱 연결 해제] =================
+            //조이스틱 연결 해제서 실제 Player의 Move를 정지 시켜야함.
+            Move.Activate = false;
+
+            //조이스틱 이벤트 블러킹
+            JoystickCanvas.blocksRaycasts = false;
+            JoystickCanvas.interactable = false;
+
+            //조이스틱 비활성
+            UltimateJoystick.DisableJoystick("Move");
+            //Joystick.SetActive(false);
+
+            //================= [체력 UI 연결 해제] =================
+            //체력과 탄약 UI 활성
+            PlayerCanvasPresenter.SetActivate(false);
         }
 
         /// <summary>
@@ -506,6 +538,7 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void PlayerResurrectionTest()
         {
+            //================= [플레이어와 연결] =================
             GameObject playerObj = playerController.gameObject;
 
             //콜라이더 활성화
@@ -520,6 +553,26 @@ namespace WoosanStudio.ZombieShooter
 
             //테그 교체
             playerObj.tag = "Player";
+            //================= [카메라 타겟 변경] =================
+            //카메라 타겟 조이스틱 어해드 변경
+            //this.CustomCamFollow.Swap(0);
+            //플레이어 포지션으로 활성화 끄기
+            ((Common.IActive)this.FollowCameraTarget).Activate = true;
+
+            //================= [조이스틱 연결] =================
+            //조이스틱 연결 해제서 실제 Player의 Move를 싫행 시켜야함.
+            Move.Activate = true;
+
+            //조이스틱 이벤트 블러킹
+            JoystickCanvas.blocksRaycasts = true;
+            JoystickCanvas.interactable = true;
+            //조이스틱 활성
+            UltimateJoystick.EnableJoystick("Move");
+            //Joystick.SetActive(true);
+
+            //================= [체력 UI 연결] =================
+            //체력과 탄약 UI 활성
+            PlayerCanvasPresenter.SetActivate(true);
         }
 
         /// <summary>

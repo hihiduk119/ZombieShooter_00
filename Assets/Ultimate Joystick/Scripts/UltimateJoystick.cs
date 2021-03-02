@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 // First off, the script is using [ExecuteInEditMode] to be able to show changes in real time. This will not affect anything within a build or play mode. This simply makes the script able to be run while in the Editor in Edit Mode.
 [ExecuteInEditMode]
@@ -82,7 +83,6 @@ public class UltimateJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler
 	bool updateHighlightPosition = false;
 	int _pointerId = -10;// Default value of -10
 
-	
 	void Awake ()
 	{
 		// If the game is not being run and the joystick name has been assigned, then register the joystick.
@@ -222,6 +222,8 @@ public class UltimateJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler
 
 		// Then call UpdateJoystick with the info from the current PointerEventData.
 		UpdateJoystick( touchInfo );
+
+		//Debug.Log("[OnDrag !!]");
 	}
 	
 	public void OnPointerUp ( PointerEventData touchInfo )
@@ -811,10 +813,10 @@ public class UltimateJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler
 		private set;
 	}
 
-	/// <summary>
-	/// Returns a float value between 0 and 1 representing the distance of the joystick from the base.
-	/// </summary>
-	public float GetDistance ()
+    /// <summary>
+    /// Returns a float value between 0 and 1 representing the distance of the joystick from the base.
+    /// </summary>
+    public float GetDistance ()
 	{
 		return Vector3.Distance( joystick.position, joystickCenter ) / radius;
 	}

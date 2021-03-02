@@ -93,8 +93,10 @@ namespace WoosanStudio.ZombieShooter.Player
             float movePower = 0;
 
             //조이스틱 방향 가져오기
-            moveVector.x = UltimateJoystick.GetHorizontalAxis("Move");
-            moveVector.y = UltimateJoystick.GetVerticalAxis("Move");
+            //moveVector.x = UltimateJoystick.GetHorizontalAxis("Move");
+            //moveVector.y = UltimateJoystick.GetVerticalAxis("Move");
+            moveVector.x = WoosanStudio.Common.JoystickInput.Instance.Horizontal;
+            moveVector.y = WoosanStudio.Common.JoystickInput.Instance.Vertical;
 
             //벡터의 크기로 움직임 파워 계산
             movePower = moveVector.SqrMagnitude();

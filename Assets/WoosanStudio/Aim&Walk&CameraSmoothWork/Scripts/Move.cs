@@ -52,8 +52,10 @@ namespace WoosanStudio.Player
             if (!this.activate) { return;}
 
             //조이스틱 방향 가져오기
-            h = UltimateJoystick.GetHorizontalAxis("Move");
-            v = UltimateJoystick.GetVerticalAxis("Move");
+            //h = UltimateJoystick.GetHorizontalAxis("Move");
+            //v = UltimateJoystick.GetVerticalAxis("Move");
+            h = WoosanStudio.Common.JoystickInput.Instance.Horizontal;
+            v = WoosanStudio.Common.JoystickInput.Instance.Vertical;
 
             //Debug.Log("H = [" + h + "] V = [" + v + "]");
 

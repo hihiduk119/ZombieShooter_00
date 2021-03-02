@@ -41,7 +41,7 @@ namespace WoosanStudio.ZombieShooter
         [Header("[[0-1]Look At 타겟과 사이 타겟 간격 설정]")]
         public float margin = 0.55f;
 
-        [Header("[조이스틱 비활성화시 값이 계속 있는 문제 해결용]")]
+        //[Header("[조이스틱 비활성화시 값이 계속 있는 문제 해결용]")]
         private bool activate = true;
         public bool Activate { get => activate; set => activate = value; }
 
@@ -101,8 +101,10 @@ namespace WoosanStudio.ZombieShooter
         {
             Vector3 pos;
             //전방을 확인하기 위해 조이스틱 값을 가져옴
-            h = UltimateJoystick.GetHorizontalAxis("Move");
-            v = UltimateJoystick.GetVerticalAxis("Move");
+            //h = UltimateJoystick.GetHorizontalAxis("Move");
+            //v = UltimateJoystick.GetVerticalAxis("Move");
+            h = WoosanStudio.Common.JoystickInput.Instance.Horizontal;
+            v = WoosanStudio.Common.JoystickInput.Instance.Vertical;
 
             //비활성 명령시 강제 플레이어 포지션으로 변경
             if (!activate) { pos = player.transform.position; return pos; }

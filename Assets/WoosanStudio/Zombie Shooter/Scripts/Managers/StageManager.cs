@@ -511,8 +511,6 @@ namespace WoosanStudio.ZombieShooter
             //테그 교체
             playerObj.tag = "DeadPlayer";
             //================= [카메라 타겟 변경] =================
-            //카메라 타겟 시체 중심변경
-            //this.CustomCamFollow.Swap(1);
             //플레이어 포지션으로 활성화
             ((Common.IActive)this.FollowCameraTarget).Activate = false;
 
@@ -523,10 +521,6 @@ namespace WoosanStudio.ZombieShooter
             //조이스틱 이벤트 블러킹
             JoystickCanvas.blocksRaycasts = false;
             JoystickCanvas.interactable = false;
-
-            //조이스틱 비활성
-            UltimateJoystick.DisableJoystick("Move");
-            //Joystick.SetActive(false);
 
             //================= [체력 UI 연결 해제] =================
             //체력과 탄약 UI 활성
@@ -554,8 +548,6 @@ namespace WoosanStudio.ZombieShooter
             //테그 교체
             playerObj.tag = "Player";
             //================= [카메라 타겟 변경] =================
-            //카메라 타겟 조이스틱 어해드 변경
-            //this.CustomCamFollow.Swap(0);
             //플레이어 포지션으로 활성화 끄기
             ((Common.IActive)this.FollowCameraTarget).Activate = true;
 
@@ -566,9 +558,6 @@ namespace WoosanStudio.ZombieShooter
             //조이스틱 이벤트 블러킹
             JoystickCanvas.blocksRaycasts = true;
             JoystickCanvas.interactable = true;
-            //조이스틱 활성
-            UltimateJoystick.EnableJoystick("Move");
-            //Joystick.SetActive(true);
 
             //================= [체력 UI 연결] =================
             //체력과 탄약 UI 활성

@@ -212,7 +212,7 @@ namespace WoosanStudio.ZombieShooter
             //현재 체력 과 최대 체력 동기화
             PlayerCanvasPresenter.ResetHP();
 
-            Debug.Log("체력 리셋 !! = [" + GlobalDataController.PlayerHealth + "]");
+            //Debug.Log("체력 리셋 !! = [" + GlobalDataController.PlayerHealth + "]");
 
             //에너지 부족으로 시작했다면 체력 감소
             if(GlobalDataController.NoEnergyStart)
@@ -556,7 +556,18 @@ namespace WoosanStudio.ZombieShooter
             yield return new WaitForSeconds(0.5f);
 
             //한번더 팝업 표시
-            UI.PopupsManager.Instance.OpenAgainPopup();
+            //*아직 테스트 중이라 막음
+            //에너지 부족으로 시작했거나 이미 한번 이상 부활했는지 확인
+            //if (GlobalDataController.NoEnergyStart || GlobalDataController.ResurrectionCount > 0)
+            //{
+            //    //에너지 부족 시작시 바로 결과창 보여줌
+            //    UI.PopupsManager.Instance.OpenResultPopup();
+            //}
+            //else
+            //{
+            //    //에너지 사용 시작시 어게인 창 보여줌.
+            //    UI.PopupsManager.Instance.OpenAgainPopup();
+            //}
         }
 
         /// <summary>
@@ -597,6 +608,31 @@ namespace WoosanStudio.ZombieShooter
             //================= [체력 UI 연결] =================
             //체력과 탄약 UI 활성
             PlayerCanvasPresenter.SetActivate(true);
+
+            //================= [체력 및 UI Full회복] =================
+            //실제 플레이어에 체력 세팅을 위해 IHaveHealth가져옴
+            IHaveHealth haveHealth = playerController.GetComponent(typeof(IHaveHealth)) as IHaveHealth;
+            //체력 세팅
+            haveHealth.ResetHealth(GlobalDataController.PlayerHealth);
+            /// UI 체력 바에 설정
+            //최대 체력 업데이트
+            PlayerCanvasPresenter.UpdateMaxHP(GlobalDataController.PlayerHealth);
+            //현재 체력 과 최대 체력 동기화
+            PlayerCanvasPresenter.ResetHP();
+        }
+
+        /// <summary>
+        /// 로비로 가기
+        /// </summary>
+        public void GoToRobby()
+        {
+            //부활 카운트 0으로 초기화
+            GlobalDataController.ResurrectionCount = 0;
+
+            //에너지부족 시작 초기화
+            GlobalDataController.NoEnergyStart = false;
+
+
         }
 
         /// <summary>

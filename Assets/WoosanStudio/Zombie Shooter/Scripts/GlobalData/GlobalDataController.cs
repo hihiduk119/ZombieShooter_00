@@ -225,6 +225,9 @@ namespace WoosanStudio.ZombieShooter
         //플레이어의 기본 체력
         static public int PlayerHealth = 50;
 
+        //플레이어의 부활 횟수
+        static public int ResurrectionCount = 0;
+
         /// <summary>
         /// 소모되는 에너지 계산해서 가져오기
         /// </summary>

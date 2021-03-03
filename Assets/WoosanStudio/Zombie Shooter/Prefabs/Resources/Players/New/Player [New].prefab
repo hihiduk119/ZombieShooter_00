@@ -2716,6 +2716,7 @@ GameObject:
   - component: {fileID: 7318908344762015752}
   - component: {fileID: 1897309079062241687}
   - component: {fileID: -7281872146167753709}
+  - component: {fileID: 1866373567114895639}
   m_Layer: 8
   m_Name: Player [New]
   m_TagString: Player
@@ -3474,6 +3475,20 @@ MonoBehaviour:
   ControlModel: {fileID: 1836758714096693580}
   RagdollModel: {fileID: 2026817967637706449}
   CopyComponets: {fileID: 278385365999791005}
+--- !u!114 &1866373567114895639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836758714628244879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1d6c2453ea14b17aa744526572f120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeathSkull: {fileID: 100000, guid: d5dd81afacc424e38957983d79554086, type: 3}
+  RockHit: {fileID: 1040608886635896, guid: 183521cfbbe4749d3b4d42ee868fed97, type: 3}
 --- !u!1 &1949968884942837501
 GameObject:
   m_ObjectHideFlags: 0

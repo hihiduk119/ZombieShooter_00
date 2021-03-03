@@ -13,7 +13,7 @@ namespace WoosanStudio.ZombieShooter
         public GameObject ControlModel;
         //레그돌 모델
         public GameObject RagdollModel;
-        
+
         public CopyComponets CopyComponets;
 
         //cache
@@ -31,6 +31,8 @@ namespace WoosanStudio.ZombieShooter
         private ICanDestory canDestory;
         //몬스터 세팅 가져오기
         //private IMonsterSettings monsterSettings;
+        //이펙트
+        private Player.DeadEffect deadEffect;
 
         //죽음 연출용 강제 Force발생
         Boom boom;
@@ -54,6 +56,7 @@ namespace WoosanStudio.ZombieShooter
             blink = transform.GetComponentInChildren<IBlink>();
             canDestory = GetComponent<ICanDestory>();
             //monsterSettings = GetComponent<IMonsterSettings>();
+            deadEffect = GetComponent<Player.DeadEffect>();
 
             //IHaveHealth 에 체력 체크 등록.
             haveHealth.DamagedEvent.AddListener(CheckHealth);
@@ -116,6 +119,9 @@ namespace WoosanStudio.ZombieShooter
             boom = new Boom(pos);
             //testDummy.transform.position = hit;
 
+            //이펙트 실행
+            deadEffect?.Run();
+
             //Invoke("GoToHeaven", 3f);
             //Debug.Log("=================>    GoToHeaven");
         }
@@ -134,7 +140,7 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 하늘로 떠오르며 죽는 연출
         /// </summary>
-        void GoToHeaven()
+        /*void GoToHeaven()
         {
             //하늘로 올름 이벤트 발생
             GoHeavenEvent.Invoke(transform.position);
@@ -155,6 +161,15 @@ namespace WoosanStudio.ZombieShooter
             }
 
             //Debug.Log("=================>    Go       ToHeaven");
+        }*/
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                //이펙트 실행
+                deadEffect?.Run();
+            }
         }
     }
 }

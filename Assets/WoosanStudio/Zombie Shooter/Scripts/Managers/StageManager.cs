@@ -101,6 +101,9 @@ namespace WoosanStudio.ZombieShooter
         //PlayerController.cs에서 가져온 Move.cs 의 IActive
         private Common.IActive Move;
 
+        //임시
+        private Coroutine directCameraCoroutine;
+
         private void Awake()
         {
             Instance = this;
@@ -525,6 +528,35 @@ namespace WoosanStudio.ZombieShooter
             //================= [체력 UI 연결 해제] =================
             //체력과 탄약 UI 활성
             PlayerCanvasPresenter.SetActivate(false);
+
+            //화면 연출 코루틴 시작
+            if (directCameraCoroutine != null) { StopCoroutine(directCameraCoroutine); }
+            directCameraCoroutine = StartCoroutine(DirectCameraCoroutine());
+        }
+
+        /// <summary>
+        /// 화면 연출 코루틴 시작
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator DirectCameraCoroutine()
+        {
+            //줌인아웃 연출 시작
+            CameraZoom.Instance.AutoZoomOut();
+
+            //슬로우 모션 시작
+            WoosanStudio.Common.SlowMotionTimeManager.Instance.DoSlowMotion();
+
+            //1.2초 대기
+            yield return new WaitForSeconds(2f);
+
+            //스로우 풀기
+            WoosanStudio.Common.SlowMotionTimeManager.Instance.Rollback();
+            
+            //0.8초 대기
+            yield return new WaitForSeconds(0.5f);
+
+            //한번더 팝업 표시
+            UI.PopupsManager.Instance.OpenAgainPopup();
         }
 
         /// <summary>
@@ -532,6 +564,9 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void PlayerResurrectionTest()
         {
+            //줌인상태에서 아웃으로 감
+            CameraZoom.Instance.ZoomIn();
+
             //================= [플레이어와 연결] =================
             GameObject playerObj = playerController.gameObject;
 

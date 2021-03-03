@@ -24,16 +24,16 @@ namespace WoosanStudio.ZombieShooter.Player
             modelController.ChangedCharacter(3);
         }
 
-        #region [-TestCode]
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                //캐릭터 세팅
-                modelController.ChangedCharacter(3);
-            }
-        }
-        #endregion
+        //#region [-TestCode]
+        //void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Q))
+        //    {
+        //        //캐릭터 세팅
+        //        modelController.ChangedCharacter(3);
+        //    }
+        //}
+        //#endregion
 
     }
 }

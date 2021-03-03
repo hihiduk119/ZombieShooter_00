@@ -11,11 +11,18 @@ namespace WoosanStudio.ZombieShooter.UI
     /// </summary>
     public class PopupsManager : MonoBehaviour
     {
+        static public PopupsManager Instance;
+
         [Header("[어게인 팝업 오프너]")]
         public PopupOpener InGameStageAgainPopupOpener;
 
         [Header("[결과창 팝업 오프너]")]
         public PopupOpener InGameStageResultPopupOpener;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         /// <summary>
         /// 한번더 팝업 오픈

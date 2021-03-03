@@ -12,6 +12,8 @@ namespace WoosanStudio.ZombieShooter
     /// </summary>
     public class CameraZoom : MonoBehaviour
     {
+        static public CameraZoom Instance;
+
         [Header("[이동 로컬 포지션]")]
         public Vector3 TargetPosition;
 
@@ -54,6 +56,7 @@ namespace WoosanStudio.ZombieShooter
 
         private void Awake()
         {
+            Instance = this;
             //초기값 세팅 [로컬 값임]
             mDefalutPos = transform.localPosition;
         }
@@ -94,11 +97,42 @@ namespace WoosanStudio.ZombieShooter
             //에니메이션 시작시 사용 불가로 만듬
             isAble = false;
 
-            transform.DOLocalMove(mDefalutPos, ZoomSets[ZoomIndex].Duration).SetEase(Ease).OnComplete(() => {
+            transform.DOLocalMove(mDefalutPos, ZoomSets[ZoomIndex].Duration).SetEase(Ease).OnComplete(() =>
+            {
                 //에니메이션 끝에 사용 불가 해제
                 isAble = true;
             });
         }
+
+        /// <summary>
+        /// 올랐던 하늘을 복귀하는 연출
+        /// </summary>
+        //public void ZoomIn(int index)
+        //{
+        //    //에니메이션 시작시 사용 불가로 만듬
+        //    isAble = false;
+
+        //    transform.DOLocalMove(mDefalutPos, ZoomSets[index].Duration).SetEase(Ease).OnComplete(() => {
+        //        //에니메이션 끝에 사용 불가 해제
+        //        isAble = true;
+        //    });
+        //}
+
+        /// <summary>
+        /// 줌인후 아웃함
+        /// </summary>
+        /// <param name="">줌인후 딜레이 시간</param>
+        //public void AutoZoomInOut(float delay)
+        //{
+        //    StartCoroutine(AutoZoomInOutCoroutine(delay));
+        //}
+
+        //IEnumerator AutoZoomInOutCoroutine(float delay)
+        //{
+        //    ZoomIn(1);
+        //    yield return new WaitForSeconds(delay);
+        //    //ZoomOut(1);
+        //}
 
         //#region [-TestCode]
         //void Update()

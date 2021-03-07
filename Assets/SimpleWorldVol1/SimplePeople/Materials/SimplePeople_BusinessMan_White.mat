@@ -32,3 +32,4 @@ Material:
     m_Colors:
     - _Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     - _OutlineColor: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 1}
+  m_BuildTextureStacks: []

@@ -142,6 +142,9 @@ public abstract class EnergyBarUGUIBase : EnergyBarBase {
 
     protected T CreateChild<T>(string childName, Transform parent) where T : Component {
         var child = CreateChild<T>(parent, "generated_" + childName);
+
+        if (!child.gameObject.GetComponent<CanvasRenderer>()) child.gameObject.AddComponent<CanvasRenderer>();
+
         createdChildren.Add(child.gameObject);
         SetAsLastGenerated(child.transform);
         ApplyDebugMode(child.gameObject, debugMode);

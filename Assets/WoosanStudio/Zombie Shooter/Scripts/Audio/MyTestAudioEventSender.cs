@@ -25,6 +25,7 @@ namespace WoosanStudio.ZombieShooter
             DontDestroyOnLoad(this);
         }
 
+        /*
         #region [-TestCode]
         void Update()
         {
@@ -141,5 +142,6 @@ namespace WoosanStudio.ZombieShooter
             }
         }
         #endregion
+        */
     }
 }

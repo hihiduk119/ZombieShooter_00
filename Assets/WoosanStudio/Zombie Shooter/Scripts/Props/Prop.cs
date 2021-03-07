@@ -22,7 +22,9 @@ namespace WoosanStudio.ZombieShooter
         {
             animator.Play("Empty");
             animator.SetTrigger("Pong");
+
             //총맞은 사운드
+            //*공습 데미지 사운드때는 동작 안하게 만들어야 함.
             MasterAudio.FireCustomEvent("ObjectsHit", this.transform);
         }
 

@@ -601,6 +601,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1949190598727963287, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: showLocalization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949190598727963287, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: showMusicDucking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949190598727963287, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: _masterAudioVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949190598727963287, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: showAdvancedSettings
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949190598727963287, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: _masterPlaylistVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949190598727963287, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: musicPlaylists.Array.data[1].isExpanded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949190598727963287, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: musicPlaylists.Array.data[2].isExpanded
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1949190598727963368, guid: 25fa5d48486a841eaaa03f35e72c132d,
         type: 3}
       propertyPath: m_Name
@@ -738,6 +773,7 @@ GameObject:
   - component: {fileID: 917867882}
   - component: {fileID: 917867881}
   - component: {fileID: 917867880}
+  - component: {fileID: 917867883}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -810,6 +846,147 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &917867883
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917867879}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.02
+      value: 1
+      inSlope: -50.019924
+      outSlope: -50.019924
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.04
+      value: 0.5
+      inSlope: -12.504981
+      outSlope: -12.504981
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.08
+      value: 0.25
+      inSlope: -3.1262453
+      outSlope: -3.1262453
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.16
+      value: 0.125
+      inSlope: -0.7815613
+      outSlope: -0.7815613
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.32
+      value: 0.0625
+      inSlope: -0.19539033
+      outSlope: -0.19539033
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.64
+      value: 0.03125
+      inSlope: -0.048847582
+      outSlope: -0.048847582
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.020007985
+      outSlope: -0.020007985
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1082250618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -821,6 +998,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Song PlaylistController
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769161719375481434, guid: 16b0b0f9d097b4bb08f6a2477c7d3b1c,
+        type: 3}
+      propertyPath: playlistStartedEventExpanded
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8893289028100818926, guid: 16b0b0f9d097b4bb08f6a2477c7d3b1c,
         type: 3}

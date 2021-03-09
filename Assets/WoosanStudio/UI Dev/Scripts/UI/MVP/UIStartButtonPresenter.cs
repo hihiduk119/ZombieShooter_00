@@ -184,6 +184,9 @@ namespace WoosanStudio.ZombieShooter
             //씬이동
             sceneTransition.PerformTransition();
 
+            //배틀 송 출력
+            Audio.SongManager.Instance.PlayBattleSong(Random.Range(0,10));
+
             //스테이지 시작 이벤트
             StageStartEvent.Invoke();
         }

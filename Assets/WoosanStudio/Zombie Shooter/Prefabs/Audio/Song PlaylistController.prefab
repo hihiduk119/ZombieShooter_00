@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aee0c42cfbeb2b45b09ce685ab0323c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPlaylistOnAwake: 1
+  startPlaylistOnAwake: 0
   isShuffle: 1
   isAutoAdvance: 1
   loopPlaylist: 1

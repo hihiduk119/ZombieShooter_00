@@ -8,6 +8,7 @@ using DG.Tweening;
 
 //using WoosanStudio.Common;
 using UnityEngine.Events;
+using DarkTonic.MasterAudio;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -150,6 +151,9 @@ namespace WoosanStudio.ZombieShooter
 
             //FOV 설정.
             MainCamera.DOFieldOfView(FOV_Value, Duration).OnComplete(() => ChangeCompleteEvent.Invoke());
+
+            //카메라 줌 바람소리
+            MasterAudio.FireCustomEvent("SFX_CameraWhoosh", this.transform);
         }
 
         /// <summary>
@@ -233,6 +237,7 @@ namespace WoosanStudio.ZombieShooter
             NextLevel++;
         }
 
+        /*
         #region [-TestCode]
         private void Update()
         {
@@ -243,5 +248,6 @@ namespace WoosanStudio.ZombieShooter
             }
         }
         #endregion
+        */
     }
 }

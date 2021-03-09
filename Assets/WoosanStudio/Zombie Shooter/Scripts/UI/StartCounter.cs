@@ -6,6 +6,8 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using DG.Tweening;
 
+using DarkTonic.MasterAudio;
+
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
@@ -77,6 +79,18 @@ namespace WoosanStudio.ZombieShooter
             //숫자 흔듬
             image.transform.DORotate(new Vector3(0, 0, -20f), 0.2f).SetLoops(4, LoopType.Yoyo);
 
+
+            //마지막 카운트 확인용
+            if ((maxCount - 1) == count)
+            {
+                //카운팅 소리
+                MasterAudio.FireCustomEvent("SFX_CountEnd", this.transform);
+            } else
+            {
+                //카운팅 소리
+                MasterAudio.FireCustomEvent("SFX_CountDefault", this.transform);
+            }
+
             canvasGroup.DOFade(0, 1f).OnComplete(() => {
                 //최대 카운트 만큼 재귀 호출
                 if (maxCount-1 > count)
@@ -87,7 +101,7 @@ namespace WoosanStudio.ZombieShooter
                     Swap(images[count]);
 
                     //마지막 카운트시에 스캐일 연출 
-                    if((maxCount - 1) == count)
+                    if ((maxCount - 1) == count)
                     {
                         //숫자 크게 키우기
                         image.transform.DOScale(30, 1f).SetEase(Ease.InCubic).OnComplete(() =>

@@ -73,6 +73,9 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
             weaponItemPresenter.ChangeCard((int)GlobalDataController.SelectedCharacterCard.Type - 100);
             //팝업 생성시 선택된 카드 아이템 설정
             ammoItemPresenter.ChangeCard((int)GlobalDataController.SelectedCharacterCard.Type - 200);
+
+            //카드 선택 송 플레이
+            Audio.SongManager.Instance.PlayCardSelectionSong();
         }
 
         /// <summary>
@@ -196,11 +199,17 @@ namespace WoosanStudio.ZombieShooter.UI.MVP.InGameCardSelect
             GlobalDataController.SelectedAmmoCard = cardSetting;
         }
 
+        /// <summary>
+        /// OK 클릭
+        /// </summary>
         public void ClickedOk()
         {
             //선택된 카드 스택 증가
             //*스택 증가는 해당 카드 데이터 반영을 의미
             SelectedCard.StackCount++;
+
+            //사운드 변경
+            Audio.SongManager.Instance.PlayBattleSong(Random.Range(0, 10));
 
             //카드 데이터를 캐릭터에 적용하는 코드 필요
         }

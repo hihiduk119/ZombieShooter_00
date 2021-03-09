@@ -7,6 +7,8 @@ using WoosanStudio.Camera;
 using WoosanStudio.Common;
 using UnityEngine.UI;
 
+using DarkTonic.MasterAudio;
+
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
@@ -398,6 +400,9 @@ namespace WoosanStudio.ZombieShooter
 
             //안개 연하게
             FogController.DencityChange(1);
+
+            //카메라 바람소리 시작
+            MasterAudio.FireCustomEvent("SFX_CinematicCameraWhoosh", this.transform);
         }
 
         /// <summary>

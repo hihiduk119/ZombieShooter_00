@@ -5,6 +5,8 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
 
+using DarkTonic.MasterAudio;
+
 namespace WoosanStudio.ZombieShooter
 {
     /// <summary>
@@ -87,6 +89,9 @@ namespace WoosanStudio.ZombieShooter
                 //에니메이션 끝 알림림
                 //mEndEvent.Invoke();
             });
+
+            //카메라 바람소리 시작
+            //MasterAudio.FireCustomEvent("SFX_CameraWhoosh", this.transform);
         }
 
         /// <summary>

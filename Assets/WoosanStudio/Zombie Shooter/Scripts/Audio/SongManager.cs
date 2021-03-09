@@ -1,16 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 using DarkTonic.MasterAudio;
 
 namespace WoosanStudio.ZombieShooter.Audio
 {
+    /// <summary>
+    /// 사운드 송 플레이 메니저
+    /// </summary>
     public class SongManager : MonoBehaviour
     {
+        static public SongManager Instance;
+
         public PlaylistController playlistController;
 
         private bool pause = false;
+
+        private void Awake()
+        {
+            Instance = this;
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        /// <summary>
+        /// 씬로드 호출
+        /// </summary>
+        /// <param name="scene"></param>
+        /// <param name="mode"></param>
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            //Debug.Log(scene.name);
+            switch(scene.name)
+            {
+                case "1.ZombieShooter-Robby":
+                    //로비 송 플레이
+                    this.PlayRobbySong();
+                    break;
+                default: break;
+            }
+
+            if(scene.Equals("0.ZombieShooter-Title") )
+            {
+                Debug.Log("[타이틀 씬 로드]");
+                //사운드 죽임
+                this.Pause();
+            }
+        }
 
         /// <summary>
         /// 노래 일시 정지
@@ -63,6 +101,16 @@ namespace WoosanStudio.ZombieShooter.Audio
                     playlistController.StartPlaylist("Battle playlist", "Battle/4.Let's Rock_loop"); break;
                 case 4:
                     playlistController.StartPlaylist("Battle playlist", "Battle/5.Be Faster_loop"); break;
+                case 5:
+                    playlistController.StartPlaylist("Battle playlist", "Battle/6.Fatality Racer_loop"); break;
+                case 6:
+                    playlistController.StartPlaylist("Battle playlist", "Battle/7.Rage Machine_loop"); break;
+                case 7:
+                    playlistController.StartPlaylist("Battle playlist", "Battle/8.No Way Back_loop"); break;
+                case 8:
+                    playlistController.StartPlaylist("Battle playlist", "Battle/9.Time For Action_loop"); break;
+                case 9:
+                    playlistController.StartPlaylist("Battle playlist", "Battle/10.Heart of Warrior_loop"); break;
             }
 
             //Battle/

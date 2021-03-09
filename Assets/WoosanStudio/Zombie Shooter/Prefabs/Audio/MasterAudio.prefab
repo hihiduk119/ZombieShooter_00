@@ -1,5 +1,617 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &20707339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 20707340}
+  - component: {fileID: 20707343}
+  - component: {fileID: 20707342}
+  - component: {fileID: 20707341}
+  m_Layer: 2
+  m_Name: WHOOSH_Wide_Fast_stereo1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &20707340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20707339}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1374669445}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &20707343
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20707339}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4b1e9c6ebeeec4ecb98c0169ddb7111a, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.1
+      value: 1
+      inSlope: -10.0039835
+      outSlope: -10.0039835
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.5
+      inSlope: -2.5009959
+      outSlope: -2.5009959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.25
+      inSlope: -0.62524897
+      outSlope: -0.62524897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.10003992
+      outSlope: -0.10003992
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &20707342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20707339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931518f9ca6c3844891dee74db8ed494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
+  useLocalization: 0
+  useRandomPitch: 0
+  randomPitchMode: 0
+  randomPitchMin: 0
+  randomPitchMax: 0
+  useRandomVolume: 0
+  randomVolumeMode: 1
+  randomVolumeMin: 0.19952624
+  randomVolumeMax: 0.8035261
+  clipAlias: 
+  audLocation: 0
+  resourceFileName: 
+  original_pitch: 0
+  original_volume: 0
+  isExpanded: 1
+  isChecked: 1
+  useFades: 0
+  fadeInTime: 0
+  fadeOutTime: 0
+  useCustomLooping: 0
+  minCustomLoops: 1
+  maxCustomLoops: 5
+  useRandomStartTime: 0
+  randomStartMinPercent: 0
+  randomStartMaxPercent: 0
+  randomEndPercent: 100
+  useIntroSilence: 0
+  introSilenceMin: 0
+  introSilenceMax: 0
+  fadeMaxVolume: 0
+  curFadeMode: 0
+  curPitchMode: 0
+  curDetectEndMode: 0
+  frames: 0
+--- !u!114 &20707341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20707339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b7eb7dcef8b0e48a8572747ca7c64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &197994429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 197994430}
+  - component: {fileID: 197994433}
+  - component: {fileID: 197994432}
+  - component: {fileID: 197994431}
+  m_Layer: 2
+  m_Name: Arrow Impact Brick 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &197994430
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197994429}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 800282176}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &197994433
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197994429}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4079e855661744eaa86d91a04b0519bf, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.1
+      value: 1
+      inSlope: -10.0039835
+      outSlope: -10.0039835
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.5
+      inSlope: -2.5009959
+      outSlope: -2.5009959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.25
+      inSlope: -0.62524897
+      outSlope: -0.62524897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.10003992
+      outSlope: -0.10003992
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &197994432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197994429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931518f9ca6c3844891dee74db8ed494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
+  useLocalization: 0
+  useRandomPitch: 0
+  randomPitchMode: 0
+  randomPitchMin: 0
+  randomPitchMax: 0
+  useRandomVolume: 0
+  randomVolumeMode: 0
+  randomVolumeMin: 0
+  randomVolumeMax: 0
+  clipAlias: 
+  audLocation: 0
+  resourceFileName: 
+  original_pitch: 0
+  original_volume: 0
+  isExpanded: 1
+  isChecked: 1
+  useFades: 0
+  fadeInTime: 0
+  fadeOutTime: 0
+  useCustomLooping: 0
+  minCustomLoops: 1
+  maxCustomLoops: 5
+  useRandomStartTime: 0
+  randomStartMinPercent: 0
+  randomStartMaxPercent: 0
+  randomEndPercent: 100
+  useIntroSilence: 0
+  introSilenceMin: 0
+  introSilenceMax: 0
+  fadeMaxVolume: 0
+  curFadeMode: 0
+  curPitchMode: 0
+  curDetectEndMode: 0
+  frames: 0
+--- !u!114 &197994431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197994429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b7eb7dcef8b0e48a8572747ca7c64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &203911084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 203911085}
+  - component: {fileID: 203911086}
+  m_Layer: 2
+  m_Name: Count Default
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &203911085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203911084}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1660972328}
+  m_Father: {fileID: 1949190598727963286}
+  m_RootOrder: 61
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &203911086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203911084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db10a6d491569a8419b6f5e1bffc5243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  busIndex: 5
+  spatialBlendType: 1
+  spatialBlend: 1
+  groupPlayType: 0
+  isSelected: 0
+  isExpanded: 1
+  groupMasterVolume: 0.4
+  retriggerPercentage: 5
+  curVariationMode: 0
+  alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
+  chainLoopDelayMin: 0
+  chainLoopDelayMax: 0
+  chainLoopMode: 0
+  chainLoopNumLoops: 0
+  useDialogFadeOut: 0
+  dialogFadeOutTime: 0.5
+  curVariationSequence: 0
+  useNoRepeatRefill: 1
+  useInactivePeriodPoolRefill: 0
+  inactivePeriodSeconds: 5
+  groupVariations:
+  - {fileID: 1660972330}
+  bulkVariationMode: 0
+  comments: 
+  logSound: 0
+  copySettingsExpanded: 0
+  expandLinkedGroups: 0
+  childSoundGroups: []
+  endLinkedGroups: []
+  linkedStartGroupSelectionType: 0
+  linkedStopGroupSelectionType: 0
+  limitMode: 0
+  limitPerXFrames: 1
+  minimumTimeBetween: 0.1
+  useClipAgePriority: 0
+  limitPolyphony: 0
+  voiceLimitCount: 1
+  targetDespawnedBehavior: 0
+  despawnFadeTime: 1
+  isUsingOcclusion: 0
+  willOcclusionOverrideRaycastOffset: 0
+  occlusionRayCastOffset: 0
+  willOcclusionOverrideFrequencies: 0
+  occlusionMaxCutoffFreq: 0
+  occlusionMinCutoffFreq: 22000
+  isSoloed: 0
+  isMuted: 0
+  soundPlayedEventActive: 0
+  soundPlayedCustomEvent: 
+  willCleanUpDelegatesAfterStop: 1
+  frames: 972
+--- !u!1 &266108437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 266108438}
+  - component: {fileID: 266108439}
+  m_Layer: 2
+  m_Name: Camera Whoosh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &266108438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266108437}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1618017601}
+  m_Father: {fileID: 1949190598727963286}
+  m_RootOrder: 58
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &266108439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266108437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db10a6d491569a8419b6f5e1bffc5243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  busIndex: 5
+  spatialBlendType: 1
+  spatialBlend: 1
+  groupPlayType: 0
+  isSelected: 0
+  isExpanded: 1
+  groupMasterVolume: 1
+  retriggerPercentage: 5
+  curVariationMode: 0
+  alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
+  chainLoopDelayMin: 0
+  chainLoopDelayMax: 0
+  chainLoopMode: 0
+  chainLoopNumLoops: 0
+  useDialogFadeOut: 0
+  dialogFadeOutTime: 0.5
+  curVariationSequence: 0
+  useNoRepeatRefill: 1
+  useInactivePeriodPoolRefill: 0
+  inactivePeriodSeconds: 5
+  groupVariations:
+  - {fileID: 1618017603}
+  bulkVariationMode: 0
+  comments: 
+  logSound: 0
+  copySettingsExpanded: 0
+  expandLinkedGroups: 0
+  childSoundGroups: []
+  endLinkedGroups: []
+  linkedStartGroupSelectionType: 0
+  linkedStopGroupSelectionType: 0
+  limitMode: 0
+  limitPerXFrames: 1
+  minimumTimeBetween: 0.1
+  useClipAgePriority: 0
+  limitPolyphony: 0
+  voiceLimitCount: 1
+  targetDespawnedBehavior: 0
+  despawnFadeTime: 1
+  isUsingOcclusion: 0
+  willOcclusionOverrideRaycastOffset: 0
+  occlusionRayCastOffset: 0
+  willOcclusionOverrideFrequencies: 0
+  occlusionMaxCutoffFreq: 0
+  occlusionMinCutoffFreq: 22000
+  isSoloed: 0
+  isMuted: 0
+  soundPlayedEventActive: 0
+  soundPlayedCustomEvent: 
+  willCleanUpDelegatesAfterStop: 1
+  frames: 2214
 --- !u!1 &325226556
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +773,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -170,6 +784,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -201,6 +816,215 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325226556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b7eb7dcef8b0e48a8572747ca7c64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &389410150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 389410151}
+  - component: {fileID: 389410154}
+  - component: {fileID: 389410153}
+  - component: {fileID: 389410152}
+  m_Layer: 2
+  m_Name: TNT Explosion 11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &389410151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389410150}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1132415664}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &389410154
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389410150}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9227dd48eba3046338e33923c526df23, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.1
+      value: 1
+      inSlope: -10.0039835
+      outSlope: -10.0039835
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.5
+      inSlope: -2.5009959
+      outSlope: -2.5009959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.25
+      inSlope: -0.62524897
+      outSlope: -0.62524897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.10003992
+      outSlope: -0.10003992
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &389410153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389410150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931518f9ca6c3844891dee74db8ed494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
+  useLocalization: 0
+  useRandomPitch: 0
+  randomPitchMode: 0
+  randomPitchMin: 0
+  randomPitchMax: 0
+  useRandomVolume: 1
+  randomVolumeMode: 1
+  randomVolumeMin: 0.19952624
+  randomVolumeMax: 0.8035261
+  clipAlias: 
+  audLocation: 0
+  resourceFileName: 
+  original_pitch: 0
+  original_volume: 0
+  isExpanded: 1
+  isChecked: 1
+  useFades: 0
+  fadeInTime: 0
+  fadeOutTime: 0
+  useCustomLooping: 0
+  minCustomLoops: 1
+  maxCustomLoops: 5
+  useRandomStartTime: 0
+  randomStartMinPercent: 0
+  randomStartMaxPercent: 0
+  randomEndPercent: 100
+  useIntroSilence: 0
+  introSilenceMin: 0
+  introSilenceMax: 0
+  fadeMaxVolume: 0
+  curFadeMode: 0
+  curPitchMode: 0
+  curDetectEndMode: 0
+  frames: 0
+--- !u!114 &389410152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389410150}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1b7eb7dcef8b0e48a8572747ca7c64d, type: 3}
@@ -367,6 +1191,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -376,6 +1202,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -412,6 +1239,320 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b7eb7dcef8b0e48a8572747ca7c64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &524634687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 524634688}
+  - component: {fileID: 524634691}
+  - component: {fileID: 524634690}
+  - component: {fileID: 524634689}
+  m_Layer: 2
+  m_Name: Arrow Impact Brick 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &524634688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524634687}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 800282176}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &524634691
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524634687}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 88a5200d3534f48e49feb82dc0f53f34, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.1
+      value: 1
+      inSlope: -10.0039835
+      outSlope: -10.0039835
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.5
+      inSlope: -2.5009959
+      outSlope: -2.5009959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.25
+      inSlope: -0.62524897
+      outSlope: -0.62524897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.10003992
+      outSlope: -0.10003992
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &524634690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524634687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931518f9ca6c3844891dee74db8ed494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
+  useLocalization: 0
+  useRandomPitch: 0
+  randomPitchMode: 0
+  randomPitchMin: 0
+  randomPitchMax: 0
+  useRandomVolume: 0
+  randomVolumeMode: 0
+  randomVolumeMin: 0
+  randomVolumeMax: 0
+  clipAlias: 
+  audLocation: 0
+  resourceFileName: 
+  original_pitch: 0
+  original_volume: 0
+  isExpanded: 1
+  isChecked: 1
+  useFades: 0
+  fadeInTime: 0
+  fadeOutTime: 0
+  useCustomLooping: 0
+  minCustomLoops: 1
+  maxCustomLoops: 5
+  useRandomStartTime: 0
+  randomStartMinPercent: 0
+  randomStartMaxPercent: 0
+  randomEndPercent: 100
+  useIntroSilence: 0
+  introSilenceMin: 0
+  introSilenceMax: 0
+  fadeMaxVolume: 0
+  curFadeMode: 0
+  curPitchMode: 0
+  curDetectEndMode: 0
+  frames: 0
+--- !u!114 &524634689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524634687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b7eb7dcef8b0e48a8572747ca7c64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &800282175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 800282176}
+  - component: {fileID: 800282177}
+  m_Layer: 2
+  m_Name: Impact Brick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &800282176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800282175}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1124387045}
+  - {fileID: 524634688}
+  - {fileID: 197994430}
+  - {fileID: 1585983286}
+  - {fileID: 1395176688}
+  m_Father: {fileID: 1949190598727963286}
+  m_RootOrder: 63
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &800282177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800282175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db10a6d491569a8419b6f5e1bffc5243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  busIndex: 5
+  spatialBlendType: 1
+  spatialBlend: 1
+  groupPlayType: 0
+  isSelected: 0
+  isExpanded: 1
+  groupMasterVolume: 1
+  retriggerPercentage: 5
+  curVariationMode: 0
+  alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
+  chainLoopDelayMin: 0
+  chainLoopDelayMax: 0
+  chainLoopMode: 0
+  chainLoopNumLoops: 0
+  useDialogFadeOut: 0
+  dialogFadeOutTime: 0.5
+  curVariationSequence: 0
+  useNoRepeatRefill: 1
+  useInactivePeriodPoolRefill: 0
+  inactivePeriodSeconds: 5
+  groupVariations:
+  - {fileID: 1124387047}
+  - {fileID: 524634690}
+  - {fileID: 197994432}
+  - {fileID: 1585983288}
+  - {fileID: 1395176690}
+  bulkVariationMode: 0
+  comments: 
+  logSound: 0
+  copySettingsExpanded: 0
+  expandLinkedGroups: 0
+  childSoundGroups: []
+  endLinkedGroups: []
+  linkedStartGroupSelectionType: 0
+  linkedStopGroupSelectionType: 0
+  limitMode: 0
+  limitPerXFrames: 1
+  minimumTimeBetween: 0.1
+  useClipAgePriority: 0
+  limitPolyphony: 0
+  voiceLimitCount: 1
+  targetDespawnedBehavior: 0
+  despawnFadeTime: 1
+  isUsingOcclusion: 0
+  willOcclusionOverrideRaycastOffset: 0
+  occlusionRayCastOffset: 0
+  willOcclusionOverrideFrequencies: 0
+  occlusionMaxCutoffFreq: 0
+  occlusionMinCutoffFreq: 22000
+  isSoloed: 0
+  isMuted: 0
+  soundPlayedEventActive: 0
+  soundPlayedCustomEvent: 
+  willCleanUpDelegatesAfterStop: 1
+  frames: 1900
 --- !u!1 &917289346
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,12 +1603,15 @@ MonoBehaviour:
   busIndex: 5
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 0.08284616
   retriggerPercentage: 5
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -512,6 +1656,618 @@ MonoBehaviour:
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
   frames: 5083
+--- !u!1 &979083603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 979083604}
+  - component: {fileID: 979083605}
+  m_Layer: 2
+  m_Name: Count End
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &979083604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979083603}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1024206624}
+  m_Father: {fileID: 1949190598727963286}
+  m_RootOrder: 62
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &979083605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979083603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db10a6d491569a8419b6f5e1bffc5243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  busIndex: 5
+  spatialBlendType: 1
+  spatialBlend: 1
+  groupPlayType: 0
+  isSelected: 0
+  isExpanded: 1
+  groupMasterVolume: 0.4
+  retriggerPercentage: 5
+  curVariationMode: 0
+  alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
+  chainLoopDelayMin: 0
+  chainLoopDelayMax: 0
+  chainLoopMode: 0
+  chainLoopNumLoops: 0
+  useDialogFadeOut: 0
+  dialogFadeOutTime: 0.5
+  curVariationSequence: 0
+  useNoRepeatRefill: 1
+  useInactivePeriodPoolRefill: 0
+  inactivePeriodSeconds: 5
+  groupVariations:
+  - {fileID: 1024206626}
+  bulkVariationMode: 0
+  comments: 
+  logSound: 0
+  copySettingsExpanded: 0
+  expandLinkedGroups: 0
+  childSoundGroups: []
+  endLinkedGroups: []
+  linkedStartGroupSelectionType: 0
+  linkedStopGroupSelectionType: 0
+  limitMode: 0
+  limitPerXFrames: 1
+  minimumTimeBetween: 0.1
+  useClipAgePriority: 0
+  limitPolyphony: 0
+  voiceLimitCount: 1
+  targetDespawnedBehavior: 0
+  despawnFadeTime: 1
+  isUsingOcclusion: 0
+  willOcclusionOverrideRaycastOffset: 0
+  occlusionRayCastOffset: 0
+  willOcclusionOverrideFrequencies: 0
+  occlusionMaxCutoffFreq: 0
+  occlusionMinCutoffFreq: 22000
+  isSoloed: 0
+  isMuted: 0
+  soundPlayedEventActive: 0
+  soundPlayedCustomEvent: 
+  willCleanUpDelegatesAfterStop: 1
+  frames: 1574
+--- !u!1 &1024206623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1024206624}
+  - component: {fileID: 1024206627}
+  - component: {fileID: 1024206626}
+  - component: {fileID: 1024206625}
+  m_Layer: 2
+  m_Name: Ui Success 111
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1024206624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024206623}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 979083604}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1024206627
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024206623}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c0d6f2527756a400fadd97438bd7dcf6, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.1
+      value: 1
+      inSlope: -10.0039835
+      outSlope: -10.0039835
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.5
+      inSlope: -2.5009959
+      outSlope: -2.5009959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.25
+      inSlope: -0.62524897
+      outSlope: -0.62524897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.10003992
+      outSlope: -0.10003992
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1024206626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024206623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931518f9ca6c3844891dee74db8ed494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
+  useLocalization: 0
+  useRandomPitch: 0
+  randomPitchMode: 0
+  randomPitchMin: 0
+  randomPitchMax: 0
+  useRandomVolume: 0
+  randomVolumeMode: 1
+  randomVolumeMin: 0.19952624
+  randomVolumeMax: 0.8035261
+  clipAlias: 
+  audLocation: 0
+  resourceFileName: 
+  original_pitch: 0
+  original_volume: 0
+  isExpanded: 1
+  isChecked: 1
+  useFades: 0
+  fadeInTime: 0
+  fadeOutTime: 0
+  useCustomLooping: 0
+  minCustomLoops: 1
+  maxCustomLoops: 5
+  useRandomStartTime: 0
+  randomStartMinPercent: 0
+  randomStartMaxPercent: 0
+  randomEndPercent: 100
+  useIntroSilence: 0
+  introSilenceMin: 0
+  introSilenceMax: 0
+  fadeMaxVolume: 0
+  curFadeMode: 0
+  curPitchMode: 0
+  curDetectEndMode: 0
+  frames: 0
+--- !u!114 &1024206625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024206623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b7eb7dcef8b0e48a8572747ca7c64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1124387044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1124387045}
+  - component: {fileID: 1124387048}
+  - component: {fileID: 1124387047}
+  - component: {fileID: 1124387046}
+  m_Layer: 2
+  m_Name: Arrow Impact Brick 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1124387045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124387044}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 800282176}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1124387048
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124387044}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d7c7cf1428c99473f829c3d5fb763002, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.1
+      value: 1
+      inSlope: -10.0039835
+      outSlope: -10.0039835
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.5
+      inSlope: -2.5009959
+      outSlope: -2.5009959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.25
+      inSlope: -0.62524897
+      outSlope: -0.62524897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.10003992
+      outSlope: -0.10003992
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1124387047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124387044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931518f9ca6c3844891dee74db8ed494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
+  useLocalization: 0
+  useRandomPitch: 0
+  randomPitchMode: 0
+  randomPitchMin: 0
+  randomPitchMax: 0
+  useRandomVolume: 0
+  randomVolumeMode: 1
+  randomVolumeMin: 0.19952624
+  randomVolumeMax: 0.8035261
+  clipAlias: 
+  audLocation: 0
+  resourceFileName: 
+  original_pitch: 0
+  original_volume: 0
+  isExpanded: 1
+  isChecked: 1
+  useFades: 0
+  fadeInTime: 0
+  fadeOutTime: 0
+  useCustomLooping: 0
+  minCustomLoops: 1
+  maxCustomLoops: 5
+  useRandomStartTime: 0
+  randomStartMinPercent: 0
+  randomStartMaxPercent: 0
+  randomEndPercent: 100
+  useIntroSilence: 0
+  introSilenceMin: 0
+  introSilenceMax: 0
+  fadeMaxVolume: 0
+  curFadeMode: 0
+  curPitchMode: 0
+  curDetectEndMode: 0
+  frames: 0
+--- !u!114 &1124387046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124387044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b7eb7dcef8b0e48a8572747ca7c64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1132415663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1132415664}
+  - component: {fileID: 1132415665}
+  m_Layer: 2
+  m_Name: TNT Explosion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1132415664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132415663}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 389410151}
+  m_Father: {fileID: 1949190598727963286}
+  m_RootOrder: 60
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1132415665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132415663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db10a6d491569a8419b6f5e1bffc5243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  busIndex: 5
+  spatialBlendType: 1
+  spatialBlend: 1
+  groupPlayType: 0
+  isSelected: 0
+  isExpanded: 1
+  groupMasterVolume: 0.8
+  retriggerPercentage: 5
+  curVariationMode: 0
+  alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
+  chainLoopDelayMin: 0
+  chainLoopDelayMax: 0
+  chainLoopMode: 0
+  chainLoopNumLoops: 0
+  useDialogFadeOut: 0
+  dialogFadeOutTime: 0.5
+  curVariationSequence: 0
+  useNoRepeatRefill: 1
+  useInactivePeriodPoolRefill: 0
+  inactivePeriodSeconds: 5
+  groupVariations:
+  - {fileID: 389410153}
+  bulkVariationMode: 0
+  comments: 
+  logSound: 0
+  copySettingsExpanded: 0
+  expandLinkedGroups: 0
+  childSoundGroups: []
+  endLinkedGroups: []
+  linkedStartGroupSelectionType: 0
+  linkedStopGroupSelectionType: 0
+  limitMode: 0
+  limitPerXFrames: 1
+  minimumTimeBetween: 0.1
+  useClipAgePriority: 0
+  limitPolyphony: 0
+  voiceLimitCount: 1
+  targetDespawnedBehavior: 0
+  despawnFadeTime: 1
+  isUsingOcclusion: 0
+  willOcclusionOverrideRaycastOffset: 0
+  occlusionRayCastOffset: 0
+  willOcclusionOverrideFrequencies: 0
+  occlusionMaxCutoffFreq: 0
+  occlusionMinCutoffFreq: 22000
+  isSoloed: 0
+  isMuted: 0
+  soundPlayedEventActive: 0
+  soundPlayedCustomEvent: 
+  willCleanUpDelegatesAfterStop: 1
+  frames: 1049
 --- !u!1 &1150026759
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,6 +2429,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -682,6 +2440,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -765,12 +2524,15 @@ MonoBehaviour:
   busIndex: 5
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 5
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -812,6 +2574,312 @@ MonoBehaviour:
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
   frames: 1116
+--- !u!1 &1374669444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1374669445}
+  - component: {fileID: 1374669446}
+  m_Layer: 2
+  m_Name: Camera Whoosh Cinematic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1374669445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374669444}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 20707340}
+  m_Father: {fileID: 1949190598727963286}
+  m_RootOrder: 59
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1374669446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374669444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db10a6d491569a8419b6f5e1bffc5243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  busIndex: 5
+  spatialBlendType: 1
+  spatialBlend: 1
+  groupPlayType: 0
+  isSelected: 0
+  isExpanded: 1
+  groupMasterVolume: 1
+  retriggerPercentage: 5
+  curVariationMode: 0
+  alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
+  chainLoopDelayMin: 0
+  chainLoopDelayMax: 0
+  chainLoopMode: 0
+  chainLoopNumLoops: 0
+  useDialogFadeOut: 0
+  dialogFadeOutTime: 0.5
+  curVariationSequence: 0
+  useNoRepeatRefill: 1
+  useInactivePeriodPoolRefill: 0
+  inactivePeriodSeconds: 5
+  groupVariations:
+  - {fileID: 20707342}
+  bulkVariationMode: 0
+  comments: 
+  logSound: 0
+  copySettingsExpanded: 0
+  expandLinkedGroups: 0
+  childSoundGroups: []
+  endLinkedGroups: []
+  linkedStartGroupSelectionType: 0
+  linkedStopGroupSelectionType: 0
+  limitMode: 0
+  limitPerXFrames: 1
+  minimumTimeBetween: 0.1
+  useClipAgePriority: 0
+  limitPolyphony: 0
+  voiceLimitCount: 1
+  targetDespawnedBehavior: 0
+  despawnFadeTime: 1
+  isUsingOcclusion: 0
+  willOcclusionOverrideRaycastOffset: 0
+  occlusionRayCastOffset: 0
+  willOcclusionOverrideFrequencies: 0
+  occlusionMaxCutoffFreq: 0
+  occlusionMinCutoffFreq: 22000
+  isSoloed: 0
+  isMuted: 0
+  soundPlayedEventActive: 0
+  soundPlayedCustomEvent: 
+  willCleanUpDelegatesAfterStop: 1
+  frames: 3194
+--- !u!1 &1395176687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1395176688}
+  - component: {fileID: 1395176691}
+  - component: {fileID: 1395176690}
+  - component: {fileID: 1395176689}
+  m_Layer: 2
+  m_Name: Arrow Impact Brick 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1395176688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395176687}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 800282176}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1395176691
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395176687}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b7fddda1134614c67a949db4c4bafc4d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.1
+      value: 1
+      inSlope: -10.0039835
+      outSlope: -10.0039835
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.5
+      inSlope: -2.5009959
+      outSlope: -2.5009959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.25
+      inSlope: -0.62524897
+      outSlope: -0.62524897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.10003992
+      outSlope: -0.10003992
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1395176690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395176687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931518f9ca6c3844891dee74db8ed494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
+  useLocalization: 0
+  useRandomPitch: 0
+  randomPitchMode: 0
+  randomPitchMin: 0
+  randomPitchMax: 0
+  useRandomVolume: 0
+  randomVolumeMode: 0
+  randomVolumeMin: 0
+  randomVolumeMax: 0
+  clipAlias: 
+  audLocation: 0
+  resourceFileName: 
+  original_pitch: 0
+  original_volume: 0
+  isExpanded: 1
+  isChecked: 1
+  useFades: 0
+  fadeInTime: 0
+  fadeOutTime: 0
+  useCustomLooping: 0
+  minCustomLoops: 1
+  maxCustomLoops: 5
+  useRandomStartTime: 0
+  randomStartMinPercent: 0
+  randomStartMaxPercent: 0
+  randomEndPercent: 100
+  useIntroSilence: 0
+  introSilenceMin: 0
+  introSilenceMax: 0
+  fadeMaxVolume: 0
+  curFadeMode: 0
+  curPitchMode: 0
+  curDetectEndMode: 0
+  frames: 0
+--- !u!114 &1395176689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395176687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b7eb7dcef8b0e48a8572747ca7c64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1444898657
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,6 +3041,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -982,6 +3052,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -1013,6 +3084,842 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444898657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b7eb7dcef8b0e48a8572747ca7c64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1585983285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1585983286}
+  - component: {fileID: 1585983289}
+  - component: {fileID: 1585983288}
+  - component: {fileID: 1585983287}
+  m_Layer: 2
+  m_Name: Arrow Impact Brick 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1585983286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585983285}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 800282176}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1585983289
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585983285}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: bb7173144e3be4a4a85970cd90bb7546, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.1
+      value: 1
+      inSlope: -10.0039835
+      outSlope: -10.0039835
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.5
+      inSlope: -2.5009959
+      outSlope: -2.5009959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.25
+      inSlope: -0.62524897
+      outSlope: -0.62524897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.10003992
+      outSlope: -0.10003992
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1585983288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585983285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931518f9ca6c3844891dee74db8ed494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
+  useLocalization: 0
+  useRandomPitch: 0
+  randomPitchMode: 0
+  randomPitchMin: 0
+  randomPitchMax: 0
+  useRandomVolume: 0
+  randomVolumeMode: 0
+  randomVolumeMin: 0
+  randomVolumeMax: 0
+  clipAlias: 
+  audLocation: 0
+  resourceFileName: 
+  original_pitch: 0
+  original_volume: 0
+  isExpanded: 1
+  isChecked: 1
+  useFades: 0
+  fadeInTime: 0
+  fadeOutTime: 0
+  useCustomLooping: 0
+  minCustomLoops: 1
+  maxCustomLoops: 5
+  useRandomStartTime: 0
+  randomStartMinPercent: 0
+  randomStartMaxPercent: 0
+  randomEndPercent: 100
+  useIntroSilence: 0
+  introSilenceMin: 0
+  introSilenceMax: 0
+  fadeMaxVolume: 0
+  curFadeMode: 0
+  curPitchMode: 0
+  curDetectEndMode: 0
+  frames: 0
+--- !u!114 &1585983287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585983285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b7eb7dcef8b0e48a8572747ca7c64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1618017600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1618017601}
+  - component: {fileID: 1618017604}
+  - component: {fileID: 1618017603}
+  - component: {fileID: 1618017602}
+  m_Layer: 2
+  m_Name: WHOOSH_Wide_Deep_Slow_stereo1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1618017601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618017600}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 266108438}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1618017604
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618017600}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 032b18bc0d5f34736abaf8cf953a6f2f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.1
+      value: 1
+      inSlope: -10.0039835
+      outSlope: -10.0039835
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.5
+      inSlope: -2.5009959
+      outSlope: -2.5009959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.25
+      inSlope: -0.62524897
+      outSlope: -0.62524897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.10003992
+      outSlope: -0.10003992
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1618017603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618017600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931518f9ca6c3844891dee74db8ed494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
+  useLocalization: 0
+  useRandomPitch: 0
+  randomPitchMode: 0
+  randomPitchMin: 0
+  randomPitchMax: 0
+  useRandomVolume: 0
+  randomVolumeMode: 1
+  randomVolumeMin: 0.19952624
+  randomVolumeMax: 0.8035261
+  clipAlias: 
+  audLocation: 0
+  resourceFileName: 
+  original_pitch: 0
+  original_volume: 0
+  isExpanded: 1
+  isChecked: 1
+  useFades: 0
+  fadeInTime: 0
+  fadeOutTime: 0
+  useCustomLooping: 0
+  minCustomLoops: 1
+  maxCustomLoops: 5
+  useRandomStartTime: 0
+  randomStartMinPercent: 0
+  randomStartMaxPercent: 0
+  randomEndPercent: 100
+  useIntroSilence: 0
+  introSilenceMin: 0
+  introSilenceMax: 0
+  fadeMaxVolume: 0
+  curFadeMode: 0
+  curPitchMode: 0
+  curDetectEndMode: 0
+  frames: 0
+--- !u!114 &1618017602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618017600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b7eb7dcef8b0e48a8572747ca7c64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1660972327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1660972328}
+  - component: {fileID: 1660972331}
+  - component: {fileID: 1660972330}
+  - component: {fileID: 1660972329}
+  m_Layer: 2
+  m_Name: Ui Success 21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1660972328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660972327}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 203911085}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1660972331
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660972327}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1ec15577159ab4514b8d99ac0941034b, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.1
+      value: 1
+      inSlope: -10.0039835
+      outSlope: -10.0039835
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.5
+      inSlope: -2.5009959
+      outSlope: -2.5009959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.25
+      inSlope: -0.62524897
+      outSlope: -0.62524897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.10003992
+      outSlope: -0.10003992
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1660972330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660972327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931518f9ca6c3844891dee74db8ed494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
+  useLocalization: 0
+  useRandomPitch: 0
+  randomPitchMode: 0
+  randomPitchMin: 0
+  randomPitchMax: 0
+  useRandomVolume: 0
+  randomVolumeMode: 1
+  randomVolumeMin: 0.19952624
+  randomVolumeMax: 0.8035261
+  clipAlias: 
+  audLocation: 0
+  resourceFileName: 
+  original_pitch: 0
+  original_volume: 0
+  isExpanded: 1
+  isChecked: 1
+  useFades: 0
+  fadeInTime: 0
+  fadeOutTime: 0
+  useCustomLooping: 0
+  minCustomLoops: 1
+  maxCustomLoops: 5
+  useRandomStartTime: 0
+  randomStartMinPercent: 0
+  randomStartMaxPercent: 0
+  randomEndPercent: 100
+  useIntroSilence: 0
+  introSilenceMin: 0
+  introSilenceMax: 0
+  fadeMaxVolume: 0
+  curFadeMode: 0
+  curPitchMode: 0
+  curDetectEndMode: 0
+  frames: 0
+--- !u!114 &1660972329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660972327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b7eb7dcef8b0e48a8572747ca7c64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1945619753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1945619754}
+  - component: {fileID: 1945619757}
+  - component: {fileID: 1945619756}
+  - component: {fileID: 1945619755}
+  m_Layer: 2
+  m_Name: Explosion Flesh_061
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1945619754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945619753}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2143384866}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1945619757
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945619753}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 869e8c560abeb4f67863ef7c65c7af7a, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.1
+      value: 1
+      inSlope: -10.0039835
+      outSlope: -10.0039835
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.5
+      inSlope: -2.5009959
+      outSlope: -2.5009959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.25
+      inSlope: -0.62524897
+      outSlope: -0.62524897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.10003992
+      outSlope: -0.10003992
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1945619756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945619753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931518f9ca6c3844891dee74db8ed494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
+  useLocalization: 0
+  useRandomPitch: 0
+  randomPitchMode: 0
+  randomPitchMin: 0
+  randomPitchMax: 0
+  useRandomVolume: 0
+  randomVolumeMode: 1
+  randomVolumeMin: 0.19952624
+  randomVolumeMax: 0.8035261
+  clipAlias: 
+  audLocation: 0
+  resourceFileName: 
+  original_pitch: 0
+  original_volume: 0
+  isExpanded: 1
+  isChecked: 1
+  useFades: 0
+  fadeInTime: 0
+  fadeOutTime: 0
+  useCustomLooping: 0
+  minCustomLoops: 1
+  maxCustomLoops: 5
+  useRandomStartTime: 0
+  randomStartMinPercent: 0
+  randomStartMaxPercent: 0
+  randomEndPercent: 100
+  useIntroSilence: 0
+  introSilenceMin: 0
+  introSilenceMax: 0
+  fadeMaxVolume: 0
+  curFadeMode: 0
+  curPitchMode: 0
+  curDetectEndMode: 0
+  frames: 0
+--- !u!114 &1945619755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945619753}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1b7eb7dcef8b0e48a8572747ca7c64d, type: 3}
@@ -1179,6 +4086,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -1188,6 +4097,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -1224,6 +4134,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b7eb7dcef8b0e48a8572747ca7c64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2143384865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2143384866}
+  - component: {fileID: 2143384867}
+  m_Layer: 2
+  m_Name: Explosion Flesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2143384866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143384865}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1945619754}
+  m_Father: {fileID: 1949190598727963286}
+  m_RootOrder: 64
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2143384867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143384865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db10a6d491569a8419b6f5e1bffc5243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  busIndex: 5
+  spatialBlendType: 1
+  spatialBlend: 1
+  groupPlayType: 0
+  isSelected: 0
+  isExpanded: 1
+  groupMasterVolume: 1
+  retriggerPercentage: 5
+  curVariationMode: 0
+  alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
+  chainLoopDelayMin: 0
+  chainLoopDelayMax: 0
+  chainLoopMode: 0
+  chainLoopNumLoops: 0
+  useDialogFadeOut: 0
+  dialogFadeOutTime: 0.5
+  curVariationSequence: 0
+  useNoRepeatRefill: 1
+  useInactivePeriodPoolRefill: 0
+  inactivePeriodSeconds: 5
+  groupVariations:
+  - {fileID: 1945619756}
+  bulkVariationMode: 0
+  comments: 
+  logSound: 0
+  copySettingsExpanded: 0
+  expandLinkedGroups: 0
+  childSoundGroups: []
+  endLinkedGroups: []
+  linkedStartGroupSelectionType: 0
+  linkedStopGroupSelectionType: 0
+  limitMode: 0
+  limitPerXFrames: 1
+  minimumTimeBetween: 0.1
+  useClipAgePriority: 0
+  limitPolyphony: 0
+  voiceLimitCount: 1
+  targetDespawnedBehavior: 0
+  despawnFadeTime: 1
+  isUsingOcclusion: 0
+  willOcclusionOverrideRaycastOffset: 0
+  occlusionRayCastOffset: 0
+  willOcclusionOverrideFrequencies: 0
+  occlusionMaxCutoffFreq: 0
+  occlusionMinCutoffFreq: 22000
+  isSoloed: 0
+  isMuted: 0
+  soundPlayedEventActive: 0
+  soundPlayedCustomEvent: 
+  willCleanUpDelegatesAfterStop: 1
+  frames: 1873
 --- !u!1 &261195933592936531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,6 +4392,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -1394,6 +4403,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -1591,6 +4601,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -1600,6 +4612,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -1685,12 +4698,15 @@ MonoBehaviour:
   busIndex: 5
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 5
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -1895,6 +4911,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -1904,6 +4922,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -2101,6 +5120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -2110,6 +5131,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -2193,12 +5215,15 @@ MonoBehaviour:
   busIndex: 4
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 0.3653846
   retriggerPercentage: 100
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -2290,12 +5315,15 @@ MonoBehaviour:
   busIndex: 5
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 0.4265795
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -2501,6 +5529,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -2510,6 +5540,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -2707,6 +5738,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -2716,6 +5749,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -2913,6 +5947,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -2922,6 +5958,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -3119,6 +6156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -3128,6 +6167,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0.000031622778
   randomVolumeMax: 0.000031622778
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -3214,12 +6254,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 0.7307692
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -3315,12 +6358,15 @@ MonoBehaviour:
   busIndex: 3
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 5
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -3527,6 +6573,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -3536,6 +6584,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -3733,6 +6782,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -3742,6 +6793,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -3828,12 +6880,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -4039,6 +7094,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -4048,6 +7105,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -4245,6 +7303,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -4254,6 +7314,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -4451,6 +7512,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -4460,6 +7523,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -4582,6 +7646,13 @@ Transform:
   - {fileID: 112057544539279180}
   - {fileID: 8350539754727933939}
   - {fileID: 1332176653}
+  - {fileID: 266108438}
+  - {fileID: 1374669445}
+  - {fileID: 1132415664}
+  - {fileID: 203911085}
+  - {fileID: 979083604}
+  - {fileID: 800282176}
+  - {fileID: 2143384866}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4649,7 +7720,8 @@ MonoBehaviour:
   persistBetweenScenes: 1
   shouldLogDestroys: 0
   showBusColors: 0
-  areGroupsExpanded: 0
+  showGroupImportance: 0
+  areGroupsExpanded: 1
   soundGroupTemplate: {fileID: 400008, guid: 877a3a4bf0a4abf43aba41125e1d3101, type: 3}
   soundGroupVariationTemplate: {fileID: 400000, guid: 08eea2d8c4572c7479da53cfbc14bde6,
     type: 3}
@@ -4659,10 +7731,10 @@ MonoBehaviour:
     isSoloed: 0
     isMuted: 0
     voiceLimit: -1
-    stopOldest: 0
     isExisting: 0
     isTemporary: 0
     isUsingOcclusion: 0
+    busVoiceLimitExceededMode: 0
     busColor: {r: 1, g: 1, b: 1, a: 1}
     mixerChannel: {fileID: -2984010746694277649, guid: d06dd71d708fc404ca793d53328653bc,
       type: 2}
@@ -4672,10 +7744,10 @@ MonoBehaviour:
     isSoloed: 0
     isMuted: 0
     voiceLimit: -1
-    stopOldest: 1
     isExisting: 0
     isTemporary: 0
     isUsingOcclusion: 0
+    busVoiceLimitExceededMode: 0
     busColor: {r: 1, g: 1, b: 1, a: 1}
     mixerChannel: {fileID: -4314938409453439802, guid: d06dd71d708fc404ca793d53328653bc,
       type: 2}
@@ -4685,10 +7757,10 @@ MonoBehaviour:
     isSoloed: 0
     isMuted: 0
     voiceLimit: -1
-    stopOldest: 0
     isExisting: 0
     isTemporary: 0
     isUsingOcclusion: 0
+    busVoiceLimitExceededMode: 0
     busColor: {r: 1, g: 1, b: 1, a: 1}
     mixerChannel: {fileID: 2322799833016390372, guid: d06dd71d708fc404ca793d53328653bc,
       type: 2}
@@ -4698,10 +7770,10 @@ MonoBehaviour:
     isSoloed: 0
     isMuted: 0
     voiceLimit: -1
-    stopOldest: 0
     isExisting: 0
     isTemporary: 0
     isUsingOcclusion: 0
+    busVoiceLimitExceededMode: 0
     busColor: {r: 1, g: 1, b: 1, a: 1}
     mixerChannel: {fileID: -3629339576674564713, guid: d06dd71d708fc404ca793d53328653bc,
       type: 2}
@@ -4711,10 +7783,10 @@ MonoBehaviour:
     isSoloed: 0
     isMuted: 0
     voiceLimit: -1
-    stopOldest: 0
     isExisting: 0
     isTemporary: 0
     isUsingOcclusion: 0
+    busVoiceLimitExceededMode: 0
     busColor: {r: 1, g: 1, b: 1, a: 1}
     mixerChannel: {fileID: 0}
     forceTo2D: 1
@@ -4726,12 +7798,16 @@ MonoBehaviour:
   selectedRangeGizmoColor: {r: 0, g: 1, b: 1, a: 1}
   showAdvancedSettings: 0
   showLocalization: 0
-  playListExpanded: 1
+  showVideoPlayerSettings: 0
+  videoPlayers: []
+  playListExpanded: 0
   playlistsExpanded: 1
   musicSpatialBlendType: 0
   musicSpatialBlend: 0
   mixerSpatialBlendType: 1
   mixerSpatialBlend: 1
+  groupPlayType: 0
+  defaultGroupPlayType: 0
   newGroupSpatialType: 1
   newGroupSpatialBlend: 1
   musicPlaylists:
@@ -4742,8 +7818,8 @@ MonoBehaviour:
     - alias: 
       audLocation: 1
       clip: {fileID: 0}
-      songName: 'Robby/Casual Arcade Track #1 (looped)'
-      resourceFileName: 'Robby/Casual Arcade Track #1 (looped)'
+      songName: Robby/Casual Arcade Track #1 (looped)
+      resourceFileName: Robby/Casual Arcade Track #1 (looped)
       volume: 1
       pitch: 1
       isExpanded: 1
@@ -4777,15 +7853,15 @@ MonoBehaviour:
     newMetadataPropType: 1
     newMetadataPropRequired: 1
     newMetadataPropCanHaveMult: 0
-  - isExpanded: 1
+  - isExpanded: 0
     playlistName: Loading playlist
     songTransitionType: 1
     MusicSettings:
     - alias: 
       audLocation: 1
       clip: {fileID: 0}
-      songName: 'Loading/Logo #10 (Looped)'
-      resourceFileName: 'Loading/Logo #10 (Looped)'
+      songName: Loading/Logo #10 (Looped)
+      resourceFileName: Loading/Logo #10 (Looped)
       volume: 1
       pitch: 1
       isExpanded: 0
@@ -5093,8 +8169,8 @@ MonoBehaviour:
     - alias: 
       audLocation: 1
       clip: {fileID: 0}
-      songName: 'SelectCard/Logo #1 (Looped)'
-      resourceFileName: 'SelectCard/Logo #1 (Looped)'
+      songName: SelectCard/Logo #1 (Looped)
+      resourceFileName: SelectCard/Logo #1 (Looped)
       volume: 1
       pitch: 1
       isExpanded: 1
@@ -5128,7 +8204,7 @@ MonoBehaviour:
     newMetadataPropType: 1
     newMetadataPropRequired: 1
     newMetadataPropCanHaveMult: 0
-  _masterAudioVolume: 0
+  _masterAudioVolume: 1
   vrSettingsExpanded: 0
   useSpatializer: 0
   useSpatializerPostFX: 0
@@ -5136,6 +8212,7 @@ MonoBehaviour:
   addResonanceAudioSources: 0
   ignoreTimeScale: 0
   useGaplessPlaylists: 0
+  useGaplessAutoReschedule: 0
   saveRuntimeChanges: 0
   prioritizeOnDistance: 0
   rePrioritizeEverySecIndex: 0
@@ -5161,6 +8238,7 @@ MonoBehaviour:
   logAdvancedExpanded: 0
   listenerAdvancedExpanded: 0
   listenerFollowerHasRigidBody: 1
+  deletePreviewerAudioSourceWhenPlaying: 1
   variationFollowerType: 0
   showFadingSettings: 0
   stopZeroVolumeGroups: 0
@@ -5180,15 +8258,17 @@ MonoBehaviour:
   defaultUnduckTime: 1
   defaultDuckedVolumeCut: -6
   crossFadeTime: 0.5
-  _masterPlaylistVolume: 0
+  _masterPlaylistVolume: 1
   showGroupSelect: 0
   hideGroupsWithNoActiveVars: 0
   logPerfExpanded: 1
   willWarm: 1
-  newEventName: MonsterDead
-  showCustomEvents: 0
+  mixerSettingsExpanded: 0
+  mixerUpdateMode: 1
+  newEventName: SFX_CountEnd
+  showCustomEvents: 1
   newCustomEventCategoryName: SFX
-  addToCustomEventCategoryName: New Category
+  addToCustomEventCategoryName: SFX
   customEvents:
   - EventName: CustomEvent_ReloadSniperRifle
     ProspectiveName: CustomEvent_ReloadSniperRifle
@@ -5487,6 +8567,50 @@ MonoBehaviour:
     isTemporary: 0
     frameLastFired: -1
     categoryName: SFX
+  - EventName: SFX_CinematicCameraWhoosh
+    ProspectiveName: SFX_CinematicCameraWhoosh
+    IsEditing: 0
+    eventExpanded: 1
+    eventReceiveMode: 0
+    distanceThreshold: 1
+    eventRcvFilterMode: 0
+    filterModeQty: 1
+    isTemporary: 0
+    frameLastFired: -1
+    categoryName: SFX
+  - EventName: SFX_CameraWhoosh
+    ProspectiveName: SFX_CameraWhoosh
+    IsEditing: 0
+    eventExpanded: 1
+    eventReceiveMode: 0
+    distanceThreshold: 1
+    eventRcvFilterMode: 0
+    filterModeQty: 1
+    isTemporary: 0
+    frameLastFired: -1
+    categoryName: SFX
+  - EventName: SFX_CountDefault
+    ProspectiveName: SFX_CountDefault
+    IsEditing: 0
+    eventExpanded: 1
+    eventReceiveMode: 0
+    distanceThreshold: 1
+    eventRcvFilterMode: 0
+    filterModeQty: 1
+    isTemporary: 0
+    frameLastFired: -1
+    categoryName: SFX
+  - EventName: SFX_CountEnd
+    ProspectiveName: SFX_CountEnd
+    IsEditing: 0
+    eventExpanded: 1
+    eventReceiveMode: 0
+    distanceThreshold: 1
+    eventRcvFilterMode: 0
+    filterModeQty: 1
+    isTemporary: 0
+    frameLastFired: -1
+    categoryName: SFX
   customEventCategories:
   - CatName: SongList
     IsExpanded: 1
@@ -5676,6 +8800,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -5685,6 +8811,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -5768,12 +8895,15 @@ MonoBehaviour:
   busIndex: 3
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -5814,7 +8944,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 2655
+  frames: 3670
 --- !u!1 &1949190598853388110
 GameObject:
   m_ObjectHideFlags: 0
@@ -5976,6 +9106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -5985,6 +9117,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -6182,6 +9315,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -6191,6 +9326,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -6388,6 +9524,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -6397,6 +9535,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -6594,6 +9733,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -6603,6 +9744,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -6688,12 +9830,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 0.69230765
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -6898,6 +10043,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -6907,6 +10054,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -7104,6 +10252,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -7113,6 +10263,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -7201,12 +10352,15 @@ MonoBehaviour:
   busIndex: 3
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 5
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -7414,6 +10568,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -7423,6 +10579,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -7620,6 +10777,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -7629,6 +10788,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -7712,12 +10872,15 @@ MonoBehaviour:
   busIndex: 3
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -7920,6 +11083,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -7929,6 +11094,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -8126,6 +11292,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -8135,6 +11303,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -8220,12 +11389,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -8268,7 +11440,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 7499
+  frames: 7660
 --- !u!1 &1949190599785702560
 GameObject:
   m_ObjectHideFlags: 0
@@ -8430,6 +11602,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -8439,6 +11613,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -8636,6 +11811,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -8645,6 +11822,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -8842,6 +12020,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -8851,6 +12031,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -9048,6 +12229,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -9057,6 +12240,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -9145,12 +12329,15 @@ MonoBehaviour:
   busIndex: 5
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 0.59761536
   retriggerPercentage: 5
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -9358,6 +12545,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -9367,6 +12556,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -9564,6 +12754,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -9573,6 +12765,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -9656,12 +12849,15 @@ MonoBehaviour:
   busIndex: 5
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 0.34615383
   retriggerPercentage: 100
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -9864,6 +13060,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -9873,6 +13071,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -9961,12 +13160,15 @@ MonoBehaviour:
   busIndex: 5
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 0.5761539
   retriggerPercentage: 5
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -10174,6 +13376,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -10183,6 +13387,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -10380,6 +13585,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -10389,6 +13596,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -10586,6 +13794,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -10595,6 +13805,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -10792,6 +14003,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -10801,6 +14014,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -10884,12 +14098,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -11092,6 +14309,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -11101,6 +14320,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -11184,12 +14404,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -11230,7 +14453,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 1089
+  frames: 1319
 --- !u!1 &3760062680236226544
 GameObject:
   m_ObjectHideFlags: 0
@@ -11392,6 +14615,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -11401,6 +14626,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -11598,6 +14824,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -11607,6 +14835,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -11694,12 +14923,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -11906,6 +15138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -11915,6 +15149,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -12112,6 +15347,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -12121,6 +15358,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -12318,6 +15556,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -12327,6 +15567,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -12524,6 +15765,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -12533,6 +15776,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -12730,6 +15974,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -12739,6 +15985,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0.000031622778
   randomVolumeMax: 0.000031622778
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -12827,12 +16074,15 @@ MonoBehaviour:
   busIndex: 3
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 5
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -12930,12 +16180,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 0.8846154
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -13028,12 +16281,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -13074,7 +16330,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 3382
+  frames: 3489
 --- !u!1 &3760062680373932019
 GameObject:
   m_ObjectHideFlags: 0
@@ -13236,6 +16492,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -13245,6 +16503,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -13442,6 +16701,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -13451,6 +16712,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -13648,6 +16910,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -13657,6 +16921,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -13854,6 +17119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -13863,6 +17130,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -14060,6 +17328,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -14069,6 +17339,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -14161,12 +17432,15 @@ MonoBehaviour:
   busIndex: 5
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 0.1730769
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -14216,7 +17490,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 6780
+  frames: 7664
 --- !u!1 &3760062680525565432
 GameObject:
   m_ObjectHideFlags: 0
@@ -14264,12 +17538,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -14472,6 +17749,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -14481,6 +17760,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -14678,6 +17958,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -14687,6 +17969,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -14884,6 +18167,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -14893,6 +18178,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -15090,6 +18376,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -15099,6 +18387,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -15296,6 +18585,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -15305,6 +18596,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -15502,6 +18794,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -15511,6 +18805,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -15708,6 +19003,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -15717,6 +19014,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.3548134
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -15914,6 +19212,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -15923,6 +19223,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -16006,12 +19307,15 @@ MonoBehaviour:
   busIndex: 5
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 100
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -16052,7 +19356,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 4212
+  frames: 4484
 --- !u!1 &3760062680643768899
 GameObject:
   m_ObjectHideFlags: 0
@@ -16100,12 +19404,15 @@ MonoBehaviour:
   busIndex: 4
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 0.3653846
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -16146,7 +19453,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 4294
+  frames: 4637
 --- !u!1 &3760062680648280926
 GameObject:
   m_ObjectHideFlags: 0
@@ -16308,6 +19615,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -16317,6 +19626,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -16514,6 +19824,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -16523,6 +19835,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -16720,6 +20033,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -16729,6 +20044,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -16926,6 +20242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -16935,6 +20253,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -17132,6 +20451,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -17141,6 +20462,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -17338,6 +20660,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -17347,6 +20671,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -17544,6 +20869,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -17553,6 +20880,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -17750,6 +21078,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -17759,6 +21089,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -17956,6 +21287,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -17965,6 +21298,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -18162,6 +21496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -18171,6 +21507,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -18368,6 +21705,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -18377,6 +21716,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -18460,12 +21800,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -18506,7 +21849,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 1416
+  frames: 1545
 --- !u!1 &3760062680806132886
 GameObject:
   m_ObjectHideFlags: 0
@@ -18554,12 +21897,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -18600,7 +21946,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 593
+  frames: 670
 --- !u!1 &3760062680807045791
 GameObject:
   m_ObjectHideFlags: 0
@@ -18762,6 +22108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -18771,6 +22119,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -18968,6 +22317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -18977,6 +22328,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -19174,6 +22526,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -19183,6 +22537,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -19380,6 +22735,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -19389,6 +22746,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0.3548134
   randomVolumeMax: 0.7943282
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -19586,6 +22944,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -19595,11 +22955,12 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
   original_volume: 0
-  isExpanded: 0
+  isExpanded: 1
   isChecked: 1
   useFades: 0
   fadeInTime: 0
@@ -19792,6 +23153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -19801,6 +23164,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0.3548134
   randomVolumeMax: 0.7943282
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -19998,6 +23362,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -20007,6 +23373,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -20204,6 +23571,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -20213,6 +23582,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -20410,6 +23780,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -20419,6 +23791,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -20616,6 +23989,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -20625,6 +24000,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -20708,12 +24084,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -20802,12 +24181,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -21010,6 +24392,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -21019,6 +24403,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -21216,6 +24601,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -21225,6 +24612,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -21422,6 +24810,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -21431,6 +24821,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -21628,6 +25019,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -21637,6 +25030,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -21834,6 +25228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -21843,6 +25239,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -21926,12 +25323,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -21972,7 +25372,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 503
+  frames: 574
 --- !u!1 &3760062681025470931
 GameObject:
   m_ObjectHideFlags: 0
@@ -22024,12 +25424,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -22236,6 +25639,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -22245,6 +25650,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -22442,6 +25848,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -22451,6 +25859,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -22648,6 +26057,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -22657,6 +26068,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -22854,6 +26266,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -22863,6 +26277,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -23060,6 +26475,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -23069,6 +26486,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -23266,6 +26684,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -23275,6 +26695,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -23360,12 +26781,15 @@ MonoBehaviour:
   busIndex: 5
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 100
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -23408,7 +26832,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 3966
+  frames: 4576
 --- !u!1 &3760062681167290893
 GameObject:
   m_ObjectHideFlags: 0
@@ -23570,6 +26994,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -23579,6 +27005,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -23776,6 +27203,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -23785,6 +27214,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -23982,6 +27412,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -23991,6 +27423,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -24188,6 +27621,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -24197,6 +27632,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -24280,12 +27716,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -24488,6 +27927,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -24497,6 +27938,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -24694,6 +28136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -24703,6 +28147,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -24900,6 +28345,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -24909,6 +28356,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -25106,6 +28554,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -25115,6 +28565,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -25312,15 +28763,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
   randomPitchMin: 0
   randomPitchMax: 0
-  useRandomVolume: 1
+  useRandomVolume: 0
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -25408,12 +28862,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -25458,7 +28915,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 3552
+  frames: 3666
 --- !u!1 &3760062681362093438
 GameObject:
   m_ObjectHideFlags: 0
@@ -25620,6 +29077,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -25629,6 +29088,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -25716,12 +29176,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 0.39810717
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -25818,12 +29281,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -26030,6 +29496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -26039,6 +29507,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -26236,6 +29705,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -26245,6 +29716,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -26442,6 +29914,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -26451,6 +29925,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -26648,6 +30123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -26657,6 +30134,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -26854,6 +30332,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -26863,6 +30343,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -27060,6 +30541,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -27069,6 +30552,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -27156,12 +30640,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -27254,12 +30741,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -27462,6 +30952,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -27471,6 +30963,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -27668,6 +31161,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -27677,6 +31172,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -27874,6 +31370,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -27883,6 +31381,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -28080,6 +31579,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -28089,6 +31590,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -28177,12 +31679,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -28390,6 +31895,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -28399,6 +31906,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0.000031622778
   randomVolumeMax: 0.000031622778
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -28596,6 +32104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -28605,6 +32115,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -28802,6 +32313,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -28811,6 +32324,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -29008,6 +32522,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -29017,6 +32533,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -29214,6 +32731,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -29223,6 +32742,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -29420,6 +32940,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -29429,6 +32951,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0.3548134
   randomVolumeMax: 0.7943282
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -29517,12 +33040,15 @@ MonoBehaviour:
   busIndex: 3
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 5
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -29568,7 +33094,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 5590
+  frames: 5663
 --- !u!1 &3760062681847334443
 GameObject:
   m_ObjectHideFlags: 0
@@ -29730,6 +33256,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -29739,6 +33267,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -29936,6 +33465,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -29945,6 +33476,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -30031,12 +33563,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -30242,6 +33777,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -30251,6 +33788,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -30338,12 +33876,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 10
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -30550,6 +34091,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -30559,6 +34102,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -30756,6 +34300,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -30765,6 +34311,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -30962,6 +34509,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -30971,6 +34520,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -31168,6 +34718,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -31177,6 +34729,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -31260,12 +34813,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -31468,6 +35024,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -31477,6 +35035,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -31674,6 +35233,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -31683,6 +35244,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -31880,6 +35442,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -31889,6 +35453,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -32086,6 +35651,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -32095,6 +35662,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -32178,12 +35746,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -32272,12 +35843,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -32480,6 +36054,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -32489,6 +36065,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -32686,6 +36263,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -32695,6 +36274,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -32892,6 +36472,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -32901,6 +36483,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -32984,12 +36567,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -33078,12 +36664,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -33286,6 +36875,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -33295,6 +36886,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -33492,6 +37084,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -33501,6 +37095,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -33698,6 +37293,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -33707,6 +37304,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -33904,6 +37502,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -33913,6 +37513,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -33996,12 +37597,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -34090,12 +37694,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -34136,7 +37743,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 907
+  frames: 996
 --- !u!1 &3760062682161492303
 GameObject:
   m_ObjectHideFlags: 0
@@ -34298,6 +37905,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -34307,6 +37916,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0.3548134
   randomVolumeMax: 0.7943282
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -34504,6 +38114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -34513,6 +38125,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -34710,6 +38323,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -34719,6 +38334,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -34802,12 +38418,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -34896,12 +38515,15 @@ MonoBehaviour:
   busIndex: 6
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -35104,6 +38726,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -35113,6 +38737,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -35310,6 +38935,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -35319,6 +38946,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -35402,12 +39030,15 @@ MonoBehaviour:
   busIndex: 2
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -35610,6 +39241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -35619,6 +39252,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -35816,6 +39450,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -35825,6 +39461,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -36022,6 +39659,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -36031,6 +39670,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -36228,6 +39868,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -36237,6 +39879,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 1
@@ -36434,6 +40077,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -36443,6 +40088,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -36640,6 +40286,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -36649,6 +40297,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -36846,6 +40495,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -36855,6 +40506,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -37052,6 +40704,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -37061,6 +40715,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -37146,12 +40801,15 @@ MonoBehaviour:
   busIndex: 4
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 5
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -37356,6 +41014,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -37365,6 +41025,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -37562,6 +41223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -37571,6 +41234,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -37658,12 +41322,15 @@ MonoBehaviour:
   busIndex: 5
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 0.8
   retriggerPercentage: 5
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -37870,6 +41537,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -37879,6 +41548,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -38076,6 +41746,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -38085,6 +41757,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -38282,6 +41955,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -38291,6 +41966,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -38488,6 +42164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -38497,6 +42175,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -38694,6 +42373,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -38703,6 +42384,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -38900,6 +42582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -38909,6 +42593,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -39106,6 +42791,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -39115,6 +42802,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -39312,6 +43000,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -39321,6 +43011,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -39404,12 +43095,15 @@ MonoBehaviour:
   busIndex: 4
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -39612,6 +43306,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -39621,6 +43317,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -39818,6 +43515,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -39827,6 +43526,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -40024,6 +43724,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -40033,6 +43735,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -40230,6 +43933,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -40239,6 +43944,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -40322,12 +44028,15 @@ MonoBehaviour:
   busIndex: 4
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 1
   retriggerPercentage: 0
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -40530,6 +44239,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -40539,6 +44250,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0
@@ -40626,12 +44338,15 @@ MonoBehaviour:
   busIndex: 5
   spatialBlendType: 1
   spatialBlend: 1
+  groupPlayType: 0
   isSelected: 0
   isExpanded: 1
   groupMasterVolume: 0.8
   retriggerPercentage: 5
   curVariationMode: 0
   alwaysHighestPriority: 0
+  importance: 5
+  isUninterruptible: 0
   chainLoopDelayMin: 0
   chainLoopDelayMax: 0
   chainLoopMode: 0
@@ -40838,6 +44553,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   probabilityToPlay: 100
+  importance: 5
+  isUninterruptible: 0
   useLocalization: 0
   useRandomPitch: 0
   randomPitchMode: 0
@@ -40847,6 +44564,7 @@ MonoBehaviour:
   randomVolumeMode: 1
   randomVolumeMin: 0.19952624
   randomVolumeMax: 0.8035261
+  clipAlias: 
   audLocation: 0
   resourceFileName: 
   original_pitch: 0

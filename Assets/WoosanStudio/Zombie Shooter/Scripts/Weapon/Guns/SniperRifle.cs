@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Events;
+using DarkTonic.MasterAudio;
 
 namespace WoosanStudio.ZombieShooter
 {
-    public class LaserRifle : MonoBehaviour , IWeapon, IGun
+    public class SniperRifle : MonoBehaviour , IWeapon, IGun
     {
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IGun Implementation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         private bool _useLaserPoint;
@@ -65,7 +66,10 @@ namespace WoosanStudio.ZombieShooter
                 //탄약 재장전
                 FullOfAmmo();
 
-                Debug.Log("Reload!!");
+                //리로드 사운드
+                MasterAudio.FireCustomEvent("CustomEvent_ReloadSniperRifle", this.transform);
+
+                //Debug.Log("Reload!!");
             }
             //Debug.Log("Pistol.Fire() ammo => " + _Model.CurrentAmmo);
         }

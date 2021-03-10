@@ -9524,7 +9524,7 @@ MonoBehaviour:
     SoundEvents:
     - actionName: Your action name
       isExpanded: 1
-      soundType: Explosion Flesh
+      soundType: Monster Explosion
       allPlaylistControllersForGroupCmd: 0
       allSoundTypesForGroupCmd: 0
       allSoundTypesForBusCmd: 0
@@ -9566,7 +9566,7 @@ MonoBehaviour:
       theCustomEventName: 
     - actionName: Your action name
       isExpanded: 1
-      soundType: Impact Brick
+      soundType: Bloody Impact
       allPlaylistControllersForGroupCmd: 0
       allSoundTypesForGroupCmd: 0
       allSoundTypesForBusCmd: 0
@@ -9576,7 +9576,7 @@ MonoBehaviour:
       glidePitchType: 0
       targetGlidePitch: 1
       pitchGlideTime: 1
-      delaySound: 0.95
+      delaySound: 0.4
       currentSoundFunctionType: 0
       currentPlaylistCommand: 0
       currentSoundGroupCommand: 0
@@ -9618,7 +9618,7 @@ MonoBehaviour:
       glidePitchType: 0
       targetGlidePitch: 1
       pitchGlideTime: 1
-      delaySound: 0.8
+      delaySound: 1.2
       currentSoundFunctionType: 0
       currentPlaylistCommand: 0
       currentSoundGroupCommand: 0
@@ -9660,7 +9660,49 @@ MonoBehaviour:
       glidePitchType: 0
       targetGlidePitch: 1
       pitchGlideTime: 1
-      delaySound: 1.1
+      delaySound: 1.8
+      currentSoundFunctionType: 0
+      currentPlaylistCommand: 0
+      currentSoundGroupCommand: 0
+      currentBusCommand: 0
+      currentCustomEventCommand: 0
+      currentGlobalCommand: 0
+      currentMixerCommand: 0
+      snapshotToTransitionTo: {fileID: 0}
+      snapshotTransitionTime: 1
+      snapshotsToBlend:
+      - snapshot: {fileID: 0}
+        weight: 1
+      currentPersistentSettingsCommand: 0
+      busName: 
+      playlistName: 
+      playlistControllerName: 
+      startPlaylist: 1
+      fadeVolume: 0
+      fadeTime: 1
+      minAge: 1
+      stopAfterFade: 0
+      restoreVolumeAfterFade: 0
+      targetVolMode: 0
+      clipName: '[None]'
+      variationType: 1
+      variationName: 
+      colliderMaxDistance: 0
+      showSphereGizmo: 0
+      theCustomEventName: 
+    - actionName: Your action name
+      isExpanded: 1
+      soundType: Impact Brick
+      allPlaylistControllersForGroupCmd: 0
+      allSoundTypesForGroupCmd: 0
+      allSoundTypesForBusCmd: 0
+      volume: 1
+      useFixedPitch: 0
+      pitch: 1
+      glidePitchType: 0
+      targetGlidePitch: 1
+      pitchGlideTime: 1
+      delaySound: 2
       currentSoundFunctionType: 0
       currentPlaylistCommand: 0
       currentSoundGroupCommand: 0

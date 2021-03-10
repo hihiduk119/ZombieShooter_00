@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Events;
+using DarkTonic.MasterAudio;
 
 namespace WoosanStudio.ZombieShooter
 {
@@ -64,6 +65,9 @@ namespace WoosanStudio.ZombieShooter
 
                 //탄약 재장전
                 FullOfAmmo();
+
+                //리로드 사운드
+                MasterAudio.FireCustomEvent("CustomEvent_ReloadShotgun", this.transform);
 
                 //Debug.Log("Reload!!");
             }

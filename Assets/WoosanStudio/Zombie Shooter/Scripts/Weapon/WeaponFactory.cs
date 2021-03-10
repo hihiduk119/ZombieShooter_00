@@ -116,9 +116,9 @@ namespace WoosanStudio.ZombieShooter
                     _iWeapon = (IWeapon)_weapon.GetComponent<AssaultRifle>();
                     break;
                 case 3:
-                    _weapon.AddComponent<LaserRifle>();
-                    iGun = _iGun = (IGun)_weapon.GetComponent<LaserRifle>();
-                    _iWeapon = (IWeapon)_weapon.GetComponent<LaserRifle>();
+                    _weapon.AddComponent<SniperRifle>();
+                    iGun = _iGun = (IGun)_weapon.GetComponent<SniperRifle>();
+                    _iWeapon = (IWeapon)_weapon.GetComponent<SniperRifle>();
                     break;
             }
 

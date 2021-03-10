@@ -124,27 +124,32 @@ namespace WoosanStudio.ZombieShooter.Audio
             playlistController.StartPlaylist("Card Selection playlist");
         }
 
+        
         void Update()
         {
             //일시 정지 또는 재시작
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                Pause();
+                MasterAudio.FireCustomEvent("CustomEvent_ReloadPistol", this.transform);
+                //Pause();
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                PlayRobbySong();
+                MasterAudio.FireCustomEvent("CustomEvent_ReloadShotgun", this.transform);
+                //PlayRobbySong();
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                PlayLoadingSong();
+                MasterAudio.FireCustomEvent("CustomEvent_ReloadAssaultRifle", this.transform);
+                //PlayLoadingSong();
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                PlayCardSelectionSong();
+                MasterAudio.FireCustomEvent("CustomEvent_ReloadSniperRifle", this.transform);
+                //PlayCardSelectionSong();
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha5))
@@ -162,5 +167,6 @@ namespace WoosanStudio.ZombieShooter.Audio
                 PlayBattleSong(2);
             }
         }
+        
     }
 }

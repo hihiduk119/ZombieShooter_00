@@ -29,20 +29,20 @@ MonoBehaviour:
   gunSettings: {fileID: 0}
   growthTables:
   - Level: 0
-    Health: 30
+    Health: 100
     AttackDamage: 10
   - Level: 1
-    Health: 80
-    AttackDamage: 13
+    Health: 300
+    AttackDamage: 20
   - Level: 2
-    Health: 130
-    AttackDamage: 16
+    Health: 500
+    AttackDamage: 30
   - Level: 3
-    Health: 180
-    AttackDamage: 19
+    Health: 700
+    AttackDamage: 40
   - Level: 4
-    Health: 230
-    AttackDamage: 21
+    Health: 800
+    AttackDamage: 50
   _useShadow: 1
   _shadowProjector: {fileID: 5194339502216924784, guid: eaad130044b2747ef9b15d3b0c6d7fb6,
     type: 3}

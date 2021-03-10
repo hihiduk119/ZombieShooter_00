@@ -315,7 +315,12 @@ namespace WoosanStudio.ZombieShooter
 
             //Debug.Log("사운드 완성된 이름 = [" + stringBuilder.ToString() + "] 무기 타입 = ["+weaponType.ToString()+"] 탄약 타입 = ["+ ammoType.ToString()+ "]");
 
-            MasterAudio.FireCustomEvent(stringBuilder.ToString(), this.transform);
+            //몬스터무기는 사운드 처리 아직 미정
+            if(weaponType != ProjectileSettings.GunType.MonsterGun_0)
+            {
+                //총 소리 사운드 호출
+                MasterAudio.FireCustomEvent(stringBuilder.ToString(), this.transform);
+            }
 
             stringBuilder.Clear();
         }

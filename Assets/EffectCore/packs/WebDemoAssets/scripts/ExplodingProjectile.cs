@@ -182,10 +182,11 @@ public class ExplodingProjectile : MonoBehaviour , IHaveHitDamage
                 if (calculatorInfo.KeyValue.Equals("critical"))
                 {
                     HitMessage.Instance.Show(calculatorInfo.Damage, 1, 2f);
-                } else
-                {
-                    HitMessage.Instance.Show(calculatorInfo.Damage, 0);
                 }
+                //else
+                //{
+                //    HitMessage.Instance.Show(calculatorInfo.Damage, 0);
+                //}
             }
 
             //부딫힌 오브젝트가 IHaveHit 가지고 있다.

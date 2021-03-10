@@ -253,7 +253,7 @@ namespace WoosanStudio.ZombieShooter
             itemController.DistanceCheck.CloseEvent.AddListener(itemController.GetItem);
         }
 
-
+        /*
         #region [-TestCode]
         void Update()
         {
@@ -264,5 +264,6 @@ namespace WoosanStudio.ZombieShooter
             }
         }
         #endregion
+        */
     }
 }

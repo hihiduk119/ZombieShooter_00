@@ -14,6 +14,9 @@ namespace WoosanStudio.ZombieShooter
         private Camera.CameraHit cameraHit;
         private UI.DamageEffect[] damageEffects;
 
+        //현재 캐릭터
+        private CardSetting character;
+
         void Awake()
         {
             cameraHit = GameObject.FindObjectOfType<Camera.CameraHit>();
@@ -25,15 +28,32 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void Hit()
         {
-            Debug.Log("[" + transform.name + "] Hit !!");
+            //Debug.Log("[" + transform.name + "] Hit !!");
 
             //카메라 쉐이킹
             cameraHit.RandomShake();
+
             //스크린 데미지 이펙트
             foreach (var damageEffect in damageEffects) { damageEffect.Show(); }
             //사운드 플레이
-            //*남녀 구분 필요
-            MasterAudio.FireCustomEvent("MaleHurt", this.transform);
+
+            //현재 선택 캐릭터 가져오기
+            this.character= GlobalDataController.SelectedCharacterCard;
+
+            //남녀 목소리 구분
+            //*좀비 추가시 목소리 구분
+            switch (this.character.Type)
+            {
+                case CardSetting.CardType.Woman://여성
+                    MasterAudio.FireCustomEvent("FemaleHurt", this.transform);
+                    break;
+                case CardSetting.CardType.Prostitute://여성
+                    MasterAudio.FireCustomEvent("FemaleHurt", this.transform);
+                    break;
+                default://그외 남성
+                    MasterAudio.FireCustomEvent("MaleHurt", this.transform);
+                    break;
+            }
         }
 
         /// <summary>

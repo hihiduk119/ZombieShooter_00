@@ -5065,7 +5065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundSpawnMode: 2
-  disableSounds: 1
+  disableSounds: 0
   showPoolManager: 0
   showNGUI: 0
   eventToGizmo:

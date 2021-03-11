@@ -606,26 +606,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MasterAudio
       objectReference: {fileID: 0}
-    - target: {fileID: 5096323606755473593, guid: 25fa5d48486a841eaaa03f35e72c132d,
-        type: 3}
-      propertyPath: frames
-      value: 1899
-      objectReference: {fileID: 0}
-    - target: {fileID: 5096323606755473593, guid: 25fa5d48486a841eaaa03f35e72c132d,
-        type: 3}
-      propertyPath: busIndex
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5096323606755473593, guid: 25fa5d48486a841eaaa03f35e72c132d,
-        type: 3}
-      propertyPath: retriggerPercentage
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5285828434234860712, guid: 25fa5d48486a841eaaa03f35e72c132d,
-        type: 3}
-      propertyPath: frames
-      value: 1729
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25fa5d48486a841eaaa03f35e72c132d, type: 3}
 --- !u!1 &737330884

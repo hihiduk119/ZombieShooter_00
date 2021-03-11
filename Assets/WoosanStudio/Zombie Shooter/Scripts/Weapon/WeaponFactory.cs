@@ -203,7 +203,7 @@ namespace WoosanStudio.ZombieShooter
 
                 //플레쉬 스크린 이펙트 등록
                 UI.FlashEffect flashEffect = GameObject.FindObjectOfType<UI.FlashEffect>();
-                //_iGun.ProjectileLauncher.TriggerEvent.AddListener(flashEffect.Show);
+                _iGun.ProjectileLauncher.TriggerEvent.AddListener(flashEffect.Show);
 
                 //총 발사시 반동에니메이션 등록
                 //Weapon.GunAnimation gunRecoil = GameObject.FindObjectOfType<Weapon.GunAnimation>();

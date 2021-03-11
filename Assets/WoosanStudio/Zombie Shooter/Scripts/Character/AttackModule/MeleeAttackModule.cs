@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+using DarkTonic.MasterAudio;
+
 namespace WoosanStudio.ZombieShooter.Character
 {
     public class MeleeAttackModule : ICharacterAttackModule
@@ -97,6 +99,9 @@ namespace WoosanStudio.ZombieShooter.Character
             if (haveHit == null) { return; }
 
             haveHit.Hit();
+
+            //몬스터 근접 공격 소리
+            MasterAudio.FireCustomEvent("SFX_MonsterAttack", GlobalDataController.Player);
 
             //베리어에 데미지 이벤트 호출
             if (haveHealth != null)

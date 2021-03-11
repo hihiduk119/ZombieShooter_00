@@ -192,6 +192,10 @@ namespace WoosanStudio.ZombieShooter
             //플레이어가 가지고 있는 무기 요청 가지고 옴
             WeaponRequester = playerController.GetComponent<WeaponRequester>();
 
+            //글로벌 데이터에 플레이어 세팅
+            //*사운드 출력시 필요
+            GlobalDataController.Player = playerController.transform;
+
             //PlayerController.cs에서 가져온 Move.cs 의 IActive
             Move = playerController.GetComponent(typeof(Common.IActive)) as Common.IActive;
 
@@ -509,9 +513,11 @@ namespace WoosanStudio.ZombieShooter
             //콜라이더 비활성화
             playerObj.GetComponent<Collider>().enabled = false;
 
+            //테스트시 활성화
+            //* Die의 호출에 의해 PlayerDeadTest활성화
             //DoDieForPlayer.cs 가져오기
-            DoDieForPlayer doDieForPlayer = playerObj.GetComponent<DoDieForPlayer>();
-            doDieForPlayer.Die();
+            //DoDieForPlayer doDieForPlayer = playerObj.GetComponent<DoDieForPlayer>();
+            //doDieForPlayer.Die();
 
             //그림자 비활성
             playerController.Projector.enabled = false;

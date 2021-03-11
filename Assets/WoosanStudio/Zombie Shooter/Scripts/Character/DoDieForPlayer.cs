@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Events;
+using DarkTonic.MasterAudio;
 
 namespace WoosanStudio.ZombieShooter
 {
-
     public class DoDieForPlayer : MonoBehaviour
     {
         //컨트롤 모델
@@ -45,6 +45,9 @@ namespace WoosanStudio.ZombieShooter
 
         //죽은 위치의 좌표를 위해 Vector3 포함
         public class PositionEvent : UnityEvent<Vector3> { }
+
+        //임시용 캐릭터 세팅 받아오기
+        private CardSetting character;
 
         private void Awake()
         {
@@ -122,6 +125,25 @@ namespace WoosanStudio.ZombieShooter
             //이펙트 실행
             deadEffect?.Run();
 
+            //임시용 플레이어 죽음
+            StageManager.Instance.PlayerDeadTest();
+
+            this.character = GlobalDataController.SelectedCharacterCard;
+
+            //죽음 사운드 여자,남자,몬스터 목소리 구분용
+            switch (this.character.Type)
+            {
+                case CardSetting.CardType.Woman://여자
+                    MasterAudio.FireCustomEvent("SFX_FemaleDeath", this.transform);
+                    break;
+                case CardSetting.CardType.Prostitute://여자
+                    MasterAudio.FireCustomEvent("SFX_FemaleDeath", this.transform);
+                    break;
+                default://남자
+                    MasterAudio.FireCustomEvent("SFX_MaleDeath", this.transform);
+                    break;
+            }
+
             //Invoke("GoToHeaven", 3f);
             //Debug.Log("=================>    GoToHeaven");
         }
@@ -163,13 +185,17 @@ namespace WoosanStudio.ZombieShooter
             //Debug.Log("=================>    Go       ToHeaven");
         }*/
 
+        /*
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 //이펙트 실행
-                deadEffect?.Run();
+                //deadEffect?.Run();
+
+                MasterAudio.FireCustomEvent("SFX_MonsterAttack", this.transform);
             }
         }
+        */
     }
 }

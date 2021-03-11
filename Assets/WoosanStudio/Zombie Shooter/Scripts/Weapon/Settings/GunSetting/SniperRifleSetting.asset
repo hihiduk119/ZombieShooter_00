@@ -25,4 +25,4 @@ MonoBehaviour:
   _level: 1
   _damage: -1
   _maxAmmo: 5
-  _reloadTime: 1.75
+  _reloadTime: 5

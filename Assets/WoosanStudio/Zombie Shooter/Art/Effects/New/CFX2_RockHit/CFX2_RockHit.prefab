@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 198330214428362902}
   - component: {fileID: 199403377841047146}
   - component: {fileID: 5646517636909194633}
+  - component: {fileID: 6130624325687232286}
   m_Layer: 0
   m_Name: CFX2_RockHit
   m_TagString: FxTemporaire
@@ -44,7 +45,7 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040608886635896}
-  serializedVersion: 6
+  serializedVersion: 7
   lengthInSec: 3
   simulationSpeed: 1
   stopAction: 0
@@ -2044,6 +2045,62 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+  LifetimeByEmitterSpeedModule:
+    enabled: 0
+    m_Curve:
+      serializedVersion: 2
+      minMaxState: 1
+      scalar: 1
+      minScalar: 1
+      maxCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: -0.8
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 0.2
+          inSlope: -0.8
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    m_Range: {x: 0, y: 1}
   ForceModule:
     enabled: 0
     x:
@@ -3474,19 +3531,20 @@ ParticleSystem:
     range: {x: 0, y: 1}
   CollisionModule:
     enabled: 0
-    serializedVersion: 3
+    serializedVersion: 4
     type: 0
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
-    plane0: {fileID: 0}
-    plane1: {fileID: 0}
-    plane2: {fileID: 0}
-    plane3: {fileID: 0}
-    plane4: {fileID: 0}
-    plane5: {fileID: 0}
+    m_Planes:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
@@ -3660,17 +3718,20 @@ ParticleSystem:
     interiorCollisions: 1
   TriggerModule:
     enabled: 0
-    collisionShape0: {fileID: 0}
-    collisionShape1: {fileID: 0}
-    collisionShape2: {fileID: 0}
-    collisionShape3: {fileID: 0}
-    collisionShape4: {fileID: 0}
-    collisionShape5: {fileID: 0}
+    serializedVersion: 2
     inside: 1
     outside: 0
     enter: 0
     exit: 0
+    colliderQueryMode: 0
     radiusScale: 1
+    primitives:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -4624,11 +4685,12 @@ ParticleSystemRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 1e13e7b5052aa4a0aa81d3953a0f0241, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4666,6 +4728,8 @@ ParticleSystemRenderer:
   m_EnableGPUInstancing: 0
   m_ApplyActiveColorSpace: 0
   m_AllowRoll: 1
+  m_FreeformStretching: 0
+  m_RotateWithStretchDirection: 1
   m_VertexStreams: 0001030405
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
@@ -4685,6 +4749,1560 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathtimer: 4
+--- !u!114 &6130624325687232286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040608886635896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d492d00279c38d04bbbd764b09166bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundSpawnMode: 2
+  disableSounds: 0
+  showPoolManager: 0
+  showNGUI: 0
+  eventToGizmo:
+    actionName: Your action name
+    isExpanded: 1
+    soundType: '[None]'
+    allPlaylistControllersForGroupCmd: 0
+    allSoundTypesForGroupCmd: 0
+    allSoundTypesForBusCmd: 0
+    volume: 1
+    useFixedPitch: 0
+    pitch: 1
+    glidePitchType: 0
+    targetGlidePitch: 1
+    pitchGlideTime: 1
+    delaySound: 0
+    currentSoundFunctionType: 0
+    currentPlaylistCommand: 0
+    currentSoundGroupCommand: 0
+    currentBusCommand: 0
+    currentCustomEventCommand: 0
+    currentGlobalCommand: 0
+    currentMixerCommand: 0
+    snapshotToTransitionTo: {fileID: 0}
+    snapshotTransitionTime: 1
+    snapshotsToBlend:
+    - snapshot: {fileID: 0}
+      weight: 1
+    currentPersistentSettingsCommand: 0
+    busName: 
+    playlistName: 
+    playlistControllerName: 
+    startPlaylist: 1
+    fadeVolume: 0
+    fadeTime: 1
+    minAge: 1
+    stopAfterFade: 0
+    restoreVolumeAfterFade: 0
+    targetVolMode: 0
+    clipName: '[None]'
+    variationType: 1
+    variationName: 
+    colliderMaxDistance: 0
+    showSphereGizmo: 0
+    theCustomEventName: 
+  unityUIMode: 1
+  logMissingEvents: 1
+  startSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents:
+    - actionName: Your action name
+      isExpanded: 1
+      soundType: Impact Brick
+      allPlaylistControllersForGroupCmd: 0
+      allSoundTypesForGroupCmd: 0
+      allSoundTypesForBusCmd: 0
+      volume: 1
+      useFixedPitch: 0
+      pitch: 1
+      glidePitchType: 0
+      targetGlidePitch: 1
+      pitchGlideTime: 1
+      delaySound: 1
+      currentSoundFunctionType: 0
+      currentPlaylistCommand: 0
+      currentSoundGroupCommand: 0
+      currentBusCommand: 0
+      currentCustomEventCommand: 0
+      currentGlobalCommand: 0
+      currentMixerCommand: 0
+      snapshotToTransitionTo: {fileID: 0}
+      snapshotTransitionTime: 1
+      snapshotsToBlend:
+      - snapshot: {fileID: 0}
+        weight: 1
+      currentPersistentSettingsCommand: 0
+      busName: 
+      playlistName: 
+      playlistControllerName: 
+      startPlaylist: 1
+      fadeVolume: 0
+      fadeTime: 1
+      minAge: 1
+      stopAfterFade: 0
+      restoreVolumeAfterFade: 0
+      targetVolMode: 0
+      clipName: '[None]'
+      variationType: 1
+      variationName: 
+      colliderMaxDistance: 0
+      showSphereGizmo: 0
+      theCustomEventName: 
+    - actionName: Your action name
+      isExpanded: 1
+      soundType: Impact Brick
+      allPlaylistControllersForGroupCmd: 0
+      allSoundTypesForGroupCmd: 0
+      allSoundTypesForBusCmd: 0
+      volume: 1
+      useFixedPitch: 0
+      pitch: 1
+      glidePitchType: 0
+      targetGlidePitch: 1
+      pitchGlideTime: 1
+      delaySound: 1.2
+      currentSoundFunctionType: 0
+      currentPlaylistCommand: 0
+      currentSoundGroupCommand: 0
+      currentBusCommand: 0
+      currentCustomEventCommand: 0
+      currentGlobalCommand: 0
+      currentMixerCommand: 0
+      snapshotToTransitionTo: {fileID: 0}
+      snapshotTransitionTime: 1
+      snapshotsToBlend:
+      - snapshot: {fileID: 0}
+        weight: 1
+      currentPersistentSettingsCommand: 0
+      busName: 
+      playlistName: 
+      playlistControllerName: 
+      startPlaylist: 1
+      fadeVolume: 0
+      fadeTime: 1
+      minAge: 1
+      stopAfterFade: 0
+      restoreVolumeAfterFade: 0
+      targetVolMode: 0
+      clipName: '[None]'
+      variationType: 1
+      variationName: 
+      colliderMaxDistance: 0
+      showSphereGizmo: 0
+      theCustomEventName: 
+    - actionName: Your action name
+      isExpanded: 1
+      soundType: Impact Brick
+      allPlaylistControllersForGroupCmd: 0
+      allSoundTypesForGroupCmd: 0
+      allSoundTypesForBusCmd: 0
+      volume: 1
+      useFixedPitch: 0
+      pitch: 1
+      glidePitchType: 0
+      targetGlidePitch: 1
+      pitchGlideTime: 1
+      delaySound: 1.5
+      currentSoundFunctionType: 0
+      currentPlaylistCommand: 0
+      currentSoundGroupCommand: 0
+      currentBusCommand: 0
+      currentCustomEventCommand: 0
+      currentGlobalCommand: 0
+      currentMixerCommand: 0
+      snapshotToTransitionTo: {fileID: 0}
+      snapshotTransitionTime: 1
+      snapshotsToBlend:
+      - snapshot: {fileID: 0}
+        weight: 1
+      currentPersistentSettingsCommand: 0
+      busName: 
+      playlistName: 
+      playlistControllerName: 
+      startPlaylist: 1
+      fadeVolume: 0
+      fadeTime: 1
+      minAge: 1
+      stopAfterFade: 0
+      restoreVolumeAfterFade: 0
+      targetVolMode: 0
+      clipName: '[None]'
+      variationType: 1
+      variationName: 
+      colliderMaxDistance: 0
+      showSphereGizmo: 0
+      theCustomEventName: 
+    - actionName: Your action name
+      isExpanded: 1
+      soundType: Impact Brick
+      allPlaylistControllersForGroupCmd: 0
+      allSoundTypesForGroupCmd: 0
+      allSoundTypesForBusCmd: 0
+      volume: 1
+      useFixedPitch: 0
+      pitch: 1
+      glidePitchType: 0
+      targetGlidePitch: 1
+      pitchGlideTime: 1
+      delaySound: 1.8
+      currentSoundFunctionType: 0
+      currentPlaylistCommand: 0
+      currentSoundGroupCommand: 0
+      currentBusCommand: 0
+      currentCustomEventCommand: 0
+      currentGlobalCommand: 0
+      currentMixerCommand: 0
+      snapshotToTransitionTo: {fileID: 0}
+      snapshotTransitionTime: 1
+      snapshotsToBlend:
+      - snapshot: {fileID: 0}
+        weight: 1
+      currentPersistentSettingsCommand: 0
+      busName: 
+      playlistName: 
+      playlistControllerName: 
+      startPlaylist: 1
+      fadeVolume: 0
+      fadeTime: 1
+      minAge: 1
+      stopAfterFade: 0
+      restoreVolumeAfterFade: 0
+      targetVolMode: 0
+      clipName: '[None]'
+      variationType: 1
+      variationName: 
+      colliderMaxDistance: 0
+      showSphereGizmo: 0
+      theCustomEventName: 
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  visibleSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  invisibleSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  collisionSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  collisionExitSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  triggerSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  triggerExitSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  triggerStaySound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  mouseEnterSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  mouseExitSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  mouseClickSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  mouseUpSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  mouseDragSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  spawnedSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  despawnedSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  enableSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  disableSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  collision2dSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  collisionExit2dSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  triggerEnter2dSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  triggerStay2dSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  triggerExit2dSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  particleCollisionSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  nguiOnClickSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  nguiMouseDownSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  nguiMouseUpSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  nguiMouseEnterSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  nguiMouseExitSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  codeTriggeredEvent1Sound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  codeTriggeredEvent2Sound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unitySliderChangedSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityButtonClickedSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityPointerDownSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityDragSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityPointerUpSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityPointerEnterSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityPointerExitSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityDropSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityScrollSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityUpdateSelectedSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unitySelectSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityDeselectSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityMoveSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityInitializePotentialDragSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityBeginDragSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityEndDragSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unitySubmitSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityCancelSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  unityToggleSound:
+    isExpanded: 1
+    allPlayersShouldHear: 0
+    useLayerFilter: 0
+    useTagFilter: 0
+    matchingLayers: 00000000
+    matchingTags:
+    - Default
+    customSoundActive: 0
+    isCustomEvent: 0
+    customEventName: 
+    mechanimEventActive: 0
+    isMechanimStateCheckEvent: 0
+    mechanimStateName: 
+    mechEventPlayedForState: 0
+    SoundEvents: []
+    mouseDragStopMode: 0
+    mouseDragFadeOutTime: 1
+    retriggerLimitMode: 0
+    limitPerXFrm: 0
+    limitPerXSec: 0
+    triggeredLastFrame: -100
+    triggeredLastTime: -100
+    triggerStayForTime: 0
+    doesTriggerStayRepeat: 1
+    sliderValue: 0
+  userDefinedSounds: []
+  mechanimStateChangedSounds: []
+  useStartSound: 1
+  useVisibleSound: 0
+  useInvisibleSound: 0
+  useCollisionSound: 0
+  useCollisionExitSound: 0
+  useTriggerEnterSound: 0
+  useTriggerExitSound: 0
+  useTriggerStaySound: 0
+  useMouseEnterSound: 0
+  useMouseExitSound: 0
+  useMouseClickSound: 0
+  useMouseUpSound: 0
+  useMouseDragSound: 0
+  useSpawnedSound: 0
+  useDespawnedSound: 0
+  useEnableSound: 0
+  useDisableSound: 0
+  useCollision2dSound: 0
+  useCollisionExit2dSound: 0
+  useTriggerEnter2dSound: 0
+  useTriggerStay2dSound: 0
+  useTriggerExit2dSound: 0
+  useParticleCollisionSound: 0
+  useNguiOnClickSound: 0
+  useNguiMouseDownSound: 0
+  useNguiMouseUpSound: 0
+  useNguiMouseEnterSound: 0
+  useNguiMouseExitSound: 0
+  useCodeTriggeredEvent1Sound: 0
+  useCodeTriggeredEvent2Sound: 0
+  useUnitySliderChangedSound: 0
+  useUnityButtonClickedSound: 0
+  useUnityPointerDownSound: 0
+  useUnityDragSound: 0
+  useUnityPointerUpSound: 0
+  useUnityPointerEnterSound: 0
+  useUnityPointerExitSound: 0
+  useUnityDropSound: 0
+  useUnityScrollSound: 0
+  useUnityUpdateSelectedSound: 0
+  useUnitySelectSound: 0
+  useUnityDeselectSound: 0
+  useUnityMoveSound: 0
+  useUnityInitializePotentialDragSound: 0
+  useUnityBeginDragSound: 0
+  useUnityEndDragSound: 0
+  useUnitySubmitSound: 0
+  useUnityCancelSound: 0
+  useUnityToggleSound: 0
 --- !u!1 &1175848601096382
 GameObject:
   m_ObjectHideFlags: 0
@@ -4724,7 +6342,7 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175848601096382}
-  serializedVersion: 6
+  serializedVersion: 7
   lengthInSec: 0.6
   simulationSpeed: 1
   stopAction: 0
@@ -6724,6 +8342,62 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+  LifetimeByEmitterSpeedModule:
+    enabled: 0
+    m_Curve:
+      serializedVersion: 2
+      minMaxState: 1
+      scalar: 1
+      minScalar: 1
+      maxCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: -0.8
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 0.2
+          inSlope: -0.8
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    m_Range: {x: 0, y: 1}
   ForceModule:
     enabled: 0
     x:
@@ -8154,19 +9828,20 @@ ParticleSystem:
     range: {x: 0, y: 1}
   CollisionModule:
     enabled: 0
-    serializedVersion: 3
+    serializedVersion: 4
     type: 0
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
-    plane0: {fileID: 0}
-    plane1: {fileID: 0}
-    plane2: {fileID: 0}
-    plane3: {fileID: 0}
-    plane4: {fileID: 0}
-    plane5: {fileID: 0}
+    m_Planes:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
@@ -8340,17 +10015,20 @@ ParticleSystem:
     interiorCollisions: 1
   TriggerModule:
     enabled: 0
-    collisionShape0: {fileID: 0}
-    collisionShape1: {fileID: 0}
-    collisionShape2: {fileID: 0}
-    collisionShape3: {fileID: 0}
-    collisionShape4: {fileID: 0}
-    collisionShape5: {fileID: 0}
+    serializedVersion: 2
     inside: 1
     outside: 0
     enter: 0
     exit: 0
+    colliderQueryMode: 0
     radiusScale: 1
+    primitives:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -9304,11 +10982,12 @@ ParticleSystemRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 143464df7d98b484b989140161274e35, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9346,6 +11025,8 @@ ParticleSystemRenderer:
   m_EnableGPUInstancing: 0
   m_ApplyActiveColorSpace: 0
   m_AllowRoll: 1
+  m_FreeformStretching: 0
+  m_RotateWithStretchDirection: 1
   m_VertexStreams: 0001030405
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
@@ -9391,7 +11072,7 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363848811046332}
-  serializedVersion: 6
+  serializedVersion: 7
   lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
@@ -11274,6 +12955,62 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+  LifetimeByEmitterSpeedModule:
+    enabled: 0
+    m_Curve:
+      serializedVersion: 2
+      minMaxState: 1
+      scalar: 1
+      minScalar: 1
+      maxCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: -0.8
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 0.2
+          inSlope: -0.8
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    m_Range: {x: 0, y: 1}
   ForceModule:
     enabled: 0
     x:
@@ -12704,19 +14441,20 @@ ParticleSystem:
     range: {x: 0, y: 1}
   CollisionModule:
     enabled: 1
-    serializedVersion: 3
+    serializedVersion: 4
     type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
-    plane0: {fileID: 0}
-    plane1: {fileID: 0}
-    plane2: {fileID: 0}
-    plane3: {fileID: 0}
-    plane4: {fileID: 0}
-    plane5: {fileID: 0}
+    m_Planes:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
@@ -12890,17 +14628,20 @@ ParticleSystem:
     interiorCollisions: 1
   TriggerModule:
     enabled: 0
-    collisionShape0: {fileID: 0}
-    collisionShape1: {fileID: 0}
-    collisionShape2: {fileID: 0}
-    collisionShape3: {fileID: 0}
-    collisionShape4: {fileID: 0}
-    collisionShape5: {fileID: 0}
+    serializedVersion: 2
     inside: 1
     outside: 0
     enter: 0
     exit: 0
+    colliderQueryMode: 0
     radiusScale: 1
+    primitives:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -13854,11 +15595,12 @@ ParticleSystemRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a8882c522a36f4edf918e770cbfe03e8, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13896,6 +15638,8 @@ ParticleSystemRenderer:
   m_EnableGPUInstancing: 0
   m_ApplyActiveColorSpace: 0
   m_AllowRoll: 1
+  m_FreeformStretching: 0
+  m_RotateWithStretchDirection: 1
   m_VertexStreams: 0001030405
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
@@ -13941,7 +15685,7 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442331072126700}
-  serializedVersion: 6
+  serializedVersion: 7
   lengthInSec: 0.2
   simulationSpeed: 1
   stopAction: 0
@@ -15923,6 +17667,62 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+  LifetimeByEmitterSpeedModule:
+    enabled: 0
+    m_Curve:
+      serializedVersion: 2
+      minMaxState: 1
+      scalar: 1
+      minScalar: 1
+      maxCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: -0.8
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 0.2
+          inSlope: -0.8
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    m_Range: {x: 0, y: 1}
   ForceModule:
     enabled: 0
     x:
@@ -17353,19 +19153,20 @@ ParticleSystem:
     range: {x: 0, y: 1}
   CollisionModule:
     enabled: 0
-    serializedVersion: 3
+    serializedVersion: 4
     type: 0
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
-    plane0: {fileID: 0}
-    plane1: {fileID: 0}
-    plane2: {fileID: 0}
-    plane3: {fileID: 0}
-    plane4: {fileID: 0}
-    plane5: {fileID: 0}
+    m_Planes:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
@@ -17539,17 +19340,20 @@ ParticleSystem:
     interiorCollisions: 1
   TriggerModule:
     enabled: 0
-    collisionShape0: {fileID: 0}
-    collisionShape1: {fileID: 0}
-    collisionShape2: {fileID: 0}
-    collisionShape3: {fileID: 0}
-    collisionShape4: {fileID: 0}
-    collisionShape5: {fileID: 0}
+    serializedVersion: 2
     inside: 1
     outside: 0
     enter: 0
     exit: 0
+    colliderQueryMode: 0
     radiusScale: 1
+    primitives:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -18503,11 +20307,12 @@ ParticleSystemRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 1629385b9dc1e4c6883187083bd9a015, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18545,6 +20350,8 @@ ParticleSystemRenderer:
   m_EnableGPUInstancing: 0
   m_ApplyActiveColorSpace: 0
   m_AllowRoll: 1
+  m_FreeformStretching: 0
+  m_RotateWithStretchDirection: 1
   m_VertexStreams: 0001030405
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
@@ -18590,7 +20397,7 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472187774649472}
-  serializedVersion: 6
+  serializedVersion: 7
   lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
@@ -20473,6 +22280,62 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+  LifetimeByEmitterSpeedModule:
+    enabled: 0
+    m_Curve:
+      serializedVersion: 2
+      minMaxState: 1
+      scalar: 1
+      minScalar: 1
+      maxCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: -0.8
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 0.2
+          inSlope: -0.8
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    m_Range: {x: 0, y: 1}
   ForceModule:
     enabled: 0
     x:
@@ -21903,19 +23766,20 @@ ParticleSystem:
     range: {x: 0, y: 1}
   CollisionModule:
     enabled: 1
-    serializedVersion: 3
+    serializedVersion: 4
     type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
-    plane0: {fileID: 0}
-    plane1: {fileID: 0}
-    plane2: {fileID: 0}
-    plane3: {fileID: 0}
-    plane4: {fileID: 0}
-    plane5: {fileID: 0}
+    m_Planes:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
@@ -22089,17 +23953,20 @@ ParticleSystem:
     interiorCollisions: 1
   TriggerModule:
     enabled: 0
-    collisionShape0: {fileID: 0}
-    collisionShape1: {fileID: 0}
-    collisionShape2: {fileID: 0}
-    collisionShape3: {fileID: 0}
-    collisionShape4: {fileID: 0}
-    collisionShape5: {fileID: 0}
+    serializedVersion: 2
     inside: 1
     outside: 0
     enter: 0
     exit: 0
+    colliderQueryMode: 0
     radiusScale: 1
+    primitives:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -23053,11 +24920,12 @@ ParticleSystemRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a8882c522a36f4edf918e770cbfe03e8, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23095,6 +24963,8 @@ ParticleSystemRenderer:
   m_EnableGPUInstancing: 0
   m_ApplyActiveColorSpace: 0
   m_AllowRoll: 1
+  m_FreeformStretching: 0
+  m_RotateWithStretchDirection: 1
   m_VertexStreams: 0001030405
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}

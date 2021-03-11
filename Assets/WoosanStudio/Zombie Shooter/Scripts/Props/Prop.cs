@@ -29,11 +29,12 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
-        /// 일반 히트와 동일
+        /// 일반 히트와 동일하지만 사운드 없음
         /// </summary>
         public void HitByGlobalDamage()
         {
-            Hit();
+            animator.Play("Empty");
+            animator.SetTrigger("Pong");
         }
 
         //void Update()

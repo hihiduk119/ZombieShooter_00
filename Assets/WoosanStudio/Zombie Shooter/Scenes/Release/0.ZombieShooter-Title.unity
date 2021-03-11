@@ -546,6 +546,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 480720437, guid: 25fa5d48486a841eaaa03f35e72c132d, type: 3}
+      propertyPath: frames
+      value: 2351
+      objectReference: {fileID: 0}
+    - target: {fileID: 482432004, guid: 25fa5d48486a841eaaa03f35e72c132d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: beac287187dd84436abc20e449f67117, type: 3}
+    - target: {fileID: 1222227632, guid: 25fa5d48486a841eaaa03f35e72c132d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 79b4602edde4544c79dab3220d5e6640, type: 3}
+    - target: {fileID: 2050888237, guid: 25fa5d48486a841eaaa03f35e72c132d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6fdf4daca311643bfbf0caa526cd5cc4, type: 3}
     - target: {fileID: 1949190598727963286, guid: 25fa5d48486a841eaaa03f35e72c132d,
         type: 3}
       propertyPath: m_RootOrder

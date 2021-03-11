@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using DarkTonic.MasterAudio;
+
 namespace WoosanStudio.ZombieShooter.UI
 {
     /// <summary>
@@ -60,6 +62,7 @@ namespace WoosanStudio.ZombieShooter.UI
             AirStrikeShadowController airStrikeShadowController = GameObject.FindObjectOfType<AirStrikeShadowController>();
             airStrikeShadowController.Run();
             //사운드 필요
+            MasterAudio.FireCustomEvent("CustomEvent_CallAirStrike", this.transform);
         }
 
 

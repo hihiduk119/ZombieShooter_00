@@ -662,6 +662,13 @@ namespace WoosanStudio.ZombieShooter
             {
                 PlayerResurrectionTest();
             }
+
+            //재장전 사운드
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                MasterAudio.FireCustomEvent("CustomEvent_ReloadAssaultRifle",this.transform);
+            }
+
         }
         /*
         /// <summary>

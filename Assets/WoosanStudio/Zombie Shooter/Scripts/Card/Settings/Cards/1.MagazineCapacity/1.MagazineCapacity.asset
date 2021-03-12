@@ -30,7 +30,7 @@ MonoBehaviour:
       bUpgrading: 0
     IsUpgrading: 0
     ShownUpgradeComplate: 1
-  useAble: 1
+  useAble: 0
   level: 3
   durability: 100
   upgradeTimeset:

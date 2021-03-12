@@ -10,9 +10,18 @@ namespace WoosanStudio.ZombieShooter
     [CreateAssetMenu(menuName = "ZombieShooter/ItemSettings/Make Setting", fileName = "ItemData")]
     public class ItemSetting : ScriptableObject
     {
-        [Header("[고유 아이디]")]
-        [SerializeField] private int id;
-        public int ID { get => id; }
+        [Header("[타입]")]
+        [SerializeField] private FieldItem type;
+        public FieldItem Type { get => type; }
+
+        /// <summary>
+        /// 필드에 떨어지는 아이템
+        /// </summary>
+        public enum FieldItem
+        {
+            Coin = 0,   //코인
+            Exp,        //경험치
+        }
 
         [Header("[모델 프리팹]")]
         [SerializeField] private GameObject model;

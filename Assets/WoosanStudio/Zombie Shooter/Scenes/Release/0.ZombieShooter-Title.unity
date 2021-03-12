@@ -617,6 +617,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1949190598727963287, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: mixerMuted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949190598727963287, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: playlistsMuted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949190598727963287, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: _masterAudioVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949190598727963287, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: _masterPlaylistVolume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1949190598727963368, guid: 25fa5d48486a841eaaa03f35e72c132d,
         type: 3}
       propertyPath: m_Name
@@ -979,6 +999,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Song PlaylistController
+      objectReference: {fileID: 0}
+    - target: {fileID: 1474196910991665232, guid: 16b0b0f9d097b4bb08f6a2477c7d3b1c,
+        type: 3}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769161719375481434, guid: 16b0b0f9d097b4bb08f6a2477c7d3b1c,
+        type: 3}
+      propertyPath: isMuted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871226586826096368, guid: 16b0b0f9d097b4bb08f6a2477c7d3b1c,
+        type: 3}
+      propertyPath: Mute
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8893289028100818926, guid: 16b0b0f9d097b4bb08f6a2477c7d3b1c,
         type: 3}

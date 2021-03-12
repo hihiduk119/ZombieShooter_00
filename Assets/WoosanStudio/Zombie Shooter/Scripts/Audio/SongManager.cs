@@ -124,7 +124,7 @@ namespace WoosanStudio.ZombieShooter.Audio
             playlistController.StartPlaylist("Card Selection playlist");
         }
 
-        
+        /*
         void Update()
         {
             //일시 정지 또는 재시작
@@ -167,6 +167,6 @@ namespace WoosanStudio.ZombieShooter.Audio
                 PlayBattleSong(2);
             }
         }
-        
+        */
     }
 }

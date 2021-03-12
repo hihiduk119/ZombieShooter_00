@@ -15,10 +15,6 @@ using UnityEngine.Rendering.LWRP;
 #endif
 #endif
 
-#if HDRP_OUTLINE
-using UnityEngine.Rendering.HighDefinition;
-#endif
-
 namespace EPOOutline
 {
     public static class PipelineFetcher
@@ -107,15 +103,9 @@ namespace EPOOutline
         {
             return ScriptableObject.CreateInstance<ForwardRendererData>();
         }
-#elif HDRP_OUTLINE
-        public static RenderPipelineAsset CreateHDRPAsset()
-        {
-            return ScriptableObject.CreateInstance<HDRenderPipelineAsset>();
-        }
 #endif
 
-
-            public static bool IsURPOrLWRP(RenderPipelineAsset asset)
+        public static bool IsURPOrLWRP(RenderPipelineAsset asset)
         {
             return asset != null &&
                 (asset.GetType().Name.Equals("LightweightRenderPipelineAsset") ||

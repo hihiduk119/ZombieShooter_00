@@ -17,6 +17,7 @@
             #pragma fragment frag
             #pragma multi_compile_instancing
             #pragma multi_compile __ USE_INFO_BUFFER
+            #pragma multi_compile __ USE_WEIGHTED_AVERAGE
             #pragma multi_compile BASE_QUALITY_DILATE HIGH_QUALITY_DILATE ULTRA_QUALITY_DILATE
 			#pragma multi_compile __ INFO_BUFFER_STAGE
 
@@ -96,11 +97,18 @@
                 return o;
             }
             
+#if USE_WEIGHTED_AVERAGE
+            inline half4 average(half4 first, half4 second)
+            {
+                return first.a * second.a < 0.05f ? max(first, second) : (first * first.a + second * second.a) / (first.a + second.a);
+            }
+#else
             inline half4 average(half4 first, half4 second)
             {
                 return max(first, second);
             }
-
+#endif
+            
             half4 frag (v2f i) : SV_Target
 			{
                 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
@@ -122,7 +130,7 @@
 				half4 minus = FetchTexelAtWithShift(uv, - _Shift * _MainTex_TexelSize);
 				half4 center = FetchTexelAt(uv);
 
-				return average(average(center, float4(plus.xy, center.zw)), float4(minus.xy, center.zw));
+				return (center.a > 0.96f ? center : (plus.a > 0 ? plus : minus));
 #endif
 
 #if BASE_QUALITY_DILATE

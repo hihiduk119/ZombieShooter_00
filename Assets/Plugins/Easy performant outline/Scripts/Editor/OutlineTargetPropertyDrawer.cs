@@ -93,27 +93,21 @@ namespace EPOOutline
 
             var drawingPosition = position;
 
-            EditorGUIUtility.labelWidth = 80;
+            EditorGUIUtility.labelWidth = 160;
             drawingPosition.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-            var boundsModePosition = initialPosition;
-            boundsModePosition.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing * 3.0f;
-            boundsModePosition.width = initialPosition.width / 2.0f;
-            boundsModePosition.height = EditorGUIUtility.singleLineHeight;
+            var forceRecalculateBoundsDrawingPosition = initialPosition;
+            forceRecalculateBoundsDrawingPosition.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing * 3.0f;
+            forceRecalculateBoundsDrawingPosition.width = initialPosition.width;
+            forceRecalculateBoundsDrawingPosition.height = EditorGUIUtility.singleLineHeight;
 
-            EditorGUI.PropertyField(boundsModePosition, property.FindPropertyRelative("BoundsMode"));
+            EditorGUI.PropertyField(forceRecalculateBoundsDrawingPosition, property.FindPropertyRelative("ForceRecalculateBounds"));
 
-            boundsModePosition.x += boundsModePosition.width;
+            forceRecalculateBoundsDrawingPosition.width /= 2;
+            forceRecalculateBoundsDrawingPosition.x += forceRecalculateBoundsDrawingPosition.width;
 
             EditorGUIUtility.labelWidth = 80;
-            Shift(ref boundsModePosition, true);
-            EditorGUI.PropertyField(boundsModePosition, property.FindPropertyRelative("cutoutTextureIndex"), new GUIContent("Texture index"));
-
-            if (property.FindPropertyRelative("BoundsMode").intValue == (int)BoundsMode.Manual)
-            {
-                drawingPosition.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-                EditorGUI.PropertyField(drawingPosition, property.FindPropertyRelative("Bounds"), GUIContent.none);
-                drawingPosition.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-            }
+            Shift(ref forceRecalculateBoundsDrawingPosition, true);
+            EditorGUI.PropertyField(forceRecalculateBoundsDrawingPosition, property.FindPropertyRelative("cutoutTextureIndex"), new GUIContent("Texture index"));
 
             EditorGUIUtility.labelWidth = labelWidth;
 
@@ -252,9 +246,6 @@ namespace EPOOutline
                 linesCount += 1.0f;
 
             if (property.FindPropertyRelative("DilateRenderingMode").intValue == (int)DilateRenderMode.EdgeShift && appropriateToUseEdgeDilate)
-                linesCount += 2.0f;
-
-            if (property.FindPropertyRelative("BoundsMode").intValue == (int)BoundsMode.Manual)
                 linesCount += 2.0f;
 
             float shift = 0.0f;

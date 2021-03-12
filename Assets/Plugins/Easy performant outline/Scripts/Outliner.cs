@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Serialization;
 
 namespace EPOOutline
 {
@@ -27,12 +26,6 @@ namespace EPOOutline
         PerObject
     }
 
-    public enum RenderStage
-    {
-        BeforeTransparents,
-        AfterTransparents
-    }
-
     [ExecuteAlways]
     [RequireComponent(typeof(Camera))]
     public class Outliner : MonoBehaviour
@@ -52,9 +45,6 @@ namespace EPOOutline
 #endif
 
         private Camera targetCamera;
-
-        [SerializeField]
-        private RenderStage stage = RenderStage.BeforeTransparents;
 
         [SerializeField]
         private OutlineRenderingStrategy renderingStrategy = OutlineRenderingStrategy.Default;
@@ -84,15 +74,13 @@ namespace EPOOutline
         private float dilateShift = 1.0f;
 
         [SerializeField]
-        [FormerlySerializedAs("dilateIterrations")]
-        private int dilateIterations = 1;
+        private int dilateIterrations = 1;
 
         [SerializeField]
         private DilateQuality dilateQuality;
 
         [SerializeField]
-        [FormerlySerializedAs("blurIterrations")]
-        private int blurIterations = 1;
+        private int blurIterrations = 1;
 
         [SerializeField]
         private BlurType blurType = BlurType.Box;
@@ -100,14 +88,6 @@ namespace EPOOutline
         [SerializeField]
         [Range(0.05f, 1.0f)]
         private float infoRendererScale = 0.75f;
-
-        private CameraEvent Event
-        {
-            get
-            {
-                return stage == RenderStage.BeforeTransparents ? CameraEvent.AfterForwardOpaque : CameraEvent.BeforeImageEffects;
-            }
-        }
 
         public OutlineRenderingStrategy RenderingStrategy
         {
@@ -119,19 +99,6 @@ namespace EPOOutline
             set
             {
                 renderingStrategy = value;
-            }
-        }
-
-        public RenderStage RenderStage
-        {
-            get
-            {
-                return stage;
-            }
-
-            set
-            {
-                stage = value;
             }
         }
 
@@ -247,30 +214,16 @@ namespace EPOOutline
             }
         }
 
-        [Obsolete("Fixed incorrect spelling. Use BlurIterations instead")]
         public int BlurIterrations
         {
             get
             {
-                return BlurIterations;
+                return blurIterrations;
             }
 
             set
             {
-                BlurIterations = value;
-            }
-        }
-
-        public int BlurIterations
-        {
-            get
-            {
-                return blurIterations;
-            }
-
-            set
-            {
-                blurIterations = value > 0 ? value : 0;
+                blurIterrations = value > 0 ? value : 0;
             }
         }
 
@@ -287,30 +240,16 @@ namespace EPOOutline
             }
         }
 
-        [Obsolete("Fixed incorrect spelling. Use DilateIterations instead")]
         public int DilateIterration
         {
             get
             {
-                return DilateIterations;
+                return dilateIterrations;
             }
 
             set
             {
-                DilateIterations = value;
-            }
-        }
-
-        public int DilateIterations
-        {
-            get
-            {
-                return dilateIterations;
-            }
-
-            set
-            {
-                dilateIterations = value > 0 ? value : 0;
+                dilateIterrations = value > 0 ? value : 0;
             }
         }
 
@@ -321,11 +260,11 @@ namespace EPOOutline
 
         private void OnValidate()
         {
-            if (blurIterations < 0)
-                blurIterations = 0;
+            if (blurIterrations < 0)
+                blurIterrations = 0;
 
-            if (dilateIterations < 0)
-                dilateIterations = 0;
+            if (dilateIterrations < 0)
+                dilateIterrations = 0;
         }
 
         private void OnEnable()
@@ -380,7 +319,6 @@ namespace EPOOutline
                 var viewToUpdate = (UnityEditor.SceneView)view;
 
                 viewToUpdate.camera.RemoveCommandBuffer(CameraEvent.BeforeImageEffects, editorPreviewParameters.Buffer);
-                viewToUpdate.camera.RemoveCommandBuffer(CameraEvent.AfterForwardOpaque, editorPreviewParameters.Buffer);
             }
 #endif
         }
@@ -388,11 +326,10 @@ namespace EPOOutline
         private void UpdateBuffer(Camera targetCamera, CommandBuffer buffer, bool removeOnly)
         {
             targetCamera.RemoveCommandBuffer(CameraEvent.BeforeImageEffects, buffer);
-            targetCamera.RemoveCommandBuffer(CameraEvent.AfterForwardOpaque, buffer);
             if (removeOnly)
                 return;
 
-            targetCamera.AddCommandBuffer(Event, buffer);
+            targetCamera.AddCommandBuffer(CameraEvent.BeforeImageEffects, buffer);
         }
 
         private void OnPreRender()
@@ -445,7 +382,6 @@ namespace EPOOutline
                     eventTransferer.OnPreRenderEvent -= UpdateEditorCamera;
 
                 viewToUpdate.camera.RemoveCommandBuffer(CameraEvent.BeforeImageEffects, editorPreviewParameters.Buffer);
-                viewToUpdate.camera.RemoveCommandBuffer(CameraEvent.AfterForwardOpaque, editorPreviewParameters.Buffer);
             }
         }
 
@@ -498,10 +434,9 @@ namespace EPOOutline
             parameters.Camera = camera;
             parameters.IsEditorCamera = editorCamera;
             parameters.PrimaryBufferScale = primaryRendererScale;
-            parameters.InfoBufferScale = infoRendererScale;
-            parameters.BlurIterations = blurIterations;
+            parameters.BlurIterrantions = blurIterrations;
             parameters.BlurType = blurType;
-            parameters.DilateIterations = dilateIterations;
+            parameters.DilateIterrations = dilateIterrations;
             parameters.BlurShift = blurShift;
             parameters.DilateShift = dilateShift;
             parameters.UseHDR = camera.allowHDR && (RenderingMode == RenderingMode.HDR);

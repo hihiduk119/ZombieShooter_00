@@ -113,7 +113,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="mapSetting">해당 되는 맵</param>
         /// <param name="round">몇 라운드</param>
         /// <param name="cardSettings">카드들</param>
-        int GetItemCoinValue(int round,int playerLevel,List<CardSetting> cardSettings)
+        public int GetItemCoinValue(int round,int playerLevel,List<CardSetting> cardSettings)
         {
             CardProperty property;
             //라운드와 레벨에 의해 계산된 기본 코인 값
@@ -200,7 +200,7 @@ namespace WoosanStudio.ZombieShooter
         /// <param name="mapSetting">해당 되는 맵</param>
         /// <param name="round">몇 라운드</param>
         /// <param name="cardSettings">카드들</param>
-        int GetItemExpValue(int round, int playerLevel, List<CardSetting> cardSettings)
+        public int GetItemExpValue(int round, int playerLevel, List<CardSetting> cardSettings)
         {
             CardProperty property;
             //라운드와 레벨에 의해 계산된 기본 코인 값

@@ -40,7 +40,11 @@ namespace WoosanStudio.ZombieShooter
 
         [Header("아이템 스폰위치 중복을 막기위한 저장소")]
         //아이템 획득시 해당 아이템 위치 제거되어야 함
-        public List<Transform> spawnedItemPositionList = new List<Transform>();
+        //*아이템이 생성됬던 위치만 기억함
+        public List<Transform> SpawnedItemPositionList = new List<Transform>();
+
+        //[Header("생성된 모든 아이템")]
+        public List<Transform> SpawnedAllItemList = new List<Transform>();
 
         //캐쉬용
         Coroutine schedulerForMakingCoinCoroutine;
@@ -55,19 +59,19 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 외부에서 생성요청 
         /// </summary>
-        public void Requester(Transform spawnTransform)
-        {
-            Debug.Log("!!!!!=======> Requester");
-            MakeItem(Calculate(), spawnTransform);
-        }
+        //public void Requester(Transform spawnTransform)
+        //{
+        //    Debug.Log("!!!!!=======> Requester");
+        //    MakeItem(Calculate(), spawnTransform);
+        //}
 
         /// <summary>
         /// 어떤 아이템을 생성 할지 말지 확율데이터에 의해 계산한 값을 리턴
         /// </summary>
-        int Calculate()
-        {
-            return 0;
-        }
+        //int Calculate()
+        //{
+        //    return 0;
+        //}
 
         /// <summary>
         /// 코인 메이킹 스케줄러 실행
@@ -109,13 +113,43 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 아이템 삭제시 호출되는 이벤트 연결
         /// *ItemController.GetItemComplete()에서 호출
+        /// *아이템 생성이 등록된 위치 트렌스폼 삭제
         /// </summary>
         /// <param name="spawnTransform"></param>
         public void ItemDestoryEventHandler(Transform spawnTransform)
         {
-            int removeIndex = spawnedItemPositionList.FindIndex(value => value.Equals(spawnTransform));
-            spawnedItemPositionList.RemoveAt(removeIndex);
-             
+            //스폰 아이템 포지션
+            int removeIndex = SpawnedItemPositionList.FindIndex(value => value.Equals(spawnTransform));
+            SpawnedItemPositionList.RemoveAt(removeIndex);
+        }
+
+        /// <summary>
+        /// 아이템 삭제시 호출되는 이벤트 연결
+        /// *ItemController.GetItemComplete()에서 호출
+        /// *아이템 삭제
+        /// </summary>
+        /// <param name="item"></param>
+        public void ItemDestoryEventHandler2(Transform item)
+        {
+            //모든 아이템
+            int removeIndex = SpawnedAllItemList.FindIndex(value => value.Equals(item));
+            SpawnedAllItemList.RemoveAt(removeIndex);
+        }
+
+        /// <summary>
+        /// 모든 아이템 제거
+        /// *라운드 새로 시작하기 위해 사용
+        /// </summary>
+        public void DestoryAllItem()
+        {
+            //스폰됬던 모든 위치 비우기
+            SpawnedItemPositionList.Clear();
+
+            //모든 아이템 삭제
+            SpawnedAllItemList.ForEach(value => { Destroy(value.gameObject); });
+
+            //아이템 리스트 초기화
+            SpawnedAllItemList.Clear();
         }
 
         /// <summary>
@@ -137,11 +171,11 @@ namespace WoosanStudio.ZombieShooter
             Transform spawnTransform = null;
 
 
-            Debug.Log("생성된 값 = [" + spawnedItemPositionList.Count + "] 최대 스폰피봇 = [" + maxSpawn + "] 맵 최대 스폰 제한 = ["+ maxItemCount +"]");
+            Debug.Log("생성된 값 = [" + SpawnedItemPositionList.Count + "] 최대 스폰피봇 = [" + maxSpawn + "] 맵 최대 스폰 제한 = ["+ maxItemCount +"]");
             //*현재 스폰된 아이템이 0보다 커야함.
             //*최대 아이템 스폰 위치갯수 보다 현재 스폰된 아이템이 작을때 수행
             //*최대 아이템 스폰 보다 현재 스폰된 아이템이 작을때 수행
-            if (0 < spawnedItemPositionList.Count && spawnedItemPositionList.Count < maxSpawn && spawnedItemPositionList.Count < maxItemCount)
+            if (0 < SpawnedItemPositionList.Count && SpawnedItemPositionList.Count < maxSpawn && SpawnedItemPositionList.Count < maxItemCount)
             {
                 bool loop = true;
                 //중복 스폰 위치가 안나올때 까지 루프.
@@ -154,9 +188,9 @@ namespace WoosanStudio.ZombieShooter
                     loop = false;
 
                     //중복 체크용 같은게 있는지 찾기
-                    for (int i = 0; i < spawnedItemPositionList.Count; i++)
+                    for (int i = 0; i < SpawnedItemPositionList.Count; i++)
                     {
-                        if(spawnedItemPositionList[i].Equals(spawnTransform))
+                        if(SpawnedItemPositionList[i].Equals(spawnTransform))
                         {
                             //같은 스폰 장소를 가져 왔다면 루프 또 돔.
                             loop = true;
@@ -166,7 +200,7 @@ namespace WoosanStudio.ZombieShooter
 
                 //만들기 가능
                 makeAble = true;
-            } else if(spawnedItemPositionList.Count == 0)//현재 스폰된 아이템이 0이라면
+            } else if(SpawnedItemPositionList.Count == 0)//현재 스폰된 아이템이 0이라면
             {
                 //새로운 스폰 장소 가져오기
                 spawnTransform = spawnPoints.GetSpawnPositionByRandom();
@@ -179,10 +213,10 @@ namespace WoosanStudio.ZombieShooter
             if (makeAble)
             {
                 //중복 체크용 리스트에 저장
-                spawnedItemPositionList.Add(spawnTransform);
+                SpawnedItemPositionList.Add(spawnTransform);
 
                 //코인 생성
-                MakeItem(0, spawnTransform);
+                MakeItem(ItemSetting.FieldItem.Coin, spawnTransform);
                 Debug.Log("아이템 생성 성공");
             } else
             {
@@ -195,10 +229,33 @@ namespace WoosanStudio.ZombieShooter
         /// 생성 요청 및 생성된 아이템에 필요한 컨퍼넌트 추가 및 세 
         /// </summary>
         /// <param name="index"></param>
-        private void MakeItem(int index,Transform spawnTransform)
+        private void MakeItem(ItemSetting.FieldItem type,Transform spawnTransform)
         {
+            NextValueCalculator nextValueCalculator = GameObject.FindObjectOfType<NextValueCalculator>();
+
+            int value = 0;
+
+            //아이템 타입별 값 가져오기
+            switch (type)
+            {
+                case ItemSetting.FieldItem.Coin:
+                    //value = nextValueCalculator.GetItemCoinValue(,GlobalDataController.Instance.SelectAbleAllCard);
+                    break;
+                case ItemSetting.FieldItem.Exp:
+                    //value = nextValueCalculator.GetItemExpValue();
+                    break;
+                default:
+                    value = 0;
+                    break;
+            }
+
+            
+
             //아이템 생성 -> ItemController 생성.
-            Item = ItemFactory.Make(index, spawnTransform, ItemDestoryEventHandler);
+            Item = ItemFactory.Make(type, spawnTransform,0, ItemDestoryEventHandler , ItemDestoryEventHandler2);
+
+            //생성 아이템 리스트에도 저장
+            SpawnedAllItemList.Add(Item.transform);
 
             Vector3 targetPosition = spawnTransform.position;
 
@@ -259,7 +316,19 @@ namespace WoosanStudio.ZombieShooter
             //코인 자동 생성기 실행
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
+                Debug.Log("아이템 생성 콜");
+                //아이템 생성
                 RunSchedulerForMakingCoin();
+            }
+
+            //모든 아이템 삭제
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                //아이템 생성 정지
+                StopSchedulerForMakingCoin();
+
+                Debug.Log("모든 아이템 삭제");
+                DestoryAllItem();
             }
         }
         #endregion

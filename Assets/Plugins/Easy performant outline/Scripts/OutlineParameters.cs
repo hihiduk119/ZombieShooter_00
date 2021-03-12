@@ -44,8 +44,8 @@ namespace EPOOutline
         public RenderTargetIdentifier DepthTarget;
         public CommandBuffer Buffer;
         public DilateQuality DilateQuality = DilateQuality.Base;
-        public int DilateIterations = 2;
-        public int BlurIterations = 5;
+        public int DilateIterrations = 2;
+        public int BlurIterrantions = 5;
         
         public long OutlineLayerMask = -1;
 
@@ -98,10 +98,7 @@ namespace EPOOutline
 
             var previous = OutlinablesToRender[0];
 
-            UseInfoBuffer = OutlinablesToRender.Find(x => x != null && ((x.DrawingMode & (OutlinableDrawingMode.Obstacle | OutlinableDrawingMode.Mask)) != 0 || x.ComplexMaskingEnabled)) != null;
-            if (UseInfoBuffer)
-                return;
-
+            UseInfoBuffer = false;
             foreach (var target in OutlinablesToRender)
             {
                 if ((target.DrawingMode & OutlinableDrawingMode.Normal) == 0)

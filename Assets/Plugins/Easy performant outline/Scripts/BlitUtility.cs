@@ -139,36 +139,23 @@ namespace EPOOutline
 
                     Profiler.BeginSample("Getting mesh bounds");
 
-                    var bounds = new Bounds();
-                    if (target.BoundsMode != BoundsMode.Manual)
-                    {
-                        if (target.BoundsMode == BoundsMode.ForceRecalculate)
-                            UpdateBounds(target.Renderer);
+                    if (target.ForceRecalculateBounds)
+                        UpdateBounds(target.Renderer);
 
 #if UNITY_2019_3_OR_NEWER
-                        var meshRenderer = renderer as MeshRenderer;
-                        var index = meshRenderer == null ? 0 : meshRenderer.subMeshStartIndex + target.SubmeshIndex;
-                        var filter = meshRenderer == null ? null : meshRenderer.GetComponent<MeshFilter>();
-                        var mesh = filter == null ? null : filter.sharedMesh;
-                    
-                        if (meshRenderer != null && mesh != null && mesh.subMeshCount > index)
-                            bounds = mesh.GetSubMesh(index).bounds;
-                        else if (renderer != null)
-                            bounds = renderer.bounds;
-#else
+                    var meshRenderer = renderer as MeshRenderer;
+                    var index = meshRenderer == null ? 0 : meshRenderer.subMeshStartIndex + target.SubmeshIndex;
+                    var filter = meshRenderer == null ? null : meshRenderer.GetComponent<MeshFilter>();
+                    var mesh = filter == null ? null : filter.sharedMesh;
+
+                    var bounds = new Bounds();
+                    if (meshRenderer != null && mesh != null && mesh.subMeshCount > index)
+                        bounds = mesh.GetSubMesh(index).bounds;
+                    else if (renderer != null)
                         bounds = renderer.bounds;
+#else
+                    var bounds = renderer.bounds;
 #endif
-                    }
-                    else
-                    {
-                        bounds = target.Bounds;
-                        var size = bounds.size;
-                        var rendererScale = renderer.transform.localScale;
-                        size.x /= rendererScale.x;
-                        size.y /= rendererScale.y;
-                        size.z /= rendererScale.z;
-                        bounds.size = size;
-                    }
                     
                     Profiler.EndSample();
 
@@ -190,9 +177,9 @@ namespace EPOOutline
                     Profiler.BeginSample("Setting vertex values");
 
 #if UNITY_2019_3_OR_NEWER
-                    if (renderer != null && !renderer.isPartOfStaticBatch)
+                    if (meshRenderer != null && !meshRenderer.isPartOfStaticBatch)
                     {
-                        var transformMatrix = renderer.transform.localToWorldMatrix;
+                        var transformMatrix = meshRenderer.transform.localToWorldMatrix;
 
                         matrix[0] = matrix[1] = matrix[2] = matrix[3] = matrix[4] = matrix[5] = matrix[6] = matrix[7] = transformMatrix.GetColumn(0);
                         firstUV.AddRange(matrix);
@@ -217,32 +204,6 @@ namespace EPOOutline
                     }
                     else
 #endif
-                    if (target.BoundsMode == BoundsMode.Manual)
-                    {
-                        var transformMatrix = renderer.transform.localToWorldMatrix;
-
-                        matrix[0] = matrix[1] = matrix[2] = matrix[3] = matrix[4] = matrix[5] = matrix[6] = matrix[7] = transformMatrix.GetColumn(0);
-                        firstUV.AddRange(matrix);
-                        matrix[0] = matrix[1] = matrix[2] = matrix[3] = matrix[4] = matrix[5] = matrix[6] = matrix[7] = transformMatrix.GetColumn(1);
-                        secondUV.AddRange(matrix);
-                        matrix[0] = matrix[1] = matrix[2] = matrix[3] = matrix[4] = matrix[5] = matrix[6] = matrix[7] = transformMatrix.GetColumn(2);
-                        thirdUV.AddRange(matrix);
-                        matrix[0] = matrix[1] = matrix[2] = matrix[3] = matrix[4] = matrix[5] = matrix[6] = matrix[7] = transformMatrix.GetColumn(3);
-                        fourthUV.AddRange(matrix);
-
-                        tempVector3[0] = tempVector3[1] = tempVector3[2] = tempVector3[3] = tempVector3[4] = tempVector3[5] = tempVector3[6] = tempVector3[7] = boundsCenter;
-                        centers.AddRange(tempVector3);
-
-                        tempVector3[0] = tempVector3[1] = tempVector3[2] = tempVector3[3] = tempVector3[4] = tempVector3[5] = tempVector3[6] = tempVector3[7] = boundsSize;
-                        size.AddRange(tempVector3);
-
-                        tempVector3[0] = tempVector3[1] = tempVector3[2] = tempVector3[3] = tempVector3[4] = tempVector3[5] = tempVector3[6] = tempVector3[7] = stagesToSet;
-                        stages.AddRange(tempVector3);
-
-                        tempVector2[0] = tempVector2[1] = tempVector2[2] = tempVector2[3] = tempVector2[4] = tempVector2[5] = tempVector2[6] = tempVector2[7] = additionalScaleToSet;
-                        additionalScale.AddRange(tempVector2);
-                    }
-                    else
                     {
                         matrix[0] = matrix[1] = matrix[2] = matrix[3] = matrix[4] = matrix[5] = matrix[6] = matrix[7] = new Vector4(1, 0, 0, 0);
                         firstUV.AddRange(matrix);
@@ -265,6 +226,7 @@ namespace EPOOutline
                         tempVector2[0] = tempVector2[1] = tempVector2[2] = tempVector2[3] = tempVector2[4] = tempVector2[5] = tempVector2[6] = tempVector2[7] = additionalScaleToSet;
                         additionalScale.AddRange(tempVector2);
                     }
+
 
                     Profiler.EndSample();
 

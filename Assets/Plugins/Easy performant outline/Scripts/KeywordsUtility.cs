@@ -19,11 +19,6 @@ namespace EPOOutline
                     { DilateQuality.High,       "HIGH_QUALITY_DILATE" },
                     { DilateQuality.Ultra,      "ULTRA_QUALITY_DILATE" }
                 };
-        
-        public static string GetBackKeyword()
-        {
-            return "BACK_RENDERING";
-        }
 
         public static string GetTextureArrayCutoutKeyword()
         {
@@ -43,6 +38,11 @@ namespace EPOOutline
                 default:
                     throw new System.Exception("Unknown dilate quality level");
             }
+        }
+
+        public static string GetWeightedAverateKeyword()
+        {
+            return "USE_WEIGHTED_AVERAGE";
         }
 
         public static string GetEnabledInfoBufferKeyword()

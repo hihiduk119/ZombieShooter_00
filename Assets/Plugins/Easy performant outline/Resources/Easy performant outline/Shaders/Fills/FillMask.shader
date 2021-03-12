@@ -26,8 +26,6 @@
             #pragma multi_compile __ USE_CUTOUT
 			#pragma multi_compile __ TEXARRAY_CUTOUT
 			#pragma multi_compile __ EPO_HDRP
-			#pragma multi_compile __ BACK_RENDERING
-			#pragma multi_compile __ USE_INFO_BUFFER
 
             #include "UnityCG.cginc"
             #include "../MiskCG.cginc"
@@ -47,21 +45,10 @@
 #if USE_CUTOUT
                 float2 uv : TEXCOORD0;
 #endif
-
-#if USE_INFO_BUFFER
-				float4 screenUV : TEXCOORD1;
-#endif
-
                 UNITY_VERTEX_OUTPUT_STEREO
             };
 			
 			DEFINE_CUTOUT
-
-#if USE_INFO_BUFFER
-			UNITY_DECLARE_SCREENSPACE_TEXTURE(_InfoBuffer);
-			half4 _InfoBuffer_ST;
-			half4 _InfoBuffer_TexelSize;
-#endif
 
             v2f vert (appdata v)
             {
@@ -72,11 +59,7 @@
                 UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
                 o.vertex = UnityObjectToClipPos(v.vertex);
-
-#if USE_INFO_BUFFER
-				o.screenUV = ComputeScreenPos(o.vertex);
-#endif
-
+				
                 FixDepth
 				TRANSFORM_CUTOUT
 
@@ -85,17 +68,6 @@
 
             half4 frag (v2f i) : SV_Target
             {
-#if USE_INFO_BUFFER
-				float2 uv = i.screenUV.xy / i.screenUV.w;
-
-				half4 info = FetchTexelAtFrom(_InfoBuffer, uv, _InfoBuffer_ST);
-
-#if BACK_RENDERING
-				if (info.b <= 0.0f || info.b >= 0.5f)
-					discard;
-#endif
-#endif
-
 				CHECK_CUTOUT
 
                 return half4(0, 0, 0, 0);

@@ -16,7 +16,11 @@ using UnityEditor;
 #endif
 
 #if HDRP_OUTLINE
+#if UNITY_2019_3_OR_NEWER
 using UnityEngine.Rendering.HighDefinition;
+#else
+using UnityEngine.Experimental.Rendering.HDPipeline;
+#endif
 #endif
 
 namespace EPOOutline

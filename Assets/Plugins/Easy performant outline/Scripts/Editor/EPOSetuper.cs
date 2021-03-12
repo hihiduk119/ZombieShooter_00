@@ -10,39 +10,20 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.WSA;
 
-#if HDRP_OUTLINE
-using UnityEngine.Rendering.HighDefinition;
-#endif
-
 namespace EPOOutline
 {
 #if UNITY_2019_1_OR_NEWER
     public class EPOSetuper : EditorWindow
     {
-        private static readonly string URP_OUTLINE_NAME = "URP_OUTLINE";
-        private static readonly string HDRP_OUTLINE_NAME = "HDRP_OUTLINE";
+        private static readonly string SRPOutlineName = "URP_OUTLINE";
         private static readonly string EPODOTweenName = "EPO_DOTWEEN";
         private static readonly string SRPShownID = "EasyPerformantOutlineWasShownAndCanceled";
-        private static bool UPRWasFound = false;
-        private static bool HDRPWasFound = false;
+        private static bool pipelineWasFound = false;
 
         private static ListRequest request;
         private static AddRequest addRequest;
-        
+
         private Texture2D logoImage;
-
-        [SerializeField]
-        private SetupType setupType;
-
-        public enum SetupType
-        {
-            BuiltIn,
-            URP,
-            HDRP
-        }
-
-        [SerializeField]
-        private Vector2 scroll;
 
         public static bool ShouldShow
         {
@@ -66,14 +47,9 @@ namespace EPOOutline
             return Array.Find(splited, x => x == definition) != null;
         }
 
-        private static bool CheckHasURPOutlineDefinition()
+        private static bool CheckHasSRPOutlineDefinition()
         {
-            return CheckHasDefinition(URP_OUTLINE_NAME);
-        }
-
-        private static bool CheckHasHDRPOutlineDefinition()
-        {
-            return CheckHasDefinition(HDRP_OUTLINE_NAME);
+            return CheckHasDefinition(SRPOutlineName);
         }
 
         private static bool CheckHasEPODotween()
@@ -97,24 +73,17 @@ namespace EPOOutline
 
             return false;
         }
-#endif
-        
-#if URP_OUTLINE || HDRP_OUTLINE
+
         private static bool CheckHasActiveRenderers()
         {
             return PipelineAssetUtility.ActiveAssets.Count > 0;
         }
+
+        private static void SelectAssetToAddFeature(RenderPipelineAsset asset)
+        {
+            Selection.activeObject = PipelineAssetUtility.GetRenderer(asset);
+        }
 #endif
-
-        private void OnEnable()
-        {
-            EditorApplication.update += Check;
-        }
-
-        private void OnDisable()
-        {
-            EditorApplication.update -= Check;
-        }
 
         private static void RemoveDefinition(string definition, Func<bool> check)
         {
@@ -146,17 +115,12 @@ namespace EPOOutline
 
         private static void RemoveSRPOutlineFromDefinitions()
         {
-            RemoveDefinition(URP_OUTLINE_NAME, CheckHasURPOutlineDefinition);
+            RemoveDefinition(SRPOutlineName, CheckHasSRPOutlineDefinition);
         }
 
-        private static void AddURPDefinition()
+        private static void AddSRPDefinition()
         {
-            AddDefinition(URP_OUTLINE_NAME, CheckHasURPOutlineDefinition);
-        }
-
-        private static void AddHDRPDefinition()
-        {
-            AddDefinition(HDRP_OUTLINE_NAME, CheckHasHDRPOutlineDefinition);
+            AddDefinition(SRPOutlineName, CheckHasSRPOutlineDefinition);
         }
 
         private static void RemoveDOTweenDefinition()
@@ -178,51 +142,59 @@ namespace EPOOutline
             var definitions = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
             PlayerSettings.SetScriptingDefineSymbolsForGroup(group, definitions + ";" + definition);
         }
-        
+
+        [InitializeOnLoadMethod]
+        private static void Init()
+        {
+            request = Client.List();
+            EditorApplication.update += Check;
+        }
+
+        private static bool CheckSetup()
+        {
+            return CheckHasSRPOutlineDefinition()
+#if URP_OUTLINE
+                && !CheckShouldFixFeature() && CheckHasActiveRenderers();
+#else
+                ;
+#endif
+        }
+
         private static void Check()
         {
             if (EditorApplication.isPlaying)
                 return;
 
-            if (request == null || request.Error != null)
-            {
-                request = Client.List();
-                return;
-            }
-
             if (!request.IsCompleted)
                 return;
 
-            UPRWasFound = HasURPOrLWRP(request.Result);
-            HDRPWasFound = HasHDRP(request.Result);
+            pipelineWasFound = HasURPOrLWRP(request.Result);
+            if (!pipelineWasFound)
+            {
+                RemoveSRPOutlineFromDefinitions();
+                return;
+            }
 
             request = Client.List();
-        }
 
-        private static bool HasHDRP(PackageCollection result)
-        {
-            return HasPackage(result, "com.unity.render-pipelines.high-definition");
+            if (CheckSetup())
+                return;
+
+            ShowWindow();
         }
 
         private static bool HasURPOrLWRP(PackageCollection result)
-        {
-            var name =
-#if UNITY_2019_3_OR_NEWER
-                "com.unity.render-pipelines.universal";
-#else
-                "com.unity.render-pipelines.lightweight";
-#endif
-
-            return HasPackage(result, name);
-        }
-
-        private static bool HasPackage(PackageCollection result, string packageName)
         {
             if (result == null)
                 return false;
 
             var found = false;
-            var name = packageName;
+            var name =
+#if UNITY_2019_3_OR_NEWER
+                    "com.unity.render-pipelines.universal";
+#else
+                    "com.unity.render-pipelines.lightweight";
+#endif
             foreach (var item in result)
             {
                 if (item.name == name)
@@ -240,12 +212,6 @@ namespace EPOOutline
         {
             ShouldShow = true;
             ShowWindow();
-        }
-
-        [MenuItem("Tools/Easy performant outline/Online docs")]
-        private static void ShowDocs()
-        {
-            UnityEngine.Application.OpenURL("https://docs.google.com/document/d/17GvzvXNEjpEQ8DShRrVHKQ4I6s2tTVtwX6NzCZZ28AQ");
         }
 
         private static void ShowWindow()
@@ -272,8 +238,6 @@ namespace EPOOutline
 
             GUILayout.Space(10);
 
-            scroll = GUILayout.BeginScrollView(scroll);
-
             if (EditorApplication.isPlaying)
             {
                 EditorGUILayout.HelpBox("Please stop running the app to start setup process", MessageType.Info);
@@ -281,7 +245,6 @@ namespace EPOOutline
                 if (GUILayout.Button("Stop"))
                     EditorApplication.isPlaying = false;
 
-                GUILayout.EndScrollView();
                 return;
             }
 
@@ -307,120 +270,10 @@ namespace EPOOutline
 
             EditorGUI.indentLevel = 0;
 
-            setupType = (SetupType)EditorGUILayout.EnumPopup("Setup type", setupType);
+            EditorGUILayout.LabelField("URP Setup");
 
-            switch (setupType)
-            {
-                case SetupType.BuiltIn:
-                    DrawBuiltInSetup();
-                    break;
-                case SetupType.URP:
-                    DrawURPSetup();
-                    break;
-                case SetupType.HDRP:
-                    DrawHDRPSetup();
-                    break;
-            }
+            EditorGUI.indentLevel = 1;
 
-            GUILayout.EndScrollView();
-        }
-
-        private void DrawBuiltInSetup()
-        {
-            EditorGUILayout.HelpBox(new GUIContent("There is no need in making any changes to work with Built-In renderer. Just add Outliner to camera and Outlinable to the object you wish to highlight"));
-        }
-
-        private void DrawHDRPSetup()
-        {
-            if (addRequest != null && !addRequest.IsCompleted)
-            {
-                EditorGUILayout.HelpBox(new GUIContent("Adding package..."));
-                return;
-            }
-
-            var packageName = "com.unity.render-pipelines.high-definition";
-
-            if (!HDRPWasFound)
-            {
-                EditorGUILayout.HelpBox(new GUIContent("There are no package added. Chick 'Add' to add the pipeline package."));
-
-                if (GUILayout.Button("Add"))
-                    addRequest = Client.Add(packageName);
-
-                return;
-            }
-            else
-                EditorGUILayout.HelpBox(new GUIContent("Pipeline asset has been found in packages"));
-
-            if (!CheckHasHDRPOutlineDefinition())
-            {
-                EditorGUILayout.HelpBox(new GUIContent("There is no HDRP_OUTLINE feature added. Click 'Add' to fix it."));
-                if (GUILayout.Button("Add"))
-                    AddHDRPDefinition();
-            }
-            else
-                EditorGUILayout.HelpBox(new GUIContent("HDRP_OUTLINE definition is added"));
-
-#if HDRP_OUTLINE
-            if (!CheckHasActiveRenderers())
-            {
-                EditorGUILayout.HelpBox(new GUIContent("There are not renderer asset set up. Create one?"));
-
-                if (GUILayout.Button("Create"))
-                {
-                    var path = EditorUtility.SaveFilePanelInProject("Asset location", "Rendering asset", "asset", "Select the folder to save rendering asset");
-                    if (string.IsNullOrEmpty(path))
-                    {
-                        GUILayout.EndScrollView();
-                        return;
-                    }
-
-                    var pathNoExt = Path.ChangeExtension(path, string.Empty);
-                    pathNoExt = pathNoExt.Substring(0, pathNoExt.Length - 1);
-
-                    var asset = PipelineAssetUtility.CreateHDRPAsset();
-                    GraphicsSettings.renderPipelineAsset = asset;
-                    AssetDatabase.CreateAsset(asset, path);
-                }
-            }
-            else
-                EditorGUILayout.HelpBox(new GUIContent("At least one renderer asset is set up"));
-
-            var volume = FindObjectOfType<CustomPassVolume>();
-            if (volume == null)
-            {
-                EditorGUILayout.HelpBox(new GUIContent("There is no custom pass volume in the scene. Click Add to fix it."));
-
-                if (GUILayout.Button("Add"))
-                {
-                    var go = new GameObject("Custom volume");
-                    go.AddComponent<CustomPassVolume>();
-
-                    EditorUtility.SetDirty(go);
-                }
-            }
-            else
-            {
-                EditorGUILayout.HelpBox(new GUIContent("The scene has custom pass volume."));
-
-                if (volume.customPasses.Find(x => x is OutlineCustomPass) == null)
-                {
-                    EditorGUILayout.HelpBox(new GUIContent("The volume doesn't have custom pass. Click Add to fix it."));
-                    if (GUILayout.Button("Add"))
-                    {
-                        volume.AddPassOfType(typeof(OutlineCustomPass));
-
-                        EditorUtility.SetDirty(volume);
-                    }
-                }
-                else
-                    EditorGUILayout.HelpBox(new GUIContent("The custom volume is set up"));
-            }
-#endif
-        }
-
-        private void DrawURPSetup()
-        {
             if (addRequest != null && !addRequest.IsCompleted)
             {
                 EditorGUILayout.HelpBox(new GUIContent("Adding package..."));
@@ -434,7 +287,7 @@ namespace EPOOutline
                     "com.unity.render-pipelines.lightweight";
 #endif
 
-            if (!UPRWasFound)
+            if (!pipelineWasFound)
             {
                 EditorGUILayout.HelpBox(new GUIContent("There are no package added. Chick 'Add' to add the pipeline package."));
 
@@ -446,11 +299,11 @@ namespace EPOOutline
             else
                 EditorGUILayout.HelpBox(new GUIContent("Pipeline asset has been found in packages"));
 
-            if (!CheckHasURPOutlineDefinition())
+            if (!CheckHasSRPOutlineDefinition())
             {
                 EditorGUILayout.HelpBox(new GUIContent("There is no URP_OUTLINE feature added. Click 'Add' to fix it."));
                 if (GUILayout.Button("Add"))
-                    AddURPDefinition();
+                    AddSRPDefinition();
             }
             else
                 EditorGUILayout.HelpBox(new GUIContent("URP_OUTLINE definition is added"));
@@ -458,16 +311,13 @@ namespace EPOOutline
 #if URP_OUTLINE
             if (!CheckHasActiveRenderers())
             {
-                EditorGUILayout.HelpBox(new GUIContent("There are not renderer asset set up. Create one?"));
+                EditorGUILayout.HelpBox(new GUIContent("There are not renderer asset seted up. Create one?"));
 
                 if (GUILayout.Button("Create"))
                 {
                     var path = EditorUtility.SaveFilePanelInProject("Asset location", "Rendering asset", "asset", "Select the folder to save rendering asset");
                     if (string.IsNullOrEmpty(path))
-                    {
-                        GUILayout.EndScrollView();
                         return;
-                    }
 
                     var pathNoExt = Path.ChangeExtension(path, string.Empty);
                     pathNoExt = pathNoExt.Substring(0, pathNoExt.Length - 1);
@@ -490,26 +340,21 @@ namespace EPOOutline
                     if (PipelineAssetUtility.IsAssetContainsSRPOutlineFeature(asset))
                         continue;
 
-                    EditorGUI.indentLevel = 0;
+                    GUILayout.BeginHorizontal();
 
-                    var text = string.Format("There is no outline feature added to the pipeline asset called '{0}'. Please add the feature:", asset.name);
+                    var text = string.Format("There is no outline feature added to the pipeline asset called '{0}'. Click select to find asset that is missing outline features", asset.name);
                     EditorGUILayout.HelpBox(new GUIContent(text));
+                    if (GUILayout.Button("Select"))
+                        SelectAssetToAddFeature(asset);
 
-                    Editor previous = null;
-                    Editor.CreateCachedEditor(PipelineAssetUtility.GetRenderer(asset), null, ref previous);
-
-                    previous.OnInspectorGUI();
+                    GUILayout.EndHorizontal();
                 }
-
-                for (var index = 0; index < 10; index++)
-                    EditorGUILayout.Space();
 
                 return;
             }
             else
                 EditorGUILayout.HelpBox(new GUIContent("Feature is added for all renderers in use"));
 #endif
-
         }
 
         public void OnDestroy()
@@ -518,4 +363,4 @@ namespace EPOOutline
         }
     }
 #endif
-        }
+}

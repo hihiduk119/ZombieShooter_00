@@ -30,10 +30,7 @@ namespace EPOOutline
         public int SubmeshIndex;
 
         [SerializeField]
-        public BoundsMode BoundsMode = BoundsMode.Default;
-
-        [SerializeField]
-        public Bounds Bounds = new Bounds(Vector3.zero, Vector3.one);
+        public bool ForceRecalculateBounds = false;
 
         [SerializeField]
         public CutoutDescriptionType CutoutDescriptionType;

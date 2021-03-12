@@ -23,9 +23,7 @@ namespace EPOOutline
     {
         Normal = 1,
         ZOnly = 2,
-        GenericMask = 4,
-        Obstacle = 8,
-        Mask = 16
+        MaskOnly = 4,
     }
 
     [Flags]
@@ -37,13 +35,6 @@ namespace EPOOutline
         SkinnedMeshRenderer = 2,
         SpriteRenderer = 4,
         Others = 4096
-    }
-
-    public enum BoundsMode
-    {
-        Default,
-        ForceRecalculate,
-        Manual
     }
 
     [ExecuteAlways]
@@ -137,9 +128,6 @@ namespace EPOOutline
         }
 
         [SerializeField]
-        private bool complexMaskingEnabled;
-
-        [SerializeField]
         private OutlinableDrawingMode drawingMode = OutlinableDrawingMode.Normal;
 
         [SerializeField]
@@ -173,19 +161,6 @@ namespace EPOOutline
             set
             {
                 renderStyle = value;
-            }
-        }
-
-        public bool ComplexMaskingEnabled
-        {
-            get
-            {
-                return complexMaskingEnabled;
-            }
-
-            set
-            {
-                complexMaskingEnabled = value;
             }
         }
 
@@ -245,14 +220,6 @@ namespace EPOOutline
             get
             {
                 return frontParameters;
-            }
-        }
-
-        public bool IsObstacle
-        {
-            get
-            {
-                return (drawingMode & OutlinableDrawingMode.Obstacle) != 0;
             }
         }
 
@@ -330,28 +297,5 @@ namespace EPOOutline
                 (renderer is SpriteRenderer && (mode & RenderersAddingMode.SpriteRenderer) != RenderersAddingMode.None) ||
                 (renderer is SkinnedMeshRenderer && (mode & RenderersAddingMode.SkinnedMeshRenderer) != RenderersAddingMode.None);
         }
-
-#if UNITY_EDITOR
-        public void OnDrawGizmosSelected()
-        {
-            foreach (var target in outlineTargets)
-            {
-                if (target.Renderer == null || target.BoundsMode != BoundsMode.Manual)
-                    continue;
-
-                Gizmos.matrix = target.Renderer.transform.localToWorldMatrix;
-
-                Gizmos.color = new Color(1.0f, 0.5f, 0.0f, 0.2f);
-                var size = target.Bounds.size;
-                var scale = target.Renderer.transform.localScale;
-                size.x /= scale.x;
-                size.y /= scale.y;
-                size.z /= scale.z;
-
-                Gizmos.DrawCube(target.Bounds.center, size);
-                Gizmos.DrawWireCube(target.Bounds.center, size);
-            }
-        }
-#endif
     }
 }

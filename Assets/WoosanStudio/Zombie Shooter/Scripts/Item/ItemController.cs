@@ -33,6 +33,8 @@ namespace WoosanStudio.ZombieShooter
         //삭제 이벤트
         public class DestoryEvent : UnityEvent<Transform> { }
         public DestoryEvent ItemDestoryEvent = new DestoryEvent();
+        //삭제 이벤트 내자신 보내기
+        public DestoryEvent ItemDestoryEvent2 = new DestoryEvent();
 
         /// <summary>
         /// 비활성화 시킴
@@ -80,6 +82,9 @@ namespace WoosanStudio.ZombieShooter
 
             //아이템 삭제 이벤트 발생->스폰했던 트렌스폼 돌려줌
             ItemDestoryEvent.Invoke(spawmTransform);
+
+            //아이템 삭제 이벤트 발생 -> 내자신을 보냄
+            ItemDestoryEvent2.Invoke(this.transform);
 
             //오브젝트 풀 쓸지 말지 고민중..
             Destroy(this.gameObject);

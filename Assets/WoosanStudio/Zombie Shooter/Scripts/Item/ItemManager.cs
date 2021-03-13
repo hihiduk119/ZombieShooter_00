@@ -101,10 +101,24 @@ namespace WoosanStudio.ZombieShooter
         /// <returns></returns>
         IEnumerator SchedulerForMakingCoinCoroutine()
         {
-            while(true)
+            //스폰 포지션
+            Transform spawnTransform = null;
+
+            while (true)
             {
-                //코인 만들기
-                MakeCoin();
+                //아이템 스폰 위치 가져오기
+                spawnTransform = GetItemSpawnPosition();
+
+                //스폰 위치가 있다면 아이템 생성
+                if(spawnTransform != null)
+                {
+                    //중복 체크용 리스트에 저장
+                    SpawnedItemPositionList.Add(spawnTransform);
+
+                    //아이템 생성
+                    MakeItem(ItemSetting.FieldItem.Coin, spawnTransform);
+                }
+
                 //10-15초 사이 랜덤
                 yield return new WaitForSeconds(Random.Range(2,4));
             }
@@ -157,17 +171,18 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         /// <param name="coinValue"></param>
         /// <param name="index"></param>
-        private void MakeCoin()
+        private Transform GetItemSpawnPosition()
         {
             //스테이지 가져와야 함
             int stage = 0;
             //코인 생성 가능확인용
-            bool makeAble = false;
+            //bool makeAble = false;
 
             //해당 스테이지의 스폰 포인트 가져옴
             SpawnPoints spawnPoints = ItemSpawnPositionController.GetSpawnPoints(stage);
             //최대 아이템 스폰 
             int maxSpawn = spawnPoints.Points.Count;
+            //null 초기화
             Transform spawnTransform = null;
 
 
@@ -199,16 +214,17 @@ namespace WoosanStudio.ZombieShooter
                 }
 
                 //만들기 가능
-                makeAble = true;
+                //makeAble = true;
             } else if(SpawnedItemPositionList.Count == 0)//현재 스폰된 아이템이 0이라면
             {
                 //새로운 스폰 장소 가져오기
                 spawnTransform = spawnPoints.GetSpawnPositionByRandom();
 
                 //만들기 가능
-                makeAble = true;
+                //makeAble = true;
             }
 
+            /*
             //코인 만들기
             if (makeAble)
             {
@@ -222,6 +238,8 @@ namespace WoosanStudio.ZombieShooter
             {
                 Debug.Log("아이템 생성 실패");
             }
+            */
+            return spawnTransform;
         }
 
 
@@ -248,8 +266,6 @@ namespace WoosanStudio.ZombieShooter
                     value = 0;
                     break;
             }
-
-            
 
             //아이템 생성 -> ItemController 생성.
             Item = ItemFactory.Make(type, spawnTransform,0, ItemDestoryEventHandler , ItemDestoryEventHandler2);

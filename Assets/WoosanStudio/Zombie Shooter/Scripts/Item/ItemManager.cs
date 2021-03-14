@@ -110,13 +110,22 @@ namespace WoosanStudio.ZombieShooter
                 spawnTransform = GetItemSpawnPosition();
 
                 //스폰 위치가 있다면 아이템 생성
-                if(spawnTransform != null)
+                if (spawnTransform != null)
                 {
                     //중복 체크용 리스트에 저장
                     SpawnedItemPositionList.Add(spawnTransform);
 
-                    //아이템 생성
-                    MakeItem(ItemSetting.FieldItem.Coin, spawnTransform);
+                    //랜덤확률 발생 5:5 로 코인 or EXP 생성
+                    int randValue = Random.Range(0, 10);
+                    if (0 <= randValue && randValue <= 4)
+                    {
+                        //아이템 생성
+                        MakeItem(ItemSetting.FieldItem.Coin, spawnTransform);
+                    }  else
+                    {
+                        //아이템 생성
+                        MakeItem(ItemSetting.FieldItem.Exp, spawnTransform);
+                    }
                 }
 
                 //10-15초 사이 랜덤
@@ -253,14 +262,16 @@ namespace WoosanStudio.ZombieShooter
 
             int value = 0;
 
+            Debug.Log("[현재 라운드 = " + GlobalDataController.CurrentRound + "  플레이어 레벨 = " + GlobalDataController.PlayerLevel+"]");
+
             //아이템 타입별 값 가져오기
             switch (type)
             {
                 case ItemSetting.FieldItem.Coin:
-                    //value = nextValueCalculator.GetItemCoinValue(,GlobalDataController.Instance.SelectAbleAllCard);
+                    value = nextValueCalculator.GetItemCoinValue(GlobalDataController.CurrentRound,GlobalDataController.PlayerLevel,GlobalDataController.Instance.SelectAbleAllCard);
                     break;
                 case ItemSetting.FieldItem.Exp:
-                    //value = nextValueCalculator.GetItemExpValue();
+                    value = nextValueCalculator.GetItemExpValue(GlobalDataController.CurrentRound, GlobalDataController.PlayerLevel, GlobalDataController.Instance.SelectAbleAllCard);
                     break;
                 default:
                     value = 0;
@@ -268,7 +279,7 @@ namespace WoosanStudio.ZombieShooter
             }
 
             //아이템 생성 -> ItemController 생성.
-            Item = ItemFactory.Make(type, spawnTransform,0, ItemDestoryEventHandler , ItemDestoryEventHandler2);
+            Item = ItemFactory.Make(type, spawnTransform, value, ItemDestoryEventHandler , ItemDestoryEventHandler2);
 
             //생성 아이템 리스트에도 저장
             SpawnedAllItemList.Add(Item.transform);
@@ -322,8 +333,12 @@ namespace WoosanStudio.ZombieShooter
             itemController.DistanceCheck.UseTarget = true;
             //반응거리 넣기
             distanceCheck.MixDistance = 1.5f;
+
             //거리 체커의 근접이벤트 발생과  아이템 컨트롤러의 아이템 획득 연결.
             itemController.DistanceCheck.CloseEvent.AddListener(itemController.GetItem);
+
+            //아이템의 HUD 비활성 등록.
+            itemController.DistanceCheck.CloseEvent.AddListener(Item.GetComponent<Field.Item>().DeactiveHUD);
         }
 
         #region [-TestCode]

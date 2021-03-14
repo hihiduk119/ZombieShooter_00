@@ -53,7 +53,7 @@ namespace WoosanStudio.ZombieShooter
         private UI.MVP.UIWaveCountPresent waveCountPresent;
 
         //현재 라운드
-        private int currentRound = 0;
+        private int currentRound = 0; 
 
         //웨이브는 라운드와 다르게 계속 증가 가능
         private int waveCount = 0;
@@ -117,6 +117,9 @@ namespace WoosanStudio.ZombieShooter
             //웨이브 카운트는 표시용 1부터 시작
             waveCount = 1 + startRound;
 
+            //글로벌 데이터 세팅
+            GlobalDataController.CurrentRound = currentRound;
+
             //라운드 별 몬스터 스폰 실행
             SpawnByRound(currentRound);
         }
@@ -148,6 +151,10 @@ namespace WoosanStudio.ZombieShooter
             //Debug.Log("스폰 0-1");
             //현재 라운드 자동 증가
             currentRound++;
+
+            //글로벌 데이터 세팅
+            GlobalDataController.CurrentRound = currentRound;
+
             //웨이브 카운트는 라운드와 다르게 계속 증가 가능
             waveCount++;
 

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
   - component: {fileID: 8057269878237787230}
-  - component: {fileID: -8206253589151170951}
   m_Layer: 0
   m_Name: Item_Coin_01
   m_TagString: Untagged
@@ -130,7 +129,7 @@ MonoBehaviour:
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 1
+  duration: 2.5
   easeType: 1
   easeCurve:
     serializedVersion: 2
@@ -159,7 +158,7 @@ MonoBehaviour:
   loopType: 0
   loops: -1
   id: 
-  isRelative: 0
+  isRelative: 1
   isFrom: 0
   isIndependentUpdate: 0
   autoKill: 1
@@ -172,7 +171,7 @@ MonoBehaviour:
   autoPlay: 1
   useTargetAsV3: 0
   endValueFloat: 0
-  endValueV3: {x: 0, y: 180, z: 0}
+  endValueV3: {x: 0, y: -360, z: 0}
   endValueV2: {x: 0, y: 0}
   endValueColor: {r: 1, g: 1, b: 1, a: 1}
   endValueString: 
@@ -189,19 +188,6 @@ MonoBehaviour:
   optionalRotationMode: 0
   optionalScrambleMode: 0
   optionalString: 
---- !u!114 &-8206253589151170951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d89fcef24ab2f42579b9c4e044313d62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HUDNaviElement: {fileID: 2717002799397832670}
 --- !u!1001 &3092806641980455174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -277,15 +263,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3092806641980455174}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2717002799397832670 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1107710581595389656, guid: e04ca3a44df5643ca90f216f744fbf0b,
-    type: 3}
-  m_PrefabInstance: {fileID: 3092806641980455174}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67a5fc50cb592fe4f95457eb6d66e520, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

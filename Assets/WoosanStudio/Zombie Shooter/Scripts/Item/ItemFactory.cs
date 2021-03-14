@@ -18,11 +18,11 @@ namespace WoosanStudio.ZombieShooter
         /// 아이템 모델 및 컨트롤러 생성
         /// </summary>
         /// <param name="index">만드려는 아이템 인덱스</param>
-        public GameObject Make(ItemSetting.FieldItem fieldItem, Transform spawnTransform, int value ,UnityAction<Transform> destoryAction , UnityAction<Transform> destoryAction2)
+        public GameObject Make(ItemSetting.FieldItem type, Transform spawnTransform, int value ,UnityAction<Transform> destoryAction , UnityAction<Transform> destoryAction2)
         {
             //아이템 인덱으로 변경
             //*enum 순서는 List순서와 같아야 한다.
-            int index = (int)fieldItem;
+            int index = (int)type;
 
             //아이템 생성
             GameObject item = new GameObject(ItemSettings[index].Model.name);
@@ -42,6 +42,16 @@ namespace WoosanStudio.ZombieShooter
 
             //해당 모델 생성
             GameObject model = Instantiate(ItemSettings[index].Model, item.transform);
+
+            //아이템에 필드 아이템.cs 추가
+            Field.Item fieldItem = item.AddComponent<Field.Item>();
+
+            //아이템 값 세팅
+            fieldItem.Value = value;
+
+            //Model이 가지고있는 HUD FieldItem에 셋업
+            SickscoreGames.HUDNavigationSystem.HUDNavigationElement hud = model.GetComponentInChildren<SickscoreGames.HUDNavigationSystem.HUDNavigationElement>();
+            fieldItem.HUDNaviElement = hud;
 
             //아이템 컨트롤러에 모델 세팅
             itemController.Model = model;

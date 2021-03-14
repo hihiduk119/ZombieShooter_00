@@ -1,0 +1,378 @@
+Using pre-set license
+
+ COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/Users/changkyunma/Desktop/Unity3D/Repo/Zombie Shooter 00
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+49692
+Successfully changed project path to: /Users/changkyunma/Desktop/Unity3D/Repo/Zombie Shooter 00
+/Users/changkyunma/Desktop/Unity3D/Repo/Zombie Shooter 00
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 220.93 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.2.7f1 (c53830e277f1)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/changkyunma/Desktop/Unity3D/Repo/Zombie Shooter 00/Assets
+GfxDevice: creating device client; threaded=0
+2021-03-13 14:03:32.175 Unity[779:16762] Color LCD preferred device: AMD Radeon Pro 560X (high power)
+2021-03-13 14:03:32.175 Unity[779:16762] Metal devices available: 2
+2021-03-13 14:03:32.175 Unity[779:16762] 0: AMD Radeon Pro 560X (high power)
+2021-03-13 14:03:32.175 Unity[779:16762] 1: Intel(R) UHD Graphics 630 (low power)
+2021-03-13 14:03:32.176 Unity[779:16762] Using device AMD Radeon Pro 560X (high power)
+Initializing Metal device caps: AMD Radeon Pro 560X
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56779
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Registered in 0.000300 seconds.
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 179.37 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.909 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.003817 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 2.26 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+WARNING: RGBA Compressed ETC2 UNorm format is not supported, decompressing texture
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.099 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launching external process: /Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
+Refreshing native plugins compatible for Editor in 2.31 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 315.5 MB.
+System memory in use after: 315.7 MB.
+
+Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 3567.
+Total: 3.025443 ms (FindLiveObjects: 0.464992 ms CreateObjectMapping: 0.245226 ms MarkObjects: 2.173290 ms  DeleteObjects: 0.140310 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Sickscore Games/HUD-Navigation-System/Scripts/Components/Editor/HUDNavigationBaseEditor.cs
+  artifactKey: Guid(0e7a2157fd931504296a4ea820849f40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sickscore Games/HUD-Navigation-System/Scripts/Components/Editor/HUDNavigationBaseEditor.cs using Guid(0e7a2157fd931504296a4ea820849f40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0a97f5ebac85e34eef185634fa23b99') in 0.251239 seconds
+  Import took 0.259308 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000223 seconds.
+  path: Assets/Sickscore Games/HUD-Navigation-System/_Examples
+  artifactKey: Guid(2ce5d004506f9ec4fb79146beb184055) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sickscore Games/HUD-Navigation-System/_Examples using Guid(2ce5d004506f9ec4fb79146beb184055) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ec9a3bcde431fa917c8bb6ea027031d') in 0.000632 seconds
+  Import took 0.005985 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000237 seconds.
+  path: Assets/Sickscore Games/HUD-Navigation-System
+  artifactKey: Guid(c59d1c21ce149441686ca4c339c32453) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sickscore Games/HUD-Navigation-System using Guid(c59d1c21ce149441686ca4c339c32453) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21052402aecf529002891a351b47d52c') in 0.000642 seconds
+  Import took 0.005599 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.706610 seconds.
+  path: Assets/Sickscore Games/HUD-Navigation-System/_Examples/ExampleScene
+  artifactKey: Guid(74609c47c26f4494380842cb233248ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sickscore Games/HUD-Navigation-System/_Examples/ExampleScene using Guid(74609c47c26f4494380842cb233248ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a1665708623945b49b8e4e7dd93fd17') in 0.000877 seconds
+  Import took 0.006466 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.129930 seconds.
+  path: Assets/Sickscore Games/HUD-Navigation-System/_Examples/ExampleSettings
+  artifactKey: Guid(577e9a515b5184243935c4ac0f909804) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sickscore Games/HUD-Navigation-System/_Examples/ExampleSettings using Guid(577e9a515b5184243935c4ac0f909804) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55aa4f950a0bd516d588e0eb2e49f618') in 0.000904 seconds
+  Import took 0.006723 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.147375 seconds.
+  path: Assets/Sickscore Games/HUD-Navigation-System/_Examples/HUDPrefabs
+  artifactKey: Guid(0c8c49ff9afe478469739ebaeb1e0779) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sickscore Games/HUD-Navigation-System/_Examples/HUDPrefabs using Guid(0c8c49ff9afe478469739ebaeb1e0779) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4dbbd4806ea8273a71632c61f39e4b3') in 0.000881 seconds
+  Import took 0.006911 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.123659 seconds.
+  path: Assets/Sickscore Games/HUD-Navigation-System/_Examples/SceneConfigs
+  artifactKey: Guid(cd2420d252ba07d459c4693769a3a0fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sickscore Games/HUD-Navigation-System/_Examples/SceneConfigs using Guid(cd2420d252ba07d459c4693769a3a0fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46eb2ddae1a15a8433ae68bcb8e51153') in 0.000888 seconds
+  Import took 0.007249 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.149548 seconds.
+  path: Assets/Sickscore Games/HUD-Navigation-System/_Examples/Scripts
+  artifactKey: Guid(0bbe59da8280c7641b39c09eec7a24bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sickscore Games/HUD-Navigation-System/_Examples/Scripts using Guid(0bbe59da8280c7641b39c09eec7a24bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2652148a2d283bff5d958eb27f0a5dfe') in 0.000949 seconds
+  Import took 0.007203 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.677785 seconds.
+  path: Assets/Sickscore Games/HUD-Navigation-System/_Examples/ExampleScene/ExampleScene_SkyIsland.unity
+  artifactKey: Guid(2221441c5fc4b0b4bb2046aa9f0e742c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sickscore Games/HUD-Navigation-System/_Examples/ExampleScene/ExampleScene_SkyIsland.unity using Guid(2221441c5fc4b0b4bb2046aa9f0e742c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9c75f5fd60bf8ad138199eb3edb6d08') in 0.008957 seconds
+  Import took 0.015267 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 64.023424 seconds.
+  path: Assets/Sickscore Games/HUD-Navigation-System/Scripts/Components/HUDNavigationElement.cs
+  artifactKey: Guid(67a5fc50cb592fe4f95457eb6d66e520) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sickscore Games/HUD-Navigation-System/Scripts/Components/HUDNavigationElement.cs using Guid(67a5fc50cb592fe4f95457eb6d66e520) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91f23bc1b4adde8fe6398bea94550969') in 0.001782 seconds
+  Import took 0.007423 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031603 seconds.
+  path: Assets/Sickscore Games/HUD-Navigation-System/Scripts/Components/HUDNavigationElement.cs
+  artifactKey: Guid(67a5fc50cb592fe4f95457eb6d66e520) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sickscore Games/HUD-Navigation-System/Scripts/Components/HUDNavigationElement.cs using Guid(67a5fc50cb592fe4f95457eb6d66e520) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91f23bc1b4adde8fe6398bea94550969') in 0.001263 seconds
+  Import took 0.006944 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.317706 seconds.
+  path: Assets/Sickscore Games/HUD-Navigation-System/Scripts/Components/HUDNavigationCanvas.cs
+  artifactKey: Guid(27815f689f4bc684ca62e31144e59f84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sickscore Games/HUD-Navigation-System/Scripts/Components/HUDNavigationCanvas.cs using Guid(27815f689f4bc684ca62e31144e59f84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '619a558193816946d29929ea597ac9ee') in 0.001536 seconds
+  Import took 0.007420 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.573945 seconds.
+  path: Assets/Sickscore Games/HUD-Navigation-System/Scripts/Components/HUDNavigationElementSettings.cs
+  artifactKey: Guid(94e557c84e406e340b8f4326bc8094be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sickscore Games/HUD-Navigation-System/Scripts/Components/HUDNavigationElementSettings.cs using Guid(94e557c84e406e340b8f4326bc8094be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf63b8cd54fda619749ae350be2f510a') in 0.001510 seconds
+  Import took 0.007684 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 37.343051 seconds.
+  path: Assets/Sickscore Games/HUD-Navigation-System/Scripts/Components/Editor/HUDNavigationElementBaseEditor.cs
+  artifactKey: Guid(2d692140588ee4a47b472984394cc0a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sickscore Games/HUD-Navigation-System/Scripts/Components/Editor/HUDNavigationElementBaseEditor.cs using Guid(2d692140588ee4a47b472984394cc0a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e4634f72091a78981e87c662b8f4b26') in 0.001654 seconds
+  Import took 0.007816 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 45.458015 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Prefabs/HUD/HUD Element.prefab
+  artifactKey: Guid(e04ca3a44df5643ca90f216f744fbf0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Prefabs/HUD/HUD Element.prefab using Guid(e04ca3a44df5643ca90f216f744fbf0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b9f50feff0695cf010525d787795fe6') in 0.228276 seconds
+  Import took 0.234317 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004084 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 2.21 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.114 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 2.29 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2919 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 310.7 MB.
+System memory in use after: 311.0 MB.
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3573.
+Total: 1.951307 ms (FindLiveObjects: 0.277941 ms CreateObjectMapping: 0.131528 ms MarkObjects: 1.524598 ms  DeleteObjects: 0.016116 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 182.394011 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemManager.cs
+  artifactKey: Guid(2d364f30be6044d2a95b4b9fab0602f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemManager.cs using Guid(2d364f30be6044d2a95b4b9fab0602f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7b2b29a848d4cc9bdd20c276aa89fa2') in 0.005298 seconds
+  Import took 0.012637 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004165 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 2.21 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.055 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 2.14 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2916 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 310.9 MB.
+System memory in use after: 311.1 MB.
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3576.
+Total: 2.693954 ms (FindLiveObjects: 0.392135 ms CreateObjectMapping: 0.198165 ms MarkObjects: 2.079380 ms  DeleteObjects: 0.022492 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 484.340066 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/FieldItem
+  artifactKey: Guid(8e8745f6ad3b54d50ad05dfa73c79716) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/FieldItem using Guid(8e8745f6ad3b54d50ad05dfa73c79716) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '030ebaa77028c4e703b7d8c0f80d8b1c') in 0.005021 seconds
+  Import took 0.012750 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.108280 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Explosion
+  artifactKey: Guid(b0fb628453c1f43fbbdb9f2ad088860a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Explosion using Guid(b0fb628453c1f43fbbdb9f2ad088860a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7cb2bb62eae0aa95b3987450d650c5cb') in 0.000901 seconds
+  Import took 0.006679 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.022994 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Field
+  artifactKey: Guid(8e8745f6ad3b54d50ad05dfa73c79716) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Field using Guid(8e8745f6ad3b54d50ad05dfa73c79716) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e12fcb158c5af50b05c3b735fb82c76') in 0.000938 seconds
+  Import took 0.006862 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.746237 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Field/Item.cs
+  artifactKey: Guid(d89fcef24ab2f42579b9c4e044313d62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Field/Item.cs using Guid(d89fcef24ab2f42579b9c4e044313d62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a52960f554613be9ee0216e6c8cb397') in 0.002232 seconds
+  Import took 0.008420 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005238 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 2.30 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.098 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 2.09 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2917 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 311.1 MB.
+System memory in use after: 311.4 MB.
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3580.
+Total: 3.306653 ms (FindLiveObjects: 0.581197 ms CreateObjectMapping: 0.319478 ms MarkObjects: 2.375056 ms  DeleteObjects: 0.028072 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003962 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 2.10 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.081 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 2.12 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2917 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 311.3 MB.
+System memory in use after: 311.6 MB.
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3583.
+Total: 2.806894 ms (FindLiveObjects: 0.462195 ms CreateObjectMapping: 0.277451 ms MarkObjects: 2.041092 ms  DeleteObjects: 0.024143 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 332.886359 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Common
+  artifactKey: Guid(299c059afd12d4f709c0b950bca4768d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Common using Guid(299c059afd12d4f709c0b950bca4768d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '976715fb27b77201614c2acd32a602a3') in 0.004075 seconds
+  Import took 0.012090 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 43.101971 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Art/Effects/All Item/Coin/Item_Coin_01.prefab
+  artifactKey: Guid(df7b9880239404078b5108f18bfc10fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Art/Effects/All Item/Coin/Item_Coin_01.prefab using Guid(df7b9880239404078b5108f18bfc10fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5f34bf9b8e94a6e31ba876586df2072') in 0.122513 seconds
+  Import took 0.129319 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 25.529792 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Art/Effects/All Item/Exp/EXP.prefab
+  artifactKey: Guid(ec1c3c0c98fde428baa1bfb5a4b847db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Art/Effects/All Item/Exp/EXP.prefab using Guid(ec1c3c0c98fde428baa1bfb5a4b847db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00438e522822e69500ed5075cd36cc9b') in 0.009102 seconds
+  Import took 0.015881 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1054.055046 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Art/Effects/All Item/Coin/Item_Coin_01.prefab
+  artifactKey: Guid(df7b9880239404078b5108f18bfc10fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Art/Effects/All Item/Coin/Item_Coin_01.prefab using Guid(df7b9880239404078b5108f18bfc10fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7762e0cd6154131572369ab624380e05') in 0.011647 seconds
+  Import took 0.018405 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 20.154527 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Art/Effects/All Item/Exp/EXP.prefab
+  artifactKey: Guid(ec1c3c0c98fde428baa1bfb5a4b847db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Art/Effects/All Item/Exp/EXP.prefab using Guid(ec1c3c0c98fde428baa1bfb5a4b847db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6a6515041b1ae51485c0a77fdcdf576') in 0.009957 seconds
+  Import took 0.016710 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

@@ -18,9 +18,17 @@ namespace WoosanStudio.ZombieShooter.Field
         /// HUD 활성 & 비활성
         /// </summary>
         /// <param name="value"></param>
-        public void SetActiveHUD(bool value)
+        private void SetActiveHUD(bool value)
         {
             HUDNaviElement.enabled = value;
+        }
+
+        /// <summary>
+        /// HUD 비활성화
+        /// </summary>
+        public void DeactiveHUD()
+        {
+            this.SetActiveHUD(false);
         }
     }
 }

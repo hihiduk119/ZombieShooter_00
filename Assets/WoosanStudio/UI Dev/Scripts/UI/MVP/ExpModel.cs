@@ -37,7 +37,7 @@ namespace WoosanStudio.ZombieShooter
         public int MaxLevel = 25;
 
         //레벨별 최대 경험치 계산기
-        public NextValueCalculator calculator;
+        //public NextValueCalculator calculator;
 
         private UnityAction<object> callback;
         //시작 인덱스가 1이라서 
@@ -101,6 +101,9 @@ namespace WoosanStudio.ZombieShooter
             if (!PlayerPrefs.HasKey("Exp")) { Save(); }
             data = null;
             data = JsonUtility.FromJson<ExpModel.Data>(PlayerPrefs.GetString("Exp"));
+
+            //글로벌 데이터에 레벨 세팅
+            GlobalDataController.PlayerLevel = data.Level;
 
             //Debug.Log("Exp 로드 완료");
             //data.Print();

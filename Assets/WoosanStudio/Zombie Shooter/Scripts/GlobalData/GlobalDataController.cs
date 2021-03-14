@@ -231,6 +231,14 @@ namespace WoosanStudio.ZombieShooter
         //실제 플레이어 트랜스폼
         static public Transform Player;
 
+        //현재 진행중인 라운드
+        //*MonsterSpawnScheduleManager.cs 에서 카운팅 시킴
+        static public int CurrentRound = 0;
+
+        //플레이어 레벨
+        //*ExpModel.cs Load()애서 세팅
+        static public int PlayerLevel = 0;
+
         /// <summary>
         /// 소모되는 에너지 계산해서 가져오기
         /// </summary>

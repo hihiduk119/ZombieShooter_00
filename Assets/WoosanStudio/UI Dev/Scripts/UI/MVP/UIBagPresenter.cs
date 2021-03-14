@@ -13,12 +13,17 @@ namespace WoosanStudio.ZombieShooter.UI
         [Header("[MVP View]")]
         public UIBagView View;
 
+        private void Awake()
+        {
+            this.UpdateInfo();
+        }
+
         /// <summary>
         /// 정보 업데이트
         /// </summary>
         public void UpdateInfo()
         {
-            View.UpdateInfo("0", "0", "0");
+            View.UpdateInfo(GlobalDataController.StageGainedXP.ToString(), GlobalDataController.StageGainedCoin.ToString(), "");
         }
     }
 }

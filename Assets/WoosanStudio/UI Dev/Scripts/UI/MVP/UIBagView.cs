@@ -18,8 +18,8 @@ namespace WoosanStudio.ZombieShooter.UI
         [Header("[획득 코인]")]
         public Text Coin;
 
-        [Header("[획득 젬]")]
-        public Text Gem;
+        //[Header("[획득 젬]")]
+        //public Text Gem;
 
         /// <summary>
         /// 정보 업데이트
@@ -31,7 +31,7 @@ namespace WoosanStudio.ZombieShooter.UI
         {
             Exp.text = "+" + exp;
             Coin.text = "+" + coin;
-            Gem.text = "+" + gem;
+            //Gem.text = "+" + gem;
         }
     }
 }

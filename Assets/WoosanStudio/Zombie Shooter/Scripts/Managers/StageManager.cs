@@ -637,13 +637,8 @@ namespace WoosanStudio.ZombieShooter
         /// </summary>
         public void GoToRobby()
         {
-            //부활 카운트 0으로 초기화
-            GlobalDataController.ResurrectionCount = 0;
-
-            //에너지부족 시작 초기화
-            GlobalDataController.NoEnergyStart = false;
-
-
+            //스테이지에서 사용된 로컬 데이터 초기화
+            GlobalDataController.Instance.Initialize();
         }
 
         /// <summary>

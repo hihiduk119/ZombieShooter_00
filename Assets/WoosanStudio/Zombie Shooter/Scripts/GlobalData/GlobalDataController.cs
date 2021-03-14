@@ -239,6 +239,32 @@ namespace WoosanStudio.ZombieShooter
         //*ExpModel.cs Load()애서 세팅
         static public int PlayerLevel = 0;
 
+        //해당 스테이지에서 얻은 토탈 코인
+        //*스테이지 시작시 또는 끝났을때 초기화 필요 
+        static public int StageGainedCoin = 0;
+
+        //해당 스테이지에서 얻은 토탈 경험치
+        //*스테이지 시작시 또는 끝났을때 초기화 필요
+        static public int StageGainedXP = 0;
+
+        /// <summary>
+        /// 초기화
+        /// *스테이지 시작 또는 끝날때 초기화 필욯
+        /// </summary>
+        public void Initialize()
+        {
+            //해당 스테이지에서 얻은 코인
+            GlobalDataController.StageGainedCoin = 0;
+            //해당 스테이지에서 얻은 경험치
+            GlobalDataController.StageGainedXP = 0;
+            //현재 라운드
+            GlobalDataController.CurrentRound = 0;
+            //부활 카운트 0으로 초기화
+            GlobalDataController.ResurrectionCount = 0;
+            //에너지부족 시작 초기화
+            GlobalDataController.NoEnergyStart = false;
+        }
+
         /// <summary>
         /// 소모되는 에너지 계산해서 가져오기
         /// </summary>

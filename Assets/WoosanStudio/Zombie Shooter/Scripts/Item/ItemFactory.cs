@@ -46,6 +46,9 @@ namespace WoosanStudio.ZombieShooter
             //아이템에 필드 아이템.cs 추가
             Field.Item fieldItem = item.AddComponent<Field.Item>();
 
+            //아이템 타입 설정
+            fieldItem.Type = type;
+
             //아이템 값 세팅
             fieldItem.Value = value;
 

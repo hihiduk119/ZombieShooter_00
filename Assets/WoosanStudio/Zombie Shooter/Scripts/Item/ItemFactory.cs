@@ -18,16 +18,16 @@ namespace WoosanStudio.ZombieShooter
         /// 아이템 모델 및 컨트롤러 생성
         /// </summary>
         /// <param name="index">만드려는 아이템 인덱스</param>
-        public GameObject Make(ItemSetting.FieldItem type, Transform spawnTransform, int value ,UnityAction<Transform> destoryAction , UnityAction<Transform> destoryAction2)
+        public GameObject Make(ItemSetting.FieldItem type, Transform spawnTransform, int value ,UnityAction<Transform,Transform> destoryAction)
         {
             //아이템 인덱으로 변경
             //*enum 순서는 List순서와 같아야 한다.
             int index = (int)type;
 
-            //아이템 생성
+            //아이템 생성 = parent
             GameObject item = new GameObject(ItemSettings[index].Model.name);
             //아이템 컨트롤러 추가
-            ItemController itemController = item.AddComponent<ItemController>();
+            Field.ItemController itemController = item.AddComponent<Field.ItemController>();
             //스폰 트랜스폼 넣어줌
             itemController.spawmTransform = spawnTransform;
 
@@ -35,31 +35,28 @@ namespace WoosanStudio.ZombieShooter
             itemController.ItemDestoryEvent.AddListener(destoryAction);
 
             //이벤트 핸들러 연결 => 삭제시 나 자신을 알려주는 액션
-            itemController.ItemDestoryEvent2.AddListener(destoryAction2);
+            //itemController.ItemDestoryEvent2.AddListener(destoryAction2);
+
+            //아이템 타입 설정
+            itemController.Type = type;
+
+            //아이템 값 세팅
+            itemController.Value = value;
 
             item.transform.parent = this.transform;
             item.transform.localPosition = Vector3.zero;
 
-            //해당 모델 생성
+            //해당 모델 생성 = 아이템의 child
             GameObject model = Instantiate(ItemSettings[index].Model, item.transform);
-
-            //아이템에 필드 아이템.cs 추가
-            Field.Item fieldItem = item.AddComponent<Field.Item>();
-
-            //아이템 타입 설정
-            fieldItem.Type = type;
-
-            //아이템 값 세팅
-            fieldItem.Value = value;
 
             //Model이 가지고있는 HUD FieldItem에 셋업
             SickscoreGames.HUDNavigationSystem.HUDNavigationElement hud = model.GetComponentInChildren<SickscoreGames.HUDNavigationSystem.HUDNavigationElement>();
-            fieldItem.HUDNaviElement = hud;
+            itemController.HUDNaviElement = hud;
 
             //아이템 컨트롤러에 모델 세팅
             itemController.Model = model;
 
-            //메인 이펙트 생성
+            //메인 이펙트 생성 = 아이템의 child
             if (ItemSettings[index].MainEffect != null)
             {
                 GameObject mainEffect = Instantiate(ItemSettings[index].MainEffect, item.transform);
@@ -67,7 +64,7 @@ namespace WoosanStudio.ZombieShooter
                 itemController.MainEffect = mainEffect;
             }
 
-            //서브 이펙트 생성
+            //서브 이펙트 생성 = 아이템의 child
             if (ItemSettings[index].SubEffect != null)
             {
                 GameObject subEffect = Instantiate(ItemSettings[index].SubEffect, item.transform);

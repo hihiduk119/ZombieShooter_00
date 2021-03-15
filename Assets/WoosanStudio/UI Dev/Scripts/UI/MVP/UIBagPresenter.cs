@@ -23,6 +23,8 @@ namespace WoosanStudio.ZombieShooter.UI
         /// </summary>
         public void UpdateInfo()
         {
+            Debug.Log("exp = " + GlobalDataController.StageGainedXP + " coin = " + GlobalDataController.StageGainedCoin);
+
             View.UpdateInfo(GlobalDataController.StageGainedXP.ToString(), GlobalDataController.StageGainedCoin.ToString(), "");
         }
     }

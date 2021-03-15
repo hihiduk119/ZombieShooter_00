@@ -136,28 +136,31 @@ namespace WoosanStudio.ZombieShooter
         /// <summary>
         /// 아이템 삭제시 호출되는 이벤트 연결
         /// *ItemController.GetItemComplete()에서 호출
-        /// *아이템 생성이 등록된 위치 트렌스폼 삭제
+        /// *spawnTransform -> 아이템 생성이 등록된 위치 트렌스폼 삭제
+        /// *item -> 아이템 삭제
         /// </summary>
         /// <param name="spawnTransform"></param>
-        public void ItemDestoryEventHandler(Transform spawnTransform)
+        public void ItemDestoryEventHandler(Transform spawnTransform, Transform item)
         {
             //스폰 아이템 포지션
             int removeIndex = SpawnedItemPositionList.FindIndex(value => value.Equals(spawnTransform));
             SpawnedItemPositionList.RemoveAt(removeIndex);
+
+            //모든 아이템
+            removeIndex = SpawnedAllItemList.FindIndex(value => value.Equals(item));
+            SpawnedAllItemList.RemoveAt(removeIndex);
         }
 
         /// <summary>
         /// 아이템 삭제시 호출되는 이벤트 연결
         /// *ItemController.GetItemComplete()에서 호출
-        /// *아이템 삭제
+        /// 
         /// </summary>
         /// <param name="item"></param>
-        public void ItemDestoryEventHandler2(Transform item)
-        {
-            //모든 아이템
-            int removeIndex = SpawnedAllItemList.FindIndex(value => value.Equals(item));
-            SpawnedAllItemList.RemoveAt(removeIndex);
-        }
+        //public void ItemDestoryEventHandler2()
+        //{
+            
+        //}
 
         /// <summary>
         /// 모든 아이템 제거
@@ -195,7 +198,7 @@ namespace WoosanStudio.ZombieShooter
             Transform spawnTransform = null;
 
 
-            Debug.Log("생성된 값 = [" + SpawnedItemPositionList.Count + "] 최대 스폰피봇 = [" + maxSpawn + "] 맵 최대 스폰 제한 = ["+ maxItemCount +"]");
+            //Debug.Log("생성된 값 = [" + SpawnedItemPositionList.Count + "] 최대 스폰피봇 = [" + maxSpawn + "] 맵 최대 스폰 제한 = ["+ maxItemCount +"]");
             //*현재 스폰된 아이템이 0보다 커야함.
             //*최대 아이템 스폰 위치갯수 보다 현재 스폰된 아이템이 작을때 수행
             //*최대 아이템 스폰 보다 현재 스폰된 아이템이 작을때 수행
@@ -262,7 +265,7 @@ namespace WoosanStudio.ZombieShooter
 
             int value = 0;
 
-            Debug.Log("[현재 라운드 = " + GlobalDataController.CurrentRound + "  플레이어 레벨 = " + GlobalDataController.PlayerLevel+"]");
+            //Debug.Log("[현재 라운드 = " + GlobalDataController.CurrentRound + "  플레이어 레벨 = " + GlobalDataController.PlayerLevel+"]");
 
             //아이템 타입별 값 가져오기
             switch (type)
@@ -279,7 +282,7 @@ namespace WoosanStudio.ZombieShooter
             }
 
             //아이템 생성 -> ItemController 생성.
-            Item = ItemFactory.Make(type, spawnTransform, value, ItemDestoryEventHandler , ItemDestoryEventHandler2);
+            Item = ItemFactory.Make(type, spawnTransform, value, ItemDestoryEventHandler);
 
             //생성 아이템 리스트에도 저장
             SpawnedAllItemList.Add(Item.transform);
@@ -294,7 +297,7 @@ namespace WoosanStudio.ZombieShooter
             Item.transform.position = targetPosition;
 
             //ItemFactory에서 생성된 컨트롤러 가져오기
-            ItemController itemController = Item.GetComponent<ItemController>();
+            Field.ItemController itemController = Item.GetComponent<Field.ItemController>();
 
             //아이템을 활성화 시킴.
             //이때 좌표도 필요. => 몬스터 사망시 좌표가 필요하다.
@@ -334,11 +337,14 @@ namespace WoosanStudio.ZombieShooter
             //반응거리 넣기
             distanceCheck.MixDistance = 1.5f;
 
-            //거리 체커의 근접이벤트 발생과  아이템 컨트롤러의 아이템 획득 연결.
+            //거리 체커의 근접이벤트 발생 이벤트와 아이템 컨트롤러의 아이템 획득 연결.
             itemController.DistanceCheck.CloseEvent.AddListener(itemController.GetItem);
 
-            //아이템의 HUD 비활성 등록.
-            itemController.DistanceCheck.CloseEvent.AddListener(Item.GetComponent<Field.Item>().DeactiveHUD);
+            //거리 체커의 근접이벤트 발생 이벤트와 HUD 끝내기 등록
+            itemController.DistanceCheck.CloseEvent.AddListener(itemController.DeactiveHUD);
+
+            //거리 체커의 근접이벤트 발생 이벤트와 아이템의 값을 획득 등록
+            itemController.DistanceCheck.CloseEvent.AddListener(itemController.GaineValue);
         }
 
         #region [-TestCode]

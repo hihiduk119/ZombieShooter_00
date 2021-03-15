@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20804c54f4c845debf598d9f5598eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  View: {fileID: 0}
+  View: {fileID: 7331805837184268336}
 --- !u!114 &7331805837184268336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,9 +274,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51aebcdfd5c4b46d980619544e89cd99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Exp: {fileID: 0}
-  Coin: {fileID: 0}
-  Gem: {fileID: 0}
+  Exp: {fileID: 4574980868059470662}
+  Coin: {fileID: 114000013937220588}
+  Gem: {fileID: 6751526367619233033}
 --- !u!1 &1000011398121968
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,7 +862,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2713689942881024900}
   m_Layer: 5
-  m_Name: Xp
+  m_Name: Exp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

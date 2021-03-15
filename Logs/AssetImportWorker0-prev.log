@@ -12,299 +12,1811 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-51070
+49467
 Successfully changed project path to: /Users/changkyunma/Desktop/Unity3D/Repo/Zombie Shooter 00
 /Users/changkyunma/Desktop/Unity3D/Repo/Zombie Shooter 00
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 228.32 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 205.30 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.7f1 (c53830e277f1)
 [Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path /Users/changkyunma/Desktop/Unity3D/Repo/Zombie Shooter 00/Assets
 GfxDevice: creating device client; threaded=0
-2021-03-14 18:25:58.346 Unity[1391:53936] Color LCD preferred device: AMD Radeon Pro 560X (high power)
-2021-03-14 18:25:58.346 Unity[1391:53936] Metal devices available: 2
-2021-03-14 18:25:58.346 Unity[1391:53936] 0: AMD Radeon Pro 560X (high power)
-2021-03-14 18:25:58.346 Unity[1391:53936] 1: Intel(R) UHD Graphics 630 (low power)
-2021-03-14 18:25:58.347 Unity[1391:53936] Using device AMD Radeon Pro 560X (high power)
+2021-03-15 14:38:00.377 Unity[625:10666] Color LCD preferred device: AMD Radeon Pro 560X (high power)
+2021-03-15 14:38:00.377 Unity[625:10666] Metal devices available: 2
+2021-03-15 14:38:00.377 Unity[625:10666] 0: AMD Radeon Pro 560X (high power)
+2021-03-15 14:38:00.377 Unity[625:10666] 1: Intel(R) UHD Graphics 630 (low power)
+2021-03-15 14:38:00.378 Unity[625:10666] Using device AMD Radeon Pro 560X (high power)
 Initializing Metal device caps: AMD Radeon Pro 560X
 Initialize mono
 Mono path[0] = '/Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = '/Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56391
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56625
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.000316 seconds.
+Registered in 0.000315 seconds.
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 212.34 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 227.27 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.274 seconds
+- Completed reload, in  2.144 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003659 seconds.
+Registered in 0.003753 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 2.14 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 2.22 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 WARNING: RGBA Compressed ETC2 UNorm format is not supported, decompressing texture
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.163 seconds
+- Completed reload, in  1.096 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launching external process: /Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/Tools/UnityShaderCompiler
 Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
-Refreshing native plugins compatible for Editor in 2.30 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 2.27 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3009 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 316.2 MB.
 System memory in use after: 316.4 MB.
 
 Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 3568.
-Total: 2.972454 ms (FindLiveObjects: 0.373854 ms CreateObjectMapping: 0.167581 ms MarkObjects: 2.292395 ms  DeleteObjects: 0.137427 ms)
+Total: 3.332430 ms (FindLiveObjects: 0.607536 ms CreateObjectMapping: 0.210439 ms MarkObjects: 2.378562 ms  DeleteObjects: 0.133918 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/WoosanStudio/Common/DisableMe.cs
-  artifactKey: Guid(8c9ebc334750e423da6f9480817ff34b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/WoosanStudio/Common/DisableMe.cs using Guid(8c9ebc334750e423da6f9480817ff34b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e8067ea60e01a91335968a12f6a74d3') in 0.162845 seconds
-  Import took 0.171383 seconds .
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemManager.cs
+  artifactKey: Guid(2d364f30be6044d2a95b4b9fab0602f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemManager.cs using Guid(2d364f30be6044d2a95b4b9fab0602f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84cd08bfcde3220b0f38bcbb93f9d3b0') in 0.257454 seconds
+  Import took 0.264903 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000186 seconds.
-  path: Assets/WoosanStudio/Common/RayCheck.cs
-  artifactKey: Guid(a6071e233310347cca0b3e3e2171933f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/WoosanStudio/Common/RayCheck.cs using Guid(a6071e233310347cca0b3e3e2171933f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6a4d1c29d3215717325172886c61bc3') in 0.001381 seconds
-  Import took 0.007010 seconds .
+  Time since last request: 8.104794 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/GlobalData/GlobalDataController.cs
+  artifactKey: Guid(a5f2b77edcef04d16a74b0177342b7af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/GlobalData/GlobalDataController.cs using Guid(a5f2b77edcef04d16a74b0177342b7af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f66e93a1c976a0ee90a0edc6d40c47b') in 0.001525 seconds
+  Import took 0.007323 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000159 seconds.
-  path: Assets/WoosanStudio/Common/DistanceCheck.cs
-  artifactKey: Guid(1151f2498862542998c0b09852383c98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/WoosanStudio/Common/DistanceCheck.cs using Guid(1151f2498862542998c0b09852383c98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f0b2e29972b91c1b966e8d9ae809092') in 0.001250 seconds
-  Import took 0.006787 seconds .
+  Time since last request: 0.000392 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/GlobalData/GlobalDataController.cs
+  artifactKey: Guid(a5f2b77edcef04d16a74b0177342b7af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/GlobalData/GlobalDataController.cs using Guid(a5f2b77edcef04d16a74b0177342b7af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f66e93a1c976a0ee90a0edc6d40c47b') in 0.001332 seconds
+  Import took 0.006939 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000155 seconds.
-  path: Assets/WoosanStudio/Common/ListUtililty.cs
-  artifactKey: Guid(c2d150558f3db41e580593831d9d4009) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/WoosanStudio/Common/ListUtililty.cs using Guid(c2d150558f3db41e580593831d9d4009) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e3177a7435bf068d927967b43dc1137') in 0.001123 seconds
-  Import took 0.007119 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000185 seconds.
-  path: Assets/WoosanStudio/Common/Move.cs
-  artifactKey: Guid(443ed3c68fa284064bcb46882d052101) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/WoosanStudio/Common/Move.cs using Guid(443ed3c68fa284064bcb46882d052101) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6500b1ab23f941a3c659ba1bba4e9f81') in 0.001288 seconds
-  Import took 0.007567 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.623253 seconds.
-  path: Assets/WoosanStudio/Common/SlowMotionTimeManager.cs
-  artifactKey: Guid(96e35e3ff065045b4ae00087fd448174) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/WoosanStudio/Common/SlowMotionTimeManager.cs using Guid(96e35e3ff065045b4ae00087fd448174) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '740a6eb50e9f87cb0d267be83a99b6ad') in 0.001581 seconds
-  Import took 0.008752 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000397 seconds.
-  path: Assets/WoosanStudio/Common/SlowMotionTimeManager.cs
-  artifactKey: Guid(96e35e3ff065045b4ae00087fd448174) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/WoosanStudio/Common/SlowMotionTimeManager.cs using Guid(96e35e3ff065045b4ae00087fd448174) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '740a6eb50e9f87cb0d267be83a99b6ad') in 0.001333 seconds
-  Import took 0.007664 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 129.616975 seconds.
+  Time since last request: 324.834155 seconds.
   path: Assets/WoosanStudio/UI Dev/Prefabs/Popup/InGame-Bag-Popup.prefab
   artifactKey: Guid(318e3c0f7bc0a4a5ba12671c27df80fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/WoosanStudio/UI Dev/Prefabs/Popup/InGame-Bag-Popup.prefab using Guid(318e3c0f7bc0a4a5ba12671c27df80fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5243d52c3dbcd529413b560a32a30d81') in 0.180946 seconds
-  Import took 0.187481 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1069.032299 seconds.
-  path: Assets/WoosanStudio/Zombie Shooter/Art/Effects/All Item/Coin/Item_Coin_01.prefab
-  artifactKey: Guid(df7b9880239404078b5108f18bfc10fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/WoosanStudio/Zombie Shooter/Art/Effects/All Item/Coin/Item_Coin_01.prefab using Guid(df7b9880239404078b5108f18bfc10fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a70d17f39f5b5d979b7352f0a6c8f08') in 0.088288 seconds
-  Import took 0.094702 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.785913 seconds.
-  path: Assets/SimpleWorldVol1/SimpleItems/Prefabs/Items_Coin_02.prefab
-  artifactKey: Guid(65a859bfef8f23f4bb66b6e4f6b8967d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SimpleWorldVol1/SimpleItems/Prefabs/Items_Coin_02.prefab using Guid(65a859bfef8f23f4bb66b6e4f6b8967d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '12a74d7403137faed5ee334fbe5184ab') in 0.008650 seconds
-  Import took 0.015680 seconds .
+Start importing Assets/WoosanStudio/UI Dev/Prefabs/Popup/InGame-Bag-Popup.prefab using Guid(318e3c0f7bc0a4a5ba12671c27df80fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32b6bdcd9f9af66ed1db50f840e8a4ed') in 0.260557 seconds
+  Import took 0.281119 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.003953 seconds.
+Registered in 0.016117 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 2.08 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 2.23 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.067 seconds
+- Completed reload, in  1.122 seconds
 Platform modules already initialized, skipping
 Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
-Refreshing native plugins compatible for Editor in 2.05 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 2.21 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2920 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 314.5 MB.
-System memory in use after: 314.8 MB.
+System memory in use before: 310.9 MB.
+System memory in use after: 311.2 MB.
 
-Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3581.
-Total: 2.057145 ms (FindLiveObjects: 0.300751 ms CreateObjectMapping: 0.137829 ms MarkObjects: 1.599458 ms  DeleteObjects: 0.017950 ms)
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3574.
+Total: 1.987554 ms (FindLiveObjects: 0.295099 ms CreateObjectMapping: 0.119771 ms MarkObjects: 1.556187 ms  DeleteObjects: 0.015643 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.004016 seconds.
+Registered in 0.004124 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 2.09 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 2.07 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.119 seconds
+- Completed reload, in  1.028 seconds
 Platform modules already initialized, skipping
 Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
-Refreshing native plugins compatible for Editor in 2.20 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 2.07 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2917 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 314.7 MB.
-System memory in use after: 314.9 MB.
+System memory in use before: 311.1 MB.
+System memory in use after: 311.3 MB.
 
-Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3584.
-Total: 2.999855 ms (FindLiveObjects: 0.443599 ms CreateObjectMapping: 0.242197 ms MarkObjects: 2.289234 ms  DeleteObjects: 0.023433 ms)
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3577.
+Total: 3.283321 ms (FindLiveObjects: 0.578274 ms CreateObjectMapping: 0.319205 ms MarkObjects: 2.354025 ms  DeleteObjects: 0.029585 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.003932 seconds.
+Registered in 0.004110 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 2.10 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.137 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 2.24 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2917 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 311.3 MB.
+System memory in use after: 311.5 MB.
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3580.
+Total: 1.943055 ms (FindLiveObjects: 0.312750 ms CreateObjectMapping: 0.107159 ms MarkObjects: 1.507005 ms  DeleteObjects: 0.015367 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004034 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 2.19 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.026 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 2.42 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2917 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 311.5 MB.
+System memory in use after: 311.7 MB.
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3583.
+Total: 1.818075 ms (FindLiveObjects: 0.307237 ms CreateObjectMapping: 0.095403 ms MarkObjects: 1.400609 ms  DeleteObjects: 0.014060 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 270.932137 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemFactory.cs
+  artifactKey: Guid(fc66c97fa0f6e4ee293cb95f13e19f3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemFactory.cs using Guid(fc66c97fa0f6e4ee293cb95f13e19f3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3352a187cb019cbef475c52e78cbf898') in 0.005677 seconds
+  Import took 0.013163 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004108 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 2.41 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.178 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 2.07 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2917 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 311.7 MB.
+System memory in use after: 311.9 MB.
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3586.
+Total: 1.788734 ms (FindLiveObjects: 0.302470 ms CreateObjectMapping: 0.114992 ms MarkObjects: 1.355538 ms  DeleteObjects: 0.014953 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003891 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 2.07 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.058 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 2.06 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2917 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 311.9 MB.
+System memory in use after: 312.1 MB.
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3589.
+Total: 3.289762 ms (FindLiveObjects: 0.583095 ms CreateObjectMapping: 0.317180 ms MarkObjects: 2.358467 ms  DeleteObjects: 0.028059 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 407.192045 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.001502 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.007827 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.002415 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000722 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.005506 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.078442 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000795 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006155 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.066035 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000933 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006485 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.052863 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000837 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006326 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.055687 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000979 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006472 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.124979 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000763 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006042 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.062810 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000789 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006201 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.060969 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000720 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006303 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.057421 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000854 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006493 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.062084 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000960 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006474 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.069706 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000924 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006540 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.055258 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000867 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006295 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.055791 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000806 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006434 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.057927 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000818 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006349 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.060691 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000851 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006324 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.058416 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000854 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006210 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.059773 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000840 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006282 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.054717 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000812 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006347 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.063647 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000880 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006400 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.054502 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000886 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006409 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033497 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000845 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006229 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032769 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000837 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006348 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033498 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000829 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006438 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036289 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000870 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006328 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039698 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000793 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006249 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035132 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000791 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006346 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038776 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000817 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006324 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037917 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000817 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006458 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.048886 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000863 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006272 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036914 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000842 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006294 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039529 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000853 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006221 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035639 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000799 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006225 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.040042 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000803 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006152 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036883 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000818 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006225 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.040400 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000870 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006576 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.040757 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000829 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006354 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.046617 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000850 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006428 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038810 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000805 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006274 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036833 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000968 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006349 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037977 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000926 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006362 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038685 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000894 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006382 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038679 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000841 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006322 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037038 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000916 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006254 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037982 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000793 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006398 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035082 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000866 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006650 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.042149 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000743 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006468 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039128 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000823 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006282 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032220 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000905 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006452 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.034924 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000806 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006175 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035312 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000862 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006277 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037943 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000912 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006261 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038005 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000821 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006433 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038174 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000873 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006413 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036926 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000795 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006394 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.042169 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000838 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006471 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033893 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000891 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006291 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032924 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000837 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006140 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036653 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000817 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006305 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039382 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000850 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006213 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037406 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000859 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006306 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038119 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000873 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006346 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035979 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000850 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006312 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039457 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000847 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006321 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.040630 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000840 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006234 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035368 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000896 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006347 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032070 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000873 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006354 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035182 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000855 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006535 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.034977 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000870 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006445 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037772 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000756 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006168 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037289 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000760 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006439 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037788 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000834 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006254 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037761 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000850 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006358 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.045100 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000835 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006700 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.034927 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000780 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006257 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033336 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000949 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006446 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035648 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000884 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006354 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038534 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000881 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006365 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037482 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000859 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006348 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037531 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000856 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006395 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037917 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000859 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006311 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037613 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000831 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006219 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.046455 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000814 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006371 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035730 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000849 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006204 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037887 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000891 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006258 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037850 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000826 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006215 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.040349 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000844 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006336 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036387 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000860 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006491 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037215 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000883 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006380 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038796 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000773 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006199 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036455 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000810 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006311 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.045775 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000830 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006223 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035333 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000867 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006285 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032132 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000780 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006231 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036237 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000832 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006356 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039826 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000789 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006320 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036538 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000840 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006386 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038930 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000777 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006266 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036232 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000866 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006575 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038592 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000794 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006219 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.044209 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000825 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006147 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035923 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000856 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006209 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032476 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000805 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006229 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035419 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000772 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006239 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033991 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000776 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006242 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.034833 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000850 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006399 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038599 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000814 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006200 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037820 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000845 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006362 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036802 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000875 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006320 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.048600 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000861 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006361 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036743 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000786 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006454 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032520 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000772 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006260 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.034679 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000737 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006308 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032178 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000846 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006369 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036790 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000832 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006327 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037195 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000851 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006295 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.046491 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.001161 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.010330 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.053467 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.001031 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.008889 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.042956 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000829 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006522 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.048031 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000856 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006408 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039172 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000871 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006274 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035826 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000828 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006143 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033139 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000865 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006463 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038477 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000862 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006202 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.034826 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000862 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006267 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038051 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000745 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006322 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.115004 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000752 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006529 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.060962 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000802 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006652 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.095843 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000790 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006314 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.045782 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000829 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006335 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.068329 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000789 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006097 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.054467 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000771 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006052 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.077869 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000770 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006114 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.047798 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000781 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006127 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.062732 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000791 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006077 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.043634 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000865 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006247 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.073034 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000838 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006278 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033774 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000846 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006211 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.183959 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000768 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.005991 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039764 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000820 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006426 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.067941 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000787 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006287 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036238 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000843 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006513 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.282905 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000759 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006033 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039714 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000773 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006193 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.081113 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000808 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006487 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031472 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Item/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000835 seconds
+  ERROR: Build asset version error: assets/woosanstudio/zombie shooter/scripts/item/itemcontroller.cs in SourceAssetDB has modification time of '2021-03-15T05:50:31Z' while content on disk has modification time of '2021-03-15T05:54:46Z'
+  Import took 0.006218 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.199871 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Field/ItemController.cs
+  artifactKey: Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Field/ItemController.cs using Guid(0a391696dd7d04b7884aecf65b0b66e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16a79bad75b2b6766c35a536483fbcac') in 0.003987 seconds
+  Import took 0.011164 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.220067 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scripts/Field/Item.cs
+  artifactKey: Guid(d89fcef24ab2f42579b9c4e044313d62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scripts/Field/Item.cs using Guid(d89fcef24ab2f42579b9c4e044313d62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '216e5ff29a56bffeb4286b492d069fbf') in 0.001249 seconds
+  Import took 0.007541 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003867 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 2.74 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.068 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
 Refreshing native plugins compatible for Editor in 2.08 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.063 seconds
-Platform modules already initialized, skipping
-Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
-Refreshing native plugins compatible for Editor in 2.16 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2917 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 314.9 MB.
-System memory in use after: 315.1 MB.
+Unloading 2916 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 312.1 MB.
+System memory in use after: 312.4 MB.
 
-Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3587.
-Total: 3.230527 ms (FindLiveObjects: 0.550369 ms CreateObjectMapping: 0.270856 ms MarkObjects: 2.383088 ms  DeleteObjects: 0.023755 ms)
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3592.
+Total: 3.296906 ms (FindLiveObjects: 0.597770 ms CreateObjectMapping: 0.304150 ms MarkObjects: 2.359570 ms  DeleteObjects: 0.032725 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.004083 seconds.
+Registered in 0.003974 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 2.34 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 2.19 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.265 seconds
+- Completed reload, in  1.032 seconds
 Platform modules already initialized, skipping
 Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
-Refreshing native plugins compatible for Editor in 2.43 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 2.12 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2917 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 315.1 MB.
-System memory in use after: 315.3 MB.
+Unloading 2916 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 312.3 MB.
+System memory in use after: 312.6 MB.
 
-Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3590.
-Total: 1.926290 ms (FindLiveObjects: 0.278564 ms CreateObjectMapping: 0.130365 ms MarkObjects: 1.501226 ms  DeleteObjects: 0.015371 ms)
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3595.
+Total: 1.845550 ms (FindLiveObjects: 0.341370 ms CreateObjectMapping: 0.104577 ms MarkObjects: 1.385098 ms  DeleteObjects: 0.013832 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.003971 seconds.
+Registered in 0.004110 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 2.11 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 2.27 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.103 seconds
+- Completed reload, in  1.057 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 2.08 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2916 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 312.5 MB.
+System memory in use after: 312.8 MB.
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3598.
+Total: 1.760916 ms (FindLiveObjects: 0.321914 ms CreateObjectMapping: 0.094726 ms MarkObjects: 1.329445 ms  DeleteObjects: 0.014050 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 1415.810141 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Audio/Resources
+  artifactKey: Guid(f0e25ec31f0cd47ad9f4b1e85e0451e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Audio/Resources using Guid(f0e25ec31f0cd47ad9f4b1e85e0451e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '761f3ad3fdd0a314fe24173d9bd8ceed') in 0.004322 seconds
+  Import took 0.012514 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000511 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Audio/Resources
+  artifactKey: Guid(f0e25ec31f0cd47ad9f4b1e85e0451e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Audio/Resources using Guid(f0e25ec31f0cd47ad9f4b1e85e0451e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '761f3ad3fdd0a314fe24173d9bd8ceed') in 0.000712 seconds
+  Import took 0.005988 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003996 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 2.27 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.095 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 2.10 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2916 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 312.7 MB.
+System memory in use after: 313.0 MB.
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3601.
+Total: 3.123391 ms (FindLiveObjects: 0.476320 ms CreateObjectMapping: 0.279283 ms MarkObjects: 2.340140 ms  DeleteObjects: 0.025465 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 339.665750 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Audio/Clip/Get Coin/Collect star 1.wav
+  artifactKey: Guid(f35991ed4a0cf4252a0a35b1437dffd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Audio/Clip/Get Coin/Collect star 1.wav using Guid(f35991ed4a0cf4252a0a35b1437dffd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d3b2158e27489e19795d35d163b5d2b') in 0.220971 seconds
+  Import took 0.228844 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004111 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 2.10 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.047 seconds
 Platform modules already initialized, skipping
 Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
 Refreshing native plugins compatible for Editor in 2.13 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2917 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 315.3 MB.
-System memory in use after: 315.6 MB.
+Unloading 2916 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 320.4 MB.
+System memory in use after: 320.7 MB.
 
-Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3593.
-Total: 1.972778 ms (FindLiveObjects: 0.344176 ms CreateObjectMapping: 0.139777 ms MarkObjects: 1.472223 ms  DeleteObjects: 0.015887 ms)
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3613.
+Total: 2.523486 ms (FindLiveObjects: 0.383130 ms CreateObjectMapping: 0.171049 ms MarkObjects: 1.943639 ms  DeleteObjects: 0.024267 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.011635 seconds.
+Registered in 0.003984 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 2.18 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 2.08 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.093 seconds
+- Completed reload, in  1.051 seconds
 Platform modules already initialized, skipping
 Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
-Refreshing native plugins compatible for Editor in 2.22 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 2.11 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2917 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 315.5 MB.
-System memory in use after: 315.8 MB.
+Unloading 2916 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 320.7 MB.
+System memory in use after: 320.9 MB.
 
-Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3596.
-Total: 3.446879 ms (FindLiveObjects: 0.610643 ms CreateObjectMapping: 0.317650 ms MarkObjects: 2.489690 ms  DeleteObjects: 0.026374 ms)
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3616.
+Total: 3.262366 ms (FindLiveObjects: 0.589311 ms CreateObjectMapping: 0.247338 ms MarkObjects: 2.395295 ms  DeleteObjects: 0.027880 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003931 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 2.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.133 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 2.87 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2916 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 320.9 MB.
+System memory in use after: 321.1 MB.
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 3619.
+Total: 2.117811 ms (FindLiveObjects: 0.373812 ms CreateObjectMapping: 0.160610 ms MarkObjects: 1.563360 ms  DeleteObjects: 0.017888 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 1021.419462 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/0.ZombieShooter-Title.unity
+  artifactKey: Guid(77658e535836b4b57bc91fca873ea0cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scenes/Release/0.ZombieShooter-Title.unity using Guid(77658e535836b4b57bc91fca873ea0cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a97cab2a13a1b0f2ec9b532fefbc177') in 0.011031 seconds
+  Import took 0.018424 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.045928 seconds.
+  path: Assets/WoosanStudio/Zombie Shooter/Scenes/Release/0.ZombieShooter-Title.unity
+  artifactKey: Guid(77658e535836b4b57bc91fca873ea0cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WoosanStudio/Zombie Shooter/Scenes/Release/0.ZombieShooter-Title.unity using Guid(77658e535836b4b57bc91fca873ea0cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a97cab2a13a1b0f2ec9b532fefbc177') in 0.001166 seconds
+  Import took 0.007302 seconds .
+
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

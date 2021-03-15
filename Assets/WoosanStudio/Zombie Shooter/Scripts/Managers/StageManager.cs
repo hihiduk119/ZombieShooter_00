@@ -85,6 +85,9 @@ namespace WoosanStudio.ZombieShooter
         [Header("[플레이어 연출용 이펙트")]
         public GameObject BoomEffectPrefab;
 
+        //[Header("[스테미나 메니저")]
+        //public Stamina.StaminaManager StaminaManager;
+
         //[Header("[조이스틱")]
         //public GameObject Joystick;
 
@@ -342,6 +345,9 @@ namespace WoosanStudio.ZombieShooter
                 //조이스틱 활성
                 UltimateJoystick.EnableJoystick("Move");
                 //Joystick.SetActive(true);
+
+                //스테미나 활성
+                //StaminaManager.IsActivate = true;
             }
         }
 

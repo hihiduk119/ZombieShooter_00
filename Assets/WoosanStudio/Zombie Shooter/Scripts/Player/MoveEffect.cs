@@ -20,7 +20,7 @@ namespace WoosanStudio.ZombieShooter.Player
         [Header("[생성 이펙트]")]
         public GameObject Prefab;
 
-        [Header("[이펙트 발생 최소 값]")]
+        [Header("[이펙트 발생 최소 값 => StaminaManager MinPower와 같음 *통합 필요?]")]
         public float MinPower = 0.2f;
 
         float movePower = 0;

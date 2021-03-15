@@ -29,7 +29,7 @@ namespace WoosanStudio.ZombieShooter.Player
             WeaponRequester.Anchor(weanponCardSetting, ammoCardSetting);
         }
 
-
+        /*
         #region [-TestCode] 
         void Update()
         {
@@ -48,5 +48,6 @@ namespace WoosanStudio.ZombieShooter.Player
             }
         }
         #endregion
+        */
     }
 }

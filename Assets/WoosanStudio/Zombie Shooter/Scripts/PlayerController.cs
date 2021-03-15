@@ -79,7 +79,12 @@ namespace WoosanStudio.ZombieShooter
 
         //LookAtAimedTarget 에서 가져온 Aim,Release 이벤트 인터페이스
         private IAim aim;
-            
+
+        //숨소리 활성화시키는 최소 Move.Power 값
+        private int breathingActivationValue = 3;
+
+        //숨소리 중
+        private bool isBreathing = false;
 
         void Awake()
         {
@@ -162,6 +167,49 @@ namespace WoosanStudio.ZombieShooter
         }
 
         /// <summary>
+        /// 플레이어 속도 변경
+        /// </summary>
+        /// <param name="value"></param>
+        public void SetSpeed(int value)
+        {
+            //이동 속도 셋업
+            this.Move.power = value;
+
+            //이동속도가 최소 숨소리 값보다 작다면 숨소리 활성화
+            if(this.Move.power >= this.breathingActivationValue)
+            {
+                //해당 버스 볼륨 활성화
+                DarkTonic.MasterAudio.MasterAudio.SetBusVolumeByName("SFX Breathing", 1f);
+
+                //사운드 활성화
+                DarkTonic.MasterAudio.MasterAudio.FireCustomEvent("SFX_FemaleBreathing", this.transform);
+
+                //숨소리 활성
+                isBreathing = true;
+            } else
+            {
+                //숨소리 중이었다면 소리 죽이기
+                if(isBreathing == true)
+                {
+                    //사운드 활성화
+                    DarkTonic.MasterAudio.MasterAudio.FadeBusToVolume("SFX Breathing", 0f, 1f, () => { DarkTonic.MasterAudio.MasterAudio.StopBus("SFX Breathing"); });
+
+                    //숨소리중 비활성화
+                    isBreathing = false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 숨소리 활성화하는 스피드 값 세팅
+        /// </summary>
+        /// <param name="value"></param>
+        public void SetBreathingActivationValue(int value)
+        {
+            this.breathingActivationValue = value;
+        }
+
+        /// <summary>
         /// 타겟 조준
         /// </summary>
         //public void Aiming()
@@ -225,5 +273,25 @@ namespace WoosanStudio.ZombieShooter
         {
             Debug.Log("do nothing!!");
         }
+
+        /*
+        public void Update()
+        {
+            //사운드 버스컨트롤
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                //해당 버스 볼륨 활성화
+                DarkTonic.MasterAudio.MasterAudio.SetBusVolumeByName("SFX Breathing", 1f);
+                //사운드 활성화
+                DarkTonic.MasterAudio.MasterAudio.FireCustomEvent("SFX_FemaleBreathing", this.transform);
+            }
+
+            //사운드 버스 페이드 아웃
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                //사운드 활성화
+                DarkTonic.MasterAudio.MasterAudio.FadeBusToVolume("SFX Breathing", 0f, 1f, () => { DarkTonic.MasterAudio.MasterAudio.StopBus("SFX Breathing"); });
+            }
+        }*/
     }
 }

@@ -21,11 +21,17 @@ namespace WoosanStudio.ZombieShooter.UI
         [Header("[탄약바가 오브젝트 따라다니게 만들어줌]")]
         public EnergyBarToolkit.EnergyBarFollowObject AmmoBarFollowObject;
 
+        [Header("[스테미나바가 오브젝트 따라다니게 만들어줌]")]
+        public EnergyBarToolkit.EnergyBarFollowObject StaminaBarFollowObject;
+
         [Header("[체력바 컨트롤]")]
         public EnergyBar HP_Bar;
 
         [Header("[탄약바 컨트롤]")]
         public EnergyBar AmmoBar;
+
+        [Header("[스테미나바 컨트롤]")]
+        public EnergyBar StaminaBar;
 
         [Header("[MVP Model]")]
         public IGunStat Model;
@@ -38,6 +44,7 @@ namespace WoosanStudio.ZombieShooter.UI
         {
             HP_BarFollowObject.followObject = player;
             AmmoBarFollowObject.followObject = player;
+            StaminaBarFollowObject.followObject = player;
         }
 
         /// <summary>
@@ -47,6 +54,8 @@ namespace WoosanStudio.ZombieShooter.UI
         {
             View.SetActivate(value);
         }
+
+        //========================== [HP] ==========================
 
         /// <summary>
         /// 체력 업데이트
@@ -110,6 +119,9 @@ namespace WoosanStudio.ZombieShooter.UI
             haveHealth.DamagedEvent.AddListener(UpdateHP);
         }
 
+        //========================== [Ammo] ==========================
+
+
         /// <summary>
         /// 탄약 업데이트
         /// *현재 탄약에서 -+한다
@@ -142,6 +154,32 @@ namespace WoosanStudio.ZombieShooter.UI
             UpdateMaxAmmo();
 
             //Debug.Log("탄약바 최대 값 = " + AmmoBar.valueCurrent);.
+        }
+
+
+        //========================== [Stamina] ==========================
+
+        /// <summary>
+        /// 스테미나 업데이트
+        /// *단순한 정보 업데이트
+        /// </summary>
+        /// <param name="value"></param>
+        public void UpdateStamina(int value)
+        {
+            StaminaBar.valueCurrent = value;
+        }
+
+        /// <summary>
+        /// 최대 탄약 업데이트
+        /// </summary>
+        /// <param name="value"></param>
+        public void UpdateMaxStamina(int maxValue)
+        {
+            //현재 값까지 초기화.
+            StaminaBar.valueCurrent = maxValue;
+
+            //최대값 초기화
+            StaminaBar.SetValueMax(maxValue);            
         }
 
 

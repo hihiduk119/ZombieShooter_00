@@ -21,6 +21,15 @@ namespace WoosanStudio.ZombieShooter.Stamina
         [Header("[스테미나 소모 최소 값 = MoveEffect.cs MinPower와 같음 *통합 필요? ]")]
         public float MinPower = 0.2f;
 
+        [Header("[스테미나 GUI 컨트롤러]")]
+        public EnergyBarToolkit.FilledRendererUGUI FilledRenderer;
+
+        [Header("[스테미나 컬러]")]
+        public Color StaminaColor;
+
+        [Header("[낮은 스테미나 컬러]")]
+        public Color LowStaminaColor;
+
         //[Header("[작동해야 해서 필요]")]
         //private bool isActivate = false;
         //public bool IsActivate { get; set; }
@@ -85,12 +94,37 @@ namespace WoosanStudio.ZombieShooter.Stamina
         }
 
         /// <summary>
+        /// 스테미나 컬러 변경
+        /// </summary>
+        /// <param name="isLow"></param>
+        public void SetStaminaColor(bool isLow)
+        {
+            //스테미나 컬러 변경
+            if(isLow)
+            {
+                this.FilledRenderer.spriteBarColor = this.LowStaminaColor;
+            } else
+            {
+                this.FilledRenderer.spriteBarColor = this.StaminaColor;
+            }
+        }
+
+        /// <summary>
+        /// 스테미나 초기화
+        /// </summary>
+        public void Reset()
+        {
+            this.Stamina = this.MaxStamina;
+        }
+
+        /// <summary>
         /// 스테미나 감소
         /// </summary>
         private void DownStamina()
         {
             //스테미나 -3감소
-            this.Stamina -= 10;
+            this.Stamina -= 5;
+
             if(this.Stamina <= 0 )
             {
                 this.Stamina = 0;
@@ -107,7 +141,7 @@ namespace WoosanStudio.ZombieShooter.Stamina
         private void UpStamina()
         {
             //스테미나 +1증가
-            this.Stamina += 2;
+            this.Stamina += 10;
 
             if (this.Stamina >= this.MaxStamina)
             {

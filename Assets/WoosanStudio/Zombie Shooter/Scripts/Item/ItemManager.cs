@@ -46,6 +46,9 @@ namespace WoosanStudio.ZombieShooter
         //[Header("생성된 모든 아이템")]
         public List<Transform> SpawnedAllItemList = new List<Transform>();
 
+        [Header("아이템 획득시 스크린 이펙트")]
+        public UI.GainItemEffect ScreenEffect;
+
         //캐쉬용
         Coroutine schedulerForMakingCoinCoroutine;
 
@@ -149,6 +152,9 @@ namespace WoosanStudio.ZombieShooter
             //모든 아이템
             removeIndex = SpawnedAllItemList.FindIndex(value => value.Equals(item));
             SpawnedAllItemList.RemoveAt(removeIndex);
+
+            //아이템 획득 스크린 이펙트
+            ScreenEffect.Show();
         }
 
         /// <summary>

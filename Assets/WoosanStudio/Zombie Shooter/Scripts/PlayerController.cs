@@ -81,10 +81,16 @@ namespace WoosanStudio.ZombieShooter
         private IAim aim;
 
         //숨소리 활성화시키는 최소 Move.Power 값
-        private int breathingActivationValue = 3;
+        //private int breathingActivationValue = 3;
 
-        //숨소리 중
-        private bool isBreathing = false;
+        //피곤 상태
+        private bool isTired = false;
+
+        //생존 상태
+        private bool isAlived = false;
+
+        //스테미나 매니저
+        private Stamina.StaminaManager staminaManager;
 
         void Awake()
         {
@@ -108,6 +114,9 @@ namespace WoosanStudio.ZombieShooter
             Positioner = GetComponent<Positioner>();
             Model = GetComponentInChildren<CharacterModelController>();
             LookAtAimedTarget = GetComponent<LookAtAimedTarget>();
+
+            //스테미나 메니저 찾아서 가져오기
+            this.staminaManager = GameObject.FindObjectOfType<Stamina.StaminaManager>();
 
             //조준 및 조준 해제 이벤트 연결
             //* LookAtAimedTarget.cs 조준 이벤트 발생시 사격 시작
@@ -166,6 +175,7 @@ namespace WoosanStudio.ZombieShooter
             //Debug.Log("==["+this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name+ "]==");
         }
 
+        /*
         /// <summary>
         /// 플레이어 속도 변경
         /// </summary>
@@ -183,23 +193,121 @@ namespace WoosanStudio.ZombieShooter
 
                 //사운드 활성화
                 DarkTonic.MasterAudio.MasterAudio.FireCustomEvent("SFX_FemaleBreathing", this.transform);
-
-                //숨소리 활성
-                isBreathing = true;
             } else
-            {
-                //숨소리 중이었다면 소리 죽이기
-                if(isBreathing == true)
-                {
-                    //사운드 활성화
-                    DarkTonic.MasterAudio.MasterAudio.FadeBusToVolume("SFX Breathing", 0f, 1f, () => { DarkTonic.MasterAudio.MasterAudio.StopBus("SFX Breathing"); });
+            {   
+                //사운드 활성화
+                DarkTonic.MasterAudio.MasterAudio.FadeBusToVolume("SFX Breathing", 0f, 1f,
+                    () => { DarkTonic.MasterAudio.MasterAudio.StopBus("SFX Breathing");
+                    });
+            }
+        }*/
 
-                    //숨소리중 비활성화
-                    isBreathing = false;
+        /// <summary>
+        /// 움직임 스피드를 조절
+        /// </summary>
+        void UpdateMoveSpeed()
+        {
+            //스테미나 10 이하
+            if(this.staminaManager.Stamina <= 25)
+            {
+                //피곤 상태 아니라면 피곤 상태 만들기 
+                if(isTired == false)
+                {
+                    isTired = true;
+                    //SetSpeed(4);
+                    //Debug.Log("피곤해 졌다!");
+
+                    //이동 속도 셋업
+                    this.Move.power = 4;
+
+                    //해당 버스 볼륨 활성화
+                    DarkTonic.MasterAudio.MasterAudio.SetBusVolumeByName("SFX Breathing", 1f);
+
+                    //캐릭터 젠더에 따른 숨소리
+                    switch(GlobalDataController.Instance.GetGenderTypeOnSelectedCharacter())
+                    {
+                        case GlobalDataController.GenderType.Male:
+                            //숨소리 사운드 활성화
+                            DarkTonic.MasterAudio.MasterAudio.FireCustomEvent("SFX_MaleBreathing", this.transform);
+                            break;
+                        case GlobalDataController.GenderType.Female:
+                            //숨소리 사운드 활성화
+                            DarkTonic.MasterAudio.MasterAudio.FireCustomEvent("SFX_FemaleBreathing", this.transform);
+                            break;
+                    }  
+
+                    //피곤함 스크린 이펙트 활성
+                    UI.TiredEffect.Instance.Show();
+
+                    //스테미나 컬러 변경
+                    this.staminaManager.SetStaminaColor(true);
+                }
+            } else //스테미나 10 이상
+            {
+                //피곤상태 라면 
+                if(isTired == true)
+                {
+                    isTired = false;
+                    //SetSpeed(8);
+
+                    //이동 속도 셋업
+                    this.Move.power = 8;
+
+                    //숨소리 사운드 활성화
+                    DarkTonic.MasterAudio.MasterAudio.FadeBusToVolume("SFX Breathing", 0f, 1f,
+                        () => {
+                            DarkTonic.MasterAudio.MasterAudio.StopBus("SFX Breathing");
+                        });
+
+                    //피곤함 스크린 이펙트 비활성
+                    UI.TiredEffect.Instance.Stop();
+
+                    //스테미나 컬러 변경
+                    this.staminaManager.SetStaminaColor(false);
+                    //Debug.Log("괜찮아 졌다!");
                 }
             }
         }
 
+        /// <summary>
+        /// 움직임 관련 초기화
+        /// *플레이어 죽었을때 호출
+        /// </summary>
+        public void Initialize()
+        {
+            //피곤 상태 였다면
+            if(isTired)
+            {
+                //피곤상태 초기화
+                isTired = false;
+
+                //이동 속도 셋업
+                this.Move.power = 8;
+
+                //숨소리 사운드 활성화
+                DarkTonic.MasterAudio.MasterAudio.FadeBusToVolume("SFX Breathing", 0f, 1f,
+                    () => {
+                        DarkTonic.MasterAudio.MasterAudio.StopBus("SFX Breathing");
+                    });
+
+                //피곤함 스크린 이펙트 비활성
+                UI.TiredEffect.Instance.Stop();
+            }
+
+            //스테미나 초기화
+            this.staminaManager.Reset();
+        }
+
+        void Update()
+        {
+            //생존 상태 일때만 동작
+            if (isAlived) return;
+
+            //움직임 스피드를 조절
+            this.UpdateMoveSpeed();
+        }
+
+        /*
         /// <summary>
         /// 숨소리 활성화하는 스피드 값 세팅
         /// </summary>
@@ -208,6 +316,7 @@ namespace WoosanStudio.ZombieShooter
         {
             this.breathingActivationValue = value;
         }
+        */
 
         /// <summary>
         /// 타겟 조준

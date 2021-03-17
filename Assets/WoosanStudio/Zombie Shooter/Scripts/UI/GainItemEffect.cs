@@ -30,8 +30,8 @@ namespace WoosanStudio.ZombieShooter.UI
             Screen.enabled = true;
             //색깔 세팅
             Screen.color = this.Color;
-            //0.5f초 , 알파 0.8f로 한번 요요 트윈
-            Screen.DOFade(0.8f, 0.3f).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo).OnComplete(() => {
+            //한번 요요 트윈
+            Screen.DOFade(0.35f, 0.3f).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo).OnComplete(() => {
                 //완료후 비활성화
                 Screen.enabled = false;
             }

@@ -128,19 +128,16 @@ namespace WoosanStudio.ZombieShooter
             //임시용 플레이어 죽음
             StageManager.Instance.PlayerDeadTest();
 
-            this.character = GlobalDataController.SelectedCharacterCard;
-
             //죽음 사운드 여자,남자,몬스터 목소리 구분용
-            switch (this.character.Type)
+            switch (GlobalDataController.Instance.GetGenderTypeOnSelectedCharacter())
             {
-                case CardSetting.CardType.Woman://여자
-                    MasterAudio.FireCustomEvent("SFX_FemaleDeath", this.transform);
-                    break;
-                case CardSetting.CardType.Prostitute://여자
-                    MasterAudio.FireCustomEvent("SFX_FemaleDeath", this.transform);
-                    break;
-                default://남자
+                case GlobalDataController.GenderType.Male:
+                    //숨소리 사운드 활성화
                     MasterAudio.FireCustomEvent("SFX_MaleDeath", this.transform);
+                    break;
+                case GlobalDataController.GenderType.Female:
+                    //숨소리 사운드 활성화
+                    MasterAudio.FireCustomEvent("SFX_FemaleDeath", this.transform);
                     break;
             }
 

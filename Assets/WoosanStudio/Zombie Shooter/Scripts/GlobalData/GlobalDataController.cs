@@ -13,6 +13,15 @@ namespace WoosanStudio.ZombieShooter
         //싱글톤 패턴
         static public GlobalDataController Instance;
 
+        //사운드 차이에 따른 타입 설정
+        public enum GenderType
+        {
+            Male,
+            Female,
+            Zombie,
+            None,
+        }
+
         //*CardSetting.CardType 이넘과 모델 리스트의 순서는 동일해야 한다.
         public enum ModelType
         {
@@ -303,6 +312,65 @@ namespace WoosanStudio.ZombieShooter
             target.MaxAmmo = maxAmmo;
 
             return target;
+        }
+
+        /// <summary>
+        /// 사운드 변경용 성별 목소리
+        /// </summary>
+        /// <returns></returns>
+        public GenderType GetGenderTypeOnSelectedCharacter()
+        {
+            GenderType genderType = GenderType.None;
+            switch(GlobalDataController.SelectedCharacterCard.Type)
+            {
+                case CardSetting.CardType.Woman:
+                    genderType = GenderType.Female;
+                    break;
+                case CardSetting.CardType.Prostitute:
+                    genderType = GenderType.Female;
+                    break;
+                case CardSetting.CardType.BusinessMan:
+                    genderType = GenderType.Male;
+                    break;
+                case CardSetting.CardType.Hobo:
+                    genderType = GenderType.Male;
+                    break;
+                case CardSetting.CardType.FireFighter:
+                    genderType = GenderType.Male;
+                    break;
+                case CardSetting.CardType.Pimp:
+                    genderType = GenderType.Male;
+                    break;
+                case CardSetting.CardType.Policeman:
+                    genderType = GenderType.Male;
+                    break;
+                case CardSetting.CardType.Punk:
+                    genderType = GenderType.Male;
+                    break;
+                case CardSetting.CardType.RiotCop:
+                    genderType = GenderType.Male;
+                    break;
+                case CardSetting.CardType.RoadWorker:
+                    genderType = GenderType.Male;
+                    break;
+                case CardSetting.CardType.Robber:
+                    genderType = GenderType.Male;
+                    break;
+                case CardSetting.CardType.Sheriff:
+                    genderType = GenderType.Male;
+                    break;
+                case CardSetting.CardType.StreetMan:
+                    genderType = GenderType.Male;
+                    break;
+                case CardSetting.CardType.Trucker:
+                    genderType = GenderType.Male;
+                    break;
+                default:
+                    genderType = GenderType.None;
+                    break;
+            }
+
+            return genderType;
         }
 
         public void Awake()

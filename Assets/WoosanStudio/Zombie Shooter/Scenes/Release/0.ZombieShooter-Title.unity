@@ -3975,6 +3975,16 @@ PrefabInstance:
       propertyPath: frames
       value: 1521
       objectReference: {fileID: 0}
+    - target: {fileID: 1949190598381257082, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f5c2085a987134ff2acddba202b4ee37, type: 3}
+    - target: {fileID: 1949190598456006387, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: frames
+      value: 13452
+      objectReference: {fileID: 0}
     - target: {fileID: 1949190598727963286, guid: 25fa5d48486a841eaaa03f35e72c132d,
         type: 3}
       propertyPath: m_RootOrder
@@ -4250,6 +4260,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MasterAudio
       objectReference: {fileID: 0}
+    - target: {fileID: 1949190599446671349, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f5c2085a987134ff2acddba202b4ee37, type: 3}
+    - target: {fileID: 1949190599446671350, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: isExpanded
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1971287538363276361, guid: 25fa5d48486a841eaaa03f35e72c132d,
         type: 3}
       propertyPath: frames
@@ -4260,6 +4280,16 @@ PrefabInstance:
       propertyPath: groupMasterVolume
       value: 0.35
       objectReference: {fileID: 0}
+    - target: {fileID: 3760062680240464912, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: isExpanded
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760062680240464919, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f5c2085a987134ff2acddba202b4ee37, type: 3}
     - target: {fileID: 3760062680643768897, guid: 25fa5d48486a841eaaa03f35e72c132d,
         type: 3}
       propertyPath: frames
@@ -4269,6 +4299,16 @@ PrefabInstance:
         type: 3}
       propertyPath: busIndex
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760062681476385640, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f5c2085a987134ff2acddba202b4ee37, type: 3}
+    - target: {fileID: 3760062681476385641, guid: 25fa5d48486a841eaaa03f35e72c132d,
+        type: 3}
+      propertyPath: isExpanded
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3761186376963968450, guid: 25fa5d48486a841eaaa03f35e72c132d,
         type: 3}

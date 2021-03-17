@@ -475,6 +475,9 @@ namespace WoosanStudio.ZombieShooter
                 clickedEvent.AddListener(MonsterSpawnScheduleManager.SpawnByNextRound);
                 //팝업에서 선택한 카드의 실제 데이터 적용-> Ok Click과 연결
                 clickedEvent.AddListener(ApplyCardsSelectedPopup);
+
+                //스테미나 초기화
+                this.playerController.Initialize();
             }
 
             //팝업이 콜될때 웨이브 카운트 비활성화
@@ -549,6 +552,9 @@ namespace WoosanStudio.ZombieShooter
             //화면 연출 코루틴 시작
             if (directCameraCoroutine != null) { StopCoroutine(directCameraCoroutine); }
             directCameraCoroutine = StartCoroutine(DirectCameraCoroutine());
+
+            //스테미나 초기화
+            this.playerController.Initialize();
         }
 
         /// <summary>
